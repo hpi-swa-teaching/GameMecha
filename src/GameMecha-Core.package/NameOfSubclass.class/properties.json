@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "NameOfSubclass",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

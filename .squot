@@ -1,3 +1,4 @@
 OrderedDictionary {
+	'src\/GameMecha-Core.package' : #SquotCypressCodeSerializer,
 	'src\/GameMecha-Test.package' : #SquotCypressCodeSerializer
 }
