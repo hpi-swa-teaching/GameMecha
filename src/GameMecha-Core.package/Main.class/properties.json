@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "NameOfSubclass",
+	"name" : "Main",
 	"pools" : [
 		 ],
 	"super" : "Object",
