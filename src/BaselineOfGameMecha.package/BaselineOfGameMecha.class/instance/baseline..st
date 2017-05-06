@@ -6,7 +6,7 @@ baseline: spec
 		do: [
 			spec
 				package: 'GameMecha-Core';
-				package: 'GameMecha-Tests' with: [spec requires: #('default')];
+				package: 'GameMecha-Test' with: [spec requires: #('default')];
 				yourself.
 			spec
 				group: 'default' with: #('GameMecha-Core');
