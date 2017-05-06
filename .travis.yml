@@ -3,5 +3,4 @@ language: smalltalk
 smalltalk: Squeak-trunk
 os:
   - linux
-  - osx
 
