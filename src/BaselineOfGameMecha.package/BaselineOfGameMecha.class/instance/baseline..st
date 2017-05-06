@@ -10,5 +10,5 @@ baseline: spec
 				yourself.
 			spec
 				group: 'default' with: #('GameMecha-Core');
-				group: 'tests' with: #('GameMecha-Tests')];
+				group: 'tests' with: #('GameMecha-Test')];
 				yourself
