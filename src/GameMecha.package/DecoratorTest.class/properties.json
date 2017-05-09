@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "TestTest",
+	"name" : "DecoratorTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",

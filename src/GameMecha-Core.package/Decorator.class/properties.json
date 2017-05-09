@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"wrappedObject" ],
+	"name" : "Decorator",
+	"pools" : [
+		 ],
+	"super" : "ProtoObject",
+	"type" : "normal" }
