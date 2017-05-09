@@ -1,3 +1,3 @@
-as yet unclassified
+collision
 intersects: anObject
 	self subclassResponsibility.

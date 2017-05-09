@@ -1,3 +1,3 @@
 collision
 intersectsCircle: aCircle
-	self subclassResponsibility.
+	^ aCircle intersectsRect: self.

@@ -1,3 +1,3 @@
-as yet unclassified
+collision
 intersectsRect: aRect
 	self subclassResponsibility.

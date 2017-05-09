@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 5/9/2017 20:08",
+	"commentStamp" : "EB 5/9/2017 20:09",
 	"instvars" : [
-		"wrappedObject" ],
-	"name" : "Decorator",
+		 ],
+	"name" : "CircleCollisionDecorator",
 	"pools" : [
 		 ],
-	"super" : "ProtoObject",
+	"super" : "CollisionDecorator",
 	"type" : "normal" }

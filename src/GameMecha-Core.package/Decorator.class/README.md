@@ -1,0 +1,1 @@
+A generic class for decorating objects

@@ -4,10 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "EB 5/9/2017 20:09",
 	"instvars" : [
 		 ],
-	"name" : "RectCollisionDecorator",
+	"name" : "RectangleCollisionDecorator",
 	"pools" : [
 		 ],
 	"super" : "CollisionDecorator",

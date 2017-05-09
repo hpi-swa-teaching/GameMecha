@@ -2,4 +2,6 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testRectRectCollision" : "EB 5/9/2017 16:25" } }
+		"testCircleCircleCollision" : "EB 5/9/2017 20:20",
+		"testRectangleCircleCollision" : "EB 5/9/2017 20:22",
+		"testRectangleRectangleCollision" : "EB 5/9/2017 20:22" } }
