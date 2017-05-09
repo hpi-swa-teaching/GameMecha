@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "RectCollisionDecorator",
+	"pools" : [
+		 ],
+	"super" : "CollisionDecorator",
+	"type" : "normal" }
