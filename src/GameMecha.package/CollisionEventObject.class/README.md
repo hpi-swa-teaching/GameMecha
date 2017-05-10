@@ -1,0 +1,1 @@
+A thing that can be passed to a collision event handler

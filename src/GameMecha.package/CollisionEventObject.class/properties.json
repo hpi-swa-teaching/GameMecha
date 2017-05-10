@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 5/10/2017 23:42",
+	"instvars" : [
+		"collider1",
+		"collider2" ],
+	"name" : "CollisionEventObject",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
