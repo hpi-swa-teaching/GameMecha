@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BadBallGameBall",
+	"pools" : [
+		 ],
+	"super" : "CircleMorph",
+	"type" : "normal" }
