@@ -4,7 +4,7 @@ testCollisionEventHandling
 	| world collisionCounter circleDecorator rectangleDecorator |
 	world := CollisionWorld new.
 	collisionCounter := 0.
-	world registerCollisionHandler: [:collisionEvent | collisionCounter add: 1].
+	world registerCollisionHandler: [:collisionEvent | collisionCounter := collisionCounter + 1].
 	circleDecorator := CircleCollisionDecorator wrap: CircleMorph new.
 	rectangleDecorator := RectangleCollisionDecorator wrap: RectangleMorph  new.
 	world addCollider: circleDecorator.
@@ -20,8 +20,8 @@ testCollisionEventHandling
 	world step.
 	self assert: collisionCounter equals: 1. "rectangle away of circle"
 	
-     rectangleDecorator bounds: (110@110 corner: 180@180).
-     world step.
+	rectangleDecorator bounds: (110@110 corner: 180@180).
+     	world step.
 	self assert: collisionCounter equals: 2. "rectangle moved into circle"
 	
 	rectangleDecorator bounds: (120@120 corner: 170@170).

@@ -2,4 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		 } }
+		"addCollider:" : "MB 5/11/2017 09:55",
+		"collisionHandler" : "MB 5/11/2017 10:10",
+		"collisionHandler:" : "MB 5/11/2017 09:52",
+		"registerCollisionHandler:" : "MB 5/11/2017 09:52",
+		"step" : "MB 5/11/2017 10:07",
+		"testCollisionBetween:and:" : "MB 5/11/2017 10:07" } }
