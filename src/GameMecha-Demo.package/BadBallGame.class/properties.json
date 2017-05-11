@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BadBallGame",
+	"pools" : [
+		 ],
+	"super" : "CollisionWorld",
+	"type" : "normal" }
