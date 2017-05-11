@@ -5,7 +5,8 @@
 		"addCollider:" : "EB 5/11/2017 13:43",
 		"collisionHandler" : "MB 5/11/2017 10:10",
 		"collisionHandler:" : "MB 5/11/2017 09:52",
+		"fireCollisionEventsOn:and:" : "FH 5/11/2017 16:11",
 		"registerCollisionHandler:" : "EB 5/11/2017 13:44",
 		"step" : "EB 5/11/2017 13:44",
 		"stepTime" : "jb 5/11/2017 14:29",
-		"testCollisionBetween:and:" : "EB 5/11/2017 13:45" } }
+		"testCollisionBetween:and:" : "FH 5/11/2017 15:59" } }

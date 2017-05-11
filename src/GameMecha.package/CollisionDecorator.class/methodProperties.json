@@ -2,6 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
+		"collisionHandler" : "FH 5/11/2017 15:56",
+		"collisionHandler:" : "FH 5/11/2017 15:51",
 		"intersects:" : "EB 5/11/2017 13:55",
 		"intersectsCircle:" : "EB 5/11/2017 13:55",
-		"intersectsRect:" : "EB 5/11/2017 13:56" } }
+		"intersectsRect:" : "EB 5/11/2017 13:56",
+		"registerCollisionHandler:" : "FH 5/11/2017 15:56" } }
