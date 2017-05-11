@@ -1,4 +1,4 @@
-as yet unclassified
+collision
 intersectsCircle: otherCircle
 	"check, if the distance between the two center points is smaller than their sum of radii"
 	|myRadius otherRadius myCenter otherCenter squaredDistance|

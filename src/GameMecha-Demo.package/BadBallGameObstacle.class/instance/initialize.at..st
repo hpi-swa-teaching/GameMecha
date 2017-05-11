@@ -1,8 +1,8 @@
 as yet unclassified
-initialize: colisionWorld at: point
+initialize: collisionWorld at: aPoint
 	| wrapper |
-	self bounds: (point extent: 40@40).
-	self color: Color black.
+	self bounds: (aPoint extent: 40 asPoint).
+	self color: Color green.
 	
 	wrapper := RectangleCollisionDecorator wrap: self.
-	colisionWorld addCollider: wrapper.
+	collisionWorld addCollider: wrapper.
