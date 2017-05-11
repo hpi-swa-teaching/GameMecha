@@ -9,5 +9,5 @@ createGame
 	BadBallGameObstacle new initialize: world at: (20@100).
 	
 	world openInWorld.
-	world registerCollisionHandler: [:anEvent | world delete].
+	"world registerCollisionHandler: [:anEvent | world delete]."
 	BadBallGameBall new initialize: world.
