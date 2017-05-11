@@ -1,3 +1,3 @@
 accessing
 wrappedObject
-	^ wrappedObject
+	^ wrappedObject.

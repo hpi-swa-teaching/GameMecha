@@ -1,3 +1,3 @@
 as yet unclassified
 testVersion
-	self assert: ((Main new) version) > 0
+	self assert: ((Main new) version) strictlyPositive.

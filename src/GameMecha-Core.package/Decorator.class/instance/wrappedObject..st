@@ -1,3 +1,3 @@
 accessing
 wrappedObject: anObject
-	wrappedObject := anObject
+	wrappedObject := anObject.
