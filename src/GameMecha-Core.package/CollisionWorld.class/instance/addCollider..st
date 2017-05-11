@@ -1,4 +1,5 @@
 as yet unclassified
 addCollider: aCollider
-	"add a morph to this that should be tested for collisions"
+	"add a morph, that should be tested for collisions, to this world"
+	
 	self addMorph: aCollider.

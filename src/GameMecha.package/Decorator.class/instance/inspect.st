@@ -1,4 +1,4 @@
 as yet unclassified
 inspect
-	"Create and schedule an Inspector in which the user can examine the receiver's variables."
+	"Allow inspection of the decorator himself (instead of only inspecting the wrapped object)"
 	^ ToolSet inspect: self.

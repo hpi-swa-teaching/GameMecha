@@ -1,5 +1,6 @@
 as yet unclassified
-step 
+step
+	"check for collisions between all submorphs each step"
 	super step.
 	1 to: self submorphs size do: 
 		[:i | i + 1 to: self submorphs size do:
