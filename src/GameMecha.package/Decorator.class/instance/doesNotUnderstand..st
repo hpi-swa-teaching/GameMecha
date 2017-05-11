@@ -1,4 +1,6 @@
 as yet unclassified
 doesNotUnderstand: message
-	"redirect everything to the wrapped object"
-	^ self wrappedObject perform: message selector withArguments: message arguments.
+	"forward everything (that is not overwritten by the decorator) to the wrapped object"
+	^ self wrappedObject
+		perform: message selector
+		withArguments: message arguments.

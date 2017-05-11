@@ -1,5 +1,6 @@
 as yet unclassified
 intersectsRect: aRect
+	"checks for circle-rect-intersection as described here:"
 	"http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection"
 	
 	|circleDistance radius|
