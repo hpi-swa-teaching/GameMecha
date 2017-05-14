@@ -13,10 +13,10 @@
 		"intersectsCircle:" : "EB 5/11/2017 13:55",
 		"intersectsRect:" : "EB 5/11/2017 13:56",
 		"isObstacle" : "MB 5/14/2017 21:16",
-		"markAsObstacle" : "MB 5/14/2017 21:28",
+		"markAsObstacle" : "EB 5/14/2017 23:01",
 		"previousBounds" : "MB 5/14/2017 21:55",
 		"previousBounds:" : "MB 5/14/2017 21:20",
 		"removeFromCollisionGroup:" : "EB 5/14/2017 21:12",
 		"step" : "MB 5/14/2017 21:20",
-		"unmarkAsObstacle" : "MB 5/14/2017 22:16",
+		"unmarkAsObstacle" : "EB 5/14/2017 22:59",
 		"usesCollisionGroups" : "EB 5/14/2017 21:14" } }
