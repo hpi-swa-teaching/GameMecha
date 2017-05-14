@@ -27,4 +27,9 @@ testCollisionEventHandling
 	rectangleDecorator bounds: (120@120 corner: 170@170).
 	world step.
       self assert: collisionCounter equals: 3. "rectangle still in circle"
+
+	"now add a new Handler, to see if both get executed"
+	world registerCollisionHandler: [:collisionEvent | collisionCounter := collisionCounter + 38].
+	world step.
+	self assert: collisionCounter equals: 42.
 	

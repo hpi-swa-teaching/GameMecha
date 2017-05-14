@@ -2,6 +2,7 @@
 	"category" : "GameMecha-Core",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "CollisionHandlerHolder classTrait",
 	"classvars" : [
 		 ],
 	"commentStamp" : "EB 5/9/2017 16:15",
@@ -12,4 +13,5 @@
 	"pools" : [
 		 ],
 	"super" : "Decorator",
+	"traitcomposition" : "CollisionHandlerHolder",
 	"type" : "normal" }

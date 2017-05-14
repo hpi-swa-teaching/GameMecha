@@ -11,6 +11,5 @@
 		"intersects:" : "EB 5/14/2017 21:15",
 		"intersectsCircle:" : "EB 5/11/2017 13:55",
 		"intersectsRect:" : "EB 5/11/2017 13:56",
-		"registerCollisionHandler:" : "FH 5/11/2017 15:56",
 		"removeFromCollisionGroup:" : "EB 5/14/2017 21:12",
 		"usesCollisionGroups" : "EB 5/14/2017 21:14" } }
