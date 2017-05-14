@@ -1,4 +1,4 @@
-as yet unclassified
+colliding
 testCollisionBetween: collider1 and: collider2
 	"check, if there is a collision between two colliders, and call the handler if needed"
 	

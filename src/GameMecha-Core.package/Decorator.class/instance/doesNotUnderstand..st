@@ -1,4 +1,4 @@
-as yet unclassified
+relaying
 doesNotUnderstand: message
 	"redirect everything to the wrapped object"
 	|result|

@@ -1,8 +1,8 @@
 event data structure
 testCollisionEventObject
 	|eventObject morph1 morph2|
-	morph1 := RectangleCollisionDecorator wrap: RectangleMorph new.
-	morph2 := RectangleCollisionDecorator wrap: RectangleMorph new.
+	morph1 := RectangleCollider wrap: RectangleMorph new.
+	morph2 := RectangleCollider wrap: RectangleMorph new.
 	eventObject := CollisionEventObject newFrom: morph1 and: morph2.
 	
 	self assert: (eventObject isCollider: morph1).

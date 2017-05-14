@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 5/9/2017 20:09",
+	"instvars" : [
+		 ],
+	"name" : "CircleCollider",
+	"pools" : [
+		 ],
+	"super" : "Collider",
+	"type" : "normal" }

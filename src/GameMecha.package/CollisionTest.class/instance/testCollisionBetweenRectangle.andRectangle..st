@@ -1,8 +1,8 @@
 collision
 testCollisionBetweenRectangle: morph1 andRectangle: morph2
 	|rectangle1 rectangle2|
-	rectangle1 := RectangleCollisionDecorator wrap: morph1.
-	rectangle2 := RectangleCollisionDecorator wrap: morph2.
+	rectangle1 := RectangleCollider wrap: morph1.
+	rectangle2 := RectangleCollider wrap: morph2.
 	rectangle1 bounds: (82@38 corner: 160@147).
 	
 	"uncomment these lines and step through the debugger to visualize the testing process"

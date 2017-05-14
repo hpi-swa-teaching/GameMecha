@@ -1,4 +1,4 @@
-as yet unclassified
+colliding
 fireCollisionEventsOn: collider1 and: collider2
 	
 	| collisionObject |

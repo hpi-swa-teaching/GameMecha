@@ -1,8 +1,8 @@
 collision
 testCollisionBetweenCircle: morph1 andCircle: morph2
 	|circle1 circle2|
-	circle1 := CircleCollisionDecorator wrap: morph1.
-	circle2 := CircleCollisionDecorator wrap: morph2.
+	circle1 := CircleCollider wrap: morph1.
+	circle2 := CircleCollider wrap: morph2.
 	circle1 bounds: (133@74 corner: 294@235).
 	
 	"uncomment these lines and step through the debugger to visualize the testing process"

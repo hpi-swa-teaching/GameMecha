@@ -5,8 +5,8 @@ testCollisionEventHandling
 	world := CollisionWorld new.
 	collisionCounter := 0.
 	world registerCollisionHandler: [:collisionEvent | collisionCounter := collisionCounter + 1].
-	circleDecorator := CircleCollisionDecorator wrap: CircleMorph new.
-	rectangleDecorator := RectangleCollisionDecorator wrap: RectangleMorph  new.
+	circleDecorator := CircleCollider wrap: CircleMorph new.
+	rectangleDecorator := RectangleCollider wrap: RectangleMorph  new.
 	world addCollider: circleDecorator.
 	world addCollider: rectangleDecorator.
 	

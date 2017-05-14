@@ -1,4 +1,4 @@
-as yet unclassified
+stepping
 step
 	"check for collisions between all submorphs each step"
 	super step.

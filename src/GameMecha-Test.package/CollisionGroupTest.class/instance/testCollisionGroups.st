@@ -1,10 +1,10 @@
-as yet unclassified
+basic
 testCollisionGroups
 	|object1 object2|
 	"they overlap"
-	object1 := RectangleCollisionDecorator wrap: RectangleMorph new.
+	object1 := RectangleCollider wrap: RectangleMorph new.
 	object1 bounds: (40@165 corner: 90@205).
-	object2 := RectangleCollisionDecorator wrap: RectangleMorph new.
+	object2 :=RectangleCollider wrap: RectangleMorph new.
 	object2 bounds: (66@178 corner: 116@218).
 	
 	"todo: should we use the intersects: here?"

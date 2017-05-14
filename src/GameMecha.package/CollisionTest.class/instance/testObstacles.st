@@ -7,8 +7,8 @@ testObstacles
 	collisionCounter := 0.
 	world registerCollisionHandler: [:collisionEvent | collisionCounter := collisionCounter + 1].
 	
-	obstacle := RectangleCollisionDecorator wrap: RectangleMorph new.
-	player := RectangleCollisionDecorator wrap: RectangleMorph new.
+	obstacle := RectangleCollider wrap: RectangleMorph new.
+	player := RectangleCollider wrap: RectangleMorph new.
 	
 	obstacle markAsObstacle.	
 	obstacle bounds: (547@88 corner: 683@229).	

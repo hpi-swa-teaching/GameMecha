@@ -1,4 +1,4 @@
-as yet unclassified
+trading
 registerCollisionHandler: aBlock
   "____  ____      __      __  ____  ______   ____
   |_   _| | /\  \   /   \     | |  |_  _| |  __   | | /\  \ DO NOT CHANGE ANYTHING IF YOU DON'T KNOW WHAT YOU ARE DOING

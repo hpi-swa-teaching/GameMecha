@@ -1,4 +1,4 @@
-as yet unclassified
+basic
 testDecoratingCollection
 	|d|
 	d := Decorator wrap: OrderedCollection new.
