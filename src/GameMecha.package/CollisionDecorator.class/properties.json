@@ -2,15 +2,18 @@
 	"category" : "GameMecha-Core",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "CollisionHandlerHolder classTrait",
 	"classvars" : [
 		 ],
 	"commentStamp" : "EB 5/9/2017 16:15",
 	"instvars" : [
 		"collisionHandler",
+		"collisionGroups",
 		"isObstacle",
 		"previousBounds" ],
 	"name" : "CollisionDecorator",
 	"pools" : [
 		 ],
 	"super" : "Decorator",
+	"traitcomposition" : "CollisionHandlerHolder",
 	"type" : "normal" }

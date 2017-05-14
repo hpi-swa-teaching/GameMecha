@@ -2,16 +2,21 @@
 	"class" : {
 		 },
 	"instance" : {
+		"addToCollisionGroup:" : "EB 5/14/2017 21:12",
+		"collisionGroups" : "EB 5/14/2017 21:01",
+		"collisionGroups:" : "EB 5/14/2017 21:01",
+		"collisionGroupsIntersectWith:" : "EB 5/14/2017 21:14",
 		"collisionHandler" : "FH 5/11/2017 15:56",
 		"collisionHandler:" : "FH 5/11/2017 15:51",
 		"denyMovingColliderIntoOurself:" : "MB 5/14/2017 22:10",
-		"intersects:" : "EB 5/11/2017 13:55",
+		"intersects:" : "EB 5/14/2017 21:15",
 		"intersectsCircle:" : "EB 5/11/2017 13:55",
 		"intersectsRect:" : "EB 5/11/2017 13:56",
 		"isObstacle" : "MB 5/14/2017 21:16",
 		"markAsObstacle" : "MB 5/14/2017 21:28",
 		"previousBounds" : "MB 5/14/2017 21:55",
 		"previousBounds:" : "MB 5/14/2017 21:20",
-		"registerCollisionHandler:" : "FH 5/11/2017 15:56",
+		"removeFromCollisionGroup:" : "EB 5/14/2017 21:12",
 		"step" : "MB 5/14/2017 21:20",
-		"unmarkAsObstacle" : "MB 5/14/2017 22:16" } }
+		"unmarkAsObstacle" : "MB 5/14/2017 22:16",
+		"usesCollisionGroups" : "EB 5/14/2017 21:14" } }

@@ -1,3 +1,4 @@
 collision
 intersects: anObject
-	^ anObject intersectsCircle: self.
+	^ (super intersects: anObject)
+		and: [anObject intersectsCircle: self].
