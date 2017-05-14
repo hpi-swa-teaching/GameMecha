@@ -1,0 +1,3 @@
+accessing
+isObstacle
+	^ isObstacle.

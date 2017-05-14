@@ -4,7 +4,14 @@
 	"instance" : {
 		"collisionHandler" : "FH 5/11/2017 15:56",
 		"collisionHandler:" : "FH 5/11/2017 15:51",
+		"denyMovingColliderIntoOurself:" : "MB 5/14/2017 22:10",
 		"intersects:" : "EB 5/11/2017 13:55",
 		"intersectsCircle:" : "EB 5/11/2017 13:55",
 		"intersectsRect:" : "EB 5/11/2017 13:56",
-		"registerCollisionHandler:" : "FH 5/11/2017 15:56" } }
+		"isObstacle" : "MB 5/14/2017 21:16",
+		"markAsObstacle" : "MB 5/14/2017 21:28",
+		"previousBounds" : "MB 5/14/2017 21:55",
+		"previousBounds:" : "MB 5/14/2017 21:20",
+		"registerCollisionHandler:" : "FH 5/11/2017 15:56",
+		"step" : "MB 5/14/2017 21:20",
+		"unmarkAsObstacle" : "MB 5/14/2017 22:16" } }
