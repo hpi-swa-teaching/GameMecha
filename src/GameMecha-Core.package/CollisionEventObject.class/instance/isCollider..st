@@ -1,4 +1,4 @@
-accessing
+collider testing
 isCollider: aPossibleCollider
 	"returns true, if the passed argument is part of the collision"
 

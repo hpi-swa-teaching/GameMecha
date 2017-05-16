@@ -7,7 +7,9 @@
 	"commentStamp" : "EB 5/10/2017 23:42",
 	"instvars" : [
 		"collider1",
-		"collider2" ],
+		"collider2",
+		"collidersIntersect",
+		"colliderContainsOtherMap" ],
 	"name" : "CollisionEventObject",
 	"pools" : [
 		 ],

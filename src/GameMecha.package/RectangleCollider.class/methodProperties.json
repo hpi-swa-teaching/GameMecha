@@ -2,6 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"intersects:" : "EB 5/14/2017 21:08",
-		"intersectsCircle:" : "EB 5/9/2017 19:16",
-		"intersectsRect:" : "EB 5/11/2017 13:59" } }
+		"containedBy:" : "EB 5/16/2017 23:35",
+		"containsCircle:" : "EB 5/16/2017 14:56",
+		"containsPoint:" : "EB 5/16/2017 14:56",
+		"containsRect:" : "EB 5/16/2017 14:56",
+		"intersects:withMargin:" : "EB 5/16/2017 14:21",
+		"intersectsCircle:withMargin:" : "EB 5/16/2017 14:18",
+		"intersectsRect:withMargin:" : "EB 5/16/2017 14:25" } }

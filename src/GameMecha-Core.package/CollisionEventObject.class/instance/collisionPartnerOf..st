@@ -1,4 +1,4 @@
-accessing
+collider testing
 collisionPartnerOf: aPossibleCollider
 	"This method returns 'the other morph'. More precisely: It returns nil,
 	if the argument is not part of the collision, and the morph it collides with, if it is."

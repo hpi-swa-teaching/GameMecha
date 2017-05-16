@@ -10,7 +10,8 @@
 		"collisionHandler",
 		"collisionGroups",
 		"isObstacle",
-		"previousBounds" ],
+		"previousBounds",
+		"touchMargin" ],
 	"name" : "Collider",
 	"pools" : [
 		 ],
