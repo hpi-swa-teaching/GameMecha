@@ -1,0 +1,3 @@
+initializing
+handlesKeyboard: anEvent 
+	^true.

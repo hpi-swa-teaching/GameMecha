@@ -6,3 +6,4 @@ initialize: collisionWorld at: aPoint
 	
 	wrapper := RectangleCollider wrap: self.
 	collisionWorld addCollider: wrapper.
+	wrapper markAsObstacle.

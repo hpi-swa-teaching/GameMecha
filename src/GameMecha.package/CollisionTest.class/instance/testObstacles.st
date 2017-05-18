@@ -5,7 +5,7 @@ testObstacles
 	world := CollisionWorld new.
 		
 	collisionCounter := 0.
-	world registerCollisionHandler: [:collisionEvent | collisionCounter := collisionCounter + 1].
+	world registerCollisionHandler: [:collisionEvent |  collisionEvent collidersIntersect ifTrue: [collisionCounter := collisionCounter + 1]].
 	
 	obstacle := RectangleCollider wrap: RectangleMorph new.
 	player := RectangleCollider wrap: RectangleMorph new.
@@ -34,6 +34,7 @@ testObstacles
 	obstacle step.
 	player step.
 	self assert: collisionCounter equals: 1.
+	self assert: (player touches: obstacle).
 
 	obstacle unmarkAsObstacle.
 	
