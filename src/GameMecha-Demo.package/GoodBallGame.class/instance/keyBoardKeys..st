@@ -1,3 +1,3 @@
 accessing
 keyBoardKeys: anObject
-	keyBoardKeys := anObject
+	keyBoardKeys := anObject.

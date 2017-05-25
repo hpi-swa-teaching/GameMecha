@@ -1,3 +1,3 @@
 initializing
 handlesKeyboard: anEvent 
-	^true.
+	^ true.
