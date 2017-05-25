@@ -1,15 +1,14 @@
 {
-	"category" : "GameMecha-Demo",
+	"category" : "GameMecha-Test",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"ball",
-		"keyboard" ],
-	"name" : "GoodBallGame",
+		 ],
+	"name" : "KeysTest",
 	"pools" : [
 		 ],
-	"super" : "CollisionWorld",
+	"super" : "TestCase",
 	"type" : "normal" }
