@@ -10,5 +10,5 @@
 	"name" : "GoodBallGameBall",
 	"pools" : [
 		 ],
-	"super" : "CircleMorph",
+	"super" : "CircleCollider",
 	"type" : "normal" }

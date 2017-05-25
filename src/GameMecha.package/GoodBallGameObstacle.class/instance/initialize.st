@@ -1,0 +1,8 @@
+initializing
+initialize
+	super initialize.
+	self bounds: (0 asPoint extent: 40 asPoint).
+	self color: Color green.
+	
+	self startStepping.
+	self markAsObstacle.

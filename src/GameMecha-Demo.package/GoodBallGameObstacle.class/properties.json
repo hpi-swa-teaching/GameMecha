@@ -10,5 +10,5 @@
 	"name" : "GoodBallGameObstacle",
 	"pools" : [
 		 ],
-	"super" : "RectangleMorph",
+	"super" : "RectangleCollider",
 	"type" : "normal" }

@@ -1,5 +1,6 @@
 as yet unclassified
 wrap: anObject
-	^ (self new)
+	^ (self basicNew)
 		wrappedObject: anObject;
+		initialize;
 		yourself.
