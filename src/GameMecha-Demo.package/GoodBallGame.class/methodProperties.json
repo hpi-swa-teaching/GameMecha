@@ -3,9 +3,9 @@
 		 },
 	"instance" : {
 		"createGame" : "jb 5/25/2017 11:57",
-		"handlesKeyboard:" : "MB 5/18/2017 09:23",
-		"handlesMouseOver:" : "MB 5/18/2017 09:26",
-		"hasFocus" : "MB 5/18/2017 09:21",
+		"handlesKeyboard:" : "TS 5/25/2017 11:05",
+		"handlesMouseOver:" : "TS 5/25/2017 11:05",
+		"hasFocus" : "TS 5/25/2017 11:05",
 		"keyDown:" : "jb 5/25/2017 11:59",
 		"keyUp:" : "jb 5/25/2017 11:58",
 		"keyboard" : "jb 5/25/2017 11:51",

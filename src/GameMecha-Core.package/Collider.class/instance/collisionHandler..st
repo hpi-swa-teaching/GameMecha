@@ -1,3 +1,3 @@
 accessing
 collisionHandler: anObject
-	collisionHandler := anObject
+	collisionHandler := anObject.
