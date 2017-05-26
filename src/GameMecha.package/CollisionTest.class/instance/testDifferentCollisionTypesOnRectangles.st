@@ -1,16 +1,23 @@
 collision type testing
-testDifferentCollisionTypes
+testDifferentCollisionTypesOnRectangles
 	|rectangle1 rectangle2 world eventLog|
 	eventLog := OrderedCollection new.
-	rectangle1 := RectangleCollider wrap: RectangleMorph new.
-	rectangle2 := RectangleCollider wrap: RectangleMorph new.
+	self collider1: (RectangleCollider wrap: RectangleMorph new).
+	self collider2: (RectangleCollider wrap: RectangleMorph new).
 	world := CollisionWorld new.
+	rectangle1 := self collider1.
+	rectangle2 := self collider2.
+	
 	world addCollider: rectangle1.
 	world addCollider: rectangle2.
 	
 	rectangle1 bounds: (56@81 corner: 106@121).
 	rectangle2 bounds: (92@139 corner: 142@179).
 	
+	"rectangle1 openInWorld.
+	rectangle2 openInWorld.
+	self halt.
+	"
 	
 	world registerCollisionHandler: [:eventObject |
 			self assert: (eventObject isCollider: rectangle1).
