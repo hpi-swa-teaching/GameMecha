@@ -7,7 +7,7 @@ baseline: spec
 			spec
 				package: 'GameMecha-Core';
 				package: 'GameMecha-Keys';
-				package: 'GameMecha-Test' with: [spec requires: #('default', 'keys')];
+				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys')];
 				yourself.
 			spec
 				group: 'default' with: #('GameMecha-Core');
