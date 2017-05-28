@@ -6,9 +6,9 @@ testKeyUpHandler
 	keyboard registerKeyUp: [counter := counter +1.] for: 'a' asCharacter .
 	self assert: counter equals: 0.
 	
-	keyboard onKeyDown: ((KeyboardEvent new) keyValue: 'a').
+	keyboard onKeyDown: (MockKeyboardEvent of: $a).
 	self assert: counter equals: 0.
 	
-	keyboard onKeyUp: ((KeyboardEvent new) keyValue: 'a').
+	keyboard onKeyUp: (MockKeyboardEvent of: $a).
 	self assert: counter equals: 1.
 

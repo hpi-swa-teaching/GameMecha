@@ -4,11 +4,11 @@ testIsKeyDown
 	keyboard := Keyboard new.
 	self deny: (keyboard isKeyDown: 'a' ).
 	self deny: (keyboard isKeyDown: 'A' ).
-	keyboard onKeyDown: ((KeyboardEvent new) keyValue: 'a').
+	keyboard onKeyDown: (MockKeyboardEvent of: $a).
 	self assert: (keyboard isKeyDown: 'a').
 	self assert: (keyboard isKeyDown: 'A').
-      keyboard onKeyUp: ((KeyboardEvent new) keyValue: 'a').
+      keyboard onKeyUp: (MockKeyboardEvent of: $a).
 	self deny: (keyboard isKeyDown: 'a' ).
 	
-	keyboard onKeyDown: ((KeyboardEvent new) keyValue: 'A').
+	keyboard onKeyDown: (MockKeyboardEvent of: $A).
 	self assert: (keyboard isKeyDown: 'a').
