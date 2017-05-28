@@ -1,12 +1,12 @@
 obstacle
 resolveIntersection: otherCollider movingVector: delta
 	|lerpFactor stepSize |
-	(self intersects: otherCollider) ifFalse: [^self].
+	((delta isZero) or: [(self intersects: otherCollider) not]) ifTrue: [^self].
 	stepSize := 1.
 	lerpFactor := 1.
 	"self openInWorld. otherCollider openInWorld."
-	[((self touches: otherCollider) and: (self intersects: otherCollider) not)] 
-		whileFalse: [
+	[ (stepSize isZero not) and: [(self touches: otherCollider) not or: [self intersects: otherCollider]] ] 
+		whileTrue: [
 			stepSize := stepSize / 2.0.
 			(self intersects: otherCollider)
 				ifTrue: [lerpFactor := lerpFactor - stepSize] 

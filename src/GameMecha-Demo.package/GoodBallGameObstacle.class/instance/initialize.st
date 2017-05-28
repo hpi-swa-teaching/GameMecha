@@ -6,3 +6,4 @@ initialize
 	
 	self startStepping.
 	self markAsObstacle.
+	self registerCollisionHandler: [:event | self touchesPlayer: true]
