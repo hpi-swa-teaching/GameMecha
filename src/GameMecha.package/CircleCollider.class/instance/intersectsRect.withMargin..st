@@ -17,6 +17,7 @@ intersectsRect: aRect withMargin: tolerance
 		or: [circleDistance y <= (rectBounds height / 2)] )
 		ifTrue: [^ true].
 		
-	^ (circleDistance squaredDistanceTo: (rectBounds extent / 2)) <= radius squared.
+		
+	^ (circleDistance dist: (rectBounds extent / 2)) <= radius.
 	
 	

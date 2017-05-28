@@ -2,4 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"initialize" : "MB 5/23/2017 12:01" } }
+		"initialize" : "EB 5/28/2017 18:07",
+		"step" : "EB 5/28/2017 18:08",
+		"stepTime" : "EB 5/28/2017 17:53",
+		"touchesPlayer" : "EB 5/28/2017 18:07",
+		"touchesPlayer:" : "EB 5/28/2017 18:07" } }

@@ -1,0 +1,1 @@
+An object that behaves like a KeyEvent to test the Keyboard system
