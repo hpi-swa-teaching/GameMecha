@@ -2,13 +2,13 @@
 	"class" : {
 		 },
 	"instance" : {
-		"createGame" : "jb 5/25/2017 11:57",
-		"handlesKeyboard:" : "TS 5/25/2017 11:05",
-		"handlesMouseOver:" : "TS 5/25/2017 11:05",
-		"hasFocus" : "TS 5/25/2017 11:05",
-		"keyDown:" : "jb 5/25/2017 11:59",
-		"keyUp:" : "jb 5/25/2017 11:58",
-		"keyboard" : "jb 5/25/2017 11:51",
-		"keyboard:" : "jb 5/25/2017 11:51",
+		"createGame" : "MB 5/23/2017 12:00",
+		"handlesKeyboard:" : "MB 5/18/2017 09:23",
+		"handlesMouseOver:" : "MB 5/18/2017 09:26",
+		"hasFocus" : "MB 5/18/2017 09:21",
+		"keyBoardKeys" : "MB 5/18/2017 09:20",
+		"keyBoardKeys:" : "MB 5/18/2017 09:20",
+		"keyDown:" : "mdlh 5/25/2017 10:41",
+		"keyUp:" : "MB 5/18/2017 09:20",
 		"mouseLeave:" : "MB 5/18/2017 09:22",
-		"step" : "jb 5/25/2017 12:02" } }
+		"step" : "mdlh 5/25/2017 10:31" } }

@@ -6,4 +6,4 @@ containsTheOtherCollider: aPossibleCollider
 		
 	^ self colliderContainsOtherMap 
 		at: aPossibleCollider 
-		ifAbsentPut: [aPossibleCollider contains: (self collisionPartnerOf: aPossibleCollider)].
+		ifAbsentPut: [(self collisionPartnerOf: aPossibleCollider) contains: aPossibleCollider].

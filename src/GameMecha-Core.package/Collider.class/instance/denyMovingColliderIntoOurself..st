@@ -1,9 +1,15 @@
 obstacle
 denyMovingColliderIntoOurself: otherCollider
-	| delta|
-	delta := otherCollider bounds origin - otherCollider previousBounds origin.
-	otherCollider position: (otherCollider position x @ otherCollider previousBounds origin y).
-	self resolveIntersection: otherCollider movingVector: (delta x @ 0).
-	otherCollider previousBounds: otherCollider bounds copy.
-	otherCollider position: (otherCollider position + (0 @ delta y)).
-	self resolveIntersection: otherCollider movingVector: (0 @ delta y).
+	|lerpFactor stepSize delta|
+	delta := otherCollider previousBounds origin  - otherCollider bounds origin.
+	stepSize := 1.
+	lerpFactor := 1.
+	"self openInWorld. otherCollider openInWorld."
+	[((self touches: otherCollider) and: (self intersects: otherCollider) not)] 
+		whileFalse: [
+			stepSize := stepSize / 2.0.
+			(self intersects: otherCollider)
+				ifTrue: [lerpFactor := lerpFactor - stepSize] 
+				ifFalse: [lerpFactor := lerpFactor + stepSize].
+			otherCollider position: otherCollider previousBounds origin - (delta * lerpFactor).
+			]

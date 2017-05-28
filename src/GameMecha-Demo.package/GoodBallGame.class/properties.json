@@ -6,8 +6,8 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"ball",
-		"keyboard" ],
+		"keyBoardKeys",
+		"ball" ],
 	"name" : "GoodBallGame",
 	"pools" : [
 		 ],

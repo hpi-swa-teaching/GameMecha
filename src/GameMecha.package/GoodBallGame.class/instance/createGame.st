@@ -19,5 +19,5 @@ createGame
 	
 	self openInWorld.
 	
-	self keyboard: Keyboard new.
+	self keyBoardKeys: Dictionary new.
 	ActiveHand newKeyboardFocus: self.

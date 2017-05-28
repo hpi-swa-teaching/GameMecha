@@ -1,3 +1,3 @@
 accessing
 previousBounds: anObject
-	previousBounds := anObject.
+	previousBounds := anObject

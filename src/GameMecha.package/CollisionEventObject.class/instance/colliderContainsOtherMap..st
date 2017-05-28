@@ -1,3 +1,3 @@
 accessing
 colliderContainsOtherMap: anObject
-	colliderContainsOtherMap := anObject.
+	colliderContainsOtherMap := anObject

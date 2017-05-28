@@ -9,8 +9,8 @@ intersectsRect: aRect withMargin: tolerance
 	circleDistance := (self bounds center - rectBounds center) abs.
 	radius := self radius + tolerance.
 	
-	((circleDistance x > (rectBounds width / 2 + radius))
-		or: [circleDistance y > (rectBounds height / 2 + radius)] )
+	((circleDistance x >= (rectBounds width / 2 + radius))
+		or: [circleDistance y >= (rectBounds height / 2 + radius)] )
 		ifTrue: [^ false].
 		
 	((circleDistance x <= (rectBounds width / 2))

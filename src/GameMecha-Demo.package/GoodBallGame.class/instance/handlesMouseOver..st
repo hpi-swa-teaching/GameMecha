@@ -1,3 +1,3 @@
 initializing
 handlesMouseOver: anEvent
-	^ true.
+	^true.

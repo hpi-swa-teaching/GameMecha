@@ -1,3 +1,4 @@
 initializing
 keyDown: anEvent
-	self keyboard onKeyDown: anEvent.
+	self keyBoardKeys at: anEvent keyCharacter asciiValue put: true.
+	Transcript showln: anEvent keyCharacter asciiValue.

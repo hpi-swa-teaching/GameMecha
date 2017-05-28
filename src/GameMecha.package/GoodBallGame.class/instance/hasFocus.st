@@ -1,3 +1,3 @@
 initializing
 hasFocus 
-	^ true.
+	^true.

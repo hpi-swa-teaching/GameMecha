@@ -27,9 +27,9 @@ testDifferentCollisionTypesOnCircles
 			(eventObject collidersIntersect)
 				ifTrue: [eventLog add: 'intersect'].
 			(eventObject containsTheOtherCollider: circle1)
-				ifTrue: [eventLog add: '2in1'].
-			(eventObject containsTheOtherCollider: circle2)
 				ifTrue: [eventLog add: '1in2'].
+			(eventObject containsTheOtherCollider: circle2)
+				ifTrue: [eventLog add: '2in1'].
 		].
 	world step.
 	self assert: eventLog isEmpty.
@@ -57,5 +57,5 @@ testDifferentCollisionTypesOnCircles
 	self assert: eventLog size equals: 10.
 	self assert: (eventLog at: 7) equals: 'touch'.
 	self assert: (eventLog at: 8) equals: 'intersect'.
-	self assert: (eventLog at: 9) equals: '2in1'.
-	self assert: (eventLog at: 10) equals: '1in2'.
+	self assert: (eventLog at: 9) equals: '1in2'.
+	self assert: (eventLog at: 10) equals: '2in1'.

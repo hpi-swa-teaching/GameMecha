@@ -1,3 +1,0 @@
-accessing
-keyboard
-	^ keyboard
