@@ -1,4 +1,4 @@
-as yet unclassified
+handler registration
 register: aHandler for: aCharacter at: aHandlerCollection
 	| asci |
 	asci := aCharacter asUppercase asciiValue.
