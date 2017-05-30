@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 5/28/2017 19:20",
+	"instvars" : [
+		"keyCharacter" ],
+	"name" : "MockKeyboardEvent",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

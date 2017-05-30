@@ -12,4 +12,4 @@ intersectsCircle: otherCircle withMargin: tolerance
 	
 	squaredDistance := myCenter squaredDistanceTo: otherCenter.
 	
-	^ squaredDistance <= (myRadius + otherRadius) squared.
+	^ squaredDistance < (myRadius + otherRadius) squared.
