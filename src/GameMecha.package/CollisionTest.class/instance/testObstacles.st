@@ -14,25 +14,23 @@ testObstacles
 	obstacle bounds: (547@88 corner: 683@229).	
 	player bounds: (302@112 corner: 387@180).
 	
-	world addCollider: obstacle.
-	world addCollider: player.
-	
 	world step.	
-	obstacle step.
-	player step.
+	world step.	
+	world addCollider: obstacle.
+	world step.	
+	world step.	
+	world addCollider: player.
+	world step.	
+	world step.	
+		
 	self assert: collisionCounter equals: 0.	
 			
 	player bounds: (487@118 corner: 572@186).
-	
 	world step.	
-	obstacle step.
-	player step.
 	world step.	
-	obstacle step.
-	player step.
 	world step.	
-	obstacle step.
-	player step.
+	world step.	
+	world step.	
 	self assert: collisionCounter equals: 1.
 	self assert: (player touches: obstacle).
 
