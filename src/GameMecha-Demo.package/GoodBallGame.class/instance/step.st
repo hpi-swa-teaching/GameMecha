@@ -1,20 +1,16 @@
 accessing
 step
-	super step.
-	submorphs do: [:sub | sub step.].
-	self keyBoardKeys at: 87 ifAbsentPut: false.
-	self keyBoardKeys at: 65 ifAbsentPut: false.
-	self keyBoardKeys at: 83 ifAbsentPut: false.
-	self keyBoardKeys at: 68 ifAbsentPut: false.
-	
-	(self keyBoardKeys at: 87) ifTrue:
-	[ball position: ball position + (0@(-1))].
-	
-	(self keyBoardKeys at: 65) ifTrue:
-	[ball position: ball position + (-1@0)].
-	
-	(self keyBoardKeys at: 83) ifTrue:
-	[ball position: ball position + (0@1)].
-	
-	(self keyBoardKeys at: 68) ifTrue:
-	[ball position: ball position + (1@0)].
+  super step.
+  submorphs do: [:sub | sub step.].
+  
+  (self keyboard isKeyDown: 'w') ifTrue:[
+    ball position: ball position + (0@(-40)).].
+  
+  (self keyboard isKeyDown: 'a') ifTrue:[
+    ball position: ball position + (-40@0).].
+  
+  (self keyboard isKeyDown: 's') ifTrue:[
+    ball position: ball position + (0@40).].
+  
+  (self keyboard isKeyDown: 'd') ifTrue:[
+    ball position: ball position + (40@0).].
