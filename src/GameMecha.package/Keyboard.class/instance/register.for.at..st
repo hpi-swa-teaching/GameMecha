@@ -1,11 +1,11 @@
 handler registration
 register: aHandler for: aCharacter at: aHandlerCollection
-	| asci |
-	asci := aCharacter asUppercase asciiValue.
-	(aHandlerCollection includesKey: asci) 
+	| asciiValue |
+	asciiValue := aCharacter asUppercase asciiValue.
+	(aHandlerCollection includesKey: asciiValue) 
 	ifTrue: [ | oldHandlers |
-		oldHandlers := aHandlerCollection at: asci.
-		aHandlerCollection at: asci put: 	
+		oldHandlers := aHandlerCollection at: asciiValue.
+		aHandlerCollection at: asciiValue put: 	
 		[oldHandlers value. 
-		aHandler value.]]
-	ifFalse: [aHandlerCollection at: asci put: aHandler.].
+		aHandler value]]
+	ifFalse: [aHandlerCollection at: asciiValue put: aHandler].

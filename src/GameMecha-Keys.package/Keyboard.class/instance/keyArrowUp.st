@@ -1,0 +1,3 @@
+keys
+keyArrowUp
+	^ 30.

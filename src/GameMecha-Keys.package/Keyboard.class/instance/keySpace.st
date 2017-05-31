@@ -1,0 +1,3 @@
+keys
+keySpace
+	^ 32.

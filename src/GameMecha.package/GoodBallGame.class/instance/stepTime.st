@@ -1,3 +1,3 @@
 initializing
 stepTime 
-	 ^50
+ ^1.

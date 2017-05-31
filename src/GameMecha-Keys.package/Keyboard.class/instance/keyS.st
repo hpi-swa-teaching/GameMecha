@@ -1,0 +1,3 @@
+keys
+keyS
+	^ $S asciiValue.

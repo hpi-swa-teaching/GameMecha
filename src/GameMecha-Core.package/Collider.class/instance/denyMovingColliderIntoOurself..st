@@ -1,6 +1,6 @@
 obstacle
 denyMovingColliderIntoOurself: otherCollider
-	| delta|
+	| delta |
 	delta := otherCollider bounds origin - otherCollider previousBounds origin.
 	otherCollider position: (otherCollider position x @ otherCollider previousBounds origin y).
 	self resolveIntersection: otherCollider movingVector: (delta x @ 0).
