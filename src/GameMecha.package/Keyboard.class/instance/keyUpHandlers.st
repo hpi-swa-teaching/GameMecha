@@ -1,3 +1,3 @@
 accessing
 keyUpHandlers
-	^ keyUpHandlers
+	^ keyUpHandlers.

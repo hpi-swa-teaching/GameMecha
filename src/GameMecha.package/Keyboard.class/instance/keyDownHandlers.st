@@ -1,3 +1,3 @@
 accessing
 keyDownHandlers
-	^ keyDownHandlers
+	^ keyDownHandlers.

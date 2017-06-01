@@ -1,3 +1,0 @@
-keys
-keyD
-	^ $D asciiValue.

@@ -1,3 +1,3 @@
 accessing
 pressedKeys: anObject
-	pressedKeys := anObject
+	pressedKeys := anObject.

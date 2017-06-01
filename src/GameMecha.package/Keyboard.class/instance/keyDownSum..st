@@ -1,13 +1,12 @@
 highlevel
 keyDownSum: keyValueMap
 	"sum up some values, if their keys are pressed"
-	|sum|
-	sum := nil.
+	| sum |
 	
 	keyValueMap asDictionary keysAndValuesDo: [:key :value | 
 		(self isKeyDown: key)
 			ifTrue: [sum
-				ifNil:[sum := value]
+				ifNil: [sum := value]
 				ifNotNil: [sum := sum + value]]].
 	
 	^ sum

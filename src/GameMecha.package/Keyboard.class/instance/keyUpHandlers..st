@@ -1,3 +1,3 @@
 accessing
 keyUpHandlers: anObject
-	keyUpHandlers := anObject
+	keyUpHandlers := anObject.
