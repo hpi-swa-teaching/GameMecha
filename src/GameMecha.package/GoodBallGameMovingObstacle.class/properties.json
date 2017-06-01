@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"startPosition",
+		"endPosition",
+		"progress" ],
+	"name" : "GoodBallGameMovingObstacle",
+	"pools" : [
+		 ],
+	"super" : "GoodBallGameObstacle",
+	"type" : "normal" }

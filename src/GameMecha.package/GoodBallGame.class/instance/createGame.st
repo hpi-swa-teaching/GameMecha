@@ -20,6 +20,11 @@ createGame
 	self addCollider: ((GoodBallGameObstacle wrap: RectangleMorph new)
 		position: (20@100);
 		yourself).
+		
+	self addCollider: ((GoodBallGameMovingObstacle wrap: RectangleMorph new)
+		startPosition: (250@200);
+		endPosition: (160@240);
+		yourself).
 	
 	
 	self openInWorld.
