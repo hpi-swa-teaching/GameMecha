@@ -1,11 +1,11 @@
 event input
 onKeyDown: aKeyboardEvent
 	"passed through by the main morph"
-	| key |
-	key := aKeyboardEvent keyCharacter asUppercase.
+	| keyCode |
+	keyCode := (self preprocessChar: aKeyboardEvent keyCharacter).
 	
 	"mark key as pressed"
-	self pressedKeys add: key asciiValue.
+	self pressedKeys add: keyCode.
 	
 	"run keydown handler(s)"
-	self keyDownHandlers at: key asciiValue ifPresent: [:handler | handler value].
+	self keyDownHandlers at: keyCode ifPresent: [:handler | handler value].

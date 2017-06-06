@@ -1,10 +1,10 @@
 event input
 onKeyUp: aKeyboardEvent
 	"passed through by the main morph"
-	| key |
-	key := aKeyboardEvent keyCharacter asUppercase.
+	| keyCode |
+	keyCode := (self preprocessChar: aKeyboardEvent keyCharacter).
 	
-	self pressedKeys remove: key asciiValue ifAbsent: [].
+	self pressedKeys remove: keyCode ifAbsent: [].
 
 	"run key up handlers"
-	self keyUpHandlers at: key ifPresent: [:handler | handler value].
+	self keyUpHandlers at: keyCode ifPresent: [:handler | handler value].

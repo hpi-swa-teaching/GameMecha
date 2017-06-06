@@ -1,3 +1,3 @@
 accessing
 keyDownHandlers: anObject
-	keyDownHandlers := anObject
+	keyDownHandlers := anObject.

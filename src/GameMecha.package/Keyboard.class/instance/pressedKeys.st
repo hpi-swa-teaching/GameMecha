@@ -1,3 +1,3 @@
 accessing
 pressedKeys
-	^ pressedKeys
+	^ pressedKeys.

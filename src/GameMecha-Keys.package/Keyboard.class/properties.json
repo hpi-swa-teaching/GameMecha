@@ -3,7 +3,7 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		 ],
+		"KeyMap" ],
 	"commentStamp" : "",
 	"instvars" : [
 		"keyDownHandlers",
