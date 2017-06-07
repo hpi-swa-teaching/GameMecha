@@ -1,3 +1,3 @@
-initializing
+accessing
 stepTime 
  ^10.
