@@ -2,11 +2,14 @@
 	"class" : {
 		 },
 	"instance" : {
-		"initialize" : "jb 6/7/2017 11:27",
-		"randomSpeeds" : "jb 6/7/2017 11:28",
-		"speedX" : "jb 6/7/2017 11:26",
-		"speedX:" : "jb 6/7/2017 11:26",
-		"speedY" : "jb 6/7/2017 11:26",
-		"speedY:" : "jb 6/7/2017 11:26",
-		"step" : "jb 6/7/2017 11:27",
-		"stepTime" : "jb 6/7/2017 11:04" } }
+		"direction" : "EB 6/7/2017 13:53",
+		"direction:" : "EB 6/7/2017 13:53",
+		"initialize" : "EB 6/7/2017 14:52",
+		"isBall" : "EB 6/7/2017 14:01",
+		"randomDirection" : "EB 6/7/2017 13:59",
+		"randomPositionIn:" : "EB 6/7/2017 14:52",
+		"reflect:" : "EB 6/7/2017 14:03",
+		"reflectCircular:" : "EB 6/7/2017 14:34",
+		"speed" : "EB 6/7/2017 13:54",
+		"speed:" : "EB 6/7/2017 13:40",
+		"step" : "EB 6/7/2017 13:59" } }

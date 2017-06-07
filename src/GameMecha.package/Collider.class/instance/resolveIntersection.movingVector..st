@@ -5,7 +5,7 @@ resolveIntersection: otherCollider movingVector: delta
 	stepSize := 1.
 	lerpFactor := 1.
 	"self openInWorld. otherCollider openInWorld."
-	[ (stepSize isZero not) and: [(self touches: otherCollider) not or: [self intersects: otherCollider]] ] 
+	[ (stepSize > 0.01) and: [(self touches: otherCollider) not or: [self intersects: otherCollider]] ] 
 		whileTrue: [
 			stepSize := stepSize / 2.0.
 			(self intersects: otherCollider)

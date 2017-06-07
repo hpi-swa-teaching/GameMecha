@@ -1,8 +1,8 @@
 accessing
 step
 	super step.
-	nextBallCtr := nextBallCtr + 1.
-	(nextBallCtr > 50) ifTrue: [
-		nextBallCtr := 0.
-		self newBall.
-		].
+	self nextBallCounter: self nextBallCounter + 1.
+	(self nextBallCounter > 2)
+		ifTrue: [
+			self nextBallCounter: 0.
+			self newBall].

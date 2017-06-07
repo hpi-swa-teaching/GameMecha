@@ -2,15 +2,18 @@
 	"class" : {
 		 },
 	"instance" : {
-		"ballCtr" : "jb 6/7/2017 11:45",
-		"ballCtr:" : "jb 6/7/2017 11:45",
-		"createDemo" : "jb 6/7/2017 11:47",
+		"ballCounter" : "EB 6/7/2017 13:46",
+		"ballCounter:" : "EB 6/7/2017 13:43",
+		"createWalls" : "EB 6/7/2017 13:51",
 		"handlesKeyboard:" : "jb 6/7/2017 10:56",
 		"hasFocus" : "jb 6/7/2017 10:56",
+		"initialize" : "EB 6/7/2017 13:50",
 		"keyDown:" : "jb 6/7/2017 10:56",
 		"keyUp:" : "jb 6/7/2017 10:56",
-		"keyboard" : "jb 6/7/2017 10:55",
+		"keyboard" : "EB 6/7/2017 13:44",
 		"keyboard:" : "jb 6/7/2017 10:55",
-		"newBall" : "jb 6/7/2017 11:49",
-		"step" : "jb 6/7/2017 11:46",
-		"stepTime" : "jb 6/7/2017 11:32" } }
+		"newBall" : "EB 6/7/2017 14:41",
+		"nextBallCounter" : "EB 6/7/2017 13:46",
+		"nextBallCounter:" : "EB 6/7/2017 13:46",
+		"step" : "EB 6/7/2017 14:48",
+		"stepTime" : "EB 6/7/2017 13:43" } }

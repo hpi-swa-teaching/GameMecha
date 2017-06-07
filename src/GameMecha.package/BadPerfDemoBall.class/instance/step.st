@@ -1,4 +1,3 @@
 as yet unclassified
 step
-	self x: (self x) + speedX.
-	self y: (self y) + speedY.
+	self position: self position + (self direction * self speed).
