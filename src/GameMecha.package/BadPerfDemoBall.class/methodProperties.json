@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"initialize" : "jb 6/7/2017 11:27",
+		"randomSpeeds" : "jb 6/7/2017 11:28",
+		"speedX" : "jb 6/7/2017 11:26",
+		"speedX:" : "jb 6/7/2017 11:26",
+		"speedY" : "jb 6/7/2017 11:26",
+		"speedY:" : "jb 6/7/2017 11:26",
+		"step" : "jb 6/7/2017 11:27",
+		"stepTime" : "jb 6/7/2017 11:04" } }

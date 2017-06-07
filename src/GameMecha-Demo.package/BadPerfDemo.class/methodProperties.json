@@ -1,0 +1,16 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"ballCtr" : "jb 6/7/2017 11:45",
+		"ballCtr:" : "jb 6/7/2017 11:45",
+		"createDemo" : "jb 6/7/2017 11:47",
+		"handlesKeyboard:" : "jb 6/7/2017 10:56",
+		"hasFocus" : "jb 6/7/2017 10:56",
+		"keyDown:" : "jb 6/7/2017 10:56",
+		"keyUp:" : "jb 6/7/2017 10:56",
+		"keyboard" : "jb 6/7/2017 10:55",
+		"keyboard:" : "jb 6/7/2017 10:55",
+		"newBall" : "jb 6/7/2017 11:49",
+		"step" : "jb 6/7/2017 11:46",
+		"stepTime" : "jb 6/7/2017 11:32" } }

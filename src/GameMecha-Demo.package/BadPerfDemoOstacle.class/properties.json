@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BadPerfDemoOstacle",
+	"pools" : [
+		 ],
+	"super" : "RectangleCollider",
+	"type" : "normal" }
