@@ -1,0 +1,3 @@
+keys
+keyCapslock
+	^ 20.

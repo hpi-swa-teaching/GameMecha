@@ -1,0 +1,3 @@
+keys
+keyDelete
+	^ 127.
