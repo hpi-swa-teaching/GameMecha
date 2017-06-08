@@ -6,9 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"images" ],
+		 ],
 	"name" : "ImageCache",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "Cache",
 	"type" : "normal" }

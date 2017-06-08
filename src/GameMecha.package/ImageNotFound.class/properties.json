@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "ImageNotFound",
+	"pools" : [
+		 ],
+	"super" : "Error",
+	"type" : "normal" }

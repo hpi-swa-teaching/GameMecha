@@ -1,0 +1,21 @@
+{
+	"class" : {
+		"newOn:" : "EB 6/8/2017 13:58",
+		"parseDirectory:" : "EB 6/8/2017 13:58",
+		"pathToCollection:" : "EB 6/8/2017 13:58" },
+	"instance" : {
+		"allDirectoriesIn:" : "EB 6/8/2017 14:52",
+		"allFilesIn:" : "EB 6/8/2017 14:52",
+		"cachedElements" : "EB 6/8/2017 13:43",
+		"cachedElements:" : "EB 6/8/2017 13:42",
+		"get:" : "EB 6/8/2017 14:00",
+		"getDir:" : "EB 6/8/2017 14:51",
+		"getResource:" : "EB 6/8/2017 13:43",
+		"getResourceAsStream:" : "EB 6/8/2017 13:43",
+		"getResourceAsStream:createIfAbsent:" : "EB 6/8/2017 13:58",
+		"isLoaded:" : "EB 6/8/2017 14:45",
+		"loadElement:" : "EB 6/8/2017 13:45",
+		"preload:" : "EB 6/8/2017 14:43",
+		"preloadRecursive:" : "EB 6/8/2017 14:50",
+		"resourceDirectory" : "EB 6/8/2017 13:42",
+		"resourceDirectory:" : "EB 6/8/2017 13:42" } }

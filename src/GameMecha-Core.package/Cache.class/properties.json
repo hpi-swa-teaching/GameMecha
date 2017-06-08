@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"cachedElements",
+		"resourceDirectory" ],
+	"name" : "Cache",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
