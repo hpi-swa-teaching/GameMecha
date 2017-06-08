@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"keyboard",
+		"nextBallCounter",
+		"ballCounter" ],
+	"name" : "BadPerfDemo",
+	"pools" : [
+		 ],
+	"super" : "CollisionWorld",
+	"type" : "normal" }

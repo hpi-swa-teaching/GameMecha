@@ -1,0 +1,15 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"direction" : "EB 6/7/2017 13:53",
+		"direction:" : "EB 6/7/2017 13:53",
+		"initialize" : "EB 6/7/2017 14:52",
+		"isBall" : "EB 6/7/2017 14:01",
+		"randomDirection" : "EB 6/7/2017 13:59",
+		"randomPositionIn:" : "EB 6/7/2017 14:52",
+		"reflect:" : "EB 6/7/2017 14:03",
+		"reflectCircular:" : "EB 6/7/2017 14:34",
+		"speed" : "EB 6/7/2017 13:54",
+		"speed:" : "EB 6/7/2017 13:40",
+		"step" : "EB 6/7/2017 13:59" } }
