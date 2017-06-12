@@ -2,5 +2,6 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testPathFormatConversion" : "EB 6/8/2017 14:25",
-		"testPreloading" : "EB 6/8/2017 14:53" } }
+		"setUp" : "EB 6/12/2017 16:32",
+		"testPathFormatConversion" : "EB 6/12/2017 16:32",
+		"testPreloading" : "EB 6/12/2017 16:33" } }
