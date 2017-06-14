@@ -17,11 +17,11 @@ setUp
 		ifFalse: [dir createDirectory: 'sub'].
 	dir := dir / 'sub'.
 	
-	img1Path := FileDirectory default / 'GMTest' / 'res' / 'img' / 'img1.png'.
-	img2Path := FileDirectory default / 'GMTest' / 'res' / 'img' / 'sub' / 'img2.png'.
+	img1Path := (FileDirectory default / 'GMTest' / 'res' / 'img').
+	img2Path := (FileDirectory default / 'GMTest' / 'res' / 'img' / 'sub').
 	
-	(img1Path exists)
-		ifFalse: [img exportAsPNGNamed: img1Path name].
-	(img2Path exists)
-		ifFalse: [img exportAsPNGNamed: img2Path name].
+	(img1Path fileExists: 'img1.png')
+		ifFalse: [img exportAsPNGNamed: (img1Path / 'img1.png') fullName].
+	(img2Path fileExists: 'img2.png')
+		ifFalse: [img exportAsPNGNamed: (img2Path / 'img2.png') fullName].
 	
