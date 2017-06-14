@@ -4,7 +4,7 @@ testPathFormatConversion
 	cache := ImageCache newOn: 'GMTest/res'.
 	
 	self should: [cache getTexture: 'nonexistent_image.ending'] raise: ImageNotFound.
-	self assert: (cache getTexture: 'img/img1.png') isNil not.
+	self assert: (cache getTexture: 'img/img1.png') notNil.
 	
 	self assert: (cache getTexture: 'img/img1.png') identical: (cache getTexture: 'img\img1.png').
 	

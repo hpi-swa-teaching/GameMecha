@@ -1,7 +1,7 @@
 as yet unclassified
 setUp
 	"create images to load"
-	|img dir|
+	|img dir img1Path img2Path|
 	img := ImageMorph new.
 	dir := FileDirectory default.
 	(dir / 'GMTest') exists
@@ -17,8 +17,11 @@ setUp
 		ifFalse: [dir createDirectory: 'sub'].
 	dir := dir / 'sub'.
 	
-	((FileDirectory default / 'GMTest' / 'res' / 'img') fileExists: 'img1.png')
-		ifFalse: [img exportAsPNGNamed: 'GMTest/res/img/img1.png'].
-	((FileDirectory default / 'GMTest' / 'res' / 'img' / 'sub') fileExists: 'img2.png')
-		ifFalse: [img exportAsPNGNamed: 'GMTest/res/img/sub/img2.png'].
+	img1Path := FileDirectory default / 'GMTest' / 'res' / 'img' / 'img1.png'.
+	img2Path := FileDirectory default / 'GMTest' / 'res' / 'img' / 'sub' / 'img2.png'.
+	
+	(img1Path exists)
+		ifFalse: [img exportAsPNGNamed: img1Path name].
+	(img2Path exists)
+		ifFalse: [img exportAsPNGNamed: img2Path name].
 	
