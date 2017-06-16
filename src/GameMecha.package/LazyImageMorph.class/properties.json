@@ -6,12 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"cachedElements",
-		"resourceDirectory",
-		"loadingQueue",
-		"loadingLock" ],
-	"name" : "Cache",
+		 ],
+	"name" : "LazyImageMorph",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "RectangleMorph",
 	"type" : "normal" }

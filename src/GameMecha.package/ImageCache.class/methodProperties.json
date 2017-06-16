@@ -4,4 +4,5 @@
 	"instance" : {
 		"ensureImageExtension:" : "EB 6/8/2017 13:51",
 		"getTexture:" : "EB 6/8/2017 13:44",
+		"getTexture:andDo:" : "EB 6/16/2017 17:02",
 		"loadElement:" : "EB 6/8/2017 15:54" } }
