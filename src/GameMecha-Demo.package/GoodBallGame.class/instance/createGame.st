@@ -5,19 +5,13 @@ createGame
 	super initialize.
 	self bounds: (10 asPoint corner: 800@600).
 	self keyboard: Keyboard new.
-	
-	self addCollider: ((GoodBallGameObstacle wrap: ImageMorph new)
-		position: (100@60);
-		image: (cache getTexture: 'res/img\wall.png');
-		yourself).
+	self addCollider: ((GoodBallGameObstacle wrap: (LazyImageMorph newWithImage: 'res/img/wall.png' from: cache placeHolder: Color red bounds: (20@300 extent: 60@60)))).
 	self addCollider: ((GoodBallGameObstacle wrap: RectangleMorph new)
 		position: (200@70);
 		yourself).
 	
 	"world registerCollisionHandler: [:anEvent | world delete]."
-	ball := GoodBallGameBall wrap: (ImageMorph new
-		image: (cache getTexture: 'res/img/switch1.png');
-		yourself).
+	ball := GoodBallGameBall wrap: (LazyImageMorph newWithImage: 'res/img/switch1.png' from: cache placeHolder: Color red bounds: (20@20 extent: 60@60)).
 	ball keyboard: self keyboard.
 	self addCollider: ball.
 	

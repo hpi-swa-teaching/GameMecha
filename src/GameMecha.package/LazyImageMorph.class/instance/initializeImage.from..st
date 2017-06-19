@@ -1,7 +1,7 @@
 as yet unclassified
 initializeImage: imageName from: cache
 	self borderWidth: 0.
-	cache getTexture: 'img/img1.png' andDo: [:form | 
+	cache getTexture: imageName andDo: [:form | 
 		|prevBounds postBounds|
 		prevBounds := self bounds.
 		self transform: (form scaledToSize: self bounds extent). 
