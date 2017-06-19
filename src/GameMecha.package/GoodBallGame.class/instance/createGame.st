@@ -16,7 +16,7 @@ createGame
 	
 	"world registerCollisionHandler: [:anEvent | world delete]."
 	ball := GoodBallGameBall wrap: (ImageMorph new
-		image: (cache getTexture: 'smile.png');
+		image: (cache getTexture: 'res/img/switch1.png');
 		yourself).
 	ball keyboard: self keyboard.
 	self addCollider: ball.

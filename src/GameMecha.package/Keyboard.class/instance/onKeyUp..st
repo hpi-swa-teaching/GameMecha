@@ -2,7 +2,7 @@ event input
 onKeyUp: aKeyboardEvent
 	"passed through by the main morph"
 	| keyCode |
-	keyCode := (self preprocessChar: aKeyboardEvent keyCharacter).
+	keyCode := (self prepreprocessChar: aKeyboardEvent keyCharacter).
 	
 	self pressedKeys remove: keyCode ifAbsent: [].
 
