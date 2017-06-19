@@ -1,14 +1,14 @@
 {
-	"category" : "GameMecha-Test",
+	"category" : "GameMecha-Core",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"rootDirectoryPath" ],
-	"name" : "IOTest",
+		 ],
+	"name" : "WrongAspectRatio",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "Error",
 	"type" : "normal" }

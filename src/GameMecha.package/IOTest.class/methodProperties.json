@@ -2,7 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"setUp" : "EB 6/14/2017 15:47",
+		"setUp" : "mdlh 6/19/2017 18:38",
+		"tearDown" : "mdlh 6/19/2017 18:22",
 		"testLazyIO" : "EB 6/16/2017 19:14",
+		"testLazyMorph" : "MB 6/19/2017 17:25",
+		"testLazyMorphWithWrongAspectRatio" : "MB 6/19/2017 17:41",
 		"testPathFormatConversion" : "MB 6/13/2017 15:15",
-		"testPreloading" : "EB 6/12/2017 16:33" } }
+		"testPreloading" : "mdlh 6/19/2017 18:51" } }
