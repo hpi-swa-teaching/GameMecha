@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		"rootDirectoryPath" ],
-	"name" : "IOTest",
+	"name" : "SpriteTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",

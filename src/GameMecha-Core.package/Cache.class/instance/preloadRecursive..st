@@ -1,5 +1,5 @@
 preloading
 preloadRecursive: folder
-	self preload: folder.
+	self preloadFolder: folder.
 	(self allDirectoriesIn: folder)
-		do: [:dir | self preloadRecursive: folder , '/' , dir]
+		do: [:dir | self preloadRecursive: folder , '/' , dir].
