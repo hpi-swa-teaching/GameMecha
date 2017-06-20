@@ -4,8 +4,9 @@
 	"instance" : {
 		"setUp" : "mdlh 6/19/2017 18:38",
 		"tearDown" : "mdlh 6/19/2017 18:22",
+		"testAvoidDoubleCaching" : "MB 6/20/2017 11:45",
 		"testLazyIO" : "EB 6/16/2017 19:14",
-		"testLazyMorph" : "MB 6/19/2017 17:25",
-		"testLazyMorphWithWrongAspectRatio" : "MB 6/19/2017 17:41",
+		"testLazyMorph" : "MB 6/20/2017 11:32",
+		"testLazyMorph:withCache:" : "MB 6/20/2017 11:32",
 		"testPathFormatConversion" : "MB 6/13/2017 15:15",
 		"testPreloading" : "mdlh 6/19/2017 18:51" } }
