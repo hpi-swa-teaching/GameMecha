@@ -1,6 +1,7 @@
 subanimations
 split: amount
 	"break an animation into amount many sub-animations"
+	"see also #splitAndStart"
 	|split length|
 	length := self frameCount / amount.
 	split := OrderedCollection new.
