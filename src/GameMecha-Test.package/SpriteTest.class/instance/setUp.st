@@ -6,4 +6,4 @@ setUp
 	currentDirectory := FileDirectory default.
 	(currentDirectory / rootDirectoryPath) exists
 		ifFalse: [currentDirectory createDirectory: rootDirectoryPath].
-	"
+	".

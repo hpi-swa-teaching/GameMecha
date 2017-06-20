@@ -6,4 +6,4 @@ initialize
 	self markAsObstacle.
 	
 	self randomDirection.
-	self registerCollisionHandler: [:event | self reflect: event]
+	self registerCollisionHandler: [:event | self reflect: event].

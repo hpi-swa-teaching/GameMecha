@@ -1,3 +1,3 @@
 accessing
 startPosition: anObject
-	startPosition := anObject
+	startPosition := anObject.

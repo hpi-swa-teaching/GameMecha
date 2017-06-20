@@ -9,4 +9,3 @@ collisionPartnerOf: aPossibleCollider
 	^ (self collider1 = aPossibleCollider)
 		ifTrue: [self collider2]
 		ifFalse: [self collider1].
-	

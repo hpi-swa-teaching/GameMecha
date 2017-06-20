@@ -10,4 +10,4 @@ fireCollisionEventsOn: collider1 and: collider2
 	collider1 collisionHandler value: collisionObject.
 	collider2 collisionHandler value: collisionObject.
 	
-	^ (bounds1 ~= collider1 bounds) or: [bounds2 ~= collider2 bounds]
+	^ (bounds1 ~= collider1 bounds) or: [bounds2 ~= collider2 bounds].

@@ -1,3 +1,3 @@
 accessing
 nextBallCounter: anObject
-	nextBallCounter := anObject
+	nextBallCounter := anObject.

@@ -1,3 +1,3 @@
 accessing
 loadingQueue: anObject
-	loadingQueue := anObject
+	loadingQueue := anObject.

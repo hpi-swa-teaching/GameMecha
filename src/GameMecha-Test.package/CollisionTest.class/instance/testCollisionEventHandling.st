@@ -32,4 +32,3 @@ testCollisionEventHandling
 	world registerCollisionHandler: [:collisionEvent | collisionCounter := collisionCounter + 38].
 	world step.
 	self assert: collisionCounter equals: 42.
-	

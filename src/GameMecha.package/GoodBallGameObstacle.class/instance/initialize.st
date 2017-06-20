@@ -6,4 +6,4 @@ initialize
 	
 	
 	self markAsObstacle.
-	self registerCollisionHandler: [:event | self touchesPlayer: true]
+	self registerCollisionHandler: [:event | self touchesPlayer: true].

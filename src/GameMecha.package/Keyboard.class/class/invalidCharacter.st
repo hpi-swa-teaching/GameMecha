@@ -1,3 +1,3 @@
 keys
 invalidCharacter
-	^ 999999 asCharacter
+	^ 999999 asCharacter.

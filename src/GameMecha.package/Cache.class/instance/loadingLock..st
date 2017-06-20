@@ -1,3 +1,3 @@
 accessing
 loadingLock: anObject
-	loadingLock := anObject
+	loadingLock := anObject.

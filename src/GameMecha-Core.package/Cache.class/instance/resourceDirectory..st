@@ -1,3 +1,3 @@
 accessing
 resourceDirectory: anObject
-	resourceDirectory := anObject
+	resourceDirectory := anObject.

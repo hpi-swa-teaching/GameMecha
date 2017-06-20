@@ -1,3 +1,3 @@
 accessing
 startPosition
-	^ startPosition
+	^ startPosition.

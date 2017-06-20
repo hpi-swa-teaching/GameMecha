@@ -1,3 +1,3 @@
 accessing
 speed: anObject
-	speed := anObject
+	speed := anObject.

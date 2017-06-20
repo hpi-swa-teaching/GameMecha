@@ -60,7 +60,3 @@ testDifferentCollisionTypesOnRectangles
 	self assert: (eventLog at: 8) equals: 'intersect'.
 	self assert: (eventLog at: 9) equals: '1in2'.
 	self assert: (eventLog at: 10) equals: '2in1'.
-	
-	
-	
-	

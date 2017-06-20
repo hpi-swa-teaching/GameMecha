@@ -1,3 +1,4 @@
 collision
 intersects: anObject
-	^ self intersects: anObject withMargin: 0."(self touchMargin min: anObject touchMargin) negated."
+	"(self touchMargin min: anObject touchMargin) negated."
+	^ self intersects: anObject withMargin: 0.

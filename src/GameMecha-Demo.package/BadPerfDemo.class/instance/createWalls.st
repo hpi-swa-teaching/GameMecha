@@ -20,4 +20,4 @@ createWalls
 			((BadPerfDemoOstacle wrap: RectangleMorph new)
 				position: (self position x + self width - 10) @ 0;
 				extent: 10 @ self height;
-				yourself)
+				yourself).
