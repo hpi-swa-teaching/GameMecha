@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"anim" ],
+	"name" : "DemoSpriteMorph",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }

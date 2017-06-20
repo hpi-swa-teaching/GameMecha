@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 6/20/2017 11:44",
+	"instvars" : [
+		"cache",
+		"spriteNameList",
+		"frameTime",
+		"looping" ],
+	"name" : "AnimationDefinition",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
