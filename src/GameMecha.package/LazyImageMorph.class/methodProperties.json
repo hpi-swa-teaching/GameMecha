@@ -1,7 +1,12 @@
 {
 	"class" : {
-		"newWithImage:from:placeHolder:bounds:" : "MB 6/19/2017 16:41" },
+		"newWithImage:from:" : "MB 6/20/2017 11:03",
+		"newWithImage:from:bounds:" : "MB 6/20/2017 11:03",
+		"newWithImage:from:extent:" : "MB 6/20/2017 11:03",
+		"newWithImage:from:placeHolder:" : "MB 6/20/2017 11:04",
+		"newWithImage:from:placeHolder:bounds:" : "MB 6/19/2017 16:41",
+		"newWithImage:from:placeHolder:extent:" : "MB 6/20/2017 11:02" },
 	"instance" : {
 		"createRealImage:" : "MB 6/18/2017 16:55",
-		"initializeImage:from:" : "MB 6/19/2017 18:00",
-		"transform:" : "MB 6/18/2017 16:51" } }
+		"initializeImage:from:" : "MB 6/20/2017 11:31",
+		"transform:" : "MB 6/20/2017 11:12" } }

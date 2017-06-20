@@ -4,6 +4,7 @@ onKeyUp: aKeyboardEvent
 	| keyCode |
 	keyCode := (self prepreprocessChar: aKeyboardEvent keyCharacter).
 	
+	"mark key as released"
 	self pressedKeys remove: keyCode ifAbsent: [].
 
 	"run key up handlers"
