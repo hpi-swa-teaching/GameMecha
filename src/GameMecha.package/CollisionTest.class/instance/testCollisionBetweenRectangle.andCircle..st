@@ -37,4 +37,3 @@ testCollisionBetweenRectangle: morph1 andCircle: morph2
 	rectangle bounds: (155@81 corner: 463@293). "circle inside rectangle"
 	self assert: (circle intersects: rectangle).
 	self assert: (rectangle intersects: circle).
-	

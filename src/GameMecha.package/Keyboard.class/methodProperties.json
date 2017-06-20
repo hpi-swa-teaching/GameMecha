@@ -1,6 +1,6 @@
 {
 	"class" : {
-		"invalidCharacter" : "MB 6/16/2017 16:26",
+		"invalidCharacter" : "MB 6/20/2017 13:57",
 		"keyAlt" : "MB 6/6/2017 09:30",
 		"keyArrowDown" : "EB 6/1/2017 09:55",
 		"keyArrowLeft" : "EB 6/1/2017 09:55",
@@ -27,7 +27,7 @@
 		"keyDownSum:" : "EB 6/1/2017 10:04",
 		"keyUpHandlers" : "EB 6/1/2017 10:03",
 		"keyUpHandlers:" : "EB 6/1/2017 10:03",
-		"makePlatformIndependent:" : "MB 6/16/2017 16:26",
+		"makePlatformIndependent:" : "MB 6/20/2017 14:02",
 		"onKeyDown:" : "MB 6/16/2017 16:18",
 		"onKeyUp:" : "MB 6/20/2017 11:48",
 		"prepreprocessChar:" : "MB 6/16/2017 16:18",

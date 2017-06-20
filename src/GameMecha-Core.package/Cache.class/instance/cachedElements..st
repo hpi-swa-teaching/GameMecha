@@ -1,3 +1,3 @@
 accessing
 cachedElements: anObject
-	cachedElements := anObject
+	cachedElements := anObject.

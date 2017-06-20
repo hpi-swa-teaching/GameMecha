@@ -4,4 +4,3 @@ loadSingleSpriteAtPosition: coordinates fromSheet: aSheet withDimensions: sheetD
 	spriteSize := aSheet extent / sheetDimensions. 
 	spriteStart := (coordinates-1) * spriteSize.
 	^self loadPartOf: aSheet withBounds: (spriteStart extent: spriteSize).
-	

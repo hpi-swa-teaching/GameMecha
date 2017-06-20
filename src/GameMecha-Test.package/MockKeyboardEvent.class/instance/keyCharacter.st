@@ -1,3 +1,3 @@
 accessing
 keyCharacter
-	^ keyCharacter
+	^ keyCharacter.

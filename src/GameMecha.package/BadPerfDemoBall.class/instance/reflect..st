@@ -5,4 +5,3 @@ reflect: collisionEvent
 	other isBall
 		ifTrue: [self reflectCircular: other]
 		ifFalse: [self randomDirection.].
-	

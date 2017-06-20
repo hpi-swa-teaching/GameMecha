@@ -15,5 +15,4 @@ testSpriteLoading
 	self assert: testForm bits equals: selfMadeTestForm bits.
 	testImage openInWorld.
 	(Delay forSeconds: 1) wait.
-	testImage delete.""
-	
+	testImage delete.

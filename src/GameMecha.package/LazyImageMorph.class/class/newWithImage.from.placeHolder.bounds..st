@@ -4,4 +4,4 @@ newWithImage: imageName from: cache placeHolder: color bounds: bounds
 		bounds: bounds;
 		color: color;
 		initializeImage: imageName from:  cache;
-		yourself. 
+		yourself.

@@ -7,5 +7,5 @@
 		"getTexture:andDo:" : "EB 6/16/2017 17:02",
 		"loadElement:" : "EB 6/8/2017 15:54",
 		"loadPartOf:withBounds:" : "mdlh 6/19/2017 22:58",
-		"loadSingleSpriteAtPosition:fromSheet:withDimensions:" : "mdlh 6/19/2017 23:03",
+		"loadSingleSpriteAtPosition:fromSheet:withDimensions:" : "MB 6/20/2017 14:01",
 		"loadSpriteSheet:withDimensions:" : "mdlh 6/19/2017 23:22" } }

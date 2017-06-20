@@ -4,4 +4,4 @@ newWithImage: imageName from: cache extent: extent
 		extent: extent;
 		color: Color green;
 		initializeImage: imageName from:  cache;
-		yourself. 
+		yourself.

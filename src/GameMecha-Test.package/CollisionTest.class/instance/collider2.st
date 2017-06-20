@@ -1,3 +1,3 @@
 accessing
 collider2
-	^ collider2
+	^ collider2.

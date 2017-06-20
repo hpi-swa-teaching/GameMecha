@@ -1,3 +1,3 @@
 accessing
 keyboard: anObject
-	keyboard := anObject
+	keyboard := anObject.

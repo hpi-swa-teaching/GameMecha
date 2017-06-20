@@ -9,4 +9,4 @@ makePlatformIndependent: aCharacter
 			aCharacter isLowercase
 				ifTrue: [ transformedCharacter := self class invalidCharacter ] ].
 	Transcript showln: transformedCharacter asString , ' (was ' , aCharacter asString , ')'.
-	^ transformedCharacter
+	^ transformedCharacter.

@@ -4,4 +4,3 @@ resetColliders
 	self collider2 ifNotNil: [self collider2 delete].
 	self collider1: nil.
 	self collider2: nil.
-	

@@ -4,12 +4,12 @@
 	"instance" : {
 		"direction" : "EB 6/7/2017 13:53",
 		"direction:" : "EB 6/7/2017 13:53",
-		"initialize" : "EB 6/7/2017 14:52",
+		"initialize" : "MB 6/20/2017 13:55",
 		"isBall" : "EB 6/7/2017 14:01",
 		"randomDirection" : "EB 6/7/2017 13:59",
 		"randomPositionIn:" : "EB 6/7/2017 14:52",
-		"reflect:" : "EB 6/7/2017 14:03",
+		"reflect:" : "MB 6/20/2017 14:04",
 		"reflectCircular:" : "EB 6/7/2017 14:34",
-		"speed" : "EB 6/7/2017 13:54",
-		"speed:" : "EB 6/7/2017 13:40",
+		"speed" : "MB 6/20/2017 13:55",
+		"speed:" : "MB 6/20/2017 13:55",
 		"step" : "EB 6/7/2017 13:59" } }

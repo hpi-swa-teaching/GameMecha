@@ -1,3 +1,3 @@
 accessing
 collidersIntersect: anObject
-	collidersIntersect := anObject
+	collidersIntersect := anObject.

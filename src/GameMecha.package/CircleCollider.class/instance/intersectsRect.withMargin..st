@@ -19,5 +19,3 @@ intersectsRect: aRect withMargin: tolerance
 		
 		
 	^ (circleDistance dist: (rectBounds extent / 2)) <= radius.
-	
-	

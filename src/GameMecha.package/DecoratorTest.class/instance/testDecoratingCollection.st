@@ -9,4 +9,4 @@ testDecoratingCollection
 	self assert: (d yourself) equals:d.
 	self should: [d fooBar] raise: MessageNotUnderstood.
 	self assert: (d add: 1)equals:1.
-	self assert: (d do: [:a]) equals: d. 
+	self assert: (d do: [:a]) equals: d.

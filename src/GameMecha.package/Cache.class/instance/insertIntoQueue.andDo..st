@@ -11,4 +11,3 @@ insertIntoQueue: path andDo: aBlockClosure
 		yourself)).
 		
 	threadWasRunning ifFalse: [self startLoadingThread].
-	

@@ -42,5 +42,3 @@ testObstacles
 	self assert: collisionCounter equals: 2.
 	world step.	
 	self assert: collisionCounter equals: 3.
-	
-	

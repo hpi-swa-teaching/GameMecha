@@ -35,6 +35,3 @@ testCollisionGroups
 	
 	self deny: (object1 intersects: object2).
 	self deny: (object2 intersects: object1).
-	
-	
-	

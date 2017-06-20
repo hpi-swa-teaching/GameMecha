@@ -13,4 +13,3 @@ testLazyIO
 	"self assert: ((formCounter == 2) xor: cache isCurrentlyLoading).
 	cache finishLoading."
 	self deny: cache isCurrentlyLoading.
-	 

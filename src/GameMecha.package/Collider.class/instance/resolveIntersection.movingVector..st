@@ -12,4 +12,4 @@ resolveIntersection: otherCollider movingVector: delta
 				ifTrue: [lerpFactor := lerpFactor - stepSize] 
 				ifFalse: [lerpFactor := lerpFactor + stepSize].
 			otherCollider position: otherCollider previousBounds origin + (delta * lerpFactor).
-			]
+			].
