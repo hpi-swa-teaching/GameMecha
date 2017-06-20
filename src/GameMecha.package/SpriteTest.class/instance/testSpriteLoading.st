@@ -13,6 +13,4 @@ testSpriteLoading
 	selfMadeTestForm := cache loadPartOf: (cache cachedElements at: (cache class pathToCollection: 'sheet.png')) withBounds: (154@400 corner: 308@600).
 	selfMadeTestImage := selfMadeTestForm asMorph.
 	self assert: testForm bits equals: selfMadeTestForm bits.
-	testImage openInWorld.
-	(Delay forSeconds: 1) wait.
-	testImage delete.
+	

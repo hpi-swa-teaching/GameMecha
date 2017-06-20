@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"definition",
+		"stopwatch" ],
+	"name" : "Animation",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
