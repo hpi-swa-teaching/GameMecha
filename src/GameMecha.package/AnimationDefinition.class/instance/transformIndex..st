@@ -1,4 +1,4 @@
-accessing
+animations
 transformIndex: imageIndex
 	|index|
 	index := imageIndex.

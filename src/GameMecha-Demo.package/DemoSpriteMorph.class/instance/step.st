@@ -1,3 +1,5 @@
 as yet unclassified
 step
-	self anim displayOn: self.
+	super step.
+	self dir: ((self keyboard WASDVector * (1 @ -1)) theta / Float pi * 8) floor.
+	(self anim at: dir + 1) displayOn: self.

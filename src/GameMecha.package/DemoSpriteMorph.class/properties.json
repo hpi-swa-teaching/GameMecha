@@ -6,7 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"anim" ],
+		"anim",
+		"dir",
+		"keyboard" ],
 	"name" : "DemoSpriteMorph",
 	"pools" : [
 		 ],

@@ -1,4 +1,4 @@
-accessing
+animations
 imageAt: imageIndex
 	^ self cache getTexture:
 		(self spriteNameList at:

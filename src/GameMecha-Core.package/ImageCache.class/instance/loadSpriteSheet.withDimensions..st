@@ -6,5 +6,5 @@ loadSpriteSheet: aPath withDimensions: sheetDimensions
 	sprites at: (self class pathToCollection: aPath)  put: (self loadElement: aPath).
 	1 to: sheetDimensions y do:
 		[:i  | 1 to: sheetDimensions x do:
-			[:o | sprites at: (self class pathToCollection:(aPath,'_',i,'_',o) )  put: (self loadSingleSpriteAtPosition: i@o fromSheet: (sprites at: (self class pathToCollection:aPath)) withDimensions: sheetDimensions)]].
+			[:o | sprites at: (self class pathToCollection:(aPath,'_',o,'_',i) )  put: (self loadSingleSpriteAtPosition: o@i fromSheet: (sprites at: (self class pathToCollection:aPath)) withDimensions: sheetDimensions)]].
 	self cachedElements addAll: sprites.
