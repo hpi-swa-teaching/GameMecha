@@ -2,19 +2,19 @@
 	"class" : {
 		"fromSpriteSheet:on:withDimensions:" : "EB 6/20/2017 12:33" },
 	"instance" : {
-		"cache" : "EB 6/20/2017 12:22",
-		"cache:" : "EB 6/20/2017 12:22",
+		"cache" : "EB 6/20/2017 14:41",
+		"cache:" : "EB 6/20/2017 14:41",
 		"frameCount" : "EB 6/20/2017 11:49",
-		"frameTime" : "EB 6/20/2017 11:43",
-		"frameTime:" : "EB 6/20/2017 11:43",
+		"frameTime" : "EB 6/20/2017 14:41",
+		"frameTime:" : "EB 6/20/2017 14:41",
 		"imageAt:" : "EB 6/20/2017 12:23",
 		"initialize" : "EB 6/20/2017 11:47",
-		"looping" : "EB 6/20/2017 11:43",
-		"looping:" : "EB 6/20/2017 11:43",
+		"looping" : "EB 6/20/2017 14:41",
+		"looping:" : "EB 6/20/2017 14:41",
 		"new" : "EB 6/20/2017 12:11",
 		"split:" : "EB 6/20/2017 13:43",
-		"spriteNameList" : "EB 6/20/2017 11:46",
-		"spriteNameList:" : "EB 6/20/2017 11:46",
+		"spriteNameList" : "EB 6/20/2017 14:41",
+		"spriteNameList:" : "EB 6/20/2017 14:41",
 		"subAnimationFrom:to:" : "EB 6/20/2017 13:43",
 		"totalTime" : "EB 6/20/2017 11:49",
-		"transformIndex:" : "EB 6/20/2017 12:31" } }
+		"transformIndex:" : "EB 6/20/2017 14:42" } }

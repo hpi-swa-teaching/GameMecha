@@ -1,3 +1,3 @@
 accessing
 frameTime: anObject
-	frameTime := anObject
+	frameTime := anObject.

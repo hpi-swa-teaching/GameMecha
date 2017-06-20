@@ -1,3 +1,3 @@
 accessing
 spriteNameList
-	^ spriteNameList
+	^ spriteNameList.

@@ -1,3 +1,3 @@
 accessing
 currentImage
-	^ self definition imageAt: self currentFrameNumber
+	^ self definition imageAt: self currentFrameNumber.

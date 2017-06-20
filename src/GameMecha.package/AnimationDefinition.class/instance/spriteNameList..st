@@ -1,3 +1,3 @@
 accessing
 spriteNameList: anObject
-	spriteNameList := anObject
+	spriteNameList := anObject.

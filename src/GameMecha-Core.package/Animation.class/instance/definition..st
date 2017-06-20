@@ -1,3 +1,3 @@
 accessing
 definition: anObject
-	definition := anObject
+	definition := anObject.

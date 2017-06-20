@@ -1,3 +1,3 @@
 accessing
 looping: anObject
-	looping := anObject
+	looping := anObject.
