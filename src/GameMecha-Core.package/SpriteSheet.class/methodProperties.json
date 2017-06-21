@@ -1,0 +1,18 @@
+{
+	"class" : {
+		"newOn:onSheet:withRows:andColumns:" : "MB 6/21/2017 16:30" },
+	"instance" : {
+		"columns" : "MB 6/21/2017 15:01",
+		"columns:" : "MB 6/21/2017 15:01",
+		"getPartWithBounds:" : "MB 6/21/2017 16:35",
+		"getSpriteAtColumn:andRow:" : "MB 6/21/2017 19:58",
+		"getSpriteAtIndex:" : "MB 6/21/2017 20:03",
+		"getSpriteSheet" : "MB 6/21/2017 16:31",
+		"isSpriteLoadedAtColumn:andRow:" : "MB 6/21/2017 19:58",
+		"loadSpriteAtColumn:andRow:" : "MB 6/21/2017 19:59",
+		"rows" : "MB 6/21/2017 15:01",
+		"rows:" : "MB 6/21/2017 15:01",
+		"spriteBoundsAtColumn:andRow:" : "MB 6/21/2017 19:59",
+		"spriteBoundsAtRow:andAtColumn:" : "MB 6/21/2017 19:33",
+		"spritePath" : "MB 6/21/2017 16:26",
+		"spritePath:" : "MB 6/21/2017 16:26" } }

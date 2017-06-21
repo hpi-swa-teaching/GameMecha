@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"spritePath",
+		"rows",
+		"columns" ],
+	"name" : "SpriteSheet",
+	"pools" : [
+		 ],
+	"super" : "ImageCache",
+	"type" : "normal" }

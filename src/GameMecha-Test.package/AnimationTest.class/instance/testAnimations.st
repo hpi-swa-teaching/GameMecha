@@ -8,7 +8,7 @@ testAnimations
 		withDimensions: 4@4.
 	animDef looping: false.
 	animDef frameTime: 5.
-	self assert: animDef frameCount equals: 16.
+	self assert: 16 equals: animDef frameCount.
 	
 	anim := animDef new.
 	self assert: anim definition equals: animDef.

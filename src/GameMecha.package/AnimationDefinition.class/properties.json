@@ -7,9 +7,11 @@
 	"commentStamp" : "EB 6/20/2017 11:44",
 	"instvars" : [
 		"cache",
-		"spriteNameList",
 		"frameTime",
-		"looping" ],
+		"looping",
+		"spritePath",
+		"startIndex",
+		"endIndex" ],
 	"name" : "AnimationDefinition",
 	"pools" : [
 		 ],

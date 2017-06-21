@@ -6,4 +6,4 @@ transformIndex: imageIndex
 		ifTrue: [index \\ self frameCount]
 		ifFalse: [index min: (self frameCount - 1)].
 	"one-indexed squeak"
-	^ index + 1.
+	^ index + self startIndex.
