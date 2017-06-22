@@ -1,4 +1,4 @@
-preloading
+io
 registerSpriteSheet: aPath withColumns: columns andRows: rows
 	self cachedElements 
 		at: (self class pathToCollection: aPath)
