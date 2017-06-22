@@ -8,7 +8,7 @@ initialize
 			withColumns: 45
 			andRows: 15)
 		looping: true;
-		frameTime: 42)
+		frameTime: 50)
 		subAnimationFrom: 1 to: 640)
 		splitAndStart: 16).
 	ActiveHand newKeyboardFocus: self.
