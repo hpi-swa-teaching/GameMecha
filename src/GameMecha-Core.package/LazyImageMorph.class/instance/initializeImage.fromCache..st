@@ -1,5 +1,5 @@
 as yet unclassified
-initializeImage: imageName from: cache
+initializeImage: imageName fromCache: cache
 	self borderWidth: 0.
 	cache getTexture: imageName andDo: [:form | 
 		self transform: 
