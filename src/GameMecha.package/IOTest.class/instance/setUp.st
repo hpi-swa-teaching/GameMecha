@@ -5,10 +5,7 @@ setUp
 	GMTestSetUp setUp.
 	img := ImageMorph new.
 	rootDirectoryPath := 'GMTest'.
-	currentDirectory := FileDirectory default.
-	(currentDirectory / rootDirectoryPath) exists
-		ifFalse: [currentDirectory createDirectory: rootDirectoryPath].
-	currentDirectory := currentDirectory / rootDirectoryPath.
+	currentDirectory := FileDirectory default / rootDirectoryPath.
 	(currentDirectory / 'res') exists
 		ifFalse: [currentDirectory createDirectory: 'res'].
 	currentDirectory := currentDirectory / 'res'.

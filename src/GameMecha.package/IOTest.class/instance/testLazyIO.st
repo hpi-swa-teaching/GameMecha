@@ -8,8 +8,4 @@ testLazyIO
 	cache getTexture: 'img/img1.png' andDo: formCounterBlock.
 	cache getTexture: 'img/sub/img2.png' andDo: formCounterBlock.
 	
-	self assert: cache isCurrentlyLoading.
-	(Delay forMilliseconds: 100) wait.
-	"self assert: ((formCounter == 2) xor: cache isCurrentlyLoading).
-	cache finishLoading."
-	self deny: cache isCurrentlyLoading.
+	[cache isCurrentlyLoading] whileTrue: [Processor yield].

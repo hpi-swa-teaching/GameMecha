@@ -4,7 +4,7 @@ download: url to: localPath
 	|resp wc out|
 	wc := WebClient new. 
 	[
-		resp := wc httpGet: url.
+		resp := wc httpGet: (self preprocessUrl: url).
 		self deleteIfExists: localPath.
 		out := (self getFileStreamFor: localPath) binary.
 		resp streamTo: out size: resp contentLength progress: [:t :c].
