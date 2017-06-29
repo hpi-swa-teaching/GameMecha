@@ -9,6 +9,8 @@
 		"cachedElements",
 		"resourceDirectory",
 		"loadingQueue",
+		"loadingFileSize",
+		"loadedFileSize",
 		"loadingLock" ],
 	"name" : "Cache",
 	"pools" : [

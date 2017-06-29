@@ -5,4 +5,7 @@ burndownQueue
 			|first|
 			first := self loadingQueue first.
 			self loadingQueue: self loadingQueue copyWithoutFirst.
-			first value do: [:block | block value: (self get: first key)]].
+			first value do: [:block | block value: (self get: first key)].
+			self addToLoadedFileSize: (self getSizeFor: first).
+			Processor yield.
+			].
