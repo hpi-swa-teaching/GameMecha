@@ -6,6 +6,3 @@ extent: aPoint
 	self removeProperty: #dropShadow.
 	self layoutChanged.
 	self changed.
-
-	"Widgets: Emit extent change."
-	self extentChanged: aPoint.

@@ -15,7 +15,7 @@ testWebResourceLoading
 	
 		"now check, if the images can be loaded into squeak corrently"
 		"Debugger halt."
-		(Delay forMilliseconds: 600) wait.
+		(Delay forMilliseconds: 800) wait.
 	self
 		assert: ((ImageCache newOn: 'GMTest') getTexture: 'cbg.jpg') extent
 		equals: (194@90);
