@@ -1,10 +1,11 @@
 as yet unclassified
 initialize
 	super initialize.
+	WebResources ensureFile: 'http://colpa.infine.casa:81/default-resources/bastion/bastion_running.png' isAt: 'GMTest/bastion_running.png'.
 	self keyboard: Keyboard new.
 	self anim: ((((AnimationDefinition
-			fromSpriteSheet: 'cg_sprite_running.png'
-			on: (ImageCache newOn: 'HOP')
+			fromSpriteSheet: 'bastion_running.png'
+			on: (ImageCache newOn: 'GMTest')
 			withColumns: 45
 			andRows: 15)
 		looping: true;

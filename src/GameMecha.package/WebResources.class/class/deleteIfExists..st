@@ -6,6 +6,10 @@ deleteIfExists: localPath
 	
 	dir := FileDirectory default.
 	1 to: (pathCollection size - 1)
-		do: [:i | dir := dir / (pathCollection at: i)].
+		do: [:i | |next|
+			next := pathCollection at: i.
+			(dir directoryExists: next)
+				ifFalse: [dir createDirectory: next].
+			dir := dir / next].
 		
 	dir deleteFileNamed: (pathCollection last).

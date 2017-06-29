@@ -1,6 +1,7 @@
 initializing
 createGame
 	|cache waterMorph|
+	WebResources ensureFile: 'http://colpa.infine.casa:81/default-resources/other/smile.png' isAt: 'GMTest/test/sub/smile.png'.
 	cache := ImageCache newOn: 'HOP'.
 	super initialize.
 	self bounds: (10 asPoint corner: 800@600).
