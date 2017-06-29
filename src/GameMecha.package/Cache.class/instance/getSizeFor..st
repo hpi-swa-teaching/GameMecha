@@ -1,3 +1,3 @@
 io
 getSizeFor: path
-	^ 100.
+	^ (self getResourceAsStream: (self ensureImageExtension: path)) size.

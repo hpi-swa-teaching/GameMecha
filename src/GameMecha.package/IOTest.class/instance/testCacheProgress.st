@@ -13,6 +13,6 @@ testCacheProgress
 
 	self assert: (cache progress ) equals: 0.
 	(Delay forMilliseconds: 1) wait.		
-	self assert: (cache progress) equals: 0.5.
+	self assert: (cache progress) equals: (4031826)/(3922310 + 4031826).
 	(Delay forMilliseconds: 100) wait.		
 	self assert: (cache progress) equals: 1.
