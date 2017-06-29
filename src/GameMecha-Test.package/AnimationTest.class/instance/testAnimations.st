@@ -5,7 +5,8 @@ testAnimations
 	animDef := AnimationDefinition
 		fromSpriteSheet: 'sheet.png'
 		on: cache
-		withDimensions: 4@4.
+		withColumns: 4
+		andRows: 4.
 	animDef looping: false.
 	animDef frameTime: 5.
 	self assert: 16 equals: animDef frameCount.
