@@ -2,6 +2,7 @@ as yet unclassified
 setUp
 	"create images to load"
 	|img currentDirectory img1Path img2Path img3Path|
+	GMTestSetUp setUp.
 	img := ImageMorph new.
 	rootDirectoryPath := 'GMTest'.
 	currentDirectory := FileDirectory default.

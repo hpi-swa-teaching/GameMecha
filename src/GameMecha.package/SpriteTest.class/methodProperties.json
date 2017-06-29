@@ -2,7 +2,6 @@
 	"class" : {
 		 },
 	"instance" : {
-		"setUp" : "MB 6/20/2017 14:06",
-		"tearDown" : "MB 6/20/2017 14:06",
+		"setUp" : "EB 6/29/2017 17:35",
 		"testSpriteLazyLoading" : "MB 6/21/2017 19:44",
-		"testSpriteLoading" : "MB 6/27/2017 09:20" } }
+		"testSpriteLoading" : "EB 6/29/2017 17:35" } }

@@ -13,5 +13,4 @@ testBadSquekMultithreating
 
 		elapsed := ((DateAndTime now) - timeStamp) asMilliSeconds.
 	self assert: elapsed < 50.
-		Transcript show: ' you'.	
-		
+		Transcript show: ' you'.
