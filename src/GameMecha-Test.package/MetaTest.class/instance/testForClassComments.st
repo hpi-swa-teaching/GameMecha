@@ -7,4 +7,4 @@ testForClassComments
 		select: [:class | class hasComment not])
 		collect: [:class | class category asString, '>>', class asString].
 	uncommentedClasses isEmpty 
-		ifFalse: [uncommentedClasses inspect. self fail].
+		ifFalse: [uncommentedClasses inspect. Error signal].

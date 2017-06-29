@@ -14,7 +14,7 @@ testAnimations
 	anim := animDef new.
 	self assert: anim definition equals: animDef.
 	self assert: anim currentFrameNumber equals: 0.
-	(Delay forMilliseconds: 75) wait.
+	(Delay forMilliseconds: 75) wait. "this should lead the animation to be exactly at position 2"
 	self assert: anim currentFrameNumber equals: 1.
 	
 	testmorph := ImageMorph new.
