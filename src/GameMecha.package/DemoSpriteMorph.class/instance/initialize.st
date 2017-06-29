@@ -1,16 +1,7 @@
 as yet unclassified
 initialize
 	super initialize.
-	WebResources ensureFile: 'http://colpa.infine.casa:81/default-resources/bastion/bastion_running.png' isAt: 'GMTest/bastion_running.png'.
-	self keyboard: Keyboard new.
-	"this animation consists of 16 sub-animations that have 40 frames each"
-	self anim: ((((AnimationDefinition
-			fromSpriteSheet: 'bastion_running.png'
-			on: (ImageCache newOn: 'GMTest')
-			withColumns: 45
-			andRows: 15)
+	self anim: ((AnimationDefinition fromSpriteSheet: 'sheet.png' on: (ImageCache newOn: 'HOP') withDimensions: 4@4)
 		looping: true;
-		frameTime: 50)
-		subAnimationFrom: 1 to: 640)
-		splitAndStart: 16).
-	ActiveHand newKeyboardFocus: self.
+		frameTime: 200;
+		new).

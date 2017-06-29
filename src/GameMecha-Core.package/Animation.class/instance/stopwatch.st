@@ -1,3 +1,3 @@
 accessing
 stopwatch
-	^ stopwatch.
+	^ stopwatch

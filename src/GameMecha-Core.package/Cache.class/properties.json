@@ -4,13 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 6/29/2017 19:59",
+	"commentStamp" : "",
 	"instvars" : [
 		"cachedElements",
 		"resourceDirectory",
 		"loadingQueue",
-		"loadingFileSize",
-		"loadedFileSize",
 		"loadingLock" ],
 	"name" : "Cache",
 	"pools" : [

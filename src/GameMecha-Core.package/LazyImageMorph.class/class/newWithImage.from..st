@@ -2,5 +2,5 @@ as yet unclassified
 newWithImage: imageName from: cache
 	^ self new
 		color: Color green;
-		initializeImage: imageName fromCache:  cache;
+		initializeImage: imageName from:  cache;
 		yourself.

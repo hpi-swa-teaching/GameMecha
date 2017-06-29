@@ -1,3 +1,3 @@
 accessing
 definition
-	^ definition.
+	^ definition

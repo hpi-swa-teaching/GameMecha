@@ -1,6 +1,5 @@
 as yet unclassified
 createWalls
-	"creates 4 walls, so that the colliders repel from the border of the world"
 	self
 		addCollider:
 			((BadPerfDemoOstacle wrap: RectangleMorph new)

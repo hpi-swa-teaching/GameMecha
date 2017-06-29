@@ -1,3 +1,3 @@
-animations
+accessing
 frameCount
-	^ self endIndex - self startIndex + 1.
+	^ self spriteNameList size.

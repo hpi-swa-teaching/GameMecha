@@ -4,11 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 6/29/2017 20:22",
+	"commentStamp" : "",
 	"instvars" : [
 		"keyboard",
-		"ball",
-		"water" ],
+		"ball" ],
 	"name" : "GoodBallGame",
 	"pools" : [
 		 ],

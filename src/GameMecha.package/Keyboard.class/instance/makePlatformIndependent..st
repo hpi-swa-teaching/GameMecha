@@ -2,7 +2,7 @@ keyHandling
 makePlatformIndependent: aCharacter
 	| transformedCharacter |
 	transformedCharacter := aCharacter.
-	(Smalltalk platformName beginsWith: 'Win')
+	(Smalltalk platformName startsWith: 'Win')
 		ifTrue: [ 
 			(aCharacter >= 96 and: aCharacter <= 105)
 				ifTrue: [ transformedCharacter := (aCharacter asciiValue - 48) asCharacter ].

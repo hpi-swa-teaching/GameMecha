@@ -1,3 +1,3 @@
 accessing
 stopwatch: anObject
-	stopwatch := anObject.
+	stopwatch := anObject

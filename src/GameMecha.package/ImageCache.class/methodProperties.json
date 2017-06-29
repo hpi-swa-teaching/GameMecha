@@ -3,13 +3,9 @@
 		 },
 	"instance" : {
 		"ensureImageExtension:" : "EB 6/8/2017 13:51",
-		"getPartOf:withBounds:" : "MB 6/21/2017 16:35",
-		"getSprite:atColumn:andRow:" : "MB 6/21/2017 20:02",
-		"getSprite:atIndex:" : "MB 6/21/2017 16:53",
-		"getSpriteSheet:" : "MB 6/21/2017 15:13",
 		"getTexture:" : "EB 6/8/2017 13:44",
 		"getTexture:andDo:" : "EB 6/16/2017 17:02",
-		"isSpriteLoaded:atColumn:andRow:" : "MB 6/21/2017 19:56",
-		"isSpriteSheetLoaded:" : "MB 6/21/2017 16:10",
 		"loadElement:" : "EB 6/8/2017 15:54",
-		"registerSpriteSheet:withColumns:andRows:" : "MB 6/21/2017 19:57" } }
+		"loadPartOf:withBounds:" : "mdlh 6/19/2017 22:58",
+		"loadSingleSpriteAtPosition:fromSheet:withDimensions:" : "MB 6/20/2017 14:01",
+		"loadSpriteSheet:withDimensions:" : "mdlh 6/19/2017 23:22" } }

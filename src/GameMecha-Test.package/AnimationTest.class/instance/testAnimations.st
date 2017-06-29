@@ -1,20 +1,19 @@
 as yet unclassified
 testAnimations
 	|cache animDef anim testmorph|
-	cache := ImageCache newOn: 'GMTest'.
+	cache := ImageCache newOn: 'HOP'.
 	animDef := AnimationDefinition
 		fromSpriteSheet: 'sheet.png'
 		on: cache
-		withColumns: 4
-		andRows: 4.
+		withDimensions: 4@4.
 	animDef looping: false.
-	animDef frameTime: 50.
-	self assert: 16 equals: animDef frameCount.
+	animDef frameTime: 5.
+	self assert: animDef frameCount equals: 16.
 	
 	anim := animDef new.
 	self assert: anim definition equals: animDef.
 	self assert: anim currentFrameNumber equals: 0.
-	(Delay forMilliseconds: 75) wait. "this should lead the animation to be exactly at position 2"
+	(Delay forMilliseconds: 7) wait.
 	self assert: anim currentFrameNumber equals: 1.
 	
 	testmorph := ImageMorph new.

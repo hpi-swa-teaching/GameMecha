@@ -1,9 +1,10 @@
 best category
 testForPointAtMethodEnd
-	"fail, if any Method inside the GameMecha-package does not end with a dot."
+	"inspect a collection of all methods which contain TODOs, regex can be exchanged"
+	"HOPMain todoLocator"
 	|classes methods|
 	classes := (Smalltalk allClasses 
-		select: [:class | class category asString beginsWith: 'GameMecha']).
+		select: [:class | class category asString prefixMatchesRegex: 'GameMecha']).
 	
 	methods := ((((classes
 		collect:[:class | class methodDictionary associations])flatten union: (classes

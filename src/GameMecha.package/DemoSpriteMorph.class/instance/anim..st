@@ -1,3 +1,3 @@
 accessing
 anim: anObject
-	anim := anObject.
+	anim := anObject

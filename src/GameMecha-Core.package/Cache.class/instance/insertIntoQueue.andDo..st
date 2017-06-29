@@ -9,5 +9,5 @@ insertIntoQueue: path andDo: aBlockClosure
 	self loadingQueue add: (path -> (OrderedCollection new
 		add: aBlockClosure;
 		yourself)).
-	self addToLoadingFileSize: (self getSizeFor: path).
+		
 	threadWasRunning ifFalse: [self startLoadingThread].

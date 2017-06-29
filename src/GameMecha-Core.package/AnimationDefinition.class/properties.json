@@ -4,14 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 6/29/2017 19:54",
+	"commentStamp" : "EB 6/20/2017 11:44",
 	"instvars" : [
 		"cache",
+		"spriteNameList",
 		"frameTime",
-		"looping",
-		"spritePath",
-		"startIndex",
-		"endIndex" ],
+		"looping" ],
 	"name" : "AnimationDefinition",
 	"pools" : [
 		 ],

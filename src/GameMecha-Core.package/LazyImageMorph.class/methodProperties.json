@@ -1,12 +1,12 @@
 {
 	"class" : {
-		"newWithImage:from:" : "MB 6/26/2017 14:43",
-		"newWithImage:from:bounds:" : "MB 6/26/2017 14:43",
-		"newWithImage:from:extent:" : "MB 6/26/2017 14:43",
-		"newWithImage:from:placeHolder:" : "MB 6/26/2017 14:43",
-		"newWithImage:from:placeHolder:bounds:" : "MB 6/26/2017 14:43",
-		"newWithImage:from:placeHolder:extent:" : "MB 6/26/2017 14:43" },
+		"newWithImage:from:" : "MB 6/20/2017 14:03",
+		"newWithImage:from:bounds:" : "MB 6/20/2017 14:03",
+		"newWithImage:from:extent:" : "MB 6/20/2017 14:03",
+		"newWithImage:from:placeHolder:" : "MB 6/20/2017 14:03",
+		"newWithImage:from:placeHolder:bounds:" : "MB 6/20/2017 14:03",
+		"newWithImage:from:placeHolder:extent:" : "MB 6/20/2017 14:03" },
 	"instance" : {
 		"createRealImage:" : "MB 6/18/2017 16:55",
-		"initializeImage:fromCache:" : "MB 6/26/2017 14:43",
+		"initializeImage:from:" : "MB 6/20/2017 11:31",
 		"transform:" : "MB 6/20/2017 11:12" } }

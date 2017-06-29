@@ -1,3 +1,0 @@
-accessing
-startIndex
-	^ startIndex.

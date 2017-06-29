@@ -13,10 +13,7 @@ testObstacles
 	obstacle markAsObstacle.	
 	obstacle bounds: (547@88 corner: 683@229).	
 	player bounds: (302@112 corner: 387@180).
-	"
-	world openInWorld.
-	Debugger halt.
-	"
+	
 	world step.	
 	world step.	
 	world addCollider: obstacle.

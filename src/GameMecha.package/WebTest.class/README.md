@@ -1,1 +1,0 @@
-Testing Web resource loading

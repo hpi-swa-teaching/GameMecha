@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 6/29/2017 20:05",
+	"commentStamp" : "EB 5/9/2017 20:08",
 	"instvars" : [
 		"wrappedObject" ],
 	"name" : "Decorator",

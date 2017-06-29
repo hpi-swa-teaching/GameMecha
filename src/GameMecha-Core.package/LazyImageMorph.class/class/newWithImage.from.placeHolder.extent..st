@@ -3,5 +3,5 @@ newWithImage: imageName from: cache placeHolder: color extent: extent
 	^ self new
 		extent: extent;
 		color: color;
-		initializeImage: imageName fromCache:  cache;
+		initializeImage: imageName from:  cache;
 		yourself.

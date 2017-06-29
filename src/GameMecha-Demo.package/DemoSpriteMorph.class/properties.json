@@ -4,11 +4,9 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 6/29/2017 20:21",
+	"commentStamp" : "",
 	"instvars" : [
-		"anim",
-		"dir",
-		"keyboard" ],
+		"anim" ],
 	"name" : "DemoSpriteMorph",
 	"pools" : [
 		 ],
