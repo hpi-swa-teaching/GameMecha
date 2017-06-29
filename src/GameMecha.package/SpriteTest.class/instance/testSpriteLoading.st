@@ -1,7 +1,7 @@
 as yet unclassified
 testSpriteLoading
 	| cache selfMadeTestForm testForm |
-	cache := ImageCache newOn: 'HOP'.
+	cache := ImageCache newOn: 'GMTest'.
 	cache registerSpriteSheet: 'sheet.png' withColumns: 4 andRows: 4 .
 	self assert: (cache isSpriteSheetLoaded: 'sheet.png').
 	cache getSprite: 'sheet.png' atColumn: 2 andRow: 1 .

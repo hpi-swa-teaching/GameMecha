@@ -2,12 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"setUp" : "mdlh 6/19/2017 18:38",
-		"tearDown" : "MB 6/20/2017 14:06",
+		"setUp" : "EB 6/29/2017 17:34",
 		"testAvoidDoubleCaching" : "MB 6/20/2017 11:45",
-		"testBadSquekMultithreating" : "jb 6/27/2017 09:35",
+		"testBadSquekMultithreating" : "EB 6/29/2017 17:28",
 		"testCacheProgress" : "jb 6/23/2017 17:20",
-		"testFileSize" : "jb 6/23/2017 17:23",
+		"testFileSize" : "EB 6/29/2017 17:28",
 		"testLazyIO" : "MB 6/20/2017 14:08",
 		"testLazyMorph" : "MB 6/20/2017 11:32",
 		"testLazyMorph:withCache:" : "MB 6/20/2017 11:32",

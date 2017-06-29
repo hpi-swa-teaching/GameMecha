@@ -1,7 +1,7 @@
 as yet unclassified
 testAnimations
 	|cache animDef anim testmorph|
-	cache := ImageCache newOn: 'HOP'.
+	cache := ImageCache newOn: 'GMTest'.
 	animDef := AnimationDefinition
 		fromSpriteSheet: 'sheet.png'
 		on: cache
