@@ -2,7 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		"drawOn:" : "MB 6/29/2017 14:50",
+		"baseScale" : "MB 6/29/2017 21:05",
+		"baseScale:" : "MB 6/29/2017 21:05",
+		"drawOn:" : "MB 6/29/2017 21:08",
 		"extent:" : "MB 6/29/2017 20:55",
 		"offset" : "MB 6/29/2017 14:53",
 		"offset:" : "MB 6/29/2017 15:16" } }

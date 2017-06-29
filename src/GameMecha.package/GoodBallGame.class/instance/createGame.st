@@ -19,6 +19,7 @@ createGame
 	waterMorph := RepeatingImageMorph new.
 	waterMorph image: (cache getTexture: 'smile.png').
 	waterMorph extent: 120@130.
+	waterMorph baseScale: 0.3@0.7.
 	waterMorph offset: 10@20.
 	water := GoodBallGameObstacle wrap: waterMorph.
 	

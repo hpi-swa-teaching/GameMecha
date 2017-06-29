@@ -1,9 +1,10 @@
 as yet unclassified
 drawOn: aCanvas
-	| style |
+	| style scaledImage |
 	(style := self borderStyle) ifNotNil:[
 		style frameRectangle: bounds on: aCanvas.
 	].
+	scaledImage := (image magnifyBy: self baseScale) repatedToExtent: self extent withOrigin: self offset.
 	self isOpaque
-		ifTrue:[aCanvas drawImage: (image repatedToExtent: self extent withOrigin: self offset) at: self innerBounds origin]
-		ifFalse:[aCanvas translucentImage: (image repatedToExtent: self extent withOrigin: self offset) at: self innerBounds origin].
+		ifTrue:[aCanvas drawImage: scaledImage at: self innerBounds origin]
+		ifFalse:[aCanvas translucentImage: scaledImage at: self innerBounds origin].
