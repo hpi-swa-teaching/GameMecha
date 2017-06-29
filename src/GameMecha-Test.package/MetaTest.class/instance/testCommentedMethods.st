@@ -8,7 +8,7 @@ testCommentedMethods
 	methods := (((classes
 		collect:[:class | class methodDictionary associations])flatten union: (classes
 		collect: [:class | class class methodDictionary associations]) flatten)
-		select:[:method | method value linesOfCode > 12 and: [(method value getSource string includes: $") not]]).
+		select:[:method | method value linesOfCode >= 12 and: [(method value getSource string includes: $") not]]).
 	
 	methods isEmpty 
 		ifFalse: [Inspector openOn: methods. Error signal].
