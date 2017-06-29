@@ -1,16 +1,14 @@
 {
-	"category" : "GameMecha-Demo",
+	"category" : "GameMecha-Core",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"keyboard",
-		"ball",
-		"water" ],
-	"name" : "GoodBallGame",
+		"offset" ],
+	"name" : "RepeatingImageMorph",
 	"pools" : [
 		 ],
-	"super" : "CollisionWorld",
+	"super" : "ImageMorph",
 	"type" : "normal" }

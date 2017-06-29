@@ -1,6 +1,6 @@
 initializing
 createGame
-	|cache|
+	|cache waterMorph|
 	cache := ImageCache newOn: 'HOP'.
 	super initialize.
 	self bounds: (10 asPoint corner: 800@600).
@@ -15,8 +15,13 @@ createGame
 	ball keyboard: self keyboard.
 	self addCollider: ball.
 	
+	waterMorph := RepeatingImageMorph new.
+	waterMorph image: (cache getTexture: 'res/img/ice.png').
+	waterMorph extent: 120@130.
+	waterMorph offset: 10@20.
+	water := GoodBallGameObstacle wrap: waterMorph.
 	
-	self addCollider: ((GoodBallGameObstacle wrap: RectangleMorph new)
+	self addCollider: (water
 		position: (20@100);
 		yourself).
 		
