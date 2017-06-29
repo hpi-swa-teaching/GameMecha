@@ -1,5 +1,5 @@
 as yet unclassified
 testFileSize
 	| cache |
-	cache := ImageCache newOn: 'HOP'.
-	self assert: (cache getSizeFor: 'baum01.jpg') equals: 4031826.
+	cache := ImageCache newOn: 'GMTest'.
+	self assert: (cache getSizeFor: 'smile.png') equals: 10382.
