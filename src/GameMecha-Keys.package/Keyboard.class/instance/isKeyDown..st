@@ -9,7 +9,7 @@ isKeyDown: keySymbol
 	|keys checker|
 	checker := [:keyAscii | (self pressedKeys includes: keyAscii)
 				ifTrue: [^ true]].
-	keys := (keySymbol asString startsWith: 'key')
+	keys := (keySymbol asString beginsWith: 'key')
 		ifTrue: [[self class perform: keySymbol asSymbol]
 			on: MessageNotUnderstood
 			do: [^ false]]

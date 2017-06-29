@@ -1,0 +1,1 @@
+Simple colliders that act as obstacles

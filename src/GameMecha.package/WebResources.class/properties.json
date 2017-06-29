@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 6/29/2017 20:14",
+	"instvars" : [
+		 ],
+	"name" : "WebResources",
+	"pools" : [
+		 ],
+	"super" : "ProtoObject",
+	"type" : "normal" }

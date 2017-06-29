@@ -2,12 +2,10 @@ as yet unclassified
 setUp
 	"create images to load"
 	|img currentDirectory img1Path img2Path img3Path|
+	GMTestSetUp setUp.
 	img := ImageMorph new.
 	rootDirectoryPath := 'GMTest'.
-	currentDirectory := FileDirectory default.
-	(currentDirectory / rootDirectoryPath) exists
-		ifFalse: [currentDirectory createDirectory: rootDirectoryPath].
-	currentDirectory := currentDirectory / rootDirectoryPath.
+	currentDirectory := FileDirectory default / rootDirectoryPath.
 	(currentDirectory / 'res') exists
 		ifFalse: [currentDirectory createDirectory: 'res'].
 	currentDirectory := currentDirectory / 'res'.

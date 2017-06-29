@@ -1,0 +1,1 @@
+A small colliding ball. Many of them can reduce the performance drastically.

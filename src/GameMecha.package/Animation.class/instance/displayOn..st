@@ -1,4 +1,7 @@
 accessing
 displayOn: anImageMorph
-	"TODO - only update the image if it is needed (for performance)"
-	anImageMorph image: self currentImage
+	"displays the current image of this Animation onto an ImageMorph (or something that understands #image and #image: )"
+	|currentImage|
+	currentImage := self currentImage.
+	anImageMorph image == currentImage
+		ifFalse: [anImageMorph image: currentImage].

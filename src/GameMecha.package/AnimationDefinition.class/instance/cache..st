@@ -1,3 +1,3 @@
 accessing
 cache: anObject
-	cache := anObject
+	cache := anObject.
