@@ -4,9 +4,9 @@
 	"instance" : {
 		"setUp" : "EB 6/29/2017 17:34",
 		"testAvoidDoubleCaching" : "MB 6/20/2017 11:45",
-		"testBadSquekMultithreating" : "EB 6/29/2017 17:28",
+		"testBadSquekMultithreating" : "EB 6/29/2017 17:53",
 		"testCacheProgress" : "jb 6/29/2017 17:34",
-		"testFileSize" : "jb 6/29/2017 17:33",
+		"testFileSize" : "EB 6/29/2017 17:52",
 		"testLazyIO" : "MB 6/20/2017 14:08",
 		"testLazyMorph" : "MB 6/20/2017 11:32",
 		"testLazyMorph:withCache:" : "MB 6/20/2017 11:32",
