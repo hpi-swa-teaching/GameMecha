@@ -8,13 +8,13 @@ testAnimations
 		withColumns: 4
 		andRows: 4.
 	animDef looping: false.
-	animDef frameTime: 5.
+	animDef frameTime: 50.
 	self assert: 16 equals: animDef frameCount.
 	
 	anim := animDef new.
 	self assert: anim definition equals: animDef.
 	self assert: anim currentFrameNumber equals: 0.
-	(Delay forMilliseconds: 7) wait.
+	(Delay forMilliseconds: 75) wait.
 	self assert: anim currentFrameNumber equals: 1.
 	
 	testmorph := ImageMorph new.
