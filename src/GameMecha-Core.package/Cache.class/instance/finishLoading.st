@@ -1,4 +1,3 @@
 io
 finishLoading
-	self isCurrentlyLoading
-		ifTrue: [self loadingLock wait].
+	self finishLoading: false.
