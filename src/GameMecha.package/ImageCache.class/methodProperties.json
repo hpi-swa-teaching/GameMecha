@@ -12,4 +12,5 @@
 		"isSpriteLoaded:atColumn:andRow:" : "MB 6/21/2017 19:56",
 		"isSpriteSheetLoaded:" : "MB 6/21/2017 16:10",
 		"loadElement:" : "EB 6/8/2017 15:54",
-		"registerSpriteSheet:withColumns:andRows:" : "MB 6/21/2017 19:57" } }
+		"registerSpriteSheet:withColumns:andRows:" : "MB 6/21/2017 19:57",
+		"save:from:" : "FH 7/10/2017 23:22" } }

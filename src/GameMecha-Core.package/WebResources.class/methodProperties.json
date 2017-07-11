@@ -1,10 +1,14 @@
 {
 	"class" : {
 		"deleteIfExists:" : "EB 6/29/2017 18:42",
-		"download:to:" : "EB 6/29/2017 17:58",
+		"downloadFrom:to:andStoreIn:" : "FH 7/10/2017 23:29",
 		"ensureFile:isAt:" : "EB 6/29/2017 13:57",
-		"ensureFile:isAt:overwrite:" : "EB 6/29/2017 13:59",
+		"ensureFile:isAt:andStoredIn:" : "FH 7/10/2017 23:31",
+		"ensureFile:isAt:andStoredIn:overwrite:" : "FH 7/10/2017 23:30",
+		"ensureFile:isAt:overwrite:" : "FH 7/10/2017 23:26",
+		"ensureFilesFrom:under:areAt:" : "FH 7/10/2017 23:03",
 		"fileExists:" : "EB 6/29/2017 14:41",
+		"getFileName:" : "FH 7/10/2017 21:50",
 		"getFileStreamFor:" : "EB 6/29/2017 14:38",
 		"makePathPlatformIndependant:" : "EB 6/29/2017 14:38",
 		"preprocessUrl:" : "EB 6/29/2017 17:58" },
