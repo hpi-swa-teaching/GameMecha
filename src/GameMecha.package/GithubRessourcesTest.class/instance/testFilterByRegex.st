@@ -7,4 +7,3 @@ testFilterByRegex
 	filtered := GithubRessources filter: files byRegex: '.*\.md'.
 	self deny: (filtered includes: 'https://raw.githubusercontent.com/HPI-SWA-Teaching/SWT17-Project-13/master/.smalltalk.ston').
 	self assert: (filtered includes: 'https://raw.githubusercontent.com/HPI-SWA-Teaching/SWT17-Project-13/master/README.md').
-	

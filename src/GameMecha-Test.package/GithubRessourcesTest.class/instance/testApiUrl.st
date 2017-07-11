@@ -1,5 +1,6 @@
 as yet unclassified
 testApiUrl
+	"lets test the api url"
 	| url |
 	url := GithubRessources apiUrlForTeam: 'HPI-SWA-Teaching' andProject: 'SWT17-Project-13' andPath: '/' andBranche: 'master'.
 	self assert:	'https://api.github.com/repos/HPI-SWA-Teaching/SWT17-Project-13/contents/?ref=master' equals: url.

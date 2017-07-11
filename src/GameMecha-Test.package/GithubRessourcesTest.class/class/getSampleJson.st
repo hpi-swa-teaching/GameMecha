@@ -1,5 +1,6 @@
 as yet unclassified
 getSampleJson
+"sample data"
  ^ '[
   {
     "name": ".gitignore",
