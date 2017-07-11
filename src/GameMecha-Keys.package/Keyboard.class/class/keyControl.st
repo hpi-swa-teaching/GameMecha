@@ -1,3 +1,0 @@
-keys
-keyControl
-	^ Keyboard keyStrg.

@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-Keys",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		"KeyMap" ],
+	"commentStamp" : "MB 7/11/2017 11:44",
+	"instvars" : [
+		"keyDownHandlers",
+		"keyUpHandlers",
+		"pressedKeys" ],
+	"name" : "KeyHandler",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
