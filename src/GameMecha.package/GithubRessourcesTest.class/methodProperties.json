@@ -1,0 +1,8 @@
+{
+	"class" : {
+		"getSampleJson" : "jb 7/5/2017 15:27" },
+	"instance" : {
+		"testApiUrl" : "jb 7/5/2017 19:08",
+		"testFilterByRegex" : "jb 7/5/2017 19:01",
+		"testLoadJson" : "jb 7/5/2017 19:33",
+		"testParseJson" : "jb 7/5/2017 16:21" } }
