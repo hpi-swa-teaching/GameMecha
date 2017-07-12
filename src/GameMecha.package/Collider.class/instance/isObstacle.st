@@ -1,3 +1,0 @@
-obstacle
-isObstacle
-	^ isObstacle.

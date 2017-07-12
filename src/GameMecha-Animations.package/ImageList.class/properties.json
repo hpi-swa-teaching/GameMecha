@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Animations",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 7/11/2017 11:24",
+	"instvars" : [
+		 ],
+	"name" : "ImageList",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

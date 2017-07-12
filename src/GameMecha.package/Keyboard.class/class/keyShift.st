@@ -1,3 +1,0 @@
-keys
-keyShift
-	^ 16.

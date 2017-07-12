@@ -1,3 +1,0 @@
-initializing
-handlesMouseOver: anEvent
-	^true.

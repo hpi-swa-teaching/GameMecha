@@ -1,3 +1,0 @@
-intercepting
-yourself
-	^ self.
