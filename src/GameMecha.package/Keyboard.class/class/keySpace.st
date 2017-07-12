@@ -1,3 +1,0 @@
-keys
-keySpace
-	^ 32.

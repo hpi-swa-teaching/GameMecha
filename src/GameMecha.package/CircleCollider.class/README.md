@@ -1,1 +1,0 @@
-Decorate a morph with this for it to have a circular collision bounding

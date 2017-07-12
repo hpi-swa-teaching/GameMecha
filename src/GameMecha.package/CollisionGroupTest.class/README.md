@@ -1,1 +1,0 @@
-Test, whether the collision-group system is working correctly

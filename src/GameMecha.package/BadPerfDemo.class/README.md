@@ -1,1 +1,0 @@
-This Program continously spawns more Colliders to test the boundaries of performance with our collision system.

@@ -1,3 +1,0 @@
-keys
-keyAlt
-	^18.
