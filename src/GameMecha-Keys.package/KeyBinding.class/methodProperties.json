@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"bindToKey:" : "MB 7/12/2017 14:02",
+		"keyDownHandlers" : "MB 7/12/2017 13:39",
+		"keyDownHandlers:" : "MB 7/12/2017 13:40",
+		"keyUpHandlers" : "MB 7/12/2017 13:41",
+		"keyUpHandlers:" : "MB 7/12/2017 13:41",
+		"keys" : "MB 7/12/2017 14:00",
+		"keys:" : "MB 7/12/2017 13:41",
+		"resetBindings" : "MB 7/12/2017 14:03" } }
