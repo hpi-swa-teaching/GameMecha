@@ -5,7 +5,8 @@ baseline: spec
 		for: #'common'
 		do: [
 			spec
-				package: 'GameMecha-Core';
+				package: 'JSON' with: [spec repository: 'http://www.squeaksource.com/JSON'];
+				package: 'GameMecha-Core' with: [spec requires: #('JSON')];
 				package: 'GameMecha-Keys';
 				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys')];
 				yourself.
