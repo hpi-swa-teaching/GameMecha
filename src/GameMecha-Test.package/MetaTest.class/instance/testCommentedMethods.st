@@ -1,4 +1,4 @@
-best category
+tests
 testCommentedMethods
 	"fail, if any long Method inside the GameMecha-package has no comment"
 	|classes methods|
@@ -10,5 +10,4 @@ testCommentedMethods
 		collect: [:class | class class methodDictionary associations]) flatten)
 		select:[:method | method value linesOfCode >= 12 and: [(method value getSource string includes: $") not]]).
 	
-	methods isEmpty 
-		ifFalse: [Inspector openOn: methods. Error signal].
+	self openInspectorIfNecessaryOn: methods withLabel: 'UncommentedLongMethods'.

@@ -1,4 +1,4 @@
-best category
+tests
 testForPointAtMethodEnd
 	"fail, if any Method inside the GameMecha-package does not end with a dot."
 	|classes methods|
@@ -12,5 +12,4 @@ testForPointAtMethodEnd
 		asOrderedCollection sorted)
 		collect: [:method | method value methodClass -> method key].
 	
-	methods isEmpty 
-		ifFalse: [Inspector openOn: methods. Error signal].
+	self openInspectorIfNecessaryOn: methods withLabel: 'MissingPoints'.
