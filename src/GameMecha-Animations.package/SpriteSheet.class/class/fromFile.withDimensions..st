@@ -1,6 +1,7 @@
 instance creation
 fromFile: fileName withDimensions: dimensions
+
 	^ (self new)
-		columsAndRows: dimensions;
+		columnsAndRows: dimensions;
 		fileName: fileName;
 		yourself.

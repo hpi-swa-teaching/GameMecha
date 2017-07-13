@@ -1,0 +1,3 @@
+staticCategory
+test
+	.

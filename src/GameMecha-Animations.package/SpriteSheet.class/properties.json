@@ -7,7 +7,7 @@
 	"commentStamp" : "EB 7/11/2017 11:58",
 	"instvars" : [
 		"fileName",
-		"columsAndRows" ],
+		"columnsAndRows" ],
 	"name" : "SpriteSheet",
 	"pools" : [
 		 ],

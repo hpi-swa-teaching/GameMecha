@@ -1,16 +1,17 @@
 as yet unclassified
 testSpriteLoading
-	| cache selfMadeTestForm testForm indexTestForm |
-	cache := ImageCache newOn: 'GMTest'.
-	cache registerSpriteSheet: 'sheet.png' withColumns: 4 andRows: 4 .
-	self assert: (cache isSpriteSheetLoaded: 'sheet.png').
-	cache getSprite: 'sheet.png' atColumn: 2 andRow: 1 .
-	self assert: (cache isSpriteLoaded: 'sheet.png' atColumn: 2 andRow: 1)."already requested -> cached"
-	self deny: (cache isSpriteLoaded: 'sheet.png' atColumn: 2 andRow: 2)."not yet requested -> not cached"
-	self deny: (cache isSpriteLoaded: 'sheet.png' atColumn: 5 andRow: 5)."out of bounds -> not cached"
+	| fileName spriteSheet imports selfMadeTestForm testForm indexTestForm |
+	imports := Imports default.
+	fileName := 'GMTest/sheet.png'.
+	spriteSheet := SpriteSheet fromFile: fileName withDimensions: 4@4.
+	spriteSheet imageAt: 2@1.
+	self assert: (imports isFileLoaded: fileName).
+	self assert: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 2@1))."already requested -> cached"
+	self deny: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 1@2))."not yet requested -> not cached"
+	self deny: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 5@5))."out of bounds -> not cached"
 
-	testForm := cache getSprite: 'sheet.png'  atColumn: 2 andRow: 3.
-	selfMadeTestForm := cache getPartOf: 'sheet.png' withBounds: (154@400 corner: 308@600).
+	testForm := spriteSheet imageAt: 2@3.
+	selfMadeTestForm := (imports get: fileName) contentsOfArea: (154@400 corner: 308@600).
 	self assert: testForm bits equals: selfMadeTestForm bits.
-	indexTestForm := cache getSprite: 'sheet.png' atIndex: 10.
+	indexTestForm := spriteSheet imageAt: 10.
 	self assert: testForm bits equals: indexTestForm bits.

@@ -1,19 +1,19 @@
 *GameMecha-Core
 repatedToExtent: extent withOrigin: origin
-	
-|largeForm infForm|
+	"create an InfiniteForm and draw it onto ourself"
+	|largeForm infForm|
 
-infForm := InfiniteForm with: self.
+	infForm := InfiniteForm with: self.
 
-largeForm := Form
-  extent: extent
-  depth: infForm asForm depth.
+	largeForm := Form
+		extent: extent
+		depth: infForm asForm depth.
 
-infForm 
-  displayOn: largeForm
-  at: origin
-  clippingBox: largeForm boundingBox
-  rule: Form over
-  fillColor: nil.
+	infForm 
+		displayOn: largeForm
+		at: origin
+		clippingBox: largeForm boundingBox
+		rule: Form over
+		fillColor: nil.
 
-^largeForm.
+	^largeForm.

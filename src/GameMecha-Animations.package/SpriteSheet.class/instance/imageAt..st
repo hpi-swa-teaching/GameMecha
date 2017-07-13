@@ -1,3 +1,4 @@
 accessing
-imageAt: index
-	
+imageAt: selector
+	selector isPoint ifTrue: [^ self imageAtCoordinates: selector].
+	^ self imageAtIndex: selector.

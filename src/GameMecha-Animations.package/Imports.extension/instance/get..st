@@ -1,3 +1,3 @@
 *GameMecha-Animations
 get: name
-	^ self images at: name
+	^ self get: name ifAbsentPut: [self importFileNamed: name].

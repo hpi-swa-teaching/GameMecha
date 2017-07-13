@@ -1,10 +1,19 @@
 {
 	"class" : {
-		"fromFile:rows:colums:" : "EB 7/11/2017 11:57",
-		"fromFile:withDimensions:" : "EB 7/11/2017 11:57" },
+		"fromFile:rows:colums:" : "EB 7/13/2017 10:15",
+		"fromFile:withDimensions:" : "EB 7/13/2017 11:42" },
 	"instance" : {
-		"columsAndRows" : "EB 7/11/2017 12:01",
-		"columsAndRows:" : "EB 7/11/2017 12:01",
+		"cacheKey" : "EB 7/13/2017 11:42",
+		"cacheKeyOfSprite:" : "EB 7/13/2017 11:36",
+		"columns" : "EB 7/13/2017 11:42",
+		"columnsAndRows" : "EB 7/13/2017 11:42",
+		"columnsAndRows:" : "EB 7/13/2017 11:42",
+		"computeSpriteAt:" : "EB 7/13/2017 11:14",
+		"coordinatesToBounds:" : "EB 7/13/2017 11:42",
 		"fileName" : "EB 7/11/2017 12:01",
 		"fileName:" : "EB 7/11/2017 12:01",
-		"imageAt:" : "EB 7/11/2017 12:04" } }
+		"imageAt:" : "EB 7/13/2017 11:02",
+		"imageAtCoordinates:" : "EB 7/13/2017 11:40",
+		"imageAtIndex:" : "EB 7/13/2017 11:23",
+		"imports" : "EB 7/13/2017 11:34",
+		"rows" : "EB 7/13/2017 11:42" } }
