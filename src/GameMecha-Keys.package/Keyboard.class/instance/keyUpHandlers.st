@@ -1,3 +1,0 @@
-accessing
-keyUpHandlers
-	^ keyUpHandlers.
