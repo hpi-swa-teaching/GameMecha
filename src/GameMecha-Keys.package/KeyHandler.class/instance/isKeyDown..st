@@ -1,4 +1,4 @@
-keyHandling
+accessing
 isKeyDown: keySymbol
 	"Returns true if one of the keys corresponding to the KeySymbol is
 	pressed. Each possible input is handled in a keySymbol. Returns false
@@ -9,6 +9,6 @@ isKeyDown: keySymbol
 	|key checker|
 	checker := [:keyAscii | (self pressedKeys includes: keyAscii)
 				ifTrue: [^ true]].
-	key := self preprocessInput: keySymbol.
+	key := self class preprocessInput: keySymbol.
 	checker value: key.
 	^ false.

@@ -1,3 +1,3 @@
 accessing
 bindToKey: aKey
-	keys add: aKey.
+	self keys add: (KeyHandler preprocessInput: aKey).

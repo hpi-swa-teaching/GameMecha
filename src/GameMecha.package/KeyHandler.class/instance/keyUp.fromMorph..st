@@ -7,5 +7,5 @@ keyUp: aKeyboardEvent fromMorph: aMorph
 	"mark key as released"
 	self pressedKeys remove: keyCode ifAbsent: [].
 
-	"run key up handlers"
-	self keyUpHandlers at: keyCode ifPresent: [:handler | handler value].
+	"send event to all bindings"
+	self bindings do: [:binding | binding keyUp: keyCode].

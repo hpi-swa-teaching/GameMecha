@@ -6,9 +6,9 @@
 		"KeyMap" ],
 	"commentStamp" : "MB 7/12/2017 13:30",
 	"instvars" : [
+		"keys",
 		"keyDownHandlers",
-		"keyUpHandlers",
-		"keys" ],
+		"keyUpHandlers" ],
 	"name" : "KeyBinding",
 	"pools" : [
 		 ],

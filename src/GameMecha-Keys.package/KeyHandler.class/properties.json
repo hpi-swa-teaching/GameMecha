@@ -6,8 +6,7 @@
 		"KeyMap" ],
 	"commentStamp" : "MB 7/11/2017 11:44",
 	"instvars" : [
-		"keyDownHandlers",
-		"keyUpHandlers",
+		"bindings",
 		"pressedKeys" ],
 	"name" : "KeyHandler",
 	"pools" : [

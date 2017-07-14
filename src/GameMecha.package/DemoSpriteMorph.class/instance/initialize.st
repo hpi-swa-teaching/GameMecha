@@ -1,8 +1,17 @@
 as yet unclassified
 initialize
+	|keyHandler| 
 	super initialize.
 	WebResources ensureFile: 'http://colpa.infine.casa:81/default-resources/bastion/bastion_running.png' isAt: 'GMTest/bastion_running.png'.
-	self keyboard: Keyboard new.
+
+	keyHandler := KeyHandler new.
+	keyHandler bindings 
+		add: (#exit -> (
+			KeyBinding new
+				bindToKey: #keyEscape;
+				onUpSend: #delete to: self)).
+	self registerKeyboardBindings: keyHandler.	
+	
 	"this animation consists of 16 sub-animations that have 40 frames each"
 	self anim: ((((AnimationDefinition
 			fromSpriteSheet: 'bastion_running.png'

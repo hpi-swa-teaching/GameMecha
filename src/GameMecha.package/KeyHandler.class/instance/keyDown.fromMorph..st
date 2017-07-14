@@ -4,10 +4,10 @@ keyDown: aKeyboardEvent fromMorph: aMorph
 	| keyCode |
 	keyCode := self preprocessEvent: aKeyboardEvent.
 	
-	Transcript showln: keyCode asString, '(was ', aKeyboardEvent keyValue asString ,')'.
+	"Transcript showln: keyCode asString, '(was ', aKeyboardEvent keyValue asString ,')'."
 	
 	"mark key as pressed"
 	self pressedKeys add: keyCode.
 	
-	"run keydown handler(s)"
-	self keyDownHandlers at: keyCode ifPresent: [:handler | handler value].
+	"send event to all bindings"
+	self bindings do: [:binding | binding keyDown: keyCode].

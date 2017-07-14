@@ -5,7 +5,8 @@ createGame
 	cache := ImageCache newOn: 'GMTest'.
 	super initialize.
 	self bounds: (10 asPoint corner: 800@600).
-	self keyboard: Keyboard new.
+	self keyboard: KeyHandler new.
+	self registerKeyboardBindings: self keyboard.
 	self addCollider: ((GoodBallGameObstacle wrap: (LazyImageMorph newWithImage: 'smile.png' from: cache placeHolder: Color red bounds: (20@300 extent: 60@60)))).
 	self addCollider: ((GoodBallGameObstacle wrap: RectangleMorph new)
 		position: (200@70);
@@ -34,5 +35,3 @@ createGame
 	
 	
 	self openInWorld.
-	
-	ActiveHand newKeyboardFocus: self.
