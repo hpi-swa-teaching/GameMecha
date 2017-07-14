@@ -1,5 +1,3 @@
 as yet unclassified
 testFileSize
-	| cache |
-	cache := ImageCache newOn: 'GMTest'.
-	self assert: (cache getSizeFor: 'smile.png') equals: 10382.
+	self assert: (Imports default fileSizeOf: 'GMTest/smile.png') equals: 10382.

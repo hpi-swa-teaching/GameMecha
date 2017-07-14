@@ -1,0 +1,13 @@
+{
+	"class" : {
+		"newWithImage:" : "EB 7/13/2017 17:10",
+		"newWithImage:bounds:" : "EB 7/13/2017 17:10",
+		"newWithImage:extent:" : "EB 7/13/2017 17:09",
+		"newWithImage:placeHolder:" : "EB 7/13/2017 17:09",
+		"newWithImage:placeHolder:bounds:" : "EB 7/13/2017 17:08",
+		"newWithImage:placeHolder:extent:" : "EB 7/13/2017 17:07" },
+	"instance" : {
+		"createRealImage:" : "MB 6/18/2017 16:55",
+		"imports" : "EB 7/13/2017 18:06",
+		"initializeImage:" : "EB 7/13/2017 18:07",
+		"transform:" : "MB 6/20/2017 11:12" } }

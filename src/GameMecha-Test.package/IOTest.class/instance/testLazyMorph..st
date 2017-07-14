@@ -1,13 +1,13 @@
 as yet unclassified
-testLazyMorph: lazyMorph withCache: cache
+testLazyMorph: lazyMorph
 	| prevBounds postBounds|
-	(cache isCurrentlyLoading) ifTrue: [
+	(Imports default isCurrentlyLoading) ifTrue: [
 		self deny: lazyMorph isImageMorph.
 		prevBounds := lazyMorph bounds.
 	
-		cache finishLoading.
+		Imports default finishLoading.
 	
-		self deny: cache isCurrentlyLoading.
+		self deny: Imports default isCurrentlyLoading.
 		postBounds := lazyMorph bounds.
 		self assert: lazyMorph isImageMorph.
 	

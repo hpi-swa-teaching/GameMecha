@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 7/13/2017 16:40",
+	"instvars" : [
+		"cachedElements",
+		"resourceDirectory",
+		"loadingQueue",
+		"loadingFileSize",
+		"loadedFileSize",
+		"loadingLock" ],
+	"name" : "CacheOld",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

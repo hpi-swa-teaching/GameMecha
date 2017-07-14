@@ -1,5 +1,5 @@
 as yet unclassified
-testFilterByRegex
+ntestFilterByRegex
 	|files filtered | 
 	files := GithubRessources parseJson: (GithubRessourcesTest getSampleJson).
 	filtered := GithubRessources filter: files byRegex: '.*'.

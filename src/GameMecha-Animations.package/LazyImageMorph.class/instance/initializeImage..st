@@ -1,7 +1,7 @@
 as yet unclassified
-initializeImage: imageName fromCache: cache
+initializeImage: imageName
 	self borderWidth: 0.
-	cache getTexture: imageName andDo: [:form | 
+	self imports getTexture: imageName andDo: [:form | 
 		self transform: 
 			(form 
 				magnify: form boundingBox 

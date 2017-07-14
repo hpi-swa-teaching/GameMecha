@@ -1,18 +1,17 @@
 as yet unclassified
 testAvoidDoubleCaching
-	|cache m1 m2|
-	cache := ImageCache newOn: 'GMTest/res'.
+	|m1 m2|
 	
+	Imports default clear.
+	m1 := LazyImageMorph newWithImage: 'GMTest/res/img/img1.png'.
+	m2 := LazyImageMorph newWithImage: 'GMTest/res/img/img1.png'.
 	
-	m1 := LazyImageMorph newWithImage: 'img/img1.png' from: cache.
-	m2 := LazyImageMorph newWithImage: 'img/img1.png' from: cache.
+	self assert: Imports default isCurrentlyLoading.
+	self assert: Imports default cachedElements size = 0.
 	
-	self assert: cache isCurrentlyLoading.
-	self assert: cache cachedElements size = 0.
-	
-	cache finishLoading.
+	Imports default finishLoading. "wait for it to finish"
 	
 	self assert: m1 isImageMorph.
 	self assert: m2 isImageMorph.
 	
-	self assert: cache cachedElements size = 1.
+	self assert: Imports default cachedElements size = 1.

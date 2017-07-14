@@ -2,7 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
+		"clear" : "EB 7/13/2017 17:03",
+		"fileSizeOf:" : "EB 7/13/2017 17:38",
 		"get:" : "EB 7/13/2017 11:12",
+		"get:andDo:" : "EB 7/13/2017 17:16",
 		"get:ifAbsentPut:" : "EB 7/13/2017 11:11",
 		"importObject:named:" : "EB 7/13/2017 09:52",
 		"isFileLoaded:" : "EB 7/13/2017 11:32",

@@ -1,14 +1,13 @@
 as yet unclassified
 testCacheProgress
-	|cache progressAfterFirstImage progressAfterSecondImage|
-	cache := ImageCache newOn: 'GMTest'.
+	|progressAfterFirstImage progressAfterSecondImage|
 
-	self assert: (cache progress ) equals: 0.
+	self assert: (Imports default loadingProgress) equals: 0.
 	
-	cache getTexture: 'sheet.png' andDo: [:form | progressAfterFirstImage := cache progress].
-	self assert: (cache progress) equals: 0.
-	cache getTexture: 'smile.png' andDo: [:form | progressAfterSecondImage := cache progress].
-	self assert: (cache progress ) equals: 0.
+	Imports default get: 'GMTest/sheet.png' andDo: [:form | progressAfterFirstImage := Imports default loadingProgress].
+	self assert: (Imports default loadingProgress) equals: 0.
+	Imports default get: 'GMTest/smile.png' andDo: [:form | progressAfterSecondImage := Imports default loadingProgress].
+	self assert: (Imports default loadingProgress) equals: 0.
 	
 	[progressAfterFirstImage isNil] "wait for the first image to load"
 		whileTrue: [Processor yield].

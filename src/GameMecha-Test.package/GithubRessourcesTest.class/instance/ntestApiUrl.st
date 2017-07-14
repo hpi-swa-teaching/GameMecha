@@ -1,5 +1,5 @@
 as yet unclassified
-testApiUrl
+ntestApiUrl
 	"lets test the api url"
 	| url |
 	url := GithubRessources apiUrlForTeam: 'HPI-SWA-Teaching' andProject: 'SWT17-Project-13' andPath: '/' andBranche: 'master'.
