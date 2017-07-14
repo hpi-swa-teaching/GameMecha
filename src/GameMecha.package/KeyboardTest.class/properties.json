@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "EB 5/28/2017 19:20",
+	"commentStamp" : "MB 7/14/2017 17:29",
 	"instvars" : [
-		"keyCharacter" ],
-	"name" : "MockKeyboardEvent",
+		 ],
+	"name" : "KeyboardTest",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "TestCase",
 	"type" : "normal" }
