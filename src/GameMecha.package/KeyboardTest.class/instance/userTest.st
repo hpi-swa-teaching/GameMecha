@@ -4,9 +4,21 @@ userTest
 	|background keyHandler keyBinding pushedAButton testedButtons|
 	
 	testedButtons := OrderedCollection new.
-	testedButtons add: #keyEscape.
 	testedButtons addAll: (65 asCharacter to: 90 asCharacter).
 	testedButtons addAll: (48 asCharacter to: 57 asCharacter).
+	testedButtons add: #keyEscape.
+	testedButtons add: #keyControl.
+	testedButtons add: #keyShift.
+	testedButtons add: #keyCapslock.
+	testedButtons add: #keyAlt.
+	testedButtons add: #keyBackspace.
+	testedButtons add: #keyEnter.
+	testedButtons add: #keyDelete.
+	testedButtons add: #keySpace.
+	testedButtons add: #keyArrowUp.
+	testedButtons add: #keyArrowLeft.
+	testedButtons add: #keyArrowDown.
+	testedButtons add: #keyArrowRight.
 	
 	background := RectangleMorph new openInWorld.
 	keyBinding := KeyBinding new.
