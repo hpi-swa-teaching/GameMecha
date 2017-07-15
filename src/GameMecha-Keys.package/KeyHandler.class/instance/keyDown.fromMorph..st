@@ -4,7 +4,7 @@ keyDown: aKeyboardEvent fromMorph: aMorph
 	| keyCode |
 	keyCode := self preprocessEvent: aKeyboardEvent.
 	
-	"Transcript showln: keyCode asString, '(was ', aKeyboardEvent keyValue asString ,')'."
+	Transcript showln: keyCode asString, '(was ', aKeyboardEvent keyValue asString ,')'.
 	
 	"mark key as pressed"
 	self pressedKeys add: keyCode.
