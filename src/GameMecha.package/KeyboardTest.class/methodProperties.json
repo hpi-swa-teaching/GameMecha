@@ -2,4 +2,5 @@
 	"class" : {
 		"generateKeyboardEventOfType:withKey:" : "MB 7/14/2017 17:51" },
 	"instance" : {
-		"testIsKeyDown" : "MB 7/14/2017 17:54" } }
+		"testIsKeyDown" : "MB 7/14/2017 17:54",
+		"userTest" : "MB 7/15/2017 11:36" } }
