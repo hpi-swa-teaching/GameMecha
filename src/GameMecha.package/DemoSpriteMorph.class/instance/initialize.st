@@ -10,7 +10,7 @@ initialize
 			KeyBinding new
 				bindToKey: #keyEscape;
 				onUpSend: #delete to: self)).
-	self registerKeyboardBindings: keyHandler.	
+	self registerKeyHandler: keyHandler.	
 	
 	"this animation consists of 16 sub-animations that have 40 frames each"
 	self anim: ((((AnimationDefinition

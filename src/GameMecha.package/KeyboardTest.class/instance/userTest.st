@@ -26,7 +26,7 @@ userTest
 	keyBinding onDownDo: [pushedAButton := true].
 	keyHandler := KeyHandler new.
 	keyHandler addBinding: keyBinding as: #anything.
-	background registerKeyboardBindings: keyHandler.
+	background registerKeyHandler: keyHandler.
 	background extent: 800@600.
 		
 	testedButtons do: [:code| |prompt |

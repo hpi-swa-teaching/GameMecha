@@ -1,5 +1,5 @@
 *GameMecha-Keys
-registerKeyboardBindings: aKeyHandler
+registerKeyHandler: aKeyHandler
 	self assureExtension.
 	self extension eventHandler: aKeyHandler. 
 	ActiveHand newKeyboardFocus: self.
