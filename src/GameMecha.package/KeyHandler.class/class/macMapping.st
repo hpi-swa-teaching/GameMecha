@@ -62,7 +62,7 @@ macMapping
 		16r2B -> $,.
 		16r2F -> $..
 		16r2C -> $-.
-		"shift again"
+		16r3C -> self keyShift asCharacter.
 		
 		16r3B -> self keyControl asCharacter.
 		"windows key"
