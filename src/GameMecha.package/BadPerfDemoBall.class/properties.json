@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 6/29/2017 20:37",
+	"instvars" : [
+		"speed",
+		"direction" ],
+	"name" : "BadPerfDemoBall",
+	"pools" : [
+		 ],
+	"super" : "CircleCollider",
+	"type" : "normal" }

@@ -1,0 +1,3 @@
+initializing
+stepTime 
+ ^10.
