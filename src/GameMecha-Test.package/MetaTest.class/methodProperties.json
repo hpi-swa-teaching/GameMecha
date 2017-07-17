@@ -2,9 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		"closeHelpWindowWithLabel:" : "mdlh 7/13/2017 16:54",
-		"openInspectorIfNecessaryOn:withLabel:" : "mdlh 7/13/2017 16:54",
-		"testCommentedMethods" : "mdlh 7/13/2017 16:49",
+		"cleanWorldwithString:" : "mdlh 7/15/2017 10:50",
+		"openInspectorIfNecessaryOn:withLabel:" : "mdlh 7/15/2017 10:50",
+		"testCommentedMethods" : "mdlh 7/15/2017 10:50",
 		"testForClassComments" : "mdlh 7/13/2017 14:10",
 		"testForPointAtMethodEnd" : "mdlh 7/13/2017 14:10",
 		"testNumber1" : "EB 5/6/2017 11:44" } }
