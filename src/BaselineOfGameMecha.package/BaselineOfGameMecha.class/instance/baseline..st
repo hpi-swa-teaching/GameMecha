@@ -9,9 +9,11 @@ baseline: spec
 				package: 'GameMecha-Core' with: [spec requires: #('JSON')];
 				package: 'GameMecha-Keys';
 				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys')];
+				package: 'GameMecha-Collisions';
 				yourself.
 			spec
 				group: 'default' with: #('GameMecha-Core');
 				group: 'keys' with: #('GameMecha-Keys');
-				group: 'tests' with: #('GameMecha-Test')];
+				group: 'tests' with: #('GameMecha-Test');
+				group: 'collisions' with: #('GameMecha-Collisions')];
 				yourself.

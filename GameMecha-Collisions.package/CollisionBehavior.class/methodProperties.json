@@ -1,0 +1,24 @@
+{
+	"class" : {
+		"newOn:" : "mdlh 7/17/2017 22:48" },
+	"instance" : {
+		"collisionGroups" : "mdlh 7/17/2017 19:14",
+		"collisionGroups:" : "mdlh 7/17/2017 19:14",
+		"collisionGroupsIntersectWith:" : "mdlh 7/17/2017 22:57",
+		"collisionHandler" : "mdlh 7/17/2017 19:15",
+		"collisionHandler:" : "mdlh 7/13/2017 13:38",
+		"containedBy:" : "mdlh 7/17/2017 23:13",
+		"contains:" : "mdlh 7/17/2017 23:07",
+		"containsCircle:" : "mdlh 7/17/2017 21:28",
+		"containsPoint:" : "mdlh 7/17/2017 21:29",
+		"containsRect:" : "mdlh 7/17/2017 21:29",
+		"intersects:" : "mdlh 7/17/2017 23:08",
+		"intersects:withMargin:" : "mdlh 7/17/2017 22:57",
+		"intersectsCircle:withMargin:" : "mdlh 7/18/2017 00:02",
+		"intersectsRect:withMargin:" : "mdlh 7/18/2017 00:02",
+		"target" : "mdlh 7/17/2017 22:16",
+		"target:" : "mdlh 7/17/2017 22:17",
+		"touchMargin" : "mdlh 7/18/2017 00:13",
+		"touchMargin:" : "mdlh 7/18/2017 00:13",
+		"touches:" : "mdlh 7/17/2017 19:18",
+		"usesCollisionGroups" : "mdlh 7/17/2017 21:07" } }

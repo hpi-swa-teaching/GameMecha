@@ -1,0 +1,1 @@
+I'm an Extension for Morphs that realizes a rectangular collision bounding/behavior.

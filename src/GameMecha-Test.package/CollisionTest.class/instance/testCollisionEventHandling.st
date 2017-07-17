@@ -1,6 +1,5 @@
 morph
 testCollisionEventHandling
-	
 	| world collisionCounter circleDecorator rectangleDecorator |
 	world := CollisionWorld new.
 	collisionCounter := 0.

@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Collisions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mdlh 7/18/2017 00:53",
+	"instvars" : [
+		 ],
+	"name" : "RectangleCollisionBehavior",
+	"pools" : [
+		 ],
+	"super" : "CollisionBehavior",
+	"type" : "normal" }

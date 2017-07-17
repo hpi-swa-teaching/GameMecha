@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"containedBy:" : "mdlh 7/17/2017 23:14",
+		"containsCircle:" : "mdlh 7/17/2017 22:40",
+		"containsPoint:" : "mdlh 7/17/2017 22:29",
+		"containsRect:" : "mdlh 7/17/2017 22:47",
+		"intersects:withMargin:" : "mdlh 7/18/2017 00:21",
+		"intersectsCircle:withMargin:" : "mdlh 7/18/2017 00:27",
+		"intersectsRect:withMargin:" : "mdlh 7/18/2017 00:23",
+		"radius" : "mdlh 7/17/2017 22:43" } }
