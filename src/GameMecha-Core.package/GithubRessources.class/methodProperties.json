@@ -2,6 +2,7 @@
 	"class" : {
 		"apiUrlForTeam:andProject:andPath:" : "jb 7/11/2017 10:08",
 		"apiUrlForTeam:andProject:andPath:andBranche:" : "jb 7/5/2017 19:17",
+		"enshureRepoForTeam:andProject:andPath:isAt:" : "jb 7/17/2017 22:14",
 		"filter:byRegex:" : "jb 7/5/2017 19:00",
 		"loadJson:" : "jb 7/11/2017 10:10",
 		"parseJson:" : "jb 7/5/2017 19:36" },
