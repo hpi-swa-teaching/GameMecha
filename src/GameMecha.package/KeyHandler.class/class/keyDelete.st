@@ -1,3 +1,0 @@
-keys
-keyDelete
-	^ 127.

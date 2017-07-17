@@ -1,1 +1,0 @@
-A CollisionHandlerHolder is a Trait (Interface) for things that can have collisionHandlers registered on them.

@@ -1,1 +1,0 @@
-thats an obstacle that moves through the world

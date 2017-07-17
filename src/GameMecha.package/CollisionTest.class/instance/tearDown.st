@@ -1,3 +1,0 @@
-supporting
-tearDown 
-	self resetColliders.

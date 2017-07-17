@@ -1,3 +1,0 @@
-preloading
-preload
-	self preload: ''.
