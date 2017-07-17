@@ -1,1 +1,0 @@
-This static class is used to setup our testing environment

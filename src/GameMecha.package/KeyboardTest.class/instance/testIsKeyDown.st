@@ -3,7 +3,7 @@ testIsKeyDown
 	|morph|
 	morph := RectangleMorph new.
 	
-	morph registerKeyboardBindings: KeyHandler new.
+	morph registerKeyHandler: KeyHandler new.
 	
 	self deny: (morph eventHandler isKeyDown: 'a').	
 	(self class generateKeyboardEventOfType: #keyDown withKey: 'a') sentTo: morph.	

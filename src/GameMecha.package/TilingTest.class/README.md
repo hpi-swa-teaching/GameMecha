@@ -1,1 +1,0 @@
-Testing infinite tiling

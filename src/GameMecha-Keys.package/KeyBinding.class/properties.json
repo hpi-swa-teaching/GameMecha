@@ -3,13 +3,16 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		"KeyMap" ],
+		 ],
 	"commentStamp" : "MB 7/12/2017 13:30",
 	"instvars" : [
 		"keys",
 		"handlesAllEvents",
 		"keyDownHandlers",
-		"keyUpHandlers" ],
+		"keyUpHandlers",
+		"keyString",
+		"visualizationDirty",
+		"visualization" ],
 	"name" : "KeyBinding",
 	"pools" : [
 		 ],
