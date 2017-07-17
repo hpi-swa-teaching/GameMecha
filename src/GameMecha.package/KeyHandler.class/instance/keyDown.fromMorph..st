@@ -6,6 +6,9 @@ keyDown: aKeyboardEvent fromMorph: aMorph
 	
 	Transcript showln: keyCode asString, '(was ', aKeyboardEvent keyValue asString ,')'.
 	
+	"invoke keyEvent handlers"
+	self eventHandler do: [:handler | handler value: keyCode].
+	
 	"mark key as pressed"
 	self pressedKeys add: keyCode.
 	

@@ -78,7 +78,7 @@ macMapping
 		16r73 -> Character home.
 		16r74 -> Character pageUp.
 		16r75 -> Character delete.
-		16r77-> Character end.
+		16r77 -> Character end.
 		16r79 -> Character pageDown.
 		
 		16r7E -> Character arrowUp.
