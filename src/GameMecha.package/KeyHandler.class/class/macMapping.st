@@ -11,6 +11,7 @@ macMapping
 		16r13 -> $2.
 		16r14 -> $3.
 		16r15 -> $4.
+		16r17 -> $5.
 		16r16 -> $6.
 		16r1A -> $7.
 		16r1C -> $8.
@@ -61,7 +62,7 @@ macMapping
 		16r2B -> $,.
 		16r2F -> $..
 		16r2C -> $-.
-		"shift again"
+		16r3C -> self keyShift asCharacter.
 		
 		16r3B -> self keyControl asCharacter.
 		"windows key"
@@ -78,7 +79,7 @@ macMapping
 		16r73 -> Character home.
 		16r74 -> Character pageUp.
 		16r75 -> Character delete.
-		16r77 -> Character end.
+		16r77-> Character end.
 		16r79 -> Character pageDown.
 		
 		16r7E -> Character arrowUp.
