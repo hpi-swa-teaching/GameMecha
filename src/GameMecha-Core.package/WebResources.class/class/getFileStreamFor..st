@@ -1,4 +1,5 @@
 as yet unclassified
 getFileStreamFor: localPath
-	^ FileStream newFileNamed: 
-		(self makePathPlatformIndependant: localPath).
+	FileDirectory
+		splitName: (FileDirectory uri: localPath) fullName
+		to: [:dir :file | ^ (FileDirectory on: dir) fileNamed: file].

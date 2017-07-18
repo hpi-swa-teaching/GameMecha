@@ -1,14 +1,15 @@
 as yet unclassified
 testWebResourceLoading
-  |img1 img2 images imageRoot|
+  |imports img1 img2 images imageRoot|
   img1 := 'http://www.carl-bechstein-gymnasium.de/bilder/layout/logo.jpg'.
   img2 := 'https://raw.githubusercontent.com/HPI-SWA-Teaching/SWT17-Project-13/master/default-resources/comic-fire/fireball/fireball_0003.png'.
   images := #('/bauphase/webcam.jpg' '/news/images/einweihung.jpg').
   imageRoot := 'http://www.carl-bechstein-gymnasium.de'.
+  imports := Imports new.
   
   "first, test htttp, jpg and windows file separators"
   self
-    assert: (WebResources ensureFile: img1 isAt: 'GMTest\cbg.jpg');
+    assert: (WebResources ensureFile: img1 isAt: 'GMTest/cbg.jpg');
     assert: ((FileDirectory default / 'GMTest') fileExists: 'cbg.jpg').
 
     "also test https, png and linux separators"
@@ -25,17 +26,17 @@ testWebResourceLoading
     "Debugger halt."
     (Delay forMilliseconds: 800) wait.
   self
-    assert: ((ImageCache newOn: 'GMTest') getTexture: 'cbg.jpg') extent
+    assert: (imports get: 'GMTest/cbg.jpg') extent
     equals: (194@90);
-    assert: ((ImageCache newOn: 'GMTest') getTexture: 'einweihung.jpg') extent
+    assert: (imports get: 'GMTest/einweihung.jpg') extent
     equals: (1090@727);
-    assert: ((ImageCache newOn: 'GMTest') getTexture: 'webcam.jpg') extent
+    assert: (imports get: 'GMTest/webcam.jpg') extent
     equals: (720@576);
     "assert: ((ImageCache newOn: 'webtest') getTexture: 'fire.png') extent
     equals: 512 asPoint;"
     
     "finally, images should not get reloaded if they already exist"
-    deny: (WebResources ensureFile: img1 isAt: 'GMTest\cbg.jpg');
+    deny: (WebResources ensureFile: img1 isAt: 'GMTest/cbg.jpg');
     
     "but they should, if you want to"
-    assert: (WebResources ensureFile: img1 isAt: 'GMTest\cbg.jpg' overwrite: true).
+    assert: (WebResources ensureFile: img1 isAt: 'GMTest/cbg.jpg' overwrite: true).

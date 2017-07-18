@@ -7,7 +7,7 @@ ensureFilesFrom: rootDirectory under: relativeUrls areAt: localPath
   	relativeUrls do: 
     		[:currentPath | downloaded := self 
       	ensureFile: rootDirectory,currentPath 
-      	isAt: localPath,'\',(self getFileName: currentPath).
+      	isAt: localPath,'/',(self getFileName: currentPath).
     	anyDownloaded ifFalse: [anyDownloaded := downloaded]
     	].
 
