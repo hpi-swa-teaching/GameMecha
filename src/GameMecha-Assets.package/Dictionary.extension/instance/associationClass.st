@@ -1,0 +1,4 @@
+*GameMecha-Assets
+associationClass
+
+	^Association.

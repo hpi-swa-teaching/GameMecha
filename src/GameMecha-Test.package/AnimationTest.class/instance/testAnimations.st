@@ -1,12 +1,9 @@
 as yet unclassified
 testAnimations
-	|cache animDef anim testmorph|
-	cache := ImageCache newOn: 'GMTest'.
+	|animDef anim testmorph|
 	animDef := AnimationDefinition
-		fromSpriteSheet: 'sheet.png'
-		on: cache
-		withColumns: 4
-		andRows: 4.
+		fromSpriteSheet: 'GMTest/sheet.png'
+		withDimensions: (4@4).
 	animDef looping: false.
 	animDef frameTime: 50.
 	self assert: 16 equals: animDef frameCount.

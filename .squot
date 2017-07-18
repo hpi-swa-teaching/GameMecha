@@ -1,5 +1,6 @@
 OrderedDictionary {
 	'src\/BaselineOfGameMecha.package' : #SquotCypressCodeSerializer,
+	'src\/GameMecha-Assets.package' : #SquotCypressCodeSerializer,
 	'src\/GameMecha-Core.package' : #SquotCypressCodeSerializer,
 	'src\/GameMecha-Demo.package' : #SquotCypressCodeSerializer,
 	'src\/GameMecha-Keys.package' : #SquotCypressCodeSerializer,

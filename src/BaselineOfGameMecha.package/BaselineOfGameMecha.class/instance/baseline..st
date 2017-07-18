@@ -8,10 +8,12 @@ baseline: spec
 				package: 'JSON' with: [spec repository: 'http://www.squeaksource.com/JSON'];
 				package: 'GameMecha-Core' with: [spec requires: #('JSON')];
 				package: 'GameMecha-Keys';
-				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys')];
+				package: 'GameMecha-Assets';
+				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys' 'assets')];
 				yourself.
 			spec
 				group: 'default' with: #('GameMecha-Core');
 				group: 'keys' with: #('GameMecha-Keys');
+				group: 'assets' with: #('GameMecha-Assets');
 				group: 'tests' with: #('GameMecha-Test')];
 				yourself.

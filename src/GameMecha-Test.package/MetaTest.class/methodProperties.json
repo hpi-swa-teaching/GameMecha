@@ -1,8 +1,9 @@
 {
 	"class" : {
-		 },
+		"test" : "EB 7/12/2017 15:29" },
 	"instance" : {
-		"testCommentedMethods" : "EB 6/29/2017 21:33",
+		"allOurMethods" : "EB 7/13/2017 11:46",
+		"testCommentedMethods" : "EB 7/12/2017 15:58",
 		"testForClassComments" : "EB 6/29/2017 20:54",
-		"testForPointAtMethodEnd" : "EB 6/29/2017 20:39",
+		"testForPointAtMethodEnd" : "EB 7/12/2017 16:01",
 		"testNumber1" : "EB 5/6/2017 11:44" } }

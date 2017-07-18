@@ -3,12 +3,11 @@
 		 },
 	"instance" : {
 		"setUp" : "EB 6/29/2017 18:15",
-		"testAvoidDoubleCaching" : "MB 6/29/2017 20:07",
-		"testBadSquekMultithreating" : "EB 6/29/2017 18:23",
-		"testCacheProgress" : "EB 6/29/2017 20:50",
-		"testFileSize" : "EB 6/29/2017 18:23",
-		"testLazyIO" : "MB 6/29/2017 20:08",
-		"testLazyMorph" : "MB 6/29/2017 20:08",
-		"testLazyMorph:withCache:" : "MB 6/20/2017 11:32",
-		"testPathFormatConversion" : "MB 6/29/2017 20:08",
-		"testPreloading" : "EB 6/29/2017 22:52" } }
+		"testAvoidDoubleCaching" : "EB 7/18/2017 11:52",
+		"testCacheProgress" : "EB 7/18/2017 12:37",
+		"testFileSize" : "EB 7/13/2017 17:50",
+		"testIageLoading" : "EB 7/18/2017 10:36",
+		"testLazyIO" : "EB 7/18/2017 11:48",
+		"testLazyMorph" : "EB 7/13/2017 17:18",
+		"testLazyMorph:" : "EB 7/13/2017 17:18",
+		"testPreloading" : "EB 7/18/2017 10:38" } }
