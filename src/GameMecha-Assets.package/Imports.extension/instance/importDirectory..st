@@ -6,5 +6,5 @@ importDirectory: uriOrDirectory
 		ifFalse: [uriOrDirectory].
 	dir exists ifFalse: [self error: dir fullName , ' does not exist'. ^ #()].
 	^ (dir fileNames
-		collect: [:fileName | (self get: (dir fullNameFor: fileName))])
+		collect: [:fileName | (self getDirectly: (dir fullNameFor: fileName))])
 		select: [:obj | obj notNil].
