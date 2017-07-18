@@ -1,0 +1,3 @@
+*GameMecha-Assets
+imageExtensions
+	^ ImageExtensions.
