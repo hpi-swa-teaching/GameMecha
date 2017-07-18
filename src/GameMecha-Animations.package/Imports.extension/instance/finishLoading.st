@@ -1,3 +1,4 @@
 *GameMecha-Animations-Parallel
 finishLoading
-	"nothing".
+	self isCurrentlyLoading
+		ifTrue: [self loadingLock wait].

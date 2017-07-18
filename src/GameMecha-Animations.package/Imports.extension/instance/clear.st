@@ -1,3 +1,6 @@
 *GameMecha-Animations
 clear
-	self initialize.
+	self initialize;
+		loadingQueue: nil;
+		loadingProgressValues: nil;
+		loadingLock: nil.

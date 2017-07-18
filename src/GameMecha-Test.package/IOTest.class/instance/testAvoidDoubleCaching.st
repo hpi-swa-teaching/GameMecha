@@ -7,11 +7,11 @@ testAvoidDoubleCaching
 	m2 := LazyImageMorph newWithImage: 'GMTest/res/img/img1.png'.
 	
 	self assert: Imports default isCurrentlyLoading.
-	self assert: Imports default cachedElements size = 0.
+	self assert: Imports default imports size = 0.
 	
 	Imports default finishLoading. "wait for it to finish"
 	
 	self assert: m1 isImageMorph.
 	self assert: m2 isImageMorph.
 	
-	self assert: Imports default cachedElements size = 1.
+	self assert: Imports default imports size = 1.

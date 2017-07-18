@@ -1,3 +1,3 @@
 *GameMecha-Animations-Parallel
 isCurrentlyLoading
-	^ false.
+	^ self loadingQueue isEmpty not.

@@ -1,7 +1,6 @@
 *GameMecha-Animations-Parallel
-get: name andDo: handler
-	|obj|
-	"TODO: lazy"
-	obj := self get: name ifAbsentPut: [self importFileNamed: name].
-	handler value: obj.
-	^ obj.
+get: path andDo: aBlockClosure
+	^ self imports
+		at: (self normalizeFileName: path)
+		ifPresent: [:object | aBlockClosure value: object]
+		ifAbsent: [self insertIntoQueue: (self normalizeFileName: path) andDo: aBlockClosure].
