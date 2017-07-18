@@ -1,6 +1,7 @@
 *GameMecha-Animations-IO
 importDirectoryWithSubdirectories: directoryOrName 
 	| dir forms |
+	"todo cleanup"
 	dir := directoryOrName isString
 				ifTrue: [FileDirectory default directoryNamed: directoryOrName]
 				ifFalse: [directoryOrName].
