@@ -1,5 +1,3 @@
 as yet unclassified
 getFileStreamFor: localPath
-	FileDirectory
-		splitName: (FileDirectory uri: localPath) fullName
-		to: [:dir :file | ^ (FileDirectory on: dir) fileNamed: file].
+	^ FileStream newFileNamed: (FileDirectory uri: localPath) fullName.

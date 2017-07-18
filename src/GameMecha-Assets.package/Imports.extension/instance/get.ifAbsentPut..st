@@ -4,4 +4,4 @@ get: name ifAbsentPut: computeBlock
 	normalized := self normalizeFileName: name.
 	^ imports
 		at: normalized
-		ifAbsentPut: computeBlock.
+		ifAbsentPut: [computeBlock cull: normalized].
