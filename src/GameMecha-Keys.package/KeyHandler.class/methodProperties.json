@@ -25,6 +25,8 @@
 	"instance" : {
 		"WASDVector" : "EB 6/1/2017 10:37",
 		"addBinding:as:" : "MB 7/13/2017 17:56",
+		"addBindingFromKeys:as:" : "MB 7/18/2017 11:46",
+		"addBindingFromKeys:as:named:" : "MB 7/18/2017 11:47",
 		"addEventHandler:" : "MB 7/16/2017 22:33",
 		"arrowKeyVector" : "EB 6/1/2017 10:10",
 		"bindingFor:" : "MB 7/13/2017 17:57",
