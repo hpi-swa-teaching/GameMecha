@@ -1,6 +1,6 @@
 *GameMecha-Assets
 importObject: anImage named: aName 
-	imports
+	self imports
 		at: aName
 		ifPresent: [:value | Error signal: 'duplicate key: ', aName]
 		ifAbsentPut: anImage.
