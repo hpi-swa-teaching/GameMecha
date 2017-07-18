@@ -1,3 +1,3 @@
 *GameMecha-Assets-Parallel
 startLoadingThread
-	[self burndownQueue. self loadingLock signal] fork.
+	[Processor yield. self burndownQueue. self loadingLock signal] fork.
