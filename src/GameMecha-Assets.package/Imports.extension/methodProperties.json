@@ -1,6 +1,8 @@
 {
 	"class" : {
-		 },
+		"imageExtensions" : "EB 7/18/2017 10:27",
+		"imageExtensions:" : "EB 7/18/2017 10:27",
+		"initialize" : "EB 7/18/2017 10:27" },
 	"instance" : {
 		"addToLoadedFileSize:" : "EB 7/18/2017 11:35",
 		"addToLoadingFileSize:" : "EB 7/18/2017 11:50",
