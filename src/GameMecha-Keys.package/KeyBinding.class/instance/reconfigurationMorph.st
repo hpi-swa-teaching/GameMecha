@@ -7,7 +7,7 @@ reconfigurationMorph
 	add := SimpleButtonMorph newWithLabel: 'Add'.
 	border := 4.
 	self visualization: RectangleMorph new.
-	stringMorph := self keyString asMorph.
+	stringMorph := (self label, ' is bound to: ',self keyString) asMorph.
 	self visualization addMorph: stringMorph.
 	self visualization addMorph: add.
 	self visualization addMorph: reset.

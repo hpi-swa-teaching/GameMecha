@@ -1,14 +1,11 @@
 as yet unclassified
 testKeyActions
 	"Testing Actions"
-	|morph up|
+	|morph|
 	morph := RectangleMorph new.
 	
 	morph registerKeyHandler: KeyHandler new.
-	up := KeyBinding new.
-	up bindToKey: #keyArrowUp.
-	up bindToKey: 'w'.
-	morph eventHandler addBinding: up as: #up. 
+	morph eventHandler addBindingFromKeys: {#keyArrowUp. 'w'} as: #up. 
 	
 	self deny: (morph eventHandler isActionKeyDown: #up).	
 	(self class generateKeyboardEventOfType: #keyDown withKey: 'w') sentTo: morph.	

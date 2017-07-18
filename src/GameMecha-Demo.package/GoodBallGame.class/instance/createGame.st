@@ -7,41 +7,11 @@ createGame
 	self bounds: (10 asPoint corner: 800@600).
 	self keyboard: KeyHandler new.
 	
-	self keyboard 
-		addBinding: 
-			(KeyBinding new
-				bindToKey: #keyEscape;
-				yourself) 
-		as: #exit.
-	self keyboard 
-		addBinding: 
-			(KeyBinding new
-				bindToKey: #keyArrowUp;
-				bindToKey: 'w';
-				yourself) 
-		as: #up.
-	self keyboard 
-		addBinding: 
-			(KeyBinding new
-				bindToKey: #keyArrowLeft;
-				bindToKey: 'a';
-				yourself) 
-		as: #left.
-	self keyboard 
-		addBinding: 
-			(KeyBinding new
-				bindToKey: #keyArrowDown;
-				bindToKey: 's';
-				yourself) 
-		as: #down.
-	self keyboard 
-		addBinding: 
-			(KeyBinding new
-				bindToKey: #keyArrowRight;
-				bindToKey: 'd';
-				yourself) 
-		as: #right.
-		
+	self keyboard addBindingFromKeys: #keyEscape as: #exit.
+	self keyboard addBindingFromKeys: {#keyArrowUp. 'w'} as: #up.
+	self keyboard addBindingFromKeys: {#keyArrowLeft. 'a'} as: #left.
+	self keyboard addBindingFromKeys: {#keyArrowDown. 's'} as: #down.
+	self keyboard addBindingFromKeys: {#keyArrowRight. 'd'} as: #right.
 	
 	self registerKeyHandler: self keyboard.
 	self addCollider: ((GoodBallGameObstacle wrap: (LazyImageMorph newWithImage: 'smile.png' from: cache placeHolder: Color red bounds: (20@300 extent: 60@60)))).

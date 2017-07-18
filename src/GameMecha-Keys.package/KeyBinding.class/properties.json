@@ -12,7 +12,8 @@
 		"keyUpHandlers",
 		"keyString",
 		"visualizationDirty",
-		"visualization" ],
+		"visualization",
+		"label" ],
 	"name" : "KeyBinding",
 	"pools" : [
 		 ],
