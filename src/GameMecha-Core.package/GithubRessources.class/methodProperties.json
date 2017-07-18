@@ -5,6 +5,10 @@
 		"enshureRepoForTeam:andProject:andPath:isAt:" : "jb 7/17/2017 22:14",
 		"filter:byRegex:" : "jb 7/5/2017 19:00",
 		"loadJson:" : "jb 7/11/2017 10:10",
-		"parseJson:" : "jb 7/5/2017 19:36" },
+		"parseJson:" : "jb 7/18/2017 15:14" },
 	"instance" : {
-		 } }
+		"branch" : "jb 7/18/2017 15:05",
+		"branch:" : "jb 7/18/2017 15:05",
+		"extensionFilter" : "jb 7/18/2017 15:01",
+		"extensionFilter:" : "jb 7/18/2017 15:00",
+		"loadForTeam:andProject:andPath:toDir:" : "jb 7/18/2017 15:25" } }
