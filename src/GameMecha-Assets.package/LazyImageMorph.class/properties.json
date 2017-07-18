@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Assets",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 6/29/2017 20:12",
+	"instvars" : [
+		 ],
+	"name" : "LazyImageMorph",
+	"pools" : [
+		 ],
+	"super" : "RectangleMorph",
+	"type" : "normal" }

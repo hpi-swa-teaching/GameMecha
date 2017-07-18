@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Assets",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EB 6/29/2017 19:46",
+	"instvars" : [
+		"definition",
+		"stopwatch" ],
+	"name" : "Animation",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
