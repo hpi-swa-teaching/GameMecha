@@ -2,5 +2,5 @@
 importObject: anImage named: aName 
 	imports
 		at: aName
-		ifPresent: [Error signal: 'duplicate key!']
+		ifPresent: [:value | Error signal: 'duplicate key: ', aName]
 		ifAbsentPut: anImage.

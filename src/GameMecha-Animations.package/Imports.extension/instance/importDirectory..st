@@ -1,20 +1,10 @@
 *GameMecha-Animations-IO
-importDirectory: directoryOrName
-	| dir extensions forms |
-	"todo cleanup"
-	dir := directoryOrName isString
-				ifTrue: [FileDirectory default directoryNamed: directoryOrName]
-				ifFalse: [directoryOrName].
-	dir exists
-		ifFalse: [self error: dir fullName , ' does not exist'.
-			^ #()].
-	extensions := (ImageReadWriter allTypicalFileExtensions add: 'form';
-				 yourself)
-				collect: [:ex | '.' , ex].
-	forms := OrderedCollection new.
-	dir fileNames
-		do: [:fileName | | fullName | (fileName endsWithAnyOf: extensions)
-				ifTrue: [fullName := dir fullNameFor: fileName.
-					(self importImageFromFileNamed: fullName)
-						ifNotNil: [:form | forms add: form]]].
-	^ forms.
+importDirectory: uriOrDirectory
+	| dir |
+	dir := uriOrDirectory isString
+		ifTrue: [FileDirectory uri: uriOrDirectory]
+		ifFalse: [uriOrDirectory].
+	dir exists ifFalse: [self error: dir fullName , ' does not exist'. ^ #()].
+	^ (dir fileNames
+		collect: [:fileName | (self get: (dir fullNameFor: fileName))])
+		select: [:obj | obj notNil].

@@ -1,4 +1,4 @@
-*GameMecha-Animations
+*GameMecha-Animations-Parallel
 get: name andDo: handler
 	|obj|
 	"TODO: lazy"
