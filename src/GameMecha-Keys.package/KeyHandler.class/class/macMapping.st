@@ -1,6 +1,6 @@
 as yet unclassified
 macMapping
-	^ {
+	^ Dictionary newFrom: {
 		16r35 -> Character escape.
 		
 		"row per row from the old mac layout"
@@ -105,4 +105,4 @@ macMapping
 		16r41 -> $,.
 		16r45 -> $+. "TODO: maybe 4E instead"
 		16r4C -> Character cr.
-	} asDictionary.
+	}.

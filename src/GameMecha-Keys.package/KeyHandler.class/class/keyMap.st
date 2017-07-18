@@ -1,6 +1,6 @@
 as yet unclassified
 keyMap
-	KeyMap ifNil: [KeyMap := {
+	KeyMap ifNil: [KeyMap := Dictionary newFrom: {
 		$! -> $1.
 		$" -> $2.
 		$§ -> $3.
@@ -12,5 +12,5 @@ keyMap
 		$) -> $9.
 		$= -> $0.
 		$? -> $ß.
-		} asDictionary].
+		}].
 	^ KeyMap.
