@@ -4,7 +4,7 @@
 	"instance" : {
 		"setUp" : "EB 6/29/2017 18:15",
 		"testAvoidDoubleCaching" : "EB 7/18/2017 11:52",
-		"testCacheProgress" : "EB 7/18/2017 11:25",
+		"testCacheProgress" : "EB 7/18/2017 12:37",
 		"testFileSize" : "EB 7/13/2017 17:50",
 		"testIageLoading" : "EB 7/18/2017 10:36",
 		"testLazyIO" : "EB 7/18/2017 11:48",

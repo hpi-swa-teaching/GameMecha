@@ -11,4 +11,4 @@ at: key ifPresent: oneArgBlock ifAbsentPut: absentBlock
 		 ^oneArgBlock value: element value].
 	value := absentBlock value.
 	self atNewIndex: index put: (self associationClass key: key value: value).
-	^value
+	^value.
