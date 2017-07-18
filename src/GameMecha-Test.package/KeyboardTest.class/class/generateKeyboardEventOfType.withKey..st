@@ -6,4 +6,4 @@ generateKeyboardEventOfType: aSymbol withKey: aCharacterOrSymbol
 		position: nil
 		keyValue: (KeyHandler preprocessInput: aCharacterOrSymbol)
 		hand: nil
-		stamp: Time eventMillisecondClock.
+		stamp: Time millisecondClockValue.
