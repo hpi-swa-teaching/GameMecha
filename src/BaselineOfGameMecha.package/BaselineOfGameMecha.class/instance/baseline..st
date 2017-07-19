@@ -7,7 +7,7 @@ baseline: spec
 			spec
 				package: 'JSON' with: [spec repository: 'http://www.squeaksource.com/JSON'];
 				package: 'VB-Regex' with: [spec repository: 'http://www.squeaksource.com/Regex'];
-				package: 'GameMecha-Core' with: [spec requires: #('JSON')];
+				package: 'GameMecha-Core' with: [spec requires: #('JSON' 'VB-Regex')];
 				package: 'GameMecha-Keys';
 				package: 'GameMecha-Assets';
 				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys' 'assets')];
