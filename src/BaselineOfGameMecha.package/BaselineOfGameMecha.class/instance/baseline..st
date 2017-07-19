@@ -4,9 +4,10 @@ baseline: spec
 	spec
 		for: #'common'
 		do: [
+			Smalltalk at: #RxParser ifAbsent:[spec "add regex only if not there yet"
+				package: 'VB-Regex' with: [spec repository: 'http://www.squeaksource.com/Regex']].
 			spec
 				package: 'JSON' with: [spec repository: 'http://www.squeaksource.com/JSON'];
-				package: 'VB-Regex' with: [spec repository: 'http://www.squeaksource.com/Regex'];
 				package: 'GameMecha-Core' with: [spec requires: #('JSON' 'VB-Regex')];
 				package: 'GameMecha-Keys';
 				package: 'GameMecha-Assets';
