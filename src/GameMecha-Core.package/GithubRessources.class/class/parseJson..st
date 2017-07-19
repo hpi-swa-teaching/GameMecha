@@ -1,8 +1,6 @@
 as yet unclassified
 parseJson: jsonString
-"retruns a list of files"
-| ret json |
+| ret |
 ret := Dictionary new.
-json := (Json newWithConstructors: {Object.}) readFrom: jsonString readStream.
-json do: [:o | (o at: 'download_url') ifNotNil: [ret at: (o at: 'path') ifAbsentPut: (o at: 'download_url')]].
+ret addAll: (self parseJson: jsonString withSubdirCallback: [:url | Transcript show: url. ret addAll: (self parseJson: (self loadJson: url)).]).
 ^ ret.
