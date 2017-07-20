@@ -1,4 +1,4 @@
-as yet unclassified
+displaying
 drawOn: aCanvas
 	| style scaledImage |
 	(style := self borderStyle) ifNotNil:[

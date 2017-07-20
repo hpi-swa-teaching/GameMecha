@@ -1,4 +1,4 @@
-as yet unclassified
+transformation
 initializeImage: imageName
 	self borderWidth: 0.
 	self imports get: imageName andDo: [:form | 

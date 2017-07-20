@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 newWithImage: imageName from: cache
 	^ self new
 		color: Color green;

@@ -1,4 +1,4 @@
-accessing
+imageList
 imageAtIndex: index
 	^self imageAtCoordinates:
 		((index - 1) \\ self columns + 1) @

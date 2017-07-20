@@ -1,3 +1,3 @@
-as yet unclassified
+internals
 getFileName: url
-  ^ (url subStrings: '/') last.
+	^ (url subStrings: '/') last.

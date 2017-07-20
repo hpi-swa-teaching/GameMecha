@@ -1,4 +1,4 @@
-accessing
+imageList
 imageAtCoordinates: coordinates
 	^ self imports
 		get: (self cacheKeyOfSprite: coordinates)

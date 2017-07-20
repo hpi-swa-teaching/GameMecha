@@ -1,3 +1,3 @@
-*GameMecha-Assets
+initialize
 imageExtensions: anObject
 	ImageExtensions := anObject.

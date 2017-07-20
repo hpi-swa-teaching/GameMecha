@@ -1,4 +1,4 @@
-accessing
+initialize
 initialize
 	super initialize.
 	self stopwatch: Stopwatch new.

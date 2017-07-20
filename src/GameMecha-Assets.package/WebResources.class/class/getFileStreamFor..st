@@ -1,3 +1,3 @@
-as yet unclassified
+internals
 getFileStreamFor: localPath
 	^ FileStream newFileNamed: (FileDirectory uri: localPath) fullName.

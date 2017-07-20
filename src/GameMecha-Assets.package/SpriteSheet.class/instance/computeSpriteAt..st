@@ -1,4 +1,4 @@
-accessing
+subImages
 computeSpriteAt: coordinates
-	^ (self imports get: self fileName)
+	^ self spriteForm
 		contentsOfArea: (self coordinatesToBounds: coordinates).

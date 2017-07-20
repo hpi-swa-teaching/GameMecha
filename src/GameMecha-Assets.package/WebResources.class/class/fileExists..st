@@ -1,4 +1,4 @@
-as yet unclassified
+internals
 fileExists: localPath
 	FileDirectory
 		splitName: (FileDirectory uri: localPath) fullName

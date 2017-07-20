@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 newWithImage: imageName from: cache placeHolder: color
 	^ self new
 		color: color;

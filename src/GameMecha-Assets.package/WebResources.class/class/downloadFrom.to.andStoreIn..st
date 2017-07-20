@@ -1,4 +1,4 @@
-as yet unclassified
+internals
 downloadFrom: url to: localPath andStoreIn: cache
 	"use WebClient to create a http-connection and download the contents of an url to a file"
 	|resp wc out|

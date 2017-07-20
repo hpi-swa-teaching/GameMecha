@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 newWithImage: imageName placeHolder: color bounds: bounds
 	^ self new
 		bounds: bounds;

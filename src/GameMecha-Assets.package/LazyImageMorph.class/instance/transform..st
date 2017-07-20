@@ -1,4 +1,4 @@
-as yet unclassified
+transformation
 transform: form
 	| sub |
 	sub := self createRealImage: form.

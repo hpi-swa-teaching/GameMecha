@@ -1,4 +1,4 @@
-as yet unclassified
+internals
 deleteIfExists: localPath
 	FileDirectory
 		splitName: (FileDirectory uri: localPath) fullName

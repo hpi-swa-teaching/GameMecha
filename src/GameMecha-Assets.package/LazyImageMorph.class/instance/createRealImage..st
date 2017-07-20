@@ -1,4 +1,4 @@
-as yet unclassified
+transformation
 createRealImage: form
 	^ ImageMorph new
 		image: form;
