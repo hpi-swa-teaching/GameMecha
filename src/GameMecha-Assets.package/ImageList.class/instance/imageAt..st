@@ -1,3 +1,3 @@
-accessing
+imageList
 imageAt: index
 	self subclassResponsibility.

@@ -1,4 +1,4 @@
-accessing
+geometry
 extent: aPoint	
 	"this is roughly the code of Morph>>extent:"
 	"(to bypass ImageMorphs tenacity to new extents)"

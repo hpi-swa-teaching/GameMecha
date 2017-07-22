@@ -1,4 +1,4 @@
-accessing
+stepping and presenter
 step
 	super step.
 	self nextBallCounter: self nextBallCounter + 1.

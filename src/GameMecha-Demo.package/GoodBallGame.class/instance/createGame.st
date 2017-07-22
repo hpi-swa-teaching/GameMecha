@@ -1,6 +1,5 @@
 initializing
 createGame
-	|waterMorph|
 	WebResources ensureFile: 'http://colpa.infine.casa:81/default-resources/other/smile.png' isAt: 'GMTest/smile.png'.
 	super initialize.
 	self bounds: (10 asPoint corner: 800@600).
@@ -23,13 +22,12 @@ createGame
 	ball keyboard: self keyboard.
 	self addCollider: ball.
 	
-	waterMorph := RepeatingImageMorph new.
-	waterMorph image: (Imports default get: 'GMTest/smile.png').
-	waterMorph extent: 120@130.
-	waterMorph baseScale: 0.3@0.7.
-	waterMorph offset: 10@20.
-	water := GoodBallGameObstacle wrap: waterMorph.
-	
+	water := GoodBallGameObstacle wrap: (RepeatingImageMorph new
+			image: (Imports default get: 'GMTest/smile.png');
+			extent: 120@130;
+			baseScale: 0.3@0.7;
+			offset: 10@20;
+			yourself).
 	self addCollider: (water
 		position: (20@100);
 		yourself).

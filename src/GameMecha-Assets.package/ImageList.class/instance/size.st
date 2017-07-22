@@ -1,3 +1,3 @@
-accessing
+imageList
 size
 	self subclassResponsibility.

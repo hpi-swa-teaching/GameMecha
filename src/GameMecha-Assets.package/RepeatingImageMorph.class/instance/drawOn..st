@@ -1,4 +1,4 @@
-displaying
+drawing
 drawOn: aCanvas
 	| style scaledImage |
 	(style := self borderStyle) ifNotNil:[
