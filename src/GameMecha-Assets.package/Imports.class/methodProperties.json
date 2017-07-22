@@ -32,7 +32,6 @@
 		"initialize" : "sd 5/11/2003 18:17",
 		"insertIntoQueue:andDo:" : "EB 7/18/2017 15:34",
 		"isCurrentlyLoading" : "EB 7/18/2017 11:27",
-		"isFileLoaded:" : "EB 7/13/2017 11:32",
 		"isLoaded:" : "EB 7/13/2017 11:39",
 		"loadingLock" : "EB 7/18/2017 11:23",
 		"loadingLock:" : "EB 7/18/2017 11:23",

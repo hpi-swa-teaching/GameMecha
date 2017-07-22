@@ -5,7 +5,7 @@ testSpriteLoading
 	fileName := 'GMTest/sheet.png'.
 	spriteSheet := SpriteSheet fromFile: fileName withDimensions: 4@4.
 	spriteSheet imageAt: 2@1.
-	self assert: (imports isFileLoaded: fileName).
+	self assert: (imports isLoaded: fileName).
 	self assert: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 2@1))."already requested -> cached"
 	self deny: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 1@2))."not yet requested -> not cached"
 	self deny: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 5@5))."out of bounds -> not cached"

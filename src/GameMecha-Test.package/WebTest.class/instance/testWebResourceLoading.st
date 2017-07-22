@@ -24,7 +24,6 @@ testWebResourceLoading
   
     "now check, if the images can be loaded into squeak corrently"
     "Debugger halt."
-    (Delay forMilliseconds: 800) wait.
   self
     assert: (imports get: 'GMTest/cbg.jpg') extent
     equals: (194@90);
