@@ -14,8 +14,7 @@ initialize
 	
 	"this animation consists of 16 sub-animations that have 40 frames each"
 	self anim: ((((AnimationDefinition
-			fromSpriteSheet: 'bastion_running.png'
-			on: (ImageCache newOn: 'GMTest')
+			fromSpriteSheet: 'GMTest/bastion_running.png'
 			withColumns: 45
 			andRows: 15)
 		looping: true;
