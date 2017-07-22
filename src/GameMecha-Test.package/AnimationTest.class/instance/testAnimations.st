@@ -2,9 +2,7 @@ as yet unclassified
 testAnimations
 	|animDef anim testmorph|
 	animDef := AnimationDefinition
-		fromSpriteSheet: 'GMTest/sheet.png'
-		withColumns: 4
-		andRows: 4.
+		fromSpriteSheet: (SpriteSheet fromFile: 'GMTest/sheet.png' rows: 4 columns: 4).
 	animDef looping: false.
 	animDef frameTime: 50.
 	self assert: 16 equals: animDef frameCount.

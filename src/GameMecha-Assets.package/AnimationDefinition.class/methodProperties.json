@@ -1,6 +1,6 @@
 {
 	"class" : {
-		"fromSpriteSheet:withColumns:andRows:" : "EB 7/22/2017 17:53" },
+		"fromSpriteSheet:" : "MB 7/22/2017 17:58" },
 	"instance" : {
 		"endIndex" : "MB 6/21/2017 18:18",
 		"endIndex:" : "MB 6/21/2017 18:18",
@@ -17,6 +17,6 @@
 		"spriteSheet:" : "EB 7/13/2017 10:41",
 		"startIndex" : "MB 6/21/2017 18:18",
 		"startIndex:" : "MB 6/21/2017 18:18",
-		"subAnimationFrom:to:" : "EB 7/22/2017 17:36",
+		"subAnimationFrom:to:" : "MB 7/22/2017 17:54",
 		"totalTime" : "EB 6/20/2017 11:49",
 		"transformIndex:" : "MB 6/21/2017 19:36" } }

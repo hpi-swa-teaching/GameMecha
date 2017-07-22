@@ -1,3 +1,3 @@
 imageList
 size
-	^ self columnsAndRows area.
+	^ self columns * self rows.

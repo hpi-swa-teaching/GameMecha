@@ -5,5 +5,5 @@ subAnimationFrom: startIndex to: endIndex
 		spriteSheet: self spriteSheet;
 		looping: self looping;
 		startIndex: startIndex + self startIndex - 1;
-		endIndex: endIndex;
+		endIndex: endIndex + self startIndex - 1;
 		yourself.
