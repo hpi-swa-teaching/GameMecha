@@ -3,7 +3,7 @@ testSpriteLoading
 	| fileName spriteSheet imports selfMadeTestForm testForm indexTestForm |
 	imports := Imports default.
 	fileName := 'GMTest/sheet.png'.
-	spriteSheet := SpriteSheet fromFile: fileName withDimensions: 4@4.
+	spriteSheet := SpriteSheet fromFile: fileName rows: 4 columns: 4.
 	spriteSheet imageAt: 2@1.
 	self assert: (imports isLoaded: fileName).
 	self assert: (imports isLoaded: (spriteSheet cacheKeyOfSprite: 2@1))."already requested -> cached"
