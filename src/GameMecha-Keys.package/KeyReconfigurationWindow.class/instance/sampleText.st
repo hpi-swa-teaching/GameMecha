@@ -1,0 +1,3 @@
+accessing
+sampleText
+ 	^ 'Hallo Welt'.

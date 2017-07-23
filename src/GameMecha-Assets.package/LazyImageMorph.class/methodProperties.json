@@ -1,0 +1,20 @@
+{
+	"class" : {
+		"newWithImage:" : "EB 7/13/2017 17:10",
+		"newWithImage:bounds:" : "EB 7/13/2017 17:10",
+		"newWithImage:extent:" : "EB 7/13/2017 17:09",
+		"newWithImage:from:" : "MB 6/26/2017 14:43",
+		"newWithImage:from:bounds:" : "MB 6/26/2017 14:43",
+		"newWithImage:from:extent:" : "MB 6/26/2017 14:43",
+		"newWithImage:from:placeHolder:" : "MB 6/26/2017 14:43",
+		"newWithImage:from:placeHolder:bounds:" : "MB 6/26/2017 14:43",
+		"newWithImage:from:placeHolder:extent:" : "MB 6/26/2017 14:43",
+		"newWithImage:placeHolder:" : "EB 7/13/2017 17:09",
+		"newWithImage:placeHolder:bounds:" : "EB 7/13/2017 17:08",
+		"newWithImage:placeHolder:extent:" : "EB 7/13/2017 17:07" },
+	"instance" : {
+		"createRealImage:" : "MB 6/18/2017 16:55",
+		"imports" : "EB 7/13/2017 18:06",
+		"initializeImage:" : "EB 7/18/2017 10:17",
+		"initializeImage:fromCache:" : "MB 6/26/2017 14:43",
+		"transform:" : "EB 7/22/2017 18:28" } }

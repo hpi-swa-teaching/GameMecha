@@ -1,0 +1,9 @@
+{
+	"class" : {
+		"generateKeyboardEventOfType:withKey:" : "EB 7/20/2017 10:28" },
+	"instance" : {
+		"testIsKeyDown" : "MB 7/15/2017 16:36",
+		"testKeyActions" : "MB 7/18/2017 11:21",
+		"testKeyBindingHandlers" : "EB 7/20/2017 09:50",
+		"testKeyBindingMessageSending" : "MB 7/15/2017 16:36",
+		"userTest" : "MB 7/15/2017 16:36" } }

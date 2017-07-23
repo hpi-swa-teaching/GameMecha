@@ -10,5 +10,5 @@
 	"name" : "BadPerfDemoOstacle",
 	"pools" : [
 		 ],
-	"super" : "RectangleCollider",
+	"super" : "RectangleMorph",
 	"type" : "normal" }

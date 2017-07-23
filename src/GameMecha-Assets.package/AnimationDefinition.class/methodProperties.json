@@ -1,0 +1,28 @@
+{
+	"class" : {
+		"fromSpriteSheet:" : "MB 7/22/2017 17:58",
+		"fromSpriteSheet:on:withColumns:andRows:" : "MB 6/21/2017 19:54" },
+	"instance" : {
+		"cache" : "EB 6/20/2017 14:41",
+		"cache:" : "EB 6/20/2017 14:41",
+		"endIndex" : "MB 6/21/2017 18:18",
+		"endIndex:" : "MB 6/21/2017 18:18",
+		"frameCount" : "MB 6/21/2017 19:01",
+		"frameTime" : "EB 6/20/2017 14:41",
+		"frameTime:" : "EB 6/20/2017 14:41",
+		"imageAt:" : "EB 7/13/2017 10:42",
+		"initialize" : "MB 6/21/2017 18:11",
+		"looping" : "EB 6/20/2017 14:41",
+		"looping:" : "EB 6/20/2017 14:41",
+		"new" : "EB 6/20/2017 12:11",
+		"split:" : "MB 6/21/2017 19:42",
+		"splitAndStart:" : "MB 6/21/2017 13:58",
+		"spritePath" : "MB 6/21/2017 18:14",
+		"spritePath:" : "MB 6/21/2017 18:14",
+		"spriteSheet" : "EB 7/13/2017 10:41",
+		"spriteSheet:" : "EB 7/13/2017 10:41",
+		"startIndex" : "MB 6/21/2017 18:18",
+		"startIndex:" : "MB 6/21/2017 18:18",
+		"subAnimationFrom:to:" : "MB 7/22/2017 18:23",
+		"totalTime" : "EB 6/20/2017 11:49",
+		"transformIndex:" : "MB 6/21/2017 19:36" } }

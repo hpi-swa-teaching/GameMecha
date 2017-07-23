@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "MB 7/14/2017 17:29",
+	"instvars" : [
+		 ],
+	"name" : "KeyboardTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

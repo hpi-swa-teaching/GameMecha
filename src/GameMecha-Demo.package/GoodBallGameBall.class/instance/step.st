@@ -1,7 +1,6 @@
 initializing
 step
-	self position: self position
-		+ (self keyboard WASDVector * 10 asPoint)
-		+ (self keyboard arrowKeyVector * 3 asPoint).
-	self color: ((self keyboard isKeyDown: $1)
-		ifTrue: [Color green] ifFalse: [Color red]).
+	(self keyboard isActionKeyDown: #up) ifTrue: [self moveUp].
+	(self keyboard isActionKeyDown: #down) ifTrue: [self moveDown].
+	(self keyboard isActionKeyDown: #left) ifTrue: [self moveLeft].
+	(self keyboard isActionKeyDown: #right) ifTrue: [self moveRight].

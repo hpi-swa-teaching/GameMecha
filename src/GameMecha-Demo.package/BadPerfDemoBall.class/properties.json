@@ -11,5 +11,5 @@
 	"name" : "BadPerfDemoBall",
 	"pools" : [
 		 ],
-	"super" : "CircleCollider",
+	"super" : "CircleMorph",
 	"type" : "normal" }

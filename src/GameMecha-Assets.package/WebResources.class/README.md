@@ -1,0 +1,2 @@
+WebResources is a static class that provides utility functions to download resources from the internet.
+Use the ensure: - methods to download the content of URLs to local files, if these files do not exist yet.

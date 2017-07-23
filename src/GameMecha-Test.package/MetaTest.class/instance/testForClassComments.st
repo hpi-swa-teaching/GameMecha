@@ -1,5 +1,6 @@
 tests
 testForClassComments
+	"TODO: maybe make a allOurClasses"
 	"fail, if any class has no comment"
 	|uncommentedClasses|
 	uncommentedClasses := ((Smalltalk allClasses 

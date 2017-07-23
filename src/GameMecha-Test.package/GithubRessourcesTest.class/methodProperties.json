@@ -2,7 +2,10 @@
 	"class" : {
 		"getSampleJson" : "jb 7/11/2017 10:13" },
 	"instance" : {
-		"testApiUrl" : "jb 7/11/2017 10:13",
-		"testFilterByRegex" : "jb 7/11/2017 10:09",
-		"testLoadJson" : "jb 7/5/2017 19:33",
-		"testParseJson" : "jb 7/11/2017 10:09" } }
+		"ntestApiUrl" : "EB 7/13/2017 16:42",
+		"ntestFilterByRegex" : "EB 7/13/2017 16:45",
+		"ntestLoadJson" : "EB 7/13/2017 16:45",
+		"ntestParseJson" : "EB 7/13/2017 16:45",
+		"testFilterByRegex" : "jb 7/19/2017 11:35",
+		"testParseJson" : "jb 7/18/2017 16:30",
+		"testParseWithSubdirs" : "jb 7/19/2017 11:30" } }

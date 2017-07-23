@@ -1,15 +1,9 @@
-tests
+best category
 testForPointAtMethodEnd
 	"fail, if any Method inside the GameMecha-package does not end with a dot."
-	|classes methods|
-	classes := (Smalltalk allClasses 
-		select: [:class | class category asString beginsWith: 'GameMecha']).
+	|methods|
 	
-	methods := ((((classes
-		collect:[:class | class methodDictionary associations])flatten union: (classes
-		collect: [:class | class class methodDictionary associations]) flatten) 
-		select:[:method| ('*.' match: method value getSource string) not])
-		asOrderedCollection sorted)
-		collect: [:method | method value methodClass -> method key].
+	methods := ((self allOurMethods
+		select:[:method| ('*.' match: method getSource string) not])).
 	
 	self openInspectorIfNecessaryOn: methods withLabel: 'MissingPoints'.

@@ -6,7 +6,8 @@
 		 ],
 	"commentStamp" : "jb 7/11/2017 10:12",
 	"instvars" : [
-		 ],
+		"extensionFilter",
+		"branch" ],
 	"name" : "GithubRessources",
 	"pools" : [
 		 ],

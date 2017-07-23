@@ -2,14 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"createGame" : "MB 6/29/2017 21:09",
-		"handlesKeyboard:" : "MB 5/18/2017 09:23",
-		"handlesMouseOver:" : "MB 5/18/2017 09:26",
-		"hasFocus" : "MB 5/18/2017 09:21",
-		"keyDown:" : "MB 6/16/2017 15:32",
-		"keyUp:" : "MB 5/30/2017 09:38",
+		"createGame" : "EB 7/22/2017 18:36",
 		"keyboard" : "MB 6/20/2017 14:01",
 		"keyboard:" : "MB 6/20/2017 14:01",
-		"mouseLeave:" : "MB 6/20/2017 14:02",
-		"step" : "MB 6/29/2017 15:17",
+		"step" : "MB 7/17/2017 13:41",
 		"stepTime" : "MB 6/6/2017 09:15" } }

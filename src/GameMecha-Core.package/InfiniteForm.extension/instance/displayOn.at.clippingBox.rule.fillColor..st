@@ -20,4 +20,4 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 		((targetBox top truncateTo: patternBox height) - patternBox height)
 			to: targetBox bottom - 1 by: patternBox height do:
 			[:y |
-			bb destOrigin: (x@y) + (aDisplayPoint \\ patternBox extent); copyBits]]
+			bb destOrigin: (x@y) + (aDisplayPoint \\ patternBox extent); copyBits]].

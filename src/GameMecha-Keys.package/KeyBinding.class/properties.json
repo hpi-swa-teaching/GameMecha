@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-Keys",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "MB 7/12/2017 13:30",
+	"instvars" : [
+		"keys",
+		"handlesAllEvents",
+		"keyDownHandlers",
+		"keyUpHandlers",
+		"keyString",
+		"label" ],
+	"name" : "KeyBinding",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

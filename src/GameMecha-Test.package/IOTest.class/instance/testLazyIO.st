@@ -1,11 +1,14 @@
 as yet unclassified
 testLazyIO
-	|cache formCounter formCounterBlock|
+	|imports formCounter formCounterBlock|
+	imports := Imports new.
 	formCounter := 0.
-	cache := ImageCache newOn: 'GMTest/res'.
 	formCounterBlock := [:tex | tex isForm ifTrue: [formCounter := formCounter + 1]].
 	
-	cache getTexture: 'img/img1.png' andDo: formCounterBlock.
-	cache getTexture: 'img/sub/img2.png' andDo: formCounterBlock.
+	imports get: 'GMTest/res/img/img1.png' andDo: formCounterBlock.
+	imports get: 'GMTest/res/img/sub/img2.png' andDo: formCounterBlock.
 	
-	[cache isCurrentlyLoading] whileTrue: [Processor yield].
+	self assert: ((formCounter == 0) or: [imports isCurrentlyLoading] or: [formCounter == 2]).
+	
+	[imports isCurrentlyLoading] whileTrue: [Processor yield].
+	self assert: formCounter equals: 2.

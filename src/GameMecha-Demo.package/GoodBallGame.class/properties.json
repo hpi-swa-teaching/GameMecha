@@ -12,5 +12,5 @@
 	"name" : "GoodBallGame",
 	"pools" : [
 		 ],
-	"super" : "CollisionWorld",
+	"super" : "PasteUpMorph",
 	"type" : "normal" }

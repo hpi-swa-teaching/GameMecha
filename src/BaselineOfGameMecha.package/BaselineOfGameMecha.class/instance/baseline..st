@@ -4,16 +4,24 @@ baseline: spec
 	spec
 		for: #'common'
 		do: [
+			spec package: 'JSON' with: [spec repository: 'http://www.squeaksource.com/JSON'].
+			
+			(Smalltalk classNames includes: #RxParser) "add regex only if not there yet"
+				ifTrue: [spec
+					package: 'GameMecha-Core' with: [spec requires: #('JSON')]]
+				ifFalse:[spec 
+					package: 'VB-Regex' with: [spec repository: 'http://www.squeaksource.com/Regex'];
+					package: 'GameMecha-Core' with: [spec requires: #('JSON' 'VB-Regex')]].
 			spec
-				package: 'JSON' with: [spec repository: 'http://www.squeaksource.com/JSON'];
-				package: 'GameMecha-Core' with: [spec requires: #('JSON')];
 				package: 'GameMecha-Keys';
-				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys')];
+				package: 'GameMecha-Assets';
+				package: 'GameMecha-Test' with: [spec requires: #('default' 'keys' 'assets')];
 				package: 'GameMecha-Collisions';
 				yourself.
 			spec
 				group: 'default' with: #('GameMecha-Core');
 				group: 'keys' with: #('GameMecha-Keys');
+				group: 'assets' with: #('GameMecha-Assets');
 				group: 'tests' with: #('GameMecha-Test');
 				group: 'collisions' with: #('GameMecha-Collisions')];
 				yourself.

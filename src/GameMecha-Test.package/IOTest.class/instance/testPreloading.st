@@ -1,14 +1,14 @@
 as yet unclassified
 testPreloading
-	|cache|
-	cache := ImageCache newOn: rootDirectoryPath,  '/res'.
+	|imports|
+	imports := Imports new.
 	
-	self deny: (cache isLoaded: 'img/img1.png').
-	cache preloadFolder: 'img'. "only load the top-level folder"
-	self assert: (cache isLoaded: 'img/img1.png').
-	self deny: (cache isLoaded: 'img/sub/sub/img2.png').
-	cache preload: 'img/sub/sub/'.
-	self assert: (cache isLoaded: 'img/sub/sub/img3.png').
-	self deny: (cache isLoaded: 'img/sub/img2.png').
-	cache preload. "recursively preload everything"
-	self assert: (cache isLoaded: 'img/sub/img2.png').
+	self deny: (imports isLoaded: 'GMTest/res/img/img1.png').
+	imports importDirectory: 'GMTest/res/img'. "only load the top-level folder"
+	self assert: (imports isLoaded: 'GMTest/res/img/img1.png').
+	self deny: (imports isLoaded: 'GMTest/res/img/sub/sub/img2.png').
+	imports importDirectoryWithSubdirectories: 'GMTest/res/img/sub/sub/'.
+	self assert: (imports isLoaded: 'GMTest/res/img/sub/sub/img3.png').
+	self deny: (imports isLoaded: 'GMTest/res/img/sub/img2.png').
+	imports importDirectoryWithSubdirectories: 'GMTest/res'. "recursively preload everything"
+	self assert: (imports isLoaded: 'GMTest/res/img/sub/img2.png').

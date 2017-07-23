@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Keys",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "MB 7/23/2017 10:37",
+	"instvars" : [
+		"keyHandler",
+		"selectedBindingIndex" ],
+	"name" : "KeyReconfigurationWindow",
+	"pools" : [
+		 ],
+	"super" : "Model",
+	"type" : "normal" }

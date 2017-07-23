@@ -1,3 +1,3 @@
-accessing
+event handling
 hasFocus 
 	^true.

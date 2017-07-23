@@ -1,10 +1,11 @@
 {
 	"class" : {
-		 },
+		"test" : "EB 7/12/2017 15:29" },
 	"instance" : {
+		"allOurMethods" : "EB 7/13/2017 11:46",
 		"cleanWorldwithString:" : "mdlh 7/15/2017 10:50",
 		"openInspectorIfNecessaryOn:withLabel:" : "mdlh 7/15/2017 10:50",
-		"testCommentedMethods" : "mdlh 7/15/2017 10:50",
-		"testForClassComments" : "mdlh 7/13/2017 14:10",
-		"testForPointAtMethodEnd" : "mdlh 7/13/2017 14:10",
+		"testCommentedMethods" : "mdlh 7/23/2017 16:07",
+		"testForClassComments" : "mdlh 7/23/2017 16:09",
+		"testForPointAtMethodEnd" : "mdlh 7/23/2017 16:08",
 		"testNumber1" : "EB 5/6/2017 11:44" } }

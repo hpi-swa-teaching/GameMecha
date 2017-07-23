@@ -1,13 +1,8 @@
-tests
+best category
 testCommentedMethods
 	"fail, if any long Method inside the GameMecha-package has no comment"
-	|classes methods|
-	classes := (Smalltalk allClasses 
-		select: [:class | class category asString beginsWith: 'GameMecha']).
-	
-	methods := (((classes
-		collect:[:class | class methodDictionary associations])flatten union: (classes
-		collect: [:class | class class methodDictionary associations]) flatten)
-		select:[:method | method value linesOfCode >= 12 and: [(method value getSource string includes: $") not]]).
+	|methods|
+	methods := self allOurMethods
+		select:[:method | method linesOfCode >= 12 and: [(method getSource string includes: $") not]].
 	
 	self openInspectorIfNecessaryOn: methods withLabel: 'UncommentedLongMethods'.
