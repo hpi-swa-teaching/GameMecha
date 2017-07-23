@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-Collisions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mdlh 7/23/2017 10:43",
+	"instvars" : [
+		"previousBounds",
+		"isObstacle",
+		"touchMargin",
+		"collisionGroups" ],
+	"name" : "CollisionEntityBehavior",
+	"pools" : [
+		 ],
+	"super" : "CollisionBehavior",
+	"type" : "normal" }

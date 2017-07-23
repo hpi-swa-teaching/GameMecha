@@ -10,5 +10,5 @@
 	"name" : "CircleCollisionBehavior",
 	"pools" : [
 		 ],
-	"super" : "CollisionBehavior",
+	"super" : "CollisionEntityBehavior",
 	"type" : "normal" }

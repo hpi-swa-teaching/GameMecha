@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Collisions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mdlh 7/23/2017 10:27",
+	"instvars" : [
+		 ],
+	"name" : "CollisionWorldBehavior",
+	"pools" : [
+		 ],
+	"super" : "CollisionBehavior",
+	"type" : "normal" }

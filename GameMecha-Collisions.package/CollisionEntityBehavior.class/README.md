@@ -1,0 +1,1 @@
+I'm an Extension for Morphs to give them the ability to collide

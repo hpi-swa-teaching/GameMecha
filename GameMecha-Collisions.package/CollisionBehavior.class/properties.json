@@ -7,9 +7,7 @@
 	"commentStamp" : "mdlh 7/18/2017 00:52",
 	"instvars" : [
 		"collisionHandler",
-		"collisionGroups",
-		"target",
-		"touchMargin" ],
+		"target" ],
 	"name" : "CollisionBehavior",
 	"pools" : [
 		 ],

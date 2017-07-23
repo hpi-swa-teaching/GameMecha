@@ -1,13 +1,17 @@
 obstacle
 testMultipleObstacles
-	|obstacle1 obstacle2 player world|
+	|obstacle1 obstacle2 player|
 	
-	world := CollisionWorld new.
-	world extent: 800 @ 600.
+	collisionWorld := PasteUpMorph new.
+	collisionWorld collisionWorldBehavior: (CollisionWorldBehavior newOn: collisionWorld).
+	collisionWorld extent: 800 @ 600.
 	
-	obstacle1 := RectangleCollider wrap: RectangleMorph new.
-	obstacle2 := RectangleCollider wrap: RectangleMorph new.
-	player := RectangleCollider wrap: RectangleMorph new.
+	obstacle1 := RectangleMorph new.
+	obstacle1 collisionBehavior: (RectangleCollisionBehavior newOn: obstacle1).
+	obstacle2 := RectangleMorph new.
+	obstacle2 collisionBehavior: (RectangleCollisionBehavior  newOn: obstacle2).
+	player := RectangleMorph new.
+	player collisionBehavior: (RectangleCollisionBehavior newOn: player).
 	
 	obstacle1 markAsObstacle.	
 	obstacle1 bounds: (300@200 extent: 100@100).	
@@ -17,26 +21,25 @@ testMultipleObstacles
 		
 	player bounds: (200@200 extent: 80@80).
 			
-	world addCollider: player.
-	world addCollider: obstacle1.
-	world addCollider: obstacle2.
+	collisionWorld addCollider: player.
+	collisionWorld addCollider: obstacle1.
+	collisionWorld addCollider: obstacle2.
 	"
-	world openInWorld.
+	collisionWorld openInWorld.
 	Debugger halt.
 	"
-	world step.
+	collisionWorld step.
 	self deny: (player touches: obstacle1).
 	self deny: (player touches: obstacle2).
 	
 	player position: player position 	+ (50@0).
-	world step.	
-	self deny: (player intersects: obstacle1).
+	collisionWorld step.	
+	self deny: (player intersectsWith: obstacle1).
 	self assert: (player touches: obstacle1).
 		
 	player position: player position 	+ 50.
-	world step.
-	self deny: (player intersects: obstacle1).
+	collisionWorld step.
+	self deny: (player intersectsWith: obstacle1).
 	self assert: (player touches: obstacle1).
-	self deny: (player intersects: obstacle2).
+	self deny: (player intersectsWith: obstacle2).
 	self assert: (player touches: obstacle2).
-	world delete.

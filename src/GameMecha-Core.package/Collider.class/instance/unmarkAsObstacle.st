@@ -1,4 +1,4 @@
 obstacle
 unmarkAsObstacle
-	isObstacle := false.
+	self isObstacle: false.
 	self collisionHandler: nil.

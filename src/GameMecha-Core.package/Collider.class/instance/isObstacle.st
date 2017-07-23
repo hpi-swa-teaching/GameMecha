@@ -1,3 +1,4 @@
 obstacle
 isObstacle
-	^ isObstacle.
+	isObstacle ifNil:[self isObstacle: false].
+	^isObstacle.

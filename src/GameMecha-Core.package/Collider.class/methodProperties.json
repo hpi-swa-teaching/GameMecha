@@ -19,8 +19,9 @@
 		"intersects:withMargin:" : "MB 6/20/2017 13:56",
 		"intersectsCircle:withMargin:" : "EB 5/16/2017 14:16",
 		"intersectsRect:withMargin:" : "MB 6/20/2017 13:57",
-		"isObstacle" : "MB 5/14/2017 21:16",
-		"markAsObstacle" : "MB 5/14/2017 21:28",
+		"isObstacle" : "mdlh 7/23/2017 12:52",
+		"isObstacle:" : "mdlh 7/23/2017 12:51",
+		"markAsObstacle" : "mdlh 7/23/2017 12:50",
 		"previousBounds" : "MB 5/14/2017 21:55",
 		"previousBounds:" : "MB 6/20/2017 14:04",
 		"removeFromCollisionGroup:" : "EB 5/14/2017 21:12",
@@ -28,5 +29,5 @@
 		"touchMargin" : "EB 5/28/2017 18:12",
 		"touchMargin:" : "EB 5/16/2017 11:04",
 		"touches:" : "EB 5/16/2017 14:24",
-		"unmarkAsObstacle" : "MB 5/14/2017 22:16",
+		"unmarkAsObstacle" : "mdlh 7/23/2017 12:50",
 		"usesCollisionGroups" : "EB 5/14/2017 21:14" } }

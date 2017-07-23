@@ -1,39 +1,42 @@
 obstacle
 testObstacles
-	|obstacle player world collisionCounter|
+	|obstacle player collisionCounter|
 	
-	world := CollisionWorld new.
-		
+	collisionWorld := PasteUpMorph new.
+	collisionWorld collisionWorldBehavior: (CollisionWorldBehavior newOn: collisionWorld).
+	collisionWorld extent: 800 @ 600.
+	
 	collisionCounter := 0.
-	world registerCollisionHandler: [:collisionEvent |  collisionEvent collidersIntersect ifTrue: [collisionCounter := collisionCounter + 1]].
-	
-	obstacle := RectangleCollider wrap: RectangleMorph new.
-	player := RectangleCollider wrap: RectangleMorph new.
+	collisionWorld registerCollisionWorldHandler: [:collisionEvent | collisionEvent collidersIntersect ifTrue: [collisionCounter := collisionCounter + 1]].
+	obstacle := RectangleMorph new.
+	obstacle collisionBehavior: (RectangleCollisionBehavior newOn: obstacle).
+	player := RectangleMorph new.
+	player collisionBehavior: (RectangleCollisionBehavior newOn: player).
 	
 	obstacle markAsObstacle.	
 	obstacle bounds: (547@88 corner: 683@229).	
 	player bounds: (302@112 corner: 387@180).
 	"
-	world openInWorld.
+	collisionWorld openInWorld.
 	Debugger halt.
 	"
-	world step.	
-	world step.	
-	world addCollider: obstacle.
-	world step.	
-	world step.	
-	world addCollider: player.
-	world step.	
-	world step.	
+	collisionWorld step.	
+	collisionWorld step.	
+	collisionWorld addCollider: obstacle.
+	collisionWorld step.	
+	collisionWorld step.	
+	collisionWorld addCollider: player.
+	collisionWorld step.	
+	collisionWorld step.	
 		
 	self assert: collisionCounter equals: 0.	
 			
 	player bounds: (487@118 corner: 572@186).
-	world step.	
-	world step.	
-	world step.	
-	world step.	
-	world step.	
+	collisionWorld step.	
+	collisionWorld step.	
+	collisionWorld step.	
+	collisionWorld step.	
+	collisionWorld step.	
 	self assert: collisionCounter equals: 1.
 	self assert: (player touches: obstacle).
 
@@ -41,7 +44,7 @@ testObstacles
 	
 			
 	player bounds: (487@118 corner: 572@186).
-	world step.	
+	collisionWorld step.	
 	self assert: collisionCounter equals: 2.
-	world step.	
+	collisionWorld step.	
 	self assert: collisionCounter equals: 3.

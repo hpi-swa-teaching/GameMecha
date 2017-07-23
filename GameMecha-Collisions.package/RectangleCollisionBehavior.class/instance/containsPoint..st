@@ -1,3 +1,3 @@
 containing
 containsPoint: aPoint
-	^ self bounds containsPoint: aPoint.
+	^ self target bounds containsPoint: aPoint.
