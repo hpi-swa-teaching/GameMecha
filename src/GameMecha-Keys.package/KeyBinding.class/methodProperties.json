@@ -2,7 +2,6 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addNewButtonPrompt" : "MB 7/17/2017 13:30",
 		"bindToKey:" : "MB 7/16/2017 23:14",
 		"handleAllEvents" : "MB 7/15/2017 11:03",
 		"handlesAllEvents" : "MB 7/15/2017 11:03",
@@ -11,7 +10,7 @@
 		"keyDownHandlers" : "MB 7/12/2017 15:39",
 		"keyDownHandlers:" : "MB 7/12/2017 13:40",
 		"keyString" : "MB 7/16/2017 18:21",
-		"keyString:" : "MB 7/16/2017 20:52",
+		"keyString:" : "MB 7/23/2017 10:22",
 		"keyUp:" : "MB 7/15/2017 11:03",
 		"keyUpHandlers" : "MB 7/12/2017 15:24",
 		"keyUpHandlers:" : "MB 7/12/2017 13:41",
@@ -25,9 +24,4 @@
 		"onDownSend:to:" : "MB 7/12/2017 15:48",
 		"onUpDo:" : "MB 7/12/2017 15:45",
 		"onUpSend:to:" : "MB 7/12/2017 15:48",
-		"reconfigurationMorph" : "MB 7/18/2017 11:45",
-		"resetBindings" : "MB 7/16/2017 19:11",
-		"setVisualizationDirty" : "MB 7/16/2017 20:55",
-		"visualization" : "MB 7/16/2017 20:56",
-		"visualization:" : "MB 7/16/2017 20:56",
-		"visualizationDirty" : "MB 7/16/2017 20:55" } }
+		"resetBindings" : "MB 7/16/2017 19:11" } }

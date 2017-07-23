@@ -11,8 +11,6 @@
 		"keyDownHandlers",
 		"keyUpHandlers",
 		"keyString",
-		"visualizationDirty",
-		"visualization",
 		"label" ],
 	"name" : "KeyBinding",
 	"pools" : [

@@ -1,0 +1,22 @@
+{
+	"class" : {
+		"buildOn:" : "MB 7/23/2017 10:56" },
+	"instance" : {
+		"addBinding" : "MB 7/23/2017 14:45",
+		"bindingKeys" : "MB 7/23/2017 11:54",
+		"bindingLabel" : "MB 7/23/2017 11:40",
+		"bindingList" : "MB 7/23/2017 10:55",
+		"build" : "MB 7/23/2017 10:53",
+		"buildButtonsWith:" : "MB 7/23/2017 12:14",
+		"buildKeyListener" : "MB 7/23/2017 14:26",
+		"buildKeyListenerWith:" : "MB 7/23/2017 14:44",
+		"buildReconfigurationWith:" : "MB 7/23/2017 12:08",
+		"buildWith:" : "MB 7/23/2017 12:05",
+		"defaultWindowColor" : "MB 7/23/2017 11:57",
+		"index" : "MB 7/23/2017 11:16",
+		"index:" : "MB 7/23/2017 11:54",
+		"keyHandler" : "MB 7/23/2017 10:54",
+		"keyHandler:" : "MB 7/23/2017 10:54",
+		"removeBinding" : "MB 7/23/2017 12:15",
+		"sampleText" : "MB 7/23/2017 11:37",
+		"selectedBinding" : "MB 7/23/2017 11:42" } }

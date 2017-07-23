@@ -1,0 +1,1 @@
+Creates an Reconfiguration Window for a KeyHandler
