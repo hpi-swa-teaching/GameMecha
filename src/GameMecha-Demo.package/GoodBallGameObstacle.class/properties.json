@@ -6,9 +6,10 @@
 		 ],
 	"commentStamp" : "EB 6/29/2017 20:35",
 	"instvars" : [
-		"touchesPlayer" ],
+		"touchesPlayer",
+		"submorph" ],
 	"name" : "GoodBallGameObstacle",
 	"pools" : [
 		 ],
-	"super" : "RectangleMorph",
+	"super" : "Morph",
 	"type" : "normal" }
