@@ -7,7 +7,7 @@
 	"commentStamp" : "EB 6/29/2017 20:35",
 	"instvars" : [
 		 ],
-	"name" : "BadPerfDemoOstacle",
+	"name" : "BadPerfDemoObstacle",
 	"pools" : [
 		 ],
 	"super" : "RectangleMorph",

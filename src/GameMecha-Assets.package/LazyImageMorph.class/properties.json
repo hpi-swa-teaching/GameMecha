@@ -10,5 +10,5 @@
 	"name" : "LazyImageMorph",
 	"pools" : [
 		 ],
-	"super" : "RectangleMorph",
+	"super" : "ImageMorph",
 	"type" : "normal" }

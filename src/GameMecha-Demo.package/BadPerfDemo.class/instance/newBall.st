@@ -1,6 +1,6 @@
 accessing
 newBall
-	self addCollider: ((BadPerfDemoBall wrap: (CircleMorph new))
+	self addCollider: (BadPerfDemoBall new
 		randomPositionIn: self bounds;
 		yourself).
 	self ballCounter: self ballCounter + 1.

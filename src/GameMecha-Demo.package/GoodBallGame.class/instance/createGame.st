@@ -13,17 +13,18 @@ createGame
 	self keyboard addBindingFromKeys: {#keyArrowRight. 'd'} as: #right.
 	
 	self registerKeyHandler: self keyboard.
+	
+	self collisionWorldBehavior: (CollisionWorldBehavior newOn: self).
+	
 	obstacle := LazyImageMorph newWithImage: 'GMTest/smile.png' placeHolder: Color red bounds: (20@300 extent: 60@60).
 	self addCollider: (self setupObstacle: obstacle).
 	
 	obstacle := (RectangleMorph new position:(200@70); yourself).
 	self addCollider: (self setupObstacle: obstacle).
 	
-	"world registerCollisionHandler: [:anEvent | world delete]."
-	"ball := GoodBallGameBall wrap: (LazyImageMorph newWithImage: 'GMTest/smile.png' placeHolder: Color red bounds: (20@20 extent: 60@60)).
-	"self halt.
+	"self registerCollisionWorldHandler: [:anEvent | self delete]."
+	
 	ball := GoodBallGameBall newWithImage: 'GMTest/smile.png' placeHolder: Color red bounds: (20@20 extent: 60@60).
-	"ball keyboard: self keyboard."
 	ball keyboard: self keyboard. 
 	ball registerKeyHandler: self keyboard.
 	self addCollider: ball.
@@ -34,14 +35,14 @@ createGame
 			baseScale: 0.3@0.7;
 			offset: 10@20;
 			yourself.
+	water collisionBehavior: (RectangleCollisionBehavior newOn: water).
 	self addCollider: (water
 		position: (20@100);
 		yourself).
-		
+	
 	self addCollider: (GoodBallGameMovingObstacle new
 		startPosition: (250@200);
 		endPosition: (160@240);
 		yourself).
-	
 	
 	self openInWorld.

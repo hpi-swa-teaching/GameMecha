@@ -4,7 +4,7 @@
 	"instance" : {
 		"direction" : "EB 6/7/2017 13:53",
 		"direction:" : "EB 6/7/2017 13:53",
-		"initialize" : "MB 6/20/2017 13:55",
+		"initialize" : "mdlh 7/30/2017 22:29",
 		"isBall" : "EB 6/7/2017 14:01",
 		"randomDirection" : "EB 6/7/2017 13:59",
 		"randomPositionIn:" : "EB 6/7/2017 14:52",
@@ -12,4 +12,4 @@
 		"reflectCircular:" : "EB 6/7/2017 14:34",
 		"speed" : "MB 6/20/2017 13:55",
 		"speed:" : "MB 6/20/2017 13:55",
-		"step" : "EB 6/7/2017 13:59" } }
+		"step" : "mdlh 7/30/2017 22:25" } }
