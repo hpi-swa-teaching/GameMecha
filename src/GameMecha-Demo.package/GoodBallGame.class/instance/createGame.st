@@ -21,6 +21,7 @@ createGame
 	
 	obstacle := (RectangleMorph new position:(200@70); yourself).
 	self addCollider: (self setupObstacle: obstacle).
+	self addCollider: (GoodBallGameObstacle new position: (300@300); yourself).
 	
 	"self registerCollisionWorldHandler: [:anEvent | self delete]."
 	
@@ -36,10 +37,11 @@ createGame
 			offset: 10@20;
 			yourself.
 	water collisionBehavior: (RectangleCollisionBehavior newOn: water).
+	water markAsObstacle.
 	self addCollider: (water
 		position: (20@100);
 		yourself).
-	
+		
 	self addCollider: (GoodBallGameMovingObstacle new
 		startPosition: (250@200);
 		endPosition: (160@240);
