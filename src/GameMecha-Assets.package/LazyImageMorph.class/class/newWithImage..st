@@ -1,3 +1,5 @@
 instance creation
 newWithImage: imageName
-	^ self newWithImage: imageName placeHolder: Color green.
+	^ self new
+		initializeImage: imageName;
+		yourself.

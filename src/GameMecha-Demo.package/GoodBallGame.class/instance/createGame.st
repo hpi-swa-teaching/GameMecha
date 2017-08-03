@@ -2,7 +2,7 @@ initializing
 createGame
 	| obstacle |
 	WebResources ensureFile: 'http://colpa.infine.casa:81/default-resources/other/smile.png' isAt: 'GMTest/smile.png'.
-
+	
 	self bounds: (10 asPoint corner: 800@600).
 	self keyboard: KeyHandler new.
 	
@@ -16,7 +16,7 @@ createGame
 	
 	self collisionWorldBehavior: (CollisionWorldBehavior newOn: self).
 	
-	obstacle := LazyImageMorph newWithImage: 'GMTest/smile.png' placeHolder: Color red bounds: (20@300 extent: 60@60).
+	obstacle := LazyImageMorph newWithImage: 'GMTest/smile.png' bounds: (20@300 extent: 60@60).
 	self addCollider: (self setupObstacle: obstacle).
 	
 	obstacle := (RectangleMorph new position:(200@70); yourself).
@@ -24,8 +24,8 @@ createGame
 	self addCollider: (GoodBallGameObstacle new position: (300@300); yourself).
 	
 	"self registerCollisionWorldHandler: [:anEvent | self delete]."
-	
-	ball := GoodBallGameBall newWithImage: 'GMTest/smile.png' placeHolder: Color red bounds: (20@20 extent: 60@60).
+
+	ball := GoodBallGameBall newWithImage: 'GMTest/smile.png' bounds: (20@20 extent: 60@60).
 	ball keyboard: self keyboard. 
 	ball registerKeyHandler: self keyboard.
 	self addCollider: ball.

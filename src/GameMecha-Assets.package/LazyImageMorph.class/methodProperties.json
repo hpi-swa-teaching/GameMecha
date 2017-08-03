@@ -1,14 +1,10 @@
 {
 	"class" : {
-		"newWithImage:" : "EB 7/13/2017 17:10",
-		"newWithImage:bounds:" : "EB 7/13/2017 17:10",
-		"newWithImage:extent:" : "EB 7/13/2017 17:09",
-		"newWithImage:placeHolder:" : "EB 7/13/2017 17:09",
-		"newWithImage:placeHolder:bounds:" : "EB 7/13/2017 17:08",
-		"newWithImage:placeHolder:extent:" : "EB 7/13/2017 17:07" },
+		"newWithImage:" : "mdlh 8/3/2017 21:37",
+		"newWithImage:bounds:" : "mdlh 8/3/2017 22:43" },
 	"instance" : {
-		"completionHandler" : "mdlh 7/30/2017 20:43",
 		"createRealImage:" : "MB 6/18/2017 16:55",
+		"extent:" : "mdlh 8/3/2017 21:32",
+		"finalizeLoadingWith:" : "mdlh 8/3/2017 22:03",
 		"imports" : "EB 7/13/2017 18:06",
-		"initializeImage:" : "mdlh 7/30/2017 20:57",
-		"transform:" : "mdlh 7/30/2017 20:58" } }
+		"initializeImage:" : "mdlh 8/3/2017 21:50" } }
