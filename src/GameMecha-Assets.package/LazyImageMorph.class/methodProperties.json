@@ -1,9 +1,11 @@
 {
 	"class" : {
 		"newWithImage:" : "mdlh 8/3/2017 21:37",
-		"newWithImage:bounds:" : "mdlh 8/3/2017 22:43" },
+		"newWithImage:bounds:" : "mdlh 8/3/2017 22:43",
+		"newWithImage:bounds:placeholder:" : "EB 8/3/2017 23:06" },
 	"instance" : {
 		"extent:" : "EB 8/3/2017 22:53",
 		"finalizeLoadingWith:" : "EB 8/3/2017 22:55",
 		"imports" : "EB 7/13/2017 18:06",
-		"initializeImage:" : "mdlh 8/3/2017 21:50" } }
+		"initializeImage:" : "mdlh 8/3/2017 21:50",
+		"placeholderColor:" : "EB 8/3/2017 23:15" } }

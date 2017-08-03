@@ -25,7 +25,7 @@ createGame
 	
 	"self registerCollisionWorldHandler: [:anEvent | self delete]."
 
-	ball := GoodBallGameBall newWithImage: 'GMTest/smile.png' bounds: (20@20 extent: 60@60).
+	ball := GoodBallGameBall newWithImage: 'GMTest/smile.png' bounds: (20@20 extent: 60@60) placeholder: Color red.
 	ball keyboard: self keyboard. 
 	ball registerKeyHandler: self keyboard.
 	self addCollider: ball.
