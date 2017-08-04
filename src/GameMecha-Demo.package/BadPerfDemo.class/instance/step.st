@@ -5,4 +5,4 @@ step
 	(self nextBallCounter > 4)
 		ifTrue: [
 			self nextBallCounter: 0.
-			self newBall].
+			self newBall.].
