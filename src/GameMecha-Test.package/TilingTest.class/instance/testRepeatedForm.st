@@ -4,8 +4,8 @@ testRepeatedForm
 
 	bgForm := Form makeStar.
 
-	biggerForm := (bgForm repatedToExtent: 100@100).
-	offsetBiggerForm := (bgForm repatedToExtent: 100@100 withOrigin: 30@(-30)).
+	biggerForm := (bgForm repeatedToExtent: 100@100).
+	offsetBiggerForm := (bgForm repeatedToExtent: 100@100 withOrigin: 30@(-30)).
 	
 	self assert: (biggerForm extent = (100@100)).
 	self assert: (offsetBiggerForm extent = (100@100)).

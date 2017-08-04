@@ -1,5 +1,6 @@
 transformation
 finalizeLoadingWith: anImage
-	self
-		image: anImage;
-		extent: anImage extent.
+	"TODO find out, why magnifyBy: doesnt work or figure out its purpose"
+	| scalingFactor |
+	scalingFactor := self image extent / anImage extent.
+	self image: (anImage magnifyBy: scalingFactor).

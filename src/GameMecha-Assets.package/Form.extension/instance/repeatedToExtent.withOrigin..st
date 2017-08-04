@@ -1,5 +1,5 @@
 *GameMecha-Assets
-repatedToExtent: extent withOrigin: origin
+repeatedToExtent: extent withOrigin: origin
 	"create an InfiniteForm and draw it onto ourself"
 	|largeForm infForm|
 
