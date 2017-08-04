@@ -1,0 +1,16 @@
+{
+	"class" : {
+		"newFrom:and:" : "EB 5/16/2017 14:31" },
+	"instance" : {
+		"collider1" : "mdlh 5/11/2017 09:23",
+		"collider1:" : "mdlh 5/11/2017 09:23",
+		"collider2" : "mdlh 5/11/2017 09:23",
+		"collider2:" : "mdlh 5/11/2017 09:22",
+		"colliderContainsOtherMap" : "MB 6/20/2017 13:51",
+		"colliderContainsOtherMap:" : "MB 6/20/2017 13:51",
+		"collidersIntersect" : "mdlh 7/23/2017 15:19",
+		"collidersIntersect:" : "MB 6/20/2017 13:51",
+		"collidersTouch" : "mdlh 5/25/2017 11:20",
+		"collisionPartnerOf:" : "MB 6/20/2017 13:58",
+		"containsTheOtherCollider:" : "mdlh 5/28/2017 18:42",
+		"isCollider:" : "EB 5/11/2017 13:42" } }

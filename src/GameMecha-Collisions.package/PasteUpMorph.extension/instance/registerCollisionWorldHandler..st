@@ -1,0 +1,3 @@
+*GameMecha-Collisions
+registerCollisionWorldHandler: aHandler
+	self collisionWorldBehavior registerCollisionHandler: aHandler.

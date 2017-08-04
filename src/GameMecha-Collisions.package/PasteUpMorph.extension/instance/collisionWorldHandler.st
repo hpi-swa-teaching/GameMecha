@@ -1,0 +1,3 @@
+*GameMecha-Collisions
+collisionWorldHandler
+	^self collisionWorldBehavior collisionHandler.

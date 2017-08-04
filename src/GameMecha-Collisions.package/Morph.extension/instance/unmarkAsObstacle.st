@@ -1,0 +1,3 @@
+*GameMecha-Collisions
+unmarkAsObstacle
+	self collisionBehavior unmarkAsObstacle.
