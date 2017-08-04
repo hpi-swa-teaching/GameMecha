@@ -1,1 +1,0 @@
-I'm an Extension for Morphs that realizes abstract collision behavior.
