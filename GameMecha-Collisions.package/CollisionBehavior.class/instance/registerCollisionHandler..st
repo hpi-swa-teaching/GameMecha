@@ -1,6 +1,6 @@
 accessing
 registerCollisionHandler: aBlock
-|oldHandler|
+	|oldHandler|
 	oldHandler := self collisionHandler.
 	
 	self collisionHandler: [:eventObject | 

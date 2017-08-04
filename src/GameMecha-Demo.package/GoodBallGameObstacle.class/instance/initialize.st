@@ -6,4 +6,4 @@ initialize
 	
 	self collisionBehavior: (RectangleCollisionBehavior newOn: self).
 	self markAsObstacle.
-	self registerCollisionHandler: [:event | self touchesPlayer: true].
+	self registerCollisionHandler: [:event | self touchedPlayer: event collidersTouch].

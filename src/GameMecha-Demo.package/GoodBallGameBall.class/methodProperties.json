@@ -2,12 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"initialize" : "mdlh 7/29/2017 11:21",
+		"initialize" : "MB 8/4/2017 16:16",
 		"keyboard" : "MB 6/20/2017 14:09",
 		"keyboard:" : "MB 6/20/2017 14:09",
 		"moveDown" : "MB 7/17/2017 13:44",
 		"moveLeft" : "MB 7/17/2017 13:37",
 		"moveRight" : "MB 7/17/2017 13:36",
 		"moveUp" : "MB 7/17/2017 13:44",
-		"step" : "mdlh 7/29/2017 11:11",
-		"stepTime" : "MB 7/17/2017 13:39" } }
+		"step" : "mdlh 7/29/2017 11:11" } }

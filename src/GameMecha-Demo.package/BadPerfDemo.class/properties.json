@@ -6,7 +6,6 @@
 		 ],
 	"commentStamp" : "EB 6/29/2017 20:22",
 	"instvars" : [
-		"keyboard",
 		"nextBallCounter",
 		"ballCounter" ],
 	"name" : "BadPerfDemo",

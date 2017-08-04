@@ -1,6 +1,5 @@
 initializing
 step
-	self touchesPlayer
+	self touchedPlayer
 		ifTrue: [self color: Color orange]
 		ifFalse: [self color: Color green].
-	self touchesPlayer: false.
