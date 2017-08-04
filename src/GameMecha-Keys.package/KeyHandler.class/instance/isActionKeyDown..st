@@ -1,8 +1,4 @@
 accessing
 isActionKeyDown: anAction
-	|checker|
-	checker := [:keyAscii | (self pressedKeys includes: keyAscii)
-				ifTrue: [^ true]].
-	(self bindings at: anAction) 
-		keys do: [:key | checker value: key].
-	^ false.
+	^ (self bindings at: anAction) 
+		keys anySatisfy: [:key | (self pressedKeys includes: key)].
