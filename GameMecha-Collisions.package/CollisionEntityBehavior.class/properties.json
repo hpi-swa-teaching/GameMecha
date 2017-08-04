@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "mdlh 7/23/2017 10:43",
+	"commentStamp" : "mdlh 8/4/2017 19:47",
 	"instvars" : [
 		"previousBounds",
 		"isObstacle",

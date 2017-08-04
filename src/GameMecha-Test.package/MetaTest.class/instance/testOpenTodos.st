@@ -1,7 +1,7 @@
 weAre
 testOpenTodos
 	"inspect a collection of all methods which contain TODOs, regex can be exchanged"
-	"HOPMain todoLocator"
+	"can be switched on and off via changing the return value of #shouldFindTodos"
 	|query methods |
 	self shouldFindTodos ifFalse: [^self].
 	query := (FillInTheBlankMorph request: 'Search query:' initialAnswer: '*todo*').

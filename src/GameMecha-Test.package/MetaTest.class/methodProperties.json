@@ -4,10 +4,10 @@
 	"instance" : {
 		"allOurMethods" : "EB 7/13/2017 11:46",
 		"cleanWorldwithString:" : "mdlh 7/15/2017 10:50",
-		"openInspectorIfNecessaryOn:withLabel:" : "mdlh 7/15/2017 10:50",
+		"openInspectorIfNecessaryOn:withLabel:" : "mdlh 8/4/2017 13:11",
 		"shouldFindTodos" : "mdlh 8/2/2017 19:29",
 		"testCommentedMethods" : "mdlh 7/23/2017 16:07",
-		"testForClassComments" : "mdlh 7/23/2017 16:09",
+		"testForClassComments" : "mdlh 8/4/2017 19:17",
 		"testForPointAtMethodEnd" : "mdlh 7/23/2017 16:08",
 		"testNumber1" : "EB 5/6/2017 11:44",
-		"testOpenTodos" : "mdlh 8/2/2017 19:29" } }
+		"testOpenTodos" : "mdlh 8/4/2017 19:29" } }

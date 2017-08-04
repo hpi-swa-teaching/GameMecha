@@ -8,7 +8,6 @@ testCollisionGroups
 	collider2 collisionBehavior: (RectangleCollisionBehavior newOn: collider2).
 	collider2 bounds: (66@178 corner: 116@218).
 	
-	"todo: should we use the intersectsWith: here?"
 	self assert: (collider1 intersectsWith: collider2).
 	self assert: (collider2 intersectsWith: collider1).
 	

@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Demo",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mdlh 8/4/2017 20:16",
+	"instvars" : [
+		"touchedPlayer" ],
+	"name" : "DocumentationClass",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
