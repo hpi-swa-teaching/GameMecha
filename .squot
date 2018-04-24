@@ -1,4 +1,5 @@
 OrderedDictionary {
+	'GM-Core.package' : #SquotCypressCodeSerializer,
 	'src\/BaselineOfGameMecha.package' : #SquotCypressCodeSerializer,
 	'src\/GameMecha-Assets.package' : #SquotCypressCodeSerializer,
 	'src\/GameMecha-Collisions.package' : #SquotCypressCodeSerializer,
