@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Keys",
+	"classinstvars" : [
+		"keyLookup" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"keyPressedLookup" ],
+	"name" : "GmKeyHandler",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
