@@ -1,6 +1,6 @@
 class initialization
 initializeKeyLookupMac
-	self keyLookup: (Dictionary newFrom:
+	^(Dictionary newFrom:
 		{16r00 -> $a.
 		16r01 -> $s.
 		16r02 -> $d.

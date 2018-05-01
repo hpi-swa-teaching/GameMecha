@@ -1,3 +1,3 @@
 event Input
 handlesMouseStillDown: aEvent
-	^false.
+	^false

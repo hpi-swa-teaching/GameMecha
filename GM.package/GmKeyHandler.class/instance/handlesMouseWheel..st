@@ -1,3 +1,3 @@
 event Input
 handlesMouseWheel: aEvent
-	^false.
+	^false

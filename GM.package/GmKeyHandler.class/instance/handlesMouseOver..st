@@ -1,3 +1,3 @@
 event Input
 handlesMouseOver: aEvent
-	^true.
+	^true
