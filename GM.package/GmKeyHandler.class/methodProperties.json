@@ -1,11 +1,10 @@
 {
 	"class" : {
+		"KeyLookup" : "AZ 5/8/2018 19:55",
 		"initializeKeyLookupLinux" : "AZ 5/8/2018 19:34",
 		"initializeKeyLookupMac" : "AZ 5/8/2018 19:25",
 		"initializeKeyLookupOSIndependent" : "brh 5/8/2018 19:19",
 		"initializeKeyLookupWindows" : "AZ 5/8/2018 19:25",
-		"keyLookup" : "brh 5/8/2018 19:20",
-		"keyLookup:" : "TP 4/30/2018 16:31",
 		"supportedPlatformDict" : "brh 5/8/2018 19:14" },
 	"instance" : {
 		"handlesClickOrDrag:" : "AZ 5/8/2018 19:27",
@@ -18,11 +17,11 @@
 		"handlesMouseStillDown:" : "AZ 5/8/2018 19:27",
 		"handlesMouseWheel:" : "AZ 5/8/2018 19:27",
 		"isKeyPressed:" : "brh 5/8/2018 19:20",
-		"keyDown:fromMorph:" : "AZ 5/8/2018 19:16",
+		"keyDown:fromMorph:" : "AZ 5/8/2018 19:56",
 		"keyPressedLookup" : "TP 4/30/2018 18:03",
 		"keyPressedLookup:" : "TP 4/30/2018 17:11",
 		"keyStroke:fromMorph:" : "TP 4/30/2018 18:53",
-		"keyUp:fromMorph:" : "brh 5/8/2018 19:09",
+		"keyUp:fromMorph:" : "AZ 5/8/2018 19:56",
 		"keyboardFocusChange:fromMorph:" : "brh 5/8/2018 19:20",
 		"mouseDown:fromMorph:" : "TP 4/30/2018 19:00",
 		"mouseEnter:fromMorph:" : "TP 4/30/2018 19:00",

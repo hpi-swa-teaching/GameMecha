@@ -1,7 +1,7 @@
 {
 	"category" : "GM-Keys",
 	"classinstvars" : [
-		"keyLookup" ],
+		"KeyLookup" ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
