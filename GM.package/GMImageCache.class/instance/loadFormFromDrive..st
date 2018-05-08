@@ -1,3 +1,3 @@
 as yet unclassified
-loadFormFromDrive: aFileName
-	^ Form formFromFileNamed: (FileDirectory uri: aFileName) fullName
+loadFormFromDrive: aString
+	^ Form fromFileNamed: (FileDirectory uri: aString) fullName

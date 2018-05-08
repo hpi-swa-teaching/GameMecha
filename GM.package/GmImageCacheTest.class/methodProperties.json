@@ -2,7 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
+		"cache" : "NK 5/8/2018 20:27",
+		"cache:" : "NK 5/8/2018 20:27",
 		"setUp" : "NK 5/8/2018 19:53",
-		"testFlushCache" : "NK 5/8/2018 19:52",
-		"testImageLoading" : "NK 5/8/2018 19:53",
-		"testInstanceCreation" : "NK 5/8/2018 19:21" } }
+		"testImageLoading" : "NK 5/8/2018 21:15",
+		"testInstanceCreation" : "NK 5/8/2018 19:21",
+		"testLoadAll" : "NK 5/8/2018 21:02" } }

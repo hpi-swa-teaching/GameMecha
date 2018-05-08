@@ -1,2 +1,4 @@
 as yet unclassified
-loadImageIntoCache: aFileName
+loadImageIntoCache: aString
+	self imageCache at: (((FileDirectory uri: aString) localName subStrings: '.') first asSymbol) 
+		put: (self loadFormFromDrive: aString).
