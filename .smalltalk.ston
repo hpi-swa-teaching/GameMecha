@@ -4,8 +4,15 @@ SmalltalkCISpec {
       #baseline : 'GameMecha',
       #directory : 'src',
       #platforms : [ #squeak ],
-      #load : [ 'tests' ],
       #useLatestMetacello : true
     }
-  ]
+  ],
+  #testing : {
+    #include : {
+      #classes : [ #GM-Test ],
+      #categories : [ 'Gm*Test' ],
+      #packages : [ 'GM' ],
+      #projects : [ 'BaselineOfGameMecha' ]
+    }
+  }
 }
