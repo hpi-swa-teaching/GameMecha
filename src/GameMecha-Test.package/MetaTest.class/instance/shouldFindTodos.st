@@ -1,3 +1,0 @@
-weAre
-shouldFindTodos
-	^false.

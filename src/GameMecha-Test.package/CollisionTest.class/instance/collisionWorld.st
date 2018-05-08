@@ -1,3 +1,0 @@
-accessing
-collisionWorld
-	^ collisionWorld.
