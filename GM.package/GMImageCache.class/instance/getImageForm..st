@@ -1,3 +1,3 @@
 accessing
-getImageForm: aString
-	^ self imageDictionary at: aString ifAbsent: [self error: #ImageNotLoaded]
+getImageForm: aSymbol
+	^ self imageCache at: (aSymbol asString ,'.png') ifAbsent: [self error: #ImageNotLoaded]

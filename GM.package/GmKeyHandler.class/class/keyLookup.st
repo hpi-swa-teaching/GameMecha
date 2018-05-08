@@ -1,3 +1,3 @@
 accessing
 keyLookup
-	^ keyLookup ifNil: [keyLookup := self initializeKeyLookupOSIndependent]
+	^ self initializeKeyLookupOSIndependent

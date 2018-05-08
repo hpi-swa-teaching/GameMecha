@@ -1,3 +1,3 @@
 initialization
 instance
-	^ soleInstance ifNil: [soleInstance := super new]
+	^ SoleInstance ifNil: [SoleInstance := super new]
