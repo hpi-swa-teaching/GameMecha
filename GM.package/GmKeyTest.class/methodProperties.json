@@ -3,4 +3,5 @@
 		"testKeyboardEventOfType:withValue:" : "brh 5/1/2018 19:19" },
 	"instance" : {
 		"keyTestValue" : "brh 5/1/2018 19:43",
-		"testIsKeyPressed" : "brh 5/1/2018 19:45" } }
+		"testIsKeyPressed" : "brh 5/1/2018 19:45",
+		"testSameNumberOfKeysOnAllSystems" : "AZ 5/8/2018 19:12" } }
