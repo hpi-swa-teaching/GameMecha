@@ -1,1 +1,0 @@
-Testing all that can collide
