@@ -1,0 +1,12 @@
+{
+	"class" : {
+		"instance" : "NK 5/8/2018 19:00",
+		"new" : "NK 5/8/2018 18:50" },
+	"instance" : {
+		"getImageForm:" : "NK 5/8/2018 19:00",
+		"getImageForm:withSize:" : "NK 5/8/2018 19:00",
+		"imageCache" : "NK 5/8/2018 18:59",
+		"imageCache:" : "NK 5/8/2018 18:59",
+		"imageFilenamesAtDir:" : "NK 5/8/2018 19:07",
+		"loadImageIntoCache:" : "NK 5/8/2018 19:12",
+		"registerImage:underName:" : "NK 5/8/2018 19:02" } }

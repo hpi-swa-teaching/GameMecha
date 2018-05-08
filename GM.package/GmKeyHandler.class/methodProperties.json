@@ -3,7 +3,7 @@
 		"initializeKeyLookupMac" : "brh 5/1/2018 18:59",
 		"initializeKeyLookupOSIndependent" : "brh 5/1/2018 19:00",
 		"initializeKeyLookupWindows" : "brh 5/1/2018 19:00",
-		"keyLookup" : "brh 5/1/2018 19:03",
+		"keyLookup" : "NK 5/8/2018 18:02",
 		"keyLookup:" : "TP 4/30/2018 16:31" },
 	"instance" : {
 		"handlesClickOrDrag:" : "brh 5/1/2018 19:01",
@@ -16,7 +16,7 @@
 		"handlesMouseStillDown:" : "brh 5/1/2018 19:01",
 		"handlesMouseWheel:" : "brh 5/1/2018 19:01",
 		"isKeyPressed:" : "TP 4/30/2018 18:04",
-		"keyDown:fromMorph:" : "TP 4/30/2018 19:21",
+		"keyDown:fromMorph:" : "NK 5/8/2018 18:08",
 		"keyPressedLookup" : "TP 4/30/2018 18:03",
 		"keyPressedLookup:" : "TP 4/30/2018 17:11",
 		"keyStroke:fromMorph:" : "TP 4/30/2018 18:53",
