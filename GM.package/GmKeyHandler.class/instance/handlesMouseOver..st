@@ -1,3 +1,3 @@
 event Input
-handlesMouseOver: aEvent
+handlesMouseOver: anEvent
 	^ true

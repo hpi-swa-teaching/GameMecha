@@ -46,4 +46,4 @@ initializeKeyLookupWindows
 		16r58 -> $x.
 		16r59 -> $y.
 		16r5A ->$z.		
-		}).
+		})

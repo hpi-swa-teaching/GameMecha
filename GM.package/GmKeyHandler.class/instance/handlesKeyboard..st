@@ -1,3 +1,3 @@
 event Input
-handlesKeyboard: aEvent
+handlesKeyboard: anEvent
 	^ true
