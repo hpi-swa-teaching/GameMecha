@@ -4,7 +4,6 @@ SmalltalkCISpec {
       #baseline : 'GameMecha',
       #directory : 'src',
       #platforms : [ #squeak ],
-      #load : [ 'tests', 'GM-Test'],
       #useLatestMetacello : true
     }
   ],
