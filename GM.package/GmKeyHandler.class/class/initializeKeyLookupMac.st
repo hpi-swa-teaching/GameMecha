@@ -1,6 +1,6 @@
 class initialization
 initializeKeyLookupMac
-	^(Dictionary newFrom:
+	^ (Dictionary newFrom:
 		{16r00 -> $a.
 		16r01 -> $s.
 		16r02 -> $d.
@@ -53,7 +53,6 @@ initializeKeyLookupMac
 		16r32 -> $~.
 		16r33 -> Character backspace.
 		16r35 -> Character escape.
-		"16r38 -> Character shift >>> there is no Character shift in Squeak, as well as some other keyCodes which are missing."
 		16r7B -> Character arrowLeft.
 		16r7C -> Character arrowRight.
 		16r7D -> Character arrowDown.

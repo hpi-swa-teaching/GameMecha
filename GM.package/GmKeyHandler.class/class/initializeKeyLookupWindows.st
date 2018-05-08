@@ -1,10 +1,9 @@
 class initialization
 initializeKeyLookupWindows
-	^(Dictionary newFrom:
+	^ (Dictionary newFrom:
 		{16r08 -> Character backspace.
 		16r09 -> Character tab.
 		16r0D -> Character cr.
-		"16r38 -> Character shift >>> there is no Character shift in Squeak, as well as some other keyCodes which are missing."
 		16r1B -> Character escape.
 		16r20 -> Character space.
 		16r25 -> Character arrowLeft.
