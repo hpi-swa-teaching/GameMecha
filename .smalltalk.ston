@@ -8,6 +8,12 @@ SmalltalkCISpec {
     }
   ],
   #testing : {
+    #include : {
+      #classes : [ #GM-Test ],
+      #categories : [ 'Gm*Test' ],
+      #packages : [ 'GM' ],
+      #projects : [ 'BaselineOfGameMecha' ]
+    },
     #allTestCases : true
   }
 }
