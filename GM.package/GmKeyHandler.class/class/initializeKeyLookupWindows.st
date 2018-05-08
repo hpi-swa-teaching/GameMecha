@@ -1,6 +1,6 @@
 class initialization
 initializeKeyLookupWindows
-	^(Dictionary newFrom:
+	^ (Dictionary newFrom:
 		{16r08 -> Character backspace.
 		16r09 -> Character tab.
 		16r0D -> Character cr.
