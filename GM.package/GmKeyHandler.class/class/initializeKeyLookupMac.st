@@ -24,37 +24,26 @@ initializeKeyLookupMac
 		16r15 -> $4.
 		16r16 -> $6.
 		16r17 -> $5.
-		16r18 -> $=.
 		16r19 -> $9.
 		16r1A -> $7.
-		16r1B -> $-.
 		16r1C -> $8.
 		16r1D -> $0.
-		16r1E -> $].
 		16r1F -> $o.
 		16r20 -> $u.
-		16r21 -> $[.
 		16r22 -> $i.
 		16r23 -> $p.
 		16r24 -> Character cr.
 		16r25 -> $l.
 		16r26 -> $j.
-		16r27 -> $'.
 		16r28 -> $k.
-		16r29 -> $;.
-		16r2A -> $\.
-		16r2B -> $,.
-		16r2C -> $/.
 		16r2D -> $n.
 		16r2E -> $m.
-		16r2F -> $..
 		16r30 -> Character tab.
 		16r31 -> Character space.
-		16r32 -> $~.
 		16r33 -> Character backspace.
 		16r35 -> Character escape.
 		16r7B -> Character arrowLeft.
 		16r7C -> Character arrowRight.
 		16r7D -> Character arrowDown.
 		16r7E -> Character arrowUp.
-		}).
+		})

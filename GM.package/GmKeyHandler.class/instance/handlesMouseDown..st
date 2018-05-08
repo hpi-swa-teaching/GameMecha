@@ -1,3 +1,3 @@
 event Input
-handlesMouseDown: aEvent
+handlesMouseDown: anEvent
 	^ false
