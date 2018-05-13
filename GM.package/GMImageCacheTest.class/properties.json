@@ -1,14 +1,14 @@
 {
-	"category" : "GM-Graphics",
+	"category" : "GM-Test",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "GMImageCache",
+		"cache" ],
+	"name" : "GMImageCacheTest",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManager",
+	"super" : "TestCase",
 	"type" : "normal" }

@@ -1,14 +1,14 @@
 {
 	"category" : "GM-Graphics",
 	"classinstvars" : [
-		 ],
+		"SoleInstance" ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "GMImageCache",
+		"cache" ],
+	"name" : "GMResourceManager",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManager",
+	"super" : "Object",
 	"type" : "normal" }

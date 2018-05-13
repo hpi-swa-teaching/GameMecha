@@ -1,0 +1,11 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"cache" : "NK 5/8/2018 20:27",
+		"cache:" : "NK 5/8/2018 20:27",
+		"setUp" : "NK 5/8/2018 19:53",
+		"testImageCacheAcceptanceTest" : "brh 5/13/2018 14:23",
+		"testImageLoading" : "brh 5/13/2018 14:57",
+		"testInstanceCreation" : "NK 5/8/2018 19:21",
+		"testLoadAll" : "brh 5/13/2018 14:32" } }

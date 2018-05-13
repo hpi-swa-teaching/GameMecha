@@ -1,14 +1,14 @@
 {
-	"category" : "GM-Graphics",
+	"category" : "GM-Test",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "brh 5/5/2018 21:36",
 	"instvars" : [
 		 ],
-	"name" : "GMImageCache",
+	"name" : "GMKeysTestmorph",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManager",
+	"super" : "Morph",
 	"type" : "normal" }

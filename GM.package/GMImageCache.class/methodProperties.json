@@ -1,16 +1,8 @@
 {
 	"class" : {
-		"instance" : "NK 5/8/2018 20:00",
-		"new" : "NK 5/8/2018 18:50" },
+		 },
 	"instance" : {
-		"flushCache" : "NK 5/8/2018 20:26",
-		"getImageForm:" : "NK 5/8/2018 20:25",
+		"getImageForm:" : "brh 5/13/2018 14:10",
 		"getImageForm:withSize:" : "NK 5/8/2018 19:00",
-		"imageCache" : "NK 5/8/2018 20:24",
-		"imageCache:" : "NK 5/8/2018 18:59",
-		"imageFilenamesAtDir:" : "NK 5/8/2018 19:07",
 		"isSupportedType:" : "NK 5/8/2018 20:53",
-		"loadAllImagesFrom:" : "NK 5/8/2018 20:58",
-		"loadFormFromDrive:" : "NK 5/8/2018 20:22",
-		"loadImageIntoCache:" : "NK 5/8/2018 21:14",
-		"loadImageIntoCache:withName:" : "NK 5/8/2018 20:23" } }
+		"loadResourceFromDrive:" : "brh 5/13/2018 14:24" } }

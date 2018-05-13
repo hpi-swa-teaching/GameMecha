@@ -1,14 +1,14 @@
 {
-	"category" : "GM-Graphics",
+	"category" : "GM-Test",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "GMImageCache",
+		"soundManager" ],
+	"name" : "GMSoundManagerTest",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManager",
+	"super" : "TestCase",
 	"type" : "normal" }
