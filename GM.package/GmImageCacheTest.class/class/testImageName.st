@@ -1,0 +1,3 @@
+Constants
+testImageName
+	^ 'squeak'

@@ -1,11 +1,12 @@
 {
 	"class" : {
-		 },
+		"testImageName" : "NK 5/13/2018 15:30" },
 	"instance" : {
 		"cache" : "NK 5/8/2018 20:27",
 		"cache:" : "NK 5/8/2018 20:27",
-		"setUp" : "NK 5/8/2018 19:53",
-		"testImageCacheAcceptanceTest" : "TP 5/8/2018 22:16",
-		"testImageLoading" : "NK 5/8/2018 21:15",
+		"prepareTest" : "NK 5/13/2018 15:24",
+		"setUp" : "NK 5/13/2018 15:17",
+		"testImageCacheAcceptanceTest" : "NK 5/13/2018 15:36",
+		"testImageLoading" : "NK 5/13/2018 15:39",
 		"testInstanceCreation" : "NK 5/8/2018 19:21",
-		"testLoadAll" : "TP 5/8/2018 22:15" } }
+		"testLoadAll" : "NK 5/13/2018 15:35" } }

@@ -1,3 +1,3 @@
 running
 setUp
-	cache := GMImageCache instance
+	cache := GMImageCache instance.
