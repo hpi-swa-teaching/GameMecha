@@ -6,8 +6,8 @@
 		 ],
 	"commentStamp" : "NK 5/13/2018 15:42",
 	"instvars" : [
-		"cache" ],
-	"name" : "GmImageCacheTest",
+		"imageManager" ],
+	"name" : "GMImageManagerTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",

@@ -1,6 +1,6 @@
 as yet unclassified
 testPlayNamedSound
+	self prepareTest.
 	self soundManager
-		flushCache; 
-		loadResourceIntoCache: self soundTest withName: #patrick;
-		playSound: #patrick.
+		loadResourceIntoCache: self class testSoundName withName: #squeak;
+		playSound: #squeak.

@@ -1,9 +1,0 @@
-{
-	"class" : {
-		"testImageName" : "NK 5/13/2018 15:30" },
-	"instance" : {
-		"prepareTest" : "NK 5/13/2018 15:24",
-		"setUp" : "NK 5/13/2018 15:17",
-		"testImageCacheAcceptanceTest" : "NK 5/13/2018 15:36",
-		"testImageLoading" : "NK 5/13/2018 15:39",
-		"testLoadAll" : "NK 5/13/2018 15:35" } }

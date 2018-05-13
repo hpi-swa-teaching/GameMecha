@@ -1,6 +1,6 @@
 as yet unclassified
 testPlaySound
+	self prepareTest.
 	self soundManager
-		flushCache;
-		loadResourceIntoCache: self soundTest;
-		playSound: self soundTest.
+		loadResourceIntoCache: self class testSoundName;
+		playSound: self class testSoundName.
