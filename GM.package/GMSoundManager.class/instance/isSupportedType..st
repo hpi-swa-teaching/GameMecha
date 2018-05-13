@@ -1,3 +1,3 @@
 as yet unclassified
 isSupportedType: aFileExtension
-	^ aFileExtension = 'wav'
+	^ self supportedTypes keys includes: aFileExtension

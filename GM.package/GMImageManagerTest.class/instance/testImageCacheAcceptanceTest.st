@@ -5,7 +5,7 @@ testImageCacheAcceptanceTest
 	imageMorph openInWorld.
 	
 	self prepareTest.
-	self imageManager loadAllResourcesFrom: ''.
+	self imageManager loadAllResourcesWithNamesFrom: ''.
 	[2 timesRepeat: 
 		[imageMorph image: (self imageManager getImageForm: GMImageManagerTest testImageName asSymbol).
 		(Delay forSeconds: 0.5) wait.

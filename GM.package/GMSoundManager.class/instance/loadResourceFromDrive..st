@@ -1,3 +1,5 @@
 as yet unclassified
 loadResourceFromDrive: aFilename
-	^ SampledSound fromWaveFileNamed: (FileDirectory uri: aFilename) fullName
+	^ (self supportedTypes at: (self extensionFromFilename: aFilename)
+		ifAbsent: [:x | self error: #FileNotFound])
+		value: (FileDirectory uri: aFilename) fullName

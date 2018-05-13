@@ -1,11 +1,15 @@
 {
 	"class" : {
-		"testSoundName" : "brh 5/13/2018 17:38" },
+		"testSoundNameAIFF" : "brh 5/13/2018 18:57",
+		"testSoundNameWAV" : "brh 5/13/2018 18:57" },
 	"instance" : {
 		"prepareTest" : "brh 5/13/2018 17:34",
-		"setUp" : "brh 5/13/2018 17:06",
+		"setUp" : "brh 5/13/2018 19:00",
 		"soundManager" : "brh 5/13/2018 15:40",
 		"soundManager:" : "brh 5/13/2018 15:40",
-		"testFlushCache" : "brh 5/13/2018 17:39",
-		"testPlayNamedSound" : "brh 5/13/2018 17:39",
-		"testPlaySound" : "brh 5/13/2018 17:39" } }
+		"testFlushCache" : "brh 5/13/2018 18:57",
+		"testLoadAll" : "brh 5/13/2018 18:57",
+		"testLoadAllWithNames" : "brh 5/13/2018 18:57",
+		"testPlayNamedSound" : "brh 5/13/2018 18:57",
+		"testPlaySoundAIFF" : "brh 5/13/2018 18:58",
+		"testPlaySoundWAV" : "brh 5/13/2018 19:01" } }
