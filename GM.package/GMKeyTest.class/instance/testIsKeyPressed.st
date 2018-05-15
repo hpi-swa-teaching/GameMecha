@@ -1,6 +1,6 @@
 testing
 testIsKeyPressed
-	|testMorph|
+	| testMorph |
 	testMorph := Morph new
 		gmRegisterToKeyHandler;
 		yourself.

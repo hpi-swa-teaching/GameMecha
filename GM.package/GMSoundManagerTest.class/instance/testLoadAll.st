@@ -2,5 +2,5 @@ as yet unclassified
 testLoadAll
 	self prepareTest.
 	self soundManager
-		loadAllResourcesFrom: '';
-		playSound: self class testSoundNameWAV.
+		loadAllResourcesFrom: 'testingResources/';
+		playSound: (FileDirectory uri: self class testSoundNameWAV) localName.

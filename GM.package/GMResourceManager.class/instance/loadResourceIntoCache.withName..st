@@ -1,3 +1,3 @@
 as yet unclassified
-loadResourceIntoCache: aString withName: aSymbol
-	self cache at: aSymbol put: (self loadResourceFromDrive: aString).
+loadResourceIntoCache: aString withName: aName
+	self cache at: aName put: (self loadResourceFromDrive: aString).

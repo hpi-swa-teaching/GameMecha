@@ -1,5 +1,5 @@
 as yet unclassified
-loadAllResourcesFrom: aFilename
-	self cache addAll: (((self filenamesAtDir: aFilename) 
+loadAllResourcesFrom: aFoldername
+	self cache addAll: (((self filenamesAtDir: aFoldername) 
 		select: [:filename | self isSupportedType: (self extensionFromFilename: filename)])
-		collect: [:filename | filename -> (self loadResourceFromDrive: filename)]).
+		collect: [:filename | filename -> (self loadResourceFromDrive: aFoldername , filename)]).

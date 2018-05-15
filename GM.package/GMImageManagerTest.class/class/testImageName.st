@@ -1,3 +1,3 @@
 Constants
 testImageName
-	^ 'squeak'
+	^ 'squeak.png'
