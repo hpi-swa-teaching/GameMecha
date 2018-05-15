@@ -1,3 +1,3 @@
 as yet unclassified
 testSoundNameWAV
-	^ 'squeak.wav'
+	^ 'testingResources/squeak.wav'

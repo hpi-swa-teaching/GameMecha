@@ -1,9 +1,8 @@
 testing
 testLoadAll
-	self imageManager flushCache.
-	self assert: [self imageManager cache size == 0].
+	self prepareTest.
 	self imageManager loadAllResourcesWithNamesFrom: '';
-		getImageForm: GMImageManagerTest testImageName asSymbol;
-		getImageForm: (GMImageManagerTest testImageName , '2') asSymbol;
+		getImageForm: GMImageManagerTest testImageName;
+		getImageForm: (GMImageManagerTest testImageName , '2');
 		loadAllResourcesWithNamesFrom: ''.
 	self assert: [self imageManager cache size >= 2].

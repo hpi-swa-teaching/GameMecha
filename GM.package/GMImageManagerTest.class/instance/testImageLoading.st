@@ -1,10 +1,10 @@
 testing
 testImageLoading
 	self prepareTest;
-		should: [self cache getImageForm: GMImageManagerTest testImageName asSymbol] raise: Error.
+		should: [self cache getImageForm: GMImageManagerTest testImagePath asSymbol] raise: Error.
 	self imageManager 
-		loadResourceIntoCache: GMImageManagerTest testImageName , '.png' withName: GMImageManagerTest testImageName asSymbol;
-		getImageForm: GMImageManagerTest testImageName asSymbol;
+		loadResourceIntoCache: GMImageManagerTest testImagePath withName: GMImageManagerTest testImageName;
+		getImageForm: GMImageManagerTest testImageName;
 		flushCache;
-		loadResourceIntoCache: GMImageManagerTest testImageName , '.png';
-		loadResourceIntoCache: GMImageManagerTest testImageName , '.png' withName: GMImageManagerTest testImageName asSymbol.
+		loadResourceIntoCache: GMImageManagerTest testImagePath;
+		loadResourceIntoCache: GMImageManagerTest testImagePath withName: GMImageManagerTest testImageName.

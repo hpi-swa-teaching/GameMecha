@@ -3,4 +3,4 @@ testPlaySoundWAV
 	self prepareTest.
 	self soundManager
 		loadResourceIntoCache: self class testSoundNameWAV;
-		playSound: self class testSoundNameWAV.
+		playSound: FileDirectory localName self class testSoundNameWAV.

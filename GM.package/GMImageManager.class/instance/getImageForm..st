@@ -1,3 +1,3 @@
 accessing
-getImageForm: aSymbol
-	^ self cache at: aSymbol ifAbsent: [self error: #ImageNotLoaded]
+getImageForm: aString
+	^ self cache at: aString ifAbsent: [self error: #ImageNotLoaded]

@@ -1,3 +1,3 @@
 as yet unclassified
 testSoundNameAIFF
-	^ 'squeak.aiff'
+	^ 'testingResources/squeak.aiff'
