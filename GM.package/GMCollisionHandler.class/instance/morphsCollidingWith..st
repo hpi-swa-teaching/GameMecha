@@ -1,2 +1,0 @@
-collision detection
-morphsCollidingWith: aMorph
