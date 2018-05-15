@@ -1,0 +1,14 @@
+{
+	"category" : "BaselineOfGM",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BaselineOfGM",
+	"pools" : [
+		 ],
+	"super" : "BaselineOf",
+	"type" : "normal" }
