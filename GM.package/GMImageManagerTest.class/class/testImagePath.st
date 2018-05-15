@@ -1,3 +1,3 @@
 Constants
 testImagePath
-	^ 'testingResources/squeak.png'
+	^ 'testingResources/' , self testImageName 
