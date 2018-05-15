@@ -1,0 +1,17 @@
+{
+	"class" : {
+		"instance" : "brh 5/13/2018 17:04",
+		"new" : "brh 5/13/2018 17:03" },
+	"instance" : {
+		"cache" : "brh 5/13/2018 14:09",
+		"cache:" : "brh 5/13/2018 14:08",
+		"extensionFromFilename:" : "brh 5/13/2018 17:49",
+		"filenamesAtDir:" : "brh 5/13/2018 14:19",
+		"firstNameFromFilename:" : "brh 5/13/2018 18:00",
+		"flushCache" : "brh 5/13/2018 14:10",
+		"isSupportedType:" : "brh 5/13/2018 14:20",
+		"loadAllResourcesFrom:" : "brh 5/13/2018 18:03",
+		"loadAllResourcesWithNamesFrom:" : "brh 5/13/2018 18:49",
+		"loadResourceFromDrive:" : "brh 5/13/2018 14:21",
+		"loadResourceIntoCache:" : "brh 5/13/2018 16:54",
+		"loadResourceIntoCache:withName:" : "brh 5/13/2018 14:27" } }
