@@ -1,13 +1,13 @@
 {
-	"category" : "GM-Test",
+	"category" : "GM-AcceptanceTest",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "brh 5/5/2018 21:36",
+	"commentStamp" : "brh 5/15/2018 22:54",
 	"instvars" : [
 		 ],
-	"name" : "GMKeysTestmorph",
+	"name" : "GMSoundManagerAcceptanceTest",
 	"pools" : [
 		 ],
 	"super" : "Morph",

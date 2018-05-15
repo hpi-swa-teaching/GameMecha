@@ -1,1 +1,0 @@
-A GmKeysTestmorph is a TestMorph for Eva who wants to check in step whether a key is pressed.
