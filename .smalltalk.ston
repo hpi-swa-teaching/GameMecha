@@ -1,8 +1,8 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'GameMecha',
-      #directory : 'src',
+      #baseline : 'GM',
+      #directory : '',
       #platforms : [ #squeak ],
       #load : [ 'tests' ],
       #useLatestMetacello : true
