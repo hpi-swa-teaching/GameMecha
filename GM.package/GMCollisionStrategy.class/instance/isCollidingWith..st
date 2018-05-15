@@ -1,0 +1,2 @@
+collision
+isCollidingWith: aMorph
