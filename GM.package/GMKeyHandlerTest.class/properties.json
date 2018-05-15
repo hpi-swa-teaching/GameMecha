@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "GMKeyTest",
+	"name" : "GMKeyHandlerTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",
