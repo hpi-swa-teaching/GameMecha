@@ -2,7 +2,5 @@
 	"class" : {
 		 },
 	"instance" : {
-		"collisionDetectionStrategy" : "AZ 5/15/2018 20:38",
-		"collisionDetectionStrategy:" : "AZ 5/15/2018 21:46",
 		"gmRegisterToKeyHandler" : "AZ 5/15/2018 22:40",
 		"isKeyPressed:" : "AZ 5/15/2018 22:40" } }

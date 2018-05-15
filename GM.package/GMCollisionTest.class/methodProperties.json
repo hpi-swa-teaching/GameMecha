@@ -6,6 +6,6 @@
 		"collisionHandler:" : "AZ 5/15/2018 19:53",
 		"setUp" : "AZ 5/15/2018 19:54",
 		"testAddAndRemove" : "AZ 5/15/2018 19:57",
-		"testAssigningCollisionDetectionStrategy" : "AZ 5/15/2018 21:46",
+		"testAssigningCollisionDetectionStrategy" : "AZ 5/15/2018 22:38",
 		"testRemoveAll" : "AZ 5/15/2018 20:00",
 		"testRemoveMorphNotIncluded" : "AZ 5/15/2018 20:13" } }
