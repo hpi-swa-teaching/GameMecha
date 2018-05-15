@@ -1,0 +1,2 @@
+collision
+isCollidingWithCircle: aMorph

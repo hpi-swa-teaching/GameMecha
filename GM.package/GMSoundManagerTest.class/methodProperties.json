@@ -1,0 +1,16 @@
+{
+	"class" : {
+		"testSoundNameAIFF" : "NK 5/15/2018 19:59",
+		"testSoundNameWAV" : "NK 5/15/2018 19:58",
+		"testSoundPathAIFF" : "NK 5/15/2018 19:59",
+		"testSoundPathWAV" : "NK 5/15/2018 19:59" },
+	"instance" : {
+		"prepareTest" : "brh 5/13/2018 17:34",
+		"setUp" : "brh 5/13/2018 19:00",
+		"soundManager" : "brh 5/13/2018 15:40",
+		"soundManager:" : "brh 5/13/2018 15:40",
+		"testFlushCache" : "brh 5/13/2018 18:57",
+		"testLoadAll" : "NK 5/15/2018 20:07",
+		"testPlayNamedSound" : "NK 5/15/2018 20:00",
+		"testPlaySoundAIFF" : "NK 5/15/2018 20:01",
+		"testPlaySoundWAV" : "NK 5/15/2018 20:02" } }

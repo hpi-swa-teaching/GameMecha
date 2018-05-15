@@ -1,0 +1,15 @@
+{
+	"category" : "GM-Resources",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"loudness",
+		"supportedTypes" ],
+	"name" : "GMSoundManager",
+	"pools" : [
+		 ],
+	"super" : "GMResourceManager",
+	"type" : "normal" }

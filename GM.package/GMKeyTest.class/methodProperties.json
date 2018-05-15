@@ -1,0 +1,7 @@
+{
+	"class" : {
+		"testKeyboardEventOfType:withValue:" : "brh 5/1/2018 19:19" },
+	"instance" : {
+		"keyTestValue" : "brh 5/1/2018 19:43",
+		"testAllOSsSupportSameKeys" : "AZ 5/14/2018 17:20",
+		"testIsKeyPressed" : "AZ 5/15/2018 20:52" } }

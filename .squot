@@ -1,4 +1,6 @@
 OrderedDictionary {
+	'BaselineOfGM.package' : #SquotCypressCodeSerializer,
+	'GM.package' : #SquotCypressCodeSerializer,
 	'source\/BaselineOfGM.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Collision.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Keys.package' : #SquotCypressCodeSerializer,

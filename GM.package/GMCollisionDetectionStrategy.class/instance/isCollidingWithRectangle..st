@@ -1,0 +1,3 @@
+collision
+isCollidingWithRectangle: aMorph
+	self subclassResponsibility.
