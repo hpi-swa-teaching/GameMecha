@@ -1,3 +1,3 @@
 accessing
 currentMusic
-	^ currentMusic
+	^ currentMusic ifNil: [currentMusic := RepeatingSound new]

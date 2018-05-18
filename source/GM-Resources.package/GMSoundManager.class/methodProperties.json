@@ -2,14 +2,15 @@
 	"class" : {
 		"instance" : "brh 5/13/2018 17:27" },
 	"instance" : {
-		"currentMusic" : "brh 5/18/2018 18:39",
+		"currentMusic" : "brh 5/18/2018 19:22",
 		"currentMusic:" : "brh 5/18/2018 18:39",
 		"isSupportedType:" : "brh 5/13/2018 17:57",
 		"loadResourceFromDrive:" : "brh 5/13/2018 17:52",
 		"loudness" : "brh 5/13/2018 15:27",
-		"loudness:" : "brh 5/18/2018 18:41",
-		"pauseMusic" : "brh 5/18/2018 18:40",
-		"playMusic:" : "brh 5/18/2018 18:49",
-		"playSound:" : "brh 5/13/2018 16:42",
+		"loudness:" : "brh 5/18/2018 19:21",
+		"pauseMusic" : "brh 5/18/2018 19:20",
+		"playMusic:" : "brh 5/18/2018 19:14",
+		"playSound:" : "brh 5/18/2018 19:12",
+		"sampledSound:" : "brh 5/18/2018 19:10",
 		"supportedTypes" : "brh 5/13/2018 17:47",
 		"supportedTypes:" : "brh 5/13/2018 17:44" } }
