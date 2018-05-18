@@ -11,6 +11,7 @@
 		"soundManager:" : "brh 5/13/2018 15:40",
 		"testFlushCache" : "brh 5/13/2018 18:57",
 		"testLoadAll" : "NK 5/15/2018 20:07",
+		"testPlayMusic" : "brh 5/18/2018 18:53",
 		"testPlayNamedSound" : "NK 5/15/2018 20:00",
 		"testPlaySoundAIFF" : "NK 5/15/2018 20:01",
 		"testPlaySoundWAV" : "NK 5/15/2018 20:02" } }
