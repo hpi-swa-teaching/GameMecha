@@ -1,3 +1,3 @@
 as yet unclassified
 setUp
-	self soundManager: (GMSoundManager instance loudness: 1.0).
+	self soundManager: (GMSoundManager instance loudness: 0.0).
