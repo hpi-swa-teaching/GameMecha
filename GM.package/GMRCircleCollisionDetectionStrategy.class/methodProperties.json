@@ -2,8 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"center" : "TP 5/19/2018 14:08",
 		"isCollidingWith:" : "TP 5/19/2018 13:12",
-		"isCollidingWithCircle:" : "TP 5/19/2018 13:59",
-		"isCollidingWithRectangle:" : "TP 5/19/2018 14:51",
-		"radius" : "TP 5/19/2018 14:09" } }
+		"isCollidingWithCircle:" : "TP 5/19/2018 15:01",
+		"isCollidingWithRectangle:" : "TP 5/19/2018 15:01",
+		"radius" : "TP 5/19/2018 15:00" } }
