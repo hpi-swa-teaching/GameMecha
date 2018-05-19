@@ -7,6 +7,8 @@
 		"setUp" : "AZ 5/15/2018 19:54",
 		"testAddAndRemove" : "AZ 5/15/2018 19:57",
 		"testAssigningCollisionDetectionStrategy" : "AZ 5/15/2018 22:43",
+		"testCircleCircleCollision" : "TP 5/19/2018 14:10",
+		"testCircleRectangleCollision" : "TP 5/19/2018 14:56",
 		"testRectangleRectangleCollision" : "AZ 5/15/2018 22:49",
 		"testRemoveAll" : "AZ 5/15/2018 20:00",
 		"testRemoveMorphNotIncluded" : "AZ 5/15/2018 20:13" } }
