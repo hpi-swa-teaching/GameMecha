@@ -1,6 +1,7 @@
 OrderedDictionary {
 	'BaselineOfGM.package' : #SquotCypressCodeSerializer,
 	'source\/BaselineOfGM.package' : #SquotCypressCodeSerializer,
+	'source\/GM-AcceptanceTest.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Collision.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Keys.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Resources.package' : #SquotCypressCodeSerializer,

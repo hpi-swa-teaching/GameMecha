@@ -1,0 +1,17 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"collisionHandler" : "AZ 5/21/2018 16:42",
+		"collisionHandler:" : "AZ 5/21/2018 16:42",
+		"collisionMorphs" : "AZ 5/21/2018 16:43",
+		"collisionMorphs:" : "AZ 5/21/2018 16:42",
+		"createCircleCollisionMorph" : "AZ 5/21/2018 17:24",
+		"createRectangleCollisionMorph" : "AZ 5/21/2018 17:27",
+		"evaluateMorphs" : "AZ 5/21/2018 17:00",
+		"initialize" : "AZ 5/21/2018 17:28",
+		"initializeSubmorphs" : "AZ 5/21/2018 16:55",
+		"initializeVariables" : "AZ 5/21/2018 17:28",
+		"shuffleMorphs" : "AZ 5/21/2018 17:04",
+		"step" : "AZ 5/21/2018 17:30",
+		"stepTime" : "AZ 5/21/2018 17:03" } }
