@@ -1,1 +1,0 @@
-A GmKeysTestmorph is a TestMorph for SWA students who want to check in step whether a key is pressed.
