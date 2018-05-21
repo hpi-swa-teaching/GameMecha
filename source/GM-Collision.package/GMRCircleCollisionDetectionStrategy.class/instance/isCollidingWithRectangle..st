@@ -1,6 +1,6 @@
 collision
 isCollidingWithRectangle: aMorph
-	|circleDistance|
+	| circleDistance |
 	circleDistance := (self owner center - aMorph center) abs.
 	circleDistance x > (aMorph extent x / 2 + self radius) ifTrue: [^false].
 	circleDistance y > (aMorph extent y / 2 + self radius) ifTrue: [^false].

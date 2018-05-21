@@ -1,3 +1,3 @@
 accessing
 radius
-	^ {self owner fullBounds width. self owner fullBounds height} min / 2
+	^ {self owner extent x. self owner extent y} min / 2
