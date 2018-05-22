@@ -10,5 +10,5 @@
 	"name" : "GMImageManagerAcceptanceTest",
 	"pools" : [
 		 ],
-	"super" : "Morph",
+	"super" : "ImageMorph",
 	"type" : "normal" }
