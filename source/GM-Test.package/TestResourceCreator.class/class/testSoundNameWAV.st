@@ -1,3 +1,3 @@
-as yet unclassified
+sounds
 testSoundNameWAV
 	^ 'squeak.wav'

@@ -1,4 +1,4 @@
-as yet unclassified
+images
 squeakPNG
 	^  (Form
 	extent: 293@200

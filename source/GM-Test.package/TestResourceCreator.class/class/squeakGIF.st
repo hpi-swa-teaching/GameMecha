@@ -1,4 +1,4 @@
-as yet unclassified
+images
 squeakGIF
 	^ ((ColorForm
 	extent: 293@200

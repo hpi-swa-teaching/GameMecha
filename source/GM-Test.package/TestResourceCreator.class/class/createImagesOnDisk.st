@@ -1,4 +1,10 @@
-as yet unclassified
+images
 createImagesOnDisk
-	self squeakGIF writeJPEGfileNamed: 'squeakWritten.png'.
-	self	squeakPNG writePNGfileNamed: 'test'.
+	| temporaryStream |
+	temporaryStream := ByteArray new writeStream.
+	JPEGReadWriter2 putForm: self squeakGIF onStream: temporaryStream.
+	self saveStream: temporaryStream onPath: self testImagePathJPEG.
+	
+	temporaryStream := ByteArray new writeStream.
+	PNGReadWriter putForm: self squeakGIF onStream: temporaryStream.
+	self saveStream: temporaryStream onPath: self testImagePathPNG.

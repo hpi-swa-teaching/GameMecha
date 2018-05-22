@@ -1,7 +1,7 @@
 testing
 testImageLoading
 	self prepareTest.
-	self should: [self cache getImageForm: GMImageManagerTest testImageName] raise: Error.
+	self should: [self cache getImageForm: TestResourceCreator testImageNamePNG] raise: Error.
 	self imageManager
-		loadResourceIntoCache: GMImageManagerTest testImagePath;
-		getImageForm: GMImageManagerTest testImageName.
+		loadResourceIntoCache: TestResourceCreator testImagePathPNG;
+		getImageForm: TestResourceCreator testImageNamePNG.

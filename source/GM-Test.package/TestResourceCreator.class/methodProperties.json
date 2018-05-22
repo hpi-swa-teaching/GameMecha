@@ -1,7 +1,19 @@
 {
 	"class" : {
-		"createImagesOnDisk" : "NK 5/22/2018 20:51",
+		"createFileDump" : "NK 5/22/2018 22:06",
+		"createImagesOnDisk" : "NK 5/22/2018 21:38",
+		"saveStream:onPath:" : "NK 5/22/2018 21:27",
 		"squeakGIF" : "NK 5/22/2018 20:43",
-		"squeakPNG" : "NK 5/22/2018 20:36" },
+		"squeakPNG" : "NK 5/22/2018 20:36",
+		"squeakWAV" : "NK 5/22/2018 21:54",
+		"testImageNameJPEG" : "NK 5/22/2018 21:03",
+		"testImageNamePNG" : "NK 5/22/2018 21:03",
+		"testImagePathJPEG" : "NK 5/22/2018 21:09",
+		"testImagePathPNG" : "NK 5/22/2018 21:09",
+		"testResourceFolder" : "NK 5/22/2018 21:20",
+		"testSoundNameAIFF" : "NK 5/22/2018 21:03",
+		"testSoundNameWAV" : "NK 5/22/2018 21:03",
+		"testSoundPathAIFF" : "NK 5/22/2018 21:03",
+		"testSoundPathWAV" : "NK 5/22/2018 21:04" },
 	"instance" : {
-		"createFileDump" : "NK 5/22/2018 20:42" } }
+		 } }

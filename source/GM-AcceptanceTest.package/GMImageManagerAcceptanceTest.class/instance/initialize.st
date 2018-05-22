@@ -2,6 +2,6 @@ as yet unclassified
 initialize
 	super initialize.
 	self image: (GMImageManager instance 
-		loadAllResourcesFrom: 'testingResources/';
-		getImageForm: GMImageManagerTest testImageName).
+		loadAllResourcesFrom: TestResourceCreator testResourceFolder;
+		getImageForm: TestResourceCreator testImageName).
 	self abandon.

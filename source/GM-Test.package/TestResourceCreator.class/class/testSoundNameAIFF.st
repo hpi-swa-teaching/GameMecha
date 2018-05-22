@@ -1,3 +1,3 @@
-as yet unclassified
+sounds
 testSoundNameAIFF
 	^ 'squeak.aiff'

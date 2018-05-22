@@ -1,0 +1,3 @@
+utility
+testResourceFolder
+	^ 'testingResources/'
