@@ -1,8 +1,8 @@
 testing
 testLoadAll
 	self prepareTest.
-	self imageManager loadAllResourcesFrom: 'testingResources/';
-		getImageForm: GMImageManagerTest testImageName;
-		getImageForm: (GMImageManagerTest testImageAdditionalName);
-		loadAllResourcesFrom: 'testingResources/'.
+	self imageManager loadAllResourcesFrom: TestResourceCreator testResourceFolder;
+		getImageForm: TestResourceCreator testImageNamePNG;
+		getImageForm: (TestResourceCreator testImageNameJPEG);
+		loadAllResourcesFrom: TestResourceCreator testResourceFolder.
 	self assert: [self imageManager cache size >= 2].

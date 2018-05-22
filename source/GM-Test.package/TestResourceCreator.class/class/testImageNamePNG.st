@@ -1,0 +1,3 @@
+images
+testImageNamePNG
+	^ 'squeak.png'

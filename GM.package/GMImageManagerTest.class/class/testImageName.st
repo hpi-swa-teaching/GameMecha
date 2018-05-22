@@ -1,3 +1,0 @@
-Constants
-testImageName
-	^ 'squeak.png'
