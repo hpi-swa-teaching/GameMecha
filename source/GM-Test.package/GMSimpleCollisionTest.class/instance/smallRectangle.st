@@ -1,3 +1,7 @@
 accessing
 smallRectangle
-	^ smallRectangle ifNil: [smallRectangle := self createSmallCollisionRectangle]
+	^ smallRectangle ifNil: 
+		[smallRectangle := Morph new
+			extent: self class smallRectangleExtent;
+			collisionDetectionStrategy: GMRectangleCollisionDetectionStrategy new;
+			yourself]
