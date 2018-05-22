@@ -6,8 +6,11 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collisionHandler" ],
-	"name" : "GMCollisionTest",
+		"collisionHandler",
+		"smallCircle",
+		"bigCircle",
+		"rectangle" ],
+	"name" : "GMCircleCollisionTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",

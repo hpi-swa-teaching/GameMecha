@@ -1,0 +1,3 @@
+creation
+smallCircleRadius
+	^ 25

@@ -1,4 +1,4 @@
-initialization
+creation
 createRectangleCollisionMorph
 	^ RectangleMorph new
 			collisionDetectionStrategy: GMRectangleCollisionDetectionStrategy new;

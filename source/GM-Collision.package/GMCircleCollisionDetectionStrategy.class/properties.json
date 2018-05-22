@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "GMRCircleCollisionDetectionStrategy",
+	"name" : "GMCircleCollisionDetectionStrategy",
 	"pools" : [
 		 ],
 	"super" : "GMCollisionDetectionStrategy",

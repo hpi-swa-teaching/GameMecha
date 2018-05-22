@@ -1,0 +1,20 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"bigCircle" : "AZ 5/22/2018 16:12",
+		"bigCircle:" : "AZ 5/22/2018 16:12",
+		"bigCircleRadius" : "AZ 5/22/2018 16:08",
+		"collisionHandler" : "AZ 5/22/2018 15:51",
+		"collisionHandler:" : "AZ 5/22/2018 15:51",
+		"createBigCollisionCircle" : "AZ 5/22/2018 16:20",
+		"createCollisionRectangle" : "AZ 5/22/2018 16:07",
+		"createSmallCollisionCircle" : "AZ 5/22/2018 16:21",
+		"rectangle" : "AZ 5/22/2018 16:13",
+		"rectangle:" : "AZ 5/22/2018 16:12",
+		"rectangleExtent" : "AZ 5/22/2018 16:17",
+		"smallCircle" : "AZ 5/22/2018 16:12",
+		"smallCircle:" : "AZ 5/22/2018 16:12",
+		"smallCircleRadius" : "AZ 5/22/2018 16:20",
+		"testCircleCircleCollision" : "AZ 5/22/2018 16:16",
+		"testCircleRectangleCollision" : "AZ 5/22/2018 16:19" } }
