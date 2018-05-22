@@ -2,5 +2,7 @@ as yet unclassified
 initialize
 	GMSoundManager instance
 		loadAllResourcesFrom: 'testingResources/';
-		playSound: GMSoundManagerTest testSoundNameWAV.
-	self abandon.
+		loudness: 1.0;
+		playSound: GMSoundManagerTest testSoundNameWAV;
+		playMusic: GMSoundManagerTest testSoundNameWAV;
+		pauseMusic.

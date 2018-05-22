@@ -10,5 +10,5 @@
 	"name" : "GMSoundManagerAcceptanceTest",
 	"pools" : [
 		 ],
-	"super" : "Morph",
+	"super" : "Object",
 	"type" : "normal" }
