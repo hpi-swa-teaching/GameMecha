@@ -1,0 +1,28 @@
+{
+	"class" : {
+		"KeyLookup" : "brh 5/8/2018 19:51",
+		"initializeKeyLookupLinux" : "AZ 5/8/2018 19:34",
+		"initializeKeyLookupMac" : "AZ 5/8/2018 19:25",
+		"initializeKeyLookupOSIndependent" : "brh 5/8/2018 19:19",
+		"initializeKeyLookupWindows" : "AZ 5/8/2018 19:25",
+		"supportedPlatformDict" : "SD 5/8/2018 20:23" },
+	"instance" : {
+		"handlesClickOrDrag:" : "AZ 5/8/2018 19:27",
+		"handlesGestureStart:" : "AZ 5/8/2018 19:27",
+		"handlesKeyboard:" : "AZ 5/8/2018 19:27",
+		"handlesMouseDown:" : "AZ 5/8/2018 19:27",
+		"handlesMouseMove:" : "AZ 5/8/2018 19:27",
+		"handlesMouseOver:" : "AZ 5/8/2018 19:26",
+		"handlesMouseOverDragging:" : "AZ 5/8/2018 19:26",
+		"handlesMouseStillDown:" : "AZ 5/8/2018 19:27",
+		"handlesMouseWheel:" : "AZ 5/8/2018 19:27",
+		"isKeyPressed:" : "brh 5/8/2018 19:20",
+		"keyDown:fromMorph:" : "brh 5/8/2018 20:01",
+		"keyPressedLookup" : "TP 4/30/2018 18:03",
+		"keyPressedLookup:" : "TP 4/30/2018 17:11",
+		"keyStroke:fromMorph:" : "TP 4/30/2018 18:53",
+		"keyUp:fromMorph:" : "brh 5/8/2018 20:01",
+		"keyboardFocusChange:fromMorph:" : "brh 5/8/2018 19:20",
+		"mouseDown:fromMorph:" : "TP 4/30/2018 19:00",
+		"mouseEnter:fromMorph:" : "TP 4/30/2018 19:00",
+		"mouseLeave:fromMorph:" : "TP 4/30/2018 19:00" } }

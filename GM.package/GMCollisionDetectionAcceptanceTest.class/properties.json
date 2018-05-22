@@ -1,0 +1,15 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "AZ 5/22/2018 15:29",
+	"instvars" : [
+		"collisionMorphs",
+		"collisionHandler" ],
+	"name" : "GMCollisionDetectionAcceptanceTest",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

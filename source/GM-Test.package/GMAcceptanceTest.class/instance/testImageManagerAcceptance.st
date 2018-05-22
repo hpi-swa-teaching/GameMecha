@@ -1,0 +1,3 @@
+as yet unclassified
+testImageManagerAcceptance
+	GMImageManagerAcceptanceTest new abandon.

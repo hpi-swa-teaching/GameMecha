@@ -1,0 +1,17 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collisionHandler",
+		"smallCircle",
+		"bigCircle",
+		"rectangle" ],
+	"name" : "GMCircleCollisionTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }
