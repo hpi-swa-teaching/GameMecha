@@ -1,1 +1,3 @@
-The Acceptance Test contains Morphs of different shapes and their collision strategies. Morphs collisding with other morphs will be colored red, else they will be green. By pressing space, the user can shuffel the position if the morphs. For more precise tests, the user can drag a morph around to check whether the coliision works as expected
+The Acceptance Test contains Morphs of different shapes and their collision strategies. Morphs collisding with other morphs will be colored red, else they will be green. By pressing space, the user can shuffel the position if the morphs. For more precise tests, the user can drag a morph around to check whether the coliision works as expected.
+
+TODO: this is a debug-acceptance test and ugly and will be refactored once time has come.
