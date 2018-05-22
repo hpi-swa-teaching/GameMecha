@@ -1,3 +1,0 @@
-creation
-smallCircleRadius
-	^ 25

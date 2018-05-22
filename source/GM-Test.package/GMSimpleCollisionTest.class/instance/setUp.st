@@ -1,5 +1,5 @@
 as yet unclassified
 setUp
 	self collisionHandler 
-		addMorph: self bigRectangle;
-		addMorph: self smallRectangle.
+		addMorph: self collidingTestMorph;
+		addMorph: self collisionTestMorph.

@@ -2,6 +2,8 @@
 	"class" : {
 		"testKeyboardEventOfType:withValue:" : "brh 5/1/2018 19:19" },
 	"instance" : {
-		"keyTestValue" : "NK 5/22/2018 19:49",
+		"keyTestMorph" : "brh 5/22/2018 21:42",
+		"keyTestMorph:" : "brh 5/22/2018 21:42",
+		"keyTestValue" : "brh 5/22/2018 21:41",
 		"testAllOSsSupportSameKeys" : "AZ 5/14/2018 17:20",
-		"testIsKeyPressed" : "AZ 5/15/2018 20:52" } }
+		"testIsKeyPressed" : "brh 5/22/2018 21:43" } }

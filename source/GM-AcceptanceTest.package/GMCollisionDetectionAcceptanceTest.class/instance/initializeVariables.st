@@ -1,5 +1,5 @@
 initialization
 initializeVariables
 	self color: Color white;
-		extent: 500 @ 500;
+		extent: 700 @ 700;
 		gmRegisterToKeyHandler.
