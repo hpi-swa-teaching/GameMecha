@@ -2,6 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testCollisionDetectionAcceptance" : "brh 5/22/2018 21:52",
+		"testCollisionDetectionAcceptance" : "brh 5/22/2018 22:49",
 		"testImageManagerAcceptance" : "brh 5/22/2018 21:56",
-		"testKeyHandlerAcceptance" : "brh 5/22/2018 21:56" } }
+		"testKeyHandlerAcceptance" : "brh 5/22/2018 21:56",
+		"testSoundManagerAcceptance" : "brh 5/22/2018 22:51" } }
