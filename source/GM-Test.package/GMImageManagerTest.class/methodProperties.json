@@ -8,6 +8,6 @@
 		"imageManager:" : "brh 5/13/2018 17:18",
 		"prepareTest" : "brh 5/13/2018 17:19",
 		"setUp" : "brh 5/13/2018 17:19",
-		"testImageCacheAcceptanceTest" : "NK 5/15/2018 20:20",
-		"testImageLoading" : "NK 5/15/2018 19:41",
+		"testImageLoading" : "brh 5/22/2018 20:37",
+		"testImageLoadingWithName" : "brh 5/22/2018 20:36",
 		"testLoadAll" : "NK 5/15/2018 20:18" } }

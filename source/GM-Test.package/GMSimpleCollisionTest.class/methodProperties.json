@@ -1,20 +1,18 @@
 {
 	"class" : {
-		 },
+		"bigRectangleExtent" : "brh 5/22/2018 20:50",
+		"smallRectangleExtent" : "brh 5/22/2018 20:50" },
 	"instance" : {
-		"bigRectangle" : "AZ 5/22/2018 15:55",
+		"bigRectangle" : "brh 5/22/2018 20:50",
 		"bigRectangle:" : "AZ 5/22/2018 15:47",
-		"bigRectangleExtent" : "AZ 5/22/2018 15:48",
 		"collisionHandler" : "AZ 5/22/2018 15:50",
 		"collisionHandler:" : "AZ 5/15/2018 19:53",
-		"createBigCollisionRectangle" : "AZ 5/22/2018 16:07",
-		"createSmallCollisionRectangle" : "AZ 5/22/2018 16:02",
-		"smallRectangle" : "AZ 5/22/2018 15:55",
+		"setUp" : "brh 5/22/2018 20:49",
+		"smallRectangle" : "brh 5/22/2018 20:52",
 		"smallRectangle:" : "AZ 5/22/2018 15:47",
-		"smallRectangleExtent" : "AZ 5/22/2018 15:48",
 		"testAddAndRemove" : "AZ 5/15/2018 19:57",
 		"testAssigningCollisionDetectionStrategy" : "AZ 5/15/2018 22:43",
-		"testRectangleIsCollidingWithRectangle" : "AZ 5/22/2018 16:04",
-		"testRectangleRectangleCollision" : "AZ 5/22/2018 16:06",
+		"testRectangleIsCollidingWithRectangle" : "brh 5/22/2018 20:51",
+		"testRectangleRectangleCollision" : "brh 5/22/2018 20:51",
 		"testRemoveAll" : "AZ 5/15/2018 20:00",
 		"testRemoveMorphNotIncluded" : "AZ 5/15/2018 20:13" } }
