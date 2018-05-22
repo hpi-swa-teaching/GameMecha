@@ -1,3 +1,0 @@
-creation
-bigCircleRadius
-	^ 50
