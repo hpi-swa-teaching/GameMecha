@@ -1,20 +1,19 @@
 {
 	"class" : {
-		 },
+		"bigCircleDiameter" : "brh 5/22/2018 21:29",
+		"rectangleExtent" : "brh 5/22/2018 21:30",
+		"smallCircleDiameter" : "brh 5/22/2018 21:29" },
 	"instance" : {
-		"bigCircle" : "AZ 5/22/2018 16:12",
+		"bigCircle" : "brh 5/22/2018 21:31",
 		"bigCircle:" : "AZ 5/22/2018 16:12",
-		"bigCircleRadius" : "AZ 5/22/2018 16:08",
 		"collisionHandler" : "AZ 5/22/2018 15:51",
 		"collisionHandler:" : "AZ 5/22/2018 15:51",
-		"createBigCollisionCircle" : "AZ 5/22/2018 16:20",
-		"createCollisionRectangle" : "AZ 5/22/2018 16:07",
-		"createSmallCollisionCircle" : "AZ 5/22/2018 16:21",
-		"rectangle" : "AZ 5/22/2018 16:13",
+		"rectangle" : "brh 5/22/2018 21:33",
 		"rectangle:" : "AZ 5/22/2018 16:12",
-		"rectangleExtent" : "AZ 5/22/2018 16:17",
-		"smallCircle" : "AZ 5/22/2018 16:12",
+		"setUp" : "brh 5/22/2018 21:30",
+		"smallCircle" : "brh 5/22/2018 21:29",
 		"smallCircle:" : "AZ 5/22/2018 16:12",
-		"smallCircleRadius" : "AZ 5/22/2018 16:20",
-		"testCircleCircleCollision" : "AZ 5/22/2018 16:16",
-		"testCircleRectangleCollision" : "AZ 5/22/2018 16:19" } }
+		"testCircleCircleCollision" : "brh 5/22/2018 21:33",
+		"testCircleCircleNoCollision" : "brh 5/22/2018 21:38",
+		"testCircleRectangleCollision" : "brh 5/22/2018 21:37",
+		"testCircleRectangleNoCollision" : "brh 5/22/2018 21:37" } }

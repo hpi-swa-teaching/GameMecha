@@ -1,10 +1,9 @@
 testing
 testAddAndRemove
-	| aMorph |
-	aMorph := Morph new.
-	self deny: [self collisionHandler includes: aMorph].
-	self collisionHandler addMorph: aMorph.
-	self assert: [self collisionHandler includes: aMorph].
-	self collisionHandler removeMorph: aMorph.
-	self deny: [self collisionHandler includes: aMorph].
+	self collisionHandler removeAllMorphs.
+	self deny: [self collisionHandler includes: self collisionTestMorph].
+	self collisionHandler addMorph: self collisionTestMorph.
+	self assert: [self collisionHandler includes: self collisionTestMorph].
+	self collisionHandler removeMorph: self collisionTestMorph.
+	self deny: [self collisionHandler includes: self collisionTestMorph].
 	

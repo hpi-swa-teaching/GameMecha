@@ -1,3 +1,3 @@
 as yet unclassified
-bigRectangleExtent
+collidingMorphExtent
 	^ 200 @ 100

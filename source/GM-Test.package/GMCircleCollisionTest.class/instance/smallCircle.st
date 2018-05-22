@@ -1,3 +1,6 @@
 accessing
 smallCircle
-	^ smallCircle ifNil: [smallCircle := self createSmallCollisionCircle]
+	^ smallCircle ifNil: [smallCircle := CircleMorph new
+		extent: self class smallCircleDiameter;
+		collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;
+		yourself]

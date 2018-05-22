@@ -1,3 +1,3 @@
 as yet unclassified
-smallRectangleExtent
+smallCircleDiameter
 	^ 50 @ 50
