@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Collision",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMCircleCollisionDetectionStrategy",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionDetectionStrategy",
+	"type" : "normal" }
