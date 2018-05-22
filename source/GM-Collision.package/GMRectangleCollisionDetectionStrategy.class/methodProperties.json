@@ -4,4 +4,5 @@
 	"instance" : {
 		"isCollidingWith:" : "AZ 5/15/2018 21:45",
 		"isCollidingWithCircle:" : "TP 5/19/2018 14:43",
-		"isCollidingWithRectangle:" : "AZ 5/15/2018 23:24" } }
+		"isCollidingWithRectangle:" : "AZ 5/22/2018 21:01",
+		"isCollidingWithRotatedRectangle:" : "AZ 5/22/2018 21:30" } }

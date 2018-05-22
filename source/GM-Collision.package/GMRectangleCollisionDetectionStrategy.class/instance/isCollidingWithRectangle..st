@@ -1,3 +1,3 @@
 collision
 isCollidingWithRectangle: aMorph
-	^self owner fullBounds intersects: aMorph fullBounds
+	^ self fullBounds intersects: aMorph collisionDetectionStrategy fullBounds
