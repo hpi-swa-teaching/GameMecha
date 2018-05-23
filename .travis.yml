@@ -6,9 +6,15 @@ os:
   - linux
   - osx
 
+# cool telegram bot for travisCI tryout
+notifications:
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
+
+
 # Select compatible Smalltalk image(s)
 smalltalk:
   - Squeak-trunk
   - Squeak-5.1
   - Squeak-5.0
   - Squeak-4.6
+  
