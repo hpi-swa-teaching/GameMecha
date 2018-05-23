@@ -1,9 +1,8 @@
 utility
 createFileDump
 	| output |
-	output := WriteStream on: ''.
-	(GMSoundManager instance cache at: 'squeak.wav') storeOn: output.
+	output := (GMSoundManager instance cache at: 'squeak.wav') samples asByteArray readStream.
 		(FileDirectory new
 		forceNewFileNamed: ((FileDirectory uri: 'testingResources\output.txt') name))
-			nextPutAll: (output contents);
+			nextPutAll: 	output contents;
 			close.

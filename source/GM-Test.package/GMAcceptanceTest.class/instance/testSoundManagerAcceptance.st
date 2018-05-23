@@ -1,3 +1,4 @@
 as yet unclassified
 testSoundManagerAcceptance
+	TestResourceCreator createSoundOnDisk.
 	GMSoundManagerAcceptanceTest new.

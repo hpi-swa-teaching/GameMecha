@@ -7,6 +7,8 @@ baseline: spec
 				spec
 					package: 'GM-Keys';
 					package: 'GM-Resources';
+					package: 'GM-AcceptanceTest';
+					package: 'GM-Test';
 					package: 'GM-Test' with: [spec requires: #('keys' 'resources')];
 					yourself.
 				spec
