@@ -1,4 +1,4 @@
 as yet unclassified
 testImageManagerAcceptance
-	TestResourceCreator createImagesOnDisk.
+	TestResourceFixtures createImagesOnDisk.
 	GMImageManagerAcceptanceTest new abandon.

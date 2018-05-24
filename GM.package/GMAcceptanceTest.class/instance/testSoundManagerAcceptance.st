@@ -1,4 +1,4 @@
 as yet unclassified
 testSoundManagerAcceptance
-	TestResourceCreator createSoundOnDisk.
+	TestResourceFixtures createSoundOnDisk.
 	GMSoundManagerAcceptanceTest new.

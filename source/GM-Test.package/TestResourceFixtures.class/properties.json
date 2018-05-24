@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "TestResourceCreator",
+	"name" : "TestResourceFixtures",
 	"pools" : [
 		 ],
 	"super" : "Object",

@@ -1,7 +1,7 @@
 testing
 testImageLoadingWithName
 	self prepareTest.
-	self should: [self cache getImageForm: TestResourceCreator testImageNamePNG] raise: Error.
+	self should: [self cache getImageForm: TestResourceFixtures testImageNamePNG] raise: Error.
 	self imageManager
-		loadResourceIntoCache: TestResourceCreator testImagePathPNG withName: TestResourceCreator testImageNamePNG;
-		getImageForm: TestResourceCreator testImageNamePNG.
+		loadResourceIntoCache: TestResourceFixtures testImagePathPNG withName: TestResourceFixtures testImageNamePNG;
+		getImageForm: TestResourceFixtures testImageNamePNG.

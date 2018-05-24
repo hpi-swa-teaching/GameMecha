@@ -2,5 +2,5 @@ as yet unclassified
 testPlayNamedSound
 	self prepareTest.
 	self soundManager
-		loadResourceIntoCache: TestResourceCreator testSoundPathWAV withName: 'squeak';
+		loadResourceIntoCache: TestResourceFixtures testSoundPathWAV withName: 'squeak';
 		playSound: 'squeak'.

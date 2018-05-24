@@ -2,5 +2,5 @@ as yet unclassified
 testPlaySoundWAV
 	self prepareTest.
 	self soundManager
-		loadResourceIntoCache: TestResourceCreator testSoundPathWAV;
-		playSound: TestResourceCreator testSoundNameWAV.
+		loadResourceIntoCache: TestResourceFixtures testSoundPathWAV;
+		playSound: TestResourceFixtures testSoundNameWAV.

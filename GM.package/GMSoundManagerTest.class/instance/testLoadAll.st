@@ -2,5 +2,5 @@ as yet unclassified
 testLoadAll
 	self prepareTest.
 	self soundManager
-		loadAllResourcesFrom: TestResourceCreator testResourceFolder;
-		playSound: (FileDirectory uri: TestResourceCreator testSoundNameWAV) localName.
+		loadAllResourcesFrom: TestResourceFixtures testResourceFolder;
+		playSound: (FileDirectory uri: TestResourceFixtures testSoundNameWAV) localName.
