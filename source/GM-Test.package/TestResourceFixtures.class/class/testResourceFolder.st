@@ -1,3 +1,3 @@
 utility
 testResourceFolder
-	^ 'testingResources/'
+	^ 'testingResources', FileDirectory slash
