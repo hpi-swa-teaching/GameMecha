@@ -6,6 +6,8 @@
 	"instance" : {
 		"bigCircle" : "brh 5/22/2018 21:31",
 		"bigCircle:" : "AZ 5/22/2018 16:12",
+		"circleEdgeNoCollisionOffset" : "brh 5/23/2018 14:13",
+		"circleEdgeOffset" : "brh 5/23/2018 14:10",
 		"collisionHandler" : "AZ 5/22/2018 15:51",
 		"collisionHandler:" : "AZ 5/22/2018 15:51",
 		"rectangle" : "brh 5/22/2018 21:33",
@@ -13,7 +15,9 @@
 		"setUp" : "brh 5/22/2018 21:30",
 		"smallCircle" : "brh 5/22/2018 21:29",
 		"smallCircle:" : "AZ 5/22/2018 16:12",
-		"testCircleCircleCollision" : "brh 5/22/2018 21:33",
-		"testCircleCircleNoCollision" : "brh 5/22/2018 21:38",
-		"testCircleRectangleCollision" : "brh 5/22/2018 21:37",
-		"testCircleRectangleNoCollision" : "brh 5/22/2018 21:37" } }
+		"testCircleCircleCollision" : "brh 5/23/2018 13:42",
+		"testCircleCircleNoCollision" : "brh 5/23/2018 13:42",
+		"testCircleRectangleCollision" : "brh 5/23/2018 13:42",
+		"testCircleRectangleEdgeCollision" : "brh 5/23/2018 14:07",
+		"testCircleRectangleEdgeNoCollision" : "brh 5/23/2018 14:11",
+		"testCircleRectangleNoCollision" : "brh 5/23/2018 13:42" } }

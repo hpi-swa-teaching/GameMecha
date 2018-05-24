@@ -8,8 +8,8 @@ baseline: spec
 					package: 'GM-Keys';
 					package: 'GM-Resources';
 					package: 'GM-AcceptanceTest';
-					package: 'GM-Test';
-					package: 'GM-Test' with: [spec requires: #('keys' 'resources')];
+					package: 'GM-Collision';
+					package: 'GM-Test' with: [spec requires: #('keys' 'resources' 'collision' 'acceptanceTests')];
 					yourself.
 				spec
 					group: 'keys' with: #('GM-Keys');
