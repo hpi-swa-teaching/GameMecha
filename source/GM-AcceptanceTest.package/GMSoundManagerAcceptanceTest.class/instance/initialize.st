@@ -1,8 +1,8 @@
 as yet unclassified
 initialize
 	GMSoundManager instance
-		loadAllResourcesFrom: TestResourceCreator testResourceFolder;
+		loadAllResourcesFrom: TestResourceFixtures testResourceFolder;
 		loudness: 0.0;
-		playSound: TestResourceCreator testSoundNameWAV;
-		playMusic: TestResourceCreator testSoundNameWAV;
+		playSound: TestResourceFixtures testSoundNameWAV;
+		playMusic: TestResourceFixtures testSoundNameWAV;
 		pauseMusic.
