@@ -1,7 +1,7 @@
 collision
 isCollidingWithCircle: aMorph
 	| circleDistance rotatedCenter originalRectFullBounds|
-	rotatedCenter := aMorph collisionDetectionStrategy center rotateBy:  self owner angle negated about: self owner center.
+	rotatedCenter := aMorph center rotateBy:  self owner angle negated about: self owner center.
 	originalRectFullBounds := (self owner submorphs at: 1) fullBounds.
 	circleDistance := (rotatedCenter - self owner center) abs.
 	circleDistance x > (originalRectFullBounds width / 2 + aMorph collisionDetectionStrategy radius) ifTrue: [^false].
