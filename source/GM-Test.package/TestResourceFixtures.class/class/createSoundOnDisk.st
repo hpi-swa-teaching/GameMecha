@@ -5,5 +5,5 @@ createSoundOnDisk
 	sampledSound := self squeakSamplesSound.
 	sampledSound 
 		setSamples: (SoundBuffer fromByteArray: self squeakSoundSamples) samplingRate: 44100;
-		storeWAVOnFileNamed: self testResourceFolder , 'squeak.wav';
-		storeAIFFOnFileNamed: self testResourceFolder , 'squeak.aiff'.
+		storeWAVOnFileNamed: self testResourceFolder , self testSoundNameWAV;
+		storeAIFFOnFileNamed: self testResourceFolder , self testSoundNameAIFF.
