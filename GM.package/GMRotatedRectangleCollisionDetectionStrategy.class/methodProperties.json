@@ -2,7 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
+		"axes" : "AZ 5/28/2018 17:31",
+		"corners" : "AZ 5/28/2018 17:01",
 		"isCollidingWith:" : "AZ 5/22/2018 21:32",
-		"isCollidingWithCircle:" : "AZ 5/25/2018 09:56",
+		"isCollidingWithCircle:" : "AZ 5/28/2018 17:53",
 		"isCollidingWithRectangle:" : "TP 5/22/2018 22:18",
-		"isCollidingWithRotatedRectangle:" : "TP 5/22/2018 22:19" } }
+		"isCollidingWithRotatedRectangle:" : "AZ 5/28/2018 17:29",
+		"originalCorners" : "AZ 5/28/2018 16:57",
+		"originalRectangle" : "AZ 5/28/2018 16:32" } }

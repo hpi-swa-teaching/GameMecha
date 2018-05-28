@@ -10,7 +10,8 @@
 		"circle",
 		"rectangle",
 		"rotatedRectangleShell",
-		"rotatedRectangleTallShell" ],
+		"rotatedRectangleTallShell",
+		"scaledRotatedRectangleShell" ],
 	"name" : "GMRotatedRectangleCollisionTest",
 	"pools" : [
 		 ],

@@ -1,8 +1,10 @@
 creation
 createRotatedRectangleCollisionMorph
-	^ RectangleMorph new
+	 | aMorph |
+	aMorph := RectangleMorph new
 		extent: 200 @ 100;
 		addFlexShell;
-		collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionStrategy new;
 		rotationDegrees: 30;
-		owner
+		yourself.
+	aMorph owner collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionStrategy new.
+	^ aMorph owner

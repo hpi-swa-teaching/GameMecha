@@ -9,7 +9,8 @@
 		"rotatedRectangleTallAngle" : "AZ 5/25/2018 11:24",
 		"rotatedRectangleTallCenterOffsetCollision" : "AZ 5/25/2018 11:25",
 		"rotatedRectangleTallCenterOffsetNoCollision" : "AZ 5/25/2018 11:22",
-		"rotatedRectangleTallExtent" : "AZ 5/25/2018 11:20" },
+		"rotatedRectangleTallExtent" : "AZ 5/25/2018 11:20",
+		"scaledRotatedRectangleScale" : "AZ 5/28/2018 17:41" },
 	"instance" : {
 		"circle" : "AZ 5/25/2018 10:37",
 		"circle:" : "AZ 5/25/2018 10:35",
@@ -21,10 +22,14 @@
 		"rotatedRectangleShell:" : "AZ 5/25/2018 10:46",
 		"rotatedRectangleTallShell" : "AZ 5/25/2018 11:13",
 		"rotatedRectangleTallShell:" : "AZ 5/25/2018 10:46",
+		"scaledRotatedRectangleShell" : "AZ 5/28/2018 17:43",
+		"scaledRotatedRectangleShell:" : "AZ 5/28/2018 17:39",
 		"setUp" : "AZ 5/25/2018 10:37",
 		"testRotatedRectangleCircleCollision" : "AZ 5/25/2018 11:11",
 		"testRotatedRectangleCircleNoCollision" : "AZ 5/25/2018 11:07",
 		"testRotatedRectangleRectangleCollision" : "AZ 5/25/2018 10:40",
 		"testRotatedRectangleRectangleNoCollision" : "AZ 5/25/2018 10:40",
 		"testRotatedRectangleRotatedRectangleCollision" : "AZ 5/25/2018 11:17",
-		"testRotatedRectangleRotatedRectangleNoCollision" : "AZ 5/25/2018 11:20" } }
+		"testRotatedRectangleRotatedRectangleNoCollision" : "AZ 5/25/2018 11:20",
+		"testScaledRotatedRectangleCircleCollision" : "AZ 5/28/2018 17:43",
+		"testScaledRotatedRectangleCircleNoCollision" : "AZ 5/28/2018 17:47" } }
