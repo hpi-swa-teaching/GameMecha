@@ -1,3 +1,3 @@
 accessing
 radius
-	^ {self owner extent x. self owner extent y} min / 2 * self scale
+	^ {self owner extent x. self owner extent y} min / 2
