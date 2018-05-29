@@ -1,7 +1,9 @@
 creation
 createRotatedRectangleCollisionMorph
 	 | aMorph |
-	aMorph := RectangleMorph new
+	aMorph := RectangleMorph new.
+	self addMorph: aMorph.
+	aMorph
 		extent: 200 @ 100;
 		addFlexShell;
 		rotationDegrees: 30;

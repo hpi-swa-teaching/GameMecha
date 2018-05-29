@@ -8,7 +8,7 @@
 		"collisionMorphs:" : "AZ 5/21/2018 16:42",
 		"createCircleCollisionMorph" : "brh 5/22/2018 22:42",
 		"createRectangleCollisionMorph" : "brh 5/22/2018 22:35",
-		"createRotatedRectangleCollisionMorph" : "AZ 5/28/2018 17:36",
+		"createRotatedRectangleCollisionMorph" : "NK 5/29/2018 20:40",
 		"evaluateMorphs" : "AZ 5/29/2018 19:23",
 		"initialize" : "AZ 5/22/2018 15:29",
 		"initializeSubmorphs" : "AZ 5/22/2018 21:53",
