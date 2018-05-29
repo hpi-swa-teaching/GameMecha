@@ -3,9 +3,10 @@
 		 },
 	"instance" : {
 		"prepareTest" : "brh 5/18/2018 19:23",
-		"setUp" : "brh 5/18/2018 19:04",
+		"setUp" : "NK 5/29/2018 18:03",
 		"soundManager" : "brh 5/13/2018 15:40",
 		"soundManager:" : "brh 5/13/2018 15:40",
+		"tearDown" : "NK 5/29/2018 18:11",
 		"testFlushCache" : "NK 5/24/2018 14:20",
 		"testLoadAll" : "NK 5/23/2018 17:09",
 		"testPlayMusic" : "NK 5/23/2018 17:09",

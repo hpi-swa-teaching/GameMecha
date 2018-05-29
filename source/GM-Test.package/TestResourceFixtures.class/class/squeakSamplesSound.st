@@ -1,3 +1,3 @@
-as yet unclassified
+sounds
 squeakSamplesSound
   ^ (SampledSound basicNew instVarAt: 1 put: #(); instVarAt: 2 put: 0; instVarAt: 3 put: 0; instVarAt: 4 put: 32768; instVarAt: 5 put: 0; instVarAt: 6 put: 32768; instVarAt: 7 put: 0; instVarAt: 8 put: 0; instVarAt: 9 put: ((SoundBuffer new: 0)); instVarAt: 10 put: 44100; instVarAt: 11 put: 0; instVarAt: 12 put: 65536; instVarAt: 13 put: 0; instVarAt: 14 put: 131072; yourself)
