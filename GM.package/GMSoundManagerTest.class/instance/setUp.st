@@ -1,9 +1,7 @@
 as yet unclassified
 setUp
-	self soundManager: (GMSoundManager instance loudness: 0.0).
-	self soundManager 
-		flushCache;
+	self resourceManager: (GMSoundManager instance loudness: 0.0).
+	self resourceManager
 		loudness: 0.0;
 		pauseMusic.
-	self assert: [self soundManager cache size == 0].
 	TestResourceFixtures createSoundOnDisk.

@@ -1,6 +1,5 @@
 running
 setUp
-	self imageManager: GMImageManager instance.
+	self resourceManager: GMImageManager instance.
 	TestResourceFixtures createImagesOnDisk.
-	self imageManager flushCache.
-	self assert: [self imageManager cache size == 0].
+	super setUp.

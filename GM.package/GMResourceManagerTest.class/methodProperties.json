@@ -1,0 +1,9 @@
+{
+	"class" : {
+		"isAbstract" : "NK 5/29/2018 20:24" },
+	"instance" : {
+		"resourceManager" : "NK 5/29/2018 20:26",
+		"resourceManager:" : "NK 5/29/2018 20:26",
+		"setUp" : "NK 5/29/2018 20:33",
+		"tearDown" : "NK 5/29/2018 20:35",
+		"testFlushCache" : "NK 5/29/2018 20:33" } }

@@ -1,6 +1,4 @@
 as yet unclassified
 testFlushCache
-	self soundManager flushCache.
-	self 
-		should: [self soundManager playSound: TestResourceFixtures testSoundNameWAV] raise: Error;
-		assert: [self soundManager cache size = 0].
+	super testFlushCache.
+	self should: [self resourceManager playSound: TestResourceFixtures testSoundNameWAV] raise: Error.

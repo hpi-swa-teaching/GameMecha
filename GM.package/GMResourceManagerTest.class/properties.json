@@ -6,9 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"soundManager" ],
-	"name" : "GMSoundManagerTest",
+		"resourceManager" ],
+	"name" : "GMResourceManagerTest",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManagerTest",
+	"super" : "TestCase",
 	"type" : "normal" }

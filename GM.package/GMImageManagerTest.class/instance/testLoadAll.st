@@ -1,7 +1,7 @@
 testing
 testLoadAll
-	self imageManager loadAllResourcesFrom: TestResourceFixtures testResourceFolder;
+	self resourceManager loadAllResourcesFrom: TestResourceFixtures testResourceFolder;
 		getImageForm: TestResourceFixtures testImageNamePNG;
 		getImageForm: (TestResourceFixtures testImageNameJPEG);
 		loadAllResourcesFrom: TestResourceFixtures testResourceFolder.
-	self assert: [self imageManager cache size >= 2].
+	self assert: [self resourceManager cache size >= 2].

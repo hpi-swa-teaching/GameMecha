@@ -2,11 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"imageManager" : "brh 5/13/2018 17:18",
-		"imageManager:" : "brh 5/13/2018 17:18",
-		"prepareTest" : "brh 5/13/2018 17:19",
-		"setUp" : "NK 5/29/2018 19:32",
-		"tearDown" : "NK 5/29/2018 18:09",
-		"testImageLoading" : "NK 5/29/2018 19:32",
-		"testImageLoadingWithName" : "NK 5/29/2018 19:32",
-		"testLoadAll" : "NK 5/29/2018 19:32" } }
+		"setUp" : "NK 5/29/2018 20:29",
+		"testImageLoading" : "NK 5/29/2018 20:27",
+		"testImageLoadingWithName" : "NK 5/29/2018 20:27",
+		"testLoadAll" : "NK 5/29/2018 20:28" } }

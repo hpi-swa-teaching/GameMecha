@@ -10,5 +10,5 @@
 	"name" : "GMSoundManagerTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "GMResourceManagerTest",
 	"type" : "normal" }
