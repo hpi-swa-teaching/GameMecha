@@ -6,7 +6,8 @@
 		 ],
 	"commentStamp" : "brh 5/8/2018 21:35",
 	"instvars" : [
-		"pressedKeys" ],
+		"pressedKeys",
+		"parent" ],
 	"name" : "GMKeyHandler",
 	"pools" : [
 		 ],

@@ -1,6 +1,6 @@
 testing
 testImageLoading
 	self should: [self cache getImageForm: TestResourceFixtures testImageNamePNG] raise: Error.
-	self imageManager
+	self resourceManager
 		loadResourceIntoCache: TestResourceFixtures testImagePathPNG;
 		getImageForm: TestResourceFixtures testImageNamePNG.

@@ -1,5 +1,5 @@
 as yet unclassified
 testPlayNamedSound
-	self soundManager
+	self resourceManager
 		loadResourceIntoCache: TestResourceFixtures testSoundPathWAV withName: 'squeak';
 		playSound: 'squeak'.
