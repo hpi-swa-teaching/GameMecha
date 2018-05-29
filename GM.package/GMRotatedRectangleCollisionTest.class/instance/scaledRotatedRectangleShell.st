@@ -2,7 +2,7 @@ accessing
 scaledRotatedRectangleShell
 	^ scaledRotatedRectangleShell ifNil:
 		[rotatedRectangleShell := 
-			(Morph new
+			(self newMorphWithOwner
 				extent: self class rotatedRectangleExtent / self class scaledRotatedRectangleScale;
 				center: 0 @ 0;
 				addFlexShell;
