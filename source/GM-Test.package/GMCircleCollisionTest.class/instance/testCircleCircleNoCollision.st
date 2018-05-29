@@ -1,6 +1,3 @@
 testing
 testCircleCircleNoCollision
-	self smallCircle center: self bigCircle center + self bigCircle extent.
-	self 
-		deny: [self collisionHandler is: self bigCircle collidingWith: self smallCircle];
-		deny: [self collisionHandler is: self smallCircle collidingWith: self bigCircle].
+	self denyCollision: self smallCircle with: self bigCircle andOffset: (self smallCircle extent - (1 @ 1)).

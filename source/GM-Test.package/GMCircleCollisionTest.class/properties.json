@@ -6,12 +6,11 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collisionHandler",
 		"smallCircle",
 		"bigCircle",
 		"rectangle" ],
 	"name" : "GMCircleCollisionTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "GMCollisionTest",
 	"type" : "normal" }
