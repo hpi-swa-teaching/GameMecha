@@ -6,7 +6,8 @@ createRotatedRectangleCollisionMorph
 	aMorph
 		extent: 200 @ 100;
 		addFlexShell;
-		rotationDegrees: 30;
 		yourself.
-	aMorph owner collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionStrategy new.
-	^ aMorph owner
+	^ aMorph owner 
+		collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionStrategy new;
+		angle: 30;
+		yourself
