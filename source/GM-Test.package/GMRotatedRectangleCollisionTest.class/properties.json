@@ -6,7 +6,6 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collisionHandler",
 		"circle",
 		"rectangle",
 		"rotatedRectangleShell",
@@ -15,5 +14,5 @@
 	"name" : "GMRotatedRectangleCollisionTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "GMCollisionTest",
 	"type" : "normal" }

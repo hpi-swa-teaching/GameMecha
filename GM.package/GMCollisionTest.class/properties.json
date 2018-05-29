@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collisionHandler" ],
+	"name" : "GMCollisionTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

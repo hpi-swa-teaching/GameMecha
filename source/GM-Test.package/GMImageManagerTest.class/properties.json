@@ -6,9 +6,9 @@
 		 ],
 	"commentStamp" : "NK 5/13/2018 15:42",
 	"instvars" : [
-		"imageManager" ],
+		 ],
 	"name" : "GMImageManagerTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "GMResourceManagerTest",
 	"type" : "normal" }

@@ -1,6 +1,6 @@
 as yet unclassified
 testPlayMusic
-	self soundManager
+	self resourceManager
 		loadResourceIntoCache: TestResourceFixtures testSoundPathWAV;
 		playMusic: TestResourceFixtures testSoundNameWAV;
 		pauseMusic.

@@ -1,5 +1,5 @@
 as yet unclassified
 testPlaySoundAIFF
-	self soundManager
+	self resourceManager
 		loadResourceIntoCache: TestResourceFixtures testSoundPathAIFF;
 		playSound: TestResourceFixtures testSoundNameAIFF.
