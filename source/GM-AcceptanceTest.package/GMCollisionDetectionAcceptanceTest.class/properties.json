@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "brh 5/22/2018 22:48",
+	"commentStamp" : "NK 6/1/2018 00:57",
 	"instvars" : [
 		"collisionMorphs",
 		"collisionHandler" ],

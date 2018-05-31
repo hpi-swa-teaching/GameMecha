@@ -1,18 +1,19 @@
 as yet unclassified
 initialize
-	"GMSoundManager is a singleton, so we can access it globally. 
-	If you are a Swa student and don't know what a singleton is you maybe should start visiting the lectures."
+	"GMSoundManager is a singleton, so we can access it globally."
 	GMSoundManager instance
-		"Our GMSoundManager can load all files out of a given folder into the cache.
-		 After that they are cached and can be accessed via their names."
+		"The GMSoundManager can load all files out of a given folder into the cache.
+		Files are cached with their full name as string as their key(ex: 'picture.png'), relative folder directories are ignored.
+		If you want to load singles resource files and give them specific names use:
+			loadResourceIntoCache: filename withName: nameOfKey"
 		loadAllResourcesFrom: TestResourceFixtures testResourceFolder;
-		"Tune the loudness. Because sound can be annoying (especially in automated tests) we mute it in this test.
-		If you want to load singles resource files and give them specific names usw: loadResourceIntoCache: filename withName: nameInCache"
+		"Tune the loudness. Here it is muted for testing purposes.		
+		Sound values have a range of 0.0 to 1.0"
 		loudness: 0.0;
-		"You can access and play a Sound by its name. If you did not specify different this name is the same as the filename."
+		"You can access and play a sound by its key."
 		playSound: TestResourceFixtures testSoundNameWAV;
-		"Music is played in the same way as a Sound. The only difference is that you can only play one music at a time.
-		If you start another music the first one ist stopped."
+		"Music is played in the same way as a sound. The only difference is that you can only play one music at a time and it loops.
+		If you start another music the first one is stopped."
 		playMusic: TestResourceFixtures testSoundNameWAV;
-		"If you have enough from your music you can pause it."
+		"If you heard enough of your music you can pause it."
 		pauseMusic.
