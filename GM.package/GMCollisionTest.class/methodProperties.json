@@ -1,10 +1,14 @@
 {
 	"class" : {
-		 },
+		"collisionAcceptanceChecks" : "brh 6/1/2018 20:10",
+		"isAbstract" : "brh 6/1/2018 19:52",
+		"shouldCollide:" : "brh 6/1/2018 20:09" },
 	"instance" : {
 		"assertCollision:with:andOffset:" : "AZ 5/29/2018 20:17",
+		"collidingTestMorph" : "brh 6/1/2018 20:19",
 		"collisionHandler" : "AZ 5/22/2018 15:50",
 		"collisionHandler:" : "AZ 5/15/2018 19:53",
+		"collisionTestMorph" : "brh 6/1/2018 20:19",
 		"denyCollision:with:andOffset:" : "AZ 5/29/2018 20:17",
-		"isAbstract" : "AZ 5/29/2018 20:11",
-		"setUp" : "brh 5/22/2018 21:07" } }
+		"setUp" : "brh 5/22/2018 21:07",
+		"testAcceptanceTestCollisions" : "brh 6/1/2018 20:18" } }

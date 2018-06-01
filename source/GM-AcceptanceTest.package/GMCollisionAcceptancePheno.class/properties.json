@@ -1,0 +1,16 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collisionMorphs",
+		"collisionHandler",
+		"collisionChecks" ],
+	"name" : "GMCollisionAcceptancePheno",
+	"pools" : [
+		 ],
+	"super" : "PHWidget",
+	"type" : "normal" }

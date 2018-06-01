@@ -1,0 +1,25 @@
+{
+	"class" : {
+		"open" : "brh 6/1/2018 19:00" },
+	"instance" : {
+		"calculateSizeForWidth:" : "brh 6/1/2018 19:00",
+		"chooseCollisionScenario:with:" : "brh 6/1/2018 19:58",
+		"circleCollisionMorph" : "brh 6/1/2018 19:47",
+		"collisionChecks" : "brh 6/1/2018 19:54",
+		"collisionChecks:" : "brh 6/1/2018 19:53",
+		"collisionHandler" : "brh 6/1/2018 19:09",
+		"collisionHandler:" : "brh 6/1/2018 19:09",
+		"collisionMorphs" : "brh 6/1/2018 19:27",
+		"collisionMorphs:" : "brh 6/1/2018 19:07",
+		"currentCollisionCheck" : "brh 6/1/2018 20:06",
+		"initialExtent" : "brh 6/1/2018 19:43",
+		"initialize" : "brh 6/1/2018 20:30",
+		"initializeButtons" : "brh 6/1/2018 20:31",
+		"initializeLayout" : "brh 6/1/2018 20:29",
+		"rectangleCollisionMorph" : "brh 6/1/2018 19:47",
+		"rotatedRectangleCollisionMorph" : "brh 6/1/2018 19:47",
+		"save" : "brh 6/1/2018 20:23",
+		"shuffleMorphs" : "brh 6/1/2018 20:31",
+		"step" : "brh 6/1/2018 19:12",
+		"storeCollision" : "brh 6/1/2018 20:24",
+		"storeNoCollision" : "brh 6/1/2018 20:24" } }
