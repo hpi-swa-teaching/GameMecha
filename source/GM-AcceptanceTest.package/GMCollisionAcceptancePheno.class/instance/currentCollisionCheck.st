@@ -1,4 +1,4 @@
-as yet unclassified
+collisionchecks
 currentCollisionCheck
  	^ GMCollisionCheck new
 		firstMorph: self collisionMorphs first veryDeepCopy;

@@ -1,3 +1,3 @@
 as yet unclassified
 collisionAcceptanceChecks
-	^ CollisionAcceptanceChecks
+	^ CollisionAcceptanceChecks ifNil: [CollisionAcceptanceChecks := OrderedCollection new]

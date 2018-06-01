@@ -1,4 +1,4 @@
-as yet unclassified
+collision
 chooseCollisionScenario: aCollisionMorph with: anotherCollisionMorph
 	
 	self removeAllMorphsIn: self collisionMorphs.
