@@ -4,13 +4,13 @@ initializeButtons
 	
 	self
 		addStyleClass: #withPadding;
-		add: (PHLabel heading: 'move the morphs around via their halos!');
+		add: (PHLabel subHeading: 'open the halos and move the morphs around');
 		add: (PHButtonGroup new
-			add: ((PHButton label: 'store "collision"!')
+			add: ((PHButton label: 'store "collision"')
 				when: #clicked send: #storeCollision to: self);
-			add: ((PHButton label: 'save')
+			add: ((PHButton label: 'save tests')
 				when: #clicked send: #save to: self);
-			add: ((PHButton label: 'store "no collision"!')
+			add: ((PHButton label: 'store "no collision"')
 				when: #clicked send: #storeNoCollision to: self);
 			add: (button := PHButton label: 'collision' iconSuffix: #iconCaret_down)).
 	
