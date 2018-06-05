@@ -1,15 +1,17 @@
 {
 	"class" : {
-		 },
+		"clipPosition" : "brh 6/5/2018 20:50",
+		"collisionMorphExtent" : "brh 6/5/2018 20:41",
+		"collisionMorphSpeed" : "brh 6/5/2018 20:42",
+		"worldExtent" : "brh 6/5/2018 20:46" },
 	"instance" : {
-		"circleCollisionMorph" : "brh 6/1/2018 19:23",
 		"collisionHandler" : "AZ 5/21/2018 16:42",
 		"collisionHandler:" : "AZ 5/21/2018 16:42",
+		"collisionMorphCircle" : "brh 6/5/2018 20:41",
+		"collisionMorphRotatedRectangle" : "brh 6/5/2018 20:42",
 		"collisionMorphs" : "AZ 5/21/2018 16:43",
 		"collisionMorphs:" : "AZ 5/21/2018 16:42",
-		"evaluateMorphs" : "brh 6/1/2018 16:54",
-		"initialize" : "brh 6/5/2018 19:28",
-		"rotatedRectangleCollisionMorph" : "brh 6/1/2018 19:23",
-		"shuffleMorphs" : "brh 5/29/2018 20:52",
-		"step" : "brh 6/5/2018 19:30",
-		"stepTime" : "AZ 5/21/2018 17:03" } }
+		"initialize" : "brh 6/5/2018 20:27",
+		"moveCollisionMorph" : "brh 6/5/2018 20:49",
+		"step" : "brh 6/5/2018 20:34",
+		"stepTime" : "brh 6/5/2018 20:42" } }
