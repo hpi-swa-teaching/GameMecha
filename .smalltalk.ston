@@ -7,7 +7,7 @@ SmalltalkCISpec {
       #load : [ 'test' ],
       #useLatestMetacello : true
     }
-  ]
+  ],
   #testing : {
     #coverage : {
       #packages : [ 'GM-*' ]
