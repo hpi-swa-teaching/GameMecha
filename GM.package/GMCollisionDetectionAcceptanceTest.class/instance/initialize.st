@@ -1,6 +1,7 @@
 initialization
 initialize
 	super initialize.
-	self initializeVariables;
-		initializeSubmorphs;
-		shuffleMorphs.
+	self extent: self class worldExtent.
+	self collisionMorphs do: [:aMorph | 
+			self addMorph: aMorph. 
+			self collisionHandler addMorph: aMorph].

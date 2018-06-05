@@ -1,3 +1,3 @@
 as yet unclassified
 imageManager
-	^ ImageManager
+	^ ImageManager ifNil: [ImageManager := GMImageManager new]

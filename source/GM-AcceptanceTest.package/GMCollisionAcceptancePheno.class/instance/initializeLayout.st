@@ -5,5 +5,7 @@ initializeLayout
 		addStyleClass: #withPadding;
 		vertical: true;
 		extent: self initialExtent.
-	self initializeButtons.
+	self 
+		initializeButtons;
+		initializeLabels.
 		

@@ -1,3 +1,3 @@
 sounds
 testSoundNameAIFF
-	^ 'squeak.aiff'
+	^ self fileName , '.aiff'
