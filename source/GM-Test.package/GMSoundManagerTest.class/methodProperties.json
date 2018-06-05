@@ -2,7 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"setUp" : "NK 5/29/2018 20:31",
+		"setUp" : "NK 6/5/2018 19:13",
 		"testFlushCache" : "NK 5/29/2018 20:34",
 		"testLoadAll" : "NK 5/29/2018 20:30",
 		"testPlayMusic" : "NK 5/29/2018 20:30",

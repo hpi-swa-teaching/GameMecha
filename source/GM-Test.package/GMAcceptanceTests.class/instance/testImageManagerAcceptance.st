@@ -1,5 +1,6 @@
 as yet unclassified
 testImageManagerAcceptance
 	TestResourceFixtures createImagesOnDisk.
+	GMResourceLocator resetImageManager.
 	GMImageManagerAcceptanceTest new abandon.
 	TestResourceFixtures clearResourcesOnDisk.
