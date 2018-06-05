@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMDemoProjectile",
+	"pools" : [
+		 ],
+	"super" : "GMDemoGameMovingEntity",
+	"type" : "normal" }

@@ -1,0 +1,15 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"game",
+		"velocity" ],
+	"name" : "GMDemoGameMovingEntity",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }
