@@ -2,6 +2,6 @@ collision
 circleCollisionMorph
 	^ CircleMorph new
 		collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;
-		extent: 100 @ 100;
+		extent: self class collisionMorphExtent;
 		position: self position;
 		yourself

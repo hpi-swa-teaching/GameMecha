@@ -1,4 +1,4 @@
 collision
 shuffleMorphs
-	self collisionMorphs withIndexDo:
-		[:aMorph :index | aMorph position: self position + (100 @ 200) + (0 @ 200 atRandom)]
+	self collisionMorphs do:
+		[:aMorph | aMorph position: self position + (100 @ 200) + (0 @ 200 atRandom)]

@@ -2,8 +2,6 @@ initialization
 initialize
 	
 	super initialize.
-	self initializeLayout.
 	self 
-		gmRegisterToKeyHandler;
+		initializeLayout;
 		chooseCollisionScenario: #circleCollisionMorph with: #rectangleCollisionMorph.
-			

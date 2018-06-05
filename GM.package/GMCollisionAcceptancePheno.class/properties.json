@@ -9,8 +9,7 @@
 		"collisionMorphs",
 		"collisionTypeDictionary",
 		"collisionHandler",
-		"collisionChecks",
-		"collisionDescriptions" ],
+		"collisionChecks" ],
 	"name" : "GMCollisionAcceptancePheno",
 	"pools" : [
 		 ],
