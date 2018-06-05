@@ -8,4 +8,9 @@ SmalltalkCISpec {
       #useLatestMetacello : true
     }
   ]
+  #testing : {
+    #coverage : {
+      #packages : [ 'GM-*' ]
+    }
+  }
 }
