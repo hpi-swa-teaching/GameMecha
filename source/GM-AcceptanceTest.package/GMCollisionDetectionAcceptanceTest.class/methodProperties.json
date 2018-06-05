@@ -12,6 +12,9 @@
 		"collisionMorphs" : "AZ 5/21/2018 16:43",
 		"collisionMorphs:" : "AZ 5/21/2018 16:42",
 		"initialize" : "brh 6/5/2018 20:27",
+		"initializeSubmorphs" : "brh 6/1/2018 19:23",
+		"initializeVariables" : "AZ 5/22/2018 21:53",
 		"moveCollisionMorph" : "brh 6/5/2018 20:49",
+		"rectangleCollisionMorph" : "brh 6/1/2018 19:23",
 		"step" : "brh 6/5/2018 20:34",
 		"stepTime" : "brh 6/5/2018 20:42" } }

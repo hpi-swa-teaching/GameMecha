@@ -1,3 +1,3 @@
 sounds
 testSoundNameWAV
-	^ 'squeak.wav'
+	^ self fileName , '.wav'

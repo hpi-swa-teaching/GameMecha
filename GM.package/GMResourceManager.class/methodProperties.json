@@ -1,6 +1,7 @@
 {
 	"class" : {
-		 },
+		"instance" : "brh 5/29/2018 21:42",
+		"new" : "brh 6/1/2018 16:57" },
 	"instance" : {
 		"cache" : "brh 5/13/2018 14:09",
 		"cache:" : "brh 5/13/2018 14:08",
@@ -9,7 +10,8 @@
 		"firstNameFromFilename:" : "brh 5/13/2018 18:00",
 		"flushCache" : "brh 5/13/2018 14:10",
 		"isSupportedType:" : "brh 5/13/2018 14:20",
-		"loadAllResourcesFrom:" : "NK 5/15/2018 20:08",
+		"loadAllResourcesFrom:" : "NK 6/5/2018 20:41",
+		"loadAllResourcesWithoutEndingsFrom:" : "NK 6/5/2018 20:50",
 		"loadResourceFromDrive:" : "brh 5/13/2018 14:21",
 		"loadResourceIntoCache:" : "brh 5/13/2018 16:54",
 		"loadResourceIntoCache:withName:" : "NK 5/15/2018 19:40" } }
