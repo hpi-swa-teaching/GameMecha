@@ -1,0 +1,9 @@
+{
+	"class" : {
+		"stepTime" : "AZ 6/5/2018 20:26" },
+	"instance" : {
+		"addCollisionMorph:" : "AZ 6/5/2018 22:01",
+		"collisionHandler" : "AZ 6/5/2018 20:22",
+		"collisionHandler:" : "AZ 6/5/2018 20:22",
+		"initialize" : "AZ 6/5/2018 22:05",
+		"removeCollisionMorph:" : "AZ 6/5/2018 22:01" } }
