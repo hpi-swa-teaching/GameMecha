@@ -2,7 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"setUp" : "NK 6/5/2018 21:04",
+		"setUp" : "NK 6/5/2018 21:42",
 		"testFlushCache" : "NK 6/5/2018 20:48",
 		"testLoadAll" : "NK 6/5/2018 21:02",
 		"testLoadAllWithoutEndings" : "NK 6/5/2018 21:05",
