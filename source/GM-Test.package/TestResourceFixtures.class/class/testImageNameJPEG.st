@@ -1,3 +1,3 @@
 images
 testImageNameJPEG
-	^ 'squeak.jpg'
+	^ self fileName, '.jpg'

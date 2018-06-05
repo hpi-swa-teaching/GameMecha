@@ -1,7 +1,7 @@
 as yet unclassified
 initialize
 	"GMSoundManager is a singleton, so we can access it globally."
-	GMResourceLocator soundManager
+	GMSoundManager instance
 		"The GMSoundManager can load all files out of a given folder into the cache.
 		Files are cached with their full name as string as their key(ex: 'picture.png'), relative folder directories are ignored.
 		If you want to load singles resource files and give them specific names use:

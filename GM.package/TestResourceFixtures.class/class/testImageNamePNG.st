@@ -1,3 +1,3 @@
 images
 testImageNamePNG
-	^ 'squeak.png'
+	^ self fileName , '.png'
