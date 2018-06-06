@@ -1,3 +1,0 @@
-utility
-fileName
-	^ 'squeak'

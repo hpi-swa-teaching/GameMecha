@@ -1,3 +1,0 @@
-accessing
-secondMorph
-	^ secondMorph
