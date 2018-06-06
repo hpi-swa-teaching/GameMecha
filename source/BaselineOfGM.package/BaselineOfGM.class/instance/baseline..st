@@ -5,17 +5,15 @@ baseline: spec
 		for: #'common'
 			do: [
 				spec
-					baseline: 'Pheno' with: [spec repository: 'github://tom95/Pheno:master/src'; loads: #(tests)];
+					baseline: 'Pheno' with: [spec repository: 'github://tom95/Pheno:master/src'];
 					package: 'GM-Keys';
 					package: 'GM-Resources';
-					package: 'GM-AcceptanceTest' with: [spec requires: #('Pheno')];
+					package: 'GM-AcceptanceTest' with: [spec requires: #('Pheno' 'core')];
 					package: 'GM-Collision';
-					package: 'GM-Test' with: [spec requires: #('keys' 'resources' 'collision' 'acceptanceTests')];
+					package: 'GM-Test' with: [spec requires: #('core' 'acceptanceTest')];
 					yourself.
 				spec
-					group: 'keys' with: #('GM-Keys');
-					group: 'resources' with: #('GM-Resources');
-					group: 'acceptanceTests' with: #('GM-AcceptanceTest');
-					group: 'collision' with: #('GM-Collision');
-					group: 'test' with: #('GM-Test')];
+					group: 'core' with: #('GM-Keys' 'GM-Resources' 'GM-Collision');
+					group: 'test' with: #('GM-Test' 'GM-AcceptanceTest');					
+					group: 'acceptanceTest' with: #('GM-AcceptanceTest')];
 					yourself.
