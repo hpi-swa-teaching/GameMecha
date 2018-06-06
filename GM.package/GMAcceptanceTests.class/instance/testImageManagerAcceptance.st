@@ -1,0 +1,5 @@
+as yet unclassified
+testImageManagerAcceptance
+	TestResourceFixtures createImagesOnDisk.
+	GMImageManagerAcceptanceTest new abandon.
+	TestResourceFixtures clearResourcesOnDisk.

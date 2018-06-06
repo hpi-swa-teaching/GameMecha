@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 5/13/2018 15:42",
+	"instvars" : [
+		 ],
+	"name" : "GMImageManagerTest",
+	"pools" : [
+		 ],
+	"super" : "GMResourceManagerTest",
+	"type" : "normal" }

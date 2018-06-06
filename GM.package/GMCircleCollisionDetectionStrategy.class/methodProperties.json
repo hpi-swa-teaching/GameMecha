@@ -1,0 +1,9 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"isCollidingWith:" : "brh 5/22/2018 20:29",
+		"isCollidingWithCircle:" : "TP 5/19/2018 15:01",
+		"isCollidingWithRectangle:" : "brh 6/3/2018 21:17",
+		"isCollidingWithRotatedRectangle:" : "AZ 5/22/2018 21:31",
+		"radius" : "AZ 5/25/2018 09:53" } }

@@ -17,5 +17,5 @@ baseline: spec
 					group: 'resources' with: #('GM-Resources');
 					group: 'acceptanceTests' with: #('GM-AcceptanceTest');
 					group: 'collision' with: #('GM-Collision');
-					group: 'tests' with: #('GM-Test')];
+					group: 'test' with: #('GM-Test')];
 					yourself.

@@ -1,0 +1,21 @@
+{
+	"class" : {
+		"bigCircleDiameter" : "brh 5/22/2018 21:29",
+		"rectangleExtent" : "brh 5/22/2018 21:30",
+		"smallCircleDiameter" : "brh 5/22/2018 21:29" },
+	"instance" : {
+		"bigCircle" : "brh 5/22/2018 21:31",
+		"bigCircle:" : "AZ 5/22/2018 16:12",
+		"circleEdgeNoCollisionOffset" : "brh 5/23/2018 14:13",
+		"circleEdgeOffset" : "AZ 5/29/2018 21:09",
+		"rectangle" : "brh 5/22/2018 21:33",
+		"rectangle:" : "AZ 5/22/2018 16:12",
+		"setUp" : "brh 5/22/2018 21:30",
+		"smallCircle" : "brh 5/22/2018 21:29",
+		"smallCircle:" : "AZ 5/22/2018 16:12",
+		"testCircleCircleCollision" : "AZ 5/29/2018 20:48",
+		"testCircleCircleNoCollision" : "AZ 5/29/2018 20:50",
+		"testCircleRectangleCollision" : "AZ 5/29/2018 20:51",
+		"testCircleRectangleEdgeCollision" : "AZ 5/29/2018 21:07",
+		"testCircleRectangleEdgeNoCollision" : "AZ 5/29/2018 21:01",
+		"testCircleRectangleNoCollision" : "AZ 5/29/2018 20:53" } }
