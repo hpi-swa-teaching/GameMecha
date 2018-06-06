@@ -1,49 +1,50 @@
 class initialization
 initializeKeyLookupLinux
 	^ (Dictionary newFrom:
-		{1 -> Character escape.
-		2 -> $1.
-		3 -> $2.
-		4 -> $3.
-		5 -> $4.
-		6 -> $5.
-		7 -> $6.
-		8 -> $7.
-		9 -> $8.
-		10 -> $9.
-		11 -> $0.
-		14 -> Character backspace.
-		15 -> Character tab.
-		16 -> $q.
-		17 -> $w.
-		18 -> $e.
-		19 -> $r.
-		20 -> $t.
-		21 -> $y.
-		22 -> $u.
-		23 -> $i.
-		24 -> $o.
-		25 -> $p.
-		28 -> Character cr.
-		30 -> $a.
-		31 -> $s.
-		32 -> $d.
-		33 -> $f.
-		34 -> $g.
-		35 -> $h.
-		36 -> $j.
-		37 -> $k.
-		38 -> $l.
-		44 -> $z.
-		45 -> $x.
-		46 -> $c.
-		47 -> $v.
-		48 -> $b.
-		49 -> $n.
-		50 -> $m.
-		57 -> Character space.
-		103 -> Character arrowUp.
-		105 -> Character arrowLeft.
-		106 -> Character arrowRight.
-		108 -> Character arrowDown.
+		{
+		8 -> Character backspace.
+		9 -> Character tab.
+		13 -> Character cr.
+		27 -> Character escape.
+		28 -> Character arrowLeft.
+		29 -> Character arrowRight.
+		30 -> Character arrowUp.
+		31 -> Character arrowDown.
+		32 -> Character space.
+		49 -> $1.
+		50 -> $2.
+		51 -> $3.
+		52 -> $4.
+		53 -> $5.
+		54 -> $6.
+		55 -> $7.
+		56 -> $8.
+		57 -> $9.
+		48 -> $0.
+		97 -> $a.
+		98 -> $b.
+		99 -> $c.
+		100 -> $d.
+		101 -> $e.
+		102 -> $f.
+		103 -> $g.
+		104 -> $h.
+		105 -> $i.
+		106 -> $j.
+		107 -> $k.
+		108 -> $l.
+		109 -> $m.
+		110 -> $n.
+		111 -> $o.
+		112 -> $p.
+		113 -> $q.
+		114 -> $r.
+		115 -> $s.
+		116 -> $t.
+		117 -> $u.
+		118 -> $v.
+		119 -> $w.
+		120 -> $x.
+		121 -> $y.
+		122 -> $z.
 		})
