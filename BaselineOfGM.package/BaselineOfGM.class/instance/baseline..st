@@ -8,7 +8,7 @@ baseline: spec
 					"baseline: 'Pheno' with: [spec repository: 'github://tom95/Pheno:master/src'];"
 					package: 'GM-Keys';
 					package: 'GM-Resources';
-					package: 'GM-AcceptanceTest' with: [spec requires: #('Pheno' 'core')];
+					package: 'GM-AcceptanceTest' with: [spec requires: #("'Pheno'" 'core')];
 					package: 'GM-Collision';
 					package: 'GM-Test' with: [spec requires: #('core' 'acceptanceTest')];
 					yourself.
