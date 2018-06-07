@@ -6,20 +6,20 @@ initializeKeyLookupWindows
 		16r0D -> Character cr.
 		16r1B -> Character escape.
 		16r20 -> Character space.
-		16r25 -> Character arrowLeft.
-		16r26 -> Character arrowUp.
-		16r27 -> Character arrowRight.
-		16r28 -> Character arrowDown.
-		16r30 -> $0.
-		16r31 -> $1.
-		16r32 -> $2.
-		16r33 -> $3.
-		16r34 -> $4.
-		16r35 -> $5.
-		16r36 -> $6.
-		16r37 -> $7.
-		16r38 -> $8.
-		16r39 -> $9.
+		16r1C -> Character arrowLeft.
+		16r1E -> Character arrowUp.
+		16r1D -> Character arrowRight.
+		16r1F -> Character arrowDown.
+		16r60 -> $0.
+		16r61 -> $1.
+		16r62 -> $2.
+		16r63 -> $3.
+		16r64 -> $4.
+		16r65 -> $5.
+		16r66 -> $6.
+		16r67 -> $7.
+		16r68 -> $8.
+		16r69 -> $9.
 		16r41 -> $a.
 		16r42 -> $b.
 		16r43 -> $c.

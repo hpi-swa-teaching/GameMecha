@@ -1,3 +1,6 @@
 testing
 testRotatedRectangleRotatedRectangleCollision
-	self assertCollision: self rotatedRectangleShell with: self rotatedRectangleTallShell andOffset: self class rotatedRectangleTallOffsetCollision.
+	self rotatedRectangleTallShell center: self rotatedRectangleShell center + self class rotatedRectangleTallCenterOffsetCollision.
+	self 
+		assert: [self collisionHandler is: self rotatedRectangleTallShell collidingWith: self rotatedRectangleShell];
+		assert: [self collisionHandler is: self rotatedRectangleShell collidingWith: self rotatedRectangleTallShell].

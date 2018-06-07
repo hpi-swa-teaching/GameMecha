@@ -1,7 +1,6 @@
-Im am an acceptance test for the GMImageManager class. I can be opened like any other morph.
-I am responsible for demonstrating how to load images into the cache and access them through the cache.
+Im am an acceptance test for the gmimagehandler. I can be opened like any other morph.
 
-How to use me the GMImageManager (also see initialize):
-1. get singleton instance from GMImageManager
+How to use me (also see initialize):
+1. get singleton instance from imagemanager
 2. load resources from your project asset directory. Images only need to be loaded once into cache.
 3. get images previously loaded from the cache using getImageForm: aString
