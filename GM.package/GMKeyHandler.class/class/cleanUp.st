@@ -1,3 +1,3 @@
 as yet unclassified
-cleanUp: anObject
+cleanUp
 	KeyLookup := nil.
