@@ -39,7 +39,7 @@ initializeKeyLookupLinux
 		112 -> $p.
 		113 -> $q.
 		114 -> $r.
-		115 -> $s.
+		16r73 -> $s.
 		116 -> $t.
 		117 -> $u.
 		118 -> $v.
