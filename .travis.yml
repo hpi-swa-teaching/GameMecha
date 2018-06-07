@@ -14,6 +14,6 @@ smalltalk:
   
 matrix:
   allow_failures:
-    - smalltalk: Squeak-trunk
-    - smalltalk: Squeak-5.0
+    - smalltalk: Squeak-trunk # expected failure with resource loading and bitshifts
+    - smalltalk: Squeak-5.0 # expected failure when loading pheno
   fast_finish: true
