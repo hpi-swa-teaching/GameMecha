@@ -1,4 +1,4 @@
-class initialization
+key lookup
 supportedPlatformDict
 	^ (Dictionary newFrom: { 
 		'Mac OS' -> [self initializeKeyLookupMac].

@@ -1,3 +1,3 @@
-as yet unclassified
+class initialization
 cleanUp
 	KeyLookup := nil.

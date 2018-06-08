@@ -1,4 +1,4 @@
-class initialization
+key lookup
 initializeKeyLookupLinux
 	^ (Dictionary newFrom:
 		{8 -> Character backspace.

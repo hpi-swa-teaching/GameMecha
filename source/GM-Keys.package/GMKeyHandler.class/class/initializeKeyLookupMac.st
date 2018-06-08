@@ -1,4 +1,4 @@
-class initialization
+key lookup
 initializeKeyLookupMac
 	^ (Dictionary newFrom:
 		{16r00 -> $a.

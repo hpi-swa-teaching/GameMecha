@@ -1,4 +1,4 @@
-class initialization
+key lookup
 initializeKeyLookupWindows
 	^ (Dictionary newFrom:
 		{16r08 -> Character backspace.

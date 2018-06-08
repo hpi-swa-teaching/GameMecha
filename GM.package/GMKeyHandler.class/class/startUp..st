@@ -1,3 +1,3 @@
-as yet unclassified
+class initialization
 startUp: anObject
 	self cleanUp.
