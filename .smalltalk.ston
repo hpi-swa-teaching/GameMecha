@@ -13,7 +13,7 @@ SmalltalkCISpec {
       #packages : [ 'GM-*' ]
     },
     #exclude : {
-      #classes : [ 'GM-Test' ]
+      #packages : [ 'GM-Test' ]
   } 
   }
 }
