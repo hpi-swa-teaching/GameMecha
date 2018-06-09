@@ -1,3 +1,3 @@
 collision
 isCollidingWith: aMorph
-	^aMorph collisionDetectionStrategy isCollidingWithRotatedRectangle: self owner
+	^ aMorph collisionDetectionStrategy isCollidingWithRotatedRectangle: self owner
