@@ -11,9 +11,6 @@ SmalltalkCISpec {
   #testing : {
     #coverage : {
       #packages : [ 'GM-AcceptanceTest' 'GM-Collision' 'GM-Keys' 'GM-Resources' ]
-    },
-    #exclude : {
-      #packages : [ 'GM-Test' ]
-  } 
+    }
   }
 }
