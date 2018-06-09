@@ -11,6 +11,9 @@ SmalltalkCISpec {
   #testing : {
     #coverage : {
       #packages : [ 'GM-*' ]
-    }
+    },
+    #exclude : {
+      #classes : [ #GM-Test ]
+  } 
   }
 }
