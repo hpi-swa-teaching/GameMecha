@@ -1,3 +1,3 @@
 adding
-addMorph: aMorph
+addCollisionMorph: aMorph
 	self collisionMorphs add: aMorph.
