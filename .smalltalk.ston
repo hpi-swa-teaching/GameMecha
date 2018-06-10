@@ -10,7 +10,7 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-      #packages : [ 'GM-AcceptanceTest', 'GM-Collision', 'GM-Keys', 'GM-Resources' ]
+      #packages : [ 'GM-Collision','GM-Resources' ]
     }
   }
 }
