@@ -1,8 +1,9 @@
 {
 	"class" : {
-		 },
+		"testSize" : "NK 6/10/2018 15:39" },
 	"instance" : {
 		"setUp" : "NK 6/5/2018 21:40",
-		"testImageLoading" : "NK 5/29/2018 20:27",
+		"testGetImageWithSize" : "NK 6/10/2018 15:48",
+		"testImageLoading" : "NK 6/10/2018 15:33",
 		"testImageLoadingWithName" : "NK 6/5/2018 20:44",
 		"testLoadAll" : "brh 5/29/2018 21:06" } }

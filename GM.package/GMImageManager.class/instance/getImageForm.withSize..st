@@ -1,3 +1,3 @@
 accessing
 getImageForm: aString withSize: aPoint
-	^ (self getImageForm: aString) scaledToSize: aPoint
+	^ (self getImageForm: aString) scaledIntoFormOfSize: aPoint
