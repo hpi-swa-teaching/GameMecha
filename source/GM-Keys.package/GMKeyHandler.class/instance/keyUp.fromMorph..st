@@ -1,3 +1,3 @@
 event Input
 keyUp: aKeyboardEvent fromMorph: aMorph
-	self pressedKeys remove: ((self class keyLookup) at: aKeyboardEvent keyValue ifAbsent: []) ifAbsent: [].
+	(self class keyLookup) at: aKeyboardEvent keyValue ifPresent: [:key | self pressedKeys remove: key ifAbsent: []].
