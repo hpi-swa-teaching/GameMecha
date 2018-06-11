@@ -1,5 +1,6 @@
 collisionchecks
 addCollisionDescription: collisionText
+	self flag: #todo.
 	self collisionDescriptions addItem: 
-		{self collisionMorphs first class asString, ' ', self collisionMorphs second class asString.
+		{self collisionMorph collisionMorphs first class asString, ' ', self collisionMorph collisionMorphs second class asString.
 		collisionText}.

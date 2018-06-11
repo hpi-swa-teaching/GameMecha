@@ -6,9 +6,7 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collisionMorphs",
-		"collisionTypeDictionary",
-		"collisionHandler",
+		"collisionMorph",
 		"collisionChecks" ],
 	"name" : "GMCollisionAcceptancePheno",
 	"pools" : [

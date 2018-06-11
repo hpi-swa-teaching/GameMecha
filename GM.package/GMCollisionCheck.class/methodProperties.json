@@ -2,9 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		"firstMorph" : "brh 6/1/2018 20:04",
-		"firstMorph:" : "brh 6/1/2018 20:04",
-		"secondMorph" : "brh 6/1/2018 20:04",
-		"secondMorph:" : "brh 6/1/2018 20:04",
+		"collisionScenario" : "brh 6/11/2018 14:01",
+		"collisionScenario:" : "brh 6/11/2018 14:01",
 		"shouldCollide" : "brh 6/1/2018 20:04",
-		"shouldCollide:" : "brh 6/1/2018 20:04" } }
+		"shouldCollide:" : "brh 6/1/2018 20:04",
+		"strategies" : "brh 6/11/2018 15:00",
+		"strategies:" : "brh 6/11/2018 15:00" } }

@@ -2,6 +2,9 @@ initialization
 initialize
 	
 	super initialize.
-	self 
-		initializeLayout;
-		chooseCollisionScenario: #circleCollisionMorph with: #rectangleCollisionMorph.
+	self initializeLayout.
+	self collisionMorph: (GMCollisionHandlerMorph new
+		position: 0 @ 100;
+		extent: 400 @ 400;
+		chooseCollisionScenario: #circleCollisionMorph with: #rectangleCollisionMorph).
+	self addMorph: self collisionMorph.
