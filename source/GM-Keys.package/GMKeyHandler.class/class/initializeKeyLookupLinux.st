@@ -1,7 +1,8 @@
-key lookup
+class initialization
 initializeKeyLookupLinux
 	^ (Dictionary newFrom:
-		{8 -> Character backspace.
+		{
+		8 -> Character backspace.
 		9 -> Character tab.
 		13 -> Character cr.
 		27 -> Character escape.
@@ -38,7 +39,7 @@ initializeKeyLookupLinux
 		112 -> $p.
 		113 -> $q.
 		114 -> $r.
-		16r73 -> $s.
+		115 -> $s.
 		116 -> $t.
 		117 -> $u.
 		118 -> $v.
