@@ -1,6 +1,5 @@
 collisionchecks
 storeNoCollision
-	self collisionChecks add: (self collisionMorph currentCollisionCheck 
-		shouldCollide: false;
-		yourself).
+	self collisionMorph shouldCollide: false.
+	self collisionChecks add: self collisionMorph currentCollisionCheck.
 	self addCollisionDescription: 'no collision'.

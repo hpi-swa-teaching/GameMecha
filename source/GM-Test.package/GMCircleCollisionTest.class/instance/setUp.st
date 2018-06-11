@@ -1,6 +1,3 @@
-as yet unclassified
+running
 setUp
-	self collisionHandler 
-		addCollisionMorph: self bigCircle;
-		addCollisionMorph: self smallCircle;
-		addCollisionMorph: self rectangle.
+	self collisionHandler addCollisionMorphs: {self bigCircle. self smallCircle. self rectangle}.

@@ -1,2 +1,0 @@
-as yet unclassified
-testAcceptance14291972 ^ Morph new extent: (400@400);addMorph: (Morph new collisionDetectionStrategy: GMRectangleCollisionDetectionStrategy new;position: (100@344);extent:(100@100));addMorph: (Morph new collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;position: (100@300);extent:(100@100))

@@ -1,17 +1,12 @@
 {
 	"class" : {
-		"cleanup" : "brh 6/11/2018 15:49",
-		"collisionSelectors" : "brh 6/11/2018 15:50",
-		"isAbstract" : "brh 6/11/2018 14:48",
-		"storeChecks:" : "brh 6/11/2018 15:51" },
+		"isAbstract" : "brh 6/11/2018 14:48" },
 	"instance" : {
-		"assertCollision:with:andOffset:" : "AZ 5/29/2018 20:17",
-		"collidingTestMorph" : "brh 6/1/2018 20:19",
+		"assertCollision:with:" : "brh 6/11/2018 17:42",
+		"assertCollision:with:andOffset:" : "brh 6/11/2018 17:42",
+		"assertCollision:with:equals:" : "brh 6/11/2018 17:49",
 		"collisionHandler" : "AZ 5/22/2018 15:50",
 		"collisionHandler:" : "AZ 5/15/2018 19:53",
-		"collisionSelectors" : "brh 6/11/2018 15:57",
-		"collisionTestMorph" : "brh 6/1/2018 20:19",
-		"denyCollision:with:andOffset:" : "AZ 5/29/2018 20:17",
-		"setUp" : "brh 6/10/2018 16:15",
-		"testAcceptance14291972" : "brh 6/11/2018 15:57",
-		"testAcceptanceTestCollisions" : "brh 6/11/2018 15:52" } }
+		"denyCollision:with:andOffset:" : "brh 6/11/2018 17:38",
+		"setUp" : "brh 6/11/2018 18:07",
+		"tearDown" : "brh 6/11/2018 17:42" } }

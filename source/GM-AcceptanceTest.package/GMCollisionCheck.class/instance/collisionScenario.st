@@ -1,3 +1,0 @@
-accessing
-collisionScenario
-	^ collisionScenario

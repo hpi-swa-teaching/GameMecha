@@ -1,5 +1,3 @@
 as yet unclassified
 setUp
-	self collisionHandler 
-		addCollisionMorph: self circle;
-		addCollisionMorph: self rectangle.
+	self collisionHandler addCollisionMorphs: {self circle. self rectangle}.
