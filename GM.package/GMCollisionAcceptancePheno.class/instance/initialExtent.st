@@ -1,3 +1,3 @@
 pheno
 initialExtent
-	^ (700 @ 700) withScalingFactor
+	^ (700 @ 900) withScalingFactor
