@@ -1,1 +1,0 @@
-A GMResourceLocator is probably not going to be used and will be deleted.

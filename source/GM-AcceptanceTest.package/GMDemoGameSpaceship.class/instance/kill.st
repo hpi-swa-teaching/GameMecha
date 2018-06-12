@@ -1,4 +1,6 @@
 game logic
 kill
-	self game removeCollisionMorph: self transformationMorph.
-	self transformationMorph abandon.
+	self isAlive ifTrue: 
+		[self game removeCollisionMorph: self collisionMorph.
+		self transformationMorph abandon.
+		self isAlive: false].

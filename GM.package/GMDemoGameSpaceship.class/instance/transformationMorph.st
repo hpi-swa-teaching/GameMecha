@@ -1,3 +1,0 @@
-accessing
-transformationMorph
-	^ transformationMorph

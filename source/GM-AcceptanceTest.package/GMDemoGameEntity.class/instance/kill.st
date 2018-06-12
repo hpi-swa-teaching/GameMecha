@@ -1,5 +1,6 @@
 game logic
 kill
-	self flag: #avoidDyingMoreThanOnce.
-	self game removeMorph: self.
-	self abandon.
+	self isAlive ifTrue: 
+		[self game removeMorph: self collisionMorph.
+		self abandon.
+		self isAlive: false].

@@ -1,8 +1,0 @@
-{
-	"class" : {
-		 },
-	"instance" : {
-		"testCollisionDetectionAcceptance" : "brh 5/22/2018 22:49",
-		"testImageManagerAcceptance" : "NK 6/10/2018 15:49",
-		"testKeyHandlerAcceptance" : "brh 5/22/2018 21:56",
-		"testSoundManagerAcceptance" : "NK 6/10/2018 15:51" } }

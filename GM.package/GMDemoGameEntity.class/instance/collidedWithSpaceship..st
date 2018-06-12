@@ -1,2 +1,0 @@
-collision
-collidedWithSpaceship: aSpaceship
