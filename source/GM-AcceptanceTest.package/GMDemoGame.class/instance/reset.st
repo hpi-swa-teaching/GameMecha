@@ -1,6 +1,7 @@
 as yet unclassified
 reset
-	self player1 kill.
-	self player2 kill.
+	self submorphs do: [:aMorph | aMorph abandon].
+	self collisionHandler removeAllMorphs.
 	self spawnPlayer1;
-		spawnPlayer2.
+		spawnPlayer2;
+		initializePlanets.
