@@ -1,0 +1,18 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"circle",
+		"rectangle",
+		"rotatedRectangleShell",
+		"rotatedRectangleTallShell",
+		"scaledRotatedRectangleShell" ],
+	"name" : "GMRotatedRectangleCollisionTest",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionTest",
+	"type" : "normal" }

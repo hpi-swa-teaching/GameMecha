@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Resources",
+	"classinstvars" : [
+		"SoleInstance" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"cache" ],
+	"name" : "GMResourceManager",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

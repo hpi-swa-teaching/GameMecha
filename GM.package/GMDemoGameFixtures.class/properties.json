@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMDemoGameFixtures",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

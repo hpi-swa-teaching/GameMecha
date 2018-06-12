@@ -1,0 +1,16 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collisionHandler",
+		"player1",
+		"player2" ],
+	"name" : "GMDemoGame",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

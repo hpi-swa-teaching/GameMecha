@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Resources",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMImageManager",
+	"pools" : [
+		 ],
+	"super" : "GMResourceManager",
+	"type" : "normal" }

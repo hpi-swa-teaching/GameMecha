@@ -1,0 +1,3 @@
+as yet unclassified
+testCollisionDetectionAcceptance
+	GMCollisionDetectionAcceptanceTest new abandon.
