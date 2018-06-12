@@ -1,0 +1,10 @@
+{
+	"class" : {
+		"numberOfColliders" : "TP 6/12/2018 22:21",
+		"stepTime" : "TP 6/12/2018 19:43",
+		"testMorphSize" : "TP 6/12/2018 22:20" },
+	"instance" : {
+		"addCollidingMorph" : "TP 6/12/2018 22:25",
+		"collisionHandler" : "TP 6/12/2018 19:32",
+		"collisionHandler:" : "TP 6/12/2018 19:17",
+		"initialize" : "TP 6/12/2018 21:50" } }

@@ -6,10 +6,10 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collisionMorph",
-		"collisionChecks" ],
-	"name" : "GMCollisionAcceptancePheno",
+		"velocity",
+		"parentMorph" ],
+	"name" : "GMCollisionPerformanceTestEntity",
 	"pools" : [
 		 ],
-	"super" : "PHWidget",
+	"super" : "Morph",
 	"type" : "normal" }
