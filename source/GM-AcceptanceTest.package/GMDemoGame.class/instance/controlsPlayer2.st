@@ -1,4 +1,4 @@
-initialization
+game logic
 controlsPlayer2
 	^ OrderedDictionary newFrom: {
 		#leftKey -> Character arrowLeft.

@@ -1,4 +1,4 @@
-as yet unclassified
+game logic
 reset
 	self player1 kill.
 	self player2 kill.
