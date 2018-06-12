@@ -1,5 +1,5 @@
 collision
 collidedWithProjectile: aProjectile
-	self ~~ aProjectile creator ifTrue: 
+	self == aProjectile creator ifFalse: 
 		[self kill.
 		aProjectile kill].

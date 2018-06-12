@@ -1,4 +1,4 @@
-game logic
+control
 spawnProjectile
 	GMDemoGameProjectile new
 		registerAtGame: self game;

@@ -1,3 +1,3 @@
 testing
 testRemoveMorphNotIncluded
-	self should: [self collisionHandler removeCollisionMorph: Morph new] raise: Error.
+	self should: [self collisionHandler removeMorph: Morph new] raise: Error.

@@ -1,4 +1,4 @@
-game logic
+initialization
 controlsPlayer1
 	^ OrderedDictionary newFrom: {
 		#leftKey -> $a.

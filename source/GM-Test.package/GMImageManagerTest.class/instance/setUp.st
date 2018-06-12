@@ -1,5 +1,5 @@
 running
 setUp
 	self resourceManager: GMResourceLocator imageManager.
-	GMTestResourceFixtures createImagesOnDisk.
+	TestResourceFixtures createImagesOnDisk.
 	super setUp.

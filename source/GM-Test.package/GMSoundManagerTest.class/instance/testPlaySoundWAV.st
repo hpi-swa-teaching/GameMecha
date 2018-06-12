@@ -1,5 +1,5 @@
 as yet unclassified
 testPlaySoundWAV
 	self resourceManager
-		loadResourceIntoCache: GMTestResourceFixtures testSoundPathWAV;
-		playSound: GMTestResourceFixtures testSoundNameWAV.
+		loadResourceIntoCache: TestResourceFixtures testSoundPathWAV;
+		playSound: TestResourceFixtures testSoundNameWAV.

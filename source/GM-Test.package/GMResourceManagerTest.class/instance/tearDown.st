@@ -1,3 +1,3 @@
 running
 tearDown 
-	GMTestResourceFixtures clearResourcesOnDisk.
+	TestResourceFixtures clearResourcesOnDisk.

@@ -1,3 +1,3 @@
 keyboard input
 isKeyPressed: aCharacter
-	^ self game isKeyPressed: aCharacter
+	^ self game isKeyPressed: aCharacter.
