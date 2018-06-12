@@ -1,3 +1,3 @@
 adding
-addCollisionMorphs: morphs
-	self collisionMorphs addAll: morphs.
+addCollisionMorphs: aCollection
+	self collisionMorphs addAll: aCollection.

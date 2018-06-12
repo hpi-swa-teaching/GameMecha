@@ -1,3 +1,3 @@
 collision
 removeCollisionMorph: aCollisionMorph
-	self collisionHandler removeMorph: aCollisionMorph.
+	self collisionHandler removeCollisionMorph: aCollisionMorph.

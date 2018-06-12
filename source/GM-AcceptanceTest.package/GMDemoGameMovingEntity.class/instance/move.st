@@ -1,3 +1,3 @@
 game logic
 move
-	self center: self center + self velocity.
+	self spatialMorph position: self spatialMorph position + self velocity.

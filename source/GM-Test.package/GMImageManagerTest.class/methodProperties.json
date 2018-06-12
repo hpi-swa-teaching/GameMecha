@@ -2,8 +2,10 @@
 	"class" : {
 		"testSize" : "NK 6/10/2018 15:39" },
 	"instance" : {
-		"setUp" : "NK 6/5/2018 21:40",
-		"testGetImageWithSize" : "NK 6/10/2018 15:48",
-		"testImageLoading" : "NK 6/10/2018 15:33",
-		"testImageLoadingWithName" : "NK 6/5/2018 20:44",
-		"testLoadAll" : "brh 5/29/2018 21:06" } }
+		"setUp" : "brh 6/12/2018 21:28",
+		"tearDown" : "brh 6/12/2018 21:03",
+		"testGetImageWithSize" : "brh 6/12/2018 21:28",
+		"testImageLoading" : "brh 6/12/2018 21:28",
+		"testImageLoadingWithName" : "brh 6/12/2018 21:28",
+		"testLoadAll" : "brh 6/12/2018 21:28",
+		"testResourceIntoMethod" : "brh 6/12/2018 21:28" } }

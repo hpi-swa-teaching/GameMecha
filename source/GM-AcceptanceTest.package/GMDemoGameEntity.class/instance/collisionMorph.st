@@ -1,3 +1,0 @@
-collision
-collisionMorph
-	^ self

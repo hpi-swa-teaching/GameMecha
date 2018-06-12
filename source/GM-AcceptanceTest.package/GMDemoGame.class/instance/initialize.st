@@ -1,11 +1,8 @@
 initialization
 initialize
 	super initialize.
-	self 
-		extent: 1500 @ 900;
-		color: Color white.
-	self gmRegisterToKeyHandler.
-	self collisionDetectionStrategy: GMRectangleCollisionDetectionStrategy new.
-	self initializePlanets.
-	self spawnPlayer1.
-	self spawnPlayer2.
+	self extent: self class gameExtent;
+		color: Color white;
+		gmRegisterToKeyHandler;
+		initializePlanets;
+		spawnPlayers.

@@ -1,3 +1,3 @@
 game logic
 isOutOfGame
-	^ (self game collisionHandler is: self collidingWith: self game) not
+	^ (self spatialMorph bounds intersects: self game bounds) not
