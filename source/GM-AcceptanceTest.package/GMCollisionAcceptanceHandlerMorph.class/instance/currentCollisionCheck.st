@@ -1,7 +1,6 @@
 collision
 currentCollisionCheck
- 	^ (String streamContents: [:str | | container |
-	 		container := self.
+ 	^ (String streamContents: [:str |
 			str nextPutAll: 'self assertCollision: '.
 			str nextPutAll: (self stringFromMorph: self submorphs first).
 			str nextPutAll: ' with: '.
