@@ -1,0 +1,3 @@
+collision
+collisionMorph
+	^ self transformationMorph

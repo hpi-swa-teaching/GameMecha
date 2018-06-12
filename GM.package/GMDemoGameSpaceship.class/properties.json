@@ -6,7 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"transformationMorph" ],
+		"transformationMorph",
+		"cooldownCounter",
+		"controls" ],
 	"name" : "GMDemoGameSpaceship",
 	"pools" : [
 		 ],

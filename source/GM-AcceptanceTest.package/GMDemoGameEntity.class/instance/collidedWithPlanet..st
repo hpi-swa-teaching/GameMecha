@@ -1,0 +1,2 @@
+collision
+collidedWithPlanet: aPlanet

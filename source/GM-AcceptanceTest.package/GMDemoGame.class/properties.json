@@ -6,7 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collisionHandler" ],
+		"collisionHandler",
+		"player1",
+		"player2" ],
 	"name" : "GMDemoGame",
 	"pools" : [
 		 ],

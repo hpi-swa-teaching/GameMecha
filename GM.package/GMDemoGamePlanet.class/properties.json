@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMDemoGamePlanet",
+	"pools" : [
+		 ],
+	"super" : "GMDemoGameEntity",
+	"type" : "normal" }

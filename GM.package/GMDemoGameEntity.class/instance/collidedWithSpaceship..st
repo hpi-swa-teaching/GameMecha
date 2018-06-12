@@ -1,0 +1,2 @@
+collision
+collidedWithSpaceship: aSpaceship

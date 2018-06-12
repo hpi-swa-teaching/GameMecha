@@ -1,8 +1,8 @@
 stepping and presenter
 step
-	(self isKeyPressed: $a) ifTrue: [self turnLeft].
-	(self isKeyPressed: $d) ifTrue: [self turnRight].
-	(self isKeyPressed: $w) ifTrue: [self accelerate].
-	(self isKeyPressed: $s) ifTrue: [self shoot].
-	self move.
-	self isOutOfGame ifTrue: [self kill]. 
+	super step.
+	self reduceCooldownCounter.
+	(self isKeyPressed: (self controls at: #leftKey)) ifTrue: [self turnLeft].
+	(self isKeyPressed: (self controls at: #rightKey)) ifTrue: [self turnRight].
+	(self isKeyPressed: (self controls at: #upKey)) ifTrue: [self accelerate].
+	(self isKeyPressed: (self controls at: #downKey)) ifTrue: [self tryShooting].

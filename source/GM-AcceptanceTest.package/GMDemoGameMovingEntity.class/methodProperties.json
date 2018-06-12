@@ -2,13 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"game" : "AZ 6/5/2018 21:54",
-		"game:" : "AZ 6/5/2018 21:54",
 		"isOutOfGame" : "AZ 6/5/2018 21:57",
-		"kill" : "AZ 6/5/2018 22:01",
 		"move" : "AZ 6/5/2018 21:54",
-		"registerAtGame:" : "AZ 6/5/2018 22:02",
-		"step" : "AZ 6/5/2018 21:56",
+		"resolveCollisions" : "AZ 6/12/2018 16:44",
+		"step" : "AZ 6/12/2018 15:50",
 		"stepTime" : "AZ 6/5/2018 21:56",
 		"velocity" : "AZ 6/5/2018 21:54",
 		"velocity:" : "AZ 6/5/2018 21:54" } }

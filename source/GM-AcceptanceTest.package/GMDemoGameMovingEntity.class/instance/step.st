@@ -1,4 +1,5 @@
 stepping and presenter
 step
 	self move.
-	self isOutOfGame ifTrue: [self kill]. 
+	self resolveCollisions.
+	self isOutOfGame ifTrue: [self kill].

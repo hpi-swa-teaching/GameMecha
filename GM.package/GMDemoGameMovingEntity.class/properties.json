@@ -6,10 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"game",
 		"velocity" ],
 	"name" : "GMDemoGameMovingEntity",
 	"pools" : [
 		 ],
-	"super" : "ImageMorph",
+	"super" : "GMDemoGameEntity",
 	"type" : "normal" }

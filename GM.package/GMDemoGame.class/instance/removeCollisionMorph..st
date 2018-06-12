@@ -1,3 +1,3 @@
-as yet unclassified
+collision
 removeCollisionMorph: aCollisionMorph
 	self collisionHandler removeMorph: aCollisionMorph.
