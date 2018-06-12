@@ -1,7 +1,6 @@
-as yet unclassified
+game logic
 reset
-	self submorphs do: [:aMorph | aMorph abandon].
-	self collisionHandler removeAllMorphs.
+	self player1 kill.
+	self player2 kill.
 	self spawnPlayer1;
-		spawnPlayer2;
-		initializePlanets.
+		spawnPlayer2.

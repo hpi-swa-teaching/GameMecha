@@ -1,6 +1,5 @@
 game logic
 resolveCollisions
-	(self game collisionHandler morphsCollidingWith: self collisionMorph)
+	(self game collisionHandler morphsCollidingWith: self spatialMorph)
 		do: [:aCollisionMorph | 
-			Transcript show: aCollisionMorph.
 			self collidedWith: aCollisionMorph renderedMorph].

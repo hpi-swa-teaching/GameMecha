@@ -1,4 +1,4 @@
-initialization
+game logic
 spawnPlayer2
 	self player2: (GMDemoGameSpaceship new
 		registerAtGame: self;

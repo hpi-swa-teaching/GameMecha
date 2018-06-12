@@ -1,5 +1,5 @@
-as yet unclassified
+game logic
 registerAtGame: aGame
 	self game: aGame.
-	aGame addMorph: self collisionMorph.
-	aGame addCollisionMorph: self collisionMorph.
+	aGame addMorph: self spatialMorph.
+	aGame addCollisionMorph: self spatialMorph.
