@@ -1,6 +1,6 @@
 as yet unclassified
 testLoadAll
 	self resourceManager
-		loadAllResourcesFrom: TestResourceFixtures testResourceFolder;
-		playSound: TestResourceFixtures testSoundNameAIFF;
-		playSound: TestResourceFixtures testSoundNameWAV.
+		loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder;
+		playSound: GMTestResourceFixtures testSoundNameAIFF;
+		playSound: GMTestResourceFixtures testSoundNameWAV.

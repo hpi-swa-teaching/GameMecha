@@ -1,7 +1,7 @@
 as yet unclassified
 testSoundManagerAcceptance
-	TestResourceFixtures createSoundOnDisk.
+	GMTestResourceFixtures createSoundOnDisk.
 	GMResourceLocator resetSoundManager.
 	GMSoundManagerAcceptanceTest new.
 	GMResourceLocator resetSoundManager.
-	TestResourceFixtures clearResourcesOnDisk.
+	GMTestResourceFixtures clearResourcesOnDisk.
