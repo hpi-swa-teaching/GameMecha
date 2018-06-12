@@ -1,8 +1,8 @@
-testing
+as yet unclassified
 testResourceIntoMethod
 	self should: [self resourceIntoMethodTarget] raise: Error.
-	GMResourceLocator imageManager
+	GMResourceLocator soundManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
-		fromFile: TestResourceFixtures testImagePathPNG.
+		fromFile: TestResourceFixtures testSoundPathWAV.
 	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].
