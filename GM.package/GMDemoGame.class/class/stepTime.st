@@ -1,3 +1,0 @@
-constants
-stepTime
-	^ 30

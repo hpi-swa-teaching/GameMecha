@@ -1,8 +1,0 @@
-{
-	"class" : {
-		"defaultExtent" : "AZ 6/12/2018 19:57" },
-	"instance" : {
-		"collidedWith:" : "AZ 6/12/2018 16:23",
-		"collidedWithProjectile:" : "AZ 6/12/2018 16:00",
-		"collidedWithSpaceship:" : "AZ 6/12/2018 16:00",
-		"initialize" : "AZ 6/12/2018 19:57" } }

@@ -1,3 +1,3 @@
 as yet unclassified
 turningSpeed
-	^ 0.125
+	^ 0.1

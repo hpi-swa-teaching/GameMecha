@@ -1,6 +1,5 @@
 {
 	"class" : {
-		"defaultExtent" : "AZ 6/12/2018 19:57",
 		"maxVelocity" : "AZ 6/12/2018 17:11" },
 	"instance" : {
 		"collidedWith:" : "AZ 6/12/2018 16:40",
@@ -9,4 +8,4 @@
 		"collidedWithSpaceship:" : "AZ 6/12/2018 16:00",
 		"creator" : "AZ 6/12/2018 15:58",
 		"creator:" : "AZ 6/12/2018 15:58",
-		"initialize" : "AZ 6/12/2018 20:01" } }
+		"initialize" : "AZ 6/5/2018 21:55" } }

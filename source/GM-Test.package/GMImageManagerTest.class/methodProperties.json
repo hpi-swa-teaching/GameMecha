@@ -1,5 +1,6 @@
 {
 	"class" : {
+		"resourceIntoMethodTarget" : "AZ 6/12/2018 20:23",
 		"testSize" : "NK 6/10/2018 15:39" },
 	"instance" : {
 		"setUp" : "NK 6/5/2018 21:40",
