@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 defaultExtent
 	^ 20 @ 20
