@@ -4,4 +4,4 @@ setUp
 		loudness: 0.0;
 		pauseMusic;
 		flushCache).
-	TestResourceFixtures createSoundOnDisk.
+	GMTestResourceFixtures createSoundOnDisk.

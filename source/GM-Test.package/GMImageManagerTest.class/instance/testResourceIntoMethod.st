@@ -4,5 +4,5 @@ testResourceIntoMethod
 	GMResourceLocator imageManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
-		fromFile: TestResourceFixtures testImagePathPNG.
+		fromFile: GMTestResourceFixtures testImagePathPNG.
 	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].

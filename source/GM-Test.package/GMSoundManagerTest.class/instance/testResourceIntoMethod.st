@@ -4,5 +4,5 @@ testResourceIntoMethod
 	GMResourceLocator soundManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
-		fromFile: TestResourceFixtures testSoundPathWAV.
+		fromFile: GMTestResourceFixtures testSoundPathWAV.
 	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].

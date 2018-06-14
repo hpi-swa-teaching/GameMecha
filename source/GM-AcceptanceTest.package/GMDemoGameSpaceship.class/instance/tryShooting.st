@@ -1,4 +1,4 @@
-control
+game logic
 tryShooting
 	self cooldownCounter isZero ifTrue: 
 		[self spawnProjectile.

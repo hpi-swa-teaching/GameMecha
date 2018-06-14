@@ -1,0 +1,15 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"velocity",
+		"parentMorph" ],
+	"name" : "GMCollisionPerformanceTestEntity",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

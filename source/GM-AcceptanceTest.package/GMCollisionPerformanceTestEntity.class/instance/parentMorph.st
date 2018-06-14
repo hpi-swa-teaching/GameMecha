@@ -1,0 +1,3 @@
+accessing
+parentMorph
+	^ parentMorph

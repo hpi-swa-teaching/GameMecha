@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 accelerationSpeed
 	^ 0.5

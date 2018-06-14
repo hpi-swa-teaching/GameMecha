@@ -4,6 +4,6 @@ testAddAndRemove
 	self deny: [self collisionHandler includes: self collisionTestMorph].
 	self collisionHandler addCollisionMorph: self collisionTestMorph.
 	self assert: [self collisionHandler includes: self collisionTestMorph].
-	self collisionHandler removeMorph: self collisionTestMorph.
+	self collisionHandler removeCollisionMorph: self collisionTestMorph.
 	self deny: [self collisionHandler includes: self collisionTestMorph].
 	
