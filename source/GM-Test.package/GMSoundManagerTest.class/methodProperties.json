@@ -3,7 +3,6 @@
 		 },
 	"instance" : {
 		"setUp" : "brh 6/12/2018 21:28",
-		"tearDown" : "brh 6/12/2018 21:03",
 		"testFlushCache" : "NK 6/5/2018 20:48",
 		"testLoadAll" : "brh 6/12/2018 21:28",
 		"testLoadAllWithoutEndings" : "brh 6/12/2018 21:28",

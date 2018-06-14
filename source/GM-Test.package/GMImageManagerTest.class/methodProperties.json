@@ -3,7 +3,6 @@
 		"testSize" : "NK 6/10/2018 15:39" },
 	"instance" : {
 		"setUp" : "brh 6/12/2018 21:28",
-		"tearDown" : "brh 6/12/2018 21:03",
 		"testGetImageWithSize" : "brh 6/12/2018 21:28",
 		"testImageLoading" : "brh 6/12/2018 21:28",
 		"testImageLoadingWithName" : "brh 6/12/2018 21:28",
