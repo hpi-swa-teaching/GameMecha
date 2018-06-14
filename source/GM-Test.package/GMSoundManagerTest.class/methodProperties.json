@@ -1,9 +1,9 @@
 {
 	"class" : {
-		"resourceIntoMethodTarget" : "NK 6/14/2018 11:33",
-		"resourceIntoMethodTargetSamples" : "NK 6/14/2018 11:33" },
+		 },
 	"instance" : {
 		"setUp" : "NK 6/14/2018 10:48",
+		"tearDown" : "NK 6/14/2018 11:37",
 		"testFlushCache" : "NK 6/5/2018 20:48",
 		"testLoadAll" : "brh 6/12/2018 21:28",
 		"testLoadAllWithoutEndings" : "brh 6/12/2018 21:28",
