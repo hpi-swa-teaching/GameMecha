@@ -1,3 +1,3 @@
-collision
-collisionMorph
+accessing
+spatialMorph
 	^ self transformationMorph

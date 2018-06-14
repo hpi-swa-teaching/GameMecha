@@ -1,3 +1,3 @@
 utility
 clearResourcesOnDisk
-	(FileDirectory uri: (self testResourceFolder)) recursiveDelete.
+	(FileDirectory uri: (self testResourceFolder)) assureExistence recursiveDelete.

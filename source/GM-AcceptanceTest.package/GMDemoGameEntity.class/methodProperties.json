@@ -1,16 +1,15 @@
 {
 	"class" : {
-		"defaultSprite" : "AZ 6/12/2018 15:41" },
+		 },
 	"instance" : {
 		"collidedWith:" : "AZ 6/12/2018 21:49",
-		"collidedWithPlanet:" : "AZ 6/12/2018 15:56",
+		"collidedWithPlanet:" : "AZ 6/12/2018 20:43",
 		"collidedWithProjectile:" : "AZ 6/12/2018 15:56",
 		"collidedWithSpaceship:" : "AZ 6/12/2018 15:56",
-		"collisionMorph" : "AZ 6/12/2018 16:30",
 		"game" : "AZ 6/12/2018 15:38",
 		"game:" : "AZ 6/12/2018 15:38",
 		"isAlive" : "AZ 6/12/2018 18:41",
 		"isAlive:" : "AZ 6/12/2018 18:41",
-		"kill" : "AZ 6/12/2018 18:43",
+		"kill" : "AZ 6/12/2018 21:09",
 		"registerAtGame:" : "AZ 6/12/2018 21:50",
 		"spatialMorph" : "AZ 6/12/2018 21:07" } }
