@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "AZ 5/22/2018 15:35",
+	"instvars" : [
+		"collisionMorphs" ],
+	"name" : "GMCollisionHandler",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

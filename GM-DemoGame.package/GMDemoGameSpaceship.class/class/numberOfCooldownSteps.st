@@ -1,0 +1,3 @@
+constants
+numberOfCooldownSteps
+	^ 20

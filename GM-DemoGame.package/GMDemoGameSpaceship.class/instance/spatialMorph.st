@@ -1,0 +1,3 @@
+accessing
+spatialMorph
+	^ self transformationMorph

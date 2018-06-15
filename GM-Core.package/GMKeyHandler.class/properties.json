@@ -1,0 +1,15 @@
+{
+	"category" : "GM-Core",
+	"classinstvars" : [
+		"KeyLookup" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "brh 5/8/2018 21:35",
+	"instvars" : [
+		"pressedKeys",
+		"parent" ],
+	"name" : "GMKeyHandler",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

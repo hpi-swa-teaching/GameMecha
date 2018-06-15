@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "AZ 5/22/2018 15:37",
+	"instvars" : [
+		"owner" ],
+	"name" : "GMCollisionDetectionStrategy",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
