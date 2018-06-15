@@ -6,14 +6,13 @@ baseline: spec
 			do: [
 				spec
 					baseline: 'Pheno' with: [spec repository: 'github://tom95/Pheno:master/src'];
-					package: 'GM-Keys';
-					package: 'GM-Resources';
 					package: 'GM-AcceptanceTest' with: [spec requires: #('Pheno' 'core')];
-					package: 'GM-Collision';
+					package: 'GM-Core';
+					package: 'GM-DemoGame' with: [spec requires: #('core')];
 					package: 'GM-Test' with: [spec requires: #('core' 'acceptanceTest')];
 					yourself.
 				spec
-					group: 'core' with: #('GM-Keys' 'GM-Resources' 'GM-Collision');
+					group: 'core' with: #('GM-Core');
 					group: 'test' with: #('GM-Test' 'GM-AcceptanceTest');					
 					group: 'acceptanceTest' with: #('GM-AcceptanceTest')];
 					yourself.

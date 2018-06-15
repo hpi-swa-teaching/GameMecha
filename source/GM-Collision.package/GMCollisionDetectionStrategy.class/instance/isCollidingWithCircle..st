@@ -1,3 +1,0 @@
-collision
-isCollidingWithCircle: aMorph
-	self subclassResponsibility.

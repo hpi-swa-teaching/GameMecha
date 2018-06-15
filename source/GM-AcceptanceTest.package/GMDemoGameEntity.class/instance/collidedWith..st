@@ -1,3 +1,0 @@
-collision
-collidedWith: aCollisionMorph
-	self subclassResponsibility.
