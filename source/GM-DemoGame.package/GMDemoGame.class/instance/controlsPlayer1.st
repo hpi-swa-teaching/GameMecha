@@ -4,5 +4,4 @@ controlsPlayer1
 		#leftKey -> $a.
 		#rightKey -> $d.
 		#downKey -> $s.
-		#upKey -> $w.
-	}
+		#upKey -> $w.}

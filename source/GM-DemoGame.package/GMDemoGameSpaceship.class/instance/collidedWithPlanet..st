@@ -1,3 +1,3 @@
 collision
 collidedWithPlanet: aPlanet
-	self kill.
+	self velocity: self velocity negated.

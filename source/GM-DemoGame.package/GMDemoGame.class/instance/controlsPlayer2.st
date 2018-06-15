@@ -4,5 +4,4 @@ controlsPlayer2
 		#leftKey -> Character arrowLeft.
 		#rightKey -> Character arrowRight.
 		#downKey -> Character arrowDown.
-		#upKey -> Character arrowUp.
-	}
+		#upKey -> Character arrowUp.}

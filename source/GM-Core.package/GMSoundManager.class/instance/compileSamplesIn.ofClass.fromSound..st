@@ -2,7 +2,7 @@ as yet unclassified
 compileSamplesIn: aMethodSymbol ofClass: aClass fromSound: aSound
 	| stream |
 	stream := (WriteStream on: '') 
-		nextPutAll: (aMethodSymbol asString , 'Samples', String cr , ' ^ ');
+		nextPutAll: (aMethodSymbol asString , 'Samples', String cr , '"This is an auto-generated method"', String cr, ' ^ ');
 		yourself.
 	aSound samples asByteArray base64Encoded storeOn: stream.
 	stream nextPutAll: ' base64Decoded asByteArray'.

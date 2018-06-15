@@ -4,7 +4,7 @@
 		"stepTime" : "TP 6/12/2018 19:43",
 		"testMorphSize" : "TP 6/12/2018 22:20" },
 	"instance" : {
-		"addCollidingMorph" : "TP 6/12/2018 22:25",
+		"addCollidingMorph" : "brh 6/15/2018 23:37",
 		"collisionHandler" : "TP 6/12/2018 19:32",
 		"collisionHandler:" : "TP 6/12/2018 19:17",
 		"initialize" : "TP 6/12/2018 21:50" } }

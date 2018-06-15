@@ -2,7 +2,7 @@
 	"class" : {
 		"rotationSpeed" : "TP 6/12/2018 22:13" },
 	"instance" : {
-		"HandleEdgeCollision" : "TP 6/12/2018 21:25",
+		"handleEdgeCollision" : "brh 6/15/2018 23:38",
 		"initialize" : "TP 6/12/2018 21:39",
 		"move" : "TP 6/12/2018 22:13",
 		"parentMorph" : "TP 6/12/2018 19:10",
@@ -10,7 +10,7 @@
 		"registerAtParentMorph:" : "TP 6/12/2018 21:58",
 		"resolveCollisions" : "TP 6/12/2018 22:24",
 		"rotate" : "TP 6/12/2018 21:48",
-		"step" : "TP 6/12/2018 22:06",
+		"step" : "brh 6/15/2018 23:39",
 		"stepTime" : "TP 6/12/2018 19:36",
 		"velocity" : "TP 6/12/2018 19:06",
 		"velocity:" : "TP 6/12/2018 19:06" } }

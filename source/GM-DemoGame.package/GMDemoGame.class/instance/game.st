@@ -1,3 +1,3 @@
 accessing
 game
-	^ game game
+	^ self
