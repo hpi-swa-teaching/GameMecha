@@ -1,2 +1,0 @@
-collision
-collidedWithPlanet: aPlanet

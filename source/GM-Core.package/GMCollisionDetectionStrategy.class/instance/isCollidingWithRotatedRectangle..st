@@ -1,3 +1,0 @@
-collision
-isCollidingWithRotatedRectangle: aMorph
-	self subclassResponsibility.

@@ -3,8 +3,6 @@ OrderedDictionary {
 	'source\/BaselineOfGM.package' : #SquotCypressCodeSerializer,
 	'source\/GM-AcceptanceTest.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Collision.package' : #SquotCypressCodeSerializer,
-	'source\/GM-Core.package' : #SquotCypressCodeSerializer,
-	'source\/GM-DemoGame.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Keys.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Resources.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Test.package' : #SquotCypressCodeSerializer,
