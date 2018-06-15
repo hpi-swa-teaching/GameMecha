@@ -1,0 +1,15 @@
+{
+	"category" : "GM-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"game",
+		"isAlive" ],
+	"name" : "GMDemoGameEntity",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }

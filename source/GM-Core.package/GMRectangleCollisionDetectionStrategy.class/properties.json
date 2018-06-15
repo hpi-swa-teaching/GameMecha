@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMRectangleCollisionDetectionStrategy",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionDetectionStrategy",
+	"type" : "normal" }

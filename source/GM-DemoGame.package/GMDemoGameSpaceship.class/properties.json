@@ -1,0 +1,16 @@
+{
+	"category" : "GM-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"transformationMorph",
+		"cooldownCounter",
+		"controls" ],
+	"name" : "GMDemoGameSpaceship",
+	"pools" : [
+		 ],
+	"super" : "GMDemoGameMovingEntity",
+	"type" : "normal" }

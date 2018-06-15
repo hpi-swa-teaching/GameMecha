@@ -1,0 +1,14 @@
+{
+	"category" : "GM-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"creator" ],
+	"name" : "GMDemoGameProjectile",
+	"pools" : [
+		 ],
+	"super" : "GMDemoGameMovingEntity",
+	"type" : "normal" }
