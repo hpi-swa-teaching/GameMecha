@@ -10,4 +10,4 @@ isCollidingWithCircle: aMorph
 	circleDistance y <= (rectExtent y / 2) ifTrue: [^ true].
 	"Because we calculated circleDistance we can now imagine the rectangle center in 0 @ 0, 
 	the circle center at circleDistance and the rectangle corner at (aMorph extent)."
-	^ (circleDistance squaredDistanceTo: rectExtent / 2) <= aMorph collisionDetectionStrategy radius squared.
+	^ (circleDistance squaredDistanceTo: rectExtent / 2) <= aMorph collisionDetectionStrategy radius squared
