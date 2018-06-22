@@ -1,4 +1,4 @@
-images
+sounds
 createSoundOnDisk
 	self createTestingResourceFolder.
 	self squeakSamplesSound

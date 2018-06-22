@@ -1,0 +1,1 @@
+This class defines more refined behavior for moving entities.
