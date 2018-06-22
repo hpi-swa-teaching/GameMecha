@@ -10,6 +10,7 @@
 		"startUp:" : "brh 6/7/2018 17:18",
 		"supportedPlatformDict" : "SD 5/8/2018 20:23" },
 	"instance" : {
+		"evaluateRegisteredEvents" : "TP 6/19/2018 18:40",
 		"handlesClickOrDrag:" : "AZ 5/8/2018 19:27",
 		"handlesGestureStart:" : "AZ 5/8/2018 19:27",
 		"handlesKeyboard:" : "AZ 5/8/2018 19:27",
@@ -22,6 +23,8 @@
 		"isKeyPressed:" : "brh 5/23/2018 19:21",
 		"keyDown:fromMorph:" : "brh 6/10/2018 22:23",
 		"keyStroke:fromMorph:" : "TP 4/30/2018 18:53",
+		"keyToEventMappings" : "TP 6/19/2018 17:38",
+		"keyToEventMappings:" : "TP 6/19/2018 17:08",
 		"keyUp:fromMorph:" : "brh 6/10/2018 22:24",
 		"keyboardFocusChange:fromMorph:" : "TP 5/29/2018 19:58",
 		"mouseDown:fromMorph:" : "TP 4/30/2018 19:00",
@@ -30,4 +33,5 @@
 		"parent" : "TP 5/29/2018 19:46",
 		"parent:" : "TP 5/29/2018 19:46",
 		"pressedKeys" : "brh 5/23/2018 19:21",
-		"pressedKeys:" : "brh 5/23/2018 19:21" } }
+		"pressedKeys:" : "brh 5/23/2018 19:21",
+		"registerKeyEvent:forKey:" : "TP 6/19/2018 17:12" } }
