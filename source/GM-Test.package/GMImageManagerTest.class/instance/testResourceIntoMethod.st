@@ -5,4 +5,4 @@ testResourceIntoMethod
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
 		fromFile: GMTestResourceFixtures testImagePathPNG.
-	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].
+	self assert: [self class resourceIntoMethodTarget isForm].

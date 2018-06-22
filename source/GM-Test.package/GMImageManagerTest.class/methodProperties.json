@@ -4,8 +4,9 @@
 	"instance" : {
 		"setUp" : "NK 6/14/2018 10:47",
 		"tearDown" : "NK 6/14/2018 11:38",
-		"testGetImageWithSize" : "brh 6/19/2018 12:16",
-		"testImageLoading" : "brh 6/12/2018 21:28",
-		"testImageLoadingWithName" : "brh 6/12/2018 21:28",
+		"testGetImageWithSize" : "brh 6/22/2018 22:28",
+		"testImageLoading" : "brh 6/22/2018 22:28",
+		"testImageLoadingWithName" : "brh 6/22/2018 22:29",
 		"testLoadAll" : "brh 6/12/2018 21:28",
-		"testResourceIntoMethod" : "brh 6/12/2018 21:28" } }
+		"testLoadResourceIntoCache" : "brh 6/22/2018 23:08",
+		"testResourceIntoMethod" : "brh 6/22/2018 23:01" } }

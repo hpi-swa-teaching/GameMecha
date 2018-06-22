@@ -1,0 +1,4 @@
+as yet unclassified
+testLoadResourceIntoCache
+	self resourceManager loadResource: GMTestResourceFixtures squeakSamplesSound intoCacheWithName: GMTestResourceFixtures fileName.
+	self resourceManager playSound: GMTestResourceFixtures fileName.

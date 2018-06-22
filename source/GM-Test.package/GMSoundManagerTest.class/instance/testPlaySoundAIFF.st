@@ -1,5 +1,5 @@
 as yet unclassified
 testPlaySoundAIFF
 	self resourceManager
-		loadResourceIntoCache: GMTestResourceFixtures testSoundPathAIFF;
+		loadResourceFromDriveIntoCache: GMTestResourceFixtures testSoundPathAIFF;
 		playSound: GMTestResourceFixtures testSoundNameAIFF.

@@ -7,8 +7,9 @@
 		"testFlushCache" : "NK 6/5/2018 20:48",
 		"testLoadAll" : "brh 6/12/2018 21:28",
 		"testLoadAllWithoutEndings" : "brh 6/12/2018 21:28",
-		"testPlayMusic" : "brh 6/12/2018 21:28",
-		"testPlayNamedSound" : "brh 6/12/2018 21:28",
-		"testPlaySoundAIFF" : "brh 6/12/2018 21:28",
-		"testPlaySoundWAV" : "brh 6/12/2018 21:28",
+		"testLoadResourceIntoCache" : "brh 6/22/2018 23:07",
+		"testPlayMusic" : "brh 6/22/2018 22:29",
+		"testPlayNamedSound" : "brh 6/22/2018 22:29",
+		"testPlaySoundAIFF" : "brh 6/22/2018 22:29",
+		"testPlaySoundWAV" : "brh 6/22/2018 22:29",
 		"testResourceIntoMethod" : "brh 6/12/2018 21:28" } }
