@@ -5,6 +5,7 @@
 		"collisionDetectionStrategy" : "brh 6/15/2018 22:41",
 		"collisionDetectionStrategy:" : "brh 6/15/2018 22:41",
 		"evaluateRegisteredEvents" : "TP 6/19/2018 17:18",
+		"gmRegisterMethodInvocation:on:forKey:" : "TP 6/25/2018 18:43",
 		"gmRegisterToKeyHandler" : "brh 6/15/2018 22:40",
 		"isKeyPressed:" : "brh 6/15/2018 22:40",
 		"registerKeyEvent:forKey:" : "TP 6/19/2018 17:23" } }
