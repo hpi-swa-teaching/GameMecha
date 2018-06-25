@@ -1,5 +1,6 @@
 accessing
 rotatedRectangleShell
+	self flag: #refactor.
 	^ rotatedRectangleShell ifNil:
 		[rotatedRectangleShell := 
 			(self newMorphWithOwner

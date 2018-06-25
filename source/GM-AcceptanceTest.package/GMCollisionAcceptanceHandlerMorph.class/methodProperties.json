@@ -11,7 +11,7 @@
 		"collisionMorphs:" : "brh 6/11/2018 14:04",
 		"collisionTypeDictionary" : "brh 6/11/2018 14:05",
 		"collisionTypeDictionary:" : "brh 6/11/2018 14:05",
-		"currentCollisionCheck" : "NK 6/12/2018 20:49",
+		"currentCollisionCheck" : "brh 6/25/2018 21:58",
 		"rectangleCollisionMorph" : "brh 6/11/2018 14:08",
 		"rotatedRectangleCollisionMorph" : "brh 6/11/2018 14:08",
 		"shouldCollide" : "brh 6/11/2018 18:01",
@@ -19,4 +19,6 @@
 		"shuffleMorphs" : "brh 6/11/2018 14:08",
 		"step" : "brh 6/11/2018 15:57",
 		"stepTime" : "NK 6/12/2018 21:12",
-		"stringFromMorph:" : "NK 6/12/2018 21:12" } }
+		"stringFromMorph:" : "brh 6/25/2018 22:14",
+		"stringFromObject:" : "brh 6/25/2018 22:11",
+		"stringFromTransformationMorph:" : "brh 6/25/2018 22:23" } }

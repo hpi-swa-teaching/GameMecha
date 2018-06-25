@@ -1,7 +1,10 @@
 {
 	"class" : {
 		"cleanup" : "brh 6/11/2018 17:26",
-		"collisionSelectors" : "brh 6/25/2018 14:33",
+		"collisionSelectors" : "brh 6/25/2018 22:32",
 		"storeChecks:" : "brh 6/11/2018 18:06" },
 	"instance" : {
-		"testAcceptance68008495" : "brh 6/25/2018 14:33" } }
+		"newMorphWithOwnerFromExtent:" : "brh 6/25/2018 22:24",
+		"rotatedRectangleShellWithAngle:andCollision:andExtent:atPosition:" : "brh 6/25/2018 22:24",
+		"testAcceptance14247274" : "brh 6/25/2018 22:32",
+		"testAcceptance44530228" : "brh 6/25/2018 22:32" } }
