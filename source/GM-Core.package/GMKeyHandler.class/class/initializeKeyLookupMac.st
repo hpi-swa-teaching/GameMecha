@@ -7,7 +7,7 @@ initializeKeyLookupMac
 		16r03 -> $f.
 		16r04 -> $h.
 		16r05 -> $g.
-		16r06 -> $z.
+		16r06 -> $y.
 		16r07 -> $x.
 		16r08 -> $c.
 		16r09 -> $v.
@@ -16,7 +16,7 @@ initializeKeyLookupMac
 		16r0D -> $w.
 		16r0E -> $e.
 		16r0F -> $r.
-		16r10 -> $y.
+		16r10 -> $z.
 		16r11 -> $t.
 		16r12 -> $1.
 		16r13 -> $2.
@@ -45,5 +45,4 @@ initializeKeyLookupMac
 		16r7B -> Character arrowLeft.
 		16r7C -> Character arrowRight.
 		16r7D -> Character arrowDown.
-		16r7E -> Character arrowUp.
-		})
+		16r7E -> Character arrowUp})
