@@ -1,0 +1,2 @@
+as yet unclassified
+testAcceptance68008495 self assertCollision: (Morph new collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionStrategy new;position: (118@558);extent:(117@117)) with: (Morph new collisionDetectionStrategy: GMRectangleCollisionDetectionStrategy new;position: (238@463);extent:(100@100)) equals: false

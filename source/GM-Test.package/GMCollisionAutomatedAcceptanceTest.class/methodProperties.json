@@ -1,8 +1,7 @@
 {
 	"class" : {
 		"cleanup" : "brh 6/11/2018 17:26",
-		"collisionSelectors" : "NK 6/14/2018 11:33",
+		"collisionSelectors" : "brh 6/25/2018 14:33",
 		"storeChecks:" : "brh 6/11/2018 18:06" },
 	"instance" : {
-		"testAcceptance135011576" : "NK 6/14/2018 11:33",
-		"testAcceptance169382868" : "NK 6/14/2018 11:33" } }
+		"testAcceptance68008495" : "brh 6/25/2018 14:33" } }
