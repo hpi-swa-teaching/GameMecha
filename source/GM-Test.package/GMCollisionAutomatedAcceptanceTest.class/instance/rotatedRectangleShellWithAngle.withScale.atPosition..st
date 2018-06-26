@@ -1,5 +1,5 @@
 as yet unclassified
-rotatedRectangleShellWithAngle: anAngle atPosition: aPosition
+rotatedRectangleShellWithAngle: anAngle withScale: aScale atPosition: aPosition
 	| aMorph |
 	aMorph := RectangleMorph new
 		extent: 100 @ 100;
@@ -10,4 +10,5 @@ rotatedRectangleShellWithAngle: anAngle atPosition: aPosition
 		collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new;
 		angle: anAngle;
 		position: aPosition;
+		scale: aScale;
 		yourself

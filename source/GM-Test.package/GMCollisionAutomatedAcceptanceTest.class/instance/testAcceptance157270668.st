@@ -1,9 +1,10 @@
 as yet unclassified
-testAcceptance215446152 
+testAcceptance157270668 
 	self assertCollision: (self rotatedRectangleShellWithAngle: 30
-		 atPosition: (295@578))
+		withScale: 1.0
+		 atPosition: (126@613))
 	 with: (RectangleMorph new 
 		collisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
-		position: (258@720);
+		position: (126@670);
 		extent:(100@100))
-	 equals: false
+	 equals: true

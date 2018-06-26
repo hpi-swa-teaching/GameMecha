@@ -7,7 +7,7 @@ rotatedRectangleCollisionMorph
 		yourself.
 	self addMorph: aMorph.
 	aMorph addFlexShell.
-	^ aMorph owner 
+	^ aMorph owner
 		collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new;
 		angle: 30;
 		yourself
