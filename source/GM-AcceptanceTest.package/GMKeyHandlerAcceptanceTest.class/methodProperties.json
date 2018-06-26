@@ -1,17 +1,17 @@
 {
 	"class" : {
 		"keysPerRow" : "AZ 6/26/2018 17:55",
-		"testedKeys" : "AZ 6/26/2018 17:27" },
+		"testedKeys" : "AZ 6/26/2018 19:03" },
 	"instance" : {
 		"adaptExtent" : "AZ 6/26/2018 17:25",
-		"adaptedHeight" : "AZ 6/26/2018 17:57",
-		"adaptedWidth" : "AZ 6/26/2018 17:24",
-		"initialize" : "AZ 6/26/2018 16:18",
+		"adaptedHeight" : "AZ 6/26/2018 19:18",
+		"adaptedWidth" : "AZ 6/26/2018 19:18",
+		"enforceLayout" : "AZ 6/26/2018 19:13",
+		"initialize" : "AZ 6/26/2018 19:22",
 		"initializeKeyMorphs" : "AZ 6/26/2018 16:21",
 		"keyMorphs" : "AZ 6/25/2018 17:36",
 		"keyMorphs:" : "AZ 6/25/2018 17:35",
-		"keyMorphsHeight" : "AZ 6/26/2018 16:17",
-		"keyMorphsWidth" : "AZ 6/26/2018 16:17",
-		"layoutKeyMorphs" : "AZ 6/26/2018 17:25",
-		"step" : "AZ 6/26/2018 16:15",
-		"stepTime" : "AZ 6/25/2018 17:55" } }
+		"keyMorphsHeight" : "AZ 6/26/2018 19:18",
+		"keyMorphsWidth" : "AZ 6/26/2018 19:18",
+		"layoutKeyMorphs" : "AZ 6/26/2018 19:13",
+		"numberOfRows" : "AZ 6/26/2018 19:16" } }

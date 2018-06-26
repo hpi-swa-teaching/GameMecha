@@ -1,3 +1,3 @@
 constants
-defalutExtent
+defaultExtent
 	^ 100 @ 60

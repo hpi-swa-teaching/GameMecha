@@ -1,15 +1,15 @@
 {
 	"class" : {
-		"defalutExtent" : "AZ 6/26/2018 17:17" },
+		"defaultExtent" : "AZ 6/26/2018 19:17" },
 	"instance" : {
-		"initialize" : "AZ 6/26/2018 17:19",
-		"isKeyPressed:" : "AZ 6/26/2018 16:10",
-		"label:" : "AZ 6/26/2018 16:08",
+		"initialize" : "AZ 6/26/2018 19:22",
+		"isKeyPressed:" : "AZ 6/26/2018 19:30",
+		"label:" : "AZ 6/26/2018 19:25",
 		"listenToKey" : "AZ 6/26/2018 16:06",
 		"listenToKey:" : "AZ 6/26/2018 16:06",
 		"parent" : "AZ 6/26/2018 16:07",
 		"parent:" : "AZ 6/26/2018 16:07",
-		"step" : "AZ 6/26/2018 16:12",
+		"step" : "AZ 6/26/2018 19:29",
 		"stepTime" : "AZ 6/26/2018 16:07",
 		"stringMorph" : "AZ 6/26/2018 16:19",
 		"stringMorph:" : "AZ 6/26/2018 16:06" } }
