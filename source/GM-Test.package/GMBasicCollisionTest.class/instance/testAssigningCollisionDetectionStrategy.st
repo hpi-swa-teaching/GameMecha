@@ -2,7 +2,7 @@ testing
 testAssigningCollisionDetectionStrategy
     | aCollisionDetectionStrategy aMorph |
     aMorph := Morph new.
-    aCollisionDetectionStrategy := GMRectangleCollisionDetectionStrategy new.
+    aCollisionDetectionStrategy := GMRectangleCollisionDetectionShape new.
     self assert: [aMorph collisionDetectionStrategy isNil].
     aMorph collisionDetectionStrategy: aCollisionDetectionStrategy.
     self 

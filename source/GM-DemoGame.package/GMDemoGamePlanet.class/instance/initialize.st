@@ -2,5 +2,5 @@ initialization
 initialize
 	super initialize.
 	self 
-		collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;
+		collisionDetectionStrategy: GMCircleCollisionDetectionShape new;
 		image: (GMDemoGameFixtures planet scaledIntoFormOfSize: self class defaultExtent).

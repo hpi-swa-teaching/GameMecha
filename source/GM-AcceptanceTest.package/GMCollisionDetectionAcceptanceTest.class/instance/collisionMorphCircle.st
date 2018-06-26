@@ -1,6 +1,6 @@
 creation
 collisionMorphCircle
 	^ CircleMorph new
-		collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;
+		collisionDetectionStrategy: GMCircleCollisionDetectionShape new;
 		extent: self class collisionMorphExtent;
 		yourself
