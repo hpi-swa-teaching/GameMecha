@@ -7,7 +7,7 @@ rotatedRectangleShellWithAngle: anAngle atPosition: aPosition
 	Morph new addMorph: aMorph.
 	aMorph addFlexShell.
 	^ aMorph owner 
-		collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionStrategy new;
+		collisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new;
 		angle: anAngle;
 		position: aPosition;
 		yourself
