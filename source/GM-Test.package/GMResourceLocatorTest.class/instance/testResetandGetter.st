@@ -1,7 +1,7 @@
 as yet unclassified
 testResetandGetter
 	| temporaryManager |
-	temporaryManager := GMImageManager new.
+	temporaryManager := GMImageLoader new.
 	GMResourceLocator imageManager: temporaryManager.
 	self assert: [temporaryManager == GMResourceLocator imageManager].
 	GMResourceLocator resetImageManager.

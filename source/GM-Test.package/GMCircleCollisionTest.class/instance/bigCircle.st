@@ -3,5 +3,5 @@ bigCircle
 	^ bigCircle ifNil: [bigCircle := CircleMorph new
 		extent: self class bigCircleDiameter;
 		center: 0 @ 0;
-		collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;
+		collisionDetectionStrategy: GMCircleCollisionDetectionShape new;
 		yourself]
