@@ -1,0 +1,1 @@
+A GMImageLoader can load images from disk and store them in a cache. It returns Forms and supports all typical file extensions.
