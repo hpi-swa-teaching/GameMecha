@@ -1,9 +1,8 @@
 key events
 evaluateRegisteredEvents
-	|pair|
+	| invocation |
 	self pressedKeys do: [:pressedKeyCharacter | 
 		(self keyToEventMappings at: pressedKeyCharacter ifAbsent: []) value.
-		pair := self keyToMethodMappings at: pressedKeyCharacter ifAbsent:[].
-		pair key perform: pair value].
-	
+		invocation := self keyToMethodMappings at: pressedKeyCharacter ifAbsent: [].
+		invocation key perform: invocation value].
 	
