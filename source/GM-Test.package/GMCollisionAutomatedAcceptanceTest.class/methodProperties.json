@@ -1,10 +1,11 @@
 {
 	"class" : {
 		"cleanup" : "brh 6/11/2018 17:26",
-		"collisionSelectors" : "brh 6/25/2018 22:32",
+		"collisionSelectors" : "brh 6/26/2018 17:11",
 		"storeChecks:" : "brh 6/11/2018 18:06" },
 	"instance" : {
-		"newMorphWithOwnerFromExtent:" : "brh 6/25/2018 22:24",
-		"rotatedRectangleShellWithAngle:andCollision:andExtent:atPosition:" : "brh 6/25/2018 22:24",
-		"testAcceptance14247274" : "brh 6/25/2018 22:32",
-		"testAcceptance44530228" : "brh 6/25/2018 22:32" } }
+		"rotatedRectangleShellWithAngle:atPosition:" : "brh 6/26/2018 17:11",
+		"testAcceptance1654200" : "brh 6/26/2018 17:11",
+		"testAcceptance215446152" : "brh 6/26/2018 17:11",
+		"testAcceptance36601350" : "brh 6/26/2018 17:11",
+		"testAcceptance65339497" : "brh 6/26/2018 17:11" } }

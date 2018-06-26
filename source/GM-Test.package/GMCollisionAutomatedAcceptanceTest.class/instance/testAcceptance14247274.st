@@ -1,2 +1,0 @@
-as yet unclassified
-testAcceptance14247274 self assertCollision: (RectangleMorph new collisionDetectionStrategy: GMRectangleCollisionDetectionStrategy new;position: (337@764);extent:(100@100)) with: (CircleMorph new collisionDetectionStrategy: GMCircleCollisionDetectionStrategy new;position: (358@631);extent:(100@100)) equals: false
