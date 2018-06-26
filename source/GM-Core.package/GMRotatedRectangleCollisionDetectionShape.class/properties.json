@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "AZ 5/22/2018 21:29",
 	"instvars" : [
 		 ],
-	"name" : "GMCircleCollisionDetectionStrategy",
+	"name" : "GMRotatedRectangleCollisionDetectionShape",
 	"pools" : [
 		 ],
-	"super" : "GMCollisionDetectionStrategy",
+	"super" : "GMCollisionDetectionShape",
 	"type" : "normal" }

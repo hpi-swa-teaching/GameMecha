@@ -7,7 +7,7 @@
 	"commentStamp" : "NK 6/1/2018 00:38",
 	"instvars" : [
 		 ],
-	"name" : "GMImageManagerAcceptanceTest",
+	"name" : "GMImageLoaderAcceptanceTest",
 	"pools" : [
 		 ],
 	"super" : "ImageMorph",

@@ -1,12 +1,12 @@
 {
 	"class" : {
 		"cleanUp" : "brh 6/22/2018 22:45",
-		"imageManager" : "brh 6/5/2018 20:04",
+		"imageManager" : "NK 6/26/2018 18:53",
 		"imageManager:" : "brh 5/29/2018 21:36",
 		"initialize" : "brh 6/22/2018 22:45",
 		"resetImageManager" : "brh 6/5/2018 19:45",
 		"resetSoundManager" : "NK 6/5/2018 19:22",
-		"soundManager" : "brh 6/5/2018 20:06",
+		"soundManager" : "NK 6/26/2018 18:53",
 		"soundManager:" : "brh 5/29/2018 21:36",
 		"startUp:" : "brh 6/22/2018 22:45" },
 	"instance" : {

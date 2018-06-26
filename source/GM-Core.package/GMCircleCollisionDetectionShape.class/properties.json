@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "GMRectangleCollisionDetectionStrategy",
+	"name" : "GMCircleCollisionDetectionShape",
 	"pools" : [
 		 ],
-	"super" : "GMCollisionDetectionStrategy",
+	"super" : "GMCollisionDetectionShape",
 	"type" : "normal" }

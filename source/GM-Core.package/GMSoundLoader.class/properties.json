@@ -9,8 +9,8 @@
 		"loudness",
 		"supportedTypes",
 		"currentMusic" ],
-	"name" : "GMSoundManager",
+	"name" : "GMSoundLoader",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManager",
+	"super" : "GMResourceLoader",
 	"type" : "normal" }
