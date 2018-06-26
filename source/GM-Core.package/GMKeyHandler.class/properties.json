@@ -8,7 +8,8 @@
 	"instvars" : [
 		"pressedKeys",
 		"parent",
-		"keyToEventMappings" ],
+		"keyToEventMappings",
+		"keyToMethodMappings" ],
 	"name" : "GMKeyHandler",
 	"pools" : [
 		 ],
