@@ -4,10 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NK 6/1/2018 00:31",
+	"commentStamp" : "",
 	"instvars" : [
-		"keyMorphs" ],
-	"name" : "GMKeyHandlerAcceptanceTest",
+		"stringMorph",
+		"listenToKey",
+		"parent" ],
+	"name" : "GMKeyHandlerAcceptanceTestKeyMorph",
 	"pools" : [
 		 ],
 	"super" : "Morph",

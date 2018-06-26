@@ -1,0 +1,3 @@
+layout
+keyMorphsWidth
+	^ GMKeyHandlerAcceptanceTestKeyMorph defalutExtent x

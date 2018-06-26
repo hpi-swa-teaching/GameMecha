@@ -1,7 +1,18 @@
 {
 	"class" : {
-		 },
+		"keysPerRow" : "AZ 6/25/2018 17:39",
+		"testedKeys" : "AZ 6/26/2018 17:27" },
 	"instance" : {
-		"initialize" : "TP 6/25/2018 18:43",
+		"adaptExtent" : "AZ 6/26/2018 17:25",
+		"adaptedHeight" : "AZ 6/26/2018 17:24",
+		"adaptedWidth" : "AZ 6/26/2018 17:24",
+		"initialize" : "AZ 6/26/2018 16:18",
+		"initializeKeyMorphs" : "AZ 6/26/2018 16:21",
+		"keyMorphs" : "AZ 6/25/2018 17:36",
+		"keyMorphs:" : "AZ 6/25/2018 17:35",
+		"keyMorphsHeight" : "AZ 6/26/2018 16:17",
+		"keyMorphsWidth" : "AZ 6/26/2018 16:17",
+		"layoutKeyMorphs" : "AZ 6/26/2018 17:25",
 		"move" : "TP 6/25/2018 18:48",
-		"step" : "TP 6/19/2018 17:46" } }
+		"step" : "AZ 6/26/2018 16:15",
+		"stepTime" : "AZ 6/25/2018 17:55" } }
