@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMImageLoader",
+	"pools" : [
+		 ],
+	"super" : "GMResourceLoader",
+	"type" : "normal" }

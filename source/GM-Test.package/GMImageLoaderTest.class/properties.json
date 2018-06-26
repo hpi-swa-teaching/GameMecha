@@ -7,8 +7,8 @@
 	"commentStamp" : "NK 5/13/2018 15:42",
 	"instvars" : [
 		 ],
-	"name" : "GMImageManagerTest",
+	"name" : "GMImageLoaderTest",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManagerTest",
+	"super" : "GMResourceLoaderTest",
 	"type" : "normal" }

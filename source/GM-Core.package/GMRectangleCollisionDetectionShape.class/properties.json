@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "GMImageManager",
+	"name" : "GMRectangleCollisionDetectionShape",
 	"pools" : [
 		 ],
-	"super" : "GMResourceManager",
+	"super" : "GMCollisionDetectionShape",
 	"type" : "normal" }

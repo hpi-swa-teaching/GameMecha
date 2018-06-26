@@ -1,3 +1,3 @@
 as yet unclassified
 soundManager
-	^ SoundManager ifNil: [SoundManager := GMSoundManager new]
+	^ SoundManager ifNil: [SoundManager := GMSoundLoader new]
