@@ -1,5 +1,6 @@
 game logic
 spawnProjectile
+	self flag: #useSoundLoade.
 	GMDemoGameProjectile new
 		registerAtGame: self game;
 		center: self spatialMorph center;

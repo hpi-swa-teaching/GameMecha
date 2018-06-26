@@ -1,7 +1,7 @@
 as yet unclassified
 testResourceIntoMethod
 	self should: [self resourceIntoMethodTarget] raise: Error.
-	GMResourceLocator soundManager
+	resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
 		fromFile: GMTestResourceFixtures testSoundPathWAV.
