@@ -11,9 +11,9 @@ initialize
 		Sound values have a range of 0.0 to 1.0"
 		loudness: 0.0;
 		"You can access and play a sound by its key."
-		playSound: GMTestResourceFixtures testSoundNameWAV;
+		playSound: GMTestResourceFixtures testSoundPathWAV;
 		"Music is played in the same way as a sound. The only difference is that you can only play one music at a time and it loops.
 		If you start another music the first one is stopped."
-		playMusic: GMTestResourceFixtures testSoundNameWAV;
+		playMusic: GMTestResourceFixtures testSoundPathWAV;
 		"If you heard enough of your music you can pause it."
 		pauseMusic.

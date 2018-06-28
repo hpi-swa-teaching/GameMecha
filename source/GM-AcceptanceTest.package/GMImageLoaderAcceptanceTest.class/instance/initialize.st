@@ -9,5 +9,5 @@ initialize
 			loadResourceIntoCache: filename withName: nameOfKey"
 		loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder;
 		"Finally we can access a specific cached Form by its key."
-		getImageForm: GMTestResourceFixtures testImageNamePNG).
+		getImageForm: GMTestResourceFixtures testImagePathPNG).
 	self abandon.
