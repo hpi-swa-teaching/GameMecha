@@ -1,5 +1,6 @@
 as yet unclassified
 loadAllResourcesFrom: aFoldername
-	self cache addAll: (((self filenamesAtDir: aFoldername) 
-		select: [:filename | self isSupportedType: (self extensionFromFilename: filename)])
-		collect: [:filename | filename -> (self loadResourceFromDrive: aFoldername , filename)]).
+	| foldername |
+	foldername := self ensureSlashEnding: aFoldername.
+	self cache addAll: ((self filenamesAtDir: foldername)
+		collect: [:filename | (self convertToRelativePath: foldername , filename) -> (self loadResourceFromDrive: foldername , filename)]).

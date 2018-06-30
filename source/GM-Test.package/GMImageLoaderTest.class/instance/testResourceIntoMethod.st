@@ -1,7 +1,7 @@
 testing
 testResourceIntoMethod
 	self should: [self resourceIntoMethodTarget] raise: Error.
-	GMResourceLocator imageManager
+	self resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
 		fromFile: GMTestResourceFixtures testImagePathPNG.

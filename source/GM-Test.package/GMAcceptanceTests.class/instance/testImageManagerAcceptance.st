@@ -2,7 +2,5 @@ as yet unclassified
 testImageManagerAcceptance
 	GMTestResourceFixtures clearResourcesOnDisk.
 	GMTestResourceFixtures createImagesOnDisk.
-	GMResourceLocator resetImageManager.
 	GMImageLoaderAcceptanceTest new abandon.
-	GMResourceLocator resetImageManager.
 	GMTestResourceFixtures clearResourcesOnDisk.

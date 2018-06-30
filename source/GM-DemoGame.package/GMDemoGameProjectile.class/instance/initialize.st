@@ -1,6 +1,7 @@
 initialization
 initialize
 	super initialize.
+	self flag: #useImageLoader.
 	self 
 		"the porjectile should be able to collide with other entities. Thus it needs to have a collisionDetectionStrategy."
 		collisionDetectionStrategy: GMCircleCollisionDetectionShape new;
