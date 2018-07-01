@@ -1,8 +1,6 @@
 testing
 testLoadAll
-	self resourceManager 
-		loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder;
+	super testLoadAll.
+	self resourceManager
 		getImageForm: GMTestResourceFixtures testImagePathPNG;
-		getImageForm: GMTestResourceFixtures testImagePathJPEG;
-		loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder.
-	self assert: [self resourceManager cache size >= 2].
+		getImageForm: GMTestResourceFixtures testImagePathJPEG.

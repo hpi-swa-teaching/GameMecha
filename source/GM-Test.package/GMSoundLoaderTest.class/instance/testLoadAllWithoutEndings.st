@@ -1,5 +1,4 @@
 as yet unclassified
 testLoadAllWithoutEndings
-	self resourceManager
-		loadAllResourcesWithoutEndingsFrom: GMTestResourceFixtures testResourceFolder;
-		playSound: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName.
+	super testLoadAllWithoutEndings.
+	self resourceManager playSound: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName.

@@ -1,0 +1,3 @@
+as yet unclassified
+testLoadAll
+	self resourceManager loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder.
