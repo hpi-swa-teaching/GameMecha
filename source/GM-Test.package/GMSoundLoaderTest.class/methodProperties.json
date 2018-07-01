@@ -4,8 +4,8 @@
 	"instance" : {
 		"setUp" : "NK 6/26/2018 21:30",
 		"tearDown" : "NK 6/14/2018 11:37",
-		"testLoadAll" : "NK 6/28/2018 15:08",
-		"testLoadAllWithoutEndings" : "NK 6/28/2018 15:11",
+		"testLoadAll" : "NK 7/1/2018 15:00",
+		"testLoadAllWithoutEndings" : "NK 7/1/2018 15:02",
 		"testLoadResourceIntoCache" : "brh 6/22/2018 23:07",
 		"testPlayMusic" : "NK 6/28/2018 15:07",
 		"testPlayNamedSound" : "brh 6/22/2018 22:29",
