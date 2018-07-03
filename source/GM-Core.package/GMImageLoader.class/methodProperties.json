@@ -2,8 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"getImageForm:" : "brh 6/22/2018 22:26",
-		"getImageForm:withSize:" : "NK 6/10/2018 15:42",
+		"at:withSize:" : "brh 7/3/2018 22:15",
 		"isSupportedType:" : "NK 5/8/2018 20:53",
 		"loadResourceFromDrive:" : "brh 5/13/2018 14:24",
 		"loadResourceIntoMethod:ofClass:fromFile:" : "brh 6/15/2018 23:25" } }

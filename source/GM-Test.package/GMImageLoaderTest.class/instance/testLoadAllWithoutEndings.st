@@ -1,4 +1,4 @@
 testing
 testLoadAllWithoutEndings
 	super testLoadAllWithoutEndings.
-	self resourceManager getImageForm: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName.
+	self resourceManager at: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName.
