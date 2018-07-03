@@ -1,7 +1,6 @@
 as yet unclassified
 initialize
 	super initialize.
-	"GMImageManager needs to be instantiated and is not a singleton."
 	self image: (GMImageLoader new 
 		"Our GMImageManager can load all files out of a given folder into the cache.
 		Files are cached with their full name as string as their key(ex: 'picture.png'), relative folder directories are ignored.

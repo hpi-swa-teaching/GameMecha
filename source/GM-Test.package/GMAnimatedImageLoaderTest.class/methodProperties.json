@@ -1,9 +1,9 @@
 {
 	"class" : {
-		"lastStoredRun" : "brh 7/3/2018 20:04" },
+		"lastStoredRun" : "brh 7/3/2018 20:04",
+		"testRunsLocally" : "brh 7/4/2018 00:42" },
 	"instance" : {
-		"executeIfLocal:" : "brh 7/3/2018 23:26",
-		"runsLocally" : "brh 7/3/2018 23:24",
+		"executeIfLocal:" : "brh 7/4/2018 00:42",
 		"setUp" : "brh 7/3/2018 21:37",
 		"tearDown" : "brh 7/3/2018 20:10",
 		"testAnimatedImageLoading" : "brh 7/4/2018 00:14",

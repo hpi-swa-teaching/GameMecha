@@ -1,3 +1,3 @@
 as yet unclassified
 executeIfLocal: aBlock
-	self runsLocally ifTrue: [aBlock value].
+	self class testRunsLocally ifTrue: [aBlock value].

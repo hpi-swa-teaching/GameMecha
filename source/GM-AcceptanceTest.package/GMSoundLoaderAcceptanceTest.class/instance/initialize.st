@@ -1,6 +1,5 @@
 as yet unclassified
 initialize
-	"GMSoundManager needs to be instantiated, it is not a singleton."
 	GMSoundLoader new
 		"The GMSoundManager can load all files out of a given folder into the cache.
 		Files are cached with their full name as string as their key(ex: 'picture.png'), 

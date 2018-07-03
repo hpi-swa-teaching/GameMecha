@@ -2,6 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
+		"testAnimatedImageLoaderAcceptance" : "brh 7/4/2018 00:43",
 		"testCollisionDetectionAcceptance" : "brh 5/22/2018 22:49",
 		"testImageManagerAcceptance" : "NK 6/26/2018 21:29",
 		"testKeyHandlerAcceptance" : "brh 5/22/2018 21:56",

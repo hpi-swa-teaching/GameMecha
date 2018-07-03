@@ -1,0 +1,3 @@
+as yet unclassified
+testAnimatedImageLoaderAcceptance
+	GMAnimatedImageLoaderTest testRunsLocally ifTrue: [GMAnimatedImageLoaderAcceptanceTest new abandon].
