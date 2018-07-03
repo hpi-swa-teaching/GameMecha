@@ -4,6 +4,9 @@
 	"instance" : {
 		"testAnimatedImageLoaderAcceptance" : "brh 7/4/2018 00:43",
 		"testCollisionDetectionAcceptance" : "brh 5/22/2018 22:49",
-		"testImageManagerAcceptance" : "NK 6/26/2018 21:29",
+		"testCollisionGeneratorAcceptance" : "brh 7/4/2018 00:47",
+		"testCollisionPerformanceAcceptance" : "brh 7/4/2018 00:46",
+		"testImageLoaderAcceptance" : "brh 7/4/2018 00:45",
 		"testKeyHandlerAcceptance" : "brh 5/22/2018 21:56",
-		"testSoundManagerAcceptance" : "NK 6/26/2018 21:29" } }
+		"testRegisterKeyEventsAcceptance" : "brh 7/4/2018 00:46",
+		"testSoundLoaderAcceptance" : "brh 7/4/2018 00:45" } }
