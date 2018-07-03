@@ -1,0 +1,7 @@
+{
+	"class" : {
+		"defaultExtent" : "AZ 7/3/2018 20:07" },
+	"instance" : {
+		"handlesMouseDown:" : "AZ 7/3/2018 20:15",
+		"initialize" : "AZ 7/3/2018 20:07",
+		"mouseDown:" : "AZ 7/3/2018 20:14" } }

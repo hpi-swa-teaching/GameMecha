@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "AZ 7/3/2018 20:19",
+	"instvars" : [
+		 ],
+	"name" : "GMMouseHandlingTutorial",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }
