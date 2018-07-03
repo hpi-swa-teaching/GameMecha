@@ -1,5 +1,5 @@
 *GM-Core
-gmRegisterToKeyHandler
+registerToKeyHandler
     self assureExtension.
     self extension eventHandler: (GMKeyHandler new).
     ActiveHand newKeyboardFocus: self.

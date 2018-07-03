@@ -1,5 +1,5 @@
 accessing
 keyTestMorph
 	^ keyTestMorph ifNil: [keyTestMorph := Morph new
-		gmRegisterToKeyHandler;
+		registerToKeyHandler;
 		yourself]

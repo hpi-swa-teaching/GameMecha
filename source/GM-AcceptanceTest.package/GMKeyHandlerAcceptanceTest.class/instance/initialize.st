@@ -5,6 +5,6 @@ initialize
 	We use our GMKeyHandler (gmRegisterToKeyHandler), because it is plattorm independent.
 	Look inside the step method of GMKeyHandlerAcceptanceTestKeyMorph for further information."
 	self
-		gmRegisterToKeyHandler;
+		registerToKeyHandler;
 		initializeKeyMorphs;
 		enforceLayout.
