@@ -1,3 +1,0 @@
-as yet unclassified
-testCollisionPerformanceAcceptance
-	GMCollisionPerformanceTest new abandon.
