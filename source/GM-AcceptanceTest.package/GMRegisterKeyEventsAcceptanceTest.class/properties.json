@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"keyMorphs" ],
+	"name" : "GMRegisterKeyEventsAcceptanceTest",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }
