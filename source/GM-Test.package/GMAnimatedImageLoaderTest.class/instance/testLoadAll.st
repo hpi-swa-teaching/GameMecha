@@ -1,4 +1,5 @@
 as yet unclassified
 testLoadAll
-	self resourceManager loadAllResourcesFrom: ''.
-	self resourceManager at: GMTestResourceFixtures testImageNameGIF.
+	self executeIfLocal: 
+		[self resourceManager loadAllResourcesFrom: GMTestResourceFixtures testResourceFolderLocal.
+		(self resourceManager at: GMTestResourceFixtures testImagePathGIF) forms].

@@ -4,6 +4,7 @@
 	"instance" : {
 		"setUp" : "NK 6/26/2018 21:29",
 		"tearDown" : "NK 6/14/2018 11:38",
+		"testCompileResourceIntoMethod" : "brh 7/3/2018 23:11",
 		"testGetImageWithSize" : "brh 7/3/2018 22:10",
 		"testImageLoading" : "brh 7/3/2018 22:09",
 		"testImageLoadingWithName" : "brh 7/3/2018 22:09",

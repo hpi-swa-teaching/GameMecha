@@ -2,9 +2,11 @@
 	"class" : {
 		"lastStoredRun" : "brh 7/3/2018 20:04" },
 	"instance" : {
+		"executeIfLocal:" : "brh 7/3/2018 23:26",
+		"runsLocally" : "brh 7/3/2018 23:24",
 		"setUp" : "brh 7/3/2018 21:37",
 		"tearDown" : "brh 7/3/2018 20:10",
-		"testAnimatedImageLoading" : "brh 7/3/2018 22:06",
-		"testAnimatedImageLoadingWithName" : "brh 7/3/2018 22:07",
-		"testLoadAll" : "brh 7/3/2018 22:08",
-		"testLoadAllWithoutEndings" : "brh 7/3/2018 19:51" } }
+		"testAnimatedImageLoading" : "brh 7/3/2018 23:26",
+		"testAnimatedImageLoadingWithName" : "brh 7/3/2018 23:29",
+		"testLoadAll" : "brh 7/3/2018 23:31",
+		"testLoadAllWithoutEndings" : "brh 7/3/2018 23:32" } }
