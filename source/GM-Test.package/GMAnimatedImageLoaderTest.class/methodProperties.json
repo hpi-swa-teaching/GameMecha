@@ -1,0 +1,10 @@
+{
+	"class" : {
+		"lastStoredRun" : "brh 7/3/2018 20:04" },
+	"instance" : {
+		"setUp" : "brh 7/3/2018 21:37",
+		"tearDown" : "brh 7/3/2018 20:10",
+		"testAnimatedImageLoading" : "brh 7/3/2018 19:34",
+		"testAnimatedImageLoadingWithName" : "brh 7/3/2018 21:43",
+		"testLoadAll" : "brh 7/3/2018 21:44",
+		"testLoadAllWithoutEndings" : "brh 7/3/2018 19:51" } }
