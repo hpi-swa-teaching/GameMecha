@@ -6,4 +6,4 @@ testLoadResourceIntoMethod
 			loadResourceIntoMethod: #resourceIntoMethodTarget
 			ofClass: self class
 			fromFile: GMTestResourceFixtures testImagePathGIF.
-		self class resourceIntoMethodTarget forms].
+		self class resourceIntoMethodTarget forms; delays].

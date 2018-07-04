@@ -1,6 +1,5 @@
 images
-squeakGIF
-	self flag: #delete.
+squeakJPEG
 	^ ((ColorForm
 	extent: 293@200
 	depth: 8

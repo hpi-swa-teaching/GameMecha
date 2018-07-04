@@ -1,6 +1,6 @@
 animatedImages
 squeakGIFContents
-"This is an auto-generated method."
+"This is an auto-generated method. It is split from the GIFReadWriter in order to construct the GIF on disk"
  ^ 'R0lGODdhkAHIAHcAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFBAD/ACwAAAAAkAHIAIceGBR7
 f09WTCyyuIBnXlSMjYSim3FuZzuFgHBALxx/TTHDvbQ4MCx7b1ixgFijootXTEGthmzKypqa
 Z0SicVW+t6KlpJyIWzuEjlHZ1bZIPzN3c0OSj29kXD4kHRy0rHx7dWxnMRyKf2HKm2zBpYWK
