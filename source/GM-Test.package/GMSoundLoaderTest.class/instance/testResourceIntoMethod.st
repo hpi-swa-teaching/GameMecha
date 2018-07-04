@@ -1,6 +1,6 @@
 as yet unclassified
 testResourceIntoMethod
-	self should: [self resourceIntoMethodTarget] raise: Error.
+	self should: [self class resourceIntoMethodTarget] raise: Error.
 	self resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 

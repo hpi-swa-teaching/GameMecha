@@ -1,3 +1,3 @@
-images
+animatedImages
 testImagePathGIF
-	^ self testResourceFolderLocal , self testImageNameGIF
+	^ self testResourceFolder , self testImageNameGIF

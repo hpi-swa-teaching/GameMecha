@@ -1,5 +1,6 @@
 images
 squeakGIF
+	self flag: #delete.
 	^ ((ColorForm
 	extent: 293@200
 	depth: 8

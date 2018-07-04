@@ -1,6 +1,6 @@
 testing
-testCompileResourceIntoMethod
-	self should: [self resourceIntoMethodTarget] raise: Error.
+testLoadResourceIntoMethod
+	self should: [self class resourceIntoMethodTarget] raise: Error.
 	self resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 

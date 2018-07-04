@@ -1,4 +1,4 @@
-images
+utility
 createTestingResourceFolder
 	| folderName |
 	folderName := (self testResourceFolder subStrings: FileDirectory slash) at: 1.
