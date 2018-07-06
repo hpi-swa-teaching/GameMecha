@@ -5,6 +5,6 @@ initialize
 		extent: self class defaultExtent;
 		color: Color white;
 		addMorph: (StringMorph new
-			contents: 'click me';
+			contents: 'click me or drag somthing over me';
 			center: self center;
 			yourself).
