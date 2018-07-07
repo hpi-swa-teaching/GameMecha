@@ -1,0 +1,14 @@
+{
+	"class" : {
+		"defaultExtent" : "TP 7/6/2018 20:28" },
+	"instance" : {
+		"handlesMouseDown:" : "TP 7/6/2018 19:51",
+		"handlesMouseOverDragging:" : "TP 7/6/2018 20:23",
+		"handlesMouseStillDown:" : "TP 7/6/2018 20:00",
+		"initialize" : "TP 7/6/2018 20:28",
+		"mouseDown:" : "AZ 7/3/2018 20:14",
+		"mouseEnterDragging:" : "TP 7/6/2018 20:26",
+		"mouseLeaveDragging:" : "TP 7/6/2018 20:26",
+		"mouseStillDown:" : "TP 7/6/2018 20:07",
+		"mouseStillDownStepRate" : "TP 7/6/2018 20:10",
+		"mouseUp:" : "TP 7/6/2018 20:27" } }

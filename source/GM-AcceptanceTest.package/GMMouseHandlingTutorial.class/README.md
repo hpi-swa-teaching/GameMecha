@@ -1,0 +1,1 @@
+This acceptance test is a simple tutorial for basic mouse handling. It does not use any library functions. When being clicked, the morph will change its color.
