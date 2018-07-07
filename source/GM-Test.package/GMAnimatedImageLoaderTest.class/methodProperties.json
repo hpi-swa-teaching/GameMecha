@@ -1,13 +1,12 @@
 {
 	"class" : {
-		"testRunsLocally" : "brh 7/4/2018 00:42" },
+		 },
 	"instance" : {
-		"executeIfLocal:" : "brh 7/4/2018 00:42",
 		"setUp" : "brh 7/4/2018 11:09",
-		"testAnimatedImageLoading" : "NK 7/4/2018 12:24",
-		"testAnimatedImageLoadingWithName" : "NK 7/4/2018 12:24",
+		"testAnimatedImageLoading" : "brh 7/7/2018 11:38",
+		"testAnimatedImageLoadingWithName" : "brh 7/7/2018 11:38",
 		"testFile" : "brh 7/4/2018 11:31",
-		"testLoadAll" : "NK 7/4/2018 12:22",
-		"testLoadAllWithoutEndings" : "NK 7/4/2018 12:21",
+		"testLoadAll" : "brh 7/7/2018 11:38",
+		"testLoadAllWithoutEndings" : "brh 7/7/2018 11:38",
 		"testLoadResourceIntoCache" : "brh 7/4/2018 10:45",
-		"testLoadResourceIntoMethod" : "NK 7/4/2018 12:22" } }
+		"testLoadResourceIntoMethod" : "brh 7/7/2018 11:39" } }

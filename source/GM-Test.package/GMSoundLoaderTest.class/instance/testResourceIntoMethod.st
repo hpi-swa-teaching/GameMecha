@@ -4,5 +4,5 @@ testResourceIntoMethod
 	self resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
-		fromFile: GMTestResourceFixtures testSoundPathWAV.
+		fromFile: self testFile.
 	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].

@@ -4,5 +4,5 @@ testLoadResourceIntoMethod
 	self resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
-		fromFile: GMTestResourceFixtures testImagePathPNG.
+		fromFile: self testFile.
 	self assert: [self class resourceIntoMethodTarget isForm].

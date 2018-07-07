@@ -5,12 +5,12 @@
 		"setUp" : "NK 6/26/2018 21:30",
 		"tearDown" : "brh 7/4/2018 11:09",
 		"testFile" : "brh 7/4/2018 11:31",
-		"testGetSampledSound" : "brh 7/3/2018 22:14",
+		"testGetSampledSound" : "brh 7/7/2018 11:46",
 		"testLoadAll" : "NK 7/1/2018 15:00",
 		"testLoadAllWithoutEndings" : "NK 7/1/2018 15:02",
 		"testLoadResourceIntoCache" : "brh 6/22/2018 23:07",
-		"testPlayMusic" : "NK 6/28/2018 15:07",
-		"testPlayNamedSound" : "brh 6/22/2018 22:29",
+		"testPlayMusic" : "brh 7/7/2018 11:44",
+		"testPlayNamedSound" : "brh 7/7/2018 11:45",
 		"testPlaySoundAIFF" : "NK 6/28/2018 15:09",
 		"testPlaySoundWAV" : "NK 6/28/2018 15:09",
-		"testResourceIntoMethod" : "brh 7/4/2018 11:10" } }
+		"testResourceIntoMethod" : "brh 7/7/2018 11:45" } }

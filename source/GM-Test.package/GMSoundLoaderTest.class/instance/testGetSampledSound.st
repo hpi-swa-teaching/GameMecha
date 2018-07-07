@@ -1,5 +1,6 @@
 as yet unclassified
 testGetSampledSound
-	self resourceManager
-		loadResourceFromDriveIntoCache: GMTestResourceFixtures testSoundPathWAV;
-		at: GMTestResourceFixtures testSoundPathWAV.
+	self should: [self resourceManager at: self testFile] raise: Error.
+	self resourceManager loadResourceFromDriveIntoCache: self testFile.
+	self assert: [self resourceManager cache size = 1].
+	self resourceManager at: self testFile.
