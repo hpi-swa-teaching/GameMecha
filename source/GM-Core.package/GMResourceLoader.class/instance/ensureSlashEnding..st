@@ -1,4 +1,5 @@
 as yet unclassified
 ensureSlashEnding: aFoldername
-	(aFoldername endsWithAnyOf: {'/' . '\'}) ifFalse: [^ aFoldername , FileDirectory slash].
-	^ aFoldername
+	(aFoldername = '' or: [aFoldername endsWithAnyOf: {'/' . '\'}])
+		ifTrue:  [^ ''].
+	^ FileDirectory slash asString

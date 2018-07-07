@@ -1,5 +1,5 @@
 as yet unclassified
-testSoundManagerAcceptance
+testSoundLoaderAcceptance
 	GMTestResourceFixtures clearResourcesOnDisk.
 	GMTestResourceFixtures createSoundOnDisk.
 	GMSoundLoaderAcceptanceTest new.

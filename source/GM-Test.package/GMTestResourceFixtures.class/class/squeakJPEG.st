@@ -1,5 +1,5 @@
 images
-squeakGIF
+squeakJPEG
 	^ ((ColorForm
 	extent: 293@200
 	depth: 8

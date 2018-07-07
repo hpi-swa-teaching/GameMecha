@@ -2,6 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
+		"at:" : "brh 7/3/2018 22:12",
 		"compileSampledSoundIn:ofClass:fromSound:" : "brh 6/26/2018 20:49",
 		"compileSamplesIn:ofClass:fromSound:" : "brh 6/15/2018 23:25",
 		"currentMusic" : "brh 5/18/2018 19:22",
@@ -12,8 +13,7 @@
 		"loudness" : "brh 5/13/2018 15:27",
 		"loudness:" : "brh 5/18/2018 19:21",
 		"pauseMusic" : "brh 5/18/2018 19:20",
-		"playMusic:" : "brh 5/18/2018 19:14",
-		"playSound:" : "brh 5/18/2018 19:12",
-		"sampledSound:" : "brh 6/19/2018 11:45",
+		"playMusic:" : "brh 7/3/2018 22:12",
+		"playSound:" : "brh 7/3/2018 22:12",
 		"supportedTypes" : "brh 5/13/2018 17:47",
 		"supportedTypes:" : "brh 5/13/2018 17:44" } }

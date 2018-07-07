@@ -3,11 +3,11 @@
 		"testSize" : "NK 6/10/2018 15:39" },
 	"instance" : {
 		"setUp" : "NK 6/26/2018 21:29",
-		"tearDown" : "NK 6/14/2018 11:38",
-		"testGetImageWithSize" : "NK 7/1/2018 14:54",
-		"testImageLoading" : "brh 6/30/2018 21:21",
-		"testImageLoadingWithName" : "brh 6/30/2018 21:23",
-		"testLoadAll" : "NK 7/1/2018 15:02",
-		"testLoadAllWithoutEndings" : "NK 7/1/2018 15:10",
-		"testLoadResourceIntoCache" : "brh 6/22/2018 23:08",
-		"testResourceIntoMethod" : "brh 6/30/2018 21:26" } }
+		"testFile" : "brh 7/4/2018 11:31",
+		"testGetImageWithSize" : "brh 7/7/2018 11:42",
+		"testImageLoading" : "brh 7/7/2018 11:43",
+		"testImageLoadingWithName" : "brh 7/7/2018 11:43",
+		"testLoadAll" : "brh 7/3/2018 22:09",
+		"testLoadAllWithoutEndings" : "brh 7/3/2018 22:09",
+		"testLoadResourceIntoCache" : "brh 7/3/2018 22:09",
+		"testLoadResourceIntoMethod" : "brh 7/7/2018 11:43" } }

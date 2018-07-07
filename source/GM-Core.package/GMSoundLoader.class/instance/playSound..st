@@ -1,3 +1,3 @@
 as yet unclassified
 playSound: aString
-	(self sampledSound: aString) play.
+	(self at: aString) play.

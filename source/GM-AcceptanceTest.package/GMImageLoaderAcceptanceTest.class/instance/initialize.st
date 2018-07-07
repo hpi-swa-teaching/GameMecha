@@ -1,7 +1,6 @@
 as yet unclassified
 initialize
 	super initialize.
-	"GMImageManager needs to be instantiated and is not a singleton."
 	self image: (GMImageLoader new 
 		"Our GMImageManager can load all files out of a given folder into the cache.
 		Files are cached with their full name as string as their key(ex: 'picture.png'), relative folder directories are ignored.
@@ -9,5 +8,5 @@ initialize
 			loadResourceIntoCache: filename withName: nameOfKey"
 		loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder;
 		"Finally we can access a specific cached Form by its key."
-		getImageForm: GMTestResourceFixtures testImagePathPNG).
+		at: GMTestResourceFixtures testImagePathPNG).
 	self abandon.

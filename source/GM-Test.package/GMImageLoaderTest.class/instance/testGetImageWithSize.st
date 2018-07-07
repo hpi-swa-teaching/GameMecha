@@ -1,5 +1,5 @@
 testing
 testGetImageWithSize
-	self resourceManager loadResourceFromDriveIntoCache: GMTestResourceFixtures testImagePathPNG.
-	self assert: (self resourceManager getImageForm: GMTestResourceFixtures testImagePathPNG withSize: self class testSize) extent 
+	self resourceManager loadResourceFromDriveIntoCache: self testFile.
+	self assert: (self resourceManager at: self testFile withSize: self class testSize) extent 
 		equals: self class testSize.

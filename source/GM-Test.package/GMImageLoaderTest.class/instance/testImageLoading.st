@@ -1,6 +1,6 @@
 testing
 testImageLoading
-	self should: [self cache getImageForm: GMTestResourceFixtures testImagePathPNG] raise: Error.
-	self resourceManager loadResourceFromDriveIntoCache: GMTestResourceFixtures testImagePathPNG.
+	self should: [self resourceManager at: self testFile] raise: Error.
+	self resourceManager loadResourceFromDriveIntoCache: self testFile.
 	self assert: [self resourceManager cache size = 1].
-	self resourceManager getImageForm: GMTestResourceFixtures testImagePathPNG.
+	self resourceManager at: self testFile.

@@ -1,8 +1,8 @@
 testing
-testResourceIntoMethod
-	self should: [self resourceIntoMethodTarget] raise: Error.
+testLoadResourceIntoMethod
+	self should: [self class resourceIntoMethodTarget] raise: Error.
 	self resourceManager
 		loadResourceIntoMethod: #resourceIntoMethodTarget 
 		ofClass: self class 
-		fromFile: GMTestResourceFixtures testImagePathPNG.
+		fromFile: self testFile.
 	self assert: [self class resourceIntoMethodTarget isForm].
