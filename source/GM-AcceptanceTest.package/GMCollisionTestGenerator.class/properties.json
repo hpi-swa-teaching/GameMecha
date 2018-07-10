@@ -1,0 +1,15 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collisionMorph",
+		"collisionChecks" ],
+	"name" : "GMCollisionTestGenerator",
+	"pools" : [
+		 ],
+	"super" : "PHWidget",
+	"type" : "normal" }

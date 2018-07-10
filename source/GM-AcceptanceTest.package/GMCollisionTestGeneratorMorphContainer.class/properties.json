@@ -1,0 +1,17 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collisionMorphs",
+		"collisionTypeDictionary",
+		"collisionHandler",
+		"shouldCollide" ],
+	"name" : "GMCollisionTestGeneratorMorphContainer",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

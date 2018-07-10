@@ -10,5 +10,5 @@
 	"name" : "GMCollisionAutomatedAcceptanceTest",
 	"pools" : [
 		 ],
-	"super" : "GMCollisionTest",
+	"super" : "GMCollisionShapeTest",
 	"type" : "normal" }

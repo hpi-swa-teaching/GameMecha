@@ -1,3 +1,0 @@
-layout
-keyMorphsWidth
-	^ GMKeyHandlerAcceptanceTestKeyMorph defaultExtent x

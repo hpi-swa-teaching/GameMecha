@@ -1,3 +1,3 @@
 as yet unclassified
 testKeyHandlerAcceptance
-	GMKeyHandlerAcceptanceTest new abandon.
+	GMKeyHandlerAcceptance new abandon.

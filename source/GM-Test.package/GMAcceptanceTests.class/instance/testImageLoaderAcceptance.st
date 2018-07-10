@@ -2,5 +2,5 @@ as yet unclassified
 testImageLoaderAcceptance
 	GMTestResourceFixtures clearResourcesOnDisk.
 	GMTestResourceFixtures createImagesOnDisk.
-	GMImageLoaderAcceptanceTest new abandon.
+	GMImageLoaderAcceptance new abandon.
 	GMTestResourceFixtures clearResourcesOnDisk.

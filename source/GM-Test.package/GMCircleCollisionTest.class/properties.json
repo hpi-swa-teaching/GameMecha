@@ -12,5 +12,5 @@
 	"name" : "GMCircleCollisionTest",
 	"pools" : [
 		 ],
-	"super" : "GMCollisionTest",
+	"super" : "GMCollisionShapeTest",
 	"type" : "normal" }
