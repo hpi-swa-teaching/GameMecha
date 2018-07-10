@@ -7,7 +7,6 @@
 		"testCollisionGeneratorAcceptance" : "brh 7/4/2018 00:47",
 		"testImageLoaderAcceptance" : "brh 7/4/2018 00:45",
 		"testKeyHandlerAcceptance" : "brh 5/22/2018 21:56",
-		"testRegisterKeyEventsAcceptance" : "brh 7/4/2018 00:46",
-		"testSoundLoaderAcceptance" : "brh 7/4/2018 00:45",
 		"testMouseHandlingTutorial" : "TP 7/6/2018 20:29",
-		"testSoundManagerAcceptance" : "NK 6/26/2018 21:29" } }
+		"testRegisterKeyEventsAcceptance" : "brh 7/4/2018 00:46",
+		"testSoundLoaderAcceptance" : "brh 7/4/2018 00:45" } }
