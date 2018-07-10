@@ -1,6 +1,6 @@
 collision detection
 is: aMorph collidingWith: anotherMorph
 	^ (aMorph bounds intersects: anotherMorph bounds)
-		ifTrue: [aMorph collisionDetectionStrategy isCollidingWith: anotherMorph]
+		ifTrue: [aMorph gmCollisionDetectionShape isCollidingWith: anotherMorph]
 		ifFalse: [false]
 		

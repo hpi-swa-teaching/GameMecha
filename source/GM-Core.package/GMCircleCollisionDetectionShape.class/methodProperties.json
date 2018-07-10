@@ -2,8 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"isCollidingWith:" : "brh 5/22/2018 20:29",
-		"isCollidingWithCircle:" : "brh 6/26/2018 20:37",
+		"isCollidingWith:" : "TP 7/10/2018 16:20",
+		"isCollidingWithCircle:" : "TP 7/10/2018 16:20",
 		"isCollidingWithRectangle:" : "brh 6/19/2018 11:44",
-		"isCollidingWithRotatedRectangle:" : "brh 6/19/2018 11:44",
+		"isCollidingWithRotatedRectangle:" : "TP 7/10/2018 16:20",
 		"radius" : "AZ 5/25/2018 09:53" } }

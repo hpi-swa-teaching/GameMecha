@@ -3,8 +3,8 @@ testAssigningCollisionDetectionStrategy
     | aCollisionDetectionStrategy aMorph |
     aMorph := Morph new.
     aCollisionDetectionStrategy := GMRectangleCollisionDetectionShape new.
-    self assert: [aMorph collisionDetectionStrategy isNil].
-    aMorph collisionDetectionStrategy: aCollisionDetectionStrategy.
+    self assert: [aMorph gmCollisionDetectionShape isNil].
+    aMorph gmCollisionDetectionStrategy: aCollisionDetectionStrategy.
     self 
-	assert: [aMorph collisionDetectionStrategy == aCollisionDetectionStrategy];
-   	assert: [aMorph collisionDetectionStrategy owner == aMorph].
+	assert: [aMorph gmCollisionDetectionShape == aCollisionDetectionStrategy];
+   	assert: [aMorph gmCollisionDetectionShape owner == aMorph].

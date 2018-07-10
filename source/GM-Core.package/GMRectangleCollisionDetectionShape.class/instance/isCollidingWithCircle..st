@@ -1,3 +1,3 @@
 collision
 isCollidingWithCircle: aMorph
-	^ aMorph collisionDetectionStrategy isCollidingWithRectangle: self owner
+	^ aMorph gmCollisionDetectionShape isCollidingWithRectangle: self owner

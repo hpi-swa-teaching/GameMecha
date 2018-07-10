@@ -10,7 +10,10 @@
 		"startUp:" : "brh 6/7/2018 17:18",
 		"supportedPlatformDict" : "SD 5/8/2018 20:23" },
 	"instance" : {
-		"evaluateRegisteredEvents" : "TP 7/3/2018 15:58",
+		"gmEvaluateRegisteredEvents" : "TP 7/10/2018 16:23",
+		"gmIsKeyPressed:" : "TP 7/10/2018 16:23",
+		"gmRegisterKeyEvent:forKey:" : "TP 7/10/2018 16:24",
+		"gmRegisterMethodInvocation:on:forKey:" : "TP 7/10/2018 16:24",
 		"handlesClickOrDrag:" : "AZ 5/8/2018 19:27",
 		"handlesGestureStart:" : "AZ 5/8/2018 19:27",
 		"handlesKeyboard:" : "AZ 5/8/2018 19:27",
@@ -21,7 +24,6 @@
 		"handlesMouseStillDown:" : "AZ 5/8/2018 19:27",
 		"handlesMouseWheel:" : "AZ 5/8/2018 19:27",
 		"isGMKeyHandler" : "brh 6/26/2018 20:59",
-		"isKeyPressed:" : "brh 5/23/2018 19:21",
 		"keyDown:fromMorph:" : "AZ 6/26/2018 19:44",
 		"keyStroke:fromMorph:" : "TP 4/30/2018 18:53",
 		"keyToEventMappings" : "TP 6/19/2018 17:38",
@@ -36,6 +38,4 @@
 		"parent" : "TP 5/29/2018 19:46",
 		"parent:" : "TP 5/29/2018 19:46",
 		"pressedKeys" : "brh 5/23/2018 19:21",
-		"pressedKeys:" : "brh 5/23/2018 19:21",
-		"registerKeyEvent:forKey:" : "TP 6/19/2018 17:12",
-		"registerMethodInvocation:on:forKey:" : "brh 6/26/2018 21:06" } }
+		"pressedKeys:" : "brh 5/23/2018 19:21" } }

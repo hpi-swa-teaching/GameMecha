@@ -5,5 +5,5 @@ step
 	(see call gmRegisterToKeyHandler in initialize) all registered blocks of all the keys which are pressed at the moment are executed.
 	Becaus we registered block which expands our Morph to the $s key (see initialize), everytime when the step function is called our
 	Morph gets bigger." 
-	self evaluateRegisteredEvents.
+	self gmEvaluateRegisteredEvents.
 	

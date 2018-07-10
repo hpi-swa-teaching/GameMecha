@@ -4,9 +4,9 @@
 	"instance" : {
 		"corners" : "AZ 5/28/2018 17:01",
 		"intersectingCorners:with:onSeparatingAxes:" : "brh 6/9/2018 16:03",
-		"isCollidingWith:" : "brh 6/9/2018 16:02",
-		"isCollidingWithCircle:" : "brh 6/19/2018 11:45",
-		"isCollidingWithRectangle:" : "brh 6/9/2018 16:02",
+		"isCollidingWith:" : "TP 7/10/2018 16:20",
+		"isCollidingWithCircle:" : "TP 7/10/2018 16:20",
+		"isCollidingWithRectangle:" : "TP 7/10/2018 16:20",
 		"isCollidingWithRotatedRectangle:" : "brh 6/9/2018 16:03",
 		"originalCorners" : "brh 6/26/2018 20:48",
 		"originalRectangle" : "AZ 5/29/2018 19:20",

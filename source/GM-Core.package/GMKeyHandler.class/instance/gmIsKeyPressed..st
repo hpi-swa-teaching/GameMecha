@@ -1,3 +1,3 @@
 queryKey
-isKeyPressed: aCharacter
+gmIsKeyPressed: aCharacter
 	^ self pressedKeys includes: aCharacter

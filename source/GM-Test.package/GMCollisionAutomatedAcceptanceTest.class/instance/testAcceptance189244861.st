@@ -4,7 +4,7 @@ testAcceptance189244861
 		withScale: 2.1973055638992838
 		 atPosition: (110@358))
 	 with: (RectangleMorph new 
-		collisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
+		gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
 		position: (126@670);
 		extent:(100@100))
 	 equals: false

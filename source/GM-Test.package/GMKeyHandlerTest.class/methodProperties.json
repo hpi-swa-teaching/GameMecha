@@ -3,14 +3,14 @@
 		"settedTestValue" : "TP 7/3/2018 16:05",
 		"testKeyboardEventOfType:withValue:" : "brh 5/1/2018 19:19" },
 	"instance" : {
-		"keyTestMorph" : "NK 7/3/2018 17:03",
+		"keyTestMorph" : "TP 7/10/2018 16:24",
 		"keyTestMorph:" : "brh 5/22/2018 21:42",
 		"keyTestValue" : "SD 6/12/2018 18:27",
 		"setTestValue" : "TP 7/3/2018 16:06",
 		"setUp" : "TP 7/3/2018 16:03",
 		"testAllOSsSupportSameKeys" : "AZ 5/14/2018 17:20",
-		"testBlockRegistration" : "TP 7/3/2018 16:06",
-		"testIsKeyPressed" : "brh 6/26/2018 20:43",
-		"testMethodRegistration" : "TP 7/3/2018 16:08",
+		"testBlockRegistration" : "TP 7/10/2018 16:24",
+		"testIsKeyPressed" : "TP 7/10/2018 16:23",
+		"testMethodRegistration" : "TP 7/10/2018 16:24",
 		"testValue" : "TP 7/3/2018 16:01",
 		"testValue:" : "TP 7/3/2018 16:01" } }

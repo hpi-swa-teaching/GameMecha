@@ -2,10 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"collisionDetectionStrategy" : "brh 6/15/2018 22:41",
-		"collisionDetectionStrategy:" : "brh 6/15/2018 22:41",
-		"evaluateRegisteredEvents" : "TP 6/19/2018 17:18",
-		"isKeyPressed:" : "brh 6/26/2018 21:01",
-		"registerKeyEvent:forKey:" : "TP 6/19/2018 17:23",
-		"registerMethodInvocation:on:forKey:" : "NK 7/3/2018 17:03",
-		"registerToKeyHandler" : "NK 7/3/2018 17:03" } }
+		"gmCollisionDetectionShape" : "TP 7/10/2018 16:20",
+		"gmCollisionDetectionStrategy:" : "TP 7/10/2018 16:23",
+		"gmEvaluateRegisteredEvents" : "TP 7/10/2018 16:23",
+		"gmIsKeyPressed:" : "TP 7/10/2018 16:32",
+		"gmRegisterKeyEvent:forKey:" : "TP 7/10/2018 16:24",
+		"gmRegisterMethodInvocation:on:forKey:" : "TP 7/10/2018 16:24",
+		"gmRegisterToKeyHandler" : "TP 7/10/2018 16:24" } }

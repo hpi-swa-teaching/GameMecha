@@ -2,14 +2,14 @@
 	"class" : {
 		"defaultExtent" : "AZ 6/26/2018 19:17" },
 	"instance" : {
+		"gmIsKeyPressed:" : "TP 7/10/2018 16:23",
 		"initialize" : "AZ 6/26/2018 19:22",
-		"isKeyPressed:" : "AZ 6/26/2018 19:30",
 		"label:" : "AZ 6/26/2018 19:25",
 		"listenToKey" : "AZ 6/26/2018 16:06",
 		"listenToKey:" : "AZ 6/26/2018 16:06",
 		"parent" : "AZ 6/26/2018 16:07",
 		"parent:" : "AZ 6/26/2018 16:07",
-		"step" : "AZ 6/26/2018 19:29",
+		"step" : "TP 7/10/2018 16:23",
 		"stepTime" : "AZ 6/26/2018 16:07",
 		"stringMorph" : "AZ 6/26/2018 16:19",
 		"stringMorph:" : "AZ 6/26/2018 16:06" } }
