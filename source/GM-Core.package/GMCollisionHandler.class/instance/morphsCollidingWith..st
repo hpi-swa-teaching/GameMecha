@@ -2,5 +2,4 @@ collision detection
 morphsCollidingWith: aMorph
 	^ (self collisionMorphs 
 		reject: [:morph | morph == aMorph])
-		select: [:morph | (morph bounds intersects: aMorph bounds) and: 
-			[aMorph gmCollisionDetectionShape isCollidingWith: morph]]
+		select: [:morph | self is: aMorph collidingWith: morph]

@@ -9,8 +9,10 @@
 		"testLoadAll" : "NK 7/1/2018 15:00",
 		"testLoadAllWithoutEndings" : "NK 7/1/2018 15:02",
 		"testLoadResourceIntoCache" : "brh 6/22/2018 23:07",
+		"testPauseMusic" : "AZ 7/10/2018 16:06",
 		"testPlayMusic" : "brh 7/7/2018 11:44",
 		"testPlayNamedSound" : "brh 7/7/2018 11:45",
 		"testPlaySoundAIFF" : "NK 6/28/2018 15:09",
 		"testPlaySoundWAV" : "NK 6/28/2018 15:09",
-		"testResourceIntoMethod" : "brh 7/7/2018 11:45" } }
+		"testResourceIntoMethod" : "brh 7/7/2018 11:45",
+		"testResumePlayingMusic" : "AZ 7/10/2018 16:06" } }

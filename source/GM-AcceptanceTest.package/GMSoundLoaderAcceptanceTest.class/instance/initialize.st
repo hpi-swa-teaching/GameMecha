@@ -21,4 +21,7 @@ initialize
 		
 		playMusic: GMTestResourceFixtures testSoundPathWAV;
 		"If you heard enough of your music you can pause it."
+		pauseMusic;
+		"and continue playing it again later"
+		resumePlayingMusic;
 		pauseMusic.
