@@ -1,8 +1,7 @@
 game logic
 spawnPlayerWithControls: aDictionary andForm: aForm at: aPoint
 	| aPlayer |
-	aPlayer := GMDemoGameSpaceship new
-		registerAtGame: self;
+	aPlayer := (GMDemoGameSpaceship newFromGame: self)
 		controls: aDictionary;
 		image: aForm;
 		yourself.

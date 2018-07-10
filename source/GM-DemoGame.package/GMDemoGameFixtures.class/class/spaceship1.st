@@ -1,4 +1,4 @@
-as yet unclassified
+resources
 spaceship1
  ^ (Form
 	extent: 300@200

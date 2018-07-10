@@ -1,5 +1,3 @@
 initialization
 initializePlanets
-	GMDemoGamePlanet new 
-		registerAtGame: self;
-		center: self center.
+	(GMDemoGamePlanet newFromGame: self) center: self center.

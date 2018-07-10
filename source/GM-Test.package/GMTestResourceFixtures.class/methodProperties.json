@@ -1,10 +1,11 @@
 {
 	"class" : {
-		"clearResourcesOnDisk" : "NK 6/14/2018 10:51",
-		"createAnimatedImagesOnDisk" : "brh 7/4/2018 11:23",
-		"createImagesOnDisk" : "NK 7/4/2018 12:12",
-		"createSoundOnDisk" : "brh 6/12/2018 21:34",
-		"createTestingResourceFolder" : "NK 5/24/2018 13:42",
+		"clearResourcesOnDisk" : "brh 7/10/2018 18:07",
+		"clearResourcesOnDisk:" : "brh 7/10/2018 18:06",
+		"createAnimatedImagesOnDisk" : "brh 7/10/2018 17:48",
+		"createFolder:" : "brh 7/10/2018 17:47",
+		"createImagesOnDisk" : "brh 7/10/2018 17:56",
+		"createSoundOnDisk" : "brh 7/10/2018 17:56",
 		"fileName" : "NK 6/5/2018 20:42",
 		"saveStream:onPath:" : "NK 5/22/2018 21:27",
 		"squeakGIFContents" : "NK 7/4/2018 12:35",

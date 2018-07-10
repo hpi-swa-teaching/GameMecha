@@ -7,7 +7,9 @@
 	"commentStamp" : "AZ 6/19/2018 17:24",
 	"instvars" : [
 		"collisionHandler",
-		"players" ],
+		"players",
+		"imageLoader",
+		"soundLoader" ],
 	"name" : "GMDemoGame",
 	"pools" : [
 		 ],
