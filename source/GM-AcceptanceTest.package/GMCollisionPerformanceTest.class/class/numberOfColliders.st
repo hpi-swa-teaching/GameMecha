@@ -1,3 +1,3 @@
 as yet unclassified
 numberOfColliders
-	^ 500
+	^ 100

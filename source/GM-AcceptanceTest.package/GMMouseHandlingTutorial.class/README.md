@@ -1,1 +1,4 @@
-This acceptance test is a simple tutorial for basic mouse handling. It does not use any library functions. When being clicked, the morph will change its color.
+This acceptance test is a simple tutorial for basic mouse handling and does not use any of our library functions. It does not use any library functions. When being clicked, the morph will change its color. When the mouse button is holded down the Morph growth with the step rate specified in mouseStillDownStepRate. If the mouse button finally is released the morph jumps to a random position on screen.
+In addition some passive drag and drop behavior is implemented. If the mouse enter the morph while dragging somethine (to be more precise if the mouse enters the Morph while a mouse button ist pressed) the Morph gets a bold red border. This border disappears when something is dragged out of the Morph.
+
+To achieve this behavior some methods for mouseHandling have to be overwritten. See all the overwritten Methods of this Class (all except initialize) for more detail.

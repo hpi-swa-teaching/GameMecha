@@ -1,0 +1,1 @@
+Tests collision between two achses aligned rectangles.

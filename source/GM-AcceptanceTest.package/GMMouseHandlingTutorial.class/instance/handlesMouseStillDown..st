@@ -1,3 +1,4 @@
 event handling
 handlesMouseStillDown: anEvent
-	^ true
+"Has to be overwritten and return true to handle mouseStillDown"
+	^true

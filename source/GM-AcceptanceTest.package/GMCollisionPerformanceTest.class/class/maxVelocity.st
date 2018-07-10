@@ -1,3 +1,3 @@
 as yet unclassified
-testMorphSize
-	^ 30
+maxVelocity
+	^ 10

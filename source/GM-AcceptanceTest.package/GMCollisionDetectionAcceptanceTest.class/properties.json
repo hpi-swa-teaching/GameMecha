@@ -4,10 +4,13 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "brh 6/5/2018 20:53",
+	"commentStamp" : "TP 7/10/2018 18:33",
 	"instvars" : [
 		"collisionMorphs",
-		"collisionHandler" ],
+		"collisionHandler",
+		"collisionMorphCircle",
+		"collisionMorphRotatedRectangleWithFlexShell",
+		"collisionMorphRectangle" ],
 	"name" : "GMCollisionDetectionAcceptanceTest",
 	"pools" : [
 		 ],
