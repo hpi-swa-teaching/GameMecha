@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "TP 7/10/2018 20:05",
+	"instvars" : [
+		"keyMorphs" ],
+	"name" : "GMKeyHandlerAcceptance",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

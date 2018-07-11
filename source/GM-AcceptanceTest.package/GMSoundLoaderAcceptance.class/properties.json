@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "TP 7/10/2018 20:50",
+	"instvars" : [
+		 ],
+	"name" : "GMSoundLoaderAcceptance",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

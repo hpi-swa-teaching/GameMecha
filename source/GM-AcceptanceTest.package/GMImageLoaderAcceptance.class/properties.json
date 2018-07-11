@@ -1,0 +1,14 @@
+{
+	"category" : "GM-AcceptanceTest",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "TP 7/10/2018 19:54",
+	"instvars" : [
+		 ],
+	"name" : "GMImageLoaderAcceptance",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }

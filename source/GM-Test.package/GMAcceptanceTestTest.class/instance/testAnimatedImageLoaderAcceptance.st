@@ -1,0 +1,3 @@
+as yet unclassified
+testAnimatedImageLoaderAcceptance
+	GMAnimatedImageLoaderAcceptance new abandon.

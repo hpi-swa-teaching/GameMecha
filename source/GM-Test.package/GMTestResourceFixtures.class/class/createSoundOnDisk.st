@@ -1,6 +1,6 @@
 sounds
 createSoundOnDisk
-	self createTestingResourceFolder.
+	self createFolder: self testResourceFolder.
 	self squeakSamplesSound
-		storeWAVOnFileNamed: self testResourceFolder , self testSoundNameWAV;
-		storeAIFFOnFileNamed: self testResourceFolder , self testSoundNameAIFF.
+		storeWAVOnFileNamed: self testSoundPathWAV;
+		storeAIFFOnFileNamed: self testSoundPathAIFF.

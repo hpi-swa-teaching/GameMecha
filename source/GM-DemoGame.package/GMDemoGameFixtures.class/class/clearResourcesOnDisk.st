@@ -1,0 +1,3 @@
+nil
+clearResourcesOnDisk
+	GMTestResourceFixtures clearResourcesOnDisk: self resourceFolder.

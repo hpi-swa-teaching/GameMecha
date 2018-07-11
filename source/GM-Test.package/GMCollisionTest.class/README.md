@@ -1,1 +1,0 @@
-Superclass for the Tests of our collision detection code. Provides some custom assertion which supclasses can easy use for testing whether a collisin between two Morphs is detected or not.

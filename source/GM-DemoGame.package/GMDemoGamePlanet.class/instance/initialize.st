@@ -1,7 +1,7 @@
 initialization
 initialize
 	super initialize.
-	self flag: #useImageLoader.
 	self 
+		registerAtGame;
 		gmCollisionDetectionStrategy: GMCircleCollisionDetectionShape new;
-		image: (GMDemoGameFixtures planet scaledIntoFormOfSize: self class defaultExtent).
+		image: (self game imageLoader at: GMDemoGameFixtures planetPath withSize: self class defaultExtent).

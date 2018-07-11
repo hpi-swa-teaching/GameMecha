@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "brh 5/22/2018 21:51",
+	"instvars" : [
+		 ],
+	"name" : "GMAcceptanceTestTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

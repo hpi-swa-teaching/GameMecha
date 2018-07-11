@@ -1,5 +1,5 @@
 images
 createImagesOnDisk
-	GMTestResourceFixtures createTestingResourceFolder.
-	JPEGReadWriter2 putForm: self squeakJPEG onFileNamed: self testResourceFolder, self testImageNameJPEG.
-	PNGReadWriter putForm: self squeakPNG onFileNamed: self testResourceFolder, self testImageNamePNG.
+	self createFolder: self testResourceFolder.
+	JPEGReadWriter2 putForm: self squeakJPEG onFileNamed: self testImagePathJPEG.
+	PNGReadWriter putForm: self squeakPNG onFileNamed: self testImagePathPNG.
