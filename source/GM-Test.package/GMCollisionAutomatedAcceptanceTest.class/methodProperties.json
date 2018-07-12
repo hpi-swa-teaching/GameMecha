@@ -1,8 +1,6 @@
 {
 	"class" : {
-		"cleanup" : "brh 6/11/2018 17:26",
-		"collisionSelectors" : "brh 6/26/2018 20:31",
-		"storeChecks:" : "brh 6/11/2018 18:06" },
+		"collisionSelectors" : "brh 6/26/2018 20:31" },
 	"instance" : {
 		"rotatedRectangleShellWithAngle:withScale:atPosition:" : "TP 7/10/2018 16:23",
 		"testAcceptance157270668" : "TP 7/10/2018 16:23",

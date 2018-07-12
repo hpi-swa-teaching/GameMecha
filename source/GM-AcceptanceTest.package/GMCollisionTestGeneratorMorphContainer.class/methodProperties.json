@@ -1,6 +1,7 @@
 {
 	"class" : {
-		"collisionMorphExtent" : "brh 6/11/2018 15:41" },
+		"collisionMorphExtent" : "brh 6/11/2018 15:41",
+		"newlineWithIndentation" : "NK 7/12/2018 16:51" },
 	"instance" : {
 		"addCollisionMorphs:" : "brh 6/11/2018 14:09",
 		"chooseCollisionScenario:with:" : "brh 6/25/2018 14:28",
@@ -12,7 +13,6 @@
 		"collisionTypeDictionary" : "brh 6/11/2018 14:05",
 		"collisionTypeDictionary:" : "brh 6/11/2018 14:05",
 		"currentCollisionCheck" : "brh 6/26/2018 21:13",
-		"newlineWithIndentation" : "brh 6/26/2018 16:21",
 		"rectangleCollisionMorph" : "TP 7/10/2018 16:23",
 		"rotatedRectangleCollisionMorph" : "TP 7/10/2018 16:23",
 		"shouldCollide" : "brh 6/11/2018 18:01",
@@ -20,6 +20,6 @@
 		"shuffleMorphs" : "brh 6/11/2018 14:08",
 		"step" : "brh 6/26/2018 16:41",
 		"stepTime" : "NK 6/12/2018 21:12",
-		"stringFromMorph:" : "TP 7/10/2018 16:20",
+		"stringFromMorph:" : "NK 7/12/2018 16:51",
 		"stringFromObject:" : "brh 6/25/2018 22:11",
-		"stringFromTransformationMorph:" : "brh 6/26/2018 20:29" } }
+		"stringFromTransformationMorph:" : "NK 7/12/2018 16:51" } }
