@@ -2,13 +2,13 @@
 	"class" : {
 		"defaultExtent" : "TP 7/6/2018 20:28" },
 	"instance" : {
-		"handlesMouseDown:" : "TP 7/10/2018 20:20",
-		"handlesMouseOverDragging:" : "TP 7/10/2018 20:21",
-		"handlesMouseStillDown:" : "TP 7/10/2018 20:22",
+		"handlesMouseDown:" : "brh 7/12/2018 15:45",
+		"handlesMouseOverDragging:" : "brh 7/12/2018 15:44",
+		"handlesMouseStillDown:" : "brh 7/12/2018 15:44",
 		"initialize" : "AZ 7/10/2018 15:59",
-		"mouseDown:" : "TP 7/10/2018 20:29",
-		"mouseEnterDragging:" : "TP 7/10/2018 20:23",
-		"mouseLeaveDragging:" : "TP 7/10/2018 20:24",
-		"mouseStillDown:" : "TP 7/10/2018 20:26",
-		"mouseStillDownStepRate" : "TP 7/10/2018 20:28",
-		"mouseUp:" : "TP 7/10/2018 20:29" } }
+		"mouseDown:" : "brh 7/12/2018 15:44",
+		"mouseEnterDragging:" : "brh 7/12/2018 15:45",
+		"mouseLeaveDragging:" : "brh 7/12/2018 15:45",
+		"mouseStillDown:" : "brh 7/12/2018 15:45",
+		"mouseStillDownStepRate" : "brh 7/12/2018 15:45",
+		"mouseUp:" : "brh 7/12/2018 15:45" } }
