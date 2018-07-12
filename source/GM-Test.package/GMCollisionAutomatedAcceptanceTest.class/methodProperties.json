@@ -1,8 +1,8 @@
 {
 	"class" : {
-		"collisionSelectors" : "brh 6/26/2018 20:31" },
+		"collisionSelectors" : "NK 7/12/2018 17:31" },
 	"instance" : {
 		"rotatedRectangleShellWithAngle:withScale:atPosition:" : "TP 7/10/2018 16:23",
-		"testAcceptance157270668" : "TP 7/10/2018 16:23",
-		"testAcceptance189244861" : "TP 7/10/2018 16:23",
-		"testAcceptance234970015" : "TP 7/10/2018 16:23" } }
+		"testAcceptance104564010" : "NK 7/12/2018 17:31",
+		"testAcceptance268309142" : "NK 7/12/2018 17:31",
+		"testAcceptance6428650" : "NK 7/12/2018 17:31" } }

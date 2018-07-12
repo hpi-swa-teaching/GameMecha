@@ -1,3 +1,3 @@
 as yet unclassified
 cleanupClass: aClass
-	aClass collisionSelectors do: [:selector | self removeSelector: selector].
+	aClass collisionSelectors do: [:selector | aClass removeSelector: selector].
