@@ -1,0 +1,2 @@
+An simple Morph which can move, rotate and collide to be used as testobject in GMCollisionPerformanceTest.
+The collision handling is implemented on a very rudimentary level and far away from physical correctness but good enough for performance testing.
