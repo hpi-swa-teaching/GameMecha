@@ -5,4 +5,5 @@ testLoadResourceIntoMethod
 		loadResourceIntoMethod: #resourceIntoMethodTarget
 		ofClass: self class
 		fromFile: GMTestResourceFixtures testImagePathGIF.
+	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].
 	self class resourceIntoMethodTarget forms; delays.
