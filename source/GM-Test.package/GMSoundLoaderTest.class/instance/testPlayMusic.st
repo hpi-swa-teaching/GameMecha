@@ -1,6 +1,6 @@
 as yet unclassified
 testPlayMusic
 	self resourceManager
-		loadResourceFromDrive: self testFile;
+		loadResourceFromObject: GMTestResourceFixtures squeakSamplesSound withName: self testFile;
 		playMusic: self testFile;
 		pauseMusic.
