@@ -1,3 +1,3 @@
 as yet unclassified
-stringFromResource: anObject
+stringFromFile: aFilename
 	self subclassResponsibility.

@@ -1,7 +1,7 @@
 as yet unclassified
-stringFromResource: anAnimatedGIFReadWriter
+stringFromFile: aFilename
 	^ (WriteStream on: '') 
 		nextPutAll: ' AnimatedGIFReadWriter formsFromStream: (ReadStream on: ';
-		store: anAnimatedGIFReadWriter;
+		store: (self contentsFromFile: aFilename);
 		nextPutAll: ' base64Decoded asByteArray)';
 		contents
