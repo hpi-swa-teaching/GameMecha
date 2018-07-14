@@ -3,5 +3,5 @@
 		 },
 	"instance" : {
 		"isSupportedType:" : "brh 7/3/2018 20:05",
-		"loadResourceFromDrive:" : "brh 7/3/2018 20:05",
-		"loadResourceIntoMethod:ofClass:fromFile:" : "brh 7/4/2018 10:37" } }
+		"resourceFromDrive:" : "brh 7/15/2018 00:25",
+		"stringFromResource:" : "brh 7/15/2018 00:57" } }

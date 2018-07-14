@@ -1,3 +1,3 @@
 as yet unclassified
 testLoadAll
-	self resourceManager loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder.
+	self resourceManager loadAllResourcesFromDrive: GMTestResourceFixtures testResourceFolder.

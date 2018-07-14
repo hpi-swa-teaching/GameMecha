@@ -1,5 +1,5 @@
 collisionchecks
 save
-	self storeChecksOnClass: GMCollisionAutomatedAcceptanceTest.
+	self storeChecksInInstanceOf: GMCollisionAutomatedAcceptanceTest.
 	self topLevel displayNotification: 'saved' asString type: #info.
 	self resetChecks.

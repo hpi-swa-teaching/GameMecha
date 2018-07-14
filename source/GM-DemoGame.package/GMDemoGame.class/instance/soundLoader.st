@@ -1,5 +1,5 @@
 accessing
 soundLoader
 	^ soundLoader ifNil: [soundLoader := GMSoundLoader new
-		loadAllResourcesFrom: GMDemoGameFixtures resourceFolder;
+		loadAllResourcesFromDrive: GMDemoGameFixtures resourceFolder;
 		yourself]

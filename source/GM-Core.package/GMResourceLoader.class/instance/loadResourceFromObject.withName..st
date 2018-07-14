@@ -1,3 +1,3 @@
 as yet unclassified
-loadResource: anObject intoCacheWithName: aString
+loadResourceFromObject: anObject withName: aString
 	self cache at: aString put: anObject deepCopy.

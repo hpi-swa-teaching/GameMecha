@@ -1,3 +1,3 @@
 as yet unclassified
 testLoadFileIntoMethod
-	self resourceManager loadFileIntoMethod: #resourceIntoMethodTarget ofClass: self class fromFile: self testFile.
+	self resourceManager storeEncodedFileInMethod: #resourceIntoMethodTarget inInstance: self class fromFile: self testFile.

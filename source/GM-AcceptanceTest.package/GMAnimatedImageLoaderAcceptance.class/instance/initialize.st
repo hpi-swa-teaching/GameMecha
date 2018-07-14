@@ -15,7 +15,7 @@ initialize
 	Files are cached depending on which method you call, here they are stored with their whole path.
 	If you want to load singles resource files and give them specific names use:
 		loadResourceFromDriveIntoCache: filename withName: nameOfKey"
-	animatedImageLoader loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder.
+	animatedImageLoader loadAllResourcesFromDrive: GMTestResourceFixtures testResourceFolder.
 	
 	"Finally we can access a specific cached AnimatedGIFReadWriter by its key."
 	"AnimatedImageMorphs can be initialized with this reader."

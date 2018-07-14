@@ -1,4 +1,4 @@
-as yet unclassified
+filesystem
 filenamesAtDir: aString
 	^ (FileDirectory uri: aString) fileNames
 		select: [:filename | self isSupportedType: (FileDirectory extensionFor: filename)]

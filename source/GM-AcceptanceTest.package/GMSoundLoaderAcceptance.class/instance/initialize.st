@@ -6,7 +6,7 @@ initialize
 		relative folder directories are ignored.
 		If you want to load singles resource files and give them specific names use:
 		loadResourceIntoCache: filename withName: nameOfKey"
-		loadAllResourcesFrom: GMTestResourceFixtures testResourceFolder;
+		loadAllResourcesFromDrive: GMTestResourceFixtures testResourceFolder;
 		
 		"Tune the loudness. Here it is muted for testing purposes.		
 		Sound values have a range of 0.0 to 1.0"

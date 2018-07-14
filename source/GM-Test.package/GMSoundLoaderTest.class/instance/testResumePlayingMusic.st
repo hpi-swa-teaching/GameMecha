@@ -1,7 +1,7 @@
 as yet unclassified
 testResumePlayingMusic
 	self resourceManager
-		loadResourceFromDriveIntoCache: self testFile;
+		loadResourceFromDrive: self testFile;
 		playMusic: self testFile;
 		pauseMusic;
 		resumePlayingMusic;

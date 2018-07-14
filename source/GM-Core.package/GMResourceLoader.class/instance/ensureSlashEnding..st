@@ -1,4 +1,4 @@
-as yet unclassified
+filesystem
 ensureSlashEnding: aFoldername
 	(aFoldername = '' or: [aFoldername endsWithAnyOf: {'/' . '\'}])
 		ifTrue:  [^ ''].

@@ -1,5 +1,5 @@
 accessing
 imageLoader
 	^ imageLoader ifNil: [imageLoader := GMImageLoader new
-		loadAllResourcesFrom: GMDemoGameFixtures resourceFolder;
+		loadAllResourcesFromDrive: GMDemoGameFixtures resourceFolder;
 		yourself]

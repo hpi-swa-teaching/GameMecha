@@ -8,6 +8,6 @@
 		"tearDown" : "brh 7/4/2018 11:08",
 		"testFile" : "brh 7/4/2018 11:30",
 		"testFlushCache" : "NK 5/29/2018 20:33",
-		"testLoadAll" : "NK 7/1/2018 14:59",
-		"testLoadAllWithoutEndings" : "NK 7/1/2018 15:00",
-		"testLoadFileIntoMethod" : "brh 7/4/2018 11:32" } }
+		"testLoadAll" : "brh 7/15/2018 00:01",
+		"testLoadAllWithoutEndings" : "brh 7/15/2018 00:02",
+		"testLoadFileIntoMethod" : "brh 7/15/2018 00:21" } }

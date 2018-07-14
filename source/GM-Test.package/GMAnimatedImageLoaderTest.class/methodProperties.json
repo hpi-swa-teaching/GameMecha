@@ -3,10 +3,10 @@
 		 },
 	"instance" : {
 		"setUp" : "brh 7/4/2018 11:09",
-		"testAnimatedImageLoading" : "brh 7/7/2018 11:38",
-		"testAnimatedImageLoadingWithName" : "brh 7/7/2018 11:38",
+		"testAnimatedImageLoading" : "brh 7/15/2018 00:03",
+		"testAnimatedImageLoadingWithName" : "brh 7/15/2018 00:04",
 		"testFile" : "brh 7/4/2018 11:31",
-		"testLoadAll" : "brh 7/7/2018 11:38",
-		"testLoadAllWithoutEndings" : "brh 7/7/2018 11:38",
-		"testLoadResourceIntoCache" : "brh 7/4/2018 10:45",
-		"testLoadResourceIntoMethod" : "NK 7/12/2018 16:11" } }
+		"testLoadAll" : "brh 7/15/2018 00:01",
+		"testLoadAllWithoutEndings" : "brh 7/15/2018 00:02",
+		"testLoadResourceIntoCache" : "brh 7/15/2018 00:04",
+		"testLoadResourceIntoMethod" : "brh 7/15/2018 00:19" } }
