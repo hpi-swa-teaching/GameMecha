@@ -1,5 +1,5 @@
 accessing
 supportedTypes
-	^ supportedTypes ifNil: [supportedTypes := Dictionary newFrom: 
+	^ Dictionary newFrom: 
 		{'wav' -> [:filename | SampledSound fromWaveFileNamed: filename].
-		'aiff' -> [:filename | SampledSound fromAIFFfileNamed: filename]}]
+		'aiff' -> [:filename | SampledSound fromAIFFfileNamed: filename]}

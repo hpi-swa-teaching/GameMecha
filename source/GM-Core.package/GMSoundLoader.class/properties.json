@@ -7,7 +7,6 @@
 	"commentStamp" : "brh 6/26/2018 21:38",
 	"instvars" : [
 		"loudness",
-		"supportedTypes",
 		"currentMusic" ],
 	"name" : "GMSoundLoader",
 	"pools" : [
