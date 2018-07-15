@@ -1,9 +1,9 @@
 initialization
 initializeKeyMorphs
-	self class testedKeys do: [:testedKey |
-		self keyMorphs add: (GMKeyHandlerAcceptanceKeyMorph new
+	self keyMorphs: (self class testedKeys collect: [:testedKey |
+		GMKeyHandlerAcceptanceKeyMorph new
 			label: testedKey first;
 			listenToKey: testedKey second;
 			parent: self;
-			yourself)].
+			yourself]).
 	self keyMorphs do: [:keyMorph | self addMorph: keyMorph].

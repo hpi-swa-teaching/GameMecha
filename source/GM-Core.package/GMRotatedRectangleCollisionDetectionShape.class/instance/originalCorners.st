@@ -1,3 +1,3 @@
 accessing
 originalCorners
-	^ self originalRectangle bounds corners.
+	^ self originalRectangle bounds corners

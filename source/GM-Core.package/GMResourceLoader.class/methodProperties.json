@@ -13,7 +13,7 @@
 		"filenamesAtDir:" : "AZ 7/15/2018 17:34",
 		"flushCache" : "brh 5/13/2018 14:10",
 		"isSupportedType:" : "AZ 7/15/2018 17:37",
-		"loadAllResourcesFromDrive:" : "brh 7/15/2018 00:01",
+		"loadAllResourcesFromDrive:" : "AZ 7/15/2018 18:19",
 		"loadAllResourcesFromDrive:withNameFunction:" : "AZ 7/15/2018 18:13",
 		"loadAllResourcesFromDriveWithoutEndings:" : "brh 7/15/2018 00:02",
 		"loadResourceFromDrive:" : "AZ 7/15/2018 17:30",
@@ -22,5 +22,4 @@
 		"removeFileendingFrom:" : "brh 6/30/2018 22:38",
 		"resourceFromDrive:" : "brh 7/14/2018 23:52",
 		"storeEncodedFileInMethod:inInstance:fromFile:" : "AZ 7/15/2018 17:32",
-		"storeResourceInMethod:inInstance:fromFile:" : "AZ 7/15/2018 17:32",
-		"stringFromFile:" : "brh 7/15/2018 01:06" } }
+		"storeResourceInMethod:inInstance:fromFile:" : "AZ 7/15/2018 17:32" } }
