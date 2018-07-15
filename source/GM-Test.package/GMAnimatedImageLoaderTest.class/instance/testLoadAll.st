@@ -1,5 +1,5 @@
 as yet unclassified
 testLoadAll
-	self resourceManager loadAllResourcesFromDrive: GMTestResourceFixtures testResourceFolder.
+	self loadAll.
 	self flag: #todo. "loads only one"
 	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testImagePathGIF].
