@@ -3,5 +3,5 @@ smallRectangle
 	^ smallRectangle ifNil: 
 		[smallRectangle := Morph new
 			extent: self class smallRectangleExtent;
-			gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
+			gmCollisionDetectionStrategy: self strategy;
 			yourself]

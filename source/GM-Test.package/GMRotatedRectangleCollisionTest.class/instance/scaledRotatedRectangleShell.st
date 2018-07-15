@@ -7,6 +7,6 @@ scaledRotatedRectangleShell
 				center: 0 @ 0;
 				addFlexShell;
 				owner).
-		rotatedRectangleShell gmCollisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new;
+		rotatedRectangleShell gmCollisionDetectionStrategy: self strategy;
 			angle: self class rotatedRectangleAngle;
 			scale: self class scaledRotatedRectangleScale]

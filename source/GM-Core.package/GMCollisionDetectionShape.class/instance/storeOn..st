@@ -1,3 +1,4 @@
 as yet unclassified
 storeOn: aStream
-	aStream nextPutAll: self class.
+	self class storeOn: aStream.
+	aStream nextPutAll: ' new'.

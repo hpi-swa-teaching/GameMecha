@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "TP 7/10/2018 21:20",
+	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "GMCollisionShapeTest",
+		"collisionHandler" ],
+	"name" : "GMCollisionTest",
 	"pools" : [
 		 ],
-	"super" : "GMCollisionTest",
+	"super" : "TestCase",
 	"type" : "normal" }

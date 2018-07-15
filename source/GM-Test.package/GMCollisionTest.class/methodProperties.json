@@ -1,0 +1,10 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"assertCollision:with:" : "brh 7/15/2018 14:47",
+		"assertCollision:with:andOffset:" : "brh 7/15/2018 14:47",
+		"assertCollision:with:equals:" : "brh 7/15/2018 14:47",
+		"collisionHandler" : "brh 7/15/2018 14:49",
+		"collisionHandler:" : "brh 7/15/2018 14:49",
+		"denyCollision:with:andOffset:" : "brh 7/15/2018 14:48" } }

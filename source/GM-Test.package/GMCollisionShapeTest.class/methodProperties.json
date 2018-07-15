@@ -2,11 +2,6 @@
 	"class" : {
 		"isAbstract" : "brh 7/10/2018 17:22" },
 	"instance" : {
-		"assertCollision:with:" : "brh 6/11/2018 17:42",
-		"assertCollision:with:andOffset:" : "brh 6/11/2018 17:42",
-		"assertCollision:with:equals:" : "brh 6/11/2018 17:49",
-		"collisionHandler" : "AZ 5/22/2018 15:50",
-		"collisionHandler:" : "AZ 5/15/2018 19:53",
-		"denyCollision:with:andOffset:" : "brh 6/11/2018 17:38",
-		"setUp" : "brh 6/11/2018 18:07",
-		"tearDown" : "brh 6/11/2018 17:42" } }
+		"strategy" : "brh 7/15/2018 14:39",
+		"tearDown" : "brh 6/11/2018 17:42",
+		"testStoreOn" : "brh 7/15/2018 14:39" } }

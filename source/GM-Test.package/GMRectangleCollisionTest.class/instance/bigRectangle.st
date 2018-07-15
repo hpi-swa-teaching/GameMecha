@@ -3,6 +3,6 @@ bigRectangle
 	^ bigRectangle ifNil: 
 		[bigRectangle := Morph new
 			extent: self class bigRectangleExtent;
-			gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
+			gmCollisionDetectionStrategy: self strategy;
 			position: 0 @ 0;
 			yourself]
