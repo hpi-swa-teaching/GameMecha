@@ -2,7 +2,7 @@
 	"class" : {
 		"open" : "brh 6/1/2018 19:00" },
 	"instance" : {
-		"addCollisionDescription:" : "brh 6/11/2018 18:21",
+		"addCollisionDescription:" : "AZ 7/15/2018 17:43",
 		"calculateSizeForWidth:" : "brh 6/5/2018 22:17",
 		"cleanupClass:" : "NK 7/12/2018 17:20",
 		"collisionChecks" : "brh 6/1/2018 19:54",
@@ -12,7 +12,7 @@
 		"collisionMorph:" : "brh 6/11/2018 14:03",
 		"initialExtent" : "brh 6/11/2018 18:18",
 		"initialize" : "brh 6/25/2018 14:33",
-		"initializeButtons" : "brh 7/10/2018 18:18",
+		"initializeButtons" : "AZ 7/15/2018 17:43",
 		"initializeDropdownMenu:" : "brh 6/11/2018 14:16",
 		"initializeLabels" : "brh 6/11/2018 18:22",
 		"initializeLayout" : "brh 6/5/2018 21:15",

@@ -12,7 +12,7 @@ createCollisionMorphRotatedRectangleWithFlexshell
 	Therefore we return the owner of the Morph which is this TransformationMorph (becaused wie sent addFlexShell before.
 	See initialize for more detaisl."
 	^ aMorph owner 
-		"To give a Morph the ability to collide it needs a GMCollisionDetectionShape. You can  choose between
+		"To give a Morph the ability to collide it needs a GMCollisionDetectionShape. You can choose between
 		GMCircleCollisionDetectionShape, GMRectangleCollisionDetectionShape or GMRotatedRectangleCollisionDetectionShape."
 		gmCollisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new;
 		angle: 30;

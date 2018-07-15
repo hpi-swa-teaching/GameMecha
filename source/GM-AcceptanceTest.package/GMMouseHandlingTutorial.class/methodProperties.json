@@ -3,7 +3,7 @@
 		"defaultExtent" : "TP 7/6/2018 20:28" },
 	"instance" : {
 		"handlesMouseDown:" : "brh 7/12/2018 15:45",
-		"handlesMouseOverDragging:" : "brh 7/12/2018 15:44",
+		"handlesMouseOverDragging:" : "AZ 7/15/2018 17:45",
 		"handlesMouseStillDown:" : "brh 7/12/2018 15:44",
 		"initialize" : "AZ 7/10/2018 15:59",
 		"mouseDown:" : "brh 7/12/2018 15:44",

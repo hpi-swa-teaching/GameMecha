@@ -7,7 +7,6 @@
 	"commentStamp" : "TP 7/10/2018 21:05",
 	"instvars" : [
 		"pressedKeys",
-		"parent",
 		"keyToEventMappings",
 		"keyToMethodMappings" ],
 	"name" : "GMKeyHandler",

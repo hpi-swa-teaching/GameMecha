@@ -1,6 +1,6 @@
 pheno
 initializeButtons
-	| button |
+	| aButton |
 	self
 		addStyleClass: #withPadding;
 		add: (PHButtonGroup new
@@ -12,5 +12,5 @@ initializeButtons
 				when: #clicked send: #resetChecks to: self);
 			add: ((PHButton label: 'generate tests')
 				when: #clicked send: #save to: self);
-			add: (button := PHButton label: 'collision' iconSuffix: #iconCaret_down)).
-	self initializeDropdownMenu: button.
+			add: (aButton := PHButton label: 'collision' iconSuffix: #iconCaret_down)).
+	self initializeDropdownMenu: aButton.

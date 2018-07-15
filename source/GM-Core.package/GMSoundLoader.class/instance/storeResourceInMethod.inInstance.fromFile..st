@@ -1,7 +1,7 @@
 as yet unclassified
-storeResourceInMethod: aMethodSymbol inInstance: anInstance fromFile: aFilename
+storeResourceInMethod: aSelector inInstance: anInstance fromFile: aFilename
 	| sound |
 	"only supports WAV"
 	sound := self resourceFromDrive: aFilename.
-	self compileSamplesIn: aMethodSymbol inInstance: anInstance fromSound: sound.
-	self compileSampledSoundIn: aMethodSymbol inInstance: anInstance fromSound: sound.
+	self compileSamplesIn: aSelector inInstance: anInstance fromSound: sound.
+	self compileSampledSoundIn: aSelector inInstance: anInstance fromSound: sound.

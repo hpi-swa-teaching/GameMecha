@@ -1,4 +1,4 @@
 as yet unclassified
-loadResourceFromDrive: aString
-	self cache at: (self convertToRelativePath: aString) 
-		put: (self resourceFromDrive: aString).
+loadResourceFromDrive: aFilename
+	self cache at: (self convertToRelativePath: aFilename) 
+		put: (self resourceFromDrive: aFilename).

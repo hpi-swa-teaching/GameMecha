@@ -1,6 +1,6 @@
 accessing
-collisionTypeDictionary
-	^ collisionTypeDictionary ifNil: [collisionTypeDictionary := Dictionary newFrom: {
+collisionShapeDictionary
+	^ collisionShapeDictionary ifNil: [collisionShapeDictionary := Dictionary newFrom: {
 		#circleCollisionMorph -> [self circleCollisionMorph].
 		#rectangleCollisionMorph -> [self rectangleCollisionMorph].
 		#rotatedRectangleCollisionMorph -> [self rotatedRectangleCollisionMorph]}] 

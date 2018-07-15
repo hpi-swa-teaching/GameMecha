@@ -3,8 +3,8 @@
 		 },
 	"instance" : {
 		"at:" : "brh 7/3/2018 22:12",
-		"compileSampledSoundIn:inInstance:fromSound:" : "brh 7/15/2018 01:12",
-		"compileSamplesIn:inInstance:fromSound:" : "brh 7/15/2018 01:12",
+		"compileSampledSoundIn:inInstance:fromSound:" : "AZ 7/15/2018 17:36",
+		"compileSamplesIn:inInstance:fromSound:" : "AZ 7/15/2018 17:37",
 		"currentMusic" : "brh 5/18/2018 19:22",
 		"currentMusic:" : "brh 5/18/2018 18:39",
 		"isSupportedType:" : "brh 5/13/2018 17:57",
@@ -15,5 +15,5 @@
 		"playSound:" : "brh 7/3/2018 22:12",
 		"resourceFromDrive:" : "brh 7/14/2018 23:53",
 		"resumePlayingMusic" : "AZ 7/10/2018 16:02",
-		"storeResourceInMethod:inInstance:fromFile:" : "brh 7/15/2018 00:52",
+		"storeResourceInMethod:inInstance:fromFile:" : "AZ 7/15/2018 17:39",
 		"supportedTypes" : "brh 7/15/2018 14:20" } }

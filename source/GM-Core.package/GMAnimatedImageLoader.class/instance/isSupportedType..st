@@ -1,3 +1,3 @@
 as yet unclassified
-isSupportedType: aString
-	^ AnimatedGIFReadWriter typicalFileExtensions includes: aString
+isSupportedType: aFileExtension
+	^ AnimatedGIFReadWriter typicalFileExtensions includes: aFileExtension

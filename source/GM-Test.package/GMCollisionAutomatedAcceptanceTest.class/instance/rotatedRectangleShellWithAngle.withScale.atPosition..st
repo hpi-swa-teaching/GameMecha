@@ -1,5 +1,5 @@
 as yet unclassified
-rotatedRectangleShellWithAngle: anAngle withScale: aScale atPosition: aPosition
+rotatedRectangleShellWithAngle: aNumber withScale: anotherNumber atPosition: aPoint
 	| aMorph |
 	aMorph := RectangleMorph new
 		extent: 100 @ 100;
@@ -8,7 +8,7 @@ rotatedRectangleShellWithAngle: anAngle withScale: aScale atPosition: aPosition
 	aMorph addFlexShell.
 	^ aMorph owner 
 		gmCollisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new;
-		angle: anAngle;
-		position: aPosition;
-		scale: aScale;
+		angle: aNumber;
+		position: aPoint;
+		scale: anotherNumber;
 		yourself

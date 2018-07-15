@@ -1,3 +1,3 @@
 event Input
-mouseLeave: aKeyboardEvent fromMorph: aMorph
+mouseLeave: anEvent fromMorph: aMorph
 	.

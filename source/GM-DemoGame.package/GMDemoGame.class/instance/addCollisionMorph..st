@@ -1,3 +1,3 @@
 collision
-addCollisionMorph: aCollisionMorph
-	self collisionHandler addCollisionMorph: aCollisionMorph.
+addCollisionMorph: aMorph
+	self collisionHandler addCollisionMorph: aMorph.

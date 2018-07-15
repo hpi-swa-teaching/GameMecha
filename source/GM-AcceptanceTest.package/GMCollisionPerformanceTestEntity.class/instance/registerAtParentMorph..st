@@ -1,7 +1,7 @@
 as yet unclassified
-registerAtParentMorph: aParentMorph
-	self parentMorph: aParentMorph.
+registerAtParentMorph: aMorph
+	self parent: aMorph.
 	self addFlexShell.
 	self owner gmCollisionDetectionStrategy: GMRotatedRectangleCollisionDetectionShape new.
-	self parentMorph addMorph: self owner.
-	self parentMorph collisionHandler addCollisionMorph: self owner.
+	self parent addMorph: self owner.
+	self parent collisionHandler addCollisionMorph: self owner.

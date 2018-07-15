@@ -1,3 +1,3 @@
 event Input
-keyStroke: aKeyboardEvent fromMorph: aMorph
+keyStroke: anEvent fromMorph: aMorph
 	^ self

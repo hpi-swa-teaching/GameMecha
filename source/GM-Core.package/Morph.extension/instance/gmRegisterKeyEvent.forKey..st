@@ -1,4 +1,4 @@
 *GM-Core
-gmRegisterKeyEvent: aBlock forKey: aKeyCharacter
-	self extension eventHandler gmRegisterKeyEvent: aBlock forKey: aKeyCharacter.
+gmRegisterKeyEvent: aBlock forKey: aCharacter
+	self extension eventHandler gmRegisterKeyEvent: aBlock forKey: aCharacter.
 	

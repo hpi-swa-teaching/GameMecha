@@ -1,6 +1,6 @@
 key events
-gmRegisterMethodInvocation: aMethod on: aReceiver forKey: aKeyCharacter
-	(GMKeyHandler keyLookup includes: aKeyCharacter) ifFalse: [self error: 'The character you specified does not belong to a valid key.'].
-	self keyToMethodMappings at: aKeyCharacter put: aReceiver -> aMethod.
+gmRegisterMethodInvocation: aSelector on: aReceivingObject forKey: aCharacter
+	(GMKeyHandler keyLookup includes: aCharacter) ifFalse: [self error: 'The character you specified does not belong to a valid key.'].
+	self keyToMethodMappings at: aCharacter put: aReceivingObject -> aSelector.
 	
 	

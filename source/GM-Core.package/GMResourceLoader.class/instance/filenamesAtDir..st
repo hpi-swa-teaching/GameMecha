@@ -1,4 +1,4 @@
 filesystem
-filenamesAtDir: aString
-	^ (FileDirectory uri: aString) fileNames
+filenamesAtDir: aFoldername
+	^ (FileDirectory uri: aFoldername) fileNames
 		select: [:filename | self isSupportedType: (FileDirectory extensionFor: filename)]
