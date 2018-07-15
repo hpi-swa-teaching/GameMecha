@@ -4,6 +4,6 @@ testLoadResourceIntoMethod
 	self resourceManager
 		storeResourceInMethod: #resourceIntoMethodTarget 
 		inInstance: self class 
-		fromFile: self testFile.
+		fromFile: self exampleFile.
 	self assert: [self class class canUnderstand: #resourceIntoMethodTarget].
-	self assert: [self class resourceIntoMethodTarget isForm].
+	self assertRessourceType: [self class resourceIntoMethodTarget].

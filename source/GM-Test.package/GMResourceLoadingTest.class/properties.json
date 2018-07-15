@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "TP 7/10/2018 21:28",
+	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "GMSoundLoaderTest",
+		"resourceManager" ],
+	"name" : "GMResourceLoadingTest",
 	"pools" : [
 		 ],
-	"super" : "GMResourceLoadingTest",
+	"super" : "TestCase",
 	"type" : "normal" }

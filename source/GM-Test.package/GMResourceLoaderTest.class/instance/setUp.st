@@ -1,3 +1,4 @@
 running
 setUp
-	GMTestResourceFixtures clearResourcesOnDisk.
+	super setUp.
+	self resourceManager: GMResourceLoader new.

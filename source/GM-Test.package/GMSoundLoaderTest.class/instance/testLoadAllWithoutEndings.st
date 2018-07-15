@@ -1,4 +1,4 @@
 as yet unclassified
 testLoadAllWithoutEndings
-	super testLoadAllWithoutEndings.
-	self resourceManager playSound: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName.
+	self loadAllWithoutEndings.
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName].

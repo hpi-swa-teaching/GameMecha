@@ -1,13 +1,9 @@
 {
 	"class" : {
-		"isAbstract" : "NK 6/26/2018 18:56" },
+		 },
 	"instance" : {
-		"resourceManager" : "NK 5/29/2018 20:26",
-		"resourceManager:" : "NK 5/29/2018 20:26",
-		"setUp" : "NK 6/28/2018 11:33",
-		"tearDown" : "brh 7/4/2018 11:08",
-		"testFile" : "brh 7/4/2018 11:30",
-		"testFlushCache" : "NK 5/29/2018 20:33",
-		"testLoadAll" : "brh 7/15/2018 00:01",
-		"testLoadAllWithoutEndings" : "brh 7/15/2018 00:02",
-		"testLoadFileIntoMethod" : "brh 7/15/2018 00:21" } }
+		"assertRessourceType:" : "brh 7/15/2018 11:28",
+		"exampleFile" : "brh 7/15/2018 10:31",
+		"setUp" : "brh 7/15/2018 11:18",
+		"testFlushCache" : "brh 7/15/2018 10:01",
+		"testLoadFileIntoMethod" : "brh 7/15/2018 10:41" } }

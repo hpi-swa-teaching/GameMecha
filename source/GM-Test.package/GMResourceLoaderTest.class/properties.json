@@ -6,9 +6,9 @@
 		 ],
 	"commentStamp" : "TP 7/10/2018 21:26",
 	"instvars" : [
-		"resourceManager" ],
+		 ],
 	"name" : "GMResourceLoaderTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "GMResourceLoadingTest",
 	"type" : "normal" }

@@ -1,6 +1,5 @@
 as yet unclassified
 testLoadAll
-	super testLoadAll.
-	self resourceManager
-		playSound: GMTestResourceFixtures testSoundPathAIFF;
-		playSound: GMTestResourceFixtures testSoundPathWAV.
+	self loadAll.
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testSoundPathAIFF].
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testSoundPathWAV].

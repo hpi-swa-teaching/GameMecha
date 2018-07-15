@@ -1,4 +1,4 @@
 testing
 testLoadAllWithoutEndings
-	super testLoadAllWithoutEndings.
-	self resourceManager at: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName.
+	self loadAllWithoutEndings.
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testResourceFolder , GMTestResourceFixtures fileName].

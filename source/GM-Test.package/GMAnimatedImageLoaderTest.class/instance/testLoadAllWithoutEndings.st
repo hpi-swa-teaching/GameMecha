@@ -1,4 +1,4 @@
 as yet unclassified
 testLoadAllWithoutEndings
 	self resourceManager loadAllResourcesFromDriveWithoutEndings: GMTestResourceFixtures testResourceFolder.
-	(self resourceManager at: GMTestResourceFixtures testResourceFolder, GMTestResourceFixtures fileName) forms; delays.
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testResourceFolder, GMTestResourceFixtures fileName].

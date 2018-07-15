@@ -1,5 +1,5 @@
 testing
 testGetImageWithSize
-	self resourceManager loadResourceFromDrive: self testFile.
-	self assert: (self resourceManager at: self testFile withSize: self class testSize) extent 
+	self resourceManager loadResourceFromDrive: self exampleFile.
+	self assert: (self resourceManager at: self exampleFile withSize: self class testSize) extent 
 		equals: self class testSize.

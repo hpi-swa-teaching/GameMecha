@@ -1,6 +1,6 @@
 testing
 testImageLoading
-	self should: [self resourceManager at: self testFile] raise: Error.
-	self resourceManager loadResourceFromDrive: self testFile.
+	self should: [self resourceManager at: self exampleFile] raise: Error.
+	self resourceManager loadResourceFromDrive: self exampleFile.
 	self assert: [self resourceManager cache size = 1].
-	self resourceManager at: self testFile.
+	self assertRessourceType: [self resourceManager at: self exampleFile].

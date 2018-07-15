@@ -1,6 +1,5 @@
 testing
 testLoadAll
-	super testLoadAll.
-	self resourceManager
-		at: GMTestResourceFixtures testImagePathPNG;
-		at: GMTestResourceFixtures testImagePathJPEG.
+	self loadAll.
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testImagePathPNG].
+	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testImagePathJPEG].

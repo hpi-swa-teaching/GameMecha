@@ -1,3 +1,3 @@
-as yet unclassified
-testFile
+testing
+exampleFile
 	^ GMTestResourceFixtures testImagePathPNG

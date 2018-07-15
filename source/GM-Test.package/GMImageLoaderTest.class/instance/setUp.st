@@ -1,6 +1,6 @@
 running
 setUp
-	self resourceManager: GMImageLoader new.
 	super setUp.
+	self resourceManager: GMImageLoader new.
 	GMTestResourceFixtures createImagesOnDisk.
 	
