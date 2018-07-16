@@ -5,4 +5,5 @@ collisionMorphRectangle
 			GMCircleCollisionDetectionShape, GMRectangleCollisionDetectionShape or GMRotatedRectangleCollisionDetectionShape."
 			gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
 			extent: self class collisionMorphExtent;
-			position: (self class worldExtent x / 2) @ (self class worldExtent y / 3)]
+			position: (self class worldExtent x / 2) @ (self class worldExtent y / 3);
+			yourself]

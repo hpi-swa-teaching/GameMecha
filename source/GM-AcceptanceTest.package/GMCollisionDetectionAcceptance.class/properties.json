@@ -9,8 +9,7 @@
 		"collisionMorphs",
 		"collisionHandler",
 		"collisionMorphCircle",
-		"collisionMorphRectangle",
-		"collisionMorphFlexShellOfRotatedRectangle" ],
+		"collisionMorphRectangle" ],
 	"name" : "GMCollisionDetectionAcceptance",
 	"pools" : [
 		 ],

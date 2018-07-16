@@ -1,3 +1,0 @@
-accessing
-collisionMorphFlexShellOfRotatedRectangle: anObject
-	collisionMorphFlexShellOfRotatedRectangle := anObject

@@ -6,8 +6,8 @@ step
 		[:aMorph | (self collisionHandler morphsCollidingWith: aMorph)
 			ifEmpty: [aMorph renderedMorph color: Color green]
 			ifNotEmpty: [aMorph renderedMorph color: Color red]].
-	"Another possibility is to directly check for collision between two concrete Morphs. This is event 
-	possible when neither of the Morphs was register at the GMCollisionHandler before."
-	(self collisionHandler is: self collisionMorphRectangle collidingWith: self createCollisionMorphCircle)
+	"Another possibility is to directly check for collision between two concrete Morphs. This does not
+	require any of both Morphs to be registered at the GMCollisionHandler."
+	(self collisionHandler is: self collisionMorphRectangle collidingWith: self collisionMorphCircle)
 		 ifTrue: [self collisionMorphRectangle color: Color random].
-	self moveCollisionMorph.
+	self moveCollisionMorphCircle.

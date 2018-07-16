@@ -1,5 +1,5 @@
 creation
-createCoollisionMorphFlexShellOfRotatedRectangle
+createCollisionMorphFlexShellOfRotatedRectangle
 	 | aMorph |
 	aMorph := RectangleMorph new
 		extent: self class collisionMorphExtent;
