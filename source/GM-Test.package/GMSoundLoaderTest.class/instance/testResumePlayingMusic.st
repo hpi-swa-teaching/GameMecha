@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testResumePlayingMusic
 	self resourceManager
 		loadResourceFromDrive: self exampleFile;

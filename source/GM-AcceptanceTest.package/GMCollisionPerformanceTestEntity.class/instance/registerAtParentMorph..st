@@ -1,4 +1,4 @@
-as yet unclassified
+collision
 registerAtParentMorph: aMorph
 	self parent: aMorph.
 	self addFlexShell.

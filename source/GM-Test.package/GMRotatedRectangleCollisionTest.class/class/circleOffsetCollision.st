@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 circleOffsetCollision
 	^ 15 @ -120

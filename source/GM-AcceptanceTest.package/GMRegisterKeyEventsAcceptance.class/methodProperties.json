@@ -6,9 +6,9 @@
 		"shrinkSpeed" : "TP 6/26/2018 19:39",
 		"speed" : "TP 6/26/2018 19:39" },
 	"instance" : {
+		"createStringMorph" : "AZ 7/16/2018 13:19",
 		"expand" : "TP 6/26/2018 19:15",
-		"initialize" : "NK 7/12/2018 16:19",
+		"initialize" : "AZ 7/16/2018 13:19",
 		"shrink" : "TP 6/26/2018 19:15",
 		"step" : "TP 7/10/2018 16:23",
-		"stepTime" : "AZ 6/25/2018 17:55",
-		"stringMorph" : "brh 7/10/2018 17:33" } }
+		"stepTime" : "AZ 6/25/2018 17:55" } }

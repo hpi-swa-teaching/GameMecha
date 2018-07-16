@@ -1,4 +1,4 @@
-testing
+test cases
 testRectangleRectangleNotInCollisionCollection
 	self smallRectangle position: self bigRectangle position + self bigRectangle extent.
 	self 

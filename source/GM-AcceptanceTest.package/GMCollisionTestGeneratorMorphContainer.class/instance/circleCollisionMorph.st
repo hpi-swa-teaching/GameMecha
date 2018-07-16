@@ -1,4 +1,4 @@
-as yet unclassified
+creation
 circleCollisionMorph
 	^ CircleMorph new
 		gmCollisionDetectionStrategy: GMCircleCollisionDetectionShape new;

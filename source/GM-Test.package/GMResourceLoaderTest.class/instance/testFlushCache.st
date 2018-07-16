@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testFlushCache
 	self flag: #todo. "shoulc load something before flushing"
 	self resourceManager flushCache.

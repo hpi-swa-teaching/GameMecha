@@ -1,4 +1,4 @@
-as yet unclassified
+collision
 handleEdgeCollision
 	(self owner right > self parent right or: [self owner left < self parent left])
 		ifTrue: [self velocity: self velocity x negated @ self velocity y. self move].

@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 rotatedRectangleTallOffsetCollision
 	^ -50 @ -225

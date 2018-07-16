@@ -1,3 +1,0 @@
-creation
-collisionMorphFlexShellOfRotatedRectangle
-	^ collisionMorphFlexShellOfRotatedRectangle ifNil: [collisionMorphFlexShellOfRotatedRectangle := self createCollisionMorphRotatedRectangleWithFlexshell]

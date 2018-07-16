@@ -1,3 +1,3 @@
-nil
+write on disk
 clearResourcesOnDisk
 	GMTestResourceFixtures clearResourcesOnDisk: self resourceFolder.

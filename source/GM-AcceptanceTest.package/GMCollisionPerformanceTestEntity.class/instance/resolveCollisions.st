@@ -1,4 +1,4 @@
-as yet unclassified
+collision
 resolveCollisions
 	| collidingMorphs |
 	self move: 1.

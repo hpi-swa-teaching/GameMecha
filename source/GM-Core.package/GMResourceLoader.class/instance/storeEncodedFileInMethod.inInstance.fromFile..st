@@ -1,4 +1,4 @@
-as yet unclassified
+storing
 storeEncodedFileInMethod: aSelector inInstance: anInstance fromFile: aFilename
 	| stream |
 	stream := (WriteStream on: '') 

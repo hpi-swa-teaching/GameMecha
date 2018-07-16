@@ -1,2 +1,2 @@
-running
+testing
 tearDown

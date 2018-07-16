@@ -1,7 +1,7 @@
-testing
+test cases
 testIsKeyPressed
 	self deny: [self keyMorph gmIsKeyPressed: $s].
-	(self class testKeyboardEventOfType: #keyDown withValue: self keyTestValue) sentTo: self keyMorph. 
+	(self class createKeyboardEventOfType: #keyDown withValue: self keyTestValue) sentTo: self keyMorph. 
 	self assert: [self keyMorph gmIsKeyPressed: $s].
-	(self class testKeyboardEventOfType: #keyUp withValue: self keyTestValue) sentTo: self keyMorph.
+	(self class createKeyboardEventOfType: #keyUp withValue: self keyTestValue) sentTo: self keyMorph.
 	self deny: [self keyMorph gmIsKeyPressed: $s].

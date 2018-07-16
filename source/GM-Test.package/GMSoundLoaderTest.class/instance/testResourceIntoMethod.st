@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testResourceIntoMethod
 	self should: [self class resourceIntoMethodTarget] raise: Error.
 	self resourceManager

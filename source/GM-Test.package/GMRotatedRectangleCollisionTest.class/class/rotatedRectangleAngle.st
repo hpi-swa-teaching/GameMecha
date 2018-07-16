@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 rotatedRectangleAngle
 	^ Float pi / 4

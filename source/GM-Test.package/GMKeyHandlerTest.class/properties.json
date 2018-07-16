@@ -7,7 +7,7 @@
 	"commentStamp" : "TP 7/10/2018 21:26",
 	"instvars" : [
 		"keyMorph",
-		"testValue" ],
+		"testedValue" ],
 	"name" : "GMKeyHandlerTest",
 	"pools" : [
 		 ],

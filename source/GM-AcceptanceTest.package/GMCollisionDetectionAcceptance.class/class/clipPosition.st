@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 clipPosition 
 	^ self worldExtent - self collisionMorphExtent

@@ -1,4 +1,4 @@
-as yet unclassified
+creation
 rectangleCollisionMorph
 	^ RectangleMorph new
 		gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;

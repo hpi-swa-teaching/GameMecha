@@ -1,4 +1,4 @@
-testing
+test cases
 testImageLoading
 	self should: [self resourceManager at: self exampleFile] raise: Error.
 	self resourceManager loadResourceFromDrive: self exampleFile.

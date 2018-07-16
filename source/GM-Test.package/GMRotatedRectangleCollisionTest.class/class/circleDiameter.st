@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 circleDiameter
 	^ 50 @ 50

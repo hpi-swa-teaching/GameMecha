@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testPlaySoundAIFF
 	self resourceManager
 		loadResourceFromDrive: GMTestResourceFixtures testSoundPathAIFF;

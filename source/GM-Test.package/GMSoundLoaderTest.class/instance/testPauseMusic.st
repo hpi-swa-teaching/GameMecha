@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testPauseMusic
 	self resourceManager
 		loadResourceFromObject: GMTestResourceFixtures squeakSamplesSound withName: self exampleFile;

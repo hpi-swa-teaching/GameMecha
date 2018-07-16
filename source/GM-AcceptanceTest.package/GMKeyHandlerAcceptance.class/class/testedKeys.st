@@ -1,4 +1,4 @@
-as yet unclassified
+constants
 testedKeys
 	^ {{'backspace' . Character backspace}. {'tab' . Character tab}.
 		{'enter' . Character cr}. {'escape' . Character escape}.

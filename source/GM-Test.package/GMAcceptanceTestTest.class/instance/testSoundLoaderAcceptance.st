@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testSoundLoaderAcceptance
 	GMTestResourceFixtures clearResourcesOnDisk.
 	GMTestResourceFixtures createSoundOnDisk.

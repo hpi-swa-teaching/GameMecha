@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 smallRectangleExtent
 	^ 50 @ 50

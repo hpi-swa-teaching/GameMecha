@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testAnimatedImageLoading
 	self assert: [self resourceManager cache isEmpty].
 	self resourceManager loadResourceFromDrive: self exampleFile.

@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 bigCircleDiameter
 	^ 100 @ 100

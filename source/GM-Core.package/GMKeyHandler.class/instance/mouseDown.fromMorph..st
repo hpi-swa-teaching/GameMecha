@@ -1,3 +1,3 @@
-event Input
+event handling
 mouseDown: anEvent fromMorph: aMorph
 	.

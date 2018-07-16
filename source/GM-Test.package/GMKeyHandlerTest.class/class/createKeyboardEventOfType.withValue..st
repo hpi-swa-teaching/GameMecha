@@ -1,6 +1,6 @@
-as yet unclassified
-testKeyboardEventOfType: aType withValue: aKeyValue
-	^KeyboardEvent new
+key events
+createKeyboardEventOfType: aType withValue: aKeyValue
+	^ KeyboardEvent new
 		setType: aType
 		buttons: 0
 		position: nil

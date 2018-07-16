@@ -1,10 +1,10 @@
-testing
+test cases
 testBlockRegistration
-	self deny: [self testValue = self class settedTestValue].
-	self keyMorph gmRegisterKeyEvent: [self testValue: 1] forKey: $s.
-	(self class testKeyboardEventOfType: #keyDown withValue: self keyTestValue) sentTo: self keyMorph. 
+	self deny: [self testedValue = self class assignedValue].
+	self keyMorph gmRegisterKeyEvent: [self testedValue: 1] forKey: $s.
+	(self class createKeyboardEventOfType: #keyDown withValue: self keyTestValue) sentTo: self keyMorph. 
 	self keyMorph gmEvaluateRegisteredEvents.
-	self assert: [testValue = self class settedTestValue].
-	self testValue: nil.
-	(self class testKeyboardEventOfType: #keyUp withValue: self keyTestValue) sentTo: self keyMorph.
-	self deny: [self testValue = self class settedTestValue].
+	self assert: [self testedValue = self class assignedValue].
+	self testedValue: nil.
+	(self class createKeyboardEventOfType: #keyUp withValue: self keyTestValue) sentTo: self keyMorph.
+	self deny: [self testedValue = self class assignedValue].

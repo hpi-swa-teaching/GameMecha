@@ -1,4 +1,4 @@
-as yet unclassified
+constants
 descriptionText
 "The bad formatting is because otherwise the string would also be formatted."
 	^ 'Press "e" to expand the morph, "q" to shrink it

@@ -1,16 +1,16 @@
 {
 	"class" : {
-		"settedTestValue" : "TP 7/3/2018 16:05",
-		"testKeyboardEventOfType:withValue:" : "brh 5/1/2018 19:19" },
+		"assignedValue" : "AZ 7/16/2018 12:44",
+		"createKeyboardEventOfType:withValue:" : "AZ 7/16/2018 12:31" },
 	"instance" : {
 		"keyMorph" : "AZ 7/15/2018 18:09",
 		"keyMorph:" : "AZ 7/15/2018 18:09",
 		"keyTestValue" : "SD 6/12/2018 18:27",
-		"setTestValue" : "TP 7/3/2018 16:06",
-		"setUp" : "TP 7/3/2018 16:03",
+		"setTestValue" : "AZ 7/16/2018 12:44",
+		"setUp" : "AZ 7/16/2018 12:41",
 		"testAllOSsSupportSameKeys" : "AZ 5/14/2018 17:20",
-		"testBlockRegistration" : "AZ 7/15/2018 18:09",
-		"testIsKeyPressed" : "AZ 7/15/2018 18:10",
-		"testMethodRegistration" : "AZ 7/15/2018 18:10",
-		"testValue" : "TP 7/3/2018 16:01",
-		"testValue:" : "TP 7/3/2018 16:01" } }
+		"testBlockRegistration" : "AZ 7/16/2018 12:45",
+		"testIsKeyPressed" : "AZ 7/16/2018 12:31",
+		"testMethodRegistration" : "AZ 7/16/2018 12:45",
+		"testedValue" : "AZ 7/16/2018 12:40",
+		"testedValue:" : "AZ 7/16/2018 12:41" } }

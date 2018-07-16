@@ -1,3 +1,3 @@
-as yet unclassified
+test cases
 testAnimatedImageLoaderAcceptance
 	GMAnimatedImageLoaderAcceptance new abandon.

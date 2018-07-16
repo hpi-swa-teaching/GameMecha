@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 collisionMorphExtent
 	^ 100 @ 100

@@ -1,4 +1,4 @@
-as yet unclassified
+loading
 loadAllResourcesFromDrive: aFoldername withNameFunction: aBlock
 	| adaptedFoldername |
 	adaptedFoldername := aFoldername, (self ensureSlashEnding: aFoldername).

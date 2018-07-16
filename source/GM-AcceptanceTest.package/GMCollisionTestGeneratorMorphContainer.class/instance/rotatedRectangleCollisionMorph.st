@@ -1,4 +1,4 @@
-as yet unclassified
+creation
 rotatedRectangleCollisionMorph
 	 | aMorph |
 	aMorph := RectangleMorph new

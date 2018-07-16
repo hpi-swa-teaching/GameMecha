@@ -1,3 +1,3 @@
-event Input
+event handling
 mouseEnter: anEvent fromMorph: aMorph
 	ActiveHand newKeyboardFocus: aMorph.

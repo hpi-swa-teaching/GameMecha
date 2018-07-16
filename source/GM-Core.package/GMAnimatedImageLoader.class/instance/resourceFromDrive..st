@@ -1,3 +1,3 @@
-as yet unclassified
+loading
 resourceFromDrive: aFilename
 	^ AnimatedGIFReadWriter formsFromFileNamed: aFilename

@@ -1,3 +1,3 @@
-as yet unclassified
+resource loading
 loadAll
 	self resourceManager loadAllResourcesFromDrive: GMTestResourceFixtures testResourceFolder.

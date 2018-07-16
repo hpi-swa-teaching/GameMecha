@@ -1,3 +1,3 @@
-as yet unclassified
+playing sounds
 playSound: aString
 	(self at: aString) play.

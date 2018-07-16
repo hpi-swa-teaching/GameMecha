@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 rotatedRectangleTallExtent
 	^ 300 @ 50

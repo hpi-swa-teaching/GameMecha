@@ -1,3 +1,3 @@
-as yet unclassified
+test cases
 testCollisionDetectionAcceptance
 	GMCollisionDetectionAcceptance new abandon.

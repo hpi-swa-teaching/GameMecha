@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 bigRectangleExtent
 	^ 200 @ 100

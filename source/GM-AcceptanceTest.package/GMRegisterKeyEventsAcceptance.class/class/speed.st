@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 speed
 	^ 10

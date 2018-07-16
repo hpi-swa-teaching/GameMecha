@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 expandSpeed
 	^ 1.1

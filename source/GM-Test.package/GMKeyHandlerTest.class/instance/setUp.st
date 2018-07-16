@@ -1,4 +1,4 @@
-running
+testing
 setUp
-	self testValue: nil.
+	self testedValue: nil.
 	GMKeyHandler cleanUp.

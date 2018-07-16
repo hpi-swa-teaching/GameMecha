@@ -1,4 +1,4 @@
-as yet unclassified
+storing
 storeResourceInMethod: aSelector inInstance: anInstance fromFile: aFilename
 	| sound |
 	"only supports WAV"

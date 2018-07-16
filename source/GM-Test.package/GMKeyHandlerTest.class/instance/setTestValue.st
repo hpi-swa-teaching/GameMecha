@@ -1,3 +1,3 @@
 accessing
 setTestValue
-	self testValue: self class settedTestValue.
+	self testedValue: self class assignedValue.

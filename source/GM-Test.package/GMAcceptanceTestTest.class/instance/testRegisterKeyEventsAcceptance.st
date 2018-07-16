@@ -1,3 +1,3 @@
-as yet unclassified
+test cases
 testRegisterKeyEventsAcceptance
 	GMRegisterKeyEventsAcceptance new abandon.

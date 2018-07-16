@@ -1,4 +1,4 @@
-testing
+test cases
 testAssigningCollisionDetectionStrategy
     | aCollisionDetectionStrategy aMorph |
     aMorph := Morph new.

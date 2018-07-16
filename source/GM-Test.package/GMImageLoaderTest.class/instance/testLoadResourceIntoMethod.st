@@ -1,4 +1,4 @@
-testing
+test cases
 testLoadResourceIntoMethod
 	self should: [self class resourceIntoMethodTarget] raise: Error.
 	self resourceManager

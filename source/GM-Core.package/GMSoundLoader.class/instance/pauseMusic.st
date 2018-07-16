@@ -1,3 +1,3 @@
-as yet unclassified
+playing sounds
 pauseMusic
 	self currentMusic pause.

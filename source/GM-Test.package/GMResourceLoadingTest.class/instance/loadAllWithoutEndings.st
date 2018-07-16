@@ -1,3 +1,3 @@
-as yet unclassified
+resource loading
 loadAllWithoutEndings
 	self resourceManager loadAllResourcesFromDriveWithoutEndings: GMTestResourceFixtures testResourceFolder.

@@ -1,4 +1,4 @@
-nil
+write on disk
 createResourcesOnDisk
 	GMTestResourceFixtures createFolder: self resourceFolder.
 	self createImagesOnDisk.

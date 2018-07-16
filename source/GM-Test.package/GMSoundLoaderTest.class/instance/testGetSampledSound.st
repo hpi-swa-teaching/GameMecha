@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testGetSampledSound
 	self should: [self resourceManager at: self exampleFile] raise: Error.
 	self resourceManager loadResourceFromDrive: self exampleFile.

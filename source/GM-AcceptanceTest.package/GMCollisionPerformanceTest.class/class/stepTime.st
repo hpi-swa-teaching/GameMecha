@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 stepTime
 	^ 30

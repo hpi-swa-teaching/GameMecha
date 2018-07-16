@@ -1,4 +1,4 @@
-testing
+test cases
 testLoadAll
 	self loadAll.
 	self assertRessourceType: [self resourceManager at: GMTestResourceFixtures testImagePathPNG].

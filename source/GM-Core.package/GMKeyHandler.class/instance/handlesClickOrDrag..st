@@ -1,3 +1,3 @@
-event Input
+event handling
 handlesClickOrDrag: anEvent
 	^ false

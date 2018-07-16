@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 collisionMorphSpeed
 	^ 1 @ 0 

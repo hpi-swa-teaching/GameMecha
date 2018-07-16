@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testLoadAll
 	self loadAll.
 	self flag: #todo. "loads only one"

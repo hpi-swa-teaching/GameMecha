@@ -1,3 +1,3 @@
-testing
+constants
 circleEdgeOffset
 	^ 16 @ 16

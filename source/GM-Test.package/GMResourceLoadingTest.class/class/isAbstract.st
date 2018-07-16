@@ -1,3 +1,3 @@
-as yet unclassified
+testing
 isAbstract
 	^ super isAbstract or: [self name = #GMResourceLoadingTest]

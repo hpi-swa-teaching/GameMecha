@@ -1,3 +1,3 @@
-as yet unclassified
+loading
 resourceFromDrive: aFilename
 	^ Form fromFileNamed: (FileDirectory uri: aFilename) fullName

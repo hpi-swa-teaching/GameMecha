@@ -1,4 +1,4 @@
-as yet unclassified
+initialization
 initialize
 	| animatedImageLoader |
 	animatedImageLoader := GMAnimatedImageLoader new.

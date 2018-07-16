@@ -1,3 +1,3 @@
-event Input
+event handling
 keyStroke: anEvent fromMorph: aMorph
 	^ self

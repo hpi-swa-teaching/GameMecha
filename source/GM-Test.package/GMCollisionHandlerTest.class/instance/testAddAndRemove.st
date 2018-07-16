@@ -1,4 +1,4 @@
-testing
+test cases
 testAddAndRemove
 	self collisionHandler removeAllMorphs.
 	self deny: [self collisionHandler includes: self collisionMorph].

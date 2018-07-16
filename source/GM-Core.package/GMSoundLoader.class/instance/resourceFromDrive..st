@@ -1,4 +1,4 @@
-as yet unclassified
+loading
 resourceFromDrive: aFilename
 	^ (self supportedTypes at: (FileDirectory extensionFor: aFilename)
 		ifAbsent: [:x | self error: #FileNotFound])

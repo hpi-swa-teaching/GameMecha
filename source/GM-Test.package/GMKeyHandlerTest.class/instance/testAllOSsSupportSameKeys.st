@@ -1,4 +1,4 @@
-testing
+test cases
 testAllOSsSupportSameKeys
 	| windowsKeys macKeys unixKeys |
 	windowsKeys := GMKeyHandler initializeKeyLookupWindows asSet.

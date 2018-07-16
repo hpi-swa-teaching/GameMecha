@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testPlaySoundWAV
 	self resourceManager
 		loadResourceFromDrive: GMTestResourceFixtures testSoundPathWAV;

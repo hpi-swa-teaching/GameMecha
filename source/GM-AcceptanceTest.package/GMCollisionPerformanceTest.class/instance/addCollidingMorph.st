@@ -1,4 +1,4 @@
-as yet unclassified
+collision
 addCollidingMorph
 	GMCollisionPerformanceTestEntity new
 		velocity: (self class maxVelocity atRandom) @ (self class maxVelocity atRandom);

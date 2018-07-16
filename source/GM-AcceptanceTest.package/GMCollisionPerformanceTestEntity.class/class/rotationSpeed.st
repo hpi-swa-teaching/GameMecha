@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 rotationSpeed
 	^ 0.2

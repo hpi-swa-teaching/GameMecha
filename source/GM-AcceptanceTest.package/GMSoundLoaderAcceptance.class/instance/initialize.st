@@ -1,4 +1,4 @@
-as yet unclassified
+initialization
 initialize
 	GMSoundLoader new
 		"The GMSoundManager can load all files out of a given folder into the cache.

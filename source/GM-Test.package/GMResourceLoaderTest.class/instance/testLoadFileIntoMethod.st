@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testLoadFileIntoMethod
 	GMTestResourceFixtures createTextOnDisk.
 	self resourceManager storeEncodedFileInMethod: #resourceIntoMethodTarget inInstance: self class fromFile: self exampleFile.

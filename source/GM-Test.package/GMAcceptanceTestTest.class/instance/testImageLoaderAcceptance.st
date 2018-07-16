@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testImageLoaderAcceptance
 	GMTestResourceFixtures clearResourcesOnDisk.
 	GMTestResourceFixtures createImagesOnDisk.

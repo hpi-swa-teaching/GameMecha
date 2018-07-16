@@ -1,3 +1,3 @@
-as yet unclassified
+test cases
 testMouseHandlingTutorial
 	GMMouseHandlingTutorial new abandon.

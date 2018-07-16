@@ -1,4 +1,4 @@
-nil
+write on disk
 createImagesOnDisk
 	PNGReadWriter putForm: self planet onFileNamed: self planetPath.
 	PNGReadWriter putForm: self projectile onFileNamed: self projectilePath.

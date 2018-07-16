@@ -1,3 +1,3 @@
-event Input
+event handling
 handlesMouseOverDragging: anEvent
 	^ false
