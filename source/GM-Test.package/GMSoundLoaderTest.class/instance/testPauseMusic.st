@@ -1,6 +1,6 @@
 test cases
 testPauseMusic
 	self resourceManager
-		loadResourceFromObject: GMTestResourceFixtures squeakSamplesSound withName: self exampleFile;
-		playMusic: self exampleFile;
+		loadResourceFromObject: GMTestResourceFixtures squeakSampledSound withName: self class exampleFilepath;
+		playMusic: self class exampleFilepath;
 		pauseMusic.

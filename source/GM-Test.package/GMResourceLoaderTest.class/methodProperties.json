@@ -1,9 +1,7 @@
 {
 	"class" : {
-		 },
+		"exampleFilepath" : "NK 7/19/2018 13:54" },
 	"instance" : {
-		"assertRessourceType:" : "brh 7/15/2018 11:28",
-		"exampleFile" : "brh 7/15/2018 10:31",
 		"setUp" : "brh 7/15/2018 11:18",
 		"testFlushCache" : "AZ 7/15/2018 18:52",
-		"testLoadFileIntoMethod" : "brh 7/15/2018 10:41" } }
+		"testLoadFileIntoMethod" : "NK 7/19/2018 13:54" } }

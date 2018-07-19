@@ -1,8 +1,8 @@
 test cases
 testResumePlayingMusic
 	self resourceManager
-		loadResourceFromDrive: self exampleFile;
-		playMusic: self exampleFile;
+		loadResourceFromDrive: self class exampleFilepath;
+		playMusic: self class exampleFilepath;
 		pauseMusic;
 		resumePlayingMusic;
 		pauseMusic.

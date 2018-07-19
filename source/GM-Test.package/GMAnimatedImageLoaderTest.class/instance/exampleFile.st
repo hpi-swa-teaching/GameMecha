@@ -1,3 +1,0 @@
-testing
-exampleFile
-	^ GMTestResourceFixtures testImagePathGIF

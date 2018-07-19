@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "TP 7/10/2018 21:26",
+	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "GMAnimatedImageLoaderTest",
+	"name" : "GMSpecificLoadingTest",
 	"pools" : [
 		 ],
-	"super" : "GMSpecificLoadingTest",
+	"super" : "GMResourceLoadingTest",
 	"type" : "normal" }

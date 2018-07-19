@@ -1,21 +1,16 @@
 {
 	"class" : {
-		 },
+		"exampleFilepath" : "NK 7/19/2018 13:50",
+		"exampleResource" : "NK 7/19/2018 13:48",
+		"secondExampleFilepath" : "NK 7/19/2018 13:56",
+		"supportedTypes" : "NK 7/19/2018 14:07" },
 	"instance" : {
 		"assertRessourceType:" : "brh 7/15/2018 09:49",
-		"exampleFile" : "brh 7/15/2018 09:27",
 		"setUp" : "brh 7/15/2018 10:36",
 		"tearDown" : "brh 7/4/2018 11:09",
-		"testGetSampledSound" : "brh 7/15/2018 09:49",
-		"testLoadAll" : "brh 7/15/2018 11:26",
-		"testLoadAllWithoutEndings" : "brh 7/15/2018 11:26",
-		"testLoadResourceIntoCache" : "brh 7/15/2018 09:56",
-		"testPauseMusic" : "brh 7/15/2018 09:27",
-		"testPlayMusic" : "brh 7/15/2018 09:27",
-		"testPlayNamedSound" : "brh 7/15/2018 09:27",
+		"testPauseMusic" : "NK 7/19/2018 13:54",
+		"testPlayMusic" : "NK 7/19/2018 13:54",
+		"testPlayNamedSound" : "NK 7/19/2018 13:54",
 		"testPlaySoundAIFF" : "brh 7/15/2018 00:03",
 		"testPlaySoundWAV" : "brh 7/15/2018 00:03",
-		"testResourceIntoMethod" : "NK 7/15/2018 13:51",
-		"testResumePlayingMusic" : "brh 7/15/2018 09:27",
-		"testSupportsAIFF" : "brh 7/15/2018 09:30",
-		"testSupportsWAV" : "brh 7/15/2018 09:30" } }
+		"testResumePlayingMusic" : "NK 7/19/2018 13:55" } }

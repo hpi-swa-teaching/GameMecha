@@ -1,3 +1,0 @@
-accessing
-exampleFile
-	self subclassResponsibility.

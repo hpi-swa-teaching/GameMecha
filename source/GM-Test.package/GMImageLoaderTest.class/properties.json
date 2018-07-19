@@ -10,5 +10,5 @@
 	"name" : "GMImageLoaderTest",
 	"pools" : [
 		 ],
-	"super" : "GMResourceLoadingTest",
+	"super" : "GMSpecificLoadingTest",
 	"type" : "normal" }
