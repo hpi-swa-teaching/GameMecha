@@ -2,6 +2,6 @@ initialization
 initialize
 	super initialize.
 	self 
-		extent: 1500 @ 900;
+		extent: self class defaultExtent;
 		color: Color white.
 	(self class numberOfColliders) timesRepeat: [self addCollidingMorph].

@@ -3,5 +3,6 @@ setUp
 	super setUp.
 	self resourceManager: (GMSoundLoader new
 		loudness: 0.0;
-		pauseMusic).
+		pauseMusic;
+		yourself).
 	GMTestResourceFixtures createSoundOnDisk.

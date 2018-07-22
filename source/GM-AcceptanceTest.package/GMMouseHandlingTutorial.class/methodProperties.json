@@ -1,14 +1,17 @@
 {
 	"class" : {
-		"defaultExtent" : "TP 7/6/2018 20:28" },
+		"defaultBorderWidth" : "AZ 7/23/2018 00:42",
+		"defaultExtent" : "TP 7/6/2018 20:28",
+		"emphasizedBorderWidth" : "AZ 7/23/2018 00:42",
+		"growthRate" : "AZ 7/23/2018 00:43" },
 	"instance" : {
 		"handlesMouseDown:" : "brh 7/12/2018 15:45",
 		"handlesMouseOverDragging:" : "AZ 7/15/2018 17:45",
 		"handlesMouseStillDown:" : "brh 7/12/2018 15:44",
 		"initialize" : "AZ 7/10/2018 15:59",
 		"mouseDown:" : "brh 7/12/2018 15:44",
-		"mouseEnterDragging:" : "brh 7/12/2018 15:45",
-		"mouseLeaveDragging:" : "brh 7/12/2018 15:45",
-		"mouseStillDown:" : "brh 7/12/2018 15:45",
+		"mouseEnterDragging:" : "AZ 7/23/2018 00:43",
+		"mouseLeaveDragging:" : "AZ 7/23/2018 00:43",
+		"mouseStillDown:" : "AZ 7/23/2018 00:44",
 		"mouseStillDownStepRate" : "brh 7/12/2018 15:45",
-		"mouseUp:" : "brh 7/12/2018 15:45" } }
+		"mouseUp:" : "AZ 7/23/2018 00:29" } }

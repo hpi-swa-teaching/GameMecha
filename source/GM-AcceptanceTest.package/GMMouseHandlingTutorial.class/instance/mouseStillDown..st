@@ -4,4 +4,4 @@ mouseStillDown: anEvent
 	Attention the step rate for this is defined in mouseStillDownStepRate
 	not in stepTime as it is the case for the 'normal' stepping."
 	super mouseStillDown: anEvent.
-	self extent: self extent + (5 @ 5).
+	self extent: self extent + self class growthRate.

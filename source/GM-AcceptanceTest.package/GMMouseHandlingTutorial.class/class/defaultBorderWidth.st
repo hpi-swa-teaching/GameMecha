@@ -1,0 +1,3 @@
+constants
+defaultBorderWidth
+	^ 0
