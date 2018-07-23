@@ -1,6 +1,3 @@
 test cases
 testSoundLoaderAcceptance
-	GMTestResourceFixtures clearResourcesOnDisk.
-	GMTestResourceFixtures createSoundOnDisk.
 	GMSoundLoaderAcceptance new.
-	GMTestResourceFixtures clearResourcesOnDisk.

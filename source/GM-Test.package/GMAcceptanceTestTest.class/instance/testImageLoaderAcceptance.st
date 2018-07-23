@@ -1,6 +1,3 @@
 test cases
 testImageLoaderAcceptance
-	GMTestResourceFixtures clearResourcesOnDisk.
-	GMTestResourceFixtures createImagesOnDisk.
 	GMImageLoaderAcceptance new abandon.
-	GMTestResourceFixtures clearResourcesOnDisk.

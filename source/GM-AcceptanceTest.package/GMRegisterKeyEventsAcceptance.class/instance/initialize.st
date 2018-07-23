@@ -20,7 +20,7 @@ initialize
 	self gmRegisterMethodInvocation: #shrink on: self  forKey: $q.
 
 	"Attention: Every time you register a new block for a key the previously registered block gets unregistered.
-	Likewise every time you register a new method for a key the previously registered method gets unregistered.
+	Likewise, every time you register a new method for a key the previously registered method gets unregistered.
 	So if you want to unregister a block (for example for key 'e') just call
 	self gmRegisterKeyEvent: [] forKey: $e. or to unregister a method call
 	self gmRegisterMethodInvocation: #yourself on: self forKey: $e."
