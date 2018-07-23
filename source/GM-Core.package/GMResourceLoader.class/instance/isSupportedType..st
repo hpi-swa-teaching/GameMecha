@@ -1,3 +1,3 @@
-as yet unclassified
+loading
 isSupportedType: aFileExtension
 	self subclassResponsibility.

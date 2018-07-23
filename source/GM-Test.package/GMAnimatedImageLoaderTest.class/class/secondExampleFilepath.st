@@ -1,4 +1,4 @@
-as yet unclassified
+constants
 secondExampleFilepath 
 	self flag: #TODO.
 	^ self exampleFilepath

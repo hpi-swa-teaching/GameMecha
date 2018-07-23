@@ -1,4 +1,4 @@
-as yet unclassified
+storing
 stringFromFile: aFilename
 	^ (WriteStream on: '') 
 		nextPutAll: ' AnimatedGIFReadWriter formsFromStream: (ReadStream on: ';

@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 secondExampleFilepath 
 	self subclassResponsibility.

@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 supportedTypes
 	self subclassResponsibility

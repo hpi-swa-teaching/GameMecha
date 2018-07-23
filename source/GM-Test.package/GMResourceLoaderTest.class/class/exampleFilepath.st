@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 exampleFilepath
 	^ GMTestResourceFixtures testTextPath

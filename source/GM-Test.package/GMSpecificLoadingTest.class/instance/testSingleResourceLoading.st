@@ -1,4 +1,4 @@
-as yet unclassified
+test cases
 testSingleResourceLoading
 	self should: [self resourceManager at: self class exampleFilepath] raise: Error.
 	self resourceManager loadResourceFromDrive: self class exampleFilepath.

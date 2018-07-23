@@ -1,3 +1,3 @@
-as yet unclassified
+constants
 supportedTypes
 	^ OrderedCollection newFrom: {'gif'}

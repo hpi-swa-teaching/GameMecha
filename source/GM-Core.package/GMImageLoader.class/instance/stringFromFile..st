@@ -1,4 +1,4 @@
-as yet unclassified
+storing
 stringFromFile: aFilename
 	^ (WriteStream on: '') 
 		store: (self resourceFromDrive: aFilename);
