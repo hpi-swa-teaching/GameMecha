@@ -6,6 +6,6 @@ testAcceptance268309142
 	 with: (CircleMorph new 
 		gmCollisionDetectionStrategy: GMCircleCollisionDetectionShape new;
 		position: (118@562);
-		extent:(100@100);
+		extent: (100@100);
 		yourself)
 	 equals: false

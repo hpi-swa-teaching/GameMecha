@@ -2,9 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"assertCollision:with:" : "brh 7/15/2018 14:47",
-		"assertCollision:with:andOffset:" : "brh 7/15/2018 14:47",
-		"assertCollision:with:equals:" : "brh 7/15/2018 14:47",
+		"assertCollision:with:" : "NK 7/23/2018 13:31",
+		"assertCollision:with:andOffset:" : "NK 7/23/2018 13:30",
+		"assertCollision:with:andOffset:equals:" : "NK 7/23/2018 13:36",
+		"assertCollision:with:equals:" : "NK 7/23/2018 13:35",
+		"assertCollisionInHandler:with:equals:" : "NK 7/23/2018 13:35",
 		"collisionHandler" : "brh 7/15/2018 14:49",
 		"collisionHandler:" : "brh 7/15/2018 14:49",
-		"denyCollision:with:andOffset:" : "brh 7/15/2018 14:48" } }
+		"denyCollision:with:andOffset:" : "NK 7/23/2018 13:33" } }

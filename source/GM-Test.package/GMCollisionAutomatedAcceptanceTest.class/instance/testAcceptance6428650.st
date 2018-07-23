@@ -6,5 +6,5 @@ testAcceptance6428650
 	 with: (RectangleMorph new 
 		gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
 		position: (118@733);
-		extent:(100@100))
+		extent: (100@100))
 	 equals: false
