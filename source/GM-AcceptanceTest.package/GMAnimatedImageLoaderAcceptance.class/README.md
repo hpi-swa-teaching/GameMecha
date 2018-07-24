@@ -1,4 +1,4 @@
-An acceptance test for the GM resource loading mechanics especially for the loading of animated images (gif).
-Responsible for giving an example how to load (animated) resources.
+This is an acceptance test for the GM resource loading mechanics; especially for the loading of animated images (gifs). It is supposed to be opened like any other morph.
+It demonstrates how to load (animated) resources.
 
-Once opened loads a gif from your file system and plays it.
+See initialize to get a idea of how to use the GMAnimatedImageLoader.

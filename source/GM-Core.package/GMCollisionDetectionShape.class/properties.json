@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "AZ 5/22/2018 15:37",
+	"commentStamp" : "NK 7/24/2018 15:54",
 	"instvars" : [
 		"owner" ],
 	"name" : "GMCollisionDetectionShape",
