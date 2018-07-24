@@ -1,6 +1,6 @@
 accessing
 scaledRotatedRectangleShell
-	^ scaledRotatedRectangleShell ifNil: [rotatedRectangleShell := 
+	^ scaledRotatedRectangleShell ifNil: [scaledRotatedRectangleShell := 
 		(self newShellWithExtent: self class rotatedRectangleExtent / self class scaledRotatedRectangleScale)
 			gmCollisionDetectionStrategy: self strategy;
 			angle: self class rotatedRectangleAngle;

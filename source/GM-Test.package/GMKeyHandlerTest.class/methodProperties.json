@@ -2,8 +2,7 @@
 	"class" : {
 		"assignedValue" : "AZ 7/16/2018 12:44" },
 	"instance" : {
-		"assertKeyDownEventInvocation:" : "brh 7/24/2018 19:58",
-		"assertKeyUpEventInvocation:" : "brh 7/24/2018 19:58",
+		"assertKeyboardEventOfType:evaluates:" : "brh 7/24/2018 21:13",
 		"assertKeyboardEventOfType:evaluates:then:" : "brh 7/24/2018 19:58",
 		"createKeyboardEventOfType:withValue:" : "brh 7/24/2018 19:13",
 		"currentTestValue" : "brh 7/24/2018 19:52",
@@ -17,6 +16,6 @@
 		"setCurrentTestValue" : "brh 7/24/2018 19:54",
 		"setUp" : "brh 7/24/2018 19:55",
 		"testAllOSsSupportSameKeys" : "NK 7/23/2018 13:54",
-		"testBlockRegistration" : "brh 7/24/2018 19:59",
+		"testBlockRegistration" : "brh 7/24/2018 21:13",
 		"testIsKeyPressed" : "brh 7/24/2018 19:59",
-		"testMethodRegistration" : "brh 7/24/2018 19:59" } }
+		"testMethodRegistration" : "brh 7/24/2018 21:13" } }

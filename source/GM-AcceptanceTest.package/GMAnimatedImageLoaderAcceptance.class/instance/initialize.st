@@ -10,7 +10,6 @@ initialize
 	are already stored on disk."
 	GMTestResourceFixtures createAnimatedImagesOnDisk.
 	
-	
 	"GMAnimatedImageLoader can load all files out of a given folder into the cache.
 	Files are cached depending on which method you call, here they are stored with their whole path.
 	If you want to load singles resource files and give them specific names use:

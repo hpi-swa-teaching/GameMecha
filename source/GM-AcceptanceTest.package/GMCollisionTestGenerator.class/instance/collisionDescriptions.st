@@ -1,3 +1,3 @@
 accessing
 collisionDescriptions
-	^ self findWidgetOfKind: PHDescriptionList.
+	^ self findWidgetOfKind: PHDescriptionList

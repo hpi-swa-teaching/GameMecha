@@ -8,4 +8,5 @@ storeResourceInMethod: aSelector inInstance: anInstance fromFile: aFilename
 		fromString: (self samplesStringFromSound: sound).
 	self compileMethod: aSelector 
 		inInstance: anInstance 
-		fromString: (self sampledSoundStringFromSound: sound withSamplesIn: (self samplesMethodName: aSelector)).
+		fromString: (self sampledSoundStringFromSound: sound 
+			withSamplesIn: (self samplesMethodName: aSelector)).

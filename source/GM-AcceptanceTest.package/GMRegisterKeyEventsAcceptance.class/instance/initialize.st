@@ -10,14 +10,20 @@ initialize
 	"Now we can register blocks which should be executed every time
 	gmEvaluateRegisteredEvents is sent and the key for which the block is registered is pressed.
 	See step for more details."
-	self gmRegisterKeyEvent: [self position: self position + (self class speed negated @ 0)] forKey: Character arrowLeft.
-	self gmRegisterKeyEvent: [self position: self position + (self class speed @ 0)] forKey: Character arrowRight.
-	self gmRegisterKeyEvent: [self position: self position + (0 @ self class speed negated)] forKey: Character arrowUp .
-	self gmRegisterKeyEvent: [self position: self position + (0 @ self class speed)] forKey: Character arrowDown.
+	self gmRegisterKeyEvent: [self position: self position + (self class speed negated @ 0)] 
+		forKey: Character arrowLeft.
+	self gmRegisterKeyEvent: [self position: self position + (self class speed @ 0)] 
+		forKey: Character arrowRight.
+	self gmRegisterKeyEvent: [self position: self position + (0 @ self class speed negated)] 
+		forKey: Character arrowUp .
+	self gmRegisterKeyEvent: [self position: self position + (0 @ self class speed)] 
+		forKey: Character arrowDown.
 	"Similar to the registration of block we can also register a method and an object on which the method should be called
 	for a key. Like for blocks gmEvaluateRegisteredEvents hast to be called to check for pressed keys (see step)."
-	self gmRegisterMethodInvocation: #expand on: self forKey: $e.
-	self gmRegisterMethodInvocation: #shrink on: self forKey: $q.
+	self gmRegisterMethodInvocation: #expand on: self 
+		forKey: $e.
+	self gmRegisterMethodInvocation: #shrink on: self 
+		forKey: $q.
 
 	"Attention: Every time you register a new block for a key the previously registered block gets unregistered.
 	Likewise, every time you register a new method for a key the previously registered method gets unregistered.

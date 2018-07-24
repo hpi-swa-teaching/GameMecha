@@ -6,5 +6,4 @@ testMethodRegistration
 		evaluates: [self currentTestValue = self class assignedValue] 
 		then: [self resetCurrentTestValue].
 	self assertKeyboardEventOfType: #keyUp 
-		evaluates: [self currentTestValue isNil] 
-		then: [].
+		evaluates: [self currentTestValue isNil].
