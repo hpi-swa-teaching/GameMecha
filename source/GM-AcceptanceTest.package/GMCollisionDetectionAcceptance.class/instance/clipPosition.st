@@ -1,3 +1,3 @@
 stepping and presenter
 clipPosition 
-	^ self extent  - self class collisionMorphExtent
+	^ self extent - self class collisionMorphExtent

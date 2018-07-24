@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NK 7/24/2018 15:10",
 	"instvars" : [
 		"resourceManager" ],
 	"name" : "GMResourceLoadingTest",

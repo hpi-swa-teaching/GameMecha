@@ -1,1 +1,1 @@
-This class contains auto generated tests from GMCollisionAcceptancePheno.
+This test contains auto generated tests from GMCollisionTestGenerator.

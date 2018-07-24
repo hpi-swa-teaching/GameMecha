@@ -1,1 +1,2 @@
-Provides fixtures (resources to load from methods) as well as helper functions to get our tests which need to load and store files, working independent of any files in the file system.
+This class provides fixtures as well as helper functions for creating and storing files.
+Fixtures include stored resources and filenames

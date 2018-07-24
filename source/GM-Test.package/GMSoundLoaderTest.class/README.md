@@ -1,1 +1,1 @@
-Includes tests for our GMSoundLoader.
+This test includes tests for the GMSoundLoaderTest.

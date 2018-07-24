@@ -1,1 +1,1 @@
-Tests collision detection between two circles as well a circle and an achses aligned rectangle.
+This test tests collision detection between two circles as well a circle and an axis aligned rectangle.

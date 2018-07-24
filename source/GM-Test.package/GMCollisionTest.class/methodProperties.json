@@ -1,6 +1,6 @@
 {
 	"class" : {
-		 },
+		"isAbstract" : "NK 7/24/2018 15:00" },
 	"instance" : {
 		"assertCollision:with:" : "NK 7/23/2018 13:31",
 		"assertCollision:with:andOffset:" : "NK 7/23/2018 13:30",

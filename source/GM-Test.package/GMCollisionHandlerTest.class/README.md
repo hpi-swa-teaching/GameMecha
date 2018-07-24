@@ -1,1 +1,1 @@
-Includes basic tests for our collision detection code. Basic means that instead of the collision itself basic functionalites like adding a GMCollisionHandler or a specific collision shape to a morph are tested.
+This test Includes basic tests for the collision detection of GM. This includes basic functionalites like adding a GMCollisionHandler or a specific collision shape to a morph.

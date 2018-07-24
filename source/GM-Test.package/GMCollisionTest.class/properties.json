@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NK 7/24/2018 15:05",
 	"instvars" : [
 		"collisionHandler" ],
 	"name" : "GMCollisionTest",
