@@ -16,8 +16,8 @@ initialize
 	self gmRegisterKeyEvent: [self position: self position + (0 @ self class speed)] forKey: Character arrowDown.
 	"Similar to the registration of block we can also register a method and an object on which the method should be called
 	for a key. Like for blocks gmEvaluateRegisteredEvents hast to be called to check for pressed keys (see step)."
-	self gmRegisterMethodInvocation: #expand on: self  forKey: $e.
-	self gmRegisterMethodInvocation: #shrink on: self  forKey: $q.
+	self gmRegisterMethodInvocation: #expand on: self forKey: $e.
+	self gmRegisterMethodInvocation: #shrink on: self forKey: $q.
 
 	"Attention: Every time you register a new block for a key the previously registered block gets unregistered.
 	Likewise, every time you register a new method for a key the previously registered method gets unregistered.

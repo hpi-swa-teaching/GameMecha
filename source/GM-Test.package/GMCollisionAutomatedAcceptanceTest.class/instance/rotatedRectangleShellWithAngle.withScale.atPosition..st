@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 rotatedRectangleShellWithAngle: aNumber withScale: anotherNumber atPosition: aPoint
 	| aMorph |
 	aMorph := RectangleMorph new
