@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "AZ 6/19/2018 17:37",
+	"commentStamp" : "NK 7/24/2018 16:59",
 	"instvars" : [
 		"velocity" ],
 	"name" : "GMDemoGameMovingEntity",

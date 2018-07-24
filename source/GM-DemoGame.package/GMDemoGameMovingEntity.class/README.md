@@ -1,1 +1,1 @@
-This class defines more refined behavior for moving entities.
+A GMDemoGameMovingEntity provides more refined behavior for moving entities.

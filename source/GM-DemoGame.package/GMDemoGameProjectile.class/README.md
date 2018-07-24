@@ -1,1 +1,1 @@
-A GMDemoGameProjectile is the projectile shot by the Spaceship.
+A GMDemoGameProjectile is the projectile shot by the spaceship.
