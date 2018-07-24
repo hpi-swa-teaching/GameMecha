@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "brh 6/26/2018 21:42",
+	"commentStamp" : "NK 7/24/2018 15:45",
 	"instvars" : [
 		"cache" ],
 	"name" : "GMResourceLoader",

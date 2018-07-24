@@ -1,1 +1,1 @@
-A GMAnimatedImageLoader can load (animated) gif images from disk and store them in a cache. It returns Readers which than can be used to construct an AnimatedImageMorph.
+A GMAnimatedImageLoader can handle and store (animated) gif images in a cache. It returns Readers which than can be used to construct an AnimatedImageMorph (see AnimatedImageMorph).
