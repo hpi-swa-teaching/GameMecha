@@ -1,4 +1,4 @@
-key events
+testing
 createKeyboardEventOfType: aType withValue: aKeyValue
 	^ KeyboardEvent new
 		setType: aType

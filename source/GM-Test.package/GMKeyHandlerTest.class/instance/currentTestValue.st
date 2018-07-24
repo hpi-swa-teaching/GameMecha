@@ -1,0 +1,3 @@
+accessing
+currentTestValue
+	^ currentTestValue

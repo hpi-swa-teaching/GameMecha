@@ -1,5 +1,10 @@
 test cases
 testBlockRegistration
-	self deny: [self testedValue = self class assignedValue].
-	self keyMorph gmRegisterKeyEvent: [self testedValue: self class assignedValue] forKey: $s.
-	self assertKeyDownUpWorks.
+	self deny: [self currentTestValue = self class assignedValue].
+	self keyMorph gmRegisterKeyEvent: [self currentTestValue: self class assignedValue] forKey: self keyCharacter.
+	self assertKeyboardEventOfType: #keyDown 
+		evaluates: [self currentTestValue = self class assignedValue] 
+		then: [self resetCurrentTestValue].
+	self assertKeyboardEventOfType: #keyUp 
+		evaluates: [self currentTestValue isNil] 
+		then: [].

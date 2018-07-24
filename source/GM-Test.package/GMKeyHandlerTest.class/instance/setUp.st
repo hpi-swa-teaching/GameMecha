@@ -1,4 +1,4 @@
 testing
 setUp
-	self testedValue: nil.
+	self resetCurrentTestValue.
 	GMKeyHandler cleanUp.

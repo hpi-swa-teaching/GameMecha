@@ -1,12 +1,8 @@
 accessing
 rotatedRectangleTallShell
-	^ rotatedRectangleTallShell ifNil:
-		[rotatedRectangleTallShell := 
-			(self newMorphWithOwner
-				extent: self class rotatedRectangleTallExtent;
-				center: 0 @ 0;
-				addFlexShell;
-				owner).
-		rotatedRectangleTallShell gmCollisionDetectionStrategy: self strategy;
-			angle: self class rotatedRectangleTallAngle]
+	^ rotatedRectangleTallShell ifNil: [rotatedRectangleTallShell := 
+		(self newShellWithExtent: self class rotatedRectangleTallExtent)
+			gmCollisionDetectionStrategy: self strategy;
+			angle: self class rotatedRectangleTallAngle;
+			yourself]
 			 
