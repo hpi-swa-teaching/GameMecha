@@ -2,25 +2,25 @@ initialization
 initialize
 	super initialize.
 	
-	"This line is only important to keeps this test working even without the corresponding images
-	in the Resources folder (we store the file out of a Method in the file system). 
-	This is not necessary when you want to use our library in the regular case and all your files 
-	are already stored on disk."
+	"This line is only important to keeps this test working without the corresponding images on disk.
+	It is not part of the library api and not needed for regular use.
+	It creates the necessary files on disk from the image".
 	GMTestResourceFixtures createImagesOnDisk.
 	
 	self image: (GMImageLoader new 
-		"Our GMImageManager can load all files out of a given folder into the cache.
-		Files are cached with their full name as string as their key(ex: 'picture.png'), relative folder directories are ignored.
+		"The GMImageLoader can load all or single files out of a given folder into the cache.
+		Files are cached with their relative pathname as string as their key(ex: 'folder\picture.wav')
+		It is possible to provide a custom naming function to the loadAll mechanism as a block.
+		For an example look at the defaultNameFunction of GMResourceLoader.
 		If you want to load singles resource files and give them specific names use:
-			loadResourceIntoCache: filename withName: nameOfKey"
+			loadResourceFromDrive: aFilename withName: aName"
 		loadAllResourcesFromDrive: GMTestResourceFixtures testResourceFolder;
 		"Finally we can access a specific cached Form by its key."
 		at: GMTestResourceFixtures testImagePathPNG).
 	
 	"This line again is only important to keep this test free of lasting side effects.
-	We clean the previously stored file from the filesystem to clean up behind us. 
-	This step is not necessary when you want to use our library in the regular case and all your files 
-	are already stored on disk."
+	It is not part of the library api.
+	We clean the previously stored file from the filesystem to clean up behind us."
 	GMTestResourceFixtures clearResourcesOnDisk.
 	
 	self abandon.
