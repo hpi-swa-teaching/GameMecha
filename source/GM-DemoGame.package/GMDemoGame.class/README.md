@@ -4,4 +4,4 @@ Furthermore, the demo game is responsible for listening to keyboard inputs. Othe
 
 Some methods are exessively commented because the game's purpose is to explain implementation examples of the GM library, normally you wouldn't do this.
 
-To play use W,A,S,D and the arrow keys. R resets the game
+To play use W,A,S,D and the arrow keys.
