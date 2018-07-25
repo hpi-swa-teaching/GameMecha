@@ -2,6 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
+		"centerDistanceFrom:" : "brh 7/25/2018 21:51",
+		"circleAt:withRadius:mustIntersectRectangleAt:withExtent:" : "brh 7/25/2018 21:58",
 		"isCollidingWith:" : "AZ 5/15/2018 20:43",
 		"isCollidingWithCircle:" : "AZ 5/15/2018 20:43",
 		"isCollidingWithRectangle:" : "AZ 5/15/2018 20:43",

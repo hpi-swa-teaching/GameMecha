@@ -3,11 +3,17 @@
 		 },
 	"instance" : {
 		"areCorners:intersectingWith:onSeparatingAxes:" : "brh 7/24/2018 21:50",
+		"canIntersectCircle:" : "brh 7/25/2018 21:43",
+		"centerDistanceFrom:" : "brh 7/25/2018 21:42",
 		"corners" : "AZ 5/28/2018 17:01",
 		"isCollidingWith:" : "TP 7/10/2018 16:20",
-		"isCollidingWithCircle:" : "brh 7/24/2018 21:56",
+		"isCollidingWithCircle:" : "brh 7/25/2018 21:49",
 		"isCollidingWithRectangle:" : "AZ 7/15/2018 17:11",
 		"isCollidingWithRotatedRectangle:" : "brh 6/9/2018 16:03",
+		"isIntersectingWithCircle:" : "brh 7/25/2018 21:49",
+		"mustIntersectCircle:" : "brh 7/25/2018 21:45",
 		"originalCorners" : "AZ 7/15/2018 18:19",
 		"originalRectangle" : "AZ 5/29/2018 19:20",
+		"rectangleExtent" : "brh 7/25/2018 21:41",
+		"rotatePointAroundCenter:" : "brh 7/25/2018 21:35",
 		"separatingAxes" : "brh 6/9/2018 16:03" } }
