@@ -1,4 +1,4 @@
-testing
+running
 setUp
 	super setUp.
 	self resourceManager: (GMSoundLoader new

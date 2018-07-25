@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 newShellWithExtent: anExtent
 	^ self newMorphWithOwner
 		extent: anExtent;

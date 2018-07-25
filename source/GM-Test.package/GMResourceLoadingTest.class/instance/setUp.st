@@ -1,3 +1,3 @@
-testing
+running
 setUp
 	GMTestResourceFixtures clearResourcesOnDisk.

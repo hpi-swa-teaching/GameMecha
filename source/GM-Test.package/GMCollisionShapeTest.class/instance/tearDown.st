@@ -1,3 +1,3 @@
-testing
+running
 tearDown
 	self collisionHandler removeAllMorphs.
