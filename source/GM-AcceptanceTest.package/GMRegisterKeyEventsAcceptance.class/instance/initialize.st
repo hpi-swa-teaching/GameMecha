@@ -7,12 +7,10 @@ initialize
 	"First of all, we need to specify that this Morph should listen to keyboard input.
 	We use our GMKeyHandler (gmRegisterToKeyHandler), because it is plattorm independent."
 	self gmRegisterToKeyHandler.
-	"Now we can register blocks which should be executed every time
-	gmEvaluateRegisteredEvents is sent and the key for which the block is registered is pressed.
-	See step for more details."
+	
+	"Now we can register events to keys. Browse the code of the following two methods to learn
+	how to register events for keys using our GMKeyHandler."
 	self registerMovementBlocks.
-	"Similar to the registration of block we can also register a method and an object on which the method should be called
-	for a key. Like for blocks gmEvaluateRegisteredEvents hast to be called to check for pressed keys (see step)."
 	self registerResizeMethods.
 	
 	"Blocks and methods can also be deregistered(see resetFunctionKeys)"
