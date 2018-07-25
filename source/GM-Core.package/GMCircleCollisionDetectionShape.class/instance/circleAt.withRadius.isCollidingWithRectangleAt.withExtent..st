@@ -1,4 +1,4 @@
-circle rectangle collision
+utility
 circleAt: circlePos withRadius: radius isCollidingWithRectangleAt: rectanglePos withExtent: extent
 	(self circleAt: circlePos 
 		withRadius: radius 

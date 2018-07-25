@@ -1,6 +1,6 @@
 collision
 isCollidingWithCircle: aMorph
-	^ self 
+	^ aMorph gmCollisionDetectionShape 
 		circleAt: (self rotatePointAroundCenter: aMorph center)
 		withRadius: aMorph gmCollisionDetectionShape radius
 		isCollidingWithRectangleAt: self owner center

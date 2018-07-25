@@ -2,10 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"areCorners:intersectingWith:onSeparatingAxes:" : "brh 7/24/2018 21:50",
+		"areCorners:intersectingWith:onSeparatingAxes:" : "brh 7/25/2018 22:41",
 		"corners" : "AZ 5/28/2018 17:01",
+		"corners:notOverlapping:" : "brh 7/25/2018 22:38",
 		"isCollidingWith:" : "TP 7/10/2018 16:20",
-		"isCollidingWithCircle:" : "brh 7/25/2018 22:21",
+		"isCollidingWithCircle:" : "brh 7/25/2018 22:49",
 		"isCollidingWithRectangle:" : "AZ 7/15/2018 17:11",
 		"isCollidingWithRotatedRectangle:" : "brh 6/9/2018 16:03",
 		"originalCorners" : "AZ 7/15/2018 18:19",

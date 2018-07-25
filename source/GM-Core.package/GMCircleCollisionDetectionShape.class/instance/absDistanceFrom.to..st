@@ -1,3 +1,3 @@
-circle rectangle collision
+utility
 absDistanceFrom: aPoint to: anotherPoint
 	^ (anotherPoint - aPoint) abs
