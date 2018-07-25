@@ -1,12 +1,12 @@
 utility
-circleAt: circlePos withRadius: radius isCollidingWithRectangleAt: rectanglePos withExtent: extent
+circleAt: circlePos withRadius: circleRadius isCollidingWithRectangleAt: rectanglePos withExtent: rectangleExtent
 	(self circleAt: circlePos 
-		withRadius: radius 
+		withRadius: circleRadius 
 		canIntersectRectangleAt: rectanglePos 
-		withExtent: extent)
+		withExtent: rectangleExtent)
 		ifFalse: [^ false].
 	(self circleAt: circlePos
 		mustIntersectRectangleAt: rectanglePos 
-		withExtent: extent)
+		withExtent: rectangleExtent)
 		ifTrue: [^ true].
-	^ self circleAt: circlePos withRadius: radius isIntersectingRectangleAt: rectanglePos withExtent: extent
+	^ self circleAt: circlePos withRadius: circleRadius isIntersectingRectangleAt: rectanglePos withExtent: rectangleExtent

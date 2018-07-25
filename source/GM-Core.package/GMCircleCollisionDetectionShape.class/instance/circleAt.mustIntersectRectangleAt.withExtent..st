@@ -1,4 +1,4 @@
 utility
-circleAt: circlePos mustIntersectRectangleAt: rectanglePos withExtent: extent
-	^ ((self absDistanceFrom: circlePos to: rectanglePos) x <= (extent x / 2) or:
-		[(self absDistanceFrom: circlePos to: rectanglePos) y <= (extent y / 2)])
+circleAt: circlePos mustIntersectRectangleAt: rectanglePos withExtent: rectangleExtent
+	^ ((self absDistanceFrom: circlePos to: rectanglePos) x <= (rectangleExtent x / 2) or:
+		[(self absDistanceFrom: circlePos to: rectanglePos) y <= (rectangleExtent y / 2)])
