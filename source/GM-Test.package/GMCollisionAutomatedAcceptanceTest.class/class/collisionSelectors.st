@@ -1,3 +1,9 @@
 constants
 collisionSelectors
-	^ {#testAcceptance177023349.#testAcceptance244341967.#testAcceptance34705198.#testAcceptance195478763.#testAcceptance39976651.#testAcceptance75847183.}
+	^ {#testAcceptance212109045.
+	#testAcceptance201176693.
+	#testAcceptance165048452.
+	#testAcceptance187278999.
+	#testAcceptance5456076.
+	#testAcceptance65356020.
+	}

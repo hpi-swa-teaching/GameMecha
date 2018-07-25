@@ -1,13 +1,13 @@
-as yet unclassified
-testAcceptance177023349 
+test cases
+testAcceptance5456076 
 	self assertCollision: (RectangleMorph new 
 		gmCollisionDetectionStrategy: GMRectangleCollisionDetectionShape new;
-		position: (932@697);
+		position: (912@662);
 		extent: (100@100);
 		yourself)
 	 with: (CircleMorph new 
 		gmCollisionDetectionStrategy: GMCircleCollisionDetectionShape new;
-		position: (932@639);
+		position: (912@629);
 		extent: (100@100);
 		yourself)
 	 equals: true
