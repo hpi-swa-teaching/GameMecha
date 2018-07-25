@@ -1,0 +1,3 @@
+storing
+generatedTestCategory
+	^ 'test cases'
