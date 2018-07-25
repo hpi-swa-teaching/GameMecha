@@ -3,7 +3,6 @@
 		 },
 	"instance" : {
 		"canIntersectRectangle:" : "brh 7/25/2018 21:25",
-		"centerDistanceFrom:" : "brh 7/25/2018 21:23",
 		"isCollidingWith:" : "TP 7/10/2018 16:20",
 		"isCollidingWithCircle:" : "brh 7/24/2018 20:48",
 		"isCollidingWithRectangle:" : "brh 7/25/2018 21:29",
