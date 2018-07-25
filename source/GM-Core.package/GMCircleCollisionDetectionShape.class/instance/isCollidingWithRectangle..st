@@ -1,7 +1,7 @@
 collision
 isCollidingWithRectangle: aMorph
-	(self canIntersectRectangle: aMorph)
-		ifFalse: [^ false].
-	(self mustIntersectRectangle: aMorph)
-		ifTrue: [^ true].
-	^ self isIntersectingWithRectangle: aMorph
+	^ self
+		circleAt: self owner center 
+		withRadius: self radius 
+		isCollidingWithRectangleAt: aMorph center
+		withExtent: aMorph extent

@@ -2,8 +2,12 @@
 	"class" : {
 		 },
 	"instance" : {
+		"absDistanceFrom:to:" : "brh 7/25/2018 22:03",
 		"centerDistanceFrom:" : "brh 7/25/2018 21:51",
-		"circleAt:withRadius:mustIntersectRectangleAt:withExtent:" : "brh 7/25/2018 21:58",
+		"circleAt:mustIntersectRectangleAt:withExtent:" : "brh 7/25/2018 22:23",
+		"circleAt:withRadius:canIntersectRectangleAt:withExtent:" : "brh 7/25/2018 22:05",
+		"circleAt:withRadius:isCollidingWithRectangleAt:withExtent:" : "brh 7/25/2018 22:24",
+		"circleAt:withRadius:isIntersectingRectangleAt:withExtent:" : "brh 7/25/2018 22:08",
 		"isCollidingWith:" : "AZ 5/15/2018 20:43",
 		"isCollidingWithCircle:" : "AZ 5/15/2018 20:43",
 		"isCollidingWithRectangle:" : "AZ 5/15/2018 20:43",
