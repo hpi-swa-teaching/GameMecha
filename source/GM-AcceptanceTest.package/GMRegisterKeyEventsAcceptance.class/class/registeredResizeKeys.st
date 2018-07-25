@@ -1,0 +1,3 @@
+constants
+registeredResizeKeys
+	^ {$e . $q}
