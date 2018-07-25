@@ -7,8 +7,8 @@
 	"commentStamp" : "NK 7/24/2018 15:37",
 	"instvars" : [
 		"pressedKeys",
-		"keyToEventMappings",
-		"keyToMethodMappings" ],
+		"keyToMethodMappings",
+		"keyToBlockMappings" ],
 	"name" : "GMKeyHandler",
 	"pools" : [
 		 ],

@@ -4,8 +4,10 @@
 	"instance" : {
 		"gmCollisionDetectionShape" : "TP 7/10/2018 16:20",
 		"gmCollisionDetectionStrategy:" : "TP 7/10/2018 16:23",
+		"gmDeregisterBlockForKey:" : "TP 7/25/2018 15:36",
+		"gmDeregisterMethodInvocationForKey:" : "TP 7/25/2018 15:36",
 		"gmEvaluateRegisteredEvents" : "TP 7/10/2018 16:23",
 		"gmIsKeyPressed:" : "NK 7/24/2018 15:34",
-		"gmRegisterKeyEvent:forKey:" : "AZ 7/15/2018 17:57",
+		"gmRegisterBlock:forKey:" : "TP 7/25/2018 15:29",
 		"gmRegisterMethodInvocation:on:forKey:" : "AZ 7/15/2018 17:58",
 		"gmRegisterToKeyHandler" : "TP 7/10/2018 16:24" } }

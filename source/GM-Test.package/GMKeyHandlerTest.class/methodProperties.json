@@ -16,6 +16,8 @@
 		"setCurrentTestValue" : "brh 7/24/2018 19:54",
 		"setUp" : "brh 7/24/2018 19:55",
 		"testAllOSsSupportSameKeys" : "NK 7/23/2018 13:54",
-		"testBlockRegistration" : "brh 7/24/2018 21:13",
+		"testBlockDeregistration" : "TP 7/25/2018 15:52",
+		"testBlockRegistration" : "TP 7/25/2018 15:29",
 		"testIsKeyPressed" : "brh 7/24/2018 19:59",
+		"testMethodDeregistration" : "TP 7/25/2018 15:52",
 		"testMethodRegistration" : "brh 7/24/2018 21:13" } }
