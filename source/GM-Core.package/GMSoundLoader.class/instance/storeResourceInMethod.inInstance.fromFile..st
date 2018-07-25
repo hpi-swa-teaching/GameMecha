@@ -1,7 +1,8 @@
 storing
 storeResourceInMethod: aSelector inInstance: anInstance fromFile: aFilename
+	"meta-programming warning
+	 only supports WAV, overwritten because we need multiple methods"
 	| sound |
-	"only supports WAV, overwritten because we need multiple methods"
 	sound := self resourceFromDrive: aFilename.
 	self compileMethod: (self samplesMethodName: aSelector)
 		inInstance: anInstance 
