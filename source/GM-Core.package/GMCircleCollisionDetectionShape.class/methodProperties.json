@@ -2,8 +2,12 @@
 	"class" : {
 		 },
 	"instance" : {
+		"canIntersectRectangle:" : "brh 7/25/2018 21:25",
+		"centerDistanceFrom:" : "brh 7/25/2018 21:23",
 		"isCollidingWith:" : "TP 7/10/2018 16:20",
 		"isCollidingWithCircle:" : "brh 7/24/2018 20:48",
-		"isCollidingWithRectangle:" : "brh 7/24/2018 21:56",
+		"isCollidingWithRectangle:" : "brh 7/25/2018 21:29",
 		"isCollidingWithRotatedRectangle:" : "TP 7/10/2018 16:20",
+		"isIntersectingWithRectangle:" : "brh 7/25/2018 21:30",
+		"mustIntersectRectangle:" : "brh 7/25/2018 21:30",
 		"radius" : "AZ 7/15/2018 17:09" } }
