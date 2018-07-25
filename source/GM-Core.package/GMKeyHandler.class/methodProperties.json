@@ -11,7 +11,7 @@
 		"supportedPlatformDict" : "SD 5/8/2018 20:23" },
 	"instance" : {
 		"gmDeregisterBlockForKey:" : "TP 7/25/2018 15:30",
-		"gmDeregisterMethodInvocationForKey:" : "TP 7/25/2018 15:27",
+		"gmDeregisterMethodInvocationForKey:" : "NK 7/25/2018 17:08",
 		"gmEvaluateRegisteredEvents" : "TP 7/25/2018 15:30",
 		"gmIsKeyPressed:" : "TP 7/10/2018 16:23",
 		"gmRegisterBlock:forKey:" : "TP 7/25/2018 15:30",
