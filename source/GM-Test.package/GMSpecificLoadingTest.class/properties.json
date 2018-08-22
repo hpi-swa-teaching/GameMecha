@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 15:13",
+	"instvars" : [
+		 ],
+	"name" : "GMSpecificLoadingTest",
+	"pools" : [
+		 ],
+	"super" : "GMResourceLoadingTest",
+	"type" : "normal" }

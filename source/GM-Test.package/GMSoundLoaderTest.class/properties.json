@@ -1,0 +1,14 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 15:17",
+	"instvars" : [
+		 ],
+	"name" : "GMSoundLoaderTest",
+	"pools" : [
+		 ],
+	"super" : "GMSpecificLoadingTest",
+	"type" : "normal" }

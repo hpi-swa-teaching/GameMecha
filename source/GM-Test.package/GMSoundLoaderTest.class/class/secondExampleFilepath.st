@@ -1,0 +1,3 @@
+constants
+secondExampleFilepath
+	^ GMTestResourceFixtures testSoundPathAIFF

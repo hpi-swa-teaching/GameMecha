@@ -1,0 +1,3 @@
+test cases
+testAnimatedImageLoaderAcceptance
+	GMAnimatedImageLoaderAcceptance new abandon.

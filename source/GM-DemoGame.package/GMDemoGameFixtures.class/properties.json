@@ -1,0 +1,14 @@
+{
+	"category" : "GM-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/25/2018 17:28",
+	"instvars" : [
+		 ],
+	"name" : "GMDemoGameFixtures",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

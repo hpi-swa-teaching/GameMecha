@@ -1,0 +1,3 @@
+loading
+isSupportedType: aFileExtension
+	^ AnimatedGIFReadWriter typicalFileExtensions includes: aFileExtension

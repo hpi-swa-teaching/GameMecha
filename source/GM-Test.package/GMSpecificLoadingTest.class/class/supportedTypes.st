@@ -1,0 +1,3 @@
+constants
+supportedTypes
+	self subclassResponsibility

@@ -1,0 +1,20 @@
+{
+	"class" : {
+		"clearResourcesOnDisk" : "brh 7/10/2018 18:08",
+		"createImagesOnDisk" : "brh 7/10/2018 18:05",
+		"createResourcesOnDisk" : "brh 7/10/2018 18:05",
+		"createSoundOnDisk" : "brh 7/10/2018 18:05",
+		"pewSound" : "AZ 6/19/2018 10:59",
+		"pewSoundPath" : "brh 7/10/2018 18:00",
+		"pewSoundSamples" : "NK 7/23/2018 16:54",
+		"planet" : "AZ 6/12/2018 19:53",
+		"planetPath" : "brh 7/10/2018 17:59",
+		"projectile" : "AZ 6/12/2018 19:53",
+		"projectilePath" : "brh 7/10/2018 17:59",
+		"resourceFolder" : "brh 7/10/2018 17:55",
+		"spaceship1" : "AZ 6/12/2018 19:52",
+		"spaceship1Path" : "brh 7/10/2018 18:00",
+		"spaceship2" : "AZ 6/12/2018 19:52",
+		"spaceship2Path" : "brh 7/10/2018 18:00" },
+	"instance" : {
+		 } }

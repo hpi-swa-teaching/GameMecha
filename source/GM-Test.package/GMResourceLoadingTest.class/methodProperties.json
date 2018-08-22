@@ -1,0 +1,11 @@
+{
+	"class" : {
+		"exampleFilepath" : "NK 7/19/2018 13:53",
+		"isAbstract" : "brh 7/15/2018 11:23" },
+	"instance" : {
+		"loadAll" : "brh 7/15/2018 11:25",
+		"loadAllWithoutEndings" : "brh 7/15/2018 11:25",
+		"resourceManager" : "brh 7/15/2018 11:15",
+		"resourceManager:" : "brh 7/15/2018 11:15",
+		"setUp" : "brh 7/15/2018 11:18",
+		"tearDown" : "brh 7/15/2018 11:15" } }

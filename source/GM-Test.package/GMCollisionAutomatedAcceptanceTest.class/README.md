@@ -1,0 +1,1 @@
+This test contains auto generated tests from GMCollisionTestGenerator.

@@ -1,0 +1,1 @@
+A GMDemoGamePlanet serves as a simple obstacle and doesn't do much.

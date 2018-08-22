@@ -1,0 +1,15 @@
+{
+	"category" : "GM-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 15:07",
+	"instvars" : [
+		"smallRectangle",
+		"bigRectangle" ],
+	"name" : "GMRectangleCollisionTest",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionShapeTest",
+	"type" : "normal" }

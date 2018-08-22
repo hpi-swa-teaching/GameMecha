@@ -1,0 +1,1 @@
+A GMDemoGameEntity is the abstract subclass for all demoGameEntities. It provides a common interface and thus helps to avoid bugs and code duplication.

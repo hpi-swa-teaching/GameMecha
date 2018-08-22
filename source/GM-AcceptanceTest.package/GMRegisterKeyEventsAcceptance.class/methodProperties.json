@@ -1,0 +1,20 @@
+{
+	"class" : {
+		"descriptionText" : "NK 7/25/2018 17:12",
+		"expandSpeed" : "TP 6/26/2018 19:39",
+		"extent" : "TP 6/26/2018 19:41",
+		"registeredMovementKeys" : "NK 7/25/2018 17:07",
+		"registeredResizeKeys" : "NK 7/25/2018 17:07",
+		"shrinkSpeed" : "TP 6/26/2018 19:39",
+		"speed" : "TP 6/26/2018 19:39" },
+	"instance" : {
+		"createStringMorph" : "AZ 7/23/2018 00:31",
+		"expand" : "TP 6/26/2018 19:15",
+		"initialize" : "TP 7/25/2018 18:37",
+		"registerMovementBlocks" : "TP 7/25/2018 18:32",
+		"registerResetAndSetKeys" : "NK 7/25/2018 16:47",
+		"registerResizeMethods" : "TP 7/25/2018 18:33",
+		"resetFunctionKeys" : "NK 7/25/2018 17:01",
+		"shrink" : "TP 6/26/2018 19:15",
+		"step" : "TP 7/10/2018 16:23",
+		"stepTime" : "AZ 6/25/2018 17:55" } }

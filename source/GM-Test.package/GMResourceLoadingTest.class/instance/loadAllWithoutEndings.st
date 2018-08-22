@@ -1,0 +1,3 @@
+resource loading
+loadAllWithoutEndings
+	self resourceManager loadAllResourcesFromDriveWithoutEndings: GMTestResourceFixtures testResourceFolder.

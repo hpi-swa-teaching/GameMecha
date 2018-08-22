@@ -1,0 +1,3 @@
+accessing
+strategy
+	^ GMRotatedRectangleCollisionDetectionShape new

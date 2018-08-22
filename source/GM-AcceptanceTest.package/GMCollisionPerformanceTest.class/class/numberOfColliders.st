@@ -1,0 +1,3 @@
+constants
+numberOfColliders
+	^ 100

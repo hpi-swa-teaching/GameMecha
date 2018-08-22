@@ -1,0 +1,11 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"isOutOfGame" : "AZ 6/19/2018 17:38",
+		"move" : "AZ 6/12/2018 21:04",
+		"resolveCollisions" : "AZ 6/19/2018 17:41",
+		"step" : "AZ 6/12/2018 21:52",
+		"stepTime" : "AZ 6/5/2018 21:56",
+		"velocity" : "AZ 6/5/2018 21:54",
+		"velocity:" : "AZ 6/5/2018 21:54" } }

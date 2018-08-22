@@ -1,0 +1,1 @@
+This abstract test provides functionality for testing resource loading without lasting side effects.

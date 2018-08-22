@@ -1,3 +1,0 @@
-Test GithubRessources.
-
-Instance Variables

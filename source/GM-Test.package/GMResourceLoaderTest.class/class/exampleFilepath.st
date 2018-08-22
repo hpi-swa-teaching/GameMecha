@@ -1,0 +1,3 @@
+constants
+exampleFilepath
+	^ GMTestResourceFixtures testTextPath
