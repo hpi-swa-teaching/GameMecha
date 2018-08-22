@@ -1,3 +1,0 @@
-keys
-keyArrowRight
-	^ 29.

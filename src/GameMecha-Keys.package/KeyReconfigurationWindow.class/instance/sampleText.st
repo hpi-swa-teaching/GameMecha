@@ -1,3 +1,0 @@
-accessing
-sampleText
- 	^ 'Hallo Welt'.

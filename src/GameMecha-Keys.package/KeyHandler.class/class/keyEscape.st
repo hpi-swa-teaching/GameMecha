@@ -1,3 +1,0 @@
-keys
-keyEscape
-	^ 27.

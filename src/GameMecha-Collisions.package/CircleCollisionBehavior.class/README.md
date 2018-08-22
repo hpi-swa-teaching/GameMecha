@@ -1,1 +1,0 @@
-I'm an Extension for Morphs that realizes a circular collision bounding/behavior.

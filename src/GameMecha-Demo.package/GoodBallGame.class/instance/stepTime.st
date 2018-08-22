@@ -1,3 +1,0 @@
-initializing
-stepTime 
- 	^10.

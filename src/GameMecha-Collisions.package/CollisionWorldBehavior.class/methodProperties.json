@@ -1,8 +1,0 @@
-{
-	"class" : {
-		 },
-	"instance" : {
-		"fireCollisionEventsOn:and:" : "mdlh 7/23/2017 12:11",
-		"resolveAllCollisions" : "mdlh 7/23/2017 12:02",
-		"resolveCollisionsOnce" : "mdlh 7/23/2017 12:26",
-		"testCollisionBetween:and:" : "mdlh 7/23/2017 12:11" } }

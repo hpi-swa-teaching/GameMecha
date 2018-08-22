@@ -1,2 +1,0 @@
-A KeyHandler is a Object that is registered as an extension in a morph that will recieve all key events.
-It also manages a collection of KeyBinding Objects, that will be used by the user to add a abstraction from keyEvents.

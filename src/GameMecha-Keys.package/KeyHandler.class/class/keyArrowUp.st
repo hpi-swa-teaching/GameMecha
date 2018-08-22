@@ -1,3 +1,0 @@
-keys
-keyArrowUp
-	^ 30.

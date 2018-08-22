@@ -1,3 +1,0 @@
-legacySupport
-importImageDirectoryWithSubdirectories: directoryOrName 
-	^ self importDirectoryWithSubdirectories: directoryOrName.
