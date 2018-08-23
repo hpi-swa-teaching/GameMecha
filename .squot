@@ -3,5 +3,5 @@ OrderedDictionary {
 	'source\/GM-AcceptanceTest.package' : #SquotCypressCodeSerializer,
 	'source\/GM-Core.package' : #SquotCypressCodeSerializer,
 	'source\/GM-DemoGame.package' : #SquotCypressCodeSerializer,
-	'source\/GM-Test.package' : #SquotCypressCodeSerializer,
+	'source\/GM-Test.package' : #SquotCypressCodeSerializer
 }
