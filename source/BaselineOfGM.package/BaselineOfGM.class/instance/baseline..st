@@ -10,7 +10,7 @@ baseline: spec
 					package: 'GM-AcceptanceTest' with: [spec requires: #('core')];
 					package: 'GM-Core';
 					package: 'GM-DemoGame' with: [spec requires: #('core')];
-					package: 'GM-Test' with: [spec requires: #('core' 'acceptanceTest')];
+					package: 'GM-Test' with: [spec requires: #('core' 'GM-AcceptanceTest')];
 					yourself.
 				spec
 					group: 'core' with: #('GM-Core');
