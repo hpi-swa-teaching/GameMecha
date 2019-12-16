@@ -13,8 +13,9 @@
 		"playSound:" : "brh 7/3/2018 22:12",
 		"resourceFromDrive:" : "brh 7/14/2018 23:53",
 		"resumePlayingMusic" : "AZ 7/10/2018 16:02",
-		"sampledSoundStringFromSound:withSamplesIn:" : "brh 7/24/2018 20:37",
+		"sampledSoundStringFromSound:withSamplesIn:andSamplingRate:" : "tok 12/16/2019 14:21",
 		"samplesMethodName:" : "brh 7/24/2018 20:34",
 		"samplesStringFromSound:" : "brh 7/24/2018 20:30",
-		"storeResourceInMethod:inInstance:fromFile:" : "NK 7/25/2018 12:18",
+		"storeResourceInMethod:inInstance:fromFile:" : "tok 12/16/2019 14:21",
+		"storeResourceInMethod:inInstance:fromFile:withSamplingRate:" : "tok 12/16/2019 14:20",
 		"supportedTypes" : "brh 7/15/2018 14:20" } }
