@@ -1,3 +1,3 @@
-test cases
+as yet unclassified
 testCollisionGeneratorAcceptance
 	GMCollisionTestGenerator new abandon.
