@@ -7,7 +7,7 @@ baseline: spec
 				spec
 					baseline: 'Pheno' with: [spec repository: 'github://tom95/Pheno:master/src'];
 					package: 'GM-Utilities' with: [spec requires: #('Pheno' 'core')];
-					package: 'GM-UtilitiesTest' with: [spec requires: #('Utilities')];
+					package: 'GM-UtilitiesTest' with: [spec requires: #('GM-Utilities')];
 					package: 'GM-AcceptanceTest' with: [spec requires: #('core')];
 					package: 'GM-Core';
 					package: 'GM-DemoGame' with: [spec requires: #('core')];
