@@ -1,9 +1,9 @@
 OrderedDictionary {
-	'source/BaselineOfGM.package' : #SquotCypressCodeSerializer,
-	'source/GM-AcceptanceTest.package' : #SquotCypressCodeSerializer,
-	'source/GM-Core.package' : #SquotCypressCodeSerializer,
-	'source/GM-DemoGame.package' : #SquotCypressCodeSerializer,
-	'source/GM-Test.package' : #SquotCypressCodeSerializer,
-	'source/GM-Utilities.package' : #SquotCypressCodeSerializer,
-	'source/GM-UtilitiesTest.package' : #SquotCypressCodeSerializer
+	'source\/BaselineOfGM.package' : #SquotCypressCodeSerializer,
+	'source\/GM-AcceptanceTest.package' : #SquotCypressCodeSerializer,
+	'source\/GM-Core.package' : #SquotCypressCodeSerializer,
+	'source\/GM-DemoGame.package' : #SquotCypressCodeSerializer,
+	'source\/GM-Test.package' : #SquotCypressCodeSerializer,
+	'source\/GM-Utilities.package' : #SquotCypressCodeSerializer,
+	'source\/GM-UtilitiesTest.package' : #SquotCypressCodeSerializer
 }
