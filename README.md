@@ -1,4 +1,4 @@
-# Game Mechanics [![Build Status](https://travis-ci.org/hpi-swa-teaching/GameMecha.svg?branch=master)](https://travis-ci.org/hpi-swa-teaching/GameMecha)
+# Game Mechanics ![build status](https://github.com/hpi-swa-teaching/GameMecha/actions/workflows/main.yml/badge.svg?branch=master)
 We are creating a game library.
 
 ## How to install
