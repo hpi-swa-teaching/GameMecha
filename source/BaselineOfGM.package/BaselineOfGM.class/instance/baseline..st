@@ -5,8 +5,7 @@ baseline: spec
 		for: #'common'
 			do: [
 				spec
-					baseline: 'Pheno' with: [spec repository: 'github://tom95/Pheno:master/src'];
-					package: 'GM-Utilities' with: [spec requires: #('Pheno' 'core')];
+					package: 'GM-Utilities' with: [spec requires: #('test')];
 					package: 'GM-UtilitiesTest' with: [spec requires: #('GM-Utilities')];
 					package: 'GM-AcceptanceTest' with: [spec requires: #('core')];
 					package: 'GM-Core';
@@ -15,6 +14,7 @@ baseline: spec
 					yourself.
 				spec
 					group: 'core' with: #('GM-Core');
+					group: 'swa' with: #('GM-AcceptanceTest');
 					group: 'test' with: #('GM-Test' 'GM-AcceptanceTest');
 					group: 'development' with: #('GM-AcceptanceTest' 'GM-Utilities')];
 					yourself

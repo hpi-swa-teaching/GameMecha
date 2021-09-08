@@ -1,6 +1,6 @@
 This is a small tool for integrated testing of the GM collision. Similar to, for example, FIT (framework for integrated testing), it allows the user to test and create various collision scenarios and save them as executable acceptance tests, which later are automatically tested. It is also helpful for developers to integrate, test and debug new or existing kinds of collisions.
 
-Because this tool uses pheno you have to open it using "GMCollisionAcceptanceGenerator open."
+Open this tool with "GMCollisionAcceptanceGenerator open."
 Usage:
 First of all, select a type of collision (e.g. collision between rotated rectangles) using the collision selector at the top right of the tool.
 Now you can move the morphs using their halo (hold shift and click on the morph using the middle mouse button or hold shift and alt and click with the left mouse button).

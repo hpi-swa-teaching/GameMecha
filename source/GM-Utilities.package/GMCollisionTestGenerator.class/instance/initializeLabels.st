@@ -1,5 +1,5 @@
-pheno
+initialization
 initializeLabels
-	self 
-		add: (PHLabel subHeading: 'you can open the halos and move the morphs around');
-		add: (PHDescriptionList items: {}).
+	self addMorphBack: (StaticTextMorph
+		string: 'you can open the halos and move the morphs around'
+		size: 16).

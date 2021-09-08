@@ -4,12 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NK 7/25/2018 17:20",
+	"commentStamp" : "ek 9/8/2021 17:22",
 	"instvars" : [
 		"collisionMorph",
 		"collisionChecks" ],
 	"name" : "GMCollisionTestGenerator",
 	"pools" : [
 		 ],
-	"super" : "PHWidget",
+	"super" : "Morph",
 	"type" : "normal" }

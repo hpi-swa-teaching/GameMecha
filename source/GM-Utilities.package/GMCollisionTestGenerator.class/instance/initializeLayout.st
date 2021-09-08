@@ -1,9 +1,11 @@
-pheno
+initialization
 initializeLayout
 	self
-		withLayout;
-		addStyleClass: #withPadding;
-		vertical: true;
+		layoutPolicy: TableLayout new;
+		listDirection: #topToBottom;
+		hResizing: #shrinkWrap;
+		vResizing: #shrinkWrap;
+		color: self initialColor;
 		extent: self initialExtent.
 	self 
 		initializeButtons;

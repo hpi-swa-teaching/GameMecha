@@ -2,4 +2,4 @@ initialization
 initialize
 	super initialize.
 	self initializeLayout.
-	self addMorph: self collisionMorph.
+	self addMorphBack: self collisionMorph.
