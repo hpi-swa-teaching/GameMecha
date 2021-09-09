@@ -14,7 +14,7 @@ baseline: spec
 					yourself.
 				spec
 					group: 'core' with: #('GM-Core');
-					group: 'swa' with: #('GM-AcceptanceTest');
+					group: 'swa' with: #('GM-AcceptanceTest' 'GM-DemoGame');
 					group: 'test' with: #('GM-Test' 'GM-AcceptanceTest');
 					group: 'development' with: #('GM-AcceptanceTest' 'GM-Utilities')];
 					yourself
