@@ -7,8 +7,9 @@ baseline: spec
 				spec
 					package: 'GM-Utilities' with: [spec requires: #('test')];
 					package: 'GM-UtilitiesTest' with: [spec requires: #('GM-Utilities')];
-					package: 'GM-AcceptanceTest' with: [spec requires: #('core')];
+					package: 'GM-AcceptanceTest' with: [spec requires: #('core' 'GM-TestFixtures')];
 					package: 'GM-Core';
+					package: 'GM-TestFixtures';
 					package: 'GM-DemoGame' with: [spec requires: #('core')];
 					package: 'GM-Test' with: [spec requires: #('core' 'GM-AcceptanceTest')];
 					yourself.
