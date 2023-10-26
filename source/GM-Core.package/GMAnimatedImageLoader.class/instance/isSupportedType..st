@@ -1,3 +1,3 @@
 loading
 isSupportedType: aFileExtension
-	^ AnimatedGIFReadWriter typicalFileExtensions includes: aFileExtension
+	^ GIFReadWriter typicalFileExtensions includes: aFileExtension

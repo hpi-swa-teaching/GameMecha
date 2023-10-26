@@ -19,7 +19,7 @@ initialize
 	
 	"Finally we can access a specific cached AnimatedGIFReadWriter by its key."
 	"AnimatedImageMorphs can be initialized with this reader."
-	self fromReader: (animatedImageLoader at: GMTestResourceFixtures testImagePathGIF).
+	self fromGIFReader: (animatedImageLoader at: GMTestResourceFixtures testImagePathGIF).
 	
 	"This line again is only important to keep this test free of lasting side effects.
 	It is not part of the library api.

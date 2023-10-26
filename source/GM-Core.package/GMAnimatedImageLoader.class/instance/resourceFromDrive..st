@@ -1,3 +1,3 @@
 loading
 resourceFromDrive: aFilename
-	^ AnimatedGIFReadWriter formsFromFileNamed: aFilename
+	^ GIFReadWriter formsFromFileNamed: aFilename
