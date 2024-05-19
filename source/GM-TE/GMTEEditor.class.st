@@ -6,11 +6,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 16:22'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:18'
 }
 GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
-		name: 'Command Bar';
+		name: 'command bar';
 		children: {aBuilder pluggableButtonSpec new
 			label: 'Export';
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.3 @ 1) offsets: nil).
@@ -26,69 +26,59 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 16:22'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:18'
 }
 GMTEEditor class >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
-		name: 'Layers';
+		name: 'layers';
 		frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 16:34'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:18'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
-		name: 'Tile Viewer';
+		name: 'tile viewer';
 		frame: (LayoutFrame fractions: (0.2 @ 0.1 corner: 0.8 @ 0.8) offsets: nil);
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 17:07'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:28'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
-	| redMorph blueMorph|
-	
-	redMorph := Morph new
-		color: Color red;
-		yourself.
-	
-	blueMorph := Morph new.
 
+		^aBuilder pluggablePanelSpec new
+			frame: ((0 @ 0.1) corner: 0.2 @ 1);
+			name: 'tile store';
+			layout: #vertical;
+			children: {};
+			padding: 10;
+			spacing: 20;
+			verticalResizing: #shrinkWrap;
+			horizontalResizing: #shrinkWrap;
+			yourself.
 
-	^SquotGUIUtilities buildEvenGrid: {
-		aBuilder pluggableButtonSpec new
-			label: 'test1';
-			color: Color red.
-		aBuilder pluggableButtonSpec new
-			label: 'test2';
-			color: Color blue } ofSize: 1@2 with: aBuilder
-		
-"^aBuilder pluggablePanelSpec new
-		name: 'Tilestore';
-		frame: (LayoutFrame fractions: (0 @ 0.1 corner: 0.2 @ 1) offsets: nil);
-		children: {redMorph . blueMorph}
-		yourself"
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 16:22'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:19'
 }
 GMTEEditor class >> createTrayWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
-		name: 'Tray';
+		name: 'tray';
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 16:20'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:28'
 }
 GMTEEditor class >> new [
 
@@ -106,5 +96,9 @@ GMTEEditor class >> new [
 				self createLayersWithBuilder: builder};
 			yourself.
 	morph := builder build: spec.
+	(morph submorphNamed: 'tile store') addMorph: Morph new.
+	(morph submorphNamed: 'tile store') addMorph: (Morph new
+		color: Color red;
+		yourself).
 	morph openInWorld
 ]
