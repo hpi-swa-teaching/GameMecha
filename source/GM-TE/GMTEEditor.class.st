@@ -37,11 +37,12 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 17:18'
+	#'squeak_changestamp' : 'JS 5/19/2024 17:12'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
-		name: 'tile viewer';
+		name: 'Tile Viewer';
+		layout: #horizontal;
 		frame: (LayoutFrame fractions: (0.2 @ 0.1 corner: 0.8 @ 0.8) offsets: nil);
 		yourself
 ]
@@ -78,11 +79,11 @@ GMTEEditor class >> createTrayWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 17:28'
+	#'squeak_changestamp' : 'TW 5/19/2024 17:32'
 }
 GMTEEditor class >> new [
 
-	|builder spec morph|
+	|builder spec morph submorph|
 	super new.
 	builder := ToolBuilder default.
 	spec := builder pluggableWindowSpec new
@@ -96,9 +97,20 @@ GMTEEditor class >> new [
 				self createLayersWithBuilder: builder};
 			yourself.
 	morph := builder build: spec.
+
 	(morph submorphNamed: 'tile store') addMorph: Morph new.
 	(morph submorphNamed: 'tile store') addMorph: (Morph new
 		color: Color red;
 		yourself).
+
+	submorph := RectangleMorph new.
+
+	(morph submorphNamed: 'Tile Viewer') addMorph: submorph.
+
+	submorph 
+		position: (submorph owner position);
+		hResizing: #spaceFill; 
+		vResizing: #spaceFill.
+	
 	morph openInWorld
 ]
