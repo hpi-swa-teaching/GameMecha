@@ -7,6 +7,8 @@ Class {
 		'mapPadding',
 		'mapPaddedWidth',
 		'tileSizeWidth',
+		'tileSizeHeight',
+		'tileSizeRatio',
 		'mapSizeWidth',
 		'mapSizeHeight',
 		'borderSizeTotalWidth',
@@ -26,12 +28,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:34'
 }
-GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding [
+GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
 	
 	^ self new
-		setDimensionsWidth: aWidth height: aHeight padding: aPadding
+		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
+		tileSizeRatio: aRatio
 ]
 
 {
@@ -300,11 +303,12 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:56'
 }
 GMTETileMap >> processTiles [
 	"comment stating purpose of message"
 
+	self gridTileMatrix do: [ :tile | tile borderColor: Color red. tile borderWidth: 2]
 
 ]
 
@@ -338,7 +342,7 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:12'
 }
 GMTETileMap >> setupGridTileMatrix [
 	"Create grid tile matrix datastructure"
@@ -349,13 +353,15 @@ GMTETileMap >> setupGridTileMatrix [
 		columns: self tileWidth.
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |
-			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeWidth).
-			correctedTilePos := self tileCornerOffset + tilePos + (self topLeft x)@(self topLeft y).
 			
-			newTile := GMTETile "TODO FIX"
+			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
+			correctedTilePos := self tileCornerOffset + tilePos + ((self topLeft x)@(self topLeft y)).
+						
+			newTile := GMTETile 
 				x: correctedTilePos x
 				y: correctedTilePos y
-				size: self tileSizeWidth.
+				width: self tileSizeWidth
+				height: self tileSizeHeight.
 			newTile lock.
 			newTile beTransparent.
 			
@@ -402,6 +408,42 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:09'
+}
+GMTETileMap >> tileSizeHeight [
+
+	^ tileSizeHeight
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:09'
+}
+GMTETileMap >> tileSizeHeight: anObject [
+
+	tileSizeHeight := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:34'
+}
+GMTETileMap >> tileSizeRatio [
+
+	^ tileSizeRatio
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:34'
+}
+GMTETileMap >> tileSizeRatio: anObject [
+
+	tileSizeRatio := anObject.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
 }
 GMTETileMap >> tileSizeWidth [
@@ -438,26 +480,30 @@ GMTETileMap >> tileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:22'
 }
 GMTETileMap >> updateDimensions [
 	"Adjust map grid dimensions to screen size & calculate dependent values"
 
-	| possibleTileSizeWidth possibleTileSizeHeight |
+	| maxTileSizeWidth maxTileSizeHeight |
 	"Adjust for border padding"
 	self mapPaddedWidth: self width * (1 - self mapPadding).
 	self mapPaddedHeight: self height * (1 - self mapPadding).
 	
 	"Calculate maximum tile width for x and y dimension"
-	possibleTileSizeWidth := self mapPaddedWidth // self mapTileWidth.
-	possibleTileSizeHeight := self mapPaddedHeight // self mapTileHeight.
+	maxTileSizeWidth := self mapPaddedWidth // self mapTileWidth.
+	maxTileSizeHeight := self mapPaddedHeight // self mapTileHeight.
 	
 	"Choose smalles length as common denominator"
-	self tileSizeWidth: (possibleTileSizeWidth min: possibleTileSizeHeight). "TODO FIX"
+	(self tileSizeRatio < (maxTileSizeWidth / maxTileSizeHeight))
+		ifTrue: [maxTileSizeHeight := (maxTileSizeWidth // self tileSizeRatio)]
+		ifFalse: [maxTileSizeWidth := (maxTileSizeHeight // self tileSizeRatio)].
+	self tileSizeWidth: maxTileSizeWidth.
+	self tileSizeHeight: maxTileSizeHeight.	
 	
 	"Calculate proper map size with selected tile size"
 	self mapSizeWidth: self tileSizeWidth * self mapTileWidth.
-	self mapSizeHeight: self tileSizeWidth * self mapTileHeight.
+	self mapSizeHeight: self tileSizeHeight * self mapTileHeight.
 	
 	"Calculate border dimensions"
 	self borderSizeTotalWidth: self width - self mapSizeWidth.
@@ -465,15 +511,18 @@ GMTETileMap >> updateDimensions [
 	
 	"Calculate tile count at each border"
 	self borderTileWidth: (self borderSizeTotalWidth / 2 / self tileSizeWidth) ceiling.
-	self borderTileHeight: (self borderSizeTotalHeight / 2 / self tileSizeWidth) ceiling.
+	self borderTileHeight: (self borderSizeTotalHeight / 2 / self tileSizeHeight) ceiling.
 	
 	"Added border tiles to total tile count"
-	self tileWidth: 2 * self borderTileWidth + self mapTileWidth.
-	self tileHeight: 2 * self borderTileHeight + self mapTileHeight.
+	"TODO: just remove border related logic?"
+	"self tileWidth: 2 * self borderTileWidth + self mapTileWidth."
+	"self tileHeight: 2 * self borderTileHeight + self mapTileHeight."
+	self tileWidth: self mapTileWidth.
+	self tileHeight: self mapTileHeight.
 	
 	"Calculate total width and height of grid (pixels)"
 	self fullGridSizeWidth: self tileWidth * self tileSizeWidth.
-	self fullGridSizeHeight: self tileHeight * self tileSizeWidth.
+	self fullGridSizeHeight: self tileHeight * self tileSizeHeight.
 	
 	"Set tile corner offset to display grid (bigger than screen) centered"
 	self tileCornerOffset: 
