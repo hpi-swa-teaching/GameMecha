@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #'GM-TE'
+	#name : #'GM-TE',
+	#'squeak_changestamp' : true
 }
