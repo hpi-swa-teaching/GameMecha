@@ -480,7 +480,7 @@ GMTETileMap >> tileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:52'
 }
 GMTETileMap >> updateDimensions [
 	"Adjust map grid dimensions to screen size & calculate dependent values"
@@ -496,8 +496,8 @@ GMTETileMap >> updateDimensions [
 	
 	"Choose smalles length as common denominator"
 	(self tileSizeRatio < (maxTileSizeWidth / maxTileSizeHeight))
-		ifTrue: [maxTileSizeHeight := (maxTileSizeWidth // self tileSizeRatio)]
-		ifFalse: [maxTileSizeWidth := (maxTileSizeHeight // self tileSizeRatio)].
+		ifTrue: [maxTileSizeWidth := (maxTileSizeHeight * self tileSizeRatio)]
+		ifFalse: [maxTileSizeHeight := (maxTileSizeWidth // self tileSizeRatio)].
 	self tileSizeWidth: maxTileSizeWidth.
 	self tileSizeHeight: maxTileSizeHeight.	
 	
