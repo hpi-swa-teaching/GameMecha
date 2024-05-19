@@ -79,11 +79,11 @@ GMTEEditor class >> createTrayWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 17:32'
+	#'squeak_changestamp' : 'JS 5/19/2024 17:45'
 }
 GMTEEditor class >> new [
 
-	|builder spec morph submorph|
+	|builder spec morph tileMatrixMorph tileStore tileViewer|
 	super new.
 	builder := ToolBuilder default.
 	spec := builder pluggableWindowSpec new
@@ -97,20 +97,24 @@ GMTEEditor class >> new [
 				self createLayersWithBuilder: builder};
 			yourself.
 	morph := builder build: spec.
+	tileStore := morph submorphNamed: 'tile store'.
+	tileViewer := (morph submorphNamed: 'Tile Viewer').
 
-	(morph submorphNamed: 'tile store') addMorph: Morph new.
-	(morph submorphNamed: 'tile store') addMorph: (Morph new
+	tileStore addMorph: Morph new.
+	tileStore addMorph: (Morph new
 		color: Color red;
 		yourself).
 
-	submorph := RectangleMorph new.
+	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.0 sizeRatio: 2.
 
-	(morph submorphNamed: 'Tile Viewer') addMorph: submorph.
-
-	submorph 
-		position: (submorph owner position);
+	tileViewer addMorph: tileMatrixMorph.		
+	
+	tileMatrixMorph 
+		position: (tileMatrixMorph owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
 	
-	morph openInWorld
+	morph openInWorld.
+	
+	tileMatrixMorph updateMap.
 ]
