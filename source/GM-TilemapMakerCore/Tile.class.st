@@ -1,7 +1,7 @@
 Class {
 	#name : #Tile,
 	#superclass : #ImageMorph,
-	#category : #'GM-TilemapMaker'
+	#category : #'GM-TilemapMakerCore'
 }
 
 {

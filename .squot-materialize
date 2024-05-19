@@ -46,6 +46,14 @@
 		],
 		#encoding : 'TXT'
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GM-TilemapMakerCore'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
 	SquotCypressMapper {
 		#package : MCPackage {
 			#name : 'GM-AcceptanceTest'
@@ -106,14 +114,6 @@
 		],
 		#encoding : 'TXT'
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GM-TilemapMaker'
-		},
-		#path : FSAbsolutePath [
-			'source'
-		]
-	},
 	SquotCypressMapper {
 		#package : MCPackage {
 			#name : 'GM-Core'
@@ -136,11 +136,17 @@
 			'source'
 		]
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GM-TilemapMakerGui'
+		},
+		#path : @19
+	},
 	SquotCypressMapper {
 		#package : MCPackage {
 			#name : 'GM-Test'
 		},
-		#path : @41
+		#path : @19
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [

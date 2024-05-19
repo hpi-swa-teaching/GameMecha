@@ -1,4 +1,4 @@
 Package {
 	#'squeak_changestamp' : true,
-	#name : #'GM-TilemapMaker'
+	#name : #'GM-TilemapMakerCore'
 }
