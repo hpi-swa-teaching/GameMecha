@@ -89,7 +89,7 @@ GMTEEditor class >> createTrayWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 5/19/2024 17:12'
+	#'squeak_changestamp' : 'JS 5/19/2024 17:21'
 }
 GMTEEditor class >> new [
 
@@ -116,6 +116,8 @@ GMTEEditor class >> new [
 		position: (submorph owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
+	
+	"test"
 	
 	morph openInWorld
 ]
