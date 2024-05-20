@@ -110,12 +110,23 @@ GMTETileMap >> borderTileWidth: anObject [
 ]
 
 {
-	#category : #'import/export',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 13:15'
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:49'
 }
-GMTETileMap >> exportAsImage [
-	"Add further options in the future like choosing file format?"
-	self exportAsPNG
+GMTETileMap >> clearTiles [
+
+	self gridTileMatrix do: [:aTile | aTile delete].
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:55'
+}
+GMTETileMap >> extent: aPoint [
+
+	self gridTileMatrix ifNotNil: [self rescaleMap].
+
+	super extent: aPoint.
 ]
 
 {
@@ -323,16 +334,26 @@ GMTETileMap >> processTiles [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:50'
+}
+GMTETileMap >> rescaleMap [
+	"comment stating purpose of message"
+
+	self rescaleMapWidth: self tileWidth height: self tileHeight padding: self mapPadding
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:50'
 }
 GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	"Rescale map & trigger update"
 	
 	"Warning: If padding is to small relative to map, divisions by zero can occur"
 
-	self gridTileMatrix do: [:aTile | aTile delete].
+	self clearTiles.
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
-	self updateGrid
+	self updateMap.
 	
 ]
 
