@@ -110,6 +110,15 @@ GMTETileMap >> borderTileWidth: anObject [
 ]
 
 {
+	#category : #'import/export',
+	#'squeak_changestamp' : 'Alex M 5/20/2024 13:15'
+}
+GMTETileMap >> exportAsImage [
+	"Add further options in the future like choosing file format?"
+	self exportAsPNG
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
 }
