@@ -6,12 +6,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:45'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:44'
 }
-GMTETile class >> x: x y: y width: aWidth height: aHeight [
+GMTETile class >> position: aPoint width: aWidth height: aHeight [
 	"comment stating purpose of message"
 
 	^ self new
 		extent: aWidth @ aHeight;
-		position: x @ y
+		position: aPoint
 ]

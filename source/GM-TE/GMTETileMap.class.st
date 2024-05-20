@@ -176,32 +176,29 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:34'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:45'
 }
-GMTETileMap >> generateTiles [
+GMTETileMap >> generatePlaceholderTiles [
 	"Create grid tile matrix datastructure"
 	
-	| gridMatrix tilePos correctedTilePos newTile |
-	gridMatrix := GMTEStaticCoordinateMatrix
-		rows: self tileHeight
-		columns: self tileWidth.
+	| tilePos correctedTilePos newTile |
+		
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |
 			
 			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
-			correctedTilePos := self tileCornerOffset + tilePos + ((self topLeft x)@(self topLeft y)).
+			correctedTilePos := self tileCornerOffset + tilePos + self topLeft.
 						
 			newTile := GMTETilePlaceholder 
-				x: correctedTilePos x
-				y: correctedTilePos y
+				position: correctedTilePos
 				width: self tileSizeWidth
 				height: self tileSizeHeight.
 			newTile lock.
 			newTile beTransparent.
 			
 			self addMorphFrontInLayer: newTile.
-			gridMatrix at: y at: x put: newTile]].
-	self gridTileMatrix: gridMatrix
+			self gridTileMatrix at: y at: x put: newTile]].
+
 ]
 
 {
@@ -224,12 +221,13 @@ GMTETileMap >> gridTileMatrix: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:33'
 }
 GMTETileMap >> initialize [
 
 	super initialize.
 	self color: Color lightGray.
+	
 ]
 
 {
@@ -383,14 +381,13 @@ GMTETileMap >> rescaleMap [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:19'
 }
 GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	"Rescale map & trigger update"
 	
 	"Warning: If padding is to small relative to map, divisions by zero can occur"
 
-	self clearTiles.
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
 	self updateMap
 ]
@@ -569,13 +566,37 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:33'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
 
-	self
-		updateDimensions;
-		generateTiles;
-		processTiles
+	self updateDimensions.
+	self gridTileMatrix 
+		ifNil: [
+			self gridTileMatrix: (GMTEStaticCoordinateMatrix rows: self tileHeight columns: self tileWidth).
+			self generatePlaceholderTiles]
+		ifNotNil: [self updateTiles].
+	self processTiles
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:43'
+}
+GMTETileMap >> updateTiles [
+
+	| tilePos correctedTilePos tile |
+	
+	1 to: self tileHeight do: [:y |
+		1 to: self tileWidth do: [:x |
+			
+			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
+			correctedTilePos := self tileCornerOffset + tilePos + self topLeft.
+			tile := self gridTileMatrix at: y at: x.
+						
+			tile 
+				position: correctedTilePos;
+				width: self tileSizeWidth;
+				height: self tileSizeHeight.]]
 ]
