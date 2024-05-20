@@ -53,11 +53,11 @@ GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 15:49'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 16:46'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
-		^aBuilder pluggablePanelSpec new
+		^aBuilder pluggableScrollPaneSpec new
 			frame: ((0 @ 0.1) corner: 0.2 @ 1);
 			name: 'tile store';
 			layout: #vertical;
@@ -83,7 +83,7 @@ GMTEEditor class >> createTrayWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 15:55'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 17:44'
 }
 GMTEEditor class >> loadTileSetWithDimensions: aPoint [
 	
@@ -106,10 +106,10 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint [
 	tile_width := aPoint x.
 	tile_height := aPoint y.
 	"TODO: refactor into non C-like code"
-	0 to: (form width - tile_width) by: tile_width do: [:x|
-		0 to: (form height - tile_height) by: tile_height do:[:y|
+	0 to: (form height - tile_height) by: tile_height do:[:y|
+		0 to: (form width - tile_width) by: tile_width do: [:x|
 			tile := form contentsOfArea: (Rectangle origin: x@y extent: tile_width@tile_height).
-			image := ImageMorph new
+			image := GMTETileSelector new
 			image: (tile scaledToWidth: 50).
 			morphs add: image.
 		].
@@ -120,7 +120,7 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 16:03'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 17:43'
 }
 GMTEEditor class >> new [
 
@@ -141,15 +141,12 @@ GMTEEditor class >> new [
 	commandBar := morph submorphNamed: 'command bar'.
 	tileStore := morph submorphNamed: 'tile store'.
 	tileViewer := morph submorphNamed: 'tile viewer'.
-
-	"tileStore addMorph: Morph new.
-	tileStore addMorph: (Morph new
-		color: Color red;
-		yourself)."
 	
 	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
 	(commandBar submorphNamed: 'import') action: [
-		tileStore addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16);update:nil.
+		"TODO make multiple sprite sets available?"
+		tileStore morph removeAllMorphs;
+		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16).
 	].
 
 	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.0 sizeRatio: 2.
