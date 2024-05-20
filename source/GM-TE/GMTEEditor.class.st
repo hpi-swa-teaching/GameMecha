@@ -6,20 +6,23 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 14:06'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 15:46'
 }
 GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
 		name: 'command bar';
 		children: {aBuilder pluggableButtonSpec new
+			name: 'export';
 			label: 'Export';
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.3 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.3 @ 0 corner: 0.6 @ 1) offsets: nil);
-			action: [GMTEEditor loadTileSet];
+			action: [GMTEEditor loadTileSetWithDimensions: 16@16];
+			name: 'import';
 			label: 'Import'.
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.9 @ 1) offsets: nil);
+			name: 'openInWorld';
 			label: 'Open in World'};
 		frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);
 		yourself
@@ -38,11 +41,11 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 5/19/2024 17:12'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 15:44'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
-		name: 'Tile Viewer';
+		name: 'tile viewer';
 		layout: #horizontal;
 		frame: (LayoutFrame fractions: (0.2 @ 0.1 corner: 0.8 @ 0.8) offsets: nil);
 		yourself
@@ -50,7 +53,7 @@ GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/19/2024 17:28'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 15:49'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
@@ -80,10 +83,14 @@ GMTEEditor class >> createTrayWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 14:05'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 15:55'
 }
-GMTEEditor class >> loadTileSet [
-	| fc stream |
+GMTEEditor class >> loadTileSetWithDimensions: aPoint [
+	
+	"Do we really leaves this here or do we create an extra class for"
+ 
+	| fc stream form tile tile_width tile_height image morphs|
+	
 	fc := FileChooser new.
 	fc initializeAsSystemWindowWithCaptionPane.
 	fc setCaption: 'Select a picture file' translated.
@@ -92,18 +99,32 @@ GMTEEditor class >> loadTileSet [
 	
 	stream ifNil: [^ nil].
 	
-	ImageMorph new
-	image: (Form fromBinaryStream: stream);
-	openInWorld.
+	form := Form fromBinaryStream: stream.
+	
+	morphs := OrderedCollection new.
+	
+	tile_width := aPoint x.
+	tile_height := aPoint y.
+	"TODO: refactor into non C-like code"
+	0 to: (form width - tile_width) by: tile_width do: [:x|
+		0 to: (form height - tile_height) by: tile_height do:[:y|
+			tile := form contentsOfArea: (Rectangle origin: x@y extent: tile_width@tile_height).
+			image := ImageMorph new
+			image: (tile scaledToWidth: 50).
+			morphs add: image.
+		].
+	].
+
+	^ morphs.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 5/19/2024 17:45'
+	#'squeak_changestamp' : 'Alex M 5/20/2024 16:03'
 }
 GMTEEditor class >> new [
 
-	|builder spec morph tileMatrixMorph tileStore tileViewer|
+	|builder spec morph tileMatrixMorph tileStore tileViewer commandBar|
 	super new.
 	builder := ToolBuilder default.
 	spec := builder pluggableWindowSpec new
@@ -117,13 +138,19 @@ GMTEEditor class >> new [
 				self createLayersWithBuilder: builder};
 			yourself.
 	morph := builder build: spec.
+	commandBar := morph submorphNamed: 'command bar'.
 	tileStore := morph submorphNamed: 'tile store'.
-	tileViewer := (morph submorphNamed: 'Tile Viewer').
+	tileViewer := morph submorphNamed: 'tile viewer'.
 
-	tileStore addMorph: Morph new.
+	"tileStore addMorph: Morph new.
 	tileStore addMorph: (Morph new
 		color: Color red;
-		yourself).
+		yourself)."
+	
+	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
+	(commandBar submorphNamed: 'import') action: [
+		tileStore addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16);update:nil.
+	].
 
 	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.0 sizeRatio: 2.
 
