@@ -111,21 +111,29 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:49'
+	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:30'
 }
 GMTETileMap >> clearTiles [
 
-	self gridTileMatrix do: [:aTile | aTile delete].
+	self gridTileMatrix do: [:aTile | aTile delete]
 ]
 
 {
-	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:55'
+	#category : #'import/export',
+	#'squeak_changestamp' : 'Alex M 5/20/2024 13:15'
+}
+GMTETileMap >> exportAsImage [
+	"Add further options in the future like choosing file format?"
+	self exportAsPNG
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:10'
 }
 GMTETileMap >> extent: aPoint [
 
 	self gridTileMatrix ifNotNil: [self rescaleMap].
-
 	super extent: aPoint.
 ]
 
@@ -354,17 +362,16 @@ GMTETileMap >> processTiles [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:50'
+	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:30'
 }
 GMTETileMap >> rescaleMap [
-	"comment stating purpose of message"
 
 	self rescaleMapWidth: self tileWidth height: self tileHeight padding: self mapPadding
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 19:50'
+	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:18'
 }
 GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	"Rescale map & trigger update"
@@ -373,8 +380,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 	self clearTiles.
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
-	self updateMap.
-	
+	self updateMap
 ]
 
 {
