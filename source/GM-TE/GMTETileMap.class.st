@@ -120,10 +120,11 @@ GMTETileMap >> clearTiles [
 
 {
 	#category : #'import/export',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 13:15'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:54'
 }
 GMTETileMap >> exportAsImage [
 	"Add further options in the future like choosing file format?"
+	
 	self exportAsPNG
 ]
 
@@ -219,6 +220,16 @@ GMTETileMap >> gridTileMatrix [
 GMTETileMap >> gridTileMatrix: anObject [
 
 	gridTileMatrix := anObject.
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:41'
+}
+GMTETileMap >> initialize [
+
+	super initialize.
+	self color: Color lightGray.
 ]
 
 {
@@ -349,13 +360,14 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:42'
 }
 GMTETileMap >> processTiles [
 	"comment stating purpose of message"
 
 	self gridTileMatrix do: [ :tile | 
-		tile borderColor: Color red. 
+		tile borderColor: Color white.
+		tile color: Color veryLightGray. 
 		tile borderWidth: 2]
 
 ]

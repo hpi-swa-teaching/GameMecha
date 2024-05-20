@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 15:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:51'
 }
 GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -24,6 +24,10 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.9 @ 1) offsets: nil);
 			name: 'openInWorld';
 			label: 'Open in World'};
+		
+		"margin: 0@0;"
+		"verticalResizing: #rigid;"
+		
 		frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);
 		yourself
 ]
@@ -120,7 +124,7 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 17:43'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:02'
 }
 GMTEEditor class >> new [
 
@@ -139,17 +143,22 @@ GMTEEditor class >> new [
 			yourself.
 	morph := builder build: spec.
 	commandBar := morph submorphNamed: 'command bar'.
+	commandBar vResizing: #rigid.
 	tileStore := morph submorphNamed: 'tile store'.
 	tileViewer := morph submorphNamed: 'tile viewer'.
+	tileViewer borderWidth: 2. 
+	tileViewer borderColor: tileStore borderColor.
 	
 	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
 	(commandBar submorphNamed: 'import') action: [
 		"TODO make multiple sprite sets available?"
 		tileStore morph removeAllMorphs;
-		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16).
-	].
+		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16)].
 
-	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.0 sizeRatio: 2.
+	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1.
+
+	(commandBar submorphNamed: 'export') action: [
+		tileMatrixMorph exportAsImage].
 
 	tileViewer addMorph: tileMatrixMorph.		
 	
