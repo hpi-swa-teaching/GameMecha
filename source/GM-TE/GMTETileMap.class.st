@@ -167,14 +167,32 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:34'
 }
 GMTETileMap >> generateTiles [
-	"Generate the grid tile matrix datastructure"
-
-	self gridTileMatrix: self setupGridTileMatrix
-
+	"Create grid tile matrix datastructure"
 	
+	| gridMatrix tilePos correctedTilePos newTile |
+	gridMatrix := GMTEStaticCoordinateMatrix
+		rows: self tileHeight
+		columns: self tileWidth.
+	1 to: self tileHeight do: [:y |
+		1 to: self tileWidth do: [:x |
+			
+			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
+			correctedTilePos := self tileCornerOffset + tilePos + ((self topLeft x)@(self topLeft y)).
+						
+			newTile := GMTETilePlaceholder 
+				x: correctedTilePos x
+				y: correctedTilePos y
+				width: self tileSizeWidth
+				height: self tileSizeHeight.
+			newTile lock.
+			newTile beTransparent.
+			
+			self addMorphFrontInLayer: newTile.
+			gridMatrix at: y at: x put: newTile]].
+	self gridTileMatrix: gridMatrix
 ]
 
 {
@@ -323,12 +341,14 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:56'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:05'
 }
 GMTETileMap >> processTiles [
 	"comment stating purpose of message"
 
-	self gridTileMatrix do: [ :tile | tile borderColor: Color red. tile borderWidth: 2]
+	self gridTileMatrix do: [ :tile | 
+		tile borderColor: Color red. 
+		tile borderWidth: 2]
 
 ]
 
@@ -368,36 +388,6 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 		mapTileWidth: aWidth;
 		mapTileHeight: aHeigth;
 		mapPadding: aPadding
-]
-
-{
-	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:12'
-}
-GMTETileMap >> setupGridTileMatrix [
-	"Create grid tile matrix datastructure"
-	
-	| gridMatrix tilePos correctedTilePos newTile |
-	gridMatrix := GMTEStaticCoordinateMatrix
-		rows: self tileHeight
-		columns: self tileWidth.
-	1 to: self tileHeight do: [:y |
-		1 to: self tileWidth do: [:x |
-			
-			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
-			correctedTilePos := self tileCornerOffset + tilePos + ((self topLeft x)@(self topLeft y)).
-						
-			newTile := GMTETile 
-				x: correctedTilePos x
-				y: correctedTilePos y
-				width: self tileSizeWidth
-				height: self tileSizeHeight.
-			newTile lock.
-			newTile beTransparent.
-			
-			self addMorphFrontInLayer: newTile.
-			gridMatrix at: y at: x put: newTile]].
-	^ gridMatrix
 ]
 
 {

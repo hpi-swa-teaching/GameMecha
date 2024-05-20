@@ -1,6 +1,6 @@
 Class {
 	#name : #GMTETile,
-	#superclass : #Morph,
+	#superclass : #GMTEImageMorph,
 	#category : #'GM-TE-Core'
 }
 
