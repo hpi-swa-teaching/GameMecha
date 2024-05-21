@@ -21,7 +21,8 @@ Class {
 		'fullGridSizeHeight',
 		'tileCornerOffset',
 		'mapPaddedHeight',
-		'gridTileMatrix'
+		'gridTileMatrix',
+		'tileSelectionSet'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -119,6 +120,16 @@ GMTETileMap >> clearTiles [
 ]
 
 {
+	#category : #conversion,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:16'
+}
+GMTETileMap >> correctedTilePosition: aPoint [
+	"comment stating purpose of message"
+
+	^ (self tileCornerOffset + aPoint + self topLeft) floor	
+]
+
+{
 	#category : #'import/export',
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:54'
 }
@@ -176,9 +187,9 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:45'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:18'
 }
-GMTETileMap >> generatePlaceholderTiles [
+GMTETileMap >> generateTiles [
 	"Create grid tile matrix datastructure"
 	
 	| tilePos correctedTilePos newTile |
@@ -186,13 +197,12 @@ GMTETileMap >> generatePlaceholderTiles [
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |
 			
-			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
-			correctedTilePos := self tileCornerOffset + tilePos + self topLeft.
+			tilePos := self tilePosFromVirtual: x@y.
+			correctedTilePos := self correctedTilePosition: tilePos.
 						
-			newTile := GMTETilePlaceholder 
+			newTile := GMTETile 
 				position: correctedTilePos
-				width: self tileSizeWidth
-				height: self tileSizeHeight.
+				extent: self tileSizeWidth@self tileSizeHeight.
 			newTile lock.
 			newTile beTransparent.
 			
@@ -220,12 +230,22 @@ GMTETileMap >> gridTileMatrix: anObject [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:30'
+}
+GMTETileMap >> handlesMouseMove: anEvent [
+
+	^ true
+]
+
+{
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:45'
 }
 GMTETileMap >> initialize [
-
+	
 	super initialize.
+	self tileSelectionSet: GMTETileSelectionSet new.
 	self color: Color lightGray.
 	
 ]
@@ -357,8 +377,26 @@ GMTETileMap >> mapTileWidth: anObject [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:19'
+}
+GMTETileMap >> mouseMove: anEvent [
+
+	| hoveredTile |
+	
+	hoveredTile := self tileFromPosition: anEvent position.
+	hoveredTile ifNil: [
+		self tileSelectionSet clearAllHighlightings. 
+		^nil].
+	
+	self tileSelectionSet clearAllHighlightings.
+	self tileSelectionSet highlightTile: hoveredTile.
+
+]
+
+{
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:42'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:20'
 }
 GMTETileMap >> processTiles [
 	"comment stating purpose of message"
@@ -390,6 +428,16 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
 	self updateMap
+]
+
+{
+	#category : #conversion,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:20'
+}
+GMTETileMap >> revertCorrectedTilePosition: aPoint [
+	"comment stating purpose of message"
+
+	^ aPoint - self tileCornerOffset - self topLeft	
 ]
 
 {
@@ -425,6 +473,22 @@ GMTETileMap >> tileCornerOffset: anObject [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:54'
+}
+GMTETileMap >> tileFromPosition: aPoint [
+
+	| idx |
+	
+	idx := self tileIdxFromPosition: aPoint.
+	idx ifNil: [^nil].
+	
+	Transcript show: idx; cr.
+	
+	^ self gridTileMatrix at: idx y at: idx x.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
 }
 GMTETileMap >> tileHeight [
@@ -439,6 +503,49 @@ GMTETileMap >> tileHeight [
 GMTETileMap >> tileHeight: anObject [
 
 	tileHeight := anObject.
+]
+
+{
+	#category : #conversion,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:55'
+}
+GMTETileMap >> tileIdxFromPosition: aPoint [
+
+	| uncorrectedPos idx |
+	
+	uncorrectedPos := self revertCorrectedTilePosition: aPoint.
+	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
+	idx := idx floor.
+	
+	(self gridTileMatrix validIdx: idx) ifFalse: [^nil].
+	^idx.
+]
+
+{
+	#category : #conversion,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:21'
+}
+GMTETileMap >> tilePosFromVirtual: aPoint [
+
+	^ (aPoint x - 1 * self tileSizeWidth)@(aPoint y - 1 * self tileSizeHeight)
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
+}
+GMTETileMap >> tileSelectionSet [
+
+	^ tileSelectionSet
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
+}
+GMTETileMap >> tileSelectionSet: anObject [
+
+	tileSelectionSet := anObject.
 ]
 
 {
@@ -566,7 +673,7 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 19:46'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
@@ -575,14 +682,14 @@ GMTETileMap >> updateMap [
 	self gridTileMatrix 
 		ifNil: [
 			self gridTileMatrix: (GMTEStaticCoordinateMatrix rows: self tileHeight columns: self tileWidth).
-			self generatePlaceholderTiles]
+			self generateTiles]
 		ifNotNil: [self updateTiles].
 	self processTiles
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:43'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:18'
 }
 GMTETileMap >> updateTiles [
 
@@ -591,12 +698,11 @@ GMTETileMap >> updateTiles [
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |
 			
-			tilePos := (x - 1 * self tileSizeWidth)@(y - 1 * self tileSizeHeight).
-			correctedTilePos := self tileCornerOffset + tilePos + self topLeft.
+			tilePos := self tilePosFromVirtual: x@y.
+			correctedTilePos := self correctedTilePosition: tilePos.
 			tile := self gridTileMatrix at: y at: x.
-						
+			
 			tile 
 				position: correctedTilePos;
-				width: self tileSizeWidth;
-				height: self tileSizeHeight.]]
+				extent: self tileSizeWidth@self tileSizeHeight.]]
 ]
