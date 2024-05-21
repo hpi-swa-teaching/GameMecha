@@ -9,11 +9,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:25'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 02:57'
 }
 GMTETileSelector >> handlesMouseDown: evt [
 	"TODO: make this useful."
-	source ifNotNil: [source visible:true; image: self image].
+	source ifNotNil: [source visible:true; image: (self image scaledToWidth:75)].
 	^ true.
 ]
 

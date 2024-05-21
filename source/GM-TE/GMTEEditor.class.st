@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 01:18'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 10:40'
 }
 GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -28,18 +28,24 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 		"margin: 0@0;"
 		verticalResizing: #shrinkWrap;
 		
-		frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);
+		"frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);"
+		frame: (LayoutFrame
+			fractions: (0@0 corner: 1@0)
+			offsets: (0@0 corner: 0@ 50));
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:01'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 10:43'
 }
 GMTEEditor class >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggableListSpec new
 		name: 'layers';
-		frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);
+		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
+		frame: (LayoutFrame
+		fractions: (0.8@0 corner: 1@1)
+		offsets: (0@ 50 corner: 0@0));
 		"A LOT OF MOCKUP CODE"
 		model:self;
 		getSelected: #selectedLayer;
@@ -51,26 +57,29 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 15:44'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 10:40'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
 		name: 'tile viewer';
 		layout: #horizontal;
-		frame: (LayoutFrame fractions: (0.2 @ 0.1 corner: 0.8 @ 0.8) offsets: nil);
+		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
+		offsets: (0@ 50 corner: 0@0));
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/20/2024 16:46'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 10:48'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
-			frame: ((0 @ 0.1) corner: 0.2 @ 1);
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
+			offsets: (0@ 50 corner: 0@0));
 			name: 'tile store';
 			layout: #vertical;
+			spacing: 10@10;
 			children: {};
 			padding: 10;
 			spacing: 20;
@@ -176,7 +185,7 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint source: anImageMorph [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:27'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 10:11'
 }
 GMTEEditor class >> new [
 
