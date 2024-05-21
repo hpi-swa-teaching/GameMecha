@@ -1,8 +1,19 @@
 Class {
 	#name : #GMTEEditor,
-	#superclass : #Morph,
+	#superclass : #Model,
 	#category : #'GM-TE'
 }
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/21/2024 14:08'
+}
+GMTEEditor class >> createActiveTileDisplayWithBuilder: aBuilder [
+	^aBuilder pluggableScrollPaneSpec new
+		name: 'active tile display';
+		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.3 @ 1) offsets: nil);
+		yourself
+]
 
 {
 	#category : #'as yet unclassified',
@@ -57,6 +68,26 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/21/2024 17:35'
+}
+GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
+	^aBuilder pluggableListSpec new
+		name: 'layers';
+		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
+		frame: (LayoutFrame
+		fractions: (0.8@0 corner: 1@1)
+		offsets: (0@ 50 corner: 0@0));
+		"A LOT OF MOCKUP CODE"
+		model: aModel;
+		getSelected: #selectedLayer;
+		setSelected: #selectLayer:;
+		list: #layerList;
+		autoDeselect: false;
+		yourself
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Alex M 5/21/2024 10:40'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
@@ -91,12 +122,12 @@ GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:15'
+	#'squeak_changestamp' : 'TW 5/21/2024 14:08'
 }
 GMTEEditor class >> createTrayWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
-		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
+		frame: (LayoutFrame fractions: (0.3 @ 0.8 corner:  0.8 @ 1) offsets: nil);
 		yourself
 ]
 
@@ -185,9 +216,9 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint source: anImageMorph [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 10:11'
+	#'squeak_changestamp' : 'TW 5/21/2024 15:19'
 }
-GMTEEditor class >> new [
+GMTEEditor class >> new2 [
 
 	|builder spec morph tileMatrixMorph tileStore tileViewer commandBar layerViewer trayViewer selectedTile|
 	super new.
@@ -200,7 +231,8 @@ GMTEEditor class >> new [
 				self createTileViewerWithBuilder: builder.
 				self createTilestoreWithBuilder: builder.
 				self createTrayWithBuilder: builder.
-				self createLayersWithBuilder: builder};
+				self createLayersWithBuilder: builder.
+				self createActiveTileDisplayWithBuilder: builder};
 			yourself.
 	morph := builder build: spec.
 	
@@ -244,6 +276,15 @@ GMTEEditor class >> new [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/21/2024 17:11'
+}
+GMTEEditor class >> openNewInstance [
+
+	self new open
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Alex M 5/21/2024 01:55'
 }
 GMTEEditor class >> selectLayer: aLayer [
@@ -257,4 +298,32 @@ GMTEEditor class >> selectLayer: aLayer [
 GMTEEditor class >> selectedLayer [
 	"TODO: Save layer in some object"
 	^ 'Layer 1'.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/21/2024 17:35'
+}
+GMTEEditor >> buildWith: builder [
+	"called it builder instead of aBuilder since every other implementation does that"
+	 ^builder build: (builder pluggableWindowSpec new
+		model: self;
+		label: 'GM Tile Editor';
+		children: {
+			GMTEEditor createCommandBarWithBuilder: builder.
+			GMTEEditor createTileViewerWithBuilder: builder.
+			GMTEEditor createTilestoreWithBuilder: builder.
+			GMTEEditor createTrayWithBuilder: builder.
+			GMTEEditor createLayersWithBuilder: builder for: self.
+			GMTEEditor createActiveTileDisplayWithBuilder: builder})
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/21/2024 17:10'
+}
+GMTEEditor >> open [
+  ^ (ToolBuilder default build: self)
+      openInWorld;
+      yourself
 ]
