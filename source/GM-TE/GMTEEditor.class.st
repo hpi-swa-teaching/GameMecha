@@ -57,7 +57,7 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 10:40'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 15:49'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -70,7 +70,7 @@ GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 10:48'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 14:08'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
@@ -78,7 +78,7 @@ GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
 			offsets: (0@ 50 corner: 0@0));
 			name: 'tile store';
-			layout: #vertical;
+			"layout: #vertical;"
 			spacing: 10@10;
 			children: {};
 			padding: 10;
@@ -185,11 +185,11 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint source: anImageMorph [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 10:11'
+	#'squeak_changestamp' : 'Alex M 5/21/2024 16:54'
 }
 GMTEEditor class >> new [
 
-	|builder spec morph tileMatrixMorph tileStore tileViewer commandBar layerViewer trayViewer selectedTile|
+	|builder spec morph tileMatrixMorph tileStore panel tileViewer commandBar layerViewer trayViewer selectedTile|
 	super new.
 	builder := ToolBuilder default.
 	spec := builder pluggableWindowSpec new
@@ -201,6 +201,7 @@ GMTEEditor class >> new [
 				self createTilestoreWithBuilder: builder.
 				self createTrayWithBuilder: builder.
 				self createLayersWithBuilder: builder};
+			minimumExtent: 550@300;
 			yourself.
 	morph := builder build: spec.
 	
@@ -211,10 +212,19 @@ GMTEEditor class >> new [
 	layerViewer := morph submorphNamed: 'layers'.
 	trayViewer := morph submorphNamed: 'tray'.
 	
+	panel := GMTETileContainer withParent: tileStore.
+
+	tileStore morph addMorph: panel.
+	
+	tileStore on: #mouseMove send: [Transcript show: 'hello'] to: self.
+	"tileStore morph layoutPolicy: (ProportionalLayout new).
+	panel layoutFrame: (LayoutFrame fractions: (0@0 corner: 1@1))."
+	
 	selectedTile := ImageMorph new.
+	selectedTile visible:false.
 	"TODO: Make this nicer."
-	selectedTile position: (trayViewer position + (10@10)); visible:false.
-	trayViewer addMorph: selectedTile.
+	"selectedTile position: (trayViewer position + (10@10)); visible:false."
+	trayViewer morph beTransparent;addMorph: selectedTile.
 	
 	tileViewer borderWidth: 2. 
 	tileViewer borderColor: tileStore borderColor.
@@ -222,8 +232,11 @@ GMTEEditor class >> new [
 	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
 	(commandBar submorphNamed: 'import') action: [
 		"TODO make multiple sprite sets available?"
-		tileStore morph removeAllMorphs;
-		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 source: selectedTile)].
+		Transcript show: tileStore morph extent.
+		panel removeAllMorphs;
+		extent:tileStore extent;
+		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 source: selectedTile).
+		].
 
 	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1.
 
