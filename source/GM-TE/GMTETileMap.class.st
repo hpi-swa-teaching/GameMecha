@@ -425,6 +425,14 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 5/22/2024 19:37'
+}
+GMTETileMap >> stepTime [
+	^1
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
 }
