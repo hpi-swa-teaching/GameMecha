@@ -41,6 +41,19 @@ GMTEImageMorph >> fullResolutionSprite: anObject [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 23:32'
+}
+GMTEImageMorph >> setPlaceholderColor: aColor [
+
+	| placeholderForm |
+	placeholderForm := Form extent: self extent depth: 32.	
+	placeholderForm fillColor: aColor.
+	self fullResolutionSprite: placeholderForm.
+	self image: placeholderForm.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 5/22/2024 17:16'
 }
 GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
