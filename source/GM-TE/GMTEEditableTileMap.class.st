@@ -102,6 +102,15 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/23/2024 00:08'
+}
+GMTEEditableTileMap >> resetAll [
+	
+	self gridTileMatrix do: [:aTile | aTile reset]
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 15:49'
 }

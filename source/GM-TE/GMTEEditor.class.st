@@ -269,7 +269,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+	#'squeak_changestamp' : 'TW 5/23/2024 00:12'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -279,16 +279,22 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			name: 'export';
 			label: 'Export';
 			model: self;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.33 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil);
 			action: #exportAsImage.
 			aBuilder pluggableButtonSpec new
 			name: 'import';
 			label: 'Import';
 			model: self;
-			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
 			action: #import.
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
+			name: 'clearAll';
+			label: 'Clear All';
+			model: self;
+			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil);
+			action: #resetAll.
+			aBuilder pluggableButtonSpec new
+			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
 			name: 'openInWorld';
 			label: 'Open in World'};
 		
@@ -505,6 +511,15 @@ GMTEEditor >> open [
       newMorph openInWorld.
 	self tileViewer submorphs first updateMap.
       ^newMorph
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 5/23/2024 00:13'
+}
+GMTEEditor >> resetAll [
+
+	self tileMapMatrix resetAll
 ]
 
 {
