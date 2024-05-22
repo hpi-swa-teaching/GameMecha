@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 17:16'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 23:20'
 }
 GMTEImageMorph >> extent: anExtent [
 	"override ImageMorph extent functionality. ALWAYS KEEPS RATIO"

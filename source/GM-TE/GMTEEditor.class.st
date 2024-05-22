@@ -205,8 +205,8 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 ]
 
 {
-	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+	#category : #building,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:42'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -226,7 +226,7 @@ GMTEEditor >> buildWith: builder [
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	self commandBar vResizing: #rigid.
 	self tileStore: (newMorph submorphNamed: 'tile store').
-	self tileViewer: (newMorph submorphNamed: 'tile viewer').
+	self tileViewer: ((newMorph submorphNamed: 'main panel') submorphNamed: 'tile viewer').
 	self layerViewer: (newMorph submorphNamed: 'layers').
 	self trayViewer: (newMorph submorphNamed: 'tray').
 	
@@ -268,8 +268,8 @@ GMTEEditor >> commandBar: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+	#category : #building,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:27'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -279,32 +279,35 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			name: 'export';
 			label: 'Export';
 			model: self;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.33 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
+			aBuilder pluggableButtonSpec new
+			name: 'saveAsImage';
+			label: 'Save As Image';
+			model: self;
+			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
 			action: #exportAsImage.
 			aBuilder pluggableButtonSpec new
 			name: 'import';
 			label: 'Import';
 			model: self;
-			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil);
 			action: #import.
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
 			name: 'openInWorld';
 			label: 'Open in World'};
+
+		"verticalResizing: #shrinkWrap;"
 		
-		"margin: 0@0;"
-		verticalResizing: #shrinkWrap;
-		
-		"frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);"
 		frame: (LayoutFrame
 			fractions: (0@0 corner: 1@0)
-			offsets: (0@0 corner: 0@ 50));
+			offsets: (0@0 corner: 0@50));
 		yourself
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 17:22'
+	#category : #building,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:38'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggableListSpec new
@@ -312,34 +315,49 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
 		frame: (LayoutFrame
 		fractions: (0.8@0 corner: 1@1)
-		offsets: (0@ 50 corner: 0@0));
+		offsets: (0@50 corner: 0@0));
 		"A LOT OF MOCKUP CODE"
 		model: self;
 		getSelected: #selectedLayer;
 		setSelected: #selectedLayer:;
 		list: #layerList;
 		autoDeselect: false;
-		minimumWidth:100;
+		"minimumWidth:100;"
 		yourself
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
+	#category : #building,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:32'
 }
 GMTEEditor >> createTileViewerWithBuilder: aBuilder [
+	"TODO: Maybe rename function to something more appropriate?"
 	^aBuilder pluggablePanelSpec new
-		name: 'tile viewer';
-		layout: #horizontal;
+		name: 'main panel';
+		model:self;
 		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
 		offsets: (0@ 50 corner: 0@0));
+		"layout: #vertical;"
+		children: {
+		
+			self createToolBarWithBuilder: aBuilder.
+					
+			aBuilder pluggablePanelSpec new
+				name: 'tile viewer';
+				layout: #horizontal;
+				model:self;
+				frame: (LayoutFrame
+					fractions: (0@0 corner: 1@1)
+					offsets: (0@30 corner: 0@ 0)).
+		 };
+		
 		minimumExtent:150@150;
 		yourself
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
+	#category : #building,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:27'
 }
 GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 
@@ -347,20 +365,53 @@ GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
 			offsets: (0@ 50 corner: 0@0));
 			name: 'tile store';
-			"layout: #vertical;"
 			spacing: 10@10;
 			children: {};
-			padding: 10;
 			spacing: 20;
 			verticalResizing: #shrinkWrap;
 			horizontalResizing: #shrinkWrap;
-			minimumWidth:100;
+			"minimumWidth:100;"
 			yourself.
 
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:41'
+}
+GMTEEditor >> createToolBarWithBuilder: aBuilder [
+	^aBuilder pluggablePanelSpec new
+		name: 'toolbar';
+		model: self;
+		frame: (LayoutFrame
+			fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
+		children: {aBuilder pluggableButtonSpec new
+			name: 'button1';
+			label: 'Button 1';
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
+			aBuilder pluggableButtonSpec new
+			name: 'button2';
+			label: 'Button 2';
+			model: self;
+			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil).
+			aBuilder pluggableButtonSpec new
+			name: 'button3';
+			label: 'Button 3';
+			model: self;
+			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil).
+			aBuilder pluggableButtonSpec new
+			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
+			name: 'button4';
+			model:self;
+			label: 'Button 4'};
+			
+		verticalResizing: #shrinkWrap;
+		yourself
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
 }
 GMTEEditor >> createTrayWithBuilder: aBuilder [
@@ -396,13 +447,13 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 14:24'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 22:35'
 }
 GMTEEditor >> import [
 	"TODO make multiple sprite sets available?"
 	| tiles tile_height dimensions ratio|
 	ratio := 1. "TODO: Where is ratio stored? When do we enter it?"
-	tile_height := FillInTheBlankMorph request: 'Enter tile height (width is calculated by ratio)'.
+	tile_height := FillInTheBlankMorph request: 'Enter tile height (width is calculated by ratio)' initialAnswer: '16'.
 	
 	(tile_height = '')
 		ifTrue: [^ nil]
