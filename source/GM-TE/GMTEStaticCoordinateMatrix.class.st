@@ -49,3 +49,14 @@ GMTEStaticCoordinateMatrix >> getAtCoordinate: aCoordinate [
 	correctedPos := self coordinateSystem virtualToPos: aCoordinate.
 	^ self at: correctedPos y at: correctedPos x
 ]
+
+{
+	#category : #asserting,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:37'
+}
+GMTEStaticCoordinateMatrix >> validIdx: aPoint [
+
+	(aPoint y between: 1 and: nrows) ifFalse: [^false].
+	(aPoint x between: 1 and: ncols) ifFalse: [^false].
+	^true.
+]
