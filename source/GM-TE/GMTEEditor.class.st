@@ -80,105 +80,6 @@ GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint withTile
 ]
 
 {
-	#category : #construction,
-	#'squeak_changestamp' : 'Alex M 5/22/2024 16:38'
-}
-GMTEEditor class >> createCommandBarWithBuilder: aBuilder for: aModel [
-	^aBuilder pluggablePanelSpec new
-		name: 'command bar';
-		model: aModel;
-		children: {aBuilder pluggableButtonSpec new
-			name: 'export';
-			label: 'Export';
-			model: aModel;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.33 @ 1) offsets: nil);
-			action: #exportAsImage.
-			aBuilder pluggableButtonSpec new
-			name: 'import';
-			label: 'Import';
-			model: aModel;
-			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil);
-			action: #import.
-			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
-			name: 'openInWorld';
-			label: 'Open in World'};
-		
-		"margin: 0@0;"
-		verticalResizing: #shrinkWrap;
-		"frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);"
-		frame: (LayoutFrame
-			fractions: (0@0 corner: 1@0)
-			offsets: (0@0 corner: 0@ 50));
-		yourself
-]
-
-{
-	#category : #construction,
-	#'squeak_changestamp' : 'TW 5/22/2024 01:15'
-}
-GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
-	^aBuilder pluggableListSpec new
-		name: 'layers';
-		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
-		frame: (LayoutFrame
-		fractions: (0.8@0 corner: 1@1)
-		offsets: (0@ 50 corner: 0@0));
-		"A LOT OF MOCKUP CODE"
-		model: aModel;
-		getSelected: #selectedLayer;
-		setSelected: #selectedLayer:;
-		list: #layerList;
-		autoDeselect: false;
-		yourself
-]
-
-{
-	#category : #construction,
-	#'squeak_changestamp' : 'Alex M 5/22/2024 16:41'
-}
-GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
-	^aBuilder pluggablePanelSpec new
-		name: 'tile viewer';
-		layout: #horizontal;
-		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
-		offsets: (0@ 50 corner: 0@0));
-		minimumExtent:250@250;
-		yourself
-]
-
-{
-	#category : #construction,
-	#'squeak_changestamp' : 'Alex M 5/22/2024 16:40'
-}
-GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
-
-		^aBuilder pluggableScrollPaneSpec new
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
-			offsets: (0@ 50 corner: 0@0));
-			name: 'tile store';
-			"layout: #vertical;"
-			spacing: 10@10;
-			children: {};
-			verticalResizing: #shrinkWrap;
-			horizontalResizing: #shrinkWrap;
-			minimumWidth: 100;
-			yourself.
-
-]
-
-{
-	#category : #construction,
-	#'squeak_changestamp' : 'TW 5/22/2024 11:50'
-}
-GMTEEditor class >> createTrayWithBuilder: aBuilder [
-	^aBuilder pluggableScrollPaneSpec new
-		name: 'tray';
-		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
-		yourself
-]
-
-{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:07'
 }
@@ -305,7 +206,7 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Alex M 5/22/2024 13:29'
+	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -315,11 +216,11 @@ GMTEEditor >> buildWith: builder [
 		model: self;
 		label: 'GM Tile Editor';
 		children: {
-			GMTEEditor createCommandBarWithBuilder: builder for: self.
-			GMTEEditor createTileViewerWithBuilder: builder.
-			GMTEEditor createTilestoreWithBuilder: builder.
-			GMTEEditor createTrayWithBuilder: builder.
-			GMTEEditor createLayersWithBuilder: builder for: self.};
+			self createCommandBarWithBuilder: builder.
+			self createTileViewerWithBuilder: builder.
+			self createTilestoreWithBuilder: builder.
+			self createTrayWithBuilder: builder.
+			self createLayersWithBuilder: builder.};
 		minimumExtent: 550@300).
 			
 	self commandBar: (newMorph submorphNamed: 'command bar').
@@ -364,6 +265,120 @@ GMTEEditor >> commandBar [
 GMTEEditor >> commandBar: anObject [
 
 	commandBar := anObject.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+}
+GMTEEditor >> createCommandBarWithBuilder: aBuilder [
+	^aBuilder pluggablePanelSpec new
+		name: 'command bar';
+		model: self;
+		children: {aBuilder pluggableButtonSpec new
+			name: 'export';
+			label: 'Export';
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.33 @ 1) offsets: nil);
+			action: #exportAsImage.
+			aBuilder pluggableButtonSpec new
+			name: 'import';
+			label: 'Import';
+			model: self;
+			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil);
+			action: #import.
+			aBuilder pluggableButtonSpec new
+			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
+			name: 'openInWorld';
+			label: 'Open in World'};
+		
+		"margin: 0@0;"
+		verticalResizing: #shrinkWrap;
+		
+		"frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);"
+		frame: (LayoutFrame
+			fractions: (0@0 corner: 1@0)
+			offsets: (0@0 corner: 0@ 50));
+		yourself
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 15:28'
+}
+GMTEEditor >> createLayersWithBuilder: aBuilder [
+	^aBuilder pluggableListSpec new
+		name: 'layers';
+		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
+		frame: (LayoutFrame
+		fractions: (0.8@0 corner: 1@1)
+		offsets: (0@ 50 corner: 0@0));
+		"A LOT OF MOCKUP CODE"
+		model: self;
+		getSelected: #selectedLayer;
+		setSelected: #selectedLayer:;
+		list: #layerList;
+		autoDeselect: false;
+		yourself
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+}
+GMTEEditor >> createTileViewerWithBuilder: aBuilder [
+	^aBuilder pluggablePanelSpec new
+		name: 'tile viewer';
+		layout: #horizontal;
+		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
+		offsets: (0@ 50 corner: 0@0));
+		yourself
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+}
+GMTEEditor >> createTilestoreWithBuilder: aBuilder [
+
+		^aBuilder pluggableScrollPaneSpec new
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
+			offsets: (0@ 50 corner: 0@0));
+			name: 'tile store';
+			"layout: #vertical;"
+			spacing: 10@10;
+			children: {};
+			padding: 10;
+			spacing: 20;
+			verticalResizing: #shrinkWrap;
+			horizontalResizing: #shrinkWrap;
+			yourself.
+
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 15:29'
+}
+GMTEEditor >> createTrayWithBuilder: aBuilder [
+	^aBuilder pluggableScrollPaneSpec new
+		name: 'tray';
+		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
+		yourself
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 16:15'
+}
+GMTEEditor >> deselectTile [
+
+	"TODO implement the lower part resetting selected tile view"
+	self selectTile: nil.
+	self tileMapMatrix tileSelectionSet highlightImage: nil.
+	"self trayViewer submorphs first 
+		visible:true;
+		image: (anObject image scaledToWidth:75)."
 ]
 
 {
@@ -413,13 +428,13 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 12:16'
+	#'squeak_changestamp' : 'TW 5/22/2024 15:51'
 }
 GMTEEditor >> initializeTileMapMatrix [
 
-	self tileMapMatrix: (GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1).
+	self tileMapMatrix: (GMTEEditableTileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1).
 	self tileViewer addMorph: tileMapMatrix.		
-	tileMapMatrix 
+	self tileMapMatrix 
 		position: (tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
@@ -427,13 +442,13 @@ GMTEEditor >> initializeTileMapMatrix [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 12:31'
+	#'squeak_changestamp' : 'TW 5/22/2024 16:10'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 
-	self tileMapMatrix: (GMTETileMap tileWidth: aWidth tileHeight: aHeight padding: 0.15 sizeRatio: 1).
+	self tileMapMatrix: (GMTEEditableTileMap tileWidth: aWidth tileHeight: aHeight padding: 0.15 sizeRatio: 1).
 	self tileViewer addMorph: tileMapMatrix.		
-	tileMapMatrix 
+	self tileMapMatrix 
 		position: (tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
@@ -490,6 +505,19 @@ GMTEEditor >> open [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 16:12'
+}
+GMTEEditor >> selectTile: anObject [
+
+	self selectedTile: anObject.
+	self tileMapMatrix tileSelectionSet highlightImage: anObject image.
+	self trayViewer submorphs first 
+		visible:true;
+		image: (anObject image scaledToWidth:75).
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
 }
 GMTEEditor >> selectedLayer [
@@ -517,14 +545,11 @@ GMTEEditor >> selectedTile [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 12:03'
+	#'squeak_changestamp' : 'TW 5/22/2024 16:11'
 }
 GMTEEditor >> selectedTile: anObject [
 
 	selectedTile := anObject.
-	self trayViewer submorphs first 
-		visible:true;
-		image: (anObject image scaledToWidth:75).
 ]
 
 {

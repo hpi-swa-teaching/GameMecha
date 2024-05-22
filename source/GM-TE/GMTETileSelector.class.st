@@ -9,11 +9,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 11:59'
+	#'squeak_changestamp' : 'TW 5/22/2024 16:12'
 }
 GMTETileSelector >> handlesMouseDown: evt [
 	"TODO: make this useful."
-	self model selectedTile: self.
+	self model selectTile: self.
 	^ true.
 ]
 

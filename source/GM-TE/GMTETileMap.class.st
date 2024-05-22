@@ -21,8 +21,7 @@ Class {
 		'fullGridSizeHeight',
 		'tileCornerOffset',
 		'mapPaddedHeight',
-		'gridTileMatrix',
-		'tileSelectionSet'
+		'gridTileMatrix'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -230,22 +229,12 @@ GMTETileMap >> gridTileMatrix: anObject [
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:30'
-}
-GMTETileMap >> handlesMouseMove: anEvent [
-
-	^ true
-]
-
-{
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:45'
+	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
 }
 GMTETileMap >> initialize [
 	
 	super initialize.
-	self tileSelectionSet: GMTETileSelectionSet new.
 	self color: Color lightGray.
 	
 ]
@@ -374,24 +363,6 @@ GMTETileMap >> mapTileWidth [
 GMTETileMap >> mapTileWidth: anObject [
 
 	mapTileWidth := anObject.
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:19'
-}
-GMTETileMap >> mouseMove: anEvent [
-
-	| hoveredTile |
-	
-	hoveredTile := self tileFromPosition: anEvent position.
-	hoveredTile ifNil: [
-		self tileSelectionSet clearAllHighlightings. 
-		^nil].
-	
-	self tileSelectionSet clearAllHighlightings.
-	self tileSelectionSet highlightTile: hoveredTile.
-
 ]
 
 {
@@ -528,24 +499,6 @@ GMTETileMap >> tileIdxFromPosition: aPoint [
 GMTETileMap >> tilePosFromVirtual: aPoint [
 
 	^ (aPoint x - 1 * self tileSizeWidth)@(aPoint y - 1 * self tileSizeHeight)
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
-}
-GMTETileMap >> tileSelectionSet [
-
-	^ tileSelectionSet
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
-}
-GMTETileMap >> tileSelectionSet: anObject [
-
-	tileSelectionSet := anObject.
 ]
 
 {
