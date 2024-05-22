@@ -444,7 +444,7 @@ GMTETileMap >> tileCornerOffset: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:54'
+	#'squeak_changestamp' : 'TW 5/22/2024 18:42'
 }
 GMTETileMap >> tileFromPosition: aPoint [
 
@@ -453,7 +453,7 @@ GMTETileMap >> tileFromPosition: aPoint [
 	idx := self tileIdxFromPosition: aPoint.
 	idx ifNil: [^nil].
 	
-	Transcript show: idx; cr.
+	"Transcript show: idx; cr."
 	
 	^ self gridTileMatrix at: idx y at: idx x.
 ]

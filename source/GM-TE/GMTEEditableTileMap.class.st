@@ -22,15 +22,10 @@ GMTEEditableTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPad
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/22/2024 16:55'
+	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
 }
 GMTEEditableTileMap >> handlesMouseDown: anEvent [
 	"TODO: make this useful."
-	
-	| clickedTile |
-	
-	clickedTile := self tileFromPosition: anEvent position.
-	clickedTile ifNotNil: [self updateTileSprite: clickedTile].
 	^ true.
 ]
 
@@ -41,6 +36,16 @@ GMTEEditableTileMap >> handlesMouseDown: anEvent [
 GMTEEditableTileMap >> handlesMouseMove: anEvent [
 
 	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
+}
+GMTEEditableTileMap >> handlesMouseStillDown: anEvent [
+
+	^true
+
 ]
 
 {
@@ -73,6 +78,20 @@ GMTEEditableTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
+	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
+}
+GMTEEditableTileMap >> mouseDown: anEvent [
+	"TODO: make this useful."
+	
+	| clickedTile |
+	
+	clickedTile := self tileFromPosition: anEvent position.
+	clickedTile ifNotNil: [self updateTileSprite: clickedTile].
+	^ true.
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 5/22/2024 15:47'
 }
 GMTEEditableTileMap >> mouseMove: anEvent [
@@ -86,6 +105,20 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 	
 	self tileSelectionSet clearAllHighlightings.
 	self tileSelectionSet highlightTile: hoveredTile.
+
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'TW 5/22/2024 18:44'
+}
+GMTEEditableTileMap >> mouseStillDown: anEvent [
+	
+	| clickedTile |
+	
+	clickedTile := self tileFromPosition: anEvent position.
+	clickedTile ifNotNil: [self updateTileSprite: clickedTile].
+	^true
 
 ]
 
