@@ -17,6 +17,70 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 5/22/2024 14:32'
+}
+GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint [
+	"TODO: Could break with too big tilesets. Maybe filter only first 100 tiles?"
+	|img dialog|
+	
+	img := Morph new
+		beTransparent;
+		extent:(aPoint);
+		yourself.
+	(img layoutPolicy: TableLayout new)
+	listDirection: #leftToRight;
+	wrapDirection: #leftToRight.
+	
+	(morphArray reversed) do: [:morph| 
+		img addMorph: (ImageMorph new image: (morph image scaledToWidth: 50); borderColor: (Color red); borderWidth:1;yourself).
+	].
+
+	dialog := DialogWindow new
+		title: 'Preview';
+		message: 'Import Tileset?';
+		addPaneMorph: img;
+		createButton: 'Yes' translated value: true;
+		createCancelButton: 'No' translated  value: false;
+		selectedButtonIndex: 1; "YES"
+		registerKeyboardShortcuts.
+	dialog paneMorph extent: img extent.
+	^ dialog getUserResponseAtHand.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 5/22/2024 14:42'
+}
+GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: aNumber [
+	"TODO: Could break with too big tilesets. Maybe filter only first 100 tiles?"
+	|img dialog|
+	
+	img := Morph new
+		beTransparent;
+		extent:(aPoint);
+		yourself.
+	(img layoutPolicy: TableLayout new)
+	listDirection: #leftToRight;
+	wrapDirection: #leftToRight.
+	
+	(morphArray reversed) do: [:morph| 
+		img addMorph: (ImageMorph new image: (morph image scaledToWidth: aNumber); borderColor: (Color red); borderWidth:1;yourself).
+	].
+
+	dialog := DialogWindow new
+		title: 'Preview';
+		message: 'Import Tileset?';
+		addPaneMorph: img;
+		createButton: 'Yes' translated value: true;
+		createCancelButton: 'No' translated  value: false;
+		selectedButtonIndex: 1; "YES"
+		registerKeyboardShortcuts.
+	dialog paneMorph extent: img extent.
+	^ dialog getUserResponseAtHand.
+]
+
+{
+	#category : #construction,
 	#'squeak_changestamp' : 'TW 5/22/2024 11:41'
 }
 GMTEEditor class >> createCommandBarWithBuilder: aBuilder for: aModel [
@@ -51,7 +115,7 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder for: aModel [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #construction,
 	#'squeak_changestamp' : 'TW 5/22/2024 01:15'
 }
 GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
@@ -71,7 +135,7 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #construction,
 	#'squeak_changestamp' : 'Alex M 5/21/2024 15:49'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
@@ -84,7 +148,7 @@ GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #construction,
 	#'squeak_changestamp' : 'Alex M 5/21/2024 14:08'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
@@ -105,7 +169,7 @@ GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #construction,
 	#'squeak_changestamp' : 'TW 5/22/2024 11:50'
 }
 GMTEEditor class >> createTrayWithBuilder: aBuilder [
@@ -197,13 +261,13 @@ GMTEEditor class >> layerList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 12:08'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 14:50'
 }
 GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 	"The source argument is mostly for debugging. Make it nicer with objects"
 	"Do we really leaves this here or do we create an extra class for"
  
-	| fc stream form tile tileWidth tileHeight image morphs |
+	| fc stream form tile tileWidth tileHeight image morphs previewDimensions previewTileSize |
 	
 	fc := FileChooser new.
 	fc initializeAsSystemWindowWithCaptionPane.
@@ -229,13 +293,18 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 			morphs add: image.
 		].
 	].
+	
+	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
+	previewTileSize := (form width max: 500) / (form width / tileWidth).
+	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth + 1)@(form height / tileHeight + 1))).
+	(GMTEEditor confirmPreviewOf: morphs withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs.
 ]
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 12:35'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 13:29'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -262,8 +331,6 @@ GMTEEditor >> buildWith: builder [
 	panel := GMTETileContainer withParent: self tileStore.
 
 	self tileStore morph: panel.
-	
-	self tileStore on: #mouseMove send: [Transcript show: 'hello'] to: self.
 
 	selectedTile := ImageMorph new.
 	"TODO: Make this nicer."
@@ -309,15 +376,27 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/22/2024 12:10'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 14:24'
 }
 GMTEEditor >> import [
-
-	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
 	"TODO make multiple sprite sets available?"
+	| tiles tile_height dimensions ratio|
+	ratio := 1. "TODO: Where is ratio stored? When do we enter it?"
+	tile_height := FillInTheBlankMorph request: 'Enter tile height (width is calculated by ratio)'.
+	
+	(tile_height = '')
+		ifTrue: [^ nil]
+		ifFalse:[tile_height := tile_height asInteger].
+	
+	dimensions := (tile_height @ (tile_height * ratio)).
+	tiles := GMTEEditor loadTileSetWithDimensions: dimensions model: self.
+	
+	tiles
+		ifNil: [^ nil].
+	
 	self tileStore morph 
 		removeAllMorphs;
-		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 model: self).
+		addAllMorphs: tiles.
 ]
 
 {

@@ -45,10 +45,10 @@ GMTETileContainer >> parent: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 16:50'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 13:15'
 }
 GMTETileContainer >> step [
-	self parent ifNotNil:[self extent: parent extent]
+	self parent ifNotNil:[self extent: parent extent ]
 ]
 
 {
