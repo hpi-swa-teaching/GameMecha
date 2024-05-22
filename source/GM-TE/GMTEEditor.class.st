@@ -304,7 +304,7 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:28'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 17:22'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggableListSpec new
@@ -319,12 +319,13 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 		setSelected: #selectedLayer:;
 		list: #layerList;
 		autoDeselect: false;
+		minimumWidth:100;
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
 }
 GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -332,12 +333,13 @@ GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 		layout: #horizontal;
 		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
 		offsets: (0@ 50 corner: 0@0));
+		minimumExtent:150@150;
 		yourself
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:30'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
 }
 GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 
@@ -352,18 +354,20 @@ GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 			spacing: 20;
 			verticalResizing: #shrinkWrap;
 			horizontalResizing: #shrinkWrap;
+			minimumWidth:100;
 			yourself.
 
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:29'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
 }
 GMTEEditor >> createTrayWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
+		minimumHeight:100;
 		yourself
 ]
 
