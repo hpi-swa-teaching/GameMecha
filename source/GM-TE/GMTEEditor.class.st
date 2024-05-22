@@ -1,6 +1,15 @@
 Class {
 	#name : #GMTEEditor,
 	#superclass : #Model,
+	#instVars : [
+		'commandBar',
+		'tileStore',
+		'tileViewer',
+		'layerViewer',
+		'trayViewer',
+		'selectedLayer',
+		'layerList'
+	],
 	#category : #'GM-TE'
 }
 
@@ -48,7 +57,7 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 10:43'
+	#'squeak_changestamp' : 'TW 5/22/2024 01:15'
 }
 GMTEEditor class >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggableListSpec new
@@ -60,7 +69,7 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 		"A LOT OF MOCKUP CODE"
 		model:self;
 		getSelected: #selectedLayer;
-		setSelected: #selectLayer:;
+		setSelected: #selectedLayer:;
 		list: #layerList;
 		autoDeselect: false;
 		yourself
@@ -68,7 +77,7 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 17:35'
+	#'squeak_changestamp' : 'TW 5/22/2024 01:15'
 }
 GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
 	^aBuilder pluggableListSpec new
@@ -80,7 +89,7 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
 		"A LOT OF MOCKUP CODE"
 		model: aModel;
 		getSelected: #selectedLayer;
-		setSelected: #selectLayer:;
+		setSelected: #selectedLayer:;
 		list: #layerList;
 		autoDeselect: false;
 		yourself
@@ -302,11 +311,13 @@ GMTEEditor class >> selectedLayer [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 17:35'
+	#'squeak_changestamp' : 'TW 5/22/2024 01:16'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
-	 ^builder build: (builder pluggableWindowSpec new
+	| newMorph selectedTile tileMatrixMorph| 
+	
+	newMorph := builder build: (builder pluggableWindowSpec new
 		model: self;
 		label: 'GM Tile Editor';
 		children: {
@@ -315,15 +326,190 @@ GMTEEditor >> buildWith: builder [
 			GMTEEditor createTilestoreWithBuilder: builder.
 			GMTEEditor createTrayWithBuilder: builder.
 			GMTEEditor createLayersWithBuilder: builder for: self.
-			GMTEEditor createActiveTileDisplayWithBuilder: builder})
+			GMTEEditor createActiveTileDisplayWithBuilder: builder}).
+			
+	self commandBar: (newMorph submorphNamed: 'command bar').
+	self commandBar vResizing: #rigid.
+	self tileStore: (newMorph submorphNamed: 'tile store').
+	self tileViewer: (newMorph submorphNamed: 'tile viewer').
+	self layerViewer: (newMorph submorphNamed: 'layers').
+	self trayViewer: (newMorph submorphNamed: 'tray').
+	
+
+	selectedTile := ImageMorph new.
+	"TODO: Make this nicer."
+	selectedTile position: (trayViewer position + (10@10)); visible:false.
+	trayViewer addMorph: selectedTile.
+	
+	self tileViewer borderWidth: 2. 
+	self tileViewer borderColor: tileStore borderColor.
+	
+	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
+	(self commandBar submorphNamed: 'import') action: [
+		"TODO make multiple sprite sets available?"
+		self tileStore morph removeAllMorphs;
+		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 source: selectedTile)].
+
+	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1.
+
+	(self commandBar submorphNamed: 'export') action: [
+		tileMatrixMorph exportAsImage].
+
+	self tileViewer addMorph: tileMatrixMorph.		
+	
+	tileMatrixMorph 
+		position: (tileMatrixMorph owner position);
+		hResizing: #spaceFill; 
+		vResizing: #spaceFill.
+		
+	^newMorph
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> commandBar [
+
+	^ commandBar
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> commandBar: anObject [
+
+	commandBar := anObject.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 17:10'
+	#'squeak_changestamp' : 'TW 5/22/2024 01:16'
+}
+GMTEEditor >> initialize [
+
+	super initialize.
+	self selectedLayer: self layerList first.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
+}
+GMTEEditor >> layerList [
+
+	^{'Layer 1'. 'Layer 2'}
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
+}
+GMTEEditor >> layerList: anObject [
+
+	layerList := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> layerViewer [
+
+	^ layerViewer
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> layerViewer: anObject [
+
+	layerViewer := anObject.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/22/2024 09:58'
 }
 GMTEEditor >> open [
-  ^ (ToolBuilder default build: self)
-      openInWorld;
-      yourself
+  
+	| newMorph |
+	newMorph := (ToolBuilder default build: self).
+      newMorph openInWorld.
+	self tileViewer submorphs first updateMap.
+      ^newMorph
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
+}
+GMTEEditor >> selectedLayer [
+
+	^ selectedLayer
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
+}
+GMTEEditor >> selectedLayer: anObject [
+
+	selectedLayer := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> tileStore [
+
+	^ tileStore
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> tileStore: anObject [
+
+	tileStore := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> tileViewer [
+
+	^ tileViewer
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> tileViewer: anObject [
+
+	tileViewer := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> trayViewer [
+
+	^ trayViewer
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+}
+GMTEEditor >> trayViewer: anObject [
+
+	trayViewer := anObject.
 ]
