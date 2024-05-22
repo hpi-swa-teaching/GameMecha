@@ -81,7 +81,7 @@ GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint withTile
 
 {
 	#category : #construction,
-	#'squeak_changestamp' : 'TW 5/22/2024 11:41'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 16:38'
 }
 GMTEEditor class >> createCommandBarWithBuilder: aBuilder for: aModel [
 	^aBuilder pluggablePanelSpec new
@@ -106,7 +106,6 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder for: aModel [
 		
 		"margin: 0@0;"
 		verticalResizing: #shrinkWrap;
-		
 		"frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil);"
 		frame: (LayoutFrame
 			fractions: (0@0 corner: 1@0)
@@ -136,7 +135,7 @@ GMTEEditor class >> createLayersWithBuilder: aBuilder for: aModel [
 
 {
 	#category : #construction,
-	#'squeak_changestamp' : 'Alex M 5/21/2024 15:49'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 16:41'
 }
 GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -144,12 +143,13 @@ GMTEEditor class >> createTileViewerWithBuilder: aBuilder [
 		layout: #horizontal;
 		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
 		offsets: (0@ 50 corner: 0@0));
+		minimumExtent:250@250;
 		yourself
 ]
 
 {
 	#category : #construction,
-	#'squeak_changestamp' : 'Alex M 5/21/2024 14:08'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 16:40'
 }
 GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
@@ -160,10 +160,9 @@ GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 			"layout: #vertical;"
 			spacing: 10@10;
 			children: {};
-			padding: 10;
-			spacing: 20;
 			verticalResizing: #shrinkWrap;
 			horizontalResizing: #shrinkWrap;
+			minimumWidth: 100;
 			yourself.
 
 ]
@@ -261,7 +260,7 @@ GMTEEditor class >> layerList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 14:50'
+	#'squeak_changestamp' : 'Alex M 5/22/2024 15:29'
 }
 GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 	"The source argument is mostly for debugging. Make it nicer with objects"
@@ -289,6 +288,8 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
 			image := GMTETileSelector new
 			image: (tile scaledToWidth: 50);
+			borderColor: Color orange;
+			borderWidth: 1;
 			model: aModel.
 			morphs add: image.
 		].
