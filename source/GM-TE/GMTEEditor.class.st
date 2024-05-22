@@ -8,38 +8,33 @@ Class {
 		'layerViewer',
 		'trayViewer',
 		'selectedLayer',
-		'layerList'
+		'layerList',
+		'tileMapMatrix',
+		'selectedTile'
 	],
 	#category : #'GM-TE'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 14:08'
+	#'squeak_changestamp' : 'TW 5/22/2024 11:41'
 }
-GMTEEditor class >> createActiveTileDisplayWithBuilder: aBuilder [
-	^aBuilder pluggableScrollPaneSpec new
-		name: 'active tile display';
-		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.3 @ 1) offsets: nil);
-		yourself
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 10:40'
-}
-GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
+GMTEEditor class >> createCommandBarWithBuilder: aBuilder for: aModel [
 	^aBuilder pluggablePanelSpec new
 		name: 'command bar';
+		model: aModel;
 		children: {aBuilder pluggableButtonSpec new
 			name: 'export';
 			label: 'Export';
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.33 @ 1) offsets: nil).
+			model: aModel;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.33 @ 1) offsets: nil);
+			action: #exportAsImage.
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil);
-			action: [GMTEEditor loadTileSetWithDimensions: 16@16];
 			name: 'import';
-			label: 'Import'.
+			label: 'Import';
+			model: aModel;
+			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil);
+			action: #import.
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
 			name: 'openInWorld';
@@ -52,26 +47,6 @@ GMTEEditor class >> createCommandBarWithBuilder: aBuilder [
 		frame: (LayoutFrame
 			fractions: (0@0 corner: 1@0)
 			offsets: (0@0 corner: 0@ 50));
-		yourself
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 01:15'
-}
-GMTEEditor class >> createLayersWithBuilder: aBuilder [
-	^aBuilder pluggableListSpec new
-		name: 'layers';
-		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
-		frame: (LayoutFrame
-		fractions: (0.8@0 corner: 1@1)
-		offsets: (0@ 50 corner: 0@0));
-		"A LOT OF MOCKUP CODE"
-		model:self;
-		getSelected: #selectedLayer;
-		setSelected: #selectedLayer:;
-		list: #layerList;
-		autoDeselect: false;
 		yourself
 ]
 
@@ -131,12 +106,12 @@ GMTEEditor class >> createTilestoreWithBuilder: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 14:08'
+	#'squeak_changestamp' : 'TW 5/22/2024 11:50'
 }
 GMTEEditor class >> createTrayWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
-		frame: (LayoutFrame fractions: (0.3 @ 0.8 corner:  0.8 @ 1) offsets: nil);
+		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
 		yourself
 ]
 
@@ -222,13 +197,13 @@ GMTEEditor class >> layerList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:09'
+	#'squeak_changestamp' : 'TW 5/22/2024 12:08'
 }
-GMTEEditor class >> loadTileSetWithDimensions: aPoint [
+GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 	"The source argument is mostly for debugging. Make it nicer with objects"
 	"Do we really leaves this here or do we create an extra class for"
  
-	| fc stream form tile tile_width tile_height image morphs|
+	| fc stream form tile tileWidth tileHeight image morphs |
 	
 	fc := FileChooser new.
 	fc initializeAsSystemWindowWithCaptionPane.
@@ -242,52 +217,15 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint [
 	
 	morphs := OrderedCollection new.
 	
-	tile_width := aPoint x.
-	tile_height := aPoint y.
+	tileWidth := aPoint x.
+	tileHeight := aPoint y.
 	"TODO: refactor into non C-like code"
-	0 to: (form height - tile_height) by: tile_height do:[:y|
-		0 to: (form width - tile_width) by: tile_width do: [:x|
-			tile := form contentsOfArea: (Rectangle origin: x@y extent: tile_width@tile_height).
-			image := GMTETileSelector new
-			image: (tile scaledToWidth: 50).
-			morphs add: image.
-		].
-	].
-
-	^ morphs.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:09'
-}
-GMTEEditor class >> loadTileSetWithDimensions: aPoint source: anImageMorph [
-	"The source argument is mostly for debugging. Make it nicer with objects"
-	"Do we really leaves this here or do we create an extra class for"
- 
-	| fc stream form tile tile_width tile_height image morphs|
-	
-	fc := FileChooser new.
-	fc initializeAsSystemWindowWithCaptionPane.
-	fc setCaption: 'Select a picture file' translated.
-	fc setSuffixes: {'png' . 'gif' . 'bmp' . 'jpg' . 'jpeg' }.
-	stream := fc open.
-	
-	stream ifNil: [^ nil].
-	
-	form := Form fromBinaryStream: stream.
-	
-	morphs := OrderedCollection new.
-	
-	tile_width := aPoint x.
-	tile_height := aPoint y.
-	"TODO: refactor into non C-like code"
-	0 to: (form height - tile_height) by: tile_height do:[:y|
-		0 to: (form width - tile_width) by: tile_width do: [:x|
-			tile := form contentsOfArea: (Rectangle origin: x@y extent: tile_width@tile_height).
+	0 to: (form height - tileHeight) by: tileHeight do:[:y|
+		0 to: (form width - tileWidth) by: tileWidth do: [:x|
+			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
 			image := GMTETileSelector new
 			image: (tile scaledToWidth: 50);
-			source: anImageMorph.
+			model: aModel.
 			morphs add: image.
 		].
 	].
@@ -296,109 +234,23 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint source: anImageMorph [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 15:19'
-}
-GMTEEditor class >> new2 [
-
-	|builder spec morph tileMatrixMorph tileStore tileViewer commandBar layerViewer trayViewer selectedTile|
-	super new.
-	builder := ToolBuilder default.
-	spec := builder pluggableWindowSpec new
-			model: Model new;
-			label: 'GM Tile Editor';
-			children: {
-				self createCommandBarWithBuilder: builder.
-				self createTileViewerWithBuilder: builder.
-				self createTilestoreWithBuilder: builder.
-				self createTrayWithBuilder: builder.
-				self createLayersWithBuilder: builder.
-				self createActiveTileDisplayWithBuilder: builder};
-			yourself.
-	morph := builder build: spec.
-	
-	commandBar := morph submorphNamed: 'command bar'.
-	commandBar vResizing: #rigid.
-	tileStore := morph submorphNamed: 'tile store'.
-	tileViewer := morph submorphNamed: 'tile viewer'.
-	layerViewer := morph submorphNamed: 'layers'.
-	trayViewer := morph submorphNamed: 'tray'.
-	
-	selectedTile := ImageMorph new.
-	"TODO: Make this nicer."
-	selectedTile position: (trayViewer position + (10@10)); visible:false.
-	trayViewer addMorph: selectedTile.
-	
-	tileViewer borderWidth: 2. 
-	tileViewer borderColor: tileStore borderColor.
-	
-	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
-	(commandBar submorphNamed: 'import') action: [
-		"TODO make multiple sprite sets available?"
-		tileStore morph removeAllMorphs;
-		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 source: selectedTile)].
-
-	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1.
-
-	(commandBar submorphNamed: 'export') action: [
-		tileMatrixMorph exportAsImage].
-
-	tileViewer addMorph: tileMatrixMorph.		
-	
-	tileMatrixMorph 
-		position: (tileMatrixMorph owner position);
-		hResizing: #spaceFill; 
-		vResizing: #spaceFill.
-	
-	morph openInWorld.
-	
-	tileMatrixMorph updateMap.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/21/2024 17:11'
-}
-GMTEEditor class >> openNewInstance [
-
-	self new open
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 01:55'
-}
-GMTEEditor class >> selectLayer: aLayer [
-	Transcript show: aLayer.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:04'
-}
-GMTEEditor class >> selectedLayer [
-	"TODO: Save layer in some object"
-	^ 'Layer 1'.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 01:16'
+	#category : #initialisation,
+	#'squeak_changestamp' : 'TW 5/22/2024 12:35'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
-	| newMorph selectedTile tileMatrixMorph| 
+	| newMorph selectedTile panel | 
 	
 	newMorph := builder build: (builder pluggableWindowSpec new
 		model: self;
 		label: 'GM Tile Editor';
 		children: {
-			GMTEEditor createCommandBarWithBuilder: builder.
+			GMTEEditor createCommandBarWithBuilder: builder for: self.
 			GMTEEditor createTileViewerWithBuilder: builder.
 			GMTEEditor createTilestoreWithBuilder: builder.
 			GMTEEditor createTrayWithBuilder: builder.
-			GMTEEditor createLayersWithBuilder: builder for: self.
-			GMTEEditor createActiveTileDisplayWithBuilder: builder}).
+			GMTEEditor createLayersWithBuilder: builder for: self.};
+		minimumExtent: 550@300).
 			
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	self commandBar vResizing: #rigid.
@@ -407,32 +259,23 @@ GMTEEditor >> buildWith: builder [
 	self layerViewer: (newMorph submorphNamed: 'layers').
 	self trayViewer: (newMorph submorphNamed: 'tray').
 	
+	panel := GMTETileContainer withParent: self tileStore.
+
+	self tileStore morph: panel.
+	
+	self tileStore on: #mouseMove send: [Transcript show: 'hello'] to: self.
 
 	selectedTile := ImageMorph new.
 	"TODO: Make this nicer."
-	selectedTile position: (trayViewer position + (10@10)); visible:false.
+	selectedTile 
+		position: (trayViewer position + (10@10));
+		visible:false.
 	trayViewer addMorph: selectedTile.
 	
 	self tileViewer borderWidth: 2. 
 	self tileViewer borderColor: tileStore borderColor.
 	
-	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
-	(self commandBar submorphNamed: 'import') action: [
-		"TODO make multiple sprite sets available?"
-		self tileStore morph removeAllMorphs;
-		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 source: selectedTile)].
-
-	tileMatrixMorph := GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1.
-
-	(self commandBar submorphNamed: 'export') action: [
-		tileMatrixMorph exportAsImage].
-
-	self tileViewer addMorph: tileMatrixMorph.		
-	
-	tileMatrixMorph 
-		position: (tileMatrixMorph owner position);
-		hResizing: #spaceFill; 
-		vResizing: #spaceFill.
+	self initializeTileMapMatrix.
 		
 	^newMorph
 ]
@@ -456,13 +299,64 @@ GMTEEditor >> commandBar: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 01:16'
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 5/22/2024 11:36'
+}
+GMTEEditor >> exportAsImage [
+	
+	self tileMapMatrix exportAsImage
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 5/22/2024 12:10'
+}
+GMTEEditor >> import [
+
+	"TODO 16 by 16 is a magic number. Where do we store tile dimensions?"
+	"TODO make multiple sprite sets available?"
+	self tileStore morph 
+		removeAllMorphs;
+		addAllMorphs: (GMTEEditor loadTileSetWithDimensions: 16@16 model: self).
+]
+
+{
+	#category : #initialisation,
+	#'squeak_changestamp' : 'TW 5/22/2024 12:35'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
+	self open.
 	self selectedLayer: self layerList first.
+]
+
+{
+	#category : #initialisation,
+	#'squeak_changestamp' : 'TW 5/22/2024 12:16'
+}
+GMTEEditor >> initializeTileMapMatrix [
+
+	self tileMapMatrix: (GMTETileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1).
+	self tileViewer addMorph: tileMapMatrix.		
+	tileMapMatrix 
+		position: (tileMapMatrix owner position);
+		hResizing: #spaceFill; 
+		vResizing: #spaceFill.
+]
+
+{
+	#category : #initialisation,
+	#'squeak_changestamp' : 'TW 5/22/2024 12:31'
+}
+GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
+
+	self tileMapMatrix: (GMTETileMap tileWidth: aWidth tileHeight: aHeight padding: 0.15 sizeRatio: 1).
+	self tileViewer addMorph: tileMapMatrix.		
+	tileMapMatrix 
+		position: (tileMapMatrix owner position);
+		hResizing: #spaceFill; 
+		vResizing: #spaceFill.
 ]
 
 {
@@ -502,7 +396,7 @@ GMTEEditor >> layerViewer: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialisation,
 	#'squeak_changestamp' : 'TW 5/22/2024 09:58'
 }
 GMTEEditor >> open [
@@ -530,6 +424,45 @@ GMTEEditor >> selectedLayer [
 GMTEEditor >> selectedLayer: anObject [
 
 	selectedLayer := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 11:52'
+}
+GMTEEditor >> selectedTile [
+
+	^ selectedTile
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 12:03'
+}
+GMTEEditor >> selectedTile: anObject [
+
+	selectedTile := anObject.
+	self trayViewer submorphs first 
+		visible:true;
+		image: (anObject image scaledToWidth:75).
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 11:35'
+}
+GMTEEditor >> tileMapMatrix [
+
+	^ tileMapMatrix
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/22/2024 11:35'
+}
+GMTEEditor >> tileMapMatrix: anObject [
+
+	tileMapMatrix := anObject.
 ]
 
 {

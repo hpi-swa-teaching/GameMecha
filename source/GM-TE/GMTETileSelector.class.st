@@ -2,33 +2,33 @@ Class {
 	#name : #GMTETileSelector,
 	#superclass : #ImageMorph,
 	#instVars : [
-		'source'
+		'model'
 	],
 	#category : #'GM-TE'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:57'
+	#'squeak_changestamp' : 'TW 5/22/2024 11:59'
 }
 GMTETileSelector >> handlesMouseDown: evt [
 	"TODO: make this useful."
-	source ifNotNil: [source visible:true; image: (self image scaledToWidth:75)].
+	self model selectedTile: self.
 	^ true.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:23'
+	#'squeak_changestamp' : 'TW 5/22/2024 11:58'
 }
-GMTETileSelector >> source [
-	^ source
+GMTETileSelector >> model [
+	^ model
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:23'
+	#'squeak_changestamp' : 'TW 5/22/2024 11:58'
 }
-GMTETileSelector >> source: anObject [
-	source := anObject
+GMTETileSelector >> model: anObject [
+	model := anObject
 ]
