@@ -109,9 +109,9 @@ GMTEEditableTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 16:55'
+	#'squeak_changestamp' : 'TW 5/22/2024 17:18'
 }
 GMTEEditableTileMap >> updateTileSprite: aTile [
 
-	self model selectedTile ifNotNil: [aTile image: (self model selectedTile image scaledToSize: self tileWidth @ self tileHeight)].
+	self model selectedTile ifNotNil: [aTile updateSprite: (self model selectedTile image)].
 ]
