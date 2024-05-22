@@ -369,11 +369,11 @@ GMTEEditor >> createTrayWithBuilder: aBuilder [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 16:15'
+	#'squeak_changestamp' : 'TW 5/22/2024 16:36'
 }
 GMTEEditor >> deselectTile [
 
-	"TODO implement the lower part resetting selected tile view"
+	"TODO implement the lower part: resetting selected tile in tray view"
 	self selectTile: nil.
 	self tileMapMatrix tileSelectionSet highlightImage: nil.
 	"self trayViewer submorphs first 
@@ -428,11 +428,11 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:51'
+	#'squeak_changestamp' : 'TW 5/22/2024 16:41'
 }
 GMTEEditor >> initializeTileMapMatrix [
 
-	self tileMapMatrix: (GMTEEditableTileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1).
+	self tileMapMatrix: (GMTEEditableTileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1 model: self).
 	self tileViewer addMorph: tileMapMatrix.		
 	self tileMapMatrix 
 		position: (tileMapMatrix owner position);
@@ -442,11 +442,11 @@ GMTEEditor >> initializeTileMapMatrix [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 16:10'
+	#'squeak_changestamp' : 'TW 5/22/2024 16:41'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 
-	self tileMapMatrix: (GMTEEditableTileMap tileWidth: aWidth tileHeight: aHeight padding: 0.15 sizeRatio: 1).
+	self tileMapMatrix: (GMTEEditableTileMap tileWidth: aWidth tileHeight: aHeight padding: 0.15 sizeRatio: 1 model: self).
 	self tileViewer addMorph: tileMapMatrix.		
 	self tileMapMatrix 
 		position: (tileMapMatrix owner position);
