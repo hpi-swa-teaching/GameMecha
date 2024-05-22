@@ -559,6 +559,15 @@ GMTEEditor >> open [
 ]
 
 {
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 5/23/2024 00:13'
+}
+GMTEEditor >> resetAll [
+
+	self tileMapMatrix resetAll
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 16:12'
 }

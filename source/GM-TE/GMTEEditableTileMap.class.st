@@ -68,7 +68,7 @@ GMTEEditableTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
+	#'squeak_changestamp' : 'TW 5/22/2024 23:40'
 }
 GMTEEditableTileMap >> mouseDown: anEvent [
 	"TODO: make this useful."
@@ -76,13 +76,14 @@ GMTEEditableTileMap >> mouseDown: anEvent [
 	| clickedTile |
 	
 	clickedTile := self tileFromPosition: anEvent position.
-	clickedTile ifNotNil: [self updateTileSprite: clickedTile].
+	(anEvent redButtonPressed) ifTrue: [clickedTile ifNotNil: [self updateTileSprite: clickedTile]].
+	(anEvent yellowButtonPressed) ifTrue: [clickedTile ifNotNil: [clickedTile reset]].
 	^ true.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 19:57'
+	#'squeak_changestamp' : 'TW 5/22/2024 23:37'
 }
 GMTEEditableTileMap >> mouseMove: anEvent [
 
@@ -96,7 +97,17 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 	self tileSelectionSet clearAllHighlightings.
 	self tileSelectionSet highlightTile: hoveredTile.
 
-	(anEvent redButtonPressed) ifTrue: [hoveredTile ifNotNil: [self updateTileSprite: hoveredTile]]
+	(anEvent redButtonPressed) ifTrue: [hoveredTile ifNotNil: [self updateTileSprite: hoveredTile]].
+	(anEvent yellowButtonPressed) ifTrue: [hoveredTile ifNotNil: [hoveredTile reset]]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/23/2024 00:08'
+}
+GMTEEditableTileMap >> resetAll [
+	
+	self gridTileMatrix do: [:aTile | aTile reset]
 ]
 
 {
