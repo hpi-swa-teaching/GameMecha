@@ -140,7 +140,7 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 10:19'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 21:55'
 }
 GMTETileMap >> extent: aPoint [
 

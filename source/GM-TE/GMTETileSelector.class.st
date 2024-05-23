@@ -1,11 +1,22 @@
 Class {
 	#name : #GMTETileSelector,
-	#superclass : #ImageMorph,
+	#superclass : #GMTEImageMorph,
 	#instVars : [
 		'model'
 	],
 	#category : #'GM-TE'
 }
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 5/24/2024 00:34'
+}
+GMTETileSelector >> extent: anExtent [
+	super extent: anExtent.
+	self
+		borderColor: Color orange;
+		borderWidth: 1
+]
 
 {
 	#category : #'as yet unclassified',

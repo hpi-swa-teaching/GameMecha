@@ -130,7 +130,7 @@ GMTEEditor class >> layerList [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 10:04'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 21:09'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -154,7 +154,7 @@ GMTEEditor >> buildWith: builder [
 	self tileViewer: ((newMorph submorphNamed: 'main panel') submorphNamed: 'tile viewer').
 	self layerViewer: (newMorph submorphNamed: 'layers').
 	self trayViewer: (newMorph submorphNamed: 'tray').
-	
+	tileViewer clipSubmorphs: true.
 	panel := GMTETileContainer withParent: self tileStore.
 
 	self tileStore morph: panel.
@@ -471,7 +471,7 @@ GMTEEditor >> layerViewer: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/23/2024 19:10'
+	#'squeak_changestamp' : 'Alex M 5/24/2024 00:30'
 }
 GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	"The source argument is mostly for debugging. Make it nicer with objects"
@@ -500,7 +500,7 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 		0 to: (form width - tileWidth) by: tileWidth do: [:x|
 			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
 			image := GMTETileSelector new
-				image: (tile scaledToWidth: 50);
+				updateSprite: (tile scaledToWidth: 50);
 				borderColor: Color orange;
 				borderWidth: 1;
 				model: self.
@@ -514,7 +514,7 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	
 	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
 	previewTileSize := (form width max: 500) / (form width / tileWidth).
-	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth + 1)@(form height / tileHeight + 1))).
+	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth)@(form height / tileHeight))).
 	(GMTEEditor confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs.
@@ -569,7 +569,7 @@ GMTEEditor >> resetAll [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 19:56'
+	#'squeak_changestamp' : 'Alex M 5/24/2024 00:40'
 }
 GMTEEditor >> selectTile: anObject [
 	
@@ -578,10 +578,10 @@ GMTEEditor >> selectTile: anObject [
 	ifTrue:[self unselectTile]
 	ifFalse:[
 		self selectedTile: anObject.
-		self tileMapMatrix tileSelectionSet highlightImage: anObject image.
+		self tileMapMatrix tileSelectionSet highlightImage: anObject fullResolutionSprite.
 		self trayViewer morph submorphs first
 			visible:true;
-			image: (anObject image scaledToWidth:75).
+			image: (anObject fullResolutionSprite scaledToWidth:75).
 	]
 ]
 
