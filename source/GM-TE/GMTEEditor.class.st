@@ -207,7 +207,7 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:55'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 10:04'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -223,7 +223,7 @@ GMTEEditor >> buildWith: builder [
 			self createTrayWithBuilder: builder.
 			self createLayersWithBuilder: builder.};
 		closeAction: #onClose;
-		minimumExtent: 550@300).
+		minimumExtent: 550@400).
 			
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	"self commandBar vResizing: #rigid."
@@ -236,12 +236,10 @@ GMTEEditor >> buildWith: builder [
 
 	self tileStore morph: panel.
 
-	selectedTile := ImageMorph new.
+	selectedTile := ImageMorph new visible:false;yourself.
 	"TODO: Make this nicer."
-	selectedTile 
-		position: (trayViewer position + (10@10));
-		visible:false.
-	trayViewer addMorph: selectedTile.
+	trayViewer morph beTransparent.
+	trayViewer morph addMorph: selectedTile.
 	
 	self tileViewer borderWidth: 2. 
 	self tileViewer borderColor: tileStore borderColor.
@@ -414,13 +412,13 @@ GMTEEditor >> createToolBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/22/2024 17:23'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 10:00'
 }
 GMTEEditor >> createTrayWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
-		minimumHeight:100;
+		minimumHeight:75;
 		yourself
 ]
 
@@ -597,13 +595,13 @@ GMTEEditor >> resetAll [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 16:12'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 10:05'
 }
 GMTEEditor >> selectTile: anObject [
 
 	self selectedTile: anObject.
 	self tileMapMatrix tileSelectionSet highlightImage: anObject image.
-	self trayViewer submorphs first 
+	self trayViewer morph submorphs first
 		visible:true;
 		image: (anObject image scaledToWidth:75).
 ]

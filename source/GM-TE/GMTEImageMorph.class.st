@@ -9,16 +9,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 23:20'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 09:51'
 }
 GMTEImageMorph >> extent: anExtent [
 	"override ImageMorph extent functionality. ALWAYS KEEPS RATIO"
 	
 	"self image: (self image scaledToSize: anExtent)."
 
+	super extent: anExtent.
 	self image: (self fullResolutionSprite scaledToSize: anExtent).
-
-	super extent: anExtent
 ]
 
 {

@@ -83,7 +83,7 @@ GMTEEditableTileMap >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/22/2024 23:37'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 10:37'
 }
 GMTEEditableTileMap >> mouseMove: anEvent [
 
@@ -98,7 +98,15 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 	self tileSelectionSet highlightTile: hoveredTile.
 
 	(anEvent redButtonPressed) ifTrue: [hoveredTile ifNotNil: [self updateTileSprite: hoveredTile]].
-	(anEvent yellowButtonPressed) ifTrue: [hoveredTile ifNotNil: [hoveredTile reset]]
+	(anEvent yellowButtonPressed) ifTrue: [hoveredTile ifNotNil: [hoveredTile reset]].
+	
+	"This solves the bug but not the root of the issue. TODO further investigation."
+	"self updateTiles."
+	hoveredTile
+		extent: self tileSizeWidth@self tileSizeHeight;
+		borderColor: Color white;
+		color: Color veryLightGray;
+		borderWidth: 2
 ]
 
 {
@@ -130,7 +138,7 @@ GMTEEditableTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 17:18'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 10:14'
 }
 GMTEEditableTileMap >> updateTileSprite: aTile [
 

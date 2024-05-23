@@ -140,12 +140,12 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:10'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 10:19'
 }
 GMTETileMap >> extent: aPoint [
 
-	self gridTileMatrix ifNotNil: [self rescaleMap].
 	super extent: aPoint.
+	self gridTileMatrix ifNotNil: [self rescaleMap].
 ]
 
 {
