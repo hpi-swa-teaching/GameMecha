@@ -10,7 +10,8 @@ Class {
 		'selectedLayer',
 		'layerList',
 		'tileMapMatrix',
-		'selectedTile'
+		'selectedTile',
+		'ratio'
 	],
 	#category : #'GM-TE'
 }
@@ -206,7 +207,7 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:42'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:55'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -221,10 +222,11 @@ GMTEEditor >> buildWith: builder [
 			self createTilestoreWithBuilder: builder.
 			self createTrayWithBuilder: builder.
 			self createLayersWithBuilder: builder.};
+		closeAction: #onClose;
 		minimumExtent: 550@300).
 			
 	self commandBar: (newMorph submorphNamed: 'command bar').
-	self commandBar vResizing: #rigid.
+	"self commandBar vResizing: #rigid."
 	self tileStore: (newMorph submorphNamed: 'tile store').
 	self tileViewer: ((newMorph submorphNamed: 'main panel') submorphNamed: 'tile viewer').
 	self layerViewer: (newMorph submorphNamed: 'layers').
@@ -269,7 +271,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:27'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:50'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -297,17 +299,16 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			name: 'openInWorld';
 			label: 'Open in World'};
 
-		"verticalResizing: #shrinkWrap;"
+		verticalResizing: #shrinkWrap;
 		
 		frame: (LayoutFrame
-			fractions: (0@0 corner: 1@0)
-			offsets: (0@0 corner: 0@50));
+			fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
 		yourself
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:38'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggableListSpec new
@@ -315,7 +316,7 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
 		frame: (LayoutFrame
 		fractions: (0.8@0 corner: 1@1)
-		offsets: (0@50 corner: 0@0));
+		offsets: (0@30 corner: 0@0));
 		"A LOT OF MOCKUP CODE"
 		model: self;
 		getSelected: #selectedLayer;
@@ -328,7 +329,7 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:32'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
 }
 GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 	"TODO: Maybe rename function to something more appropriate?"
@@ -336,7 +337,7 @@ GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 		name: 'main panel';
 		model:self;
 		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
-		offsets: (0@ 50 corner: 0@0));
+		offsets: (0@ 30 corner: 0@0));
 		"layout: #vertical;"
 		children: {
 		
@@ -357,13 +358,13 @@ GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:27'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
 }
 GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
-			offsets: (0@ 50 corner: 0@0));
+			offsets: (0@ 30 corner: 0@0));
 			name: 'tile store';
 			spacing: 10@10;
 			children: {};
@@ -377,7 +378,7 @@ GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:41'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 01:47'
 }
 GMTEEditor >> createToolBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -386,9 +387,10 @@ GMTEEditor >> createToolBarWithBuilder: aBuilder [
 		frame: (LayoutFrame
 			fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
 		children: {aBuilder pluggableButtonSpec new
-			name: 'button1';
-			label: 'Button 1';
+			name: 'reset';
+			label: 'Reset';
 			model: self;
+			action:#resetAll;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'button2';
@@ -447,19 +449,18 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 22:35'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 02:24'
 }
 GMTEEditor >> import [
 	"TODO make multiple sprite sets available?"
-	| tiles tile_height dimensions ratio|
-	ratio := 1. "TODO: Where is ratio stored? When do we enter it?"
+	| tiles tile_height dimensions|
 	tile_height := FillInTheBlankMorph request: 'Enter tile height (width is calculated by ratio)' initialAnswer: '16'.
 	
 	(tile_height = '')
 		ifTrue: [^ nil]
 		ifFalse:[tile_height := tile_height asInteger].
 	
-	dimensions := (tile_height @ (tile_height * ratio)).
+	dimensions := (tile_height @ (tile_height * (self ratio))).
 	tiles := GMTEEditor loadTileSetWithDimensions: dimensions model: self.
 	
 	tiles
@@ -472,13 +473,15 @@ GMTEEditor >> import [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 12:35'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 02:25'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
-	self open.
-	self selectedLayer: self layerList first.
+	self
+		open;
+		selectedLayer: self layerList first;
+		ratio:1
 ]
 
 {
@@ -546,6 +549,15 @@ GMTEEditor >> layerViewer: anObject [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 5/23/2024 02:03'
+}
+GMTEEditor >> onClose [
+	"PopUpMenu inform:'You should save'."
+	"TODO: Give chance to save"
+]
+
+{
 	#category : #initialisation,
 	#'squeak_changestamp' : 'TW 5/22/2024 09:58'
 }
@@ -556,6 +568,22 @@ GMTEEditor >> open [
       newMorph openInWorld.
 	self tileViewer submorphs first updateMap.
       ^newMorph
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 02:24'
+}
+GMTEEditor >> ratio [
+	^ ratio
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 02:24'
+}
+GMTEEditor >> ratio: anObject [
+	ratio := anObject
 ]
 
 {
