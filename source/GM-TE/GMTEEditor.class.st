@@ -18,9 +18,9 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 14:32'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 14:57'
 }
-GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint [
+GMTEEditor class >> confirmPreviewOf: forms withDimensions: aPoint [
 	"TODO: Could break with too big tilesets. Maybe filter only first 100 tiles?"
 	|img dialog|
 	
@@ -32,7 +32,7 @@ GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint [
 	listDirection: #leftToRight;
 	wrapDirection: #leftToRight.
 	
-	(morphArray reversed) do: [:morph| 
+	(forms reversed) do: [:morph| 
 		img addMorph: (ImageMorph new image: (morph image scaledToWidth: 50); borderColor: (Color red); borderWidth:1;yourself).
 	].
 
@@ -162,13 +162,13 @@ GMTEEditor class >> layerList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 15:29'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 15:00'
 }
 GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 	"The source argument is mostly for debugging. Make it nicer with objects"
 	"Do we really leaves this here or do we create an extra class for"
  
-	| fc stream form tile tileWidth tileHeight image morphs previewDimensions previewTileSize |
+	| fc stream form tile tileWidth tileHeight image morphs previewDimensions previewTileSize alreadyImported previews |
 	
 	fc := FileChooser new.
 	fc initializeAsSystemWindowWithCaptionPane.
@@ -181,6 +181,8 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 	form := Form fromBinaryStream: stream.
 	
 	morphs := OrderedCollection new.
+	previews := OrderedCollection new.
+	alreadyImported := Set new.
 	
 	tileWidth := aPoint x.
 	tileHeight := aPoint y.
@@ -188,19 +190,26 @@ GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
 	0 to: (form height - tileHeight) by: tileHeight do:[:y|
 		0 to: (form width - tileWidth) by: tileWidth do: [:x|
 			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
-			image := GMTETileSelector new
-			image: (tile scaledToWidth: 50);
-			borderColor: Color orange;
-			borderWidth: 1;
-			model: aModel.
-			morphs add: image.
+			
+			(alreadyImported includes: tile bits)
+				ifFalse:[
+					alreadyImported add: tile bits.
+					image := GMTETileSelector new
+					image: (tile scaledToWidth: 50);
+					borderColor: Color orange;
+					borderWidth: 1;
+					model: aModel.
+					morphs add: image.
+				].
+				"TODO: Maybe only send forms"
+				previews add: (ImageMorph new image: tile)
 		].
 	].
 	
 	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
 	previewTileSize := (form width max: 500) / (form width / tileWidth).
 	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth + 1)@(form height / tileHeight + 1))).
-	(GMTEEditor confirmPreviewOf: morphs withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
+	(GMTEEditor confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs.
 ]
