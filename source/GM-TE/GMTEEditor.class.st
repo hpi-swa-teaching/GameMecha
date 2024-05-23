@@ -161,51 +161,6 @@ GMTEEditor class >> layerList [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 15:29'
-}
-GMTEEditor class >> loadTileSetWithDimensions: aPoint model: aModel [
-	"The source argument is mostly for debugging. Make it nicer with objects"
-	"Do we really leaves this here or do we create an extra class for"
- 
-	| fc stream form tile tileWidth tileHeight image morphs previewDimensions previewTileSize |
-	
-	fc := FileChooser new.
-	fc initializeAsSystemWindowWithCaptionPane.
-	fc setCaption: 'Select a picture file' translated.
-	fc setSuffixes: {'png' . 'gif' . 'bmp' . 'jpg' . 'jpeg' }.
-	stream := fc open.
-	
-	stream ifNil: [^ nil].
-	
-	form := Form fromBinaryStream: stream.
-	
-	morphs := OrderedCollection new.
-	
-	tileWidth := aPoint x.
-	tileHeight := aPoint y.
-	"TODO: refactor into non C-like code"
-	0 to: (form height - tileHeight) by: tileHeight do:[:y|
-		0 to: (form width - tileWidth) by: tileWidth do: [:x|
-			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
-			image := GMTETileSelector new
-			image: (tile scaledToWidth: 50);
-			borderColor: Color orange;
-			borderWidth: 1;
-			model: aModel.
-			morphs add: image.
-		].
-	].
-	
-	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
-	previewTileSize := (form width max: 500) / (form width / tileWidth).
-	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth + 1)@(form height / tileHeight + 1))).
-	(GMTEEditor confirmPreviewOf: morphs withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
-
-	^ morphs.
-]
-
-{
 	#category : #building,
 	#'squeak_changestamp' : 'Alex M 5/23/2024 10:04'
 }
@@ -447,19 +402,19 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 5/23/2024 02:24'
+	#'squeak_changestamp' : 'TW 5/23/2024 13:57'
 }
 GMTEEditor >> import [
 	"TODO make multiple sprite sets available?"
-	| tiles tile_height dimensions|
-	tile_height := FillInTheBlankMorph request: 'Enter tile height (width is calculated by ratio)' initialAnswer: '16'.
+	| tiles tileHeight dimensions|
+	tileHeight := FillInTheBlankMorph request: 'Enter tile height (width is calculated by ratio)' initialAnswer: '16'.
 	
-	(tile_height = '')
+	(tileHeight = '')
 		ifTrue: [^ nil]
-		ifFalse:[tile_height := tile_height asInteger].
+		ifFalse:[tileHeight := tileHeight asInteger].
 	
-	dimensions := (tile_height @ (tile_height * (self ratio))).
-	tiles := GMTEEditor loadTileSetWithDimensions: dimensions model: self.
+	dimensions := (tileHeight @ (tileHeight * (self ratio))).
+	tiles := self loadTileSetWithDimensions: dimensions.
 	
 	tiles
 		ifNil: [^ nil].
@@ -544,6 +499,55 @@ GMTEEditor >> layerViewer [
 GMTEEditor >> layerViewer: anObject [
 
 	layerViewer := anObject.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 5/23/2024 14:17'
+}
+GMTEEditor >> loadTileSetWithDimensions: aPoint [
+	"The source argument is mostly for debugging. Make it nicer with objects"
+	"Do we really leaves this here or do we create an extra class for"
+ 
+	| fc stream form tile tileWidth tileHeight image morphs previewDimensions previewTileSize seenForms|
+	
+	fc := FileChooser new.
+	fc initializeAsSystemWindowWithCaptionPane.
+	fc setCaption: 'Select a picture file' translated.
+	fc setSuffixes: {'png' . 'gif' . 'bmp' . 'jpg' . 'jpeg' }.
+	stream := fc open.
+	
+	stream ifNil: [^ nil].
+	
+	form := Form fromBinaryStream: stream.
+	
+	morphs := OrderedCollection new.
+	
+	seenForms := Set new.
+	
+	tileWidth := aPoint x.
+	tileHeight := aPoint y.
+	"TODO: refactor into non C-like code"
+	0 to: (form height - tileHeight) by: tileHeight do:[:y|
+		0 to: (form width - tileWidth) by: tileWidth do: [:x|
+			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
+			(seenForms includes: (tile bits)) ifFalse: [.
+			image := GMTETileSelector new
+			image: (tile scaledToWidth: 50);
+			borderColor: Color orange;
+			borderWidth: 1;
+			model: self.
+			morphs add: image.
+			seenForms add: (tile bits)].
+		].
+	].
+	
+	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
+	previewTileSize := (form width max: 500) / (form width / tileWidth).
+	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth + 1)@(form height / tileHeight + 1))).
+	(GMTEEditor confirmPreviewOf: morphs withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
+
+	^ morphs.
 ]
 
 {

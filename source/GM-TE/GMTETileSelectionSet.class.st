@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 16:22'
+	#'squeak_changestamp' : 'TW 5/23/2024 13:39'
 }
 GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 	"comment stating purpose of message"
