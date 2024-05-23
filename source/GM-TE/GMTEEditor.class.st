@@ -569,15 +569,20 @@ GMTEEditor >> resetAll [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 10:05'
+	#'squeak_changestamp' : 'Alex M 5/23/2024 19:56'
 }
 GMTEEditor >> selectTile: anObject [
-
-	self selectedTile: anObject.
-	self tileMapMatrix tileSelectionSet highlightImage: anObject image.
-	self trayViewer morph submorphs first
-		visible:true;
-		image: (anObject image scaledToWidth:75).
+	
+	"TODO: might be problematic with tray. Maybe give tiles in the store IDs?"
+	(anObject = self selectedTile)
+	ifTrue:[self unselectTile]
+	ifFalse:[
+		self selectedTile: anObject.
+		self tileMapMatrix tileSelectionSet highlightImage: anObject image.
+		self trayViewer morph submorphs first
+			visible:true;
+			image: (anObject image scaledToWidth:75).
+	]
 ]
 
 {
@@ -686,4 +691,15 @@ GMTEEditor >> trayViewer [
 GMTEEditor >> trayViewer: anObject [
 
 	trayViewer := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 5/23/2024 19:52'
+}
+GMTEEditor >> unselectTile [
+
+	self selectedTile: nil.
+	self tileMapMatrix tileSelectionSet highlightImage: nil.
+	self trayViewer morph submorphs first visible:false.
 ]
