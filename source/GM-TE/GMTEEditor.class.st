@@ -471,7 +471,7 @@ GMTEEditor >> layerViewer: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/23/2024 15:14'
+	#'squeak_changestamp' : 'TW 5/23/2024 19:10'
 }
 GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	"The source argument is mostly for debugging. Make it nicer with objects"
@@ -499,19 +499,16 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	0 to: (form height - tileHeight) by: tileHeight do:[:y|
 		0 to: (form width - tileWidth) by: tileWidth do: [:x|
 			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
-			
-			(alreadyImported includes: tile bits)
-				ifFalse:[
-					alreadyImported add: tile bits.
-					image := GMTETileSelector new
-					image: (tile scaledToWidth: 50);
-					borderColor: Color orange;
-					borderWidth: 1;
-					model: self.
-					morphs add: image.
-				].
-				"TODO: Maybe only send forms"
-				previews add: (ImageMorph new image: tile)
+			image := GMTETileSelector new
+				image: (tile scaledToWidth: 50);
+				borderColor: Color orange;
+				borderWidth: 1;
+				model: self.
+			(alreadyImported includes: image imageForm bits hash)
+				ifFalse: [alreadyImported add: image imageForm bits hash.
+					morphs add: image].
+			"TODO: Maybe only send forms"
+			previews add: (ImageMorph new image: tile)
 		].
 	].
 	
