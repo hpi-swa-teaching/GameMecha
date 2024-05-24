@@ -377,10 +377,11 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 5/24/2024 18:18'
+	#'squeak_changestamp' : 'JS 5/24/2024 20:18'
 }
 GMTEEditor >> exportAsMorph [
 	
+	"self tileMapMatrix" 
 	self tileMapMatrix saveOnFile
 ]
 
@@ -410,18 +411,21 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'jj 5/24/2024 20:03'
+	#'squeak_changestamp' : 'JS 5/24/2024 20:24'
 }
 GMTEEditor >> importFromMorph [
-	|fc strm aFileStream morphOrList|
+	|fc stream aFileStream morphOrList|
 	fc := FileChooser new.
 	fc initializeAsSystemWindowWithCaptionPane.
 	fc setCaption: 'Select a tilemap.morph file' translated.
-strm := fc open. 
-
-aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: strm fullName) binary contentsOfEntireFile)) binary reset.
+	stream := fc open. 
+	
+	stream ifNil: [^self].
+	
+	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary reset.
 	morphOrList := aFileStream fileInObjectAndCode.
 	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
+	morphOrList tileSelectionSet highlightImage: nil.
 	self tileMapMatrix: morphOrList.
 	morphOrList model: self.
 	self tileViewer removeAllMorphs.
