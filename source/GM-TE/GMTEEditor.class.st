@@ -192,7 +192,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/24/2024 18:31'
+	#'squeak_changestamp' : 'jj 5/24/2024 19:47'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -203,23 +203,29 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			label: 'Export';
 			model: self;
 			action: #exportAsMorph;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'saveAsImage';
 			label: 'Save As Image';
 			model: self;
-			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.4 @ 1) offsets: nil);
 			action: #exportAsImage.
 			aBuilder pluggableButtonSpec new
 			name: 'import';
 			label: 'Import';
 			model: self;
-			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.4 @ 0 corner: 0.6 @ 1) offsets: nil);
 			action: #import.
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.8 @ 1) offsets: nil);
 			name: 'openInWorld';
-			label: 'Open in World'};
+			label: 'Open in World'. aBuilder pluggableButtonSpec new
+			name: 'Import Tilemap';
+			label: 'Import Tilemap';
+			model: self;
+			action: #importFromMorph;
+			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 1) offsets: nil)}
+			;
 
 		verticalResizing: #shrinkWrap;
 		
@@ -400,6 +406,25 @@ GMTEEditor >> import [
 	self tileStore morph 
 		removeAllMorphs;
 		addAllMorphs: tiles.
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'jj 5/24/2024 19:51'
+}
+GMTEEditor >> importFromMorph [
+	|fc strm aFileStream morphOrList|
+	fc := FileChooser new.
+	fc initializeAsSystemWindowWithCaptionPane.
+	fc setCaption: 'Select a tilemap.morph file' translated.
+strm := fc open. 
+
+aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: strm fullName) binary contentsOfEntireFile)) binary reset.
+	morphOrList := aFileStream fileInObjectAndCode.
+	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
+	morphOrList openInWorld.
+	self halt.
+	self tileMapMatrix: morphOrList
 ]
 
 {
