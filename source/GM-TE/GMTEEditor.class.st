@@ -410,7 +410,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'jj 5/24/2024 19:51'
+	#'squeak_changestamp' : 'jj 5/24/2024 20:03'
 }
 GMTEEditor >> importFromMorph [
 	|fc strm aFileStream morphOrList|
@@ -422,9 +422,10 @@ strm := fc open.
 aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: strm fullName) binary contentsOfEntireFile)) binary reset.
 	morphOrList := aFileStream fileInObjectAndCode.
 	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
-	morphOrList openInWorld.
-	self halt.
-	self tileMapMatrix: morphOrList
+	self tileMapMatrix: morphOrList.
+	morphOrList model: self.
+	self tileViewer removeAllMorphs.
+	self tileViewer addMorph: morphOrList
 ]
 
 {
