@@ -192,7 +192,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:50'
+	#'squeak_changestamp' : 'Alex M 5/24/2024 18:31'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -202,6 +202,7 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			name: 'export';
 			label: 'Export';
 			model: self;
+			action: #exportAsMorph;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'saveAsImage';
@@ -366,6 +367,15 @@ GMTEEditor >> deselectTile [
 GMTEEditor >> exportAsImage [
 	
 	self tileMapMatrix exportAsImage
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'Alex M 5/24/2024 18:18'
+}
+GMTEEditor >> exportAsMorph [
+	
+	self tileMapMatrix saveOnFile
 ]
 
 {
