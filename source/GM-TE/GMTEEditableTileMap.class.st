@@ -68,45 +68,77 @@ GMTEEditableTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/22/2024 23:40'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:53'
 }
 GMTEEditableTileMap >> mouseDown: anEvent [
 	"TODO: make this useful."
 	
-	| clickedTile |
+	| clickedTile tileIdx tmpActiveLayer|
 	
-	clickedTile := self tileFromPosition: anEvent position.
+	tmpActiveLayer := self model LAYER_TEST.
+	
+	clickedTile := self tileFromPosition: anEvent position layer: 1.
 	(anEvent redButtonPressed) ifTrue: [clickedTile ifNotNil: [self updateTileSprite: clickedTile]].
 	(anEvent yellowButtonPressed) ifTrue: [clickedTile ifNotNil: [clickedTile reset]].
+	
+	(anEvent redButtonPressed) 
+		ifTrue: [clickedTile 
+			ifNil: [
+				tileIdx := self tileIdxFromPosition: anEvent position.
+				tileIdx ifNil: [^nil].
+				clickedTile := self generateTileAtlayer: tmpActiveLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack.]. 
+			self updateTileSprite: clickedTile].
+	(anEvent yellowButtonPressed) 
+		ifTrue: [clickedTile 
+			ifNotNil: [
+				tileIdx := self tileIdxFromPosition: anEvent position.
+				self tileMatrixStack layer: 1 at: tileIdx y at: tileIdx x put: nil.
+				clickedTile abandon]].
+	
 	^ true.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 5/23/2024 10:37'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:57'
 }
 GMTEEditableTileMap >> mouseMove: anEvent [
 
-	| hoveredTile |
+	| hoveredTile hoveredTileVisual tileIdx tmpActiveLayer |
+
+	"TODO currently hard coded"
+	tmpActiveLayer := self model LAYER_TEST.
 	
-	hoveredTile := self tileFromPosition: anEvent position.
-	hoveredTile ifNil: [
-		self tileSelectionSet clearAllHighlightings. 
-		^nil].
+	hoveredTile := self tileFromPosition: anEvent position layer: tmpActiveLayer.
+	hoveredTileVisual := self tileVisualFromPosition: anEvent position.
 	
 	self tileSelectionSet clearAllHighlightings.
-	self tileSelectionSet highlightTile: hoveredTile.
-
-	(anEvent redButtonPressed) ifTrue: [hoveredTile ifNotNil: [self updateTileSprite: hoveredTile]].
-	(anEvent yellowButtonPressed) ifTrue: [hoveredTile ifNotNil: [hoveredTile reset]].
+	
+	hoveredTileVisual 
+		ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
+	
+	"TODO why another ifNil check here?"
+	(anEvent redButtonPressed) 
+		ifTrue: [hoveredTile 
+			ifNil: [
+				tileIdx := self tileIdxFromPosition: anEvent position.
+				tileIdx ifNil: [^nil].
+				hoveredTile := self generateTileAtlayer: tmpActiveLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack.]. 
+			self updateTileSprite: hoveredTile].
+	(anEvent yellowButtonPressed) 
+		ifTrue: [hoveredTile 
+			ifNotNil: [
+				tileIdx := self tileIdxFromPosition: anEvent position.
+				self tileMatrixStack layer: 1 at: tileIdx y at: tileIdx x put: nil.
+				hoveredTile abandon]].
 	
 	"This solves the bug but not the root of the issue. TODO further investigation."
 	"self updateTiles."
-	hoveredTile
+	"hoveredTileVisual
 		extent: self tileSizeWidth@self tileSizeHeight;
 		borderColor: Color white;
 		color: Color veryLightGray;
-		borderWidth: 2
+		borderWidth: 2"
 ]
 
 {

@@ -11,7 +11,8 @@ Class {
 		'layerList',
 		'tileMapMatrix',
 		'selectedTile',
-		'ratio'
+		'ratio',
+		'LAYER_TEST'
 	],
 	#category : #'GM-TE'
 }
@@ -126,6 +127,24 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 }
 GMTEEditor class >> layerList [
 	^ {'Layer 1'. 'Layer 2'}
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:52'
+}
+GMTEEditor >> LAYER_TEST [
+
+	^ LAYER_TEST
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:52'
+}
+GMTEEditor >> LAYER_TEST: anObject [
+
+	LAYER_TEST := anObject.
 ]
 
 {
@@ -434,7 +453,7 @@ GMTEEditor >> importFromMorph [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 02:25'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:58'
 }
 GMTEEditor >> initialize [
 
@@ -442,7 +461,8 @@ GMTEEditor >> initialize [
 	self
 		open;
 		selectedLayer: self layerList first;
-		ratio:1
+		ratio: 1;
+		LAYER_TEST: 1
 ]
 
 {

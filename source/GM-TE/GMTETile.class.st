@@ -6,11 +6,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 23:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:21'
 }
 GMTETile class >> placeHolderColor [
 		
-	^Color veryLightGray
+	^Color transparent
 ]
 
 {

@@ -21,7 +21,8 @@ Class {
 		'fullGridSizeHeight',
 		'tileCornerOffset',
 		'mapPaddedHeight',
-		'gridTileMatrix'
+		'tileMatrixStack',
+		'tileMatrixStackVisual'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -140,12 +141,12 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 21:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:53'
 }
 GMTETileMap >> extent: aPoint [
 
 	super extent: aPoint.
-	self gridTileMatrix ifNotNil: [self rescaleMap].
+	self tileMatrixStack ifNotNil: [self rescaleMap].
 ]
 
 {
@@ -186,46 +187,42 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:40'
 }
-GMTETileMap >> generateTiles [
+GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack [
+
+	| tilePos correctedTilePos newTile |
+	
+	tilePos := self tilePosFromVirtual: x@y.
+	correctedTilePos := self correctedTilePosition: tilePos.
+						
+	newTile := (GMTETile 
+		position: correctedTilePos
+		extent: self tileSizeWidth@self tileSizeHeight) 
+		lock;
+		beTransparent;
+		yourself.
+	
+	self addMorphFrontInLayer: newTile.
+	aStack layer: aLayer at: y at: x put: newTile.
+	^newTile
+
+	
+		
+	
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:32'
+}
+GMTETileMap >> generateVisualTiles [
 	"Create grid tile matrix datastructure"
 	
-	| tilePos correctedTilePos newTile |
-		
 	1 to: self tileHeight do: [:y |
-		1 to: self tileWidth do: [:x |
-			
-			tilePos := self tilePosFromVirtual: x@y.
-			correctedTilePos := self correctedTilePosition: tilePos.
-						
-			newTile := GMTETile 
-				position: correctedTilePos
-				extent: self tileSizeWidth@self tileSizeHeight.
-			newTile lock.
-			newTile beTransparent.
-			
-			self addMorphFrontInLayer: newTile.
-			self gridTileMatrix at: y at: x put: newTile]].
+		1 to: self tileWidth do: [:x |			
+			self generateTileAtlayer: 1 x: x y: y stack: self tileMatrixStackVisual]].
 
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
-}
-GMTETileMap >> gridTileMatrix [
-
-	^ gridTileMatrix
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
-}
-GMTETileMap >> gridTileMatrix: anObject [
-
-	gridTileMatrix := anObject.
 ]
 
 {
@@ -367,14 +364,13 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:21'
 }
 GMTETileMap >> processTiles [
 	"comment stating purpose of message"
 
-	self gridTileMatrix do: [ :tile | 
-		tile borderColor: Color white.
-		tile color: Color veryLightGray. 
+	(self tileMatrixStackVisual layer: 1) do: [ :tile | 
+		tile borderColor: Color white. 
 		tile borderWidth: 2]
 
 ]
@@ -452,18 +448,16 @@ GMTETileMap >> tileCornerOffset: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 18:42'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:01'
 }
-GMTETileMap >> tileFromPosition: aPoint [
+GMTETileMap >> tileFromPosition: aPoint layer: aLayer [
 
 	| idx |
 	
 	idx := self tileIdxFromPosition: aPoint.
 	idx ifNil: [^nil].
 	
-	"Transcript show: idx; cr."
-	
-	^ self gridTileMatrix at: idx y at: idx x.
+	^ self tileMatrixStack layer: aLayer at: idx y at: idx x.
 ]
 
 {
@@ -486,7 +480,7 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:58'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 
@@ -496,8 +490,44 @@ GMTETileMap >> tileIdxFromPosition: aPoint [
 	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
 	idx := idx floor.
 	
-	(self gridTileMatrix validIdx: idx) ifFalse: [^nil].
+	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^nil].
 	^idx.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:03'
+}
+GMTETileMap >> tileMatrixStack [
+
+	^ tileMatrixStack
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:03'
+}
+GMTETileMap >> tileMatrixStack: anObject [
+
+	tileMatrixStack := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:20'
+}
+GMTETileMap >> tileMatrixStackVisual [
+
+	^ tileMatrixStackVisual
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:20'
+}
+GMTETileMap >> tileMatrixStackVisual: anObject [
+
+	tileMatrixStackVisual := anObject.
 ]
 
 {
@@ -561,6 +591,20 @@ GMTETileMap >> tileSizeWidth [
 GMTETileMap >> tileSizeWidth: anObject [
 
 	tileSizeWidth := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:00'
+}
+GMTETileMap >> tileVisualFromPosition: aPoint [
+
+	| idx |
+	
+	idx := self tileIdxFromPosition: aPoint.
+	idx ifNil: [^nil].
+	
+	^ self tileMatrixStackVisual layer: 1 at: idx y at: idx x.
 ]
 
 {
@@ -634,36 +678,50 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 19:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:21'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
 
 	self updateDimensions.
-	self gridTileMatrix 
+	self tileMatrixStack 
 		ifNil: [
-			self gridTileMatrix: (GMTEStaticCoordinateMatrix rows: self tileHeight columns: self tileWidth).
-			self generateTiles]
+			self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
+			self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
+			self generateVisualTiles]
 		ifNotNil: [self updateTiles].
 	self processTiles
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:49'
 }
-GMTETileMap >> updateTiles [
+GMTETileMap >> updateTileMatrixStack: aStack [
 
 	| tilePos correctedTilePos tile |
 	
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |
-			
-			tilePos := self tilePosFromVirtual: x@y.
-			correctedTilePos := self correctedTilePosition: tilePos.
-			tile := self gridTileMatrix at: y at: x.
-			
-			tile 
-				position: correctedTilePos;
-				extent: self tileSizeWidth@self tileSizeHeight.]]
+			1 to: (self tileMatrixStack layerCount) do: [: l |
+				
+				tilePos := self tilePosFromVirtual: x@y.
+				correctedTilePos := self correctedTilePosition: tilePos.
+				tile := aStack layer: l at: y at: x.
+				
+				tile ifNotNil: [
+					tile 
+					position: correctedTilePos;
+					extent: self tileSizeWidth@self tileSizeHeight.]]
+			]]
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:49'
+}
+GMTETileMap >> updateTiles [
+
+	self updateTileMatrixStack: self tileMatrixStack.
+	self updateTileMatrixStack: self tileMatrixStackVisual
 ]
