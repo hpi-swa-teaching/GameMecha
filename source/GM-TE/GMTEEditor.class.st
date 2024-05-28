@@ -131,7 +131,7 @@ GMTEEditor class >> register [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 5/28/2024 12:19'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 15:24'
 }
 GMTEEditor >> addLayer [
 
@@ -472,16 +472,16 @@ GMTEEditor >> importFromMorph [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/28/2024 11:00'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 15:24'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
 	self
 		selectLayer: 1;
-		savedSinceModified: true;
 		open;
-		ratio: 1.
+		ratio: 1;
+		savedSinceModified: true
 ]
 
 {
@@ -583,14 +583,16 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/28/2024 10:49'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 15:42'
 }
 GMTEEditor >> onClose [
 	"PopUpMenu inform:'You should save'."
 	"TODO: Give chance to save"
 	
 	self savedSinceModified
-		ifFalse: [Transcript show: 'You haven''t saved yet!']
+		ifFalse: [
+			(PopUpMenu confirm: 'Save before closing?')
+				ifTrue: [self exportAsMorph]]
 ]
 
 {
