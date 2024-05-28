@@ -68,45 +68,29 @@ GMTEEditableTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/28/2024 10:46'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 12:54'
 }
 GMTEEditableTileMap >> mouseDown: anEvent [
 	"TODO: make this useful."
 	
-	| clickedTile tileIdx tmpActiveLayer|
+	| clickedTile tmpActiveLayer|
 	
 	tmpActiveLayer := self model selectedLayer.
 	
-	clickedTile := self tileFromPosition: anEvent position layer: 1.
-	(anEvent redButtonPressed) ifTrue: [clickedTile ifNotNil: [self updateTileSprite: clickedTile]].
-	(anEvent yellowButtonPressed) ifTrue: [clickedTile ifNotNil: [clickedTile reset]].
+	clickedTile := self tileFromPosition: anEvent position layer: tmpActiveLayer.
 	
-	(anEvent redButtonPressed) 
-		ifTrue: [clickedTile 
-			ifNil: [
-				tileIdx := self tileIdxFromPosition: anEvent position.
-				tileIdx ifNil: [^nil].
-				clickedTile := self generateTileAtlayer: tmpActiveLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack.]. 
-			self updateTileSprite: clickedTile.
-			self model savedSinceModified: false].
-	(anEvent yellowButtonPressed) 
-		ifTrue: [clickedTile 
-			ifNotNil: [
-				tileIdx := self tileIdxFromPosition: anEvent position.
-				self tileMatrixStack layer: 1 at: tileIdx y at: tileIdx x put: nil.
-				clickedTile abandon].
-			self model savedSinceModified: false].
+	self updateTile: clickedTile inLayer: tmpActiveLayer FromEvent: anEvent.
 	
 	^ true.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/28/2024 01:48'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 12:52'
 }
 GMTEEditableTileMap >> mouseMove: anEvent [
 
-	| hoveredTile hoveredTileVisual tileIdx tmpActiveLayer |
+	| hoveredTile hoveredTileVisual tmpActiveLayer |
 
 	"TODO currently hard coded"
 	tmpActiveLayer := self model selectedLayer.
@@ -120,19 +104,7 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 		ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
 	
 	"TODO why another ifNil check here?"
-	(anEvent redButtonPressed) 
-		ifTrue: [hoveredTile 
-			ifNil: [
-				tileIdx := self tileIdxFromPosition: anEvent position.
-				tileIdx ifNil: [^nil].
-				hoveredTile := self generateTileAtlayer: tmpActiveLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack.]. 
-			self updateTileSprite: hoveredTile].
-	(anEvent yellowButtonPressed) 
-		ifTrue: [hoveredTile 
-			ifNotNil: [
-				tileIdx := self tileIdxFromPosition: anEvent position.
-				self tileMatrixStack layer: 1 at: tileIdx y at: tileIdx x put: nil.
-				hoveredTile abandon]].
+	self updateTile: hoveredTile inLayer: tmpActiveLayer FromEvent: anEvent.
 	
 	"This solves the bug but not the root of the issue. TODO further investigation."
 	"self updateTiles."
@@ -168,6 +140,30 @@ GMTEEditableTileMap >> tileSelectionSet [
 GMTEEditableTileMap >> tileSelectionSet: anObject [
 
 	tileSelectionSet := anObject.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 5/28/2024 12:53'
+}
+GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
+	| tileIdx hoveredTile |
+	
+	hoveredTile := aTile.
+	
+	(anEvent redButtonPressed) 
+	ifTrue: [hoveredTile 
+		ifNil: [
+			tileIdx := self tileIdxFromPosition: anEvent position.
+			tileIdx ifNil: [^nil].
+			hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack.]. 
+		self updateTileSprite: hoveredTile].
+	(anEvent yellowButtonPressed) 
+		ifTrue: [aLayer 
+			ifNotNil: [
+				tileIdx := self tileIdxFromPosition: anEvent position.
+				self tileMatrixStack layer: aLayer at: tileIdx y at: tileIdx x put: nil.
+				hoveredTile abandon]].
 ]
 
 {
