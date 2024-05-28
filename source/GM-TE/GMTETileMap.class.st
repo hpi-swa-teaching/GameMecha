@@ -695,7 +695,7 @@ GMTETileMap >> updateMap [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:49'
+	#'squeak_changestamp' : 'TW 5/28/2024 11:17'
 }
 GMTETileMap >> updateTileMatrixStack: aStack [
 
@@ -703,7 +703,7 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 	
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |
-			1 to: (self tileMatrixStack layerCount) do: [: l |
+			1 to: (aStack layerCount) do: [: l |
 				
 				tilePos := self tilePosFromVirtual: x@y.
 				correctedTilePos := self correctedTilePosition: tilePos.

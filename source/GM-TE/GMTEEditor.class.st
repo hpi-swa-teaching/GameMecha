@@ -8,11 +8,10 @@ Class {
 		'layerViewer',
 		'trayViewer',
 		'selectedLayer',
-		'layerList',
 		'tileMapMatrix',
 		'selectedTile',
 		'ratio',
-		'LAYER_TEST'
+		'savedSinceModified'
 	],
 	#category : #'GM-TE'
 }
@@ -122,34 +121,19 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 02:00'
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 5/28/2024 11:38'
 }
-GMTEEditor class >> layerList [
-	^ {'Layer 1'. 'Layer 2'}
-]
+GMTEEditor >> addLayer [
 
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:52'
-}
-GMTEEditor >> LAYER_TEST [
-
-	^ LAYER_TEST
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:52'
-}
-GMTEEditor >> LAYER_TEST: anObject [
-
-	LAYER_TEST := anObject.
+	self 
+		tileMapMatrix tileMatrixStack pushLayer;
+		changed: #getLayerList
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 21:09'
+	#'squeak_changestamp' : 'TW 5/28/2024 01:56'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -171,7 +155,7 @@ GMTEEditor >> buildWith: builder [
 	"self commandBar vResizing: #rigid."
 	self tileStore: (newMorph submorphNamed: 'tile store').
 	self tileViewer: ((newMorph submorphNamed: 'main panel') submorphNamed: 'tile viewer').
-	self layerViewer: (newMorph submorphNamed: 'layers').
+	self layerViewer: (newMorph submorphNamed: 'layer viewer').
 	self trayViewer: (newMorph submorphNamed: 'tray').
 	tileViewer clipSubmorphs: true.
 	panel := GMTETileContainer withParent: self tileStore.
@@ -255,22 +239,32 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
+	#'squeak_changestamp' : 'TW 5/28/2024 11:02'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
-	^aBuilder pluggableListSpec new
-		name: 'layers';
-		"frame: (LayoutFrame fractions: (0.8 @ 0.1 corner: 1 @ 1) offsets: nil);"
-		frame: (LayoutFrame
-		fractions: (0.8@0 corner: 1@1)
-		offsets: (0@30 corner: 0@0));
-		"A LOT OF MOCKUP CODE"
+
+	^aBuilder pluggablePanelSpec new
+		name: 'layer viewer';
 		model: self;
-		getSelected: #selectedLayer;
-		setSelected: #selectedLayer:;
-		list: #layerList;
-		autoDeselect: false;
-		"minimumWidth:100;"
+		frame: (LayoutFrame
+			fractions: (0.8@0 corner: 1@1)
+			offsets: (0@30 corner: 0@0));
+		children: {aBuilder pluggableButtonSpec new
+			name: 'addLayer';
+			label: 'add Layer';
+			model: self;
+			action: #addLayer;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil).
+			aBuilder pluggableListSpec new
+			name: 'layers';
+			model: self;
+			getIndex: #selectedLayer;
+			setIndex: #selectLayer:;
+			list: #getLayerList;
+			autoDeselect: false;
+			frame: (LayoutFrame fractions: (0 @ 0.1 corner: 1 @ 1) offsets: nil)};
+		verticalResizing: #shrinkWrap;
+		
 		yourself
 ]
 
@@ -396,12 +390,29 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 5/24/2024 20:18'
+	#'squeak_changestamp' : 'TW 5/28/2024 10:49'
 }
 GMTEEditor >> exportAsMorph [
 	
 	"self tileMapMatrix" 
-	self tileMapMatrix saveOnFile
+	self tileMapMatrix saveOnFile.
+	self savedSinceModified: true
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/28/2024 11:44'
+}
+GMTEEditor >> getLayerList [
+
+
+	"TODO include layers when loading a new project"
+	| layerList |
+	layerList := OrderedCollection new.
+	self tileMapMatrix 
+		ifNotNil: [1 to: self tileMapMatrix tileMatrixStack layerCount do: [:i | layerList add: 'Layer ', i].]
+		ifNil: [layerList add: 'Layer 1'].
+	^layerList
 ]
 
 {
@@ -453,16 +464,16 @@ GMTEEditor >> importFromMorph [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:58'
+	#'squeak_changestamp' : 'TW 5/28/2024 11:00'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
 	self
+		selectLayer: 1;
+		savedSinceModified: true;
 		open;
-		selectedLayer: self layerList first;
-		ratio: 1;
-		LAYER_TEST: 1
+		ratio: 1.
 ]
 
 {
@@ -491,24 +502,6 @@ GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 		position: (tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
-}
-GMTEEditor >> layerList [
-
-	^{'Layer 1'. 'Layer 2'}
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
-}
-GMTEEditor >> layerList: anObject [
-
-	layerList := anObject.
 ]
 
 {
@@ -582,20 +575,24 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/23/2024 02:03'
+	#'squeak_changestamp' : 'TW 5/28/2024 10:49'
 }
 GMTEEditor >> onClose [
 	"PopUpMenu inform:'You should save'."
 	"TODO: Give chance to save"
+	
+	self savedSinceModified
+		ifFalse: [Transcript show: 'You haven''t saved yet!']
 ]
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 09:58'
+	#'squeak_changestamp' : 'TW 5/28/2024 01:43'
 }
 GMTEEditor >> open [
   
 	| newMorph |
+	
 	newMorph := (ToolBuilder default build: self).
       newMorph openInWorld.
 	self tileViewer submorphs first updateMap.
@@ -629,6 +626,33 @@ GMTEEditor >> resetAll [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/28/2024 10:42'
+}
+GMTEEditor >> savedSinceModified [
+
+	^ savedSinceModified
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/28/2024 10:42'
+}
+GMTEEditor >> savedSinceModified: anObject [
+
+	savedSinceModified := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 5/28/2024 01:17'
+}
+GMTEEditor >> selectLayer: anObject [
+
+	selectedLayer := anObject.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 5/24/2024 00:40'
 }
 GMTEEditor >> selectTile: anObject [
@@ -647,20 +671,11 @@ GMTEEditor >> selectTile: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
+	#'squeak_changestamp' : 'TW 5/28/2024 01:45'
 }
 GMTEEditor >> selectedLayer [
 
-	^ selectedLayer
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 01:14'
-}
-GMTEEditor >> selectedLayer: anObject [
-
-	selectedLayer := anObject.
+	^selectedLayer 
 ]
 
 {

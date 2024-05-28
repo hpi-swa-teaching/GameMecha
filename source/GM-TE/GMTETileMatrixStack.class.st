@@ -63,7 +63,7 @@ GMTETileMatrixStack >> layer: aLayerIdx [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:32'
+	#'squeak_changestamp' : 'TW 5/28/2024 11:15'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [ 
 
