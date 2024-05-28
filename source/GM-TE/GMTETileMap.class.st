@@ -678,7 +678,7 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:21'
+	#'squeak_changestamp' : 'Valentin 5/28/2024 13:18'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
@@ -688,6 +688,7 @@ GMTETileMap >> updateMap [
 		ifNil: [
 			self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
 			self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
+			self tileMatrixStackVisual morphicLayerStartingOffset: 10. "TODO: Number ?"
 			self generateVisualTiles]
 		ifNotNil: [self updateTiles].
 	self processTiles

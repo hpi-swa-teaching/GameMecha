@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'width',
 		'height',
-		'matrixLayers'
+		'matrixLayers',
+		'morphicLayerStartingOffset'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -43,12 +44,13 @@ GMTETileMatrixStack >> height: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:08'
+	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
 }
 GMTETileMatrixStack >> initialize [
 
 	super initialize.
 	self matrixLayers: LinkedList new.
+	self morphicLayerStartingOffset: 100.
 	"TODO: no base layer created"
 ]
 
@@ -72,13 +74,13 @@ GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:48'
+	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
 	
 	"TODO this is temporary solution; set max layers; use constants"
 	
-	aTile ifNotNil: [aTile morphicLayerNumber: 100 - aLayerIdx].
+	aTile ifNotNil: [aTile morphicLayerNumber: self morphicLayerStartingOffset - aLayerIdx].
 	^ (self matrixLayers at: aLayerIdx) at: x at: y put: aTile
 ]
 
@@ -107,6 +109,24 @@ GMTETileMatrixStack >> matrixLayers [
 GMTETileMatrixStack >> matrixLayers: anObject [
 
 	matrixLayers := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin 5/28/2024 13:16'
+}
+GMTETileMatrixStack >> morphicLayerStartingOffset [
+
+	^ morphicLayerStartingOffset
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin 5/28/2024 13:16'
+}
+GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
+
+	morphicLayerStartingOffset := anObject.
 ]
 
 {
