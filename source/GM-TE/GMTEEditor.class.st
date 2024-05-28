@@ -255,7 +255,7 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 02:03'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
 	^aBuilder pluggableListSpec new
@@ -267,7 +267,7 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 		"A LOT OF MOCKUP CODE"
 		model: self;
 		getSelected: #selectedLayer;
-		setSelected: #selectedLayer:;
+		setSelected: #selectLayer:;
 		list: #layerList;
 		autoDeselect: false;
 		"minimumWidth:100;"
@@ -625,6 +625,18 @@ GMTEEditor >> ratio: anObject [
 GMTEEditor >> resetAll [
 
 	self tileMapMatrix resetAll
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 5/28/2024 02:11'
+}
+GMTEEditor >> selectLayer: anObject [
+
+	selectedLayer := anObject.
+	self changed: #selectedLayer.
+	"self LAYER_TEST: self selectedLayer last asString asInteger"
+	"^^^ Use something like that later on?"
 ]
 
 {
