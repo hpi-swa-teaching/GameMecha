@@ -122,13 +122,12 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/28/2024 11:38'
+	#'squeak_changestamp' : 'Alex M 5/28/2024 12:19'
 }
 GMTEEditor >> addLayer [
 
-	self 
-		tileMapMatrix tileMatrixStack pushLayer;
-		changed: #getLayerList
+	self  tileMapMatrix tileMatrixStack pushLayer.
+	self changed: #getLayerList
 ]
 
 {
