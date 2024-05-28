@@ -121,6 +121,15 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 5/28/2024 15:05'
+}
+GMTEEditor class >> register [
+	"Maybe call this on new?"
+	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {GMTEEditor. #new}}
+]
+
+{
 	#category : #'button functions',
 	#'squeak_changestamp' : 'Alex M 5/28/2024 12:19'
 }
