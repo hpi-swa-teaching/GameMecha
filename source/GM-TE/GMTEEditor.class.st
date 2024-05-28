@@ -409,12 +409,10 @@ GMTEEditor >> exportAsMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 11:44'
+	#'squeak_changestamp' : 'TW 5/28/2024 16:22'
 }
 GMTEEditor >> getLayerList [
 
-
-	"TODO include layers when loading a new project"
 	| layerList |
 	layerList := OrderedCollection new.
 	self tileMapMatrix 
@@ -449,7 +447,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 5/24/2024 20:24'
+	#'squeak_changestamp' : 'TW 5/28/2024 16:21'
 }
 GMTEEditor >> importFromMorph [
 	|fc stream aFileStream morphOrList|
@@ -466,8 +464,11 @@ GMTEEditor >> importFromMorph [
 	morphOrList tileSelectionSet highlightImage: nil.
 	self tileMapMatrix: morphOrList.
 	morphOrList model: self.
-	self tileViewer removeAllMorphs.
-	self tileViewer addMorph: morphOrList
+	self tileViewer
+		removeAllMorphs;
+		addMorph: morphOrList.
+		
+	self changed: #getLayerList
 ]
 
 {
