@@ -644,11 +644,12 @@ GMTEEditor >> savedSinceModified: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 01:17'
+	#'squeak_changestamp' : 'TW 5/28/2024 11:53'
 }
 GMTEEditor >> selectLayer: anObject [
 
 	selectedLayer := anObject.
+	self changed: #selectedLayer
 ]
 
 {
