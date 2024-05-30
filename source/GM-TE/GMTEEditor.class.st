@@ -135,6 +135,20 @@ GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'jj 5/30/2024 16:38'
+}
+GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
+	
+	|aFileStream morphOrList|
+	
+	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary reset.
+	morphOrList := aFileStream fileInObjectAndCode.
+	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
+	^GMTETileMap newFrom: (morphOrList copy).
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Alex M 5/28/2024 15:05'
 }
 GMTEEditor class >> register [
