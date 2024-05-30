@@ -122,6 +122,19 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:29'
+}
+GMTEEditor class >> getTileMapFromFilePath: aFilePath [
+	|aFileStream morphOrList|
+	
+	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary reset.
+	morphOrList := aFileStream fileInObjectAndCode.
+	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
+	^GMTETileMap newFrom: (morphOrList copy).
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Alex M 5/28/2024 15:05'
 }
 GMTEEditor class >> register [
@@ -451,7 +464,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/28/2024 16:21'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:16'
 }
 GMTEEditor >> importFromMorph [
 	|fc stream aFileStream morphOrList|
