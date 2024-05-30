@@ -122,29 +122,28 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:29'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:50'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
-	|aFileStream morphOrList|
-	
+
+	|aFileStream tileMap|
+	"TODO: Check if .morph is a tileMap"
 	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary reset.
-	morphOrList := aFileStream fileInObjectAndCode.
-	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
-	^GMTETileMap newFrom: (morphOrList copy).
+	tileMap := aFileStream fileInObjectAndCode.
+	^GMTETileMap newFrom: (tileMap copy).
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 5/30/2024 16:38'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:50'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
 	
-	|aFileStream morphOrList|
-	
+	|aFileStream tileMap|
+	"TODO: Check if .morph is a tileMap"
 	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary reset.
-	morphOrList := aFileStream fileInObjectAndCode.
-	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
-	^GMTETileMap newFrom: (morphOrList copy).
+	tileMap := aFileStream fileInObjectAndCode.
+	^GMTETileMap newFrom: (tileMap copy).
 ]
 
 {
@@ -429,13 +428,25 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/28/2024 10:49'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:53'
 }
 GMTEEditor >> exportAsMorph [
 	
-	"self tileMapMatrix" 
 	self tileMapMatrix saveOnFile.
 	self savedSinceModified: true
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:54'
+}
+GMTEEditor >> getFileWithFileChooser [
+
+	|fc|
+	fc := FileChooser new.
+	fc initializeAsSystemWindowWithCaptionPane.
+	fc setCaption: 'Select a tilemap.morph file' translated.
+	^fc open.
 ]
 
 {
@@ -478,26 +489,24 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:16'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:55'
 }
 GMTEEditor >> importFromMorph [
-	|fc stream aFileStream morphOrList|
-	fc := FileChooser new.
-	fc initializeAsSystemWindowWithCaptionPane.
-	fc setCaption: 'Select a tilemap.morph file' translated.
-	stream := fc open. 
+	"import tilemap into editor from a .morph file"
+
+	|stream aFileStream tileMap|
+	stream := self getFileWithFileChooser.
 	
 	stream ifNil: [^self].
 	
 	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary reset.
-	morphOrList := aFileStream fileInObjectAndCode.
-	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
-	morphOrList tileSelectionSet highlightImage: nil.
-	self tileMapMatrix: morphOrList.
-	morphOrList model: self.
+	tileMap := aFileStream fileInObjectAndCode.
+	tileMap tileSelectionSet highlightImage: nil.
+	self tileMapMatrix: tileMap.
+	tileMap model: self.
 	self tileViewer
 		removeAllMorphs;
-		addMorph: morphOrList.
+		addMorph: tileMap.
 		
 	self changed: #getLayerList
 ]
@@ -643,10 +652,11 @@ GMTEEditor >> open [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:05'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:58'
 }
 GMTEEditor >> openTileMapInWorld [
-
+	"open the current tileMap into world"
+	
 	(GMTETileMap newFrom: (self tileMapMatrix copy)) 
 		position: 0@0;
 		openInWorld.
