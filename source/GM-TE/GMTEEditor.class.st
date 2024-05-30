@@ -204,7 +204,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 5/24/2024 19:47'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:03'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -231,7 +231,10 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.8 @ 1) offsets: nil);
 			name: 'openInWorld';
-			label: 'Open in World'. aBuilder pluggableButtonSpec new
+			label: 'Open in World';
+			model: self;
+			action: #openTileMapInWorld.
+			aBuilder pluggableButtonSpec new
 			name: 'Import Tilemap';
 			label: 'Import Tilemap';
 			model: self;
@@ -609,6 +612,17 @@ GMTEEditor >> open [
       newMorph openInWorld.
 	self tileViewer submorphs first updateMap.
       ^newMorph
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:05'
+}
+GMTEEditor >> openTileMapInWorld [
+
+	(GMTETileMap newFrom: (self tileMapMatrix copy)) 
+		position: 0@0;
+		openInWorld.
 ]
 
 {
