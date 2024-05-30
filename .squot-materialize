@@ -1,11 +1,67 @@
 [
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'test'
+		],
+		#encoding : 'TXT'
+	},
+	SquotSoundMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'squeak.aiff'
+		],
+		#encoding : 'AIFF'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.squot'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'test.txt'
+		],
+		#encoding : 'TXT'
+	},
 	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GM-AcceptanceTest'
+			#name : 'GM-Test'
 		},
 		#path : FSAbsolutePath [
 			'source'
 		]
+	},
+	SquotSoundMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'squeak.wav'
+		],
+		#encoding : 'WAV'
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GM-DemoGame'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GM-Core'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.gitignore'
+		],
+		#encoding : 'TXT'
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -16,48 +72,13 @@
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'LICENSE'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.github',
-			'workflows',
-			'main.yml'
+			'README.md'
 		],
 		#encoding : 'TXT'
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'.smalltalk.ston'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'testingResources',
-			'test'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.gitignore'
-		],
-		#encoding : 'TXT'
-	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GM-DemoGame'
-		},
-		#path : FSAbsolutePath [
-			'source'
-		]
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.squot'
 		],
 		#encoding : 'TXT'
 	},
@@ -69,16 +90,25 @@
 			'source'
 		]
 	},
-	SquotSoundMapper {
+	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'testingResources',
-			'squeak.aiff'
+			'.github',
+			'workflows',
+			'main.yml'
 		],
-		#encoding : 'AIFF'
+		#encoding : 'TXT'
 	},
-	SquotTonelMapper {
+	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GM-TilemapMakerCore'
+			#name : 'GM-Utilities'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GM-AcceptanceTest'
 		},
 		#path : FSAbsolutePath [
 			'source'
@@ -92,13 +122,11 @@
 			'source'
 		]
 	},
-	SquotCypressMapper {
+	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'GM-Utilities'
+			#name : 'GM-TE'
 		},
-		#path : FSAbsolutePath [
-			'source'
-		]
+		#path : @17
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -107,38 +135,11 @@
 		],
 		#encoding : Class [ #GIFReadWriter ]
 	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GM-Core'
-		},
-		#path : FSAbsolutePath [
-			'source'
-		]
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GM-TilemapMakerGui'
-		},
-		#path : @30
-	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'README.md'
+			'LICENSE'
 		],
 		#encoding : 'TXT'
-	},
-	SquotSoundMapper {
-		#path : FSAbsolutePath [
-			'testingResources',
-			'squeak.wav'
-		],
-		#encoding : 'WAV'
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GM-TE'
-		},
-		#path : @20
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
@@ -148,17 +149,16 @@
 			'source'
 		]
 	},
-	SquotCypressMapper {
+	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'GM-Test'
+			#name : 'GM-TilemapMakerCore'
 		},
-		#path : @30
+		#path : @12
 	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'testingResources',
-			'test.txt'
-		],
-		#encoding : 'TXT'
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GM-TilemapMakerGui'
+		},
+		#path : @12
 	}
 ]

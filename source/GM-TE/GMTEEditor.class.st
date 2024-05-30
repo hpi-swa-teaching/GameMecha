@@ -122,6 +122,32 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:50'
+}
+GMTEEditor class >> getTileMapFromFilePath: aFilePath [
+
+	|aFileStream tileMap|
+	"TODO: Check if .morph is a tileMap"
+	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary reset.
+	tileMap := aFileStream fileInObjectAndCode.
+	^GMTETileMap newFrom: (tileMap copy).
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:50'
+}
+GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
+	
+	|aFileStream tileMap|
+	"TODO: Check if .morph is a tileMap"
+	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary reset.
+	tileMap := aFileStream fileInObjectAndCode.
+	^GMTETileMap newFrom: (tileMap copy).
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Alex M 5/28/2024 15:05'
 }
 GMTEEditor class >> register [
@@ -131,12 +157,13 @@ GMTEEditor class >> register [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 5/28/2024 15:24'
+	#'squeak_changestamp' : 'TW 5/28/2024 19:39'
 }
 GMTEEditor >> addLayer [
 
-	self  tileMapMatrix tileMatrixStack pushLayer.
-	self changed: #getLayerList
+	self tileMapMatrix tileMatrixStack pushLayer.
+	self changed: #getLayerList.
+	self selectLayer: self tileMapMatrix tileMatrixStack layerCount
 ]
 
 {
@@ -203,7 +230,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 5/24/2024 19:47'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:03'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -230,7 +257,10 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.8 @ 1) offsets: nil);
 			name: 'openInWorld';
-			label: 'Open in World'. aBuilder pluggableButtonSpec new
+			label: 'Open in World';
+			model: self;
+			action: #openTileMapInWorld.
+			aBuilder pluggableButtonSpec new
 			name: 'Import Tilemap';
 			label: 'Import Tilemap';
 			model: self;
@@ -398,13 +428,25 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/28/2024 10:49'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:53'
 }
 GMTEEditor >> exportAsMorph [
 	
-	"self tileMapMatrix" 
 	self tileMapMatrix saveOnFile.
 	self savedSinceModified: true
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:54'
+}
+GMTEEditor >> getFileWithFileChooser [
+
+	|fc|
+	fc := FileChooser new.
+	fc initializeAsSystemWindowWithCaptionPane.
+	fc setCaption: 'Select a tilemap.morph file' translated.
+	^fc open.
 ]
 
 {
@@ -447,26 +489,24 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/28/2024 16:21'
+	#'squeak_changestamp' : 'JS 5/30/2024 16:55'
 }
 GMTEEditor >> importFromMorph [
-	|fc stream aFileStream morphOrList|
-	fc := FileChooser new.
-	fc initializeAsSystemWindowWithCaptionPane.
-	fc setCaption: 'Select a tilemap.morph file' translated.
-	stream := fc open. 
+	"import tilemap into editor from a .morph file"
+
+	|stream aFileStream tileMap|
+	stream := self getFileWithFileChooser.
 	
 	stream ifNil: [^self].
 	
 	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary reset.
-	morphOrList := aFileStream fileInObjectAndCode.
-	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList := morphOrList contentsMorph].
-	morphOrList tileSelectionSet highlightImage: nil.
-	self tileMapMatrix: morphOrList.
-	morphOrList model: self.
+	tileMap := aFileStream fileInObjectAndCode.
+	tileMap tileSelectionSet highlightImage: nil.
+	self tileMapMatrix: tileMap.
+	tileMap model: self.
 	self tileViewer
 		removeAllMorphs;
-		addMorph: morphOrList.
+		addMorph: tileMap.
 		
 	self changed: #getLayerList
 ]
@@ -608,6 +648,18 @@ GMTEEditor >> open [
       newMorph openInWorld.
 	self tileViewer submorphs first updateMap.
       ^newMorph
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'JS 5/30/2024 16:58'
+}
+GMTEEditor >> openTileMapInWorld [
+	"open the current tileMap into world"
+	
+	(GMTETileMap newFrom: (self tileMapMatrix copy)) 
+		position: 0@0;
+		openInWorld.
 ]
 
 {
