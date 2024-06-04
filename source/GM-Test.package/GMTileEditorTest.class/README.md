@@ -1,0 +1,1 @@
+This tests the functionality of the Tile Editor

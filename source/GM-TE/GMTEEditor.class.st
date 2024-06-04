@@ -168,7 +168,7 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 5/28/2024 01:56'
+	#'squeak_changestamp' : 'Alex M 5/29/2024 15:49'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -193,8 +193,8 @@ GMTEEditor >> buildWith: builder [
 	self layerViewer: (newMorph submorphNamed: 'layer viewer').
 	self trayViewer: (newMorph submorphNamed: 'tray').
 	tileViewer clipSubmorphs: true.
+	
 	panel := GMTETileContainer withParent: self tileStore.
-
 	self tileStore morph: panel.
 
 	selectedTile := ImageMorph new visible:false;yourself.
@@ -277,7 +277,7 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 5/28/2024 11:02'
+	#'squeak_changestamp' : 'Alex M 5/29/2024 15:46'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
 
@@ -292,7 +292,7 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 			label: 'add Layer';
 			model: self;
 			action: #addLayer;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.1) offsets: nil).
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0) offsets: (0 @ 0 corner: 0 @ 30)).
 			aBuilder pluggableListSpec new
 			name: 'layers';
 			model: self;
@@ -300,7 +300,7 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 			setIndex: #selectLayer:;
 			list: #getLayerList;
 			autoDeselect: false;
-			frame: (LayoutFrame fractions: (0 @ 0.1 corner: 1 @ 1) offsets: nil)};
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
 		verticalResizing: #shrinkWrap;
 		
 		yourself
@@ -393,7 +393,7 @@ GMTEEditor >> createToolBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 10:00'
+	#'squeak_changestamp' : 'Alex M 5/29/2024 15:51'
 }
 GMTEEditor >> createTrayWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
