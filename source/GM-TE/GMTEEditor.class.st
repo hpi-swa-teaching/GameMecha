@@ -491,7 +491,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 6/4/2024 17:56'
+	#'squeak_changestamp' : 'jj 6/5/2024 01:21'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -503,7 +503,7 @@ GMTEEditor >> importFromMorph [
 	
 	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary reset.
 	tileMap := aFileStream fileInObjectAndCode.
-	(tileMap isKindOf: GMTEEditableTileMap) ifTrue: [^self].
+	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^self].
 	
 	tileMap tileSelectionSet highlightImage: nil.
 	self tileMapMatrix: tileMap.
