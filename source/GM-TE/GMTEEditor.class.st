@@ -122,7 +122,7 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:50'
+	#'squeak_changestamp' : 'JS 6/4/2024 18:21'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 
@@ -130,19 +130,20 @@ GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 	"TODO: Check if .morph is a tileMap"
 	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary reset.
 	tileMap := aFileStream fileInObjectAndCode.
+	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
 	^GMTETileMap newFrom: (tileMap copy).
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:50'
+	#'squeak_changestamp' : 'JS 6/4/2024 18:21'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
 	
 	|aFileStream tileMap|
-	"TODO: Check if .morph is a tileMap"
 	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary reset.
 	tileMap := aFileStream fileInObjectAndCode.
+	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
 	^GMTETileMap newFrom: (tileMap copy).
 ]
 
