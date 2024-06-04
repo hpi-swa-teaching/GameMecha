@@ -29,7 +29,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:34'
+	#'squeak_changestamp' : 'JS 6/4/2024 16:56'
 }
 GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
 	
@@ -234,6 +234,22 @@ GMTETileMap >> initialize [
 	super initialize.
 	self color: Color lightGray.
 	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JS 6/4/2024 15:51'
+}
+GMTETileMap >> isTileMap [
+	^ isTileMap
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JS 6/4/2024 15:51'
+}
+GMTETileMap >> isTileMap: anObject [
+	isTileMap := anObject
 ]
 
 {
