@@ -231,42 +231,33 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JS 5/30/2024 16:03'
+	#'squeak_changestamp' : 'TW 6/5/2024 02:01'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
 		name: 'command bar';
 		model: self;
 		children: {aBuilder pluggableButtonSpec new
-			name: 'export';
-			label: 'Export';
-			model: self;
-			action: #exportAsMorph;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1) offsets: nil).
-			aBuilder pluggableButtonSpec new
-			name: 'saveAsImage';
-			label: 'Save As Image';
-			model: self;
-			frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.4 @ 1) offsets: nil);
-			action: #exportAsImage.
-			aBuilder pluggableButtonSpec new
 			name: 'import';
-			label: 'Import';
+			label: 'Import ...';
 			model: self;
-			frame: (LayoutFrame fractions: (0.4 @ 0 corner: 0.6 @ 1) offsets: nil);
-			action: #import.
+			frame: (LayoutFrame fractions: (0.0 @ 0 corner: 0.33 @ 1) offsets: nil);
+			action: #importMenu.
+			
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.8 @ 1) offsets: nil);
+			name: 'export';
+			label: 'Export as ...';
+			model: self;
+			action: #exportMenu;
+			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil).
+
+			aBuilder pluggableButtonSpec new
+			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
 			name: 'openInWorld';
 			label: 'Open in World';
 			model: self;
 			action: #openTileMapInWorld.
-			aBuilder pluggableButtonSpec new
-			name: 'Import Tilemap';
-			label: 'Import Tilemap';
-			model: self;
-			action: #importFromMorph;
-			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 1) offsets: nil)}
+			}
 			;
 
 		verticalResizing: #shrinkWrap;
@@ -438,6 +429,30 @@ GMTEEditor >> exportAsMorph [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'TW 6/5/2024 02:02'
+}
+GMTEEditor >> exportMenu [
+
+	| aMenuSpec builder|
+	builder := ToolBuilder default.
+	aMenuSpec := builder pluggableMenuSpec new.
+
+	aMenuSpec
+		add: 'Tilemap'
+		target: self
+		selector: #exportAsMorph
+		argumentList: {};
+		
+		add: 'PNG'
+		target: self
+		selector: #exportAsImage
+		argumentList: {}.
+		
+	builder open: aMenuSpec
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JS 6/4/2024 18:00'
 }
@@ -513,6 +528,30 @@ GMTEEditor >> importFromMorph [
 		addMorph: tileMap.
 		
 	self changed: #getLayerList
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'TW 6/5/2024 02:03'
+}
+GMTEEditor >> importMenu [
+
+	| aMenuSpec builder|
+	builder := ToolBuilder default.
+	aMenuSpec := builder pluggableMenuSpec new.
+
+	aMenuSpec
+		add: 'Tileset'
+		target: self
+		selector: #importFromMorph
+		argumentList: {};
+		
+		add: 'Tilemap'
+		target: self
+		selector: #import
+		argumentList: {}.
+		
+	builder open: aMenuSpec
 ]
 
 {
@@ -689,6 +728,15 @@ GMTEEditor >> ratio: anObject [
 GMTEEditor >> resetAll [
 
 	self tileMapMatrix resetAll
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 6/5/2024 02:04'
+}
+GMTEEditor >> resetCurrentLayer [
+
+	self tileMapMatrix resetLayer: self selectedLayer.
 ]
 
 {
