@@ -234,7 +234,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:01'
+	#'squeak_changestamp' : 'TW 6/5/2024 12:02'
 }
 GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -572,7 +572,7 @@ GMTEEditor >> importFromMorph [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:03'
+	#'squeak_changestamp' : 'TW 6/5/2024 12:01'
 }
 GMTEEditor >> importMenu [
 
@@ -583,12 +583,12 @@ GMTEEditor >> importMenu [
 	aMenuSpec
 		add: 'Tileset'
 		target: self
-		selector: #importFromMorph
+		selector: #import
 		argumentList: {};
 		
 		add: 'Tilemap'
 		target: self
-		selector: #import
+		selector: #importFromMorph
 		argumentList: {}.
 		
 	builder open: aMenuSpec
