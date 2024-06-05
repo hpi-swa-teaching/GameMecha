@@ -11,7 +11,8 @@ Class {
 		'tileMapMatrix',
 		'selectedTile',
 		'ratio',
-		'savedSinceModified'
+		'savedSinceModified',
+		'inspector'
 	],
 	#category : #'GM-TE'
 }
@@ -169,7 +170,7 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/29/2024 15:49'
+	#'squeak_changestamp' : 'TW 6/5/2024 02:44'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -183,7 +184,8 @@ GMTEEditor >> buildWith: builder [
 			self createTileViewerWithBuilder: builder.
 			self createTilestoreWithBuilder: builder.
 			self createTrayWithBuilder: builder.
-			self createLayersWithBuilder: builder.};
+			self createLayersWithBuilder: builder.
+			self createInspectorWithBuilder: builder};
 		closeAction: #onClose;
 		minimumExtent: 550@400).
 			
@@ -193,6 +195,7 @@ GMTEEditor >> buildWith: builder [
 	self tileViewer: ((newMorph submorphNamed: 'main panel') submorphNamed: 'tile viewer').
 	self layerViewer: (newMorph submorphNamed: 'layer viewer').
 	self trayViewer: (newMorph submorphNamed: 'tray').
+	self inspector: (newMorph submorphNamed: 'inspector').
 	tileViewer clipSubmorphs: true.
 	
 	panel := GMTETileContainer withParent: self tileStore.
@@ -269,7 +272,32 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/29/2024 15:46'
+	#'squeak_changestamp' : 'TW 6/5/2024 02:55'
+}
+GMTEEditor >> createInspectorWithBuilder: aBuilder [
+
+		^aBuilder pluggableScrollPaneSpec new
+			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.5)
+			offsets: (0@ 30 corner: 0@0));
+			name: 'inspector';
+			children: {aBuilder pluggableTextSpec new
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1));
+			getText: #getTileDimensionsX;
+			setText: nil;
+			readOnly: true.
+			};
+			spacing: 20;
+			verticalResizing: #shrinkWrap;
+			horizontalResizing: #shrinkWrap;
+			"minimumWidth:100;"
+			yourself.
+
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'TW 6/5/2024 02:43'
 }
 GMTEEditor >> createLayersWithBuilder: aBuilder [
 
@@ -277,7 +305,7 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 		name: 'layer viewer';
 		model: self;
 		frame: (LayoutFrame
-			fractions: (0.8@0 corner: 1@1)
+			fractions: (0.8@0.5 corner: 1@1)
 			offsets: (0@30 corner: 0@0));
 		children: {aBuilder pluggableButtonSpec new
 			name: 'addLayer';
@@ -481,6 +509,18 @@ GMTEEditor >> getLayerList [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/5/2024 02:53'
+}
+GMTEEditor >> getTileDimensionsX [
+
+	"self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix tileWidth]
+		ifNil: [^nil]"
+	^'Test123'
+]
+
+{
 	#category : #'button functions',
 	#'squeak_changestamp' : 'TW 5/23/2024 13:57'
 }
@@ -570,7 +610,7 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 5/22/2024 16:41'
+	#'squeak_changestamp' : 'TW 6/5/2024 02:46'
 }
 GMTEEditor >> initializeTileMapMatrix [
 
@@ -580,6 +620,7 @@ GMTEEditor >> initializeTileMapMatrix [
 		position: (tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
+	self changed: #getTileDimensionsX
 ]
 
 {
@@ -594,6 +635,24 @@ GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 		position: (tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/5/2024 02:44'
+}
+GMTEEditor >> inspector [
+
+	^ inspector
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/5/2024 02:44'
+}
+GMTEEditor >> inspector: anObject [
+
+	inspector := anObject.
 ]
 
 {
@@ -792,6 +851,15 @@ GMTEEditor >> selectTile: anObject [
 GMTEEditor >> selectedLayer [
 
 	^selectedLayer 
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/5/2024 02:44'
+}
+GMTEEditor >> selectedLayer: anObject [
+
+	selectedLayer := anObject.
 ]
 
 {
