@@ -111,15 +111,6 @@ GMTETileMap >> borderTileWidth: anObject [
 ]
 
 {
-	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:30'
-}
-GMTETileMap >> clearTiles [
-
-	self gridTileMatrix do: [:aTile | aTile delete]
-]
-
-{
 	#category : #conversion,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:16'
 }

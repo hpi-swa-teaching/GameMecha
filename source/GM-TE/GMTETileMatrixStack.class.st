@@ -25,6 +25,24 @@ GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
+}
+GMTETileMatrixStack >> doLayers: aBlock [
+
+	self matrixLayers do: [ :layer | aBlock value: layer]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
+}
+GMTETileMatrixStack >> doTiles: aBlock [
+
+	self doLayers: [ :layer | layer doTiles: aBlock]
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:16'
 }
@@ -140,15 +158,25 @@ GMTETileMatrixStack >> pushLayer [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:46'
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:20'
 }
 GMTETileMatrixStack >> removeLayerAt: idx [ 
 
 	| removedLayer |.
 	self assert: idx ~= 1 description: 'Base layer cannot be removed!'.
 	
-	removedLayer := self matrixLayers removeLink: (self matrixLayers linkAt: idx) value.
+	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: idx)) value.
 	removedLayer free.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:32'
+}
+GMTETileMatrixStack >> reset [
+
+	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
+	(self layer: 1) free
 ]
 
 {
