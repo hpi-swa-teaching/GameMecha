@@ -39,7 +39,7 @@ GMTEEditableTileMap >> handlesMouseMove: anEvent [
 ]
 
 {
-	#category : #updating,
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
 }
 GMTEEditableTileMap >> initialize [
@@ -115,12 +115,12 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:09'
+	#category : #removing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:17'
 }
 GMTEEditableTileMap >> resetAll [
 	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
-	self tileMatrixStack reset.
+	self tileMatrixStack setPlaceholder.
 ]
 
 {
@@ -142,8 +142,8 @@ GMTEEditableTileMap >> tileSelectionSet: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:28'
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:14'
 }
 GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	| tileIdx hoveredTile |
@@ -164,12 +164,11 @@ GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 				tileIdx := self tileIdxFromPosition: anEvent position.
 				self tileMatrixStack layer: aLayer at: tileIdx y at: tileIdx x put: nil.
 				hoveredTile abandon].
-			self model savedSinceModified: false.
-			].
+			self model savedSinceModified: false.].
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'Alex M 5/23/2024 10:14'
 }
 GMTEEditableTileMap >> updateTileSprite: aTile [

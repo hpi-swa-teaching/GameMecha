@@ -241,7 +241,7 @@ GMTETileMap >> generateVisualTiles [
 ]
 
 {
-	#category : #updating,
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
 }
 GMTETileMap >> initialize [

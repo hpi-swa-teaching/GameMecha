@@ -5,7 +5,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #enumerating,
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 20:55'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
@@ -15,7 +15,7 @@ GMTETileMatrixLayer >> doTiles: aBlock [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #removing,
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 20:50'
 }
 GMTETileMatrixLayer >> free [

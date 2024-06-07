@@ -8,7 +8,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
 }
 GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
@@ -23,7 +23,7 @@ GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
 }
 GMTETileSelectionSet >> clearAllHighlightings [
@@ -51,7 +51,7 @@ GMTETileSelectionSet >> highlightImage: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:05'
 }
 GMTETileSelectionSet >> highlightTile: aTile [
@@ -73,7 +73,7 @@ GMTETileSelectionSet >> initialize: n [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
 }
 GMTETileSelectionSet >> removeHighlightingVisuals: aTile [
@@ -89,7 +89,7 @@ GMTETileSelectionSet >> removeHighlightingVisuals: aTile [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
 }
 GMTETileSelectionSet >> unhighlightTile: aTile [
