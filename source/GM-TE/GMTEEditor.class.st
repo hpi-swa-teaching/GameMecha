@@ -782,11 +782,10 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:47'
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 22:18'
 }
 GMTEEditor >> resetAll [
 
-	self selectedLayer: 1.
 	self tileMapMatrix resetAll
 ]
 
