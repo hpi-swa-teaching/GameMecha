@@ -122,20 +122,21 @@ GMTETileMap >> correctedTilePosition: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:53'
 }
 GMTETileMap >> disableVisualLayer [
 
+	self tileMatrixStackVisual doTiles: [ :aTile | aTile removeBorderHighlighting]
 	
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:52'
 }
 GMTETileMap >> enableVisualLayer [
 
-	
+	self tileMatrixStackVisual doTiles: [ :aTile | aTile applyBorderHighlighting]
 ]
 
 {
@@ -390,17 +391,6 @@ GMTETileMap >> mapTileWidth [
 GMTETileMap >> mapTileWidth: anObject [
 
 	mapTileWidth := anObject.
-]
-
-{
-	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:08'
-}
-GMTETileMap >> processTiles [
-	"comment stating purpose of message"
-
-	(self tileMatrixStackVisual layer: 1) do: [ :tile | tile applyBorderHighlighting]
-
 ]
 
 {
@@ -707,7 +697,7 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin 5/28/2024 13:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:54'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
@@ -718,9 +708,9 @@ GMTETileMap >> updateMap [
 			self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
 			self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
 			self tileMatrixStackVisual morphicLayerStartingOffset: 10. "TODO: Number ?"
-			self generateVisualTiles]
+			self generateVisualTiles.
+			self enableVisualLayer]
 		ifNotNil: [self updateTiles].
-	self processTiles
 ]
 
 {
