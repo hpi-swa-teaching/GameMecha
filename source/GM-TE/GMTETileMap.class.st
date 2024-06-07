@@ -130,6 +130,24 @@ GMTETileMap >> correctedTilePosition: aPoint [
 ]
 
 {
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:36'
+}
+GMTETileMap >> disableVisualLayer [
+
+	
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:36'
+}
+GMTETileMap >> enableVisualLayer [
+
+	
+]
+
+{
 	#category : #'import/export',
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:54'
 }
@@ -141,11 +159,16 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:53'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 20:32'
 }
 GMTETileMap >> extent: aPoint [
 
+	| oldExtent |
+	oldExtent := self extent.
+
 	super extent: aPoint.
+	
+	(oldExtent = aPoint) ifTrue: [^nil].
 	self tileMatrixStack ifNotNil: [self rescaleMap].
 ]
 
@@ -187,16 +210,16 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:40'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:33'
 }
-GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack [
+GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
 
 	| tilePos correctedTilePos newTile |
 	
 	tilePos := self tilePosFromVirtual: x@y.
 	correctedTilePos := self correctedTilePosition: tilePos.
 						
-	newTile := (GMTETile 
+	newTile := (aTileClass
 		position: correctedTilePos
 		extent: self tileSizeWidth@self tileSizeHeight) 
 		lock;
@@ -214,14 +237,14 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:28'
 }
 GMTETileMap >> generateVisualTiles [
 	"Create grid tile matrix datastructure"
 	
 	1 to: self tileHeight do: [:y |
 		1 to: self tileWidth do: [:x |			
-			self generateTileAtlayer: 1 x: x y: y stack: self tileMatrixStackVisual]].
+			self generateTileAtlayer: 1 x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual]].
 
 ]
 
@@ -380,23 +403,22 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:21'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:08'
 }
 GMTETileMap >> processTiles [
 	"comment stating purpose of message"
 
-	(self tileMatrixStackVisual layer: 1) do: [ :tile | 
-		tile borderColor: Color white. 
-		tile borderWidth: 2]
+	(self tileMatrixStackVisual layer: 1) do: [ :tile | tile applyBorderHighlighting]
 
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 5/20/2024 20:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 20:27'
 }
 GMTETileMap >> rescaleMap [
 
+	self tileSelectionSet clearAllHighlightings.
 	self rescaleMapWidth: self tileWidth height: self tileHeight padding: self mapPadding
 ]
 

@@ -2,7 +2,6 @@ Class {
 	#name : #GMTETileSelectionSet,
 	#superclass : #Set,
 	#instVars : [
-		'decoMorphMapping',
 		'highlightImage'
 	],
 	#category : #'GM-TE-Core'
@@ -10,27 +9,16 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/23/2024 13:39'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
 }
 GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 	"comment stating purpose of message"
 
-	| newDecoMorph |
 	"aTile morphicLayerNumber: 99."
 	"aTile borderWidth: 2."
 	"aTile borderColor: Color red."
 	
-	self highlightImage 
-		ifNotNil: [
-			newDecoMorph := ImageMorph new
-			bounds: aTile bounds.
-			newDecoMorph image: (self highlightImage scaledToSize: aTile extent)]
-		ifNil: [
-			newDecoMorph := Morph new
-			bounds: aTile bounds.
-			newDecoMorph color: (Color black alpha: 0.2)].
-	aTile addMorph: newDecoMorph.
-	self decoMorphMapping at: aTile put: newDecoMorph
+	aTile applyDecoMorphHighlighting: self highlightImage
 	
 ]
 
@@ -42,24 +30,6 @@ GMTETileSelectionSet >> clearAllHighlightings [
 	
 	self do: [ :tile | self removeHighlightingVisuals: tile].
 	self removeAll.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:26'
-}
-GMTETileSelectionSet >> decoMorphMapping [
-
-	^ decoMorphMapping
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:26'
-}
-GMTETileSelectionSet >> decoMorphMapping: anObject [
-
-	decoMorphMapping := anObject.
 ]
 
 {
@@ -93,34 +63,29 @@ GMTETileSelectionSet >> highlightTile: aTile [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
 }
 GMTETileSelectionSet >> initialize: n [
 	
 	super initialize: n.
-	self decoMorphMapping: Dictionary new.
 	
 	
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:52'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
 }
 GMTETileSelectionSet >> removeHighlightingVisuals: aTile [
 	"comment stating purpose of message"
 	
-	| decoMorph |
 
 	"TODO: Use constants here"
 	"aTile morphicLayerNumber: 100."
 	"aTile borderWidth: 2."
 	"aTile borderColor: Color white."
 	
-	decoMorph := self decoMorphMapping at: aTile.
-	self decoMorphMapping removeKey: aTile.
-	
-	aTile removeMorph: decoMorph	
+	aTile removeDecoMorphHighlighting
 ]
 
 {
