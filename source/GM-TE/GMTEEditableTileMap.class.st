@@ -116,11 +116,11 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
 }
 GMTEEditableTileMap >> resetAll [
 	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
-	self tileMatrixStack setPlaceholder.
+	self tileMatrixStack setToPlaceholder.
 ]
 
 {

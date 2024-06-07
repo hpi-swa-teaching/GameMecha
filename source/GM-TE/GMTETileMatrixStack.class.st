@@ -171,9 +171,9 @@ GMTETileMatrixStack >> removeLayerAt: idx [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
 }
-GMTETileMatrixStack >> setPlaceholder [
+GMTETileMatrixStack >> setToPlaceholder [
 
 	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
 	(self layer: 1) free
