@@ -6,9 +6,19 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:40'
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 20:55'
+}
+GMTETileMatrixLayer >> doTiles: aBlock [
+
+	self contents do: [ :tile | 
+		tile ifNotNil: [aBlock value: tile]]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 20:50'
 }
 GMTETileMatrixLayer >> free [
 
-	self contents do: [ :imageMorph | imageMorph abandon]
+	self doTiles: [ :imageMorph | imageMorph abandon]
 ]
