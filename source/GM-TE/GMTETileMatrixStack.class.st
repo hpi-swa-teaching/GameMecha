@@ -25,7 +25,7 @@ GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #eumerating,
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
 }
 GMTETileMatrixStack >> doLayers: aBlock [
@@ -34,7 +34,7 @@ GMTETileMatrixStack >> doLayers: aBlock [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #eumerating,
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
 }
 GMTETileMatrixStack >> doTiles: aBlock [
@@ -73,7 +73,7 @@ GMTETileMatrixStack >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:34'
 }
 GMTETileMatrixStack >> layer: aLayerIdx [
@@ -82,7 +82,7 @@ GMTETileMatrixStack >> layer: aLayerIdx [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/28/2024 11:15'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [ 
@@ -91,7 +91,7 @@ GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
@@ -148,7 +148,7 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #adding,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:38'
 }
 GMTETileMatrixStack >> pushLayer [
@@ -157,7 +157,7 @@ GMTETileMatrixStack >> pushLayer [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #removing,
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:20'
 }
 GMTETileMatrixStack >> removeLayerAt: idx [ 
@@ -170,10 +170,10 @@ GMTETileMatrixStack >> removeLayerAt: idx [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:32'
+	#category : #removing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
 }
-GMTETileMatrixStack >> reset [
+GMTETileMatrixStack >> setToPlaceholder [
 
 	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
 	(self layer: 1) free
@@ -181,18 +181,18 @@ GMTETileMatrixStack >> reset [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:05'
 }
 GMTETileMatrixStack >> width [
 
-	^ widht
+	^ width
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:05'
 }
 GMTETileMatrixStack >> width: anObject [
 
-	widht := anObject.
+	width := anObject.
 ]

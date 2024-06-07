@@ -27,9 +27,9 @@ GMTETile class >> position: aPoint extent: anExtent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 23:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
 }
-GMTETile >> reset [
+GMTETile >> setToPlaceholder [
 
 	self setPlaceholderColor: GMTETile placeHolderColor
 ]
