@@ -201,7 +201,20 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 ]
 
 {
-	#category : #updating,
+	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 20:56'
+}
+GMTETileMap >> generateMatrixStacks [
+	
+	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
+	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
+	self tileMatrixStackVisual morphicLayerStartingOffset: 10. "TODO: Number ?"
+	self generateVisualTiles.
+	self enableVisualLayer
+]
+
+{
+	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:33'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
@@ -228,20 +241,20 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 ]
 
 {
-	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:28'
+	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:13'
 }
 GMTETileMap >> generateVisualTiles [
 	"Create grid tile matrix datastructure"
 	
-	1 to: self tileHeight do: [:y |
-		1 to: self tileWidth do: [:x |			
+	1 to: self mapTileHeight do: [:y |
+		1 to: self mapTileWidth do: [:x |			
 			self generateTileAtlayer: 1 x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual]].
 
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
 }
 GMTETileMap >> initialize [
@@ -395,25 +408,56 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 20:27'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:58'
 }
 GMTETileMap >> rescaleMap [
 
-	self tileSelectionSet clearAllHighlightings.
+	"self tileSelectionSet clearAllHighlightings."
 	self rescaleMapWidth: self tileWidth height: self tileHeight padding: self mapPadding
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 21:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:40'
+}
+GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth [
+	
+	self rescaleMapWidth: aWidth height: aHeigth padding: self mapPadding
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:59'
 }
 GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	"Rescale map & trigger update"
 	
 	"Warning: If padding is to small relative to map, divisions by zero can occur"
+	| sizeChanged |
+	sizeChanged := (aWidth ~= self mapTileWidth) or: [aHeigth ~= self mapTileHeight].
 
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
+	(sizeChanged) ifTrue: [
+		self rescaleMatrixStacks].
 	self updateMap
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:34'
+}
+GMTETileMap >> rescaleMatrixStacks [
+
+	(self tileMatrixStack) ifNotNil: [
+		self tileMatrixStack rescaleToWidth: self mapTileWidth height: self mapTileHeight].
+		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
+		self tileMatrixStack doTiles: [ :tile |
+			self addMorph: tile].
+	(self tileMatrixStackVisual) ifNotNil: [
+		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
+		self tileMatrixStackVisual reset.
+		self generateVisualTiles.
+		self enableVisualLayer]
 ]
 
 {
@@ -428,10 +472,10 @@ GMTETileMap >> revertCorrectedTilePosition: aPoint [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:59'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:00'
 }
 GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
-	"Set dimensions (defines what is considered as part of 'dimenisions')"
+	"Set dimensions (defines what is considered as part of 'dimensions')"
 
 	self
 		mapTileWidth: aWidth;
@@ -689,20 +733,15 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 20:57'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
 
 	self updateDimensions.
 	self tileMatrixStack 
-		ifNil: [
-			self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
-			self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
-			self tileMatrixStackVisual morphicLayerStartingOffset: 10. "TODO: Number ?"
-			self generateVisualTiles.
-			self enableVisualLayer]
-		ifNotNil: [self updateTiles].
+		ifNil: [self generateMatrixStacks] "TODO: shouldnt this be properly initialized?"
+		ifNotNil: [self updateTiles]
 ]
 
 {

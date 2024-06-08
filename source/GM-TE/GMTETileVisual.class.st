@@ -9,13 +9,13 @@ Class {
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:36'
 }
 GMTETileVisual >> applyBorderHighlighting [
 	
 	self 
 		borderColor: Color white;
-		borderWidth: 2.
+		borderWidth: 1.
 ]
 
 {

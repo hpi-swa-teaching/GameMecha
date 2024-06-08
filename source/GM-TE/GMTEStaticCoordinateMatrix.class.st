@@ -9,12 +9,12 @@ Class {
 
 {
 	#category : #private,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:44'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:22'
 }
-GMTEStaticCoordinateMatrix class >> rows: aNumber1 columns: aNumber2 contents: anArray [
+GMTEStaticCoordinateMatrix class >> rows: aNumber1 columns: aNumber2 [
 
 	| newMatrix |
-	newMatrix := super rows: aNumber1 columns: aNumber2 contents: anArray.
+	newMatrix := super rows: aNumber1 columns: aNumber2.
 	^ newMatrix coordinateSystem: (GMTECoordinateSystem 
 		width: newMatrix columnCount 
 		height: newMatrix rowCount)

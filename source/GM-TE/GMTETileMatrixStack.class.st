@@ -170,10 +170,28 @@ GMTETileMatrixStack >> removeLayerAt: idx [
 ]
 
 {
-	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:33'
 }
-GMTETileMatrixStack >> setToPlaceholder [
+GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
+	"This will rescale layers be recreating them"
+
+	| newLayers newLayer |
+	newLayers := LinkedList new.
+
+	self doLayers: [ :layer | 
+		newLayer := layer asRescaledToWidth: aWidth height: aHeight.
+		newLayers addLast: newLayer.
+		layer free].
+		
+	self matrixLayers: newLayers.
+]
+
+{
+	#category : #removing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:31'
+}
+GMTETileMatrixStack >> reset [
 
 	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
 	(self layer: 1) free

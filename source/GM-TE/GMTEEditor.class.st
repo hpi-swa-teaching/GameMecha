@@ -123,13 +123,13 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:33'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 
 	|aFileStream tileMap|
 	"TODO: Check if .morph is a tileMap"
-	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary setToPlaceholder.
+	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary reset.
 	tileMap := aFileStream fileInObjectAndCode.
 	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
 	^GMTETileMap newFrom: (tileMap copy).
@@ -137,12 +137,12 @@ GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:33'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
 	
 	|aFileStream tileMap|
-	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary setToPlaceholder.
+	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary reset.
 	tileMap := aFileStream fileInObjectAndCode.
 	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
 	^GMTETileMap newFrom: (tileMap copy).
@@ -546,7 +546,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:33'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -556,7 +556,7 @@ GMTEEditor >> importFromMorph [
 
 	stream ifNil: [^self].
 	
-	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary setToPlaceholder.
+	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary reset.
 	tileMap := aFileStream fileInObjectAndCode.
 	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^self].
 	

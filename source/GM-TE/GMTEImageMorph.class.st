@@ -21,6 +21,17 @@ GMTEImageMorph >> extent: anExtent [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:01'
+}
+GMTEImageMorph >> free [
+
+	(self owner) ifNotNil: [
+		self owner removeMorph: self].
+	self abandon
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 17:15'
 }
