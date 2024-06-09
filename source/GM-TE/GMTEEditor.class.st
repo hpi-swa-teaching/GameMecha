@@ -51,7 +51,7 @@ GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint withTile
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:07'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
 GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
@@ -62,11 +62,11 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 			model: Model new;
 			label: 'GM Tile Editor';
 			children: {
-				self createCommandBarWithBuilder: builder.
-				self createTileViewerWithBuilder: builder.
-				self createTilestoreWithBuilder: builder.
-				self createTrayWithBuilder: builder.
-				self createLayersWithBuilder: builder};
+				self createCommandBarSpecWithBuilder: builder.
+				self createTileViewerSpecWithBuilder: builder.
+				self createTilestoreSpecWithBuilder: builder.
+				self createTraySpecWithBuilder: builder.
+				self createLayersSpecWithBuilder: builder};
 			minimumExtent: 550@300;
 			yourself.
 	morph := builder build: spec.
@@ -170,7 +170,7 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:44'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -180,12 +180,12 @@ GMTEEditor >> buildWith: builder [
 		model: self;
 		label: 'GM Tile Editor';
 		children: {
-			self createCommandBarWithBuilder: builder.
-			self createTileViewerWithBuilder: builder.
-			self createTilestoreWithBuilder: builder.
-			self createTrayWithBuilder: builder.
-			self createLayersWithBuilder: builder.
-			self createInspectorWithBuilder: builder};
+			self createCommandBarSpecWithBuilder: builder.
+			self createTileViewerSpecWithBuilder: builder.
+			self createTilestoreSpecWithBuilder: builder.
+			self createTraySpecWithBuilder: builder.
+			self createLayersSpecWithBuilder: builder.
+			self createInspectorSpecWithBuilder: builder};
 		closeAction: #onClose;
 		minimumExtent: 550@400).
 			
@@ -234,9 +234,9 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 12:02'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:11'
 }
-GMTEEditor >> createCommandBarWithBuilder: aBuilder [
+GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
 		name: 'command bar';
 		model: self;
@@ -272,24 +272,78 @@ GMTEEditor >> createCommandBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:55'
+	#'squeak_changestamp' : 'TW 6/10/2024 00:05'
 }
-GMTEEditor >> createInspectorWithBuilder: aBuilder [
+GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
-		^aBuilder pluggableScrollPaneSpec new
+		^aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.5)
-			offsets: (0@ 30 corner: 0@0));
+			offsets: (0@ 30 corner: 0@30));
 			name: 'inspector';
-			children: {aBuilder pluggableTextSpec new
+			children: {aBuilder pluggableInputFieldSpec new
 			model: self;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1));
+			help: 'tile width in px';
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.125) offsets: nil);
 			getText: #getTileDimensionsX;
-			setText: nil;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			color: Color transparent;
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.125 corner: 1 @ 0.25) offsets: nil);
+			getText: #getTileWidthText;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			help: 'tile height in px';
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375) offsets: nil);
+			getText: #getTileDimensionsX;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			color: Color transparent;
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.375 corner: 1 @ 0.5) offsets: nil);
+			getText: #getTileHeightText;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			help: 'map width in tiles';
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625) offsets: nil);
+			getText: #getTileDimensionsX;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			color: Color transparent;
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.625 corner: 1 @ 0.75) offsets: nil);
+			getText: #getMapWidthText;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			help: 'map height in tiles';
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875) offsets: nil);
+			getText: #getTileDimensionsX;
+			readOnly: true.
+			
+			aBuilder pluggableInputFieldSpec new
+			model: self;
+			color: Color transparent;
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (0 @ 0.875 corner: 1 @ 1) offsets: nil);
+			getText: #getMapHeightText;
 			readOnly: true.
 			};
-			spacing: 20;
-			verticalResizing: #shrinkWrap;
-			horizontalResizing: #shrinkWrap;
 			"minimumWidth:100;"
 			yourself.
 
@@ -297,9 +351,9 @@ GMTEEditor >> createInspectorWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:43'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
-GMTEEditor >> createLayersWithBuilder: aBuilder [
+GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 	^aBuilder pluggablePanelSpec new
 		name: 'layer viewer';
@@ -328,9 +382,9 @@ GMTEEditor >> createLayersWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
-GMTEEditor >> createTileViewerWithBuilder: aBuilder [
+GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"TODO: Maybe rename function to something more appropriate?"
 	^aBuilder pluggablePanelSpec new
 		name: 'main panel';
@@ -340,7 +394,7 @@ GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 		"layout: #vertical;"
 		children: {
 		
-			self createToolBarWithBuilder: aBuilder.
+			self createToolBarSpecWithBuilder: aBuilder.
 					
 			aBuilder pluggablePanelSpec new
 				name: 'tile viewer';
@@ -357,9 +411,9 @@ GMTEEditor >> createTileViewerWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:51'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
-GMTEEditor >> createTilestoreWithBuilder: aBuilder [
+GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
@@ -377,9 +431,9 @@ GMTEEditor >> createTilestoreWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 01:47'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
-GMTEEditor >> createToolBarWithBuilder: aBuilder [
+GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
 		name: 'toolbar';
 		model: self;
@@ -387,7 +441,7 @@ GMTEEditor >> createToolBarWithBuilder: aBuilder [
 			fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
 		children: {aBuilder pluggableButtonSpec new
 			name: 'reset';
-			label: 'Reset';
+			label: 'Reset Layer';
 			model: self;
 			action:#resetAll;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
@@ -413,9 +467,9 @@ GMTEEditor >> createToolBarWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 5/29/2024 15:51'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
-GMTEEditor >> createTrayWithBuilder: aBuilder [
+GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
@@ -509,6 +563,24 @@ GMTEEditor >> getLayerList [
 ]
 
 {
+	#category : #weird,
+	#'squeak_changestamp' : 'TW 6/9/2024 18:23'
+}
+GMTEEditor >> getMapHeightText [
+
+	^'map height in tiles'
+]
+
+{
+	#category : #weird,
+	#'squeak_changestamp' : 'TW 6/9/2024 18:23'
+}
+GMTEEditor >> getMapWidthText [
+
+	^'map width in tiles'
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/5/2024 02:53'
 }
@@ -518,6 +590,24 @@ GMTEEditor >> getTileDimensionsX [
 		ifNotNil: [^self tileMapMatrix tileWidth]
 		ifNil: [^nil]"
 	^'Test123'
+]
+
+{
+	#category : #weird,
+	#'squeak_changestamp' : 'TW 6/9/2024 18:22'
+}
+GMTEEditor >> getTileHeightText [
+
+	^'tile height in px'
+]
+
+{
+	#category : #weird,
+	#'squeak_changestamp' : 'TW 6/9/2024 18:22'
+}
+GMTEEditor >> getTileWidthText [
+	
+	^'tile width in px'
 ]
 
 {
@@ -961,4 +1051,13 @@ GMTEEditor >> unselectTile [
 	self selectedTile: nil.
 	self tileMapMatrix tileSelectionSet highlightImage: nil.
 	self trayViewer morph submorphs first visible:false.
+]
+
+{
+	#category : #weird,
+	#'squeak_changestamp' : 'TW 6/9/2024 17:52'
+}
+GMTEEditor >> whyIsThisFunctionNecessary [
+
+	^Color transparent
 ]
