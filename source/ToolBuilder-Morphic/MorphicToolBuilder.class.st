@@ -538,7 +538,7 @@ MorphicToolBuilder >> buildPluggablePanel: aSpec [
 
 {
 	#category : #'widgets optional',
-	#'squeak_changestamp' : 'mt 1/23/2019 13:27'
+	#'squeak_changestamp' : 'TW 6/10/2024 18:41'
 }
 MorphicToolBuilder >> buildPluggableScrollPane: spec [
 
@@ -546,7 +546,6 @@ MorphicToolBuilder >> buildPluggableScrollPane: spec [
 	widget := self scrollPaneClass new.
 	widget model: spec model.
 	self register: widget id: spec name.
-	
 	spec children
 		ifNotNil: [:obj |
 			"Create panel morph to scroll it."

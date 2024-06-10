@@ -238,12 +238,12 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:55'
+	#'squeak_changestamp' : 'TW 6/10/2024 18:41'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString selector: aSelector model: aModel [
 
 		^aBuilder pluggablePanelSpec new
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1));
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 5 @ 5));
 			children: {
 			aBuilder pluggableStaticTextSpec new
 			model: aModel;
@@ -299,7 +299,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:48'
+	#'squeak_changestamp' : 'TW 6/10/2024 18:32'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
@@ -308,17 +308,16 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 			offsets: (0@ 30 corner: 0@30));
 			name: 'inspector';
 			children: {
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width:' selector: #getTileDimensionsX model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Height:' selector: #getTileDimensionsX model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Height' selector: #getTileDimensionsX model: self.
-			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' selector: #getTileDimensionsX model: self.
 
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Heigh:t' selector: #getTileDimensionsX model: self.
 			};
 			verticalResizing: #shrinkWrap;
-			"minimumWidth:100;"
+			horizontalResizing: #shrinkWrap;
 			yourself.
 ]
 
