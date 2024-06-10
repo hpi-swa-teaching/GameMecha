@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #'ToolBuilder-Morphic'
+	#name : #'ToolBuilder-Morphic',
+	#'squeak_changestamp' : true
 }

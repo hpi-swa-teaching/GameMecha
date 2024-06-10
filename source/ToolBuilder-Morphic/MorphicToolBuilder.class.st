@@ -611,6 +611,17 @@ MorphicToolBuilder >> buildPluggableSpacer: spec [
 ]
 
 {
+	#category : #'widgets optional',
+	#'squeak_changestamp' : 'TW 6/10/2024 17:30'
+}
+MorphicToolBuilder >> buildPluggableStaticText: aSpec [
+	| widget |
+	widget := self buildPluggableText: aSpec.
+	widget hideScrollBarsIndefinitely.
+	^widget
+]
+
+{
 	#category : #'widgets required',
 	#'squeak_changestamp' : 'TW 6/9/2024 18:51'
 }
