@@ -272,7 +272,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 00:05'
+	#'squeak_changestamp' : 'TW 6/10/2024 16:51'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
@@ -280,73 +280,60 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.5)
 			offsets: (0@ 30 corner: 0@30));
 			name: 'inspector';
-			children: {aBuilder pluggableInputFieldSpec new
+			children: {
+			
+			aBuilder pluggableStaticTextSpec new
 			model: self;
-			help: 'tile width in px';
-			indicateUnacceptedChanges: false;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.125) offsets: nil);
-			getText: #getTileDimensionsX;
-			readOnly: true.
+			getText: #getTileWidthText.
 			
 			aBuilder pluggableInputFieldSpec new
 			model: self;
-			color: Color transparent;
+			help: 'tile width in px';
 			indicateUnacceptedChanges: false;
 			frame: (LayoutFrame fractions: (0 @ 0.125 corner: 1 @ 0.25) offsets: nil);
-			getText: #getTileWidthText;
-			readOnly: true.
+			getText: #getTileDimensionsX.
+			
+			aBuilder pluggableStaticTextSpec new
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375) offsets: nil);
+			getText: #getTileHeightText.
 			
 			aBuilder pluggableInputFieldSpec new
 			model: self;
 			help: 'tile height in px';
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375) offsets: nil);
-			getText: #getTileDimensionsX;
-			readOnly: true.
-			
-			aBuilder pluggableInputFieldSpec new
-			model: self;
-			color: Color transparent;
-			indicateUnacceptedChanges: false;
 			frame: (LayoutFrame fractions: (0 @ 0.375 corner: 1 @ 0.5) offsets: nil);
-			getText: #getTileHeightText;
-			readOnly: true.
+			getText: #getTileDimensionsX.
+			
+			aBuilder pluggableStaticTextSpec new
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625) offsets: nil);
+			getText: #getMapWidthText.
 			
 			aBuilder pluggableInputFieldSpec new
 			model: self;
 			help: 'map width in tiles';
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625) offsets: nil);
-			getText: #getTileDimensionsX;
-			readOnly: true.
-			
-			aBuilder pluggableInputFieldSpec new
-			model: self;
-			color: Color transparent;
-			indicateUnacceptedChanges: false;
 			frame: (LayoutFrame fractions: (0 @ 0.625 corner: 1 @ 0.75) offsets: nil);
-			getText: #getMapWidthText;
-			readOnly: true.
+			getText: #getTileDimensionsX.
+			
+			aBuilder pluggableStaticTextSpec new
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875) offsets: nil);
+			getText: #getMapHeightText.
 			
 			aBuilder pluggableInputFieldSpec new
 			model: self;
 			help: 'map height in tiles';
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875) offsets: nil);
-			getText: #getTileDimensionsX;
-			readOnly: true.
-			
-			aBuilder pluggableInputFieldSpec new
-			model: self;
-			color: Color transparent;
-			indicateUnacceptedChanges: false;
 			frame: (LayoutFrame fractions: (0 @ 0.875 corner: 1 @ 1) offsets: nil);
-			getText: #getMapHeightText;
-			readOnly: true.
+			getText: #getTileDimensionsX.
+			
 			};
+			verticalResizing: #shrinkWrap;
 			"minimumWidth:100;"
 			yourself.
-
 ]
 
 {
