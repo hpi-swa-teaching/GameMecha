@@ -44,6 +44,12 @@
 		],
 		#encoding : 'TXT'
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'ToolBuilder-Kernel'
+		},
+		#path : @7
+	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'testingResources',
@@ -125,7 +131,7 @@
 		#package : MCPackage {
 			#name : 'GM-TE'
 		},
-		#path : @42
+		#path : @44
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
