@@ -238,22 +238,24 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 18:41'
+	#'squeak_changestamp' : 'Alex M 6/10/2024 19:19'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString selector: aSelector model: aModel [
 
 		^aBuilder pluggablePanelSpec new
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 5 @ 5));
+			frame: (LayoutFrame
+			offsets: (0@0 corner: 200@40));
+			padding: (Rectangle left: 0 right: 0 top: 0 bottom: 40);
 			children: {
 			aBuilder pluggableStaticTextSpec new
 			model: aModel;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.75 @ 0.25) offsets: nil);
+			frame: (LayoutFrame offsets: (0 @ 0 corner: 100 @ 40));
 			getText: #getTileWidthText.
 			
 			aBuilder pluggableInputFieldSpec new
 			model: aModel;
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 0.25) offsets: nil);
+			frame: (LayoutFrame offsets: (100 @ 0 corner: 200 @ 40));
 			getText: aSelector.
 			};
 			yourself
@@ -299,13 +301,14 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 18:32'
+	#'squeak_changestamp' : 'Alex M 6/10/2024 19:13'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
 			offsets: (0@ 30 corner: 0@30));
+			layout: #vertical;
 			name: 'inspector';
 			children: {
 			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width:' selector: #getTileDimensionsX model: self.
