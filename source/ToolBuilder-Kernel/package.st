@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #'ToolBuilder-Kernel'
+	#name : #'ToolBuilder-Kernel',
+	#'squeak_changestamp' : true
 }

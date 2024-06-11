@@ -36,6 +36,12 @@
 			'source'
 		]
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GM-ToolBuilder'
+		},
+		#path : @7
+	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'.github',
@@ -131,7 +137,7 @@
 		#package : MCPackage {
 			#name : 'GM-TE'
 		},
-		#path : @44
+		#path : @46
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [

@@ -12,7 +12,8 @@ Class {
 		'selectedTile',
 		'ratio',
 		'savedSinceModified',
-		'inspector'
+		'inspector',
+		'morphBuilders'
 	],
 	#category : #'GM-TE'
 }
@@ -238,27 +239,28 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/10/2024 19:19'
+	#'squeak_changestamp' : 'TW 6/11/2024 17:02'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString selector: aSelector model: aModel [
 
-		^aBuilder pluggablePanelSpec new
+		^self withMorphOf: (aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame
-			offsets: (0@0 corner: 200@40));
-			padding: (Rectangle left: 0 right: 0 top: 0 bottom: 40);
+			offsets: (0@0 corner: 180@30));
+			layout: #proportional;
 			children: {
-			aBuilder pluggableStaticTextSpec new
-			model: aModel;
-			frame: (LayoutFrame offsets: (0 @ 0 corner: 100 @ 40));
-			getText: #getTileWidthText.
-			
-			aBuilder pluggableInputFieldSpec new
-			model: aModel;
-			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame offsets: (100 @ 0 corner: 200 @ 40));
-			getText: aSelector.
+				aBuilder pluggableStaticTextSpec new
+				model: aModel;
+				frame: (LayoutFrame offsets: (0@0 corner: 120@30));
+				text: aString.
+				
+				aBuilder pluggableInputFieldSpec new
+				model: aModel;
+				indicateUnacceptedChanges: false;
+				frame: (LayoutFrame offsets: (120@0 corner: 180@30));
+				getText: #test.
 			};
-			yourself
+			yourself) do: [:morph |
+				morph layoutPolicy: TableLayout new]
 ]
 
 {
@@ -301,7 +303,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/10/2024 19:13'
+	#'squeak_changestamp' : 'TW 6/11/2024 16:43'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
@@ -311,13 +313,13 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 			layout: #vertical;
 			name: 'inspector';
 			children: {
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width:' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width:' selector: #getTileWidth model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Height:' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Height:' selector: #getTileHeight model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' selector: #getGridWidth model: self.
 
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Heigh:t' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' selector: #getGridHeight model: self.
 			};
 			verticalResizing: #shrinkWrap;
 			horizontalResizing: #shrinkWrap;
@@ -524,6 +526,28 @@ GMTEEditor >> getFileWithFileChooser [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 16:42'
+}
+GMTEEditor >> getGridHeight [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix mapTileHeight]
+		ifNil: [^nil]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 16:42'
+}
+GMTEEditor >> getGridWidth [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix mapTileWidth]
+		ifNil: [^nil]
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/28/2024 16:22'
 }
@@ -538,51 +562,25 @@ GMTEEditor >> getLayerList [
 ]
 
 {
-	#category : #weird,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:22'
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 16:36'
 }
-GMTEEditor >> getMapHeightText [
+GMTEEditor >> getTileHeight [
 
-	^'map height:'
-]
-
-{
-	#category : #weird,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:22'
-}
-GMTEEditor >> getMapWidthText [
-
-	^'map width:'
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix tileHeight]
+		ifNil: [^nil]
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/10/2024 17:02'
+	#'squeak_changestamp' : 'TW 6/11/2024 16:36'
 }
-GMTEEditor >> getTileDimensionsX [
+GMTEEditor >> getTileWidth [
 
 	self tileMapMatrix 
 		ifNotNil: [^self tileMapMatrix tileWidth]
 		ifNil: [^nil]
-	"^'Test123'"
-]
-
-{
-	#category : #weird,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:22'
-}
-GMTEEditor >> getTileHeightText [
-
-	^'tile height:'
-]
-
-{
-	#category : #weird,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:22'
-}
-GMTEEditor >> getTileWidthText [
-	
-	^'tile width:'
 ]
 
 {
@@ -661,13 +659,14 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Alex M 5/28/2024 15:24'
+	#'squeak_changestamp' : 'TW 6/11/2024 15:54'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
 	self
 		selectLayer: 1;
+		morphBuilders: Dictionary new;
 		open;
 		ratio: 1;
 		savedSinceModified: true
@@ -675,7 +674,7 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:03'
+	#'squeak_changestamp' : 'TW 6/11/2024 16:45'
 }
 GMTEEditor >> initializeTileMapMatrix [
 
@@ -685,7 +684,11 @@ GMTEEditor >> initializeTileMapMatrix [
 		position: (self tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
-	self changed: #getTileDimensionsX
+	self 
+		changed: #getTileWidth;
+		changed: #getTileHeight;
+		changed: #getGridWidth;
+		changed: #getGridHeight
 ]
 
 {
@@ -787,6 +790,24 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	(GMTEEditor confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/11/2024 15:54'
+}
+GMTEEditor >> morphBuilders [
+
+	^ morphBuilders
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/11/2024 15:54'
+}
+GMTEEditor >> morphBuilders: anObject [
+
+	morphBuilders := anObject.
 ]
 
 {
@@ -946,6 +967,15 @@ GMTEEditor >> selectedTile: anObject [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 17:02'
+}
+GMTEEditor >> test [
+
+	^'1'
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 11:35'
 }
@@ -1029,10 +1059,15 @@ GMTEEditor >> unselectTile [
 ]
 
 {
-	#category : #weird,
-	#'squeak_changestamp' : 'TW 6/9/2024 17:52'
+	#category : #building,
+	#'squeak_changestamp' : 'TW 6/11/2024 15:22'
 }
-GMTEEditor >> whyIsThisFunctionNecessary [
+GMTEEditor >> withMorphOf: aSpec do: aBlock [
 
-	^Color transparent
+	| id |
+	id := UUID new asString.
+	morphBuilders at: id put: aBlock.
+	
+	aSpec name: id.
+	^ aSpec
 ]

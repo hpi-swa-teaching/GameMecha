@@ -3,8 +3,11 @@ PluggableStaticText is supposed to enable simple text that seamlessly fits into 
 "
 Class {
 	#name : #PluggableStaticTextSpec,
-	#superclass : #PluggableTextSpec,
-	#category : #'ToolBuilder-Kernel',
+	#superclass : #PluggableWidgetSpec,
+	#instVars : [
+		'text'
+	],
+	#category : #'GM-ToolBuilder',
 	#'squeak_changestamp' : 'TW 6/9/2024 18:31'
 }
 
@@ -19,27 +22,18 @@ PluggableStaticTextSpec >> buildWith: builder [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/10/2024 00:24'
+	#'squeak_changestamp' : 'TW 6/11/2024 15:52'
 }
-PluggableStaticTextSpec >> color [
+PluggableStaticTextSpec >> text [
 
-	^Color transparent
+	^ text
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/9/2024 18:33'
+	#'squeak_changestamp' : 'TW 6/11/2024 15:52'
 }
-PluggableStaticTextSpec >> indicateUnacceptedChanges [
+PluggableStaticTextSpec >> text: anObject [
 
-	^false
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/9/2024 18:34'
-}
-PluggableStaticTextSpec >> readOnly [
-
-	^true
+	text := anObject.
 ]

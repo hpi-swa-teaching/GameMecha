@@ -611,12 +611,34 @@ MorphicToolBuilder >> buildPluggableSpacer: spec [
 
 {
 	#category : #'widgets optional',
-	#'squeak_changestamp' : 'TW 6/10/2024 17:30'
+	#'squeak_changestamp' : 'TW 6/11/2024 15:53'
 }
 MorphicToolBuilder >> buildPluggableStaticText: aSpec [
 	| widget |
-	widget := self buildPluggableText: aSpec.
-	widget hideScrollBarsIndefinitely.
+	widget := StringMorph new
+		contents: aSpec text.
+	"aSpec textStyle
+		ifNotNil: [:ts |
+			ts isSymbol
+				ifTrue: [widget getTextStyleSelector: ts; update: ts]
+				ifFalse: [widget setTextStyle: ts]]
+		ifNil: [
+			aSpec font ifNotNil: [:f |
+				f isSymbol
+					ifTrue: [widget getFontSelector: f]
+					ifFalse: [widget setTextStyle: f asNewTextStyle]] ]."
+		
+	self register: widget id: aSpec name.
+	
+	aSpec color
+		ifNotNil: [widget color: aSpec color].
+
+	self buildHelpFor: widget spec: aSpec.
+	 
+	self setFrame: aSpec frame in: widget.
+	self setLayoutHintsForTextField: widget spec: aSpec.
+	
+	parent ifNotNil:[self add: widget to: parent].
 	^widget
 ]
 
