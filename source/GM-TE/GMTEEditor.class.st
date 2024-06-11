@@ -239,13 +239,13 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/11/2024 17:15'
+	#'squeak_changestamp' : 'TW 6/11/2024 19:29'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel [
 
 		^self withMorphOf: (aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame
-			offsets: (0@0 corner: 180@30));
+			fractions: (0@0 corner: 1@1));
 			layout: #proportional;
 			children: {
 				aBuilder pluggableStaticTextSpec new
@@ -304,13 +304,14 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/11/2024 19:08'
+	#'squeak_changestamp' : 'TW 6/11/2024 19:15'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
 			offsets: (0@ 30 corner: 0@30));
+			hScrollBarPolicy: #never;
 			layout: #vertical;
 			name: 'inspector';
 			children: {
