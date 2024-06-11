@@ -170,7 +170,7 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:01'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -213,7 +213,7 @@ GMTEEditor >> buildWith: builder [
 		borderWidth: 2;
 		borderColor: tileStore borderColor.
 	
-	self initializeTileMapMatrix.
+	self initializeDefaultTileMapMatrix.
 		
 	^newMorph
 ]
@@ -238,25 +238,26 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/10/2024 19:19'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 13:05'
 }
-GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString selector: aSelector model: aModel [
+GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aSelector1 selector: aSelector2 model: aModel [
 
 		^aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame
-			offsets: (0@0 corner: 200@40));
-			padding: (Rectangle left: 0 right: 0 top: 0 bottom: 40);
+			fractions: (0@0 corner: 1@1)
+			offsets: (0@0 corner: 200@25));
+			padding: (Rectangle left: 0 right: 0 top: 0 bottom: 20);
 			children: {
 			aBuilder pluggableStaticTextSpec new
 			model: aModel;
-			frame: (LayoutFrame offsets: (0 @ 0 corner: 100 @ 40));
-			getText: #getTileWidthText.
+			frame: (LayoutFrame offsets: (0 @ 0 corner: 120 @ 25));
+			getText: aSelector1.
 			
 			aBuilder pluggableInputFieldSpec new
 			model: aModel;
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame offsets: (100 @ 0 corner: 200 @ 40));
-			getText: aSelector.
+			frame: (LayoutFrame offsets: (120 @ 0 corner: 200 @ 25));
+			getText: aSelector2.
 			};
 			yourself
 ]
@@ -301,7 +302,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/10/2024 19:13'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:56'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
@@ -311,13 +312,13 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 			layout: #vertical;
 			name: 'inspector';
 			children: {
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width:' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: #getMapWidthText selector: #getMapDimensionsX model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Height:' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: #getMapHeightText selector: #getMapDimensionsY model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: #getTileWidthText selector: #getTileDimensionsX model: self.
 
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Heigh:t' selector: #getTileDimensionsX model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: #getTileHeightText selector: #getTileDimensionsY model: self.
 			};
 			verticalResizing: #shrinkWrap;
 			horizontalResizing: #shrinkWrap;
@@ -538,6 +539,28 @@ GMTEEditor >> getLayerList [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:34'
+}
+GMTEEditor >> getMapDimensionsX [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix mapTileWidth asString]
+		ifNil: [^'undef']
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:34'
+}
+GMTEEditor >> getMapDimensionsY [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix mapTileHeight asString]
+		ifNil: [^'undef']
+]
+
+{
 	#category : #weird,
 	#'squeak_changestamp' : 'TW 6/10/2024 17:22'
 }
@@ -557,14 +580,23 @@ GMTEEditor >> getMapWidthText [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/10/2024 17:02'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:58'
 }
 GMTEEditor >> getTileDimensionsX [
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix tileSizeWidth asString]
+		ifNil: [^'undef']
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:52'
+}
+GMTEEditor >> getTileDimensionsY [
 
 	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix tileWidth]
-		ifNil: [^nil]
-	"^'Test123'"
+		ifNotNil: [^self tileMapMatrix tileSizeHeight asString]
+		ifNil: [^'undef']
 ]
 
 {
@@ -675,22 +707,16 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:03'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
 }
-GMTEEditor >> initializeTileMapMatrix [
+GMTEEditor >> initializeDefaultTileMapMatrix [
 
-	self tileMapMatrix: (GMTEEditableTileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1 model: self).
-	self tileViewer addMorph: self tileMapMatrix.		
-	self tileMapMatrix 
-		position: (self tileMapMatrix owner position);
-		hResizing: #spaceFill; 
-		vResizing: #spaceFill.
-	self changed: #getTileDimensionsX
+	self initializeTileMapMatrixWithHeight: 10 width: 10
 ]
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:04'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 
@@ -700,6 +726,11 @@ GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 		position: (self tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
+	self
+		changed: #getTileDimensionsX;
+		changed: #getTileDimensionsY;
+		changed: #getMapDimensionsX;
+		changed: #getMapDimensionsY.
 ]
 
 {
