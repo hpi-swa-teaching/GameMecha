@@ -408,11 +408,11 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:58'
+	#'squeak_changestamp' : 'TW 6/11/2024 17:14'
 }
 GMTETileMap >> rescaleMap [
 
-	"self tileSelectionSet clearAllHighlightings."
+	self tileSelectionSet clearAllHighlightings.
 	self rescaleMapWidth: self tileWidth height: self tileHeight padding: self mapPadding
 ]
 

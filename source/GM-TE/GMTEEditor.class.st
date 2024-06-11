@@ -239,9 +239,9 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/11/2024 17:02'
+	#'squeak_changestamp' : 'TW 6/11/2024 17:15'
 }
-GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString selector: aSelector model: aModel [
+GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel [
 
 		^self withMorphOf: (aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame
@@ -257,7 +257,8 @@ GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString selec
 				model: aModel;
 				indicateUnacceptedChanges: false;
 				frame: (LayoutFrame offsets: (120@0 corner: 180@30));
-				getText: #test.
+				getText: aSelector;
+				setText: anotherSelector.
 			};
 			yourself) do: [:morph |
 				morph layoutPolicy: TableLayout new]
@@ -303,7 +304,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/11/2024 16:43'
+	#'squeak_changestamp' : 'TW 6/11/2024 17:59'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
@@ -313,13 +314,11 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 			layout: #vertical;
 			name: 'inspector';
 			children: {
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Width:' selector: #getTileWidth model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Ratio:' getter: #getTileRatioAsString setter: #setTileRatio: model: self.
 			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Height:' selector: #getTileHeight model: self.
-			
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' selector: #getGridWidth model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self.
 
-			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' selector: #getGridHeight model: self.
+			self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self.
 			};
 			verticalResizing: #shrinkWrap;
 			horizontalResizing: #shrinkWrap;
@@ -538,6 +537,15 @@ GMTEEditor >> getGridHeight [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 17:35'
+}
+GMTEEditor >> getGridHeightAsString [
+
+	^self getGridHeight asString
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/11/2024 16:42'
 }
 GMTEEditor >> getGridWidth [
@@ -545,6 +553,15 @@ GMTEEditor >> getGridWidth [
 	self tileMapMatrix 
 		ifNotNil: [^self tileMapMatrix mapTileWidth]
 		ifNil: [^nil]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 17:35'
+}
+GMTEEditor >> getGridWidthAsString [
+
+	^self getGridWidth asString
 ]
 
 {
@@ -563,57 +580,22 @@ GMTEEditor >> getLayerList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/11/2024 14:34'
+	#'squeak_changestamp' : 'TW 6/11/2024 18:01'
 }
-GMTEEditor >> getMapDimensionsX [
+GMTEEditor >> getTileRatio [
 
 	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix mapTileWidth asString]
-		ifNil: [^'undef']
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/11/2024 14:34'
-}
-GMTEEditor >> getMapDimensionsY [
-
-	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix mapTileHeight asString]
-		ifNil: [^'undef']
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/11/2024 14:52'
-}
-GMTEEditor >> getTileDimensionsY [
-
-	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix tileSizeHeight asString]
-		ifNil: [^'undef']
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/11/2024 16:36'
-}
-GMTEEditor >> getTileHeight [
-
-	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix tileHeight]
+		ifNotNil: [^self tileMapMatrix tileSizeRatio]
 		ifNil: [^nil]
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/11/2024 16:36'
+	#'squeak_changestamp' : 'TW 6/11/2024 18:01'
 }
-GMTEEditor >> getTileWidth [
+GMTEEditor >> getTileRatioAsString [
 
-	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix tileWidth]
-		ifNil: [^nil]
+	^self getTileRatio asString
 ]
 
 {
@@ -716,7 +698,7 @@ GMTEEditor >> initializeDefaultTileMapMatrix [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
+	#'squeak_changestamp' : 'TW 6/11/2024 18:00'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 
@@ -725,12 +707,12 @@ GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 	self tileMapMatrix 
 		position: (self tileMapMatrix owner position);
 		hResizing: #spaceFill; 
-		vResizing: #spaceFill.
+		vResizing: #spaceFill;
+		updateMap.
 	self
-		changed: #getTileDimensionsX;
-		changed: #getTileDimensionsY;
-		changed: #getMapDimensionsX;
-		changed: #getMapDimensionsY.
+		changed: #getTileRatioAsString;
+		changed: #getGridWidthAsString;
+		changed: #getGridHeightAsString.
 ]
 
 {
@@ -879,6 +861,29 @@ GMTEEditor >> openTileMapInWorld [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 18:05'
+}
+GMTEEditor >> parseGridSize: aText [
+
+	| newSize |
+	newSize := self parseSize: aText.
+	(newSize notNil and: [newSize isInteger and: [0 < newSize and: [newSize < 200]]])
+		ifTrue: [^newSize]
+		ifFalse: [^nil].
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 17:43'
+}
+GMTEEditor >> parseSize: aText [
+
+	[aText asNumber] on: NumberParserError do: [^nil].
+	^aText asNumber
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 5/23/2024 02:24'
 }
@@ -996,11 +1001,34 @@ GMTEEditor >> selectedTile: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/11/2024 17:02'
+	#'squeak_changestamp' : 'TW 6/11/2024 18:12'
 }
-GMTEEditor >> test [
+GMTEEditor >> setGridHeight: aText [
 
-	^'1'
+	| newSize |
+	
+	newSize := self parseGridSize: aText.
+	newSize
+		ifNotNil: [
+			self tileMapMatrix rescaleMapWidth: self getGridWidth height: newSize].
+	^true
+		
+
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/11/2024 18:11'
+}
+GMTEEditor >> setGridWidth: aText [
+
+	| newSize |
+	
+	newSize := self parseGridSize: aText.
+	newSize
+		ifNotNil: [self tileMapMatrix rescaleMapWidth: newSize height: self getGridHeight].
+	^true
+
 ]
 
 {
