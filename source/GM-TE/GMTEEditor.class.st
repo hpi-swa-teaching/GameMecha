@@ -171,7 +171,7 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:01'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -214,7 +214,7 @@ GMTEEditor >> buildWith: builder [
 		borderWidth: 2;
 		borderColor: tileStore borderColor.
 	
-	self initializeTileMapMatrix.
+	self initializeDefaultTileMapMatrix.
 		
 	^newMorph
 ]
@@ -563,6 +563,39 @@ GMTEEditor >> getLayerList [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:34'
+}
+GMTEEditor >> getMapDimensionsX [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix mapTileWidth asString]
+		ifNil: [^'undef']
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:34'
+}
+GMTEEditor >> getMapDimensionsY [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix mapTileHeight asString]
+		ifNil: [^'undef']
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:52'
+}
+GMTEEditor >> getTileDimensionsY [
+
+	self tileMapMatrix 
+		ifNotNil: [^self tileMapMatrix tileSizeHeight asString]
+		ifNil: [^'undef']
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/11/2024 16:36'
 }
 GMTEEditor >> getTileHeight [
@@ -674,26 +707,16 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/11/2024 16:45'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
 }
-GMTEEditor >> initializeTileMapMatrix [
+GMTEEditor >> initializeDefaultTileMapMatrix [
 
-	self tileMapMatrix: (GMTEEditableTileMap tileWidth: 10 tileHeight: 10 padding: 0.15 sizeRatio: 1 model: self).
-	self tileViewer addMorph: self tileMapMatrix.		
-	self tileMapMatrix 
-		position: (self tileMapMatrix owner position);
-		hResizing: #spaceFill; 
-		vResizing: #spaceFill.
-	self 
-		changed: #getTileWidth;
-		changed: #getTileHeight;
-		changed: #getGridWidth;
-		changed: #getGridHeight
+	self initializeTileMapMatrixWithHeight: 10 width: 10
 ]
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:04'
+	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 
@@ -703,6 +726,11 @@ GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 		position: (self tileMapMatrix owner position);
 		hResizing: #spaceFill; 
 		vResizing: #spaceFill.
+	self
+		changed: #getTileDimensionsX;
+		changed: #getTileDimensionsY;
+		changed: #getMapDimensionsX;
+		changed: #getMapDimensionsY.
 ]
 
 {

@@ -7,17 +7,17 @@
 			'source'
 		]
 	},
-	SquotCypressMapper {
+	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'GM-Test'
+			#name : 'GM-TilemapMakerGui'
 		},
 		#path : FSAbsolutePath [
 			'source'
 		]
 	},
-	SquotTonelMapper {
+	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GM-TilemapMakerGui'
+			#name : 'GM-Test'
 		},
 		#path : @7
 	},
@@ -40,7 +40,9 @@
 		#package : MCPackage {
 			#name : 'GM-ToolBuilder'
 		},
-		#path : @7
+		#path : FSAbsolutePath [
+			'source'
+		]
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -137,7 +139,7 @@
 		#package : MCPackage {
 			#name : 'GM-TE'
 		},
-		#path : @46
+		#path : @47
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
