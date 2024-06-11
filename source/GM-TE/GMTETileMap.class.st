@@ -444,7 +444,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:34'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 18:37'
 }
 GMTETileMap >> rescaleMatrixStacks [
 
@@ -457,7 +457,7 @@ GMTETileMap >> rescaleMatrixStacks [
 		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
 		self tileMatrixStackVisual reset.
 		self generateVisualTiles.
-		self enableVisualLayer]
+		self enableVisualLayer] "TODO: make "
 ]
 
 {

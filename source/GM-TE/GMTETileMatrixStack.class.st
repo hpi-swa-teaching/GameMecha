@@ -149,11 +149,10 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:38'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 18:54'
 }
 GMTETileMatrixStack >> pushLayer [
-
-	self matrixLayers addLast: (GMTETileMatrixLayer rows: self width columns: self height)
+	self matrixLayers addLast: (GMTETileMatrixLayer rows: self height columns: self width)
 ]
 
 {
@@ -171,12 +170,16 @@ GMTETileMatrixStack >> removeLayerAt: idx [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 18:48'
 }
 GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 	"This will rescale layers be recreating them"
 
 	| newLayers newLayer |
+	self 
+		width: aWidth;
+		height: aHeight. 
+	
 	newLayers := LinkedList new.
 
 	self doLayers: [ :layer | 
