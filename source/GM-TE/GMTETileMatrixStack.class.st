@@ -61,7 +61,7 @@ GMTETileMatrixStack >> height: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initilization,
 	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
 }
 GMTETileMatrixStack >> initialize [
@@ -92,18 +92,17 @@ GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:16'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
 	
 	"TODO this is temporary solution; set max layers; use constants"
 	
-	aTile ifNotNil: [aTile morphicLayerNumber: self morphicLayerStartingOffset - aLayerIdx].
-	^ (self matrixLayers at: aLayerIdx) at: x at: y put: aTile
+	^ (self matrixLayers at: aLayerIdx) addTile: aTile at: x at: y
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:23'
 }
 GMTETileMatrixStack >> layerCount [
@@ -149,10 +148,13 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 18:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:22'
 }
 GMTETileMatrixStack >> pushLayer [
-	self matrixLayers addLast: (GMTETileMatrixLayer rows: self height columns: self width)
+	self matrixLayers addLast: (GMTETileMatrixLayer 
+		width: self width 
+		height: self height 
+		layerIdx: (self morphicLayerStartingOffset - self layerCount - 2)) "TODO: outsource magic number"
 ]
 
 {
@@ -198,6 +200,25 @@ GMTETileMatrixStack >> reset [
 
 	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
 	(self layer: 1) free
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:33'
+}
+GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
+
+	| tmpMorhpicLayer layer1 layer2 |
+	
+	layer1 := self layer: anIdx1.
+	layer2 := self layer: anIdx2.
+	tmpMorhpicLayer := layer1 layerIdx.
+	
+	layer1 updateLayerIdx: layer2 layerIdx.
+	layer2 updateLayerIdx: tmpMorhpicLayer.
+
+	self matrixLayers swap: anIdx1 with: anIdx2.
+	
 ]
 
 {

@@ -1,8 +1,33 @@
 Class {
 	#name : #GMTETileMatrixLayer,
 	#superclass : #GMTEStaticCoordinateMatrix,
+	#instVars : [
+		'layerIdx'
+	],
 	#category : #'GM-TE-Core'
 }
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:11'
+}
+GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
+
+	^(self rows: aHeight columns: aWidth)  
+		layerIdx: anIdx; 
+		yourself
+]
+
+{
+	#category : #adding,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:16'
+}
+GMTETileMatrixLayer >> addTile: aTile at: x at: y [
+
+	aTile ifNotNil: [
+		aTile morphicLayerNumber: self layerIdx].
+	^self at: x at: y put: aTile
+]
 
 {
 	#category : #copying,
@@ -46,6 +71,24 @@ GMTETileMatrixLayer >> free [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:09'
+}
+GMTETileMatrixLayer >> layerIdx [
+
+	^ layerIdx
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:09'
+}
+GMTETileMatrixLayer >> layerIdx: anObject [
+
+	layerIdx := anObject.
+]
+
+{
 	#category : #removing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:23'
 }
@@ -54,4 +97,15 @@ GMTETileMatrixLayer >> setNil [
 	1 to: self rowCount do: [:row |
    		1 to: self columnCount do: [:col |
         		self at: row at: col put: nil]].
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:18'
+}
+GMTETileMatrixLayer >> updateLayerIdx: anIdx [
+
+	self layerIdx: anIdx.
+	self doTiles: [ :tile |
+		tile morphicLayerNumber: self layerIdx]
 ]
