@@ -9,6 +9,25 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:13'
+}
+GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
+	(anImageMorph) ifNil: [^self].
+
+	^(ImageMorph new) 
+		image: ((FormCanvas on: self image)
+			image: (anImageMorph image)
+			at: 0@0
+			sourceRect: (anImageMorph image boundingBox)
+			rule: Form blend)
+			form;
+		yourself
+			
+			
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 5/23/2024 09:51'
 }
 GMTEImageMorph >> extent: anExtent [
@@ -21,7 +40,7 @@ GMTEImageMorph >> extent: anExtent [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #removing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:01'
 }
 GMTEImageMorph >> free [

@@ -253,6 +253,32 @@ GMTETileMap >> generateVisualTiles [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 17:40'
+}
+GMTETileMap >> getTileFromLayer: aLayer x: x y: y [
+	
+	^self getTileFromLayer: aLayer x: x y: y stack: self tileMatrixStack
+
+	
+		
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 17:38'
+}
+GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
+	
+	^aStack layer: aLayer at: y at: x
+
+	
+		
+	
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
 }

@@ -19,6 +19,16 @@ GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 ]
 
 {
+	#category : #copying,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:31'
+}
+GMTETileMatrixLayer >> aboveLayer: aLayer [
+	
+	"As a layerIdx corresponds to the morphicLayerNumber smaller is 'better'"
+	^(self layerIdx < aLayer layerIdx)
+]
+
+{
 	#category : #adding,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:16'
 }
@@ -46,6 +56,15 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 
 	^newMatrix
 	 
+]
+
+{
+	#category : #comparing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:30'
+}
+GMTETileMatrixLayer >> belowLayer: aLayer [
+
+	^(self aboveLayer: aLayer) not
 ]
 
 {
