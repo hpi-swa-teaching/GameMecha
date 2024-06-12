@@ -202,20 +202,19 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 20:56'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:26'
 }
 GMTETileMap >> generateMatrixStacks [
 	
 	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
-	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
-	self tileMatrixStackVisual morphicLayerStartingOffset: 10. "TODO: Number ?"
+	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: 10). "TODO: Number ?"
 	self generateVisualTiles.
 	self enableVisualLayer
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:19'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
 
@@ -231,7 +230,7 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 		beTransparent;
 		yourself.
 	
-	self addMorphFrontInLayer: newTile.
+	self addMorph: newTile.
 	aStack layer: aLayer at: y at: x put: newTile.
 	^newTile
 

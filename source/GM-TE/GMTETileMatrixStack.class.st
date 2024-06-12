@@ -12,13 +12,24 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:27'
 }
 GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
+
+	^self fromWidth: aWidth height: aHeight morphicLayerOffset: 100 "TODO: magic number"
+		
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
+}
+GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight morphicLayerOffset: anOffset [
 
 	^GMTETileMatrixStack new
 		width: aWidth;
 		height: aHeight;
+		morphicLayerStartingOffset: anOffset;
 		pushLayer;
 		 yourself
 		
@@ -62,13 +73,12 @@ GMTETileMatrixStack >> height: anObject [
 
 {
 	#category : #initilization,
-	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
 }
 GMTETileMatrixStack >> initialize [
 
 	super initialize.
-	self matrixLayers: LinkedList new.
-	self morphicLayerStartingOffset: 100.
+	self matrixLayers: LinkedList new
 	"TODO: no base layer created"
 ]
 
