@@ -171,12 +171,13 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 01:29'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
 	| newMorph selectedTile panel | 
 	
+	"TODO: Build process contains a lot of magic numbers regarding relative/absolute positioning"
 	newMorph := builder build: (builder pluggableWindowSpec new
 		model: self;
 		label: 'GM Tile Editor';
@@ -202,14 +203,15 @@ GMTEEditor >> buildWith: builder [
 	panel := GMTETileContainer withParent: self tileStore.
 	self tileStore morph: panel.
 
-	selectedTile := ImageMorph new 
+	selectedTile := GMTETileSelector new 
 		visible: false; 
 		yourself.
-	"TODO: Make this nicer."
-	self trayViewer morph 
-		beTransparent;
+		
+	"TODO: Work in progress."
+	self trayViewer morph: GMTETileTray new.
+	self trayViewer morph
 		addMorph: selectedTile.
-	
+		
 	self tileViewer 
 		borderWidth: 2;
 		borderColor: tileStore borderColor.
@@ -304,13 +306,14 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/11/2024 19:15'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 00:56'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
-			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
-			offsets: (0@ 30 corner: 0@30));
+			frame: (LayoutFrame fractions: (1 @ 0 corner: 1 @ 0.25)
+			offsets: (-175@ 30 corner: 0@30));
+			padding: (Rectangle left: 3 right: 0 top: 0 bottom: 0);
 			hScrollBarPolicy: #never;
 			layout: #vertical;
 			name: 'inspector';
@@ -330,7 +333,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:10'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 00:54'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -338,8 +341,8 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 		name: 'layer viewer';
 		model: self;
 		frame: (LayoutFrame
-			fractions: (0.8@0.25 corner: 1@1)
-			offsets: (0@30 corner: 0@0));
+			fractions: (1@0.25 corner: 1@1)
+			offsets: (-175@30 corner: 0@0));
 		children: {aBuilder pluggableButtonSpec new
 			name: 'addLayer';
 			label: 'add Layer';
@@ -361,15 +364,15 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 00:48'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"TODO: Maybe rename function to something more appropriate?"
 	^aBuilder pluggablePanelSpec new
 		name: 'main panel';
 		model:self;
-		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
-		offsets: (0@ 30 corner: 0@0));
+		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 1 @ 0.8)
+		offsets: (0@ 30 corner: -175@0));
 		"layout: #vertical;"
 		children: {
 		
@@ -447,12 +450,12 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 00:49'
 }
 GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
-		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
+		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  1 @ 1) offsets: (0 @ 0 corner: -175 @ 0));
 		minimumHeight:75;
 		yourself
 ]

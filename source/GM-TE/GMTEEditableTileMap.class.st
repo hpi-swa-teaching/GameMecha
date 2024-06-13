@@ -144,14 +144,17 @@ GMTEEditableTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:14'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 01:43'
 }
 GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	| tileIdx hoveredTile |
 	
 	hoveredTile := aTile.
 	
-	(anEvent redButtonPressed) 
+	Transcript show: hoveredTile.
+	Transcript show: self model selectedTile.
+	
+	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
 	ifTrue: [hoveredTile 
 		ifNil: [
 			tileIdx := self tileIdxFromPosition: anEvent position.
@@ -159,6 +162,7 @@ GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 			hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack tileType: GMTETile.]. 
 		self updateTileSprite: hoveredTile.
 		self model savedSinceModified: false].
+	
 	((anEvent yellowButtonPressed) and: [hoveredTile notNil]) 
 		ifTrue: [aLayer 
 			ifNotNil: [
@@ -170,9 +174,11 @@ GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 10:14'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 01:43'
 }
 GMTEEditableTileMap >> updateTileSprite: aTile [
 
-	self model selectedTile ifNotNil: [aTile updateSprite: (self model selectedTile image)].
+	self model selectedTile
+		ifNotNil:
+			[aTile updateSprite: (self model selectedTile image)]
 ]
