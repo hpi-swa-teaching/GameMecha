@@ -481,11 +481,11 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:53'
+	#'squeak_changestamp' : 'jj 6/11/2024 20:00'
 }
 GMTEEditor >> exportAsMorph [
 	
-	self tileMapMatrix saveOnFile.
+	(self tileMapMatrix copy model: nil) saveOnFile. 
 	self savedSinceModified: true
 ]
 
