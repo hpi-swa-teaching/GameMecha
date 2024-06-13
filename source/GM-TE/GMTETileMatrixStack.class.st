@@ -12,16 +12,65 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:27'
 }
 GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
+
+	^self fromWidth: aWidth height: aHeight morphicLayerOffset: 100 "TODO: magic number"
+		
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
+}
+GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight morphicLayerOffset: anOffset [
 
 	^GMTETileMatrixStack new
 		width: aWidth;
 		height: aHeight;
+		morphicLayerStartingOffset: anOffset;
 		pushLayer;
 		 yourself
 		
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:49'
+}
+GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
+
+	| topIdx bottomLayer topLayer bottomCell topCell newCellEntry |
+	
+	((self layer: anIdx1) belowLayer: (self layer: anIdx2))
+		ifTrue: [
+			bottomLayer := self layer: anIdx1.
+			topLayer := self layer: anIdx2.
+			topIdx := anIdx2]
+		ifFalse: [
+			bottomLayer := self layer: anIdx2.
+			topLayer := self layer: anIdx1.
+			topIdx := anIdx1].
+		
+	1 to: bottomLayer columnCount do: [ :x |
+		1 to: bottomLayer rowCount do: [ :y |
+			bottomCell := bottomLayer at: x at: y.
+			topCell := topLayer at: x at: y.
+			bottomCell 
+				ifNil: [
+					newCellEntry := topCell.
+					bottomLayer addTile: newCellEntry at: x at: y]
+				ifNotNil: [
+					newCellEntry := bottomCell asBlendedWithImageMorph: topCell.
+					bottomCell image: newCellEntry image]]].
+	
+	self removeLayerAt: topIdx
+	
+		
+	
+	
+	
 ]
 
 {
@@ -62,22 +111,21 @@ GMTETileMatrixStack >> height: anObject [
 
 {
 	#category : #initilization,
-	#'squeak_changestamp' : 'Valentin 5/28/2024 13:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
 }
 GMTETileMatrixStack >> initialize [
 
 	super initialize.
-	self matrixLayers: LinkedList new.
-	self morphicLayerStartingOffset: 100.
+	self matrixLayers: LinkedList new
 	"TODO: no base layer created"
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:34'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:28'
 }
 GMTETileMatrixStack >> layer: aLayerIdx [
-
+	
 	^ self matrixLayers at: aLayerIdx
 ]
 
@@ -92,11 +140,9 @@ GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:16'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 17:38'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
-	
-	"TODO this is temporary solution; set max layers; use constants"
 	
 	^ (self matrixLayers at: aLayerIdx) addTile: aTile at: x at: y
 ]
