@@ -410,7 +410,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
+	#'squeak_changestamp' : 'Alex M 6/13/2024 15:00'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -425,9 +425,10 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			action:#resetAll;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
-			name: 'button2';
-			label: 'Button 2';
+			name: 'toggleVisual';
+			label: 'Toggle Grid';
 			model: self;
+			action: #toggleGrid;
 			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'button3';
@@ -1055,10 +1056,12 @@ GMTEEditor >> setGridHeight: aText [
 
 {
 	#category : #'inspector handling',
-	#'squeak_changestamp' : 'TW 6/11/2024 18:11'
+	#'squeak_changestamp' : 'Alex M 6/13/2024 17:27'
 }
 GMTEEditor >> setGridWidth: aText [
-
+	
+	"TODO: Fix visual layer bug"
+	
 	| newSize |
 	
 	newSize := self parseGridSize: aText.
@@ -1135,6 +1138,14 @@ GMTEEditor >> tileViewer [
 GMTEEditor >> tileViewer: anObject [
 
 	tileViewer := anObject.
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'Alex M 6/13/2024 15:00'
+}
+GMTEEditor >> toggleGrid [
+	self tileMapMatrix toggleVisualLayer
 ]
 
 {
