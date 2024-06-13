@@ -144,15 +144,12 @@ GMTEEditableTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/14/2024 01:43'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 01:49'
 }
 GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	| tileIdx hoveredTile |
 	
 	hoveredTile := aTile.
-	
-	Transcript show: hoveredTile.
-	Transcript show: self model selectedTile.
 	
 	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
 	ifTrue: [hoveredTile 
