@@ -15,7 +15,7 @@ Class {
 		'inspector',
 		'morphBuilders'
 	],
-	#category : #'GM-TE'
+	#category : #'GM-TE-UI'
 }
 
 {

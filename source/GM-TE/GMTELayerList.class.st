@@ -1,7 +1,7 @@
 Class {
 	#name : #GMTELayerList,
 	#superclass : #Morph,
-	#category : #'GM-TE'
+	#category : #'GM-TE-UI'
 }
 
 {
