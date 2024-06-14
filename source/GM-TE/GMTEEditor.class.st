@@ -20,39 +20,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 14:42'
-}
-GMTEEditor class >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: aNumber [
-	"TODO: Could break with too big tilesets. Maybe filter only first 100 tiles?"
-	|img dialog|
-	
-	img := Morph new
-		beTransparent;
-		extent:(aPoint);
-		yourself.
-	(img layoutPolicy: TableLayout new)
-	listDirection: #leftToRight;
-	wrapDirection: #leftToRight.
-	
-	(morphArray reversed) do: [:morph| 
-		img addMorph: (ImageMorph new image: (morph image scaledToWidth: aNumber); borderColor: (Color red); borderWidth:1;yourself).
-	].
-
-	dialog := DialogWindow new
-		title: 'Preview';
-		message: 'Import Tileset?';
-		addPaneMorph: img;
-		createButton: 'Yes' translated value: true;
-		createCancelButton: 'No' translated  value: false;
-		selectedButtonIndex: 1; "YES"
-		registerKeyboardShortcuts.
-	dialog paneMorph extent: img extent.
-	^ dialog getUserResponseAtHand.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 12:18'
 }
 GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
@@ -83,7 +51,7 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 	tileStore morph addMorph: panel.
 	
-	tileStore on: #mouseMove send: [Transcript show: 'hello'] to: self.
+	"tileStore on: #mouseMove send: [Transcript show: 'hello'] to: self."
 	"tileStore morph layoutPolicy: (ProportionalLayout new).
 	panel layoutFrame: (LayoutFrame fractions: (0@0 corner: 1@1))."
 	
@@ -237,6 +205,43 @@ GMTEEditor >> commandBar [
 GMTEEditor >> commandBar: anObject [
 
 	commandBar := anObject.
+]
+
+{
+	#category : #'file loading',
+	#'squeak_changestamp' : 'Alex M 6/14/2024 12:57'
+}
+GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: aNumber [
+	"TODO: Could break with too big tilesets. Maybe filter only first 100 tiles?"
+	|img imgwrapper dialog|
+	
+	imgwrapper := ScrollPane new.
+	
+	img := Morph new
+		beTransparent;
+		extent:(aPoint);
+		yourself.
+	(img layoutPolicy: TableLayout new)
+	listDirection: #leftToRight;
+	wrapDirection: #leftToRight.
+	
+	(morphArray reversed) do: [:morph| 
+		img addMorph: (ImageMorph new image: (morph image scaledToWidth: aNumber); borderColor: (Color red); borderWidth:1;yourself).
+	].
+	
+	imgwrapper extent: ((img width min: 1700) @ (img height min: 800)).
+	imgwrapper scroller addMorph: img.
+
+	dialog := DialogWindow new
+		title: 'Preview';
+		message: 'Import Tileset?';
+		addPaneMorph: imgwrapper;
+		createButton: 'Yes' translated value: true;
+		createCancelButton: 'No' translated  value: false;
+		selectedButtonIndex: 1; "YES"
+		registerKeyboardShortcuts.
+	dialog paneMorph extent: imgwrapper extent.
+	^ dialog getUserResponseAtHand.
 ]
 
 {
@@ -518,7 +523,7 @@ GMTEEditor >> exportMenu [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'file loading',
 	#'squeak_changestamp' : 'JS 6/4/2024 18:00'
 }
 GMTEEditor >> getFileWithFileChooser [
@@ -780,8 +785,8 @@ GMTEEditor >> layerViewer: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/24/2024 00:30'
+	#category : #'file loading',
+	#'squeak_changestamp' : 'Alex M 6/14/2024 13:02'
 }
 GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	"The source argument is mostly for debugging. Make it nicer with objects"
@@ -791,7 +796,7 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	
 	fc := FileChooser new.
 	fc initializeAsSystemWindowWithCaptionPane.
-	fc setCaption: 'Select a picture file' translated.
+	fc setCaption: 'Select an image file' translated.
 	fc setSuffixes: {'png' . 'gif' . 'bmp' . 'jpg' . 'jpeg' }.
 	stream := fc open.
 	
@@ -825,7 +830,7 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
 	previewTileSize := (form width max: 500) / (form width / tileWidth).
 	previewDimensions := (form extent / aPoint * previewTileSize) + (2*((form width / tileWidth)@(form height / tileHeight))).
-	(GMTEEditor confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
+	(self confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs.
 ]
@@ -849,7 +854,7 @@ GMTEEditor >> morphBuilders: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Alex M 5/28/2024 15:42'
 }
 GMTEEditor >> onClose [
@@ -878,14 +883,15 @@ GMTEEditor >> open [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 5/30/2024 16:58'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 13:10'
 }
 GMTEEditor >> openTileMapInWorld [
 	"open the current tileMap into world"
 	
 	(GMTETileMap newFrom: (self tileMapMatrix copy)) 
 		position: 0@0;
-		openInWorld.
+		openInWorld;
+		disableVisualLayer
 ]
 
 {
