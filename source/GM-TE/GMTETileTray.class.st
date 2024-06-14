@@ -1,7 +1,7 @@
 Class {
 	#name : #GMTETileTray,
 	#superclass : #AlignmentMorph,
-	#category : #'GM-TE'
+	#category : #'GM-TE-UI'
 }
 
 {

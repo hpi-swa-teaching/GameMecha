@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'parent'
 	],
-	#category : #'GM-TE',
+	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : 'Alex M 5/21/2024 16:50'
 }
 

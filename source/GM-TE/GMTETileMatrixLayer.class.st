@@ -41,20 +41,20 @@ GMTETileMatrixLayer >> addTile: aTile at: x at: y [
 
 {
 	#category : #copying,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:26'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/14/2024 19:01'
 }
 GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 
-	| newMatrix |
-	newMatrix := self class rows: aHeight columns: aWidth.
+	| newLayer |
+	newLayer := self class width: aWidth height: aHeight layerIdx: self layerIdx.
 	
 	"Copy over tiles & handle tile removal"
 	
 	1 to: (aHeight min: self rowCount) do: [:row |
     		1 to: (aWidth min: self columnCount) do: [:col |
-       		 newMatrix at: row at: col put: (self at: row at: col) veryDeepCopy]].
+       		 newLayer at: row at: col put: (self at: row at: col) veryDeepCopy]].
 
-	^newMatrix
+	^newLayer
 	 
 ]
 

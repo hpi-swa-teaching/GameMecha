@@ -134,7 +134,7 @@ GMTETileMap >> disableVisualLayer [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/13/2024 15:15'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/14/2024 18:59'
 }
 GMTETileMap >> enableVisualLayer [
 
