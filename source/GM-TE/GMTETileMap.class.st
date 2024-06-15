@@ -22,7 +22,8 @@ Class {
 		'tileCornerOffset',
 		'mapPaddedHeight',
 		'tileMatrixStack',
-		'tileMatrixStackVisual'
+		'tileMatrixStackVisual',
+		'visualLayerEnabled'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -122,21 +123,24 @@ GMTETileMap >> correctedTilePosition: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:53'
+	#'squeak_changestamp' : 'Alex M 6/13/2024 14:57'
 }
 GMTETileMap >> disableVisualLayer [
 
-	self tileMatrixStackVisual doTiles: [ :aTile | aTile removeBorderHighlighting]
+	self tileMatrixStackVisual doTiles: [ :aTile | aTile removeBorderHighlighting].
+	self visualLayerEnabled: false.
 	
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:52'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/14/2024 18:59'
 }
 GMTETileMap >> enableVisualLayer [
 
-	self tileMatrixStackVisual doTiles: [ :aTile | aTile applyBorderHighlighting]
+	self tileMatrixStackVisual doTiles: [ :aTile | aTile applyBorderHighlighting].
+	"self rescaleMap."
+	self visualLayerEnabled: true
 ]
 
 {
@@ -433,11 +437,10 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/11/2024 17:14'
+	#'squeak_changestamp' : 'JS 6/15/2024 12:41'
 }
 GMTETileMap >> rescaleMap [
 
-	self tileSelectionSet clearAllHighlightings.
 	self rescaleMapWidth: self tileWidth height: self tileHeight padding: self mapPadding
 ]
 
@@ -707,6 +710,17 @@ GMTETileMap >> tileWidth: anObject [
 
 {
 	#category : #updating,
+	#'squeak_changestamp' : 'Alex M 6/13/2024 14:58'
+}
+GMTETileMap >> toggleVisualLayer [
+
+	visualLayerEnabled
+		ifTrue: [self disableVisualLayer]
+		ifFalse: [self enableVisualLayer]
+]
+
+{
+	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:52'
 }
 GMTETileMap >> updateDimensions [
@@ -800,4 +814,20 @@ GMTETileMap >> updateTiles [
 
 	self updateTileMatrixStack: self tileMatrixStack.
 	self updateTileMatrixStack: self tileMatrixStackVisual
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/13/2024 14:56'
+}
+GMTETileMap >> visualLayerEnabled [
+	^ visualLayerEnabled
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/13/2024 14:56'
+}
+GMTETileMap >> visualLayerEnabled: anObject [
+	visualLayerEnabled := anObject
 ]

@@ -611,10 +611,10 @@ MorphicToolBuilder >> buildPluggableSpacer: spec [
 
 {
 	#category : #'widgets optional',
-	#'squeak_changestamp' : 'TW 6/11/2024 15:53'
+	#'squeak_changestamp' : 'Alex M 6/14/2024 00:40'
 }
 MorphicToolBuilder >> buildPluggableStaticText: aSpec [
-	| widget |
+	| widget defaultTextColor |
 	widget := StringMorph new
 		contents: aSpec text.
 	"aSpec textStyle
@@ -630,8 +630,15 @@ MorphicToolBuilder >> buildPluggableStaticText: aSpec [
 		
 	self register: widget id: aSpec name.
 	
+	defaultTextColor := UserInterfaceTheme current get: #textColor for: MenuItemMorph.
+	defaultTextColor
+		ifNil: [defaultTextColor := Color black].
+	
 	aSpec color
-		ifNotNil: [widget color: aSpec color].
+		ifNil: 
+			[widget color: defaultTextColor]
+		ifNotNil:
+			[widget color: aSpec color].
 
 	self buildHelpFor: widget spec: aSpec.
 	 

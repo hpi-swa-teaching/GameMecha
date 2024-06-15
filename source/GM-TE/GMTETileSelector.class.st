@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : #'GM-TE'
+	#category : #'GM-TE-UI'
 }
 
 {
