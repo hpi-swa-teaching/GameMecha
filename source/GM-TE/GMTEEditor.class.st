@@ -13,7 +13,8 @@ Class {
 		'ratio',
 		'savedSinceModified',
 		'inspector',
-		'morphBuilders'
+		'morphBuilders',
+		'layerList'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -150,13 +151,15 @@ GMTEEditor class >> register [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/28/2024 19:39'
+	#'squeak_changestamp' : 'Alex M 6/15/2024 19:09'
 }
 GMTEEditor >> addLayer [
 
 	self tileMapMatrix tileMatrixStack pushLayer.
-	self changed: #getLayerList.
-	self selectLayer: self tileMapMatrix tileMatrixStack layerCount
+	self layerList add: ('Layer ', self tileMapMatrix tileMatrixStack layerCount).
+	self
+		changed: #getLayerList;
+		selectLayer: self tileMapMatrix tileMatrixStack layerCount
 ]
 
 {
@@ -440,7 +443,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/13/2024 15:00'
+	#'squeak_changestamp' : 'Alex M 6/15/2024 02:33'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -461,9 +464,10 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			action: #toggleGrid;
 			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
-			name: 'button3';
-			label: 'Button 3';
+			name: 'renameLayer';
+			label: 'Rename Layer';
 			model: self;
+			action: #renameLayer;
 			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
@@ -554,7 +558,7 @@ GMTEEditor >> getFileWithFileChooser [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 16:42'
 }
 GMTEEditor >> getGridHeight [
@@ -565,7 +569,7 @@ GMTEEditor >> getGridHeight [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 17:35'
 }
 GMTEEditor >> getGridHeightAsString [
@@ -574,7 +578,7 @@ GMTEEditor >> getGridHeightAsString [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 16:42'
 }
 GMTEEditor >> getGridWidth [
@@ -585,7 +589,7 @@ GMTEEditor >> getGridWidth [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 17:35'
 }
 GMTEEditor >> getGridWidthAsString [
@@ -595,20 +599,15 @@ GMTEEditor >> getGridWidthAsString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 16:22'
+	#'squeak_changestamp' : 'Alex M 6/15/2024 19:00'
 }
 GMTEEditor >> getLayerList [
 
-	| layerList |
-	layerList := OrderedCollection new.
-	self tileMapMatrix 
-		ifNotNil: [1 to: self tileMapMatrix tileMatrixStack layerCount do: [:i | layerList add: 'Layer ', i].]
-		ifNil: [layerList add: 'Layer 1'].
-	^layerList
+	^ layerList
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 19:04'
 }
 GMTEEditor >> getPadding [
@@ -619,7 +618,7 @@ GMTEEditor >> getPadding [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 19:04'
 }
 GMTEEditor >> getPaddingAsString [
@@ -628,7 +627,7 @@ GMTEEditor >> getPaddingAsString [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 18:01'
 }
 GMTEEditor >> getTileRatio [
@@ -639,7 +638,7 @@ GMTEEditor >> getTileRatio [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 18:01'
 }
 GMTEEditor >> getTileRatioAsString [
@@ -714,12 +713,13 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/11/2024 15:54'
+	#'squeak_changestamp' : 'Alex M 6/15/2024 19:03'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
 	self
+		layerList: (OrderedCollection newFrom: {'Layer 1'});
 		selectLayer: 1;
 		morphBuilders: Dictionary new;
 		open;
@@ -772,6 +772,22 @@ GMTEEditor >> inspector [
 GMTEEditor >> inspector: anObject [
 
 	inspector := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/15/2024 18:58'
+}
+GMTEEditor >> layerList [
+	^ layerList
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/15/2024 18:58'
+}
+GMTEEditor >> layerList: anObject [
+	layerList := anObject
 ]
 
 {
@@ -862,6 +878,18 @@ GMTEEditor >> morphBuilders: anObject [
 ]
 
 {
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'Alex M 6/15/2024 19:25'
+}
+GMTEEditor >> moveLayerDown [
+	
+	(self selectedLayer >= self layerList length)
+		ifTrue: [^ nil]
+		
+	
+]
+
+{
 	#category : #building,
 	#'squeak_changestamp' : 'Alex M 5/28/2024 15:42'
 }
@@ -920,7 +948,7 @@ GMTEEditor >> openTileMapInWorld [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 18:05'
 }
 GMTEEditor >> parseGridSize: aText [
@@ -933,7 +961,7 @@ GMTEEditor >> parseGridSize: aText [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 19:05'
 }
 GMTEEditor >> parsePaddingSize: aText [
@@ -946,7 +974,7 @@ GMTEEditor >> parsePaddingSize: aText [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 17:43'
 }
 GMTEEditor >> parseSize: aText [
@@ -969,6 +997,21 @@ GMTEEditor >> ratio [
 }
 GMTEEditor >> ratio: anObject [
 	ratio := anObject
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'Alex M 6/15/2024 19:18'
+}
+GMTEEditor >> renameLayer [
+
+	|newName|
+	newName := FillInTheBlankMorph request: 'New Name:' initialAnswer: (self getLayerList at: self selectedLayer).
+	newName
+		ifNotNil: [
+			self layerList at: self selectedLayer put: newName.
+			self changed: #getLayerList]
+	
 ]
 
 {
@@ -1037,11 +1080,11 @@ GMTEEditor >> selectTile: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 01:45'
+	#'squeak_changestamp' : 'Alex M 6/15/2024 18:54'
 }
 GMTEEditor >> selectedLayer [
 
-	^selectedLayer 
+	^ selectedLayer 
 ]
 
 {
@@ -1072,7 +1115,7 @@ GMTEEditor >> selectedTile: anObject [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 18:12'
 }
 GMTEEditor >> setGridHeight: aText [
@@ -1089,7 +1132,7 @@ GMTEEditor >> setGridHeight: aText [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'Alex M 6/13/2024 17:27'
 }
 GMTEEditor >> setGridWidth: aText [
@@ -1106,7 +1149,7 @@ GMTEEditor >> setGridWidth: aText [
 ]
 
 {
-	#category : #'inspector handling',
+	#category : #tilemap,
 	#'squeak_changestamp' : 'TW 6/11/2024 19:05'
 }
 GMTEEditor >> setPadding: aText [
@@ -1176,9 +1219,10 @@ GMTEEditor >> tileViewer: anObject [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 6/13/2024 15:00'
+	#'squeak_changestamp' : 'Alex M 6/15/2024 19:18'
 }
 GMTEEditor >> toggleGrid [
+
 	self tileMapMatrix toggleVisualLayer
 ]
 
