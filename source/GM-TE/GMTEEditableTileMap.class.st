@@ -116,6 +116,16 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 6/15/2024 12:41'
+}
+GMTEEditableTileMap >> rescaleMap [
+
+	self tileSelectionSet clearAllHighlightings.
+	super rescaleMap
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 22:18'
 }
 GMTEEditableTileMap >> resetAll [

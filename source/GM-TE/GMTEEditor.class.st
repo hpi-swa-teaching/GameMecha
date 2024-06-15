@@ -92,29 +92,51 @@ GMTEEditor class >> fromTileHeight: aHeight widht: aWidth [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:33'
+	#'squeak_changestamp' : 'JS 6/15/2024 13:04'
 }
-GMTEEditor class >> getTileMapFromFilePath: aFilePath [
+GMTEEditor class >> getTileMapFromFileBinary: aFileBinary [
 
-	|aFileStream tileMap|
-	"TODO: Check if .morph is a tileMap"
-	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile)) binary reset.
-	tileMap := aFileStream fileInObjectAndCode.
-	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
-	^GMTETileMap newFrom: (tileMap copy).
+    ^GMTETileMap newFrom: (GMTEEditor privateGetEditableTileMapFromFileBinary: aFileBinary)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:33'
+	#'squeak_changestamp' : 'JS 6/15/2024 13:04'
+}
+GMTEEditor class >> getTileMapFromFilePath: aFilePath [
+
+    ^GMTETileMap newFrom: (GMTEEditor getTileMapFromFilePath: aFilePath)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 6/15/2024 13:05'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
-	
-	|aFileStream tileMap|
-	aFileStream := (MultiByteBinaryOrTextStream with: ((GitAssetLoader for: aName) loadAsset: aPath)) binary reset.
-	tileMap := aFileStream fileInObjectAndCode.
-	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
-	^GMTETileMap newFrom: (tileMap copy).
+
+    ^GMTEEditor getTileMapFromFileBinary: ((GitAssetLoader for: aName) loadAsset: aPath)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 6/15/2024 13:04'
+}
+GMTEEditor class >> privateGetEditableTileMapFromFileBinary: aFileBinary [
+
+    |aFileStream tileMap|
+    aFileStream := (MultiByteBinaryOrTextStream with: aFileBinary) binary reset.
+    tileMap := aFileStream fileInObjectAndCode.
+    (tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
+    ^tileMap
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JS 6/15/2024 13:04'
+}
+GMTEEditor class >> privateGetEditableTileMapFromFilePath: aFilePath [
+
+    ^GMTEEditor privateGetEditableTileMapFromFileBinary: (FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile
 ]
 
 {
@@ -523,17 +545,12 @@ GMTEEditor >> exportMenu [
 ]
 
 {
-	#category : #'file loading',
-	#'squeak_changestamp' : 'JS 6/4/2024 18:00'
+	#category : #helper,
+	#'squeak_changestamp' : 'JS 6/15/2024 12:57'
 }
 GMTEEditor >> getFileWithFileChooser [
 
-	|fc|
-	fc := FileChooser new
-		initializeAsSystemWindowWithCaptionPane;
-		setCaption: 'Select a tilemap.morph file' translated;
-		setSuffixes: {'morph'}.
-	^fc open.
+	^UIManager default chooseFileMatchingSuffixes: {'morph'}
 ]
 
 {
@@ -632,7 +649,7 @@ GMTEEditor >> getTileRatioAsString [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 5/23/2024 13:57'
+	#'squeak_changestamp' : 'JS 6/15/2024 13:03'
 }
 GMTEEditor >> import [
 	"TODO make multiple sprite sets available?"
@@ -651,33 +668,24 @@ GMTEEditor >> import [
 	
 	self tileStore morph 
 		removeAllMorphs;
-		addAllMorphs: tiles.
+		addAllMorphs: tiles
 ]
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:33'
+	#'squeak_changestamp' : 'JS 6/15/2024 13:05'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
 
-	|stream aFileStream tileMap|
+	|stream tileMap|
 	stream := self getFileWithFileChooser.
 
-	stream ifNil: [^self].
+    	stream ifNil: [^self].
+    	tileMap := GMTEEditor privateGetEditableTileMapFromFilePath: stream.
+    	self openTileMapInEditor: tileMap. 
+	^tileMap
 	
-	aFileStream := (MultiByteBinaryOrTextStream with: ((FileStream readOnlyFileNamed: stream fullName) binary contentsOfEntireFile)) binary reset.
-	tileMap := aFileStream fileInObjectAndCode.
-	(tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^self].
-	
-	tileMap tileSelectionSet highlightImage: nil.
-	self tileMapMatrix: tileMap.
-	tileMap model: self.
-	self tileViewer
-		removeAllMorphs;
-		addMorph: tileMap.
-		
-	self changed: #getLayerList
 ]
 
 {
@@ -882,6 +890,23 @@ GMTEEditor >> open [
 ]
 
 {
+	#category : #helper,
+	#'squeak_changestamp' : 'JS 6/15/2024 13:01'
+}
+GMTEEditor >> openTileMapInEditor: aTileMap [
+
+
+    aTileMap tileSelectionSet highlightImage: nil.
+    self tileMapMatrix: aTileMap.
+    aTileMap model: self.
+    self tileViewer
+        removeAllMorphs;
+        addMorph: aTileMap.
+
+    self changed: #getLayerList
+]
+
+{
 	#category : #'button functions',
 	#'squeak_changestamp' : 'Alex M 6/14/2024 13:10'
 }
@@ -957,11 +982,11 @@ GMTEEditor >> resetAll [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'TW 6/5/2024 02:04'
+	#'squeak_changestamp' : 'JS 6/15/2024 13:02'
 }
 GMTEEditor >> resetCurrentLayer [
 
-	self tileMapMatrix resetLayer: self selectedLayer.
+	self tileMapMatrix resetLayer: self selectedLayer
 ]
 
 {
