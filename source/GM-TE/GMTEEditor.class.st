@@ -443,7 +443,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/15/2024 02:33'
+	#'squeak_changestamp' : 'Alex M 6/16/2024 02:16'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -471,9 +471,10 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
-			name: 'button4';
+			name: 'moveLayer';
 			model:self;
-			label: 'Button 4'};
+			action: #moveLayerDown;
+			label: 'Move Layer Down'};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -879,14 +880,25 @@ GMTEEditor >> morphBuilders: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 6/15/2024 19:25'
+	#'squeak_changestamp' : 'Alex M 6/16/2024 02:31'
 }
 GMTEEditor >> moveLayerDown [
 	
-	(self selectedLayer >= self layerList length)
-		ifTrue: [^ nil]
-		
+	| temp |
 	
+	(self selectedLayer >= self layerList size)
+		ifTrue: [^ nil].
+		
+	temp := self layerList at: self selectedLayer.
+	self layerList
+		at: self selectedLayer put: (self layerList at: self selectedLayer + 1);
+		at: self selectedLayer + 1 put: temp.
+	
+	self tileMapMatrix tileMatrixStack swapLayer: self selectedLayer with: self selectedLayer + 1.
+	
+	self
+		selectLayer: selectedLayer + 1;
+		changed: #getLayerList.
 ]
 
 {
