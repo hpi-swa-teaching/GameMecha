@@ -37,7 +37,7 @@ GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight morphicLayerOffse
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:49'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 18:49'
 }
 GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 
@@ -63,7 +63,7 @@ GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 					bottomLayer addTile: newCellEntry at: x at: y]
 				ifNotNil: [
 					newCellEntry := bottomCell asBlendedWithImageMorph: topCell.
-					bottomCell image: newCellEntry image]]].
+					bottomCell updateSprite: newCellEntry image]]].
 	
 	self removeLayerAt: topIdx
 	

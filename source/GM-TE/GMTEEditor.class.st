@@ -443,7 +443,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/16/2024 02:16'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 17:45'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -468,13 +468,19 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			label: 'Rename Layer';
 			model: self;
 			action: #renameLayer;
-			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.75 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.66 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 1 @ 1) offsets: nil);
 			name: 'moveLayer';
 			model:self;
 			action: #moveLayerDown;
-			label: 'Move Layer Down'};
+			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 0.82 @ 1) offsets: nil);
+			label: 'Move Layer Down'.
+			aBuilder pluggableButtonSpec new
+			name: 'mergeLayers';
+			model:self;
+			action: #mergeLayerDown;
+			frame: (LayoutFrame fractions: (0.82 @ 0 corner: 1 @ 1) offsets: nil);
+			label: 'Merge Layer Down'.};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -858,6 +864,25 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	(self confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs.
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'Alex M 6/17/2024 18:35'
+}
+GMTEEditor >> mergeLayerDown [
+	
+	
+	(self selectedLayer <= 1)
+		ifTrue: [^nil].
+	
+	
+	self layerList
+		at: self selectedLayer put: (self layerList at: self selectedLayer - 1);
+		removeAt: self selectedLayer - 1.
+	self tileMapMatrix tileMatrixStack blendLayer: self selectedLayer - 1 with: self selectedLayer.
+	self selectLayer: self selectedLayer - 1.
+	self changed: #getLayerList
 ]
 
 {

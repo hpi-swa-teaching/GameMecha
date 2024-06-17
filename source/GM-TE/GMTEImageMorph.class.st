@@ -9,12 +9,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:13'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 18:45'
 }
 GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
-	(anImageMorph) ifNil: [^self].
+	anImageMorph
+		ifNil: [^ self].
 
-	^(ImageMorph new) 
+	^ (ImageMorph new) 
 		image: ((FormCanvas on: self image)
 			image: (anImageMorph image)
 			at: 0@0
