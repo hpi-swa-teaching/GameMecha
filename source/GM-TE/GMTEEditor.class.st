@@ -443,7 +443,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/17/2024 17:45'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:25'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -468,19 +468,25 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			label: 'Rename Layer';
 			model: self;
 			action: #renameLayer;
-			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.66 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.625 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'moveLayer';
 			model:self;
 			action: #moveLayerDown;
-			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 0.82 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.625 @ 0 corner: 0.75 @ 1) offsets: nil);
 			label: 'Move Layer Down'.
 			aBuilder pluggableButtonSpec new
 			name: 'mergeLayers';
 			model:self;
 			action: #mergeLayerDown;
-			frame: (LayoutFrame fractions: (0.82 @ 0 corner: 1 @ 1) offsets: nil);
-			label: 'Merge Layer Down'.};
+			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 0.875 @ 1) offsets: nil);
+			label: 'Merge Layer Down'.
+			aBuilder pluggableButtonSpec new
+			name: 'deleteLayers';
+			model:self;
+			action: #deleteLayer;
+			frame: (LayoutFrame fractions: (0.875 @ 0 corner: 1 @ 1) offsets: nil);
+			label: 'Delete Layer'};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -496,6 +502,17 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  1 @ 1) offsets: (0 @ 0 corner: -175 @ 0));
 		minimumHeight:75;
 		yourself
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:41'
+}
+GMTEEditor >> deleteLayer [
+	
+	[self tileMapMatrix tileMatrixStack removeLayerAt: self selectedLayer] on: AssertionFailure do: [^ nil].
+	self layerList removeAt: self selectedLayer.
+	self changed: #getLayerList.
 ]
 
 {
@@ -626,31 +643,31 @@ GMTEEditor >> getPadding [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/11/2024 19:04'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:34'
 }
 GMTEEditor >> getPaddingAsString [
 
-	^self getPadding asString
+	^ self getPadding asString
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/11/2024 18:01'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:34'
 }
 GMTEEditor >> getTileRatio [
 
 	self tileMapMatrix 
-		ifNotNil: [^self tileMapMatrix tileSizeRatio]
-		ifNil: [^nil]
+		ifNotNil: [^ self tileMapMatrix tileSizeRatio]
+		ifNil: [^ nil]
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/11/2024 18:01'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:34'
 }
 GMTEEditor >> getTileRatioAsString [
 
-	^self getTileRatio asString
+	^ self getTileRatio asString
 ]
 
 {
@@ -986,38 +1003,38 @@ GMTEEditor >> openTileMapInWorld [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/11/2024 18:05'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:34'
 }
 GMTEEditor >> parseGridSize: aText [
 
 	| newSize |
 	newSize := self parseSize: aText.
 	(newSize notNil and: [newSize isInteger and: [0 < newSize and: [newSize < 200]]])
-		ifTrue: [^newSize]
-		ifFalse: [^nil].
+		ifTrue: [ ^newSize]
+		ifFalse: [ ^nil].
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/11/2024 19:05'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:34'
 }
 GMTEEditor >> parsePaddingSize: aText [
 
 	| newSize |
 	newSize := self parseSize: aText.
 	(newSize notNil and: [0 <= newSize and: [newSize <= 0.9]])
-		ifTrue: [^newSize]
-		ifFalse: [^nil].
+		ifTrue: [^ newSize]
+		ifFalse: [^ nil].
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/11/2024 17:43'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:33'
 }
 GMTEEditor >> parseSize: aText [
 
-	[aText asNumber] on: NumberParserError do: [^nil].
-	^aText asNumber
+	[aText asNumber] on: NumberParserError do: [^ nil].
+	^ aText asNumber
 ]
 
 {

@@ -205,12 +205,12 @@ GMTETileMatrixStack >> pushLayer [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:20'
+	#'squeak_changestamp' : 'Alex M 6/17/2024 23:32'
 }
 GMTETileMatrixStack >> removeLayerAt: idx [ 
 
 	| removedLayer |.
-	self assert: idx ~= 1 description: 'Base layer cannot be removed!'.
+	self assert: matrixLayers size > 1 description: 'Base layer cannot be removed!'.
 	
 	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: idx)) value.
 	removedLayer free.
