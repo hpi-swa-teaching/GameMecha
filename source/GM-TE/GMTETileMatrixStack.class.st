@@ -110,6 +110,15 @@ GMTETileMatrixStack >> height: anObject [
 ]
 
 {
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:09'
+}
+GMTETileMatrixStack >> hideLayer: anIdx [
+
+	(self layer: anIdx) visible: false
+]
+
+{
 	#category : #initilization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
 }
@@ -118,6 +127,15 @@ GMTETileMatrixStack >> initialize [
 	super initialize.
 	self matrixLayers: LinkedList new
 	"TODO: no base layer created"
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:34'
+}
+GMTETileMatrixStack >> isVisible: anIdx [
+
+	^(self layer: anIdx) visible
 ]
 
 {
@@ -250,6 +268,15 @@ GMTETileMatrixStack >> reset [
 
 {
 	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:09'
+}
+GMTETileMatrixStack >> showLayer: anIdx [
+
+	(self layer: anIdx) visible: true
+]
+
+{
+	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:33'
 }
 GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
@@ -264,6 +291,18 @@ GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 	layer2 updateLayerIdx: tmpMorhpicLayer.
 
 	self matrixLayers swap: anIdx1 with: anIdx2.
+	
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:36'
+}
+GMTETileMatrixStack >> toggleLayerVisibility: anIdx [
+
+	(self isVisible: anIdx)
+		ifTrue: [self hideLayer: anIdx]
+		ifFalse: [self showLayer: anIdx]
 	
 ]
 

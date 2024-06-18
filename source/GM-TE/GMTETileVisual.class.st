@@ -58,6 +58,16 @@ GMTETileVisual >> decorationMorph: anObject [
 ]
 
 {
+	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:14'
+}
+GMTETileVisual >> initialize [
+
+	super initialize.
+	self applyBorderHighlighting
+]
+
+{
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }

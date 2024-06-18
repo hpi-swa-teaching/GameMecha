@@ -990,7 +990,7 @@ GMTEEditor >> openTileMapInEditor: aTileMap [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 6/14/2024 13:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:31'
 }
 GMTEEditor >> openTileMapInWorld [
 	"open the current tileMap into world"
@@ -998,7 +998,7 @@ GMTEEditor >> openTileMapInWorld [
 	(GMTETileMap newFrom: (self tileMapMatrix copy)) 
 		position: 0@0;
 		openInWorld;
-		disableVisualLayer
+		hideVisualLayer
 ]
 
 {

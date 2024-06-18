@@ -2,7 +2,8 @@ Class {
 	#name : #GMTETileMatrixLayer,
 	#superclass : #GMTEStaticCoordinateMatrix,
 	#instVars : [
-		'layerIdx'
+		'layerIdx',
+		'visible'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -30,12 +31,13 @@ GMTETileMatrixLayer >> aboveLayer: aLayer [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:16'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:41'
 }
 GMTETileMatrixLayer >> addTile: aTile at: x at: y [
 
 	aTile ifNotNil: [
-		aTile morphicLayerNumber: self layerIdx].
+		aTile morphicLayerNumber: self layerIdx.
+		aTile visible: self visible].
 	^self at: x at: y put: aTile
 ]
 
@@ -69,10 +71,13 @@ GMTETileMatrixLayer >> belowLayer: aLayer [
 
 {
 	#category : #enumerating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 20:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:29'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
 
+	"Instance variable must be used here"
+	(contents) ifNil: [^nil].
+	
 	self contents do: [ :tile | 
 		tile ifNotNil: [aBlock value: tile]]
 ]
@@ -87,6 +92,17 @@ GMTETileMatrixLayer >> free [
 		tile free].
 	
 	self setNil
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:25'
+}
+GMTETileMatrixLayer >> initialize [
+
+	super initialize.
+	
+	self visible: true
 ]
 
 {
@@ -127,4 +143,25 @@ GMTETileMatrixLayer >> updateLayerIdx: anIdx [
 	self layerIdx: anIdx.
 	self doTiles: [ :tile |
 		tile morphicLayerNumber: self layerIdx]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:17'
+}
+GMTETileMatrixLayer >> visible [
+
+	^ visible
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:18'
+}
+GMTETileMatrixLayer >> visible: aBool [
+
+	visible := aBool.	
+		
+	self doTiles: [ :tile | 
+			tile visible: aBool]
 ]

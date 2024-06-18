@@ -22,8 +22,7 @@ Class {
 		'tileCornerOffset',
 		'mapPaddedHeight',
 		'tileMatrixStack',
-		'tileMatrixStackVisual',
-		'visualLayerEnabled'
+		'tileMatrixStackVisual'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -122,28 +121,6 @@ GMTETileMap >> correctedTilePosition: aPoint [
 ]
 
 {
-	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/13/2024 14:57'
-}
-GMTETileMap >> disableVisualLayer [
-
-	self tileMatrixStackVisual doTiles: [ :aTile | aTile removeBorderHighlighting].
-	self visualLayerEnabled: false.
-	
-]
-
-{
-	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/14/2024 18:59'
-}
-GMTETileMap >> enableVisualLayer [
-
-	self tileMatrixStackVisual doTiles: [ :aTile | aTile applyBorderHighlighting].
-	"self rescaleMap."
-	self visualLayerEnabled: true
-]
-
-{
 	#category : #'import/export',
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:54'
 }
@@ -206,14 +183,13 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:26'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:20'
 }
 GMTETileMap >> generateMatrixStacks [
 	
 	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight).
 	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: 10). "TODO: Number ?"
 	self generateVisualTiles.
-	self enableVisualLayer
 ]
 
 {
@@ -279,6 +255,16 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 	
 		
+	
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:16'
+}
+GMTETileMap >> hideVisualLayer [
+
+	self tileMatrixStackVisual hideLayer: 1.
 	
 ]
 
@@ -472,7 +458,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 18:37'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:20'
 }
 GMTETileMap >> rescaleMatrixStacks [
 
@@ -484,8 +470,7 @@ GMTETileMap >> rescaleMatrixStacks [
 	(self tileMatrixStackVisual) ifNotNil: [
 		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
 		self tileMatrixStackVisual reset.
-		self generateVisualTiles.
-		self enableVisualLayer] "TODO: make "
+		self generateVisualTiles] "TODO: make "
 ]
 
 {
@@ -509,6 +494,16 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 		mapTileWidth: aWidth;
 		mapTileHeight: aHeigth;
 		mapPadding: aPadding
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:16'
+}
+GMTETileMap >> showVisualLayer [
+
+	self tileMatrixStackVisual showLayer: 1.
+	"self rescaleMap."
 ]
 
 {
@@ -710,13 +705,11 @@ GMTETileMap >> tileWidth: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/13/2024 14:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:36'
 }
 GMTETileMap >> toggleVisualLayer [
 
-	visualLayerEnabled
-		ifTrue: [self disableVisualLayer]
-		ifFalse: [self enableVisualLayer]
+	self tileMatrixStackVisual toggleLayerVisibility: 1.
 ]
 
 {
@@ -814,20 +807,4 @@ GMTETileMap >> updateTiles [
 
 	self updateTileMatrixStack: self tileMatrixStack.
 	self updateTileMatrixStack: self tileMatrixStackVisual
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/13/2024 14:56'
-}
-GMTETileMap >> visualLayerEnabled [
-	^ visualLayerEnabled
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/13/2024 14:56'
-}
-GMTETileMap >> visualLayerEnabled: anObject [
-	visualLayerEnabled := anObject
 ]
