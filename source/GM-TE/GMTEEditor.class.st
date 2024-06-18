@@ -443,7 +443,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/17/2024 23:25'
+	#'squeak_changestamp' : 'Alex M 6/18/2024 12:47'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -468,25 +468,31 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			label: 'Rename Layer';
 			model: self;
 			action: #renameLayer;
-			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.625 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.6 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'moveLayer';
 			model:self;
 			action: #moveLayerDown;
-			frame: (LayoutFrame fractions: (0.625 @ 0 corner: 0.75 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.7 @ 1) offsets: nil);
 			label: 'Move Layer Down'.
 			aBuilder pluggableButtonSpec new
 			name: 'mergeLayers';
 			model:self;
 			action: #mergeLayerDown;
-			frame: (LayoutFrame fractions: (0.75 @ 0 corner: 0.875 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.7 @ 0 corner: 0.8 @ 1) offsets: nil);
 			label: 'Merge Layer Down'.
 			aBuilder pluggableButtonSpec new
 			name: 'deleteLayers';
 			model:self;
 			action: #deleteLayer;
-			frame: (LayoutFrame fractions: (0.875 @ 0 corner: 1 @ 1) offsets: nil);
-			label: 'Delete Layer'};
+			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 0.9 @ 1) offsets: nil);
+			label: 'Delete Layer'.
+			aBuilder pluggableButtonSpec new
+			name: 'toggleLayerVisibility';
+			model:self;
+			action: #toggleLayerVisibility;
+			frame: (LayoutFrame fractions: (0.9 @ 0 corner: 1 @ 1) offsets: nil);
+			label: 'Show/Hide Layer'};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -1277,6 +1283,15 @@ GMTEEditor >> tileViewer: anObject [
 GMTEEditor >> toggleGrid [
 
 	self tileMapMatrix toggleVisualLayer
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'Alex M 6/18/2024 12:45'
+}
+GMTEEditor >> toggleLayerVisibility [
+	
+	self tileMapMatrix tileMatrixStack toggleLayerVisibility: self selectedLayer.
 ]
 
 {
