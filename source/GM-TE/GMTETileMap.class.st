@@ -22,10 +22,23 @@ Class {
 		'tileCornerOffset',
 		'mapPaddedHeight',
 		'tileMatrixStack',
-		'tileMatrixStackVisual'
+		'tileMatrixStackVisual',
+		'forceMapSizeRatio'
 	],
 	#category : #'GM-TE-Core'
 }
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:12'
+}
+GMTETileMap class >> newFromEditableTileMap: aMap [
+
+	aMap tileSelectionSet clearAllHighlightings.
+	^(GMTETileMap newFrom: (aMap copy)) 
+		hideVisualLayer;
+		yourself
+]
 
 {
 	#category : #'as yet unclassified',
@@ -132,17 +145,53 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 20:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:29'
 }
 GMTETileMap >> extent: aPoint [
 
-	| oldExtent |
+	| oldExtent newExtent |
+	
+	self forceMapSizeRatio
+		ifTrue: [newExtent := (aPoint x)@(aPoint x * (self tileHeight / self tileWidth))]
+		ifFalse: [newExtent := aPoint].
+		
 	oldExtent := self extent.
 
-	super extent: aPoint.
+	super extent: newExtent.
 	
-	(oldExtent = aPoint) ifTrue: [^nil].
+	(oldExtent = newExtent) ifTrue: [^nil].
 	self tileMatrixStack ifNotNil: [self rescaleMap].
+	
+	
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:31'
+}
+GMTETileMap >> fitBackgroundToMap [
+	
+	self mapPadding: 0.0.
+	self forceMapSizeRatio: true.
+	self extent: self extent.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:22'
+}
+GMTETileMap >> forceMapSizeRatio [
+
+	^ forceMapSizeRatio
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:22'
+}
+GMTETileMap >> forceMapSizeRatio: anObject [
+
+	forceMapSizeRatio := anObject.
 ]
 
 {
@@ -260,6 +309,16 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:36'
+}
+GMTETileMap >> gridOnly [
+	
+	self fitBackgroundToMap.
+	self color: Color transparent.
+]
+
+{
+	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:16'
 }
 GMTETileMap >> hideVisualLayer [
@@ -270,12 +329,13 @@ GMTETileMap >> hideVisualLayer [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:22'
 }
 GMTETileMap >> initialize [
 	
 	super initialize.
 	self color: Color lightGray.
+	self forceMapSizeRatio: false
 	
 ]
 
@@ -458,7 +518,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:01'
 }
 GMTETileMap >> rescaleMatrixStacks [
 
@@ -470,7 +530,7 @@ GMTETileMap >> rescaleMatrixStacks [
 	(self tileMatrixStackVisual) ifNotNil: [
 		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
 		self tileMatrixStackVisual reset.
-		self generateVisualTiles] "TODO: make "
+		self generateVisualTiles]
 ]
 
 {
@@ -714,7 +774,7 @@ GMTETileMap >> toggleVisualLayer [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 17:52'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 18:37'
 }
 GMTETileMap >> updateDimensions [
 	"Adjust map grid dimensions to screen size & calculate dependent values"
@@ -778,7 +838,7 @@ GMTETileMap >> updateMap [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 5/28/2024 11:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 18:33'
 }
 GMTETileMap >> updateTileMatrixStack: aStack [
 
@@ -795,8 +855,7 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 				tile ifNotNil: [
 					tile 
 					position: correctedTilePos;
-					extent: self tileSizeWidth@self tileSizeHeight.]]
-			]]
+					extent: self tileSizeWidth@self tileSizeHeight]]]]
 ]
 
 {
