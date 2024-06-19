@@ -18,4 +18,5 @@
 		"testMoveLayerDown" : "jj 6/19/2024 10:54",
 		"testRescaleMap" : "JS 6/18/2024 17:30",
 		"testSwapLayer" : "jj 6/19/2024 10:56",
-		"testToggleLayerVisibility" : "jj 6/19/2024 10:38" } }
+		"testToggleLayerVisibility" : "jj 6/19/2024 10:38",
+		"testToggleVisualLayer" : "jj 6/19/2024 11:09" } }
