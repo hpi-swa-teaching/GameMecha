@@ -97,11 +97,15 @@ GMTETileMap >> backgroundTiles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:33'
 }
 GMTETileMap >> backgroundTiles: anObject [
 
 	backgroundTiles := anObject.
+	
+	"TODO: keep this here?"
+	self updateMap
+	
 ]
 
 {
@@ -207,6 +211,15 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 ]
 
 {
+	#category : #checking,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:35'
+}
+GMTETileMap >> dimensionsSet [
+
+	^(self mapTileWidth notNil) and: [(self mapTileWidth notNil) and: [self mapPadding notNil]]
+]
+
+{
 	#category : #'import/export',
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:54'
 }
@@ -306,9 +319,11 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:03'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:30'
 }
 GMTETileMap >> generateBackgroundTiles [
+	
+	self backgroundTiles ifNil: [^nil].
 	
 	self tileMatrixStackBackground doTilesXYLidx: [ :x :y :l | 
 		"It is assumed that the visual stack consists of only one layer"
@@ -431,7 +446,7 @@ GMTETileMap >> hideVisualLayer [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:08'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:32'
 }
 GMTETileMap >> initialize [
 	
@@ -443,7 +458,8 @@ GMTETileMap >> initialize [
 		autoGenerateBackground: true;
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
-		backgroundTiles: ((GMTETileVisual new) setPlaceholderWithExtent: 1@1 color: Color  brown; yourself)
+		"TODO: default background tiles (must not exist but practical as a visual indicator)"
+		 backgroundTiles: ((GMTETileVisual new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
 	
 ]
 
@@ -1051,11 +1067,12 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:36'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
-
+	self dimensionsSet ifFalse: [^nil].
+	
 	self updateDimensions.
 	self tileMatrixStack 
 		ifNil: [self generateMatrixStacks] "TODO: shouldnt this be properly initialized?"

@@ -173,10 +173,14 @@ GMTEEditor >> backgroundTile [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/19/2024 23:08'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:28'
 }
 GMTEEditor >> backgroundTile: anObject [
-	backgroundTile := anObject
+
+	backgroundTile := anObject.
+	
+	"TODO: keep this here? TileMap must know backgorund Tiles"
+	self tileMapMatrix backgroundTiles: anObject
 ]
 
 {
