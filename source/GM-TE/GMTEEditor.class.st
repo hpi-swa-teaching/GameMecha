@@ -14,7 +14,8 @@ Class {
 		'savedSinceModified',
 		'inspector',
 		'morphBuilders',
-		'layerList'
+		'layerList',
+		'backgroundTile'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -160,6 +161,22 @@ GMTEEditor >> addLayer [
 	self
 		changed: #getLayerList;
 		selectLayer: self tileMapMatrix tileMatrixStack layerCount
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/19/2024 23:08'
+}
+GMTEEditor >> backgroundTile [
+	^ backgroundTile
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/19/2024 23:08'
+}
+GMTEEditor >> backgroundTile: anObject [
+	backgroundTile := anObject
 ]
 
 {
