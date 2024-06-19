@@ -27,6 +27,15 @@ GMTETile class >> position: aPoint extent: anExtent [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:43'
+}
+GMTETile >> applyTileSprite: aTile [
+
+	self updateSprite: (aTile fullResolutionSprite)
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 09:50'
 }
 GMTETile >> setToPlaceholder [

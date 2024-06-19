@@ -5,7 +5,8 @@ Class {
 		'width',
 		'height',
 		'matrixLayers',
-		'morphicLayerStartingOffset'
+		'morphicLayerStartingOffset',
+		'visible'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -132,22 +133,14 @@ GMTETileMatrixStack >> hideLayer: anIdx [
 
 {
 	#category : #initilization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:12'
 }
 GMTETileMatrixStack >> initialize [
 
 	super initialize.
-	self matrixLayers: LinkedList new
+	self matrixLayers: LinkedList new.
+	self visible: true
 	"TODO: no base layer created"
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:34'
-}
-GMTETileMatrixStack >> isVisible: anIdx [
-
-	^(self layer: anIdx) visible
 ]
 
 {
@@ -184,6 +177,15 @@ GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
 GMTETileMatrixStack >> layerCount [
 
 	^ self matrixLayers size
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:13'
+}
+GMTETileMatrixStack >> layerVisible: anIdx [
+
+	^(self layer: anIdx) visible
 ]
 
 {
@@ -308,14 +310,47 @@ GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:13'
 }
 GMTETileMatrixStack >> toggleLayerVisibility: anIdx [
 
-	(self isVisible: anIdx)
+	(self layerVisible: anIdx)
 		ifTrue: [self hideLayer: anIdx]
 		ifFalse: [self showLayer: anIdx]
 	
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:12'
+}
+GMTETileMatrixStack >> toggleVisibility [
+
+	(self visible)
+		ifTrue: [self visible: false]
+		ifFalse: [self visible: true]
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:09'
+}
+GMTETileMatrixStack >> visible [
+
+	^ visible
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:10'
+}
+GMTETileMatrixStack >> visible: aBool [
+
+	visible := aBool.
+	
+	self doLayers: [ :aLayer | 
+		aLayer visible: aBool]
 ]
 
 {

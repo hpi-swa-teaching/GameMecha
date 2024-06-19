@@ -181,11 +181,11 @@ GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/14/2024 01:43'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:44'
 }
 GMTEEditableTileMap >> updateTileSprite: aTile [
 
 	self model selectedTile
 		ifNotNil:
-			[aTile updateSprite: (self model selectedTile image)]
+			[aTile applyTileSprite: (self model selectedTile)]
 ]
