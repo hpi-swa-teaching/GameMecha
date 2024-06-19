@@ -7,18 +7,16 @@
 			'source'
 		]
 	},
+	SquotBlobMapper {
+		#path : FSAbsolutePath [
+			'testMapFile.morph'
+		],
+		#encoding : 'bin'
+	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'testingResources',
 			'test.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.github',
-			'workflows',
-			'main.yml'
 		],
 		#encoding : 'TXT'
 	},
@@ -30,11 +28,13 @@
 			'source'
 		]
 	},
-	SquotBlobMapper {
+	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'testMapFile.morph'
+			'.github',
+			'workflows',
+			'main.yml'
 		],
-		#encoding : 'bin'
+		#encoding : 'TXT'
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
