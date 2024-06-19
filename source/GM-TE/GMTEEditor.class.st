@@ -464,7 +464,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/18/2024 12:47'
+	#'squeak_changestamp' : 'Alex M 6/20/2024 00:15'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -472,18 +472,25 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 		model: self;
 		frame: (LayoutFrame
 			fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
-		children: {aBuilder pluggableButtonSpec new
+		children: {
+			aBuilder pluggableButtonSpec new
 			name: 'reset';
 			label: 'Reset Layer';
 			model: self;
 			action:#resetAll;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.17 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'toggleVisual';
 			label: 'Toggle Grid';
 			model: self;
 			action: #toggleGrid;
-			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0.17 @ 0 corner: 0.34 @ 1) offsets: nil).
+			aBuilder pluggableButtonSpec new
+			name: 'toggleBackground';
+			label: 'Toggle Background Tiles';
+			model: self;
+			action: #toggleBackgroundTiles;
+			frame: (LayoutFrame fractions: (0.34 @ 0 corner: 0.5 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'renameLayer';
 			label: 'Rename Layer';
@@ -1294,6 +1301,14 @@ GMTEEditor >> tileViewer [
 GMTEEditor >> tileViewer: anObject [
 
 	tileViewer := anObject.
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'Alex M 6/20/2024 00:12'
+}
+GMTEEditor >> toggleBackgroundTiles [
+	self tileMapMatrix toggleBackgroundLayer.
 ]
 
 {
