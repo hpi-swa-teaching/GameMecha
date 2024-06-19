@@ -92,6 +92,18 @@ GMTETileMatrixStack >> doTiles: aBlock [
 ]
 
 {
+	#category : #eumerating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:28'
+}
+GMTETileMatrixStack >> doTilesXYLidx: aBlock [
+
+	1 to: self width do: [ :x | 
+		1 to: self height do: [ :y |
+			1 to: self layerCount do: [ :layerIdx | 
+				aBlock value: x value: y value: layerIdx]]]
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:16'
 }

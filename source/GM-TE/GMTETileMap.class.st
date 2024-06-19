@@ -125,12 +125,12 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:16'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
 }
-GMTETileMap >> correctedTilePosition: aPoint [
+GMTETileMap >> correctedTilePositionMap: aPoint [
 	"comment stating purpose of message"
 
-	^ (self tileCornerOffset + aPoint + self topLeft) floor	
+	^ (aPoint + self tileCornerOffset + self topLeft) floor	
 ]
 
 {
@@ -167,13 +167,13 @@ GMTETileMap >> extent: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 14:52'
 }
 GMTETileMap >> fitBackgroundToMap [
 	
 	self mapPadding: 0.0.
 	self forceMapSizeRatio: true.
-	self extent: self extent.
+	self extent: (self mapSizeWidth)@(self mapSizeHeight).
 ]
 
 {
@@ -243,14 +243,14 @@ GMTETileMap >> generateMatrixStacks [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
 
 	| tilePos correctedTilePos newTile |
 	
 	tilePos := self tilePosFromVirtual: x@y.
-	correctedTilePos := self correctedTilePosition: tilePos.
+	correctedTilePos := self correctedTilePositionMap: tilePos.
 						
 	newTile := (aTileClass
 		position: correctedTilePos
@@ -270,14 +270,14 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:13'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:35'
 }
 GMTETileMap >> generateVisualTiles [
-	"Create grid tile matrix datastructure"
 	
-	1 to: self mapTileHeight do: [:y |
-		1 to: self mapTileWidth do: [:x |			
-			self generateTileAtlayer: 1 x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual]].
+	self tileMatrixStackVisual doTilesXYLidx: [ :x :y :l | 
+		"It is assumed that the visual stack consists of only one layer"
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual].
+	
 
 ]
 
@@ -535,9 +535,9 @@ GMTETileMap >> rescaleMatrixStacks [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
 }
-GMTETileMap >> revertCorrectedTilePosition: aPoint [
+GMTETileMap >> revertCorrectedTilePositionMap: aPoint [
 	"comment stating purpose of message"
 
 	^ aPoint - self tileCornerOffset - self topLeft	
@@ -618,13 +618,13 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 
 	| uncorrectedPos idx |
 	
-	uncorrectedPos := self revertCorrectedTilePosition: aPoint.
+	uncorrectedPos := self revertCorrectedTilePositionMap: aPoint.
 	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
 	idx := idx floor.
 	
@@ -670,7 +670,7 @@ GMTETileMap >> tileMatrixStackVisual: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:21'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:42'
 }
 GMTETileMap >> tilePosFromVirtual: aPoint [
 
@@ -838,24 +838,21 @@ GMTETileMap >> updateMap [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 18:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
 }
 GMTETileMap >> updateTileMatrixStack: aStack [
 
 	| tilePos correctedTilePos tile |
 	
-	1 to: self tileHeight do: [:y |
-		1 to: self tileWidth do: [:x |
-			1 to: (aStack layerCount) do: [: l |
-				
-				tilePos := self tilePosFromVirtual: x@y.
-				correctedTilePos := self correctedTilePosition: tilePos.
-				tile := aStack layer: l at: y at: x.
-				
-				tile ifNotNil: [
-					tile 
-					position: correctedTilePos;
-					extent: self tileSizeWidth@self tileSizeHeight]]]]
+	aStack doTilesXYLidx: [ :x :y :l | 
+		tilePos := self tilePosFromVirtual: x@y.
+		correctedTilePos := self correctedTilePositionMap: tilePos.
+		tile := aStack layer: l at: y at: x.
+		
+		tile ifNotNil: [
+			tile 
+			position: correctedTilePos;
+			extent: self tileSizeWidth@self tileSizeHeight]].
 ]
 
 {
