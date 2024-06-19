@@ -6,7 +6,8 @@
 		 ],
 	"commentStamp" : "Alex M 6/4/2024 14:07",
 	"instvars" : [
-		"editor" ],
+		"editor",
+		"fileUUID" ],
 	"name" : "GMTileEditorTest",
 	"pools" : [
 		 ],

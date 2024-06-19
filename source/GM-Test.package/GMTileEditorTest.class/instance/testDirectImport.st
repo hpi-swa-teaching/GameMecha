@@ -1,5 +1,5 @@
 layerTests
 testDirectImport
 	
-	[self editor exportAsMorph] valueSupplyingAnswer: 'map.morph'.
-	self assert: ((GMTEEditor getTileMapFromFilePath: 'map.morph') isKindOf: GMTETileMap)
+	self loadTestMapFileToFileDirectory.
+	self assert: ((GMTEEditor getTileMapFromFilePath: self fileUUID) isKindOf: GMTETileMap)

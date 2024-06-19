@@ -102,11 +102,11 @@ GMTEEditor class >> getTileMapFromFileBinary: aFileBinary [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 6/15/2024 13:04'
+	#'squeak_changestamp' : 'JS 6/19/2024 10:42'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 
-    ^GMTETileMap newFrom: (GMTEEditor getTileMapFromFilePath: aFilePath)
+    ^GMTETileMap newFrom: (GMTEEditor privateGetEditableTileMapFromFilePath: aFilePath)
 ]
 
 {
@@ -702,7 +702,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 6/15/2024 13:05'
+	#'squeak_changestamp' : 'JS 6/19/2024 10:52'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -712,8 +712,7 @@ GMTEEditor >> importFromMorph [
 
     	stream ifNil: [^self].
     	tileMap := GMTEEditor privateGetEditableTileMapFromFilePath: stream.
-    	self openTileMapInEditor: tileMap. 
-	^tileMap
+    	self openTileMapInEditor: tileMap
 	
 ]
 

@@ -1,5 +1,6 @@
 layerTests
 testExportButton
 	
-	[self editor exportAsMorph] valueSupplyingAnswer: 'map.morph'.
-	self assert: (FileDirectory default / 'map.morph') exists
+	self fileUUID: UUID new asString.
+	[self editor exportAsMorph] valueSupplyingAnswer: self fileUUID.
+	self assert: (FileDirectory default / self fileUUID) exists

@@ -2,5 +2,6 @@ as yet unclassified
 loadTestMapFileToFileDirectory
 
 	|tempFile|
-	tempFile := FileDirectory default asFSReference / 'map.morph'.
-	tempFile writeStreamDo: [:stream | stream nextPutAll: ((GitAssetLoader for: 'GameMecha') loadAsset: '/map.morph')]
+	self fileUUID: UUID new asString.
+	tempFile := FileDirectory default asFSReference / fileUUID.
+	tempFile writeStreamDo: [:stream | stream nextPutAll: ((GitAssetLoader for: 'GameMecha') loadAsset: '/testMapFile.morph')]
