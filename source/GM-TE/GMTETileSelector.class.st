@@ -20,12 +20,13 @@ GMTETileSelector >> extent: anExtent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 16:12'
+	#'squeak_changestamp' : 'Alex M 6/19/2024 23:15'
 }
 GMTETileSelector >> handlesMouseDown: evt [
 	"TODO: make this useful."
-	self model selectTile: self.
-	^ true.
+	evt redButtonPressed
+		ifTrue: [self model selectTile: self. ^ true]
+		ifFalse: [self model backgroundTile: self. ^ false]
 ]
 
 {
