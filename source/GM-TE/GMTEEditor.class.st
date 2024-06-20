@@ -167,6 +167,15 @@ GMTEEditor >> addLayer [
 ]
 
 {
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 17:27'
+}
+GMTEEditor >> anyLayerSelected [
+
+	^ self selectedLayers size > 0
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 6/19/2024 23:08'
 }
@@ -470,7 +479,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
+	#'squeak_changestamp' : 'TW 6/20/2024 17:49'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -518,13 +527,13 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			aBuilder pluggableButtonSpec new
 			name: 'deleteLayers';
 			model:self;
-			action: #deleteLayer;
+			action: #deleteSelectedLayers;
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 0.9 @ 1) offsets: nil);
-			label: 'Delete Layer'.
+			label: 'Delete'.
 			aBuilder pluggableButtonSpec new
 			name: 'toggleLayerVisibility';
 			model:self;
-			action: #toggleLayerVisibility;
+			action: #toggleSelectedLayerVisibility;
 			frame: (LayoutFrame fractions: (0.9 @ 0 corner: 1 @ 1) offsets: nil);
 			label: 'Show/Hide Layer'};
 			
@@ -546,13 +555,22 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 6/17/2024 23:41'
+	#'squeak_changestamp' : 'TW 6/20/2024 17:40'
 }
-GMTEEditor >> deleteLayer [
+GMTEEditor >> deleteSelectedLayers [
 	
-	[self tileMapMatrix tileMatrixStack removeLayerAt: self selectedLayer] on: AssertionFailure do: [^ nil].
-	self layerList removeAt: self selectedLayer.
-	self changed: #getLayerList.
+	| toBeDeleted |
+	
+	(self anyLayerSelected not or: (self selectedLayers includes: 1))
+		ifTrue: [^ nil].
+	
+	toBeDeleted := self selectedLayers asSortedCollection reversed.
+	toBeDeleted do: [:i | 
+		self layerData removeAt: i.
+		[self tileMapMatrix tileMatrixStack removeLayerAt: i] on: AssertionFailure do: [^ nil]].
+	self 
+		deselectAllLayers;
+		changed: #getLayerList
 ]
 
 {
@@ -568,12 +586,14 @@ GMTEEditor >> deselectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 16:06'
+	#'squeak_changestamp' : 'TW 6/20/2024 17:59'
 }
 GMTEEditor >> deselectLayer: anIndex [
 
-	self selectedLayers remove: anIndex.
-	self changed: #selectedLayers
+	(self selectedLayers includes: anIndex)
+		ifTrue: [
+			self selectedLayers remove: anIndex.
+			self changed: #selectedLayers]
 	
 ]
 
@@ -1373,12 +1393,12 @@ GMTEEditor >> singleLayerSelected [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 17:51'
 }
 GMTEEditor >> storeLayerN: aNumber [
 
-	self layerData add: {'Layer ', aNumber . True}.
+	self layerData add: {'Layer ', aNumber . true}.
 	self changed: #getLayerList.
 ]
 
@@ -1478,6 +1498,18 @@ GMTEEditor >> toggleGrid [
 GMTEEditor >> toggleLayerVisibility [
 	
 	self tileMapMatrix tileMatrixStack toggleLayerVisibility: self selectedLayer.
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'TW 6/20/2024 17:49'
+}
+GMTEEditor >> toggleSelectedLayerVisibility [
+	
+	self selectedLayers do: [:i |
+		self tileMapMatrix tileMatrixStack toggleLayerVisibility: i.
+		self layerData at: i put: {(self layerData at: i) first . (self layerData at: i) second not}
+		].
 ]
 
 {
