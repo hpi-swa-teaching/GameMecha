@@ -78,6 +78,16 @@ GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 ]
 
 {
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/20/2024 20:29'
+}
+GMTETileMatrixStack >> blendLayers: aSet [
+
+	self reduceLayers: (self sortLayerSet: aSet) withBinaryBlock: [ :anIdx1 :anIdx2 | 
+		self blendLayer: anIdx1 with: anIdx2]
+]
+
+{
 	#category : #eumerating,
 	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
 }
