@@ -188,7 +188,7 @@ GMTEEditor >> backgroundTile: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/14/2024 01:29'
+	#'squeak_changestamp' : 'Alex M 6/20/2024 16:17'
 }
 GMTEEditor >> buildWith: builder [
 	"called it builder instead of aBuilder since every other implementation does that"
@@ -221,7 +221,8 @@ GMTEEditor >> buildWith: builder [
 	self tileStore morph: panel.
 
 	selectedTile := GMTETileSelector new 
-		visible: false; 
+		visible: false;
+		model:self;
 		yourself.
 		
 	"TODO: Work in progress."
@@ -1260,7 +1261,7 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/24/2024 00:40'
+	#'squeak_changestamp' : 'Alex M 6/20/2024 16:22'
 }
 GMTEEditor >> selectTile: anObject [
 	
@@ -1272,7 +1273,8 @@ GMTEEditor >> selectTile: anObject [
 		self tileMapMatrix tileSelectionSet highlightImage: anObject fullResolutionSprite.
 		self trayViewer morph submorphs first
 			visible:true;
-			image: (anObject fullResolutionSprite scaledToWidth:75).
+			updateSprite: anObject fullResolutionSprite;
+			extent: 75@75
 	]
 ]
 
