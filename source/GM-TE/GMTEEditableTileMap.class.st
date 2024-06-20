@@ -22,6 +22,15 @@ GMTEEditableTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPad
 
 {
 	#category : #'event handling',
+	#'squeak_changestamp' : 'TW 6/20/2024 21:47'
+}
+GMTEEditableTileMap >> blendLayers: aSet [
+
+	self tileMatrixStack blendLayers: aSet
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
 }
 GMTEEditableTileMap >> handlesMouseDown: anEvent [
@@ -118,12 +127,39 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/20/2024 21:57'
+}
+GMTEEditableTileMap >> removeLayers: aSet [
+
+	self tileMatrixStack removeLayersAt: aSet
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JS 6/15/2024 12:41'
 }
 GMTEEditableTileMap >> rescaleMap [
 
 	self tileSelectionSet clearAllHighlightings.
 	super rescaleMap
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/20/2024 21:45'
+}
+GMTEEditableTileMap >> resetAllLayers: aSet [
+
+	self tileMatrixStack reset
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/20/2024 21:42'
+}
+GMTEEditableTileMap >> resetLayers: aSet [
+
+	self tileMatrixStack resetLayers: aSet
 ]
 
 {

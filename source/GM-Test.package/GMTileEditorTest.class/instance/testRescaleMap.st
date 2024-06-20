@@ -1,6 +1,6 @@
 as yet unclassified
 testRescaleMap
 
-	self editor tileMapMatrix rescaleMapWidth: 12 height: 13.
-	self assert: self editor tileMapMatrix mapTileWidth = 12.
-	self assert: self editor tileMapMatrix mapTileHeight = 13.
+	self editor tileMap rescaleMapWidth: 12 height: 13.
+	self assert: self editor tileMap mapTileWidth = 12.
+	self assert: self editor tileMap mapTileHeight = 13.
