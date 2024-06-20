@@ -397,7 +397,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 16:00'
+	#'squeak_changestamp' : 'TW 6/20/2024 19:54'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -415,6 +415,44 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			action: #addLayer;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0) offsets: (0 @ 0 corner: 0 @ 30)).
 			
+			aBuilder pluggablePanelSpec new
+			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
+			children: {
+				aBuilder pluggableButtonSpec new
+				name: 'renameLayer';
+				label: 'Rename';
+				model: self;
+				action: #renameLayer;
+				frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.2)).
+				
+				aBuilder pluggableButtonSpec new
+				name: 'moveLayer';
+				model:self;
+				action: #moveLayerDown;
+				frame: (LayoutFrame fractions: (0 @ 0.2 corner: 1 @ 0.4));
+				label: '^'.
+				
+				aBuilder pluggableButtonSpec new
+				name: 'mergeLayers';
+				model:self;
+				action: #mergeSelectedLayers;
+				frame: (LayoutFrame fractions: (0 @ 0.4 corner: 1 @ 0.6));
+				label: 'M'.
+				
+				aBuilder pluggableButtonSpec new
+				name: 'deleteLayers';
+				model:self;
+				action: #deleteSelectedLayers;
+				frame: (LayoutFrame fractions: (0 @ 0.6 corner: 1 @ 0.8));
+				label: 'X'.
+				
+				aBuilder pluggableButtonSpec new
+				name: 'toggleLayerVisibility';
+				model:self;
+				action: #toggleSelectedLayerVisibility;
+				frame: (LayoutFrame fractions: (0 @ 0.8 corner: 1 @ 1));
+				label: 'O'}.
+			
 			aBuilder pluggableMultiSelectionListSpec new
 			name: 'layers';
 			model: self;
@@ -422,7 +460,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			getSelectionList: #layerAt:;
 			setSelectionList: #layerAt:put:;
 			autoDeselect: false;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.8 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
 		verticalResizing: #shrinkWrap;
 		
 		yourself
@@ -479,7 +517,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 17:49'
+	#'squeak_changestamp' : 'TW 6/20/2024 19:36'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -506,36 +544,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			model: self;
 			action: #toggleBackgroundTiles;
 			frame: (LayoutFrame fractions: (0.34 @ 0 corner: 0.5 @ 1) offsets: nil).
-			aBuilder pluggableButtonSpec new
-			name: 'renameLayer';
-			label: 'Rename';
-			model: self;
-			action: #renameLayer;
-			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.6 @ 1) offsets: nil).
-			aBuilder pluggableButtonSpec new
-			name: 'moveLayer';
-			model:self;
-			action: #moveLayerDown;
-			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.7 @ 1) offsets: nil);
-			label: '^'.
-			aBuilder pluggableButtonSpec new
-			name: 'mergeLayers';
-			model:self;
-			action: #mergeSelectedLayers;
-			frame: (LayoutFrame fractions: (0.7 @ 0 corner: 0.8 @ 1) offsets: nil);
-			label: 'Merge'.
-			aBuilder pluggableButtonSpec new
-			name: 'deleteLayers';
-			model:self;
-			action: #deleteSelectedLayers;
-			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 0.9 @ 1) offsets: nil);
-			label: 'Delete'.
-			aBuilder pluggableButtonSpec new
-			name: 'toggleLayerVisibility';
-			model:self;
-			action: #toggleSelectedLayerVisibility;
-			frame: (LayoutFrame fractions: (0.9 @ 0 corner: 1 @ 1) offsets: nil);
-			label: 'Show/Hide Layer'};
+			};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -555,22 +564,17 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 17:40'
+	#'squeak_changestamp' : 'TW 6/20/2024 20:11'
 }
 GMTEEditor >> deleteSelectedLayers [
-	
-	| toBeDeleted |
 	
 	(self anyLayerSelected not or: (self selectedLayers includes: 1))
 		ifTrue: [^ nil].
 	
-	toBeDeleted := self selectedLayers asSortedCollection reversed.
-	toBeDeleted do: [:i | 
-		self layerData removeAt: i.
-		[self tileMapMatrix tileMatrixStack removeLayerAt: i] on: AssertionFailure do: [^ nil]].
+	self tileMapMatrix deleteLayers: self selectedLayers.
 	self 
-		deselectAllLayers;
-		changed: #getLayerList
+		forgetLayers: self selectedLayers;
+		deselectAllLayers
 ]
 
 {
@@ -652,6 +656,20 @@ GMTEEditor >> exportMenu [
 		argumentList: {}.
 		
 	builder open: aMenuSpec
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'TW 6/20/2024 20:03'
+}
+GMTEEditor >> forgetLayers: aSet [
+
+	| toBeForgotten |
+	
+	toBeForgotten := self selectedLayers asSortedCollection reversed.
+	toBeForgotten do: [:i | self layerData removeAt: i].
+	self 
+		changed: #getLayerList
 ]
 
 {
@@ -1029,12 +1047,21 @@ GMTEEditor >> mergeLayerDown [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
+	#'squeak_changestamp' : 'TW 6/20/2024 20:15'
 }
 GMTEEditor >> mergeSelectedLayers [
 	
+	| bakedLayer |
+	
 	(self selectedLayers size > 1)
-		ifTrue: [self tileMapMatrix mergeLayers: self selectedLayers]
+		ifTrue: [
+			bakedLayer := self selectedLayers min.
+			self tileMapMatrix mergeLayers: self selectedLayers.
+			self selectedLayers remove: bakedLayer.
+			self forgetLayers: self selectedLayers.
+			self
+				deselectAllLayers;
+				selectLayer: bakedLayer]
 ]
 
 {
@@ -1182,7 +1209,7 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:46'
+	#'squeak_changestamp' : 'TW 6/20/2024 19:52'
 }
 GMTEEditor >> renameLayer [
 
@@ -1192,8 +1219,8 @@ GMTEEditor >> renameLayer [
 			selectedLayer := self getSelectedLayer.
 			newName := FillInTheBlankMorph 
 			request: 'New Name:' initialAnswer: (self getLayerList at: selectedLayer).
-			newName
-				ifNotNil: [self updateLayerNameOf: selectedLayer to: newName]]
+			(newName isNil or: newName isEmpty)
+				ifFalse: [self updateLayerNameOf: selectedLayer to: newName]]
 
 	
 ]

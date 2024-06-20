@@ -571,6 +571,14 @@ ToolBuilder >> pluggableDropDownListSpec [
 
 {
 	#category : #defaults,
+	#'squeak_changestamp' : 'TW 6/20/2024 20:23'
+}
+ToolBuilder >> pluggableImageButtonSpec [
+	^PluggableImageButtonSpec
+]
+
+{
+	#category : #defaults,
 	#'squeak_changestamp' : 'ar 2/11/2005 16:41'
 }
 ToolBuilder >> pluggableInputFieldSpec [

@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #'GM-ToolBuilder'
+	#name : #'GM-ToolBuilder',
+	#'squeak_changestamp' : true
 }

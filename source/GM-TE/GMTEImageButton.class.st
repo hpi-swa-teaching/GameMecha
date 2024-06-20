@@ -10,17 +10,11 @@ Class {
 		'target',
 		'actionSelector',
 		'arguments',
-		'actWhen',
-		'mouseDownTime',
 		'unpressedImage',
 		'pressedImage',
-		'clickSound',
 		'linkedButtons',
 		'unpressedPath',
-		'pressedPath',
-		'soundPath',
-		'tilePosition',
-		'fractionalExtent'
+		'pressedPath'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
@@ -81,25 +75,6 @@ GMTEImageButton >> arguments: aCollection [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
-}
-GMTEImageButton >> clickSound [
-	"Sound which is played once the button is clicked"
-
-	^ clickSound
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/8/2024 23:55'
-}
-GMTEImageButton >> clickSound: aSound [
-
-	clickSound := aSound
-]
-
-{
 	#category : #'visual properties',
 	#'squeak_changestamp' : 'TW 2/6/2024 16:47'
 }
@@ -138,24 +113,6 @@ GMTEImageButton >> extent: anExtent [
 		unpressedImage: (self unpressedImage scaledToSize: anExtent);
 		pressedImage: (self pressedImage scaledToSize: anExtent).
 	super extent: anExtent
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 14:36'
-}
-GMTEImageButton >> fractionalExtent [
-
-	^ fractionalExtent
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/8/2024 23:55'
-}
-GMTEImageButton >> fractionalExtent: anExtent [
-
-	fractionalExtent := anExtent
 ]
 
 {
@@ -288,24 +245,6 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 14:14'
-}
-GMTEImageButton >> soundPath [
-
-	^ soundPath
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/9/2024 00:00'
-}
-GMTEImageButton >> soundPath: aPath [
-
-	soundPath := aPath
-]
-
-{
-	#category : #accessing,
 	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
 }
 GMTEImageButton >> target [
@@ -321,24 +260,6 @@ GMTEImageButton >> target [
 GMTEImageButton >> target: anObject [
 
 	target := anObject
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 14:14'
-}
-GMTEImageButton >> tilePosition [
-
-	^ tilePosition
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/9/2024 00:01'
-}
-GMTEImageButton >> tilePosition: aPoint [
-
-	tilePosition := aPoint
 ]
 
 {
