@@ -2,9 +2,7 @@ Class {
 	#name : #PluggableImageButtonSpec,
 	#superclass : #PluggableButtonSpec,
 	#instVars : [
-		'unpressedPath',
-		'pressedPath',
-		'hoverPath',
+		'path',
 		'arguments',
 		'project'
 	],
@@ -39,38 +37,20 @@ PluggableImageButtonSpec >> buildWith: builder [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:16'
 }
-PluggableImageButtonSpec >> hoverPath [
+PluggableImageButtonSpec >> path [
 
-	^ hoverPath
+	^ path
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:16'
 }
-PluggableImageButtonSpec >> hoverPath: anObject [
+PluggableImageButtonSpec >> path: anObject [
 
-	hoverPath := anObject.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
-}
-PluggableImageButtonSpec >> pressedPath [
-
-	^ pressedPath
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
-}
-PluggableImageButtonSpec >> pressedPath: anObject [
-
-	pressedPath := anObject.
+	path := anObject.
 ]
 
 {
@@ -89,22 +69,4 @@ PluggableImageButtonSpec >> project [
 PluggableImageButtonSpec >> project: anObject [
 
 	project := anObject.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
-}
-PluggableImageButtonSpec >> unpressedPath [
-
-	^ unpressedPath
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
-}
-PluggableImageButtonSpec >> unpressedPath: anObject [
-
-	unpressedPath := anObject.
 ]

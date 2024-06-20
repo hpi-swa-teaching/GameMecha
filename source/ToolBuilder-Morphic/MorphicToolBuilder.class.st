@@ -362,7 +362,7 @@ MorphicToolBuilder >> buildPluggableDropDownList: spec [
 
 {
 	#category : #'widgets required',
-	#'squeak_changestamp' : 'TW 6/21/2024 00:15'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:17'
 }
 MorphicToolBuilder >> buildPluggableImageButton: aSpec [
 	| widget project |
@@ -370,9 +370,7 @@ MorphicToolBuilder >> buildPluggableImageButton: aSpec [
 	widget := GMTEImageButton new
 		target: aSpec model;
 		actionSelector: aSpec action;
-		unpressedImage: ((GitAssetLoader for: project) loadForm: aSpec unpressedPath);
-		pressedImage: ((GitAssetLoader for: project) loadForm: aSpec pressedPath);
-		hoverImage: ((GitAssetLoader for: project) loadForm: aSpec hoverPath).		
+		fullResolutionSprite: ((GitAssetLoader for: project) loadForm: aSpec path) copy.	
 	
 	self register: widget id: aSpec name.
 	widget setImageMode: #unpressed.

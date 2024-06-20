@@ -10,30 +10,11 @@ Class {
 		'target',
 		'actionSelector',
 		'arguments',
-		'unpressedImage',
-		'pressedImage',
-		'hoverImage',
 		'linkedButtons'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
 }
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
-}
-GMTEImageButton class >> prepareButtonDoing: anAction withArguments: anOrderedCollection unpressedPath: anUnpressedPath pressedPath: aPressedPath at: aTileCoordinate fractionalExtent: aPoint soundPath: aSoundPath [
-
-	^ self new
-		actionSelector: anAction;
-		arguments: anOrderedCollection;
-		unpressedPath: anUnpressedPath;
-		pressedPath: aPressedPath;
-		soundPath: aSoundPath;
-		fractionalExtent: aPoint;
-		tilePosition: aTileCoordinate
-]
 
 {
 	#category : #accessing,
@@ -102,24 +83,6 @@ GMTEImageButton >> handlesMouseDown: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:33'
-}
-GMTEImageButton >> hoverImage [
-
-	^ hoverImage
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:33'
-}
-GMTEImageButton >> hoverImage: anObject [
-
-	hoverImage := anObject.
-]
-
-{
-	#category : #accessing,
 	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
 }
 GMTEImageButton >> linkedButtons [
@@ -170,25 +133,6 @@ GMTEImageButton >> mouseUp: anEvent [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/6/2024 16:29'
-}
-GMTEImageButton >> pressedImage [
-	"Image of the button when pressed"
-
-	^ pressedImage
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/8/2024 23:59'
-}
-GMTEImageButton >> pressedImage: anImage [
-
-	pressedImage := anImage
-]
-
-{
 	#category : #'visual properties',
 	#'squeak_changestamp' : 'TW 6/21/2024 00:12'
 }
@@ -201,19 +145,19 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/21/2024 00:11'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:25'
 }
 GMTEImageButton >> setImageMode: aString [
 
-	(aString == #pressed)
-		ifTrue: [self fullResolutionSprite: self pressedImage]
+	"(aString == #pressed)
+		ifTrue: [self fullResolutionSprite form replaceColor: Color black withColor: Color red]
 		ifFalse: [
 		(aString == #unpressed)
-			ifTrue: [self fullResolutionSprite: self unpressedImage]
+			ifTrue:  [self fullResolutionSprite form replaceColor: Color black withColor: Color black]
 			ifFalse: [
 			(aString == #hover)
 				ifTrue: [self fullResolutionSprite: self hoverImage]
-				ifFalse: [^nil]]].
+				ifFalse: [^nil]]]."
 	
 	self extent: self extent.
 ]
@@ -235,25 +179,6 @@ GMTEImageButton >> target [
 GMTEImageButton >> target: anObject [
 
 	target := anObject
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/6/2024 16:29'
-}
-GMTEImageButton >> unpressedImage [
-	"Image of the button when unpressed"
-
-	^ unpressedImage
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/9/2024 00:01'
-}
-GMTEImageButton >> unpressedImage: anImage [
-
-	unpressedImage := anImage
 ]
 
 {

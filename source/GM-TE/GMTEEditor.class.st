@@ -421,7 +421,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/21/2024 00:22'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:18'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -447,63 +447,49 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					action: #moveLayerDown;
 					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.083));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/up.png';
-					pressedPath: '/GMTEIcons/up.png';
-					hoverPath: '/GMTEIcons/up.png'.
+					path: '/GMTEIcons/up.png'.
 				
 				aBuilder pluggableImageButtonSpec new
 					model:self;
 					action: #moveLayerUp;
 					frame: (LayoutFrame fractions: (0 @ 0.083 corner: 1 @ 0.166));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/down.png';
-					pressedPath: '/GMTEIcons/down.png';
-					hoverPath: '/GMTEIcons/down.png'.
+					path: '/GMTEIcons/down.png'.
 				
 				aBuilder pluggableImageButtonSpec new
 					model: self;
 					action: #renameLayer;
 					frame: (LayoutFrame fractions: (0 @ 0.166 corner: 1 @ 0.333));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/rename.png';
-					pressedPath: '/GMTEIcons/rename.png';
-					hoverPath: '/GMTEIcons/rename.png'.
+					path: '/GMTEIcons/rename.png'.
 				
 				aBuilder pluggableImageButtonSpec new
 					model:self;
 					action:#resetSelectedLayers;
 					frame: (LayoutFrame fractions: (0 @ 0.333 corner: 1 @ 0.5));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/broom.png';
-					pressedPath: '/GMTEIcons/broom.png';
-					hoverPath: '/GMTEIcons/broom.png'.
+					path: '/GMTEIcons/broom.png'.
 				
 				aBuilder pluggableImageButtonSpec new
 					model:self;
 					action: #blendSelectedLayers;
 					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.666));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/merge.png';
-					pressedPath: '/GMTEIcons/merge.png';
-					hoverPath: '/GMTEIcons/merge.png'.
+					path: '/GMTEIcons/merge.png'.
 				
 				aBuilder pluggableImageButtonSpec new
 					model:self;
 					action: #deleteSelectedLayers;
 					frame: (LayoutFrame fractions: (0 @ 0.666 corner: 1 @ 0.833));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/trash.png';
-					pressedPath: '/GMTEIcons/trash.png';
-					hoverPath: '/GMTEIcons/trash.png'.
+					path: '/GMTEIcons/trash.png'.
 				
 				aBuilder pluggableImageButtonSpec new
 					model:self;
 					action: #toggleSelectedLayerVisibility;
 					frame: (LayoutFrame fractions: (0 @ 0.833 corner: 1 @ 1));
 					project: 'GameMecha';
-					unpressedPath: '/GMTEIcons/eye.png';
-					pressedPath: '/GMTEIcons/eye.png';
-					hoverPath: '/GMTEIcons/eye.png'.}.
+					path: '/GMTEIcons/eye.png'.}.
 			
 			aBuilder pluggableMultiSelectionListSpec new
 			name: 'layers';
@@ -759,11 +745,14 @@ GMTEEditor >> getGridWidthAsString [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:10'
 }
 GMTEEditor >> getLayerList [
 
-	^self layerData collect: [:layerData | layerData first]
+	^self layerData collect: [:layerData |
+			layerData second 
+				ifTrue: [layerData first, ' (v)']
+				ifFalse: [layerData first, ' (h)']]
 ]
 
 {
@@ -1566,7 +1555,7 @@ GMTEEditor >> toggleGrid [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'TW 6/21/2024 01:10'
 }
 GMTEEditor >> toggleSelectedLayerVisibility [
 	
@@ -1574,6 +1563,7 @@ GMTEEditor >> toggleSelectedLayerVisibility [
 		self tileMap tileMatrixStack toggleLayerVisibility: i.
 		self layerData at: i put: {(self layerData at: i) first . (self layerData at: i) second not}
 		].
+	self changed: #getLayerList
 ]
 
 {
