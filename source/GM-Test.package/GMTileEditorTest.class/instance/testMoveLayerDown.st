@@ -8,7 +8,7 @@ testMoveLayerDown
 	layer1 := TileMatrixStack matrixLayers at: 1.
 	layerId1 := (TileMatrixStack matrixLayers at: 1) layerIdx.
 	layerId2 := (TileMatrixStack matrixLayers at: 2) layerIdx.	
-	self editor selectLayer: 1.
+	self editor selectedLayer: 1.
 	self editor moveLayerDown.
 	self assert: (TileMatrixStack matrixLayers at: 1) layerIdx = layerId1.
 	self assert: (TileMatrixStack matrixLayers at: 2) layerIdx = layerId2.

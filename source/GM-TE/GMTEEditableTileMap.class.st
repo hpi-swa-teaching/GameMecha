@@ -68,42 +68,44 @@ GMTEEditableTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 20:25'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
 }
 GMTEEditableTileMap >> mouseDown: anEvent [
 	"TODO: make this useful."
 	
 	| clickedTile activeLayer|
 	
-	activeLayer := self model selectedLayer.
+	self model singleLayerSelected 
+		ifTrue: [activeLayer := self model selectedLayers anyOne.
 	
-	clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
+		clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
 	
-	self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent.
+		self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent].
 	
-	^ true.
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 20:25'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
 }
 GMTEEditableTileMap >> mouseMove: anEvent [
 
 	| hoveredTile hoveredTileVisual activeLayer |
 
-	activeLayer := self model selectedLayer.
+	self model singleLayerSelected
+		ifTrue: [activeLayer := self model selectedLayers anyOne.
 	
-	hoveredTile := self tileFromPosition: anEvent position layer: activeLayer.
-	hoveredTileVisual := self tileVisualFromPosition: anEvent position.
+		hoveredTile := self tileFromPosition: anEvent position layer: activeLayer.
+		hoveredTileVisual := self tileVisualFromPosition: anEvent position.
 	
-	self tileSelectionSet clearAllHighlightings.
+		self tileSelectionSet clearAllHighlightings.
 	
-	hoveredTileVisual 
-		ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
+		hoveredTileVisual 
+			ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
 	
-	"TODO why another ifNil check here?"
-	self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent.
+		"TODO why another ifNil check here?"
+		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
 	
 	"This solves the bug but not the root of the issue. TODO further investigation."
 	"self updateTiles."
@@ -132,6 +134,16 @@ GMTEEditableTileMap >> resetAll [
 	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
 	
 	(self tileMatrixStack layer: (self model selectedLayer)) free.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:37'
+}
+GMTEEditableTileMap >> resetLayer: anIndex [
+	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	
+	(self tileMatrixStack layer: anIndex) free.
 ]
 
 {

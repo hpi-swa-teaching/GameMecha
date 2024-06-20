@@ -617,6 +617,15 @@ GMTETileMap >> mapTileWidth: anObject [
 ]
 
 {
+	#category : #'dev-api',
+	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
+}
+GMTETileMap >> mergeLayers: aSet [
+
+	^ true
+]
+
+{
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 21:37'
 }

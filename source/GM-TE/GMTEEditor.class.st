@@ -7,14 +7,14 @@ Class {
 		'tileViewer',
 		'layerViewer',
 		'trayViewer',
-		'selectedLayer',
 		'tileMapMatrix',
+		'selectedLayers',
 		'selectedTile',
 		'ratio',
 		'savedSinceModified',
 		'inspector',
 		'morphBuilders',
-		'layerList',
+		'layerData',
 		'backgroundTile'
 	],
 	#category : #'GM-TE-UI'
@@ -152,15 +152,18 @@ GMTEEditor class >> register [
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Alex M 6/15/2024 19:09'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:22'
 }
 GMTEEditor >> addLayer [
 
+	| newLayerNumber |
+	
+	newLayerNumber :=  self layerCount + 1.
+
 	self tileMapMatrix tileMatrixStack pushLayer.
-	self layerList add: ('Layer ', self tileMapMatrix tileMatrixStack layerCount).
 	self
-		changed: #getLayerList;
-		selectLayer: self tileMapMatrix tileMatrixStack layerCount
+		storeLayerN: newLayerNumber;
+		selectOnlyLayer: newLayerNumber.
 ]
 
 {
@@ -384,7 +387,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/14/2024 00:54'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:00'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -394,18 +397,20 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 		frame: (LayoutFrame
 			fractions: (1@0.25 corner: 1@1)
 			offsets: (-175@30 corner: 0@0));
-		children: {aBuilder pluggableButtonSpec new
+		children: {
+			aBuilder pluggableButtonSpec new
 			name: 'addLayer';
 			label: 'add Layer';
 			model: self;
 			action: #addLayer;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0) offsets: (0 @ 0 corner: 0 @ 30)).
-			aBuilder pluggableListSpec new
+			
+			aBuilder pluggableMultiSelectionListSpec new
 			name: 'layers';
 			model: self;
-			getIndex: #selectedLayer;
-			setIndex: #selectLayer:;
 			list: #getLayerList;
+			getSelectionList: #layerAt:;
+			setSelectionList: #layerAt:put:;
 			autoDeselect: false;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
 		verticalResizing: #shrinkWrap;
@@ -464,7 +469,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/20/2024 00:15'
+	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -477,7 +482,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			name: 'reset';
 			label: 'Reset Layer';
 			model: self;
-			action:#resetAll;
+			action:#resetSelectedLayers;
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.17 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'toggleVisual';
@@ -493,7 +498,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0.34 @ 0 corner: 0.5 @ 1) offsets: nil).
 			aBuilder pluggableButtonSpec new
 			name: 'renameLayer';
-			label: 'Rename Layer';
+			label: 'Rename';
 			model: self;
 			action: #renameLayer;
 			frame: (LayoutFrame fractions: (0.5 @ 0 corner: 0.6 @ 1) offsets: nil).
@@ -502,13 +507,13 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 			model:self;
 			action: #moveLayerDown;
 			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.7 @ 1) offsets: nil);
-			label: 'Move Layer Down'.
+			label: '^'.
 			aBuilder pluggableButtonSpec new
 			name: 'mergeLayers';
 			model:self;
-			action: #mergeLayerDown;
+			action: #mergeSelectedLayers;
 			frame: (LayoutFrame fractions: (0.7 @ 0 corner: 0.8 @ 1) offsets: nil);
-			label: 'Merge Layer Down'.
+			label: 'Merge'.
 			aBuilder pluggableButtonSpec new
 			name: 'deleteLayers';
 			model:self;
@@ -547,6 +552,28 @@ GMTEEditor >> deleteLayer [
 	[self tileMapMatrix tileMatrixStack removeLayerAt: self selectedLayer] on: AssertionFailure do: [^ nil].
 	self layerList removeAt: self selectedLayer.
 	self changed: #getLayerList.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 16:19'
+}
+GMTEEditor >> deselectAllLayers [
+
+	self selectedLayers: Set new.
+	self changed: #selectedLayers
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 16:06'
+}
+GMTEEditor >> deselectLayer: anIndex [
+
+	self selectedLayers remove: anIndex.
+	self changed: #selectedLayers
+	
 ]
 
 {
@@ -656,12 +683,12 @@ GMTEEditor >> getGridWidthAsString [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/15/2024 19:00'
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
 }
 GMTEEditor >> getLayerList [
 
-	^ layerList
+	^self layerData collect: [:layerData | layerData first]
 ]
 
 {
@@ -682,6 +709,16 @@ GMTEEditor >> getPadding [
 GMTEEditor >> getPaddingAsString [
 
 	^ self getPadding asString
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:43'
+}
+GMTEEditor >> getSelectedLayer [
+
+	self assert: self singleLayerSelected.
+	^ self selectedLayers anyOne
 ]
 
 {
@@ -770,13 +807,15 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Alex M 6/15/2024 19:03'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
 }
 GMTEEditor >> initialize [
 
 	super initialize.
 	self
-		layerList: (OrderedCollection newFrom: {'Layer 1'});
+		layerData: OrderedCollection new;
+		selectedLayers: Set new;
+		storeLayerN: 1;
 		selectLayer: 1;
 		morphBuilders: Dictionary new;
 		open;
@@ -832,19 +871,51 @@ GMTEEditor >> inspector: anObject [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/15/2024 18:58'
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:18'
 }
-GMTEEditor >> layerList [
-	^ layerList
+GMTEEditor >> layerAt: anIndex [
+
+	^ self selectedLayers includes: anIndex
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:10'
+}
+GMTEEditor >> layerAt: anIndex put: aBool [
+
+	aBool
+		ifTrue: [self selectLayer: anIndex]
+		ifFalse: [self deselectLayer: anIndex]
+]
+
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:21'
+}
+GMTEEditor >> layerCount [
+
+	^ self tileMapMatrix tileMatrixStack layerCount
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/15/2024 18:58'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:14'
 }
-GMTEEditor >> layerList: anObject [
-	layerList := anObject
+GMTEEditor >> layerData [
+
+	^ layerData
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 15:48'
+}
+GMTEEditor >> layerData: anObject [
+
+	layerData := anObject.
 ]
 
 {
@@ -918,7 +989,7 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 6/17/2024 18:35'
+	#'squeak_changestamp' : 'TW 6/20/2024 15:49'
 }
 GMTEEditor >> mergeLayerDown [
 	
@@ -931,8 +1002,18 @@ GMTEEditor >> mergeLayerDown [
 		at: self selectedLayer put: (self layerList at: self selectedLayer - 1);
 		removeAt: self selectedLayer - 1.
 	self tileMapMatrix tileMatrixStack blendLayer: self selectedLayer - 1 with: self selectedLayer.
-	self selectLayer: self selectedLayer - 1.
+	self selectedLayer: self selectedLayer - 1.
 	self changed: #getLayerList
+]
+
+{
+	#category : #'layer button functions',
+	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
+}
+GMTEEditor >> mergeSelectedLayers [
+	
+	(self selectedLayers size > 1)
+		ifTrue: [self tileMapMatrix mergeLayers: self selectedLayers]
 ]
 
 {
@@ -955,25 +1036,18 @@ GMTEEditor >> morphBuilders: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 6/16/2024 02:31'
+	#'squeak_changestamp' : 'TW 6/20/2024 17:03'
 }
 GMTEEditor >> moveLayerDown [
 	
-	| temp |
+	| selectedLayer |
 	
-	(self selectedLayer >= self layerList size)
-		ifTrue: [^ nil].
-		
-	temp := self layerList at: self selectedLayer.
-	self layerList
-		at: self selectedLayer put: (self layerList at: self selectedLayer + 1);
-		at: self selectedLayer + 1 put: temp.
+	(self singleLayerSelected)
+		ifFalse: [^ nil].
 	
-	self tileMapMatrix tileMatrixStack swapLayer: self selectedLayer with: self selectedLayer + 1.
-	
-	self
-		selectLayer: selectedLayer + 1;
-		changed: #getLayerList.
+	selectedLayer := self getSelectedLayer.
+	(selectedLayer == 1)
+		ifFalse: [self swapLayer: selectedLayer with: selectedLayer - 1]
 ]
 
 {
@@ -1087,35 +1161,50 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 6/15/2024 19:18'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:46'
 }
 GMTEEditor >> renameLayer [
 
-	|newName|
-	newName := FillInTheBlankMorph request: 'New Name:' initialAnswer: (self getLayerList at: self selectedLayer).
-	newName
-		ifNotNil: [
-			self layerList at: self selectedLayer put: newName.
-			self changed: #getLayerList]
+	| newName selectedLayer |
+	self singleLayerSelected
+		ifTrue: [
+			selectedLayer := self getSelectedLayer.
+			newName := FillInTheBlankMorph 
+			request: 'New Name:' initialAnswer: (self getLayerList at: selectedLayer).
+			newName
+				ifNotNil: [self updateLayerNameOf: selectedLayer to: newName]]
+
 	
 ]
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 22:18'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:38'
 }
-GMTEEditor >> resetAll [
-
-	self tileMapMatrix resetAll
+GMTEEditor >> resetAllLayers [
+	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	
+	self tileMapMatrix resetAllLayers
 ]
 
 {
 	#category : #'button functions',
-	#'squeak_changestamp' : 'JS 6/15/2024 13:02'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:39'
 }
-GMTEEditor >> resetCurrentLayer [
+GMTEEditor >> resetLayer: anIndex [
+	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	
+	self tileMapMatrix resetLayer: anIndex
+]
 
-	self tileMapMatrix resetLayer: self selectedLayer
+{
+	#category : #'button functions',
+	#'squeak_changestamp' : 'TW 6/20/2024 16:38'
+}
+GMTEEditor >> resetSelectedLayers [
+	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	
+	self selectedLayers do: [:i | self resetLayer: i]
 ]
 
 {
@@ -1138,12 +1227,35 @@ GMTEEditor >> savedSinceModified: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 11:53'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:22'
 }
-GMTEEditor >> selectLayer: anObject [
+GMTEEditor >> selectAllLayers [
 
-	selectedLayer := anObject.
-	self changed: #selectedLayer
+	1 to: self layerCount do: [:i | self selectLayer: i].
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 16:05'
+}
+GMTEEditor >> selectLayer: anIndex [
+
+	self selectedLayers add: anIndex.
+	self changed: #selectedLayers
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 16:22'
+}
+GMTEEditor >> selectOnlyLayer: anIndex [
+
+	self 
+		deselectAllLayers;
+		selectLayer: anIndex.
+	
 ]
 
 {
@@ -1166,20 +1278,20 @@ GMTEEditor >> selectTile: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/15/2024 18:54'
+	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
 }
-GMTEEditor >> selectedLayer [
+GMTEEditor >> selectedLayers [
 
-	^ selectedLayer 
+	^ selectedLayers
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:44'
+	#'squeak_changestamp' : 'TW 6/20/2024 15:44'
 }
-GMTEEditor >> selectedLayer: anObject [
+GMTEEditor >> selectedLayers: anObject [
 
-	selectedLayer := anObject.
+	selectedLayers := anObject.
 ]
 
 {
@@ -1247,6 +1359,43 @@ GMTEEditor >> setPadding: aText [
 		ifNotNil: [self tileMapMatrix rescaleMapWidth: self getGridWidth height: self getGridHeight padding: newSize].
 	^true
 
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 15:53'
+}
+GMTEEditor >> singleLayerSelected [
+
+	^ self selectedLayers size == 1
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
+}
+GMTEEditor >> storeLayerN: aNumber [
+
+	self layerData add: {'Layer ', aNumber . True}.
+	self changed: #getLayerList.
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/20/2024 17:00'
+}
+GMTEEditor >> swapLayer: anIndex with: anotherIndex [
+	
+	
+	| selectionOfA |
+	self layerData swap: anIndex with: anotherIndex.
+	self tileMapMatrix tileMatrixStack swapLayer: anIndex with: anotherIndex.
+	selectionOfA := self layerAt: anIndex.
+	self 
+		layerAt: anIndex put: (self layerAt: anotherIndex);
+		layerAt: anotherIndex put: selectionOfA;
+		changed: #getLayerList;
+		changed: #layerAt:
 ]
 
 {
@@ -1356,6 +1505,19 @@ GMTEEditor >> unselectTile [
 	self selectedTile: nil.
 	self tileMapMatrix tileSelectionSet highlightImage: nil.
 	self trayViewer morph submorphs first visible:false.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'TW 6/20/2024 16:49'
+}
+GMTEEditor >> updateLayerNameOf: anIndex to: aString [
+
+	| visibility |
+	visibility := (self layerData at: anIndex) second.
+	
+	self layerData at: anIndex put: {aString . visibility}.
+	self changed: #getLayerList
 ]
 
 {
