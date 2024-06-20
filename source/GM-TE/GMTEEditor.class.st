@@ -416,7 +416,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 21:54'
+	#'squeak_changestamp' : 'TW 6/20/2024 22:07'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -436,24 +436,30 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			
 			aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
-			children: {
-				aBuilder pluggableButtonSpec new
-				model: self;
-				action: #renameLayer;
-				frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.166));
-				label: '_'.
-				
+			children: {				
 				aBuilder pluggableButtonSpec new
 				model:self;
 				action: #moveLayerDown;
-				frame: (LayoutFrame fractions: (0 @ 0.166 corner: 1 @ 0.333));
+				frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.083));
 				label: '^'.
 				
 				aBuilder pluggableButtonSpec new
 				model:self;
 				action: #moveLayerUp;
-				frame: (LayoutFrame fractions: (0 @ 0.333 corner: 1 @ 0.5));
+				frame: (LayoutFrame fractions: (0 @ 0.083 corner: 1 @ 0.166));
 				label: 'v'.
+				
+				aBuilder pluggableButtonSpec new
+				model: self;
+				action: #renameLayer;
+				frame: (LayoutFrame fractions: (0 @ 0.166 corner: 1 @ 0.333));
+				label: '_'.
+				
+				aBuilder pluggableButtonSpec new
+				model:self;
+				action:#resetSelectedLayers;
+				frame: (LayoutFrame fractions: (0 @ 0.333 corner: 1 @ 0.5));
+				label: 'c'.
 				
 				aBuilder pluggableButtonSpec new
 				name: 'mergeLayers';
@@ -686,7 +692,7 @@ GMTEEditor >> exportMenu [
 ]
 
 {
-	#category : #'layer button functions',
+	#category : #'layer manipulation',
 	#'squeak_changestamp' : 'TW 6/20/2024 20:03'
 }
 GMTEEditor >> forgetLayers: aSet [
@@ -1247,7 +1253,7 @@ GMTEEditor >> resetAllLayers [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'layer button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:41'
 }
 GMTEEditor >> resetLayers: aSet [
@@ -1257,7 +1263,7 @@ GMTEEditor >> resetLayers: aSet [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'layer button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:41'
 }
 GMTEEditor >> resetSelectedLayers [
@@ -1529,15 +1535,6 @@ GMTEEditor >> toggleBackgroundTiles [
 GMTEEditor >> toggleGrid [
 
 	self tileMap toggleVisualLayer
-]
-
-{
-	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
-}
-GMTEEditor >> toggleLayerVisibility [
-	
-	self tileMap tileMatrixStack toggleLayerVisibility: self selectedLayer.
 ]
 
 {
