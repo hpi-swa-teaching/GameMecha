@@ -1010,14 +1010,12 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 15:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/20/2024 19:36'
 }
 GMTEEditor >> mergeLayerDown [
 	
-	
 	(self selectedLayer <= 1)
 		ifTrue: [^nil].
-	
 	
 	self layerList
 		at: self selectedLayer put: (self layerList at: self selectedLayer - 1);
