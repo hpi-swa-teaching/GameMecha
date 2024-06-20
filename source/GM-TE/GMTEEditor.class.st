@@ -586,14 +586,18 @@ GMTEEditor >> deselectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 17:59'
+	#'squeak_changestamp' : 'Alex M 6/20/2024 20:48'
 }
 GMTEEditor >> deselectLayer: anIndex [
-
+	
+	self selectedLayers size <= 1 ifTrue: [^ nil].
+	
 	(self selectedLayers includes: anIndex)
 		ifTrue: [
 			self selectedLayers remove: anIndex.
-			self changed: #selectedLayers]
+			self
+				changed: #selectedLayers;
+				changed: #layerAt:]
 	
 ]
 
@@ -902,11 +906,17 @@ GMTEEditor >> layerAt: anIndex [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:10'
+	#'squeak_changestamp' : 'Alex M 6/20/2024 20:51'
 }
 GMTEEditor >> layerAt: anIndex put: aBool [
-
-	aBool
+	
+	| multiSelection |
+	
+	multiSelection := Sensor shiftPressed.
+	
+	multiSelection ifFalse: [self selectedLayers removeAll].
+	
+	(aBool or: [multiSelection not])
 		ifTrue: [self selectLayer: anIndex]
 		ifFalse: [self deselectLayer: anIndex]
 ]
@@ -1258,12 +1268,14 @@ GMTEEditor >> selectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 16:05'
+	#'squeak_changestamp' : 'Alex M 6/20/2024 20:44'
 }
 GMTEEditor >> selectLayer: anIndex [
-
+	
 	self selectedLayers add: anIndex.
-	self changed: #selectedLayers
+	self
+		changed: #selectedLayers;
+		changed: #layerAt:
 	
 ]
 
