@@ -127,26 +127,6 @@ GMTEEditableTileMap >> rescaleMap [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 22:18'
-}
-GMTEEditableTileMap >> resetAll [
-	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
-	
-	(self tileMatrixStack layer: (self model selectedLayer)) free.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:37'
-}
-GMTEEditableTileMap >> resetLayer: anIndex [
-	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
-	
-	(self tileMatrixStack layer: anIndex) free.
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 15:49'
 }
