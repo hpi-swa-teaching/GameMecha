@@ -351,7 +351,7 @@ GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString gette
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/9/2024 18:11'
+	#'squeak_changestamp' : 'TW 6/20/2024 22:33'
 }
 GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
@@ -361,7 +361,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 			name: 'import';
 			label: 'Import ...';
 			model: self;
-			frame: (LayoutFrame fractions: (0.0 @ 0 corner: 0.33 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.0 @ 0 corner: 0.3 @ 1) offsets: nil);
 			action: #importMenu.
 			
 			aBuilder pluggableButtonSpec new
@@ -369,16 +369,21 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 			label: 'Export as ...';
 			model: self;
 			action: #exportMenu;
-			frame: (LayoutFrame fractions: (0.33 @ 0 corner: 0.66 @ 1) offsets: nil).
+			frame: (LayoutFrame fractions: (0.3 @ 0 corner: 0.6 @ 1) offsets: nil).
 
 			aBuilder pluggableButtonSpec new
-			frame: (LayoutFrame fractions: (0.66 @ 0 corner: 1 @ 1) offsets: nil);
+			frame: (LayoutFrame fractions: (0.6 @ 0 corner: 0.9 @ 1) offsets: nil);
 			name: 'openInWorld';
 			label: 'Open in World';
 			model: self;
 			action: #openTileMapInWorld.
-			}
-			;
+			
+			aBuilder pluggableButtonSpec new
+			frame: (LayoutFrame fractions: (0.9 @ 0 corner: 1 @ 1) offsets: nil);
+			name: 'settings';
+			label: '...';
+			model: self;
+			action: #settingsMenu};
 
 		verticalResizing: #shrinkWrap;
 		
@@ -416,7 +421,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 22:07'
+	#'squeak_changestamp' : 'TW 6/21/2024 00:22'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -437,50 +442,68 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			aBuilder pluggablePanelSpec new
 			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
 			children: {				
-				aBuilder pluggableButtonSpec new
-				model:self;
-				action: #moveLayerDown;
-				frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.083));
-				label: '^'.
+				aBuilder pluggableImageButtonSpec new
+					model:self;
+					action: #moveLayerDown;
+					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.083));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/up.png';
+					pressedPath: '/GMTEIcons/up.png';
+					hoverPath: '/GMTEIcons/up.png'.
 				
-				aBuilder pluggableButtonSpec new
-				model:self;
-				action: #moveLayerUp;
-				frame: (LayoutFrame fractions: (0 @ 0.083 corner: 1 @ 0.166));
-				label: 'v'.
+				aBuilder pluggableImageButtonSpec new
+					model:self;
+					action: #moveLayerUp;
+					frame: (LayoutFrame fractions: (0 @ 0.083 corner: 1 @ 0.166));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/down.png';
+					pressedPath: '/GMTEIcons/down.png';
+					hoverPath: '/GMTEIcons/down.png'.
 				
-				aBuilder pluggableButtonSpec new
-				model: self;
-				action: #renameLayer;
-				frame: (LayoutFrame fractions: (0 @ 0.166 corner: 1 @ 0.333));
-				label: '_'.
+				aBuilder pluggableImageButtonSpec new
+					model: self;
+					action: #renameLayer;
+					frame: (LayoutFrame fractions: (0 @ 0.166 corner: 1 @ 0.333));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/rename.png';
+					pressedPath: '/GMTEIcons/rename.png';
+					hoverPath: '/GMTEIcons/rename.png'.
 				
-				aBuilder pluggableButtonSpec new
-				model:self;
-				action:#resetSelectedLayers;
-				frame: (LayoutFrame fractions: (0 @ 0.333 corner: 1 @ 0.5));
-				label: 'c'.
+				aBuilder pluggableImageButtonSpec new
+					model:self;
+					action:#resetSelectedLayers;
+					frame: (LayoutFrame fractions: (0 @ 0.333 corner: 1 @ 0.5));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/broom.png';
+					pressedPath: '/GMTEIcons/broom.png';
+					hoverPath: '/GMTEIcons/broom.png'.
 				
-				aBuilder pluggableButtonSpec new
-				name: 'mergeLayers';
-				model:self;
-				action: #blendSelectedLayers;
-				frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.666));
-				label: 'M'.
+				aBuilder pluggableImageButtonSpec new
+					model:self;
+					action: #blendSelectedLayers;
+					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.666));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/merge.png';
+					pressedPath: '/GMTEIcons/merge.png';
+					hoverPath: '/GMTEIcons/merge.png'.
 				
-				aBuilder pluggableButtonSpec new
-				name: 'deleteLayers';
-				model:self;
-				action: #deleteSelectedLayers;
-				frame: (LayoutFrame fractions: (0 @ 0.666 corner: 1 @ 0.833));
-				label: 'X'.
+				aBuilder pluggableImageButtonSpec new
+					model:self;
+					action: #deleteSelectedLayers;
+					frame: (LayoutFrame fractions: (0 @ 0.666 corner: 1 @ 0.833));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/trash.png';
+					pressedPath: '/GMTEIcons/trash.png';
+					hoverPath: '/GMTEIcons/trash.png'.
 				
-				aBuilder pluggableButtonSpec new
-				name: 'toggleLayerVisibility';
-				model:self;
-				action: #toggleSelectedLayerVisibility;
-				frame: (LayoutFrame fractions: (0 @ 0.833 corner: 1 @ 1));
-				label: 'O'}.
+				aBuilder pluggableImageButtonSpec new
+					model:self;
+					action: #toggleSelectedLayerVisibility;
+					frame: (LayoutFrame fractions: (0 @ 0.833 corner: 1 @ 1));
+					project: 'GameMecha';
+					unpressedPath: '/GMTEIcons/eye.png';
+					pressedPath: '/GMTEIcons/eye.png';
+					hoverPath: '/GMTEIcons/eye.png'.}.
 			
 			aBuilder pluggableMultiSelectionListSpec new
 			name: 'layers';
@@ -546,34 +569,14 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 19:36'
+	#'squeak_changestamp' : 'TW 6/20/2024 22:35'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^aBuilder pluggablePanelSpec new
 		name: 'toolbar';
 		model: self;
-		frame: (LayoutFrame
-			fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
-		children: {
-			aBuilder pluggableButtonSpec new
-			name: 'reset';
-			label: 'Reset Layer';
-			model: self;
-			action:#resetSelectedLayers;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.17 @ 1) offsets: nil).
-			aBuilder pluggableButtonSpec new
-			name: 'toggleVisual';
-			label: 'Toggle Grid';
-			model: self;
-			action: #toggleGrid;
-			frame: (LayoutFrame fractions: (0.17 @ 0 corner: 0.34 @ 1) offsets: nil).
-			aBuilder pluggableButtonSpec new
-			name: 'toggleBackground';
-			label: 'Toggle Background Tiles';
-			model: self;
-			action: #toggleBackgroundTiles;
-			frame: (LayoutFrame fractions: (0.34 @ 0 corner: 0.5 @ 1) offsets: nil).
-			};
+		frame: (LayoutFrame fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
+		children: {};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -1427,6 +1430,30 @@ GMTEEditor >> setPadding: aText [
 		ifNotNil: [self tileMap rescaleMapWidth: self getGridWidth height: self getGridHeight padding: newSize].
 	^true
 
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'TW 6/20/2024 22:33'
+}
+GMTEEditor >> settingsMenu [
+
+	| aMenuSpec builder|
+	builder := ToolBuilder default.
+	aMenuSpec := builder pluggableMenuSpec new.
+
+	aMenuSpec
+		add: 'Toggle Grid'
+		target: self
+		selector: #toggleGrid
+		argumentList: {};
+		
+		add: 'Toggle Background'
+		target: self
+		selector: #toggleBackgroundTiles
+		argumentList: {}.
+		
+	builder open: aMenuSpec
 ]
 
 {

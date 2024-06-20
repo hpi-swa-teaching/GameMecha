@@ -12,9 +12,8 @@ Class {
 		'arguments',
 		'unpressedImage',
 		'pressedImage',
-		'linkedButtons',
-		'unpressedPath',
-		'pressedPath'
+		'hoverImage',
+		'linkedButtons'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
@@ -75,64 +74,21 @@ GMTEImageButton >> arguments: aCollection [
 ]
 
 {
-	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 2/6/2024 16:47'
-}
-GMTEImageButton >> deselect [
-	"Set button to his unpressed state"
-
-	self image: self unpressedImage
-]
-
-{
 	#category : #button,
-	#'squeak_changestamp' : 'jannis 2/8/2024 18:02'
+	#'squeak_changestamp' : 'TW 6/21/2024 00:17'
 }
 GMTEImageButton >> doButtonAction [
 	"Perform the action of this button. The default behavior is to send the button's actionSelector to its target object with its arguments."
 
-	self clickSound copy play.
 	(self target notNil and: [actionSelector notNil]) 
-		ifTrue: [self target perform: self actionSelector withArguments: arguments].
+		ifTrue: [self arguments 
+			ifNil: [self target perform: self actionSelector]
+			ifNotNil: [self target perform: self actionSelector withArguments: arguments]].
 	"If this button is not linked with any others, go back to the unpressedImage. If it is, set all linked buttons to their unpressed state, and keep this button pressed, to show the selection."
 	self linkedButtons
-		ifNil: [self image: self unpressedImage]
+		ifNil: [self setImageMode: #unpressed]
 		ifNotNil: [self linkedButtons do: [:aButton | aButton ~~ self 
-			ifTrue: [aButton deselect]]]
-]
-
-{
-	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 2/8/2024 11:22'
-}
-GMTEImageButton >> extent: anExtent [
-	"Override BALLS_ImageMorph extent functionality to modify both images at once"
-
-	self
-		image: (self image scaledToSize: anExtent);
-		unpressedImage: (self unpressedImage scaledToSize: anExtent);
-		pressedImage: (self pressedImage scaledToSize: anExtent).
-	super extent: anExtent
-]
-
-{
-	#category : #materialising,
-	#'squeak_changestamp' : 'jannis 2/8/2024 18:02'
-}
-GMTEImageButton >> getBuiltBy: aPageBuilder for: aPage [
-	"Loads its various images, sounds and calculates its graphical properties in order to manifest as an actual usable button. Adds itself to the page"
-
-	self
-		target: aPage;
-		unpressedImage: (aPageBuilder resourceManager loadForm: self unpressedPath);
-		pressedImage: (aPageBuilder resourceManager loadForm: self pressedPath);
-		image: self unpressedImage;
-		clickSound: (aPageBuilder resourceManager loadSound: self soundPath);
-		extent: (aPageBuilder screen fractionsToPixels: self fractionalExtent);
-		center: (aPageBuilder matrix getAtCoordinate: self tilePosition) center.
-	
-	aPage addMorph: self.
-	^ self
+			ifTrue: [aButton setImageMode: #unpressed]]]
 ]
 
 {
@@ -142,6 +98,24 @@ GMTEImageButton >> getBuiltBy: aPageBuilder for: aPage [
 GMTEImageButton >> handlesMouseDown: anEvent [
 
 	^ true
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 23:33'
+}
+GMTEImageButton >> hoverImage [
+
+	^ hoverImage
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/20/2024 23:33'
+}
+GMTEImageButton >> hoverImage: anObject [
+
+	hoverImage := anObject.
 ]
 
 {
@@ -215,32 +189,33 @@ GMTEImageButton >> pressedImage: anImage [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 14:14'
-}
-GMTEImageButton >> pressedPath [
-
-	^ pressedPath
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/9/2024 00:00'
-}
-GMTEImageButton >> pressedPath: aPath [
-
-	pressedPath := aPath
-]
-
-{
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 2/6/2024 16:47'
+	#'squeak_changestamp' : 'TW 6/21/2024 00:12'
 }
 GMTEImageButton >> select [
 	"Set button to his pressed state and executes button action"
 
-	self image: self pressedImage.
+	self setImageMode: #pressed.
 	self doButtonAction
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/21/2024 00:11'
+}
+GMTEImageButton >> setImageMode: aString [
+
+	(aString == #pressed)
+		ifTrue: [self fullResolutionSprite: self pressedImage]
+		ifFalse: [
+		(aString == #unpressed)
+			ifTrue: [self fullResolutionSprite: self unpressedImage]
+			ifFalse: [
+			(aString == #hover)
+				ifTrue: [self fullResolutionSprite: self hoverImage]
+				ifFalse: [^nil]]].
+	
+	self extent: self extent.
 ]
 
 {
@@ -282,30 +257,12 @@ GMTEImageButton >> unpressedImage: anImage [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 14:14'
-}
-GMTEImageButton >> unpressedPath [
-
-	^ unpressedPath
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/9/2024 00:01'
-}
-GMTEImageButton >> unpressedPath: aPath [
-
-	unpressedPath := aPath
-]
-
-{
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'AlexM 2/9/2024 00:02'
+	#'squeak_changestamp' : 'TW 6/21/2024 00:12'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
 	(self containsPoint: anEvent cursorPoint)
-		ifTrue: [self image: self pressedImage]
-		ifFalse: [self image: self unpressedImage]
+		ifTrue: [self setImageMode: #pressed]
+		ifFalse: [self setImageMode: #unpressed]
 ]

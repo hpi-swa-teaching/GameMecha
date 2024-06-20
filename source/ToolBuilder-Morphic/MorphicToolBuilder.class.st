@@ -362,31 +362,24 @@ MorphicToolBuilder >> buildPluggableDropDownList: spec [
 
 {
 	#category : #'widgets required',
-	#'squeak_changestamp' : 'TW 6/20/2024 20:27'
+	#'squeak_changestamp' : 'TW 6/21/2024 00:15'
 }
 MorphicToolBuilder >> buildPluggableImageButton: aSpec [
-	| widget label state action enabled |
-	label := aSpec label.
-	state := aSpec state.
-	action := aSpec action.
-	widget := self buttonClass on: aSpec model
-				getState: (state isSymbol ifTrue:[state])
-				action: nil
-				label: (label isSymbol ifTrue:[label]).
-	widget style: aSpec style.
-	aSpec changeLabelWhen
-		ifNotNil: [ :event | widget whenChanged: event update: aSpec label].
+	| widget project |
+	project := aSpec project.
+	widget := GMTEImageButton new
+		target: aSpec model;
+		actionSelector: aSpec action;
+		unpressedImage: ((GitAssetLoader for: project) loadForm: aSpec unpressedPath);
+		pressedImage: ((GitAssetLoader for: project) loadForm: aSpec pressedPath);
+		hoverImage: ((GitAssetLoader for: project) loadForm: aSpec hoverPath).		
+	
 	self register: widget id: aSpec name.
-	enabled := aSpec enabled.
-	enabled isSymbol
-		ifTrue:[widget getEnabledSelector: enabled]
-		ifFalse:[widget enabled:enabled].
-	widget action: action.
-	aSpec color isColor
-		ifTrue: [widget offColor: aSpec color]
-		ifFalse: [widget getColorSelector: aSpec color].
+	widget setImageMode: #unpressed.
+	
+	aSpec arguments
+		ifNotNil: [widget arguments: aSpec arguments].
 	self buildHelpFor: widget spec: aSpec. 
-	(label isSymbol or:[label == nil]) ifFalse:[widget label: label].
 	self setFrame: aSpec frame in: widget.
 	self setLayoutHintsFor: widget spec: aSpec.
 	parent ifNotNil:[self add: widget to: parent].
