@@ -362,7 +362,7 @@ MorphicToolBuilder >> buildPluggableDropDownList: spec [
 
 {
 	#category : #'widgets required',
-	#'squeak_changestamp' : 'TW 6/21/2024 01:17'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 18:55'
 }
 MorphicToolBuilder >> buildPluggableImageButton: aSpec [
 	| widget project |
@@ -370,7 +370,7 @@ MorphicToolBuilder >> buildPluggableImageButton: aSpec [
 	widget := GMTEImageButton new
 		target: aSpec model;
 		actionSelector: aSpec action;
-		fullResolutionSprite: ((GitAssetLoader for: project) loadForm: aSpec path) copy.	
+		createStateImagesFrom: ((GitAssetLoader for: project) loadForm: aSpec path) copy.	
 	
 	self register: widget id: aSpec name.
 	widget setImageMode: #unpressed.
@@ -635,22 +635,12 @@ MorphicToolBuilder >> buildPluggableSpacer: spec [
 
 {
 	#category : #'widgets optional',
-	#'squeak_changestamp' : 'Alex M 6/14/2024 00:40'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 19:44'
 }
 MorphicToolBuilder >> buildPluggableStaticText: aSpec [
 	| widget defaultTextColor |
 	widget := StringMorph new
 		contents: aSpec text.
-	"aSpec textStyle
-		ifNotNil: [:ts |
-			ts isSymbol
-				ifTrue: [widget getTextStyleSelector: ts; update: ts]
-				ifFalse: [widget setTextStyle: ts]]
-		ifNil: [
-			aSpec font ifNotNil: [:f |
-				f isSymbol
-					ifTrue: [widget getFontSelector: f]
-					ifFalse: [widget setTextStyle: f asNewTextStyle]] ]."
 		
 	self register: widget id: aSpec name.
 	
@@ -670,7 +660,7 @@ MorphicToolBuilder >> buildPluggableStaticText: aSpec [
 	self setLayoutHintsForTextField: widget spec: aSpec.
 	
 	parent ifNotNil:[self add: widget to: parent].
-	^widget
+	^ widget
 ]
 
 {

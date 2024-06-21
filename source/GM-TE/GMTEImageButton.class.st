@@ -10,7 +10,8 @@ Class {
 		'target',
 		'actionSelector',
 		'arguments',
-		'linkedButtons'
+		'linkedButtons',
+		'stateSprites'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
@@ -55,6 +56,25 @@ GMTEImageButton >> arguments: aCollection [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:31'
+}
+GMTEImageButton >> createStateImagesFrom: anImage [
+	
+	| unpressedColor hoveredColor pressedColor disabledColor |
+	
+	unpressedColor := UserInterfaceTheme current get: #titleTextColor for: MenuMorph.
+	hoveredColor := UserInterfaceTheme current get: #highlightTextColor for: SimpleHierarchicalListMorph.
+	pressedColor := UserInterfaceTheme current get: #errorColor for: TestRunner.
+	disabledColor := UserInterfaceTheme current get: #disabledTextColor for: MenuItemMorph.
+	
+	self stateSprites at: 'unpressed' put: (self dyeSprite: anImage with: unpressedColor).
+	self stateSprites at: 'hovered' put: (self dyeSprite: anImage with: hoveredColor).
+	self stateSprites at: 'pressed' put: (self dyeSprite: anImage with: pressedColor).
+	self stateSprites at: 'disabled' put: (self dyeSprite: anImage with: disabledColor).
+]
+
+{
 	#category : #button,
 	#'squeak_changestamp' : 'TW 6/21/2024 00:17'
 }
@@ -73,12 +93,55 @@ GMTEImageButton >> doButtonAction [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/21/2024 19:36'
+}
+GMTEImageButton >> dyeSprite: anImage with: aColor [
+
+	|img|
+	
+	img := anImage copy.
+	img
+		replaceColor: Color white withColor: Color transparent;
+		replaceColor: Color black withColor: aColor.
+	^ img
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 2/6/2024 16:46'
 }
 GMTEImageButton >> handlesMouseDown: anEvent [
 
 	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:37'
+}
+GMTEImageButton >> handlesMouseMove: anEvent [
+
+	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:38'
+}
+GMTEImageButton >> handlesMouseOver: anEvent [
+
+	^ true
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'Alex M 6/21/2024 19:03'
+}
+GMTEImageButton >> initialize [
+	
+	super initialize.
+	self stateSprites: Dictionary new.
 ]
 
 {
@@ -114,7 +177,16 @@ GMTEImageButton >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'jannis 2/8/2024 18:06'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:38'
+}
+GMTEImageButton >> mouseLeave: anEvent [
+
+	self updateVisualState: anEvent
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:34'
 }
 GMTEImageButton >> mouseMove: anEvent [
 
@@ -123,13 +195,14 @@ GMTEImageButton >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:41'
 }
 GMTEImageButton >> mouseUp: anEvent [
 
 	(self containsPoint: anEvent cursorPoint)
 		ifTrue: [self doButtonAction]
-		ifFalse: [self mouseLeave: anEvent]
+		ifFalse: [self mouseLeave: anEvent].
+	self updateVisualState: anEvent
 ]
 
 {
@@ -145,21 +218,37 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/21/2024 15:48'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:30'
 }
 GMTEImageButton >> setImageMode: aString [
-
+	
 	(aString == #pressed)
-		ifTrue: [self color: Color red]
+		ifTrue: [self fullResolutionSprite: (self stateSprites at: 'pressed')]
 		ifFalse: [
 		(aString == #unpressed)
-			ifTrue:  [self color: Color black]
+			ifTrue:  [self fullResolutionSprite: (self stateSprites at: 'unpressed')]
 			ifFalse: [
-			(aString == #hover)
-				ifTrue: [self fullResolutionSprite: self hoverImage]
-				ifFalse: [^nil]]].
-	
+				(aString == #hovered)
+					ifTrue: [self fullResolutionSprite: (self stateSprites at: 'hovered')]
+					ifFalse: [^nil]]].
+			
 	self extent: self extent.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/21/2024 18:31'
+}
+GMTEImageButton >> stateSprites [
+	^ stateSprites
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/21/2024 18:31'
+}
+GMTEImageButton >> stateSprites: anObject [
+	stateSprites := anObject
 ]
 
 {
@@ -183,11 +272,13 @@ GMTEImageButton >> target: anObject [
 
 {
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 6/21/2024 00:12'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 20:34'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
 	(self containsPoint: anEvent cursorPoint)
-		ifTrue: [self setImageMode: #pressed]
+		ifTrue: [ anEvent redButtonPressed
+			ifTrue: [self setImageMode: #pressed]
+			ifFalse:[self setImageMode: #hovered]]
 		ifFalse: [self setImageMode: #unpressed]
 ]

@@ -151,7 +151,7 @@ GMTEEditor class >> register [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> addLayer [
@@ -582,11 +582,11 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:57'
+	#'squeak_changestamp' : 'Alex M 6/21/2024 15:38'
 }
 GMTEEditor >> deleteSelectedLayers [
 	
-	(self anyLayerSelected not or: (self selectedLayers includes: 1))
+	(self anyLayerSelected not or: (self selectedLayers size >= self getLayerList size))
 		ifTrue: [^ nil].
 	
 	self tileMap removeLayers: self selectedLayers.
@@ -638,7 +638,7 @@ GMTEEditor >> deselectTile [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> exportAsImage [
@@ -647,7 +647,7 @@ GMTEEditor >> exportAsImage [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> exportAsMorph [
@@ -806,7 +806,7 @@ GMTEEditor >> getTileRatioAsString [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'JS 6/15/2024 13:03'
 }
 GMTEEditor >> import [
@@ -830,7 +830,7 @@ GMTEEditor >> import [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'JS 6/19/2024 10:52'
 }
 GMTEEditor >> importFromMorph [
@@ -961,7 +961,7 @@ GMTEEditor >> layerAt: anIndex put: aBool [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> layerCount [
@@ -1153,7 +1153,7 @@ GMTEEditor >> openTileMapInEditor: aTileMap [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> openTileMapInWorld [
@@ -1235,7 +1235,7 @@ GMTEEditor >> renameLayer [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> resetAllLayers [
@@ -1537,7 +1537,7 @@ GMTEEditor >> tileViewer: anObject [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> toggleBackgroundTiles [
@@ -1545,7 +1545,7 @@ GMTEEditor >> toggleBackgroundTiles [
 ]
 
 {
-	#category : #'button functions',
+	#category : #'menu button functions',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> toggleGrid [
