@@ -269,11 +269,11 @@ GMTEEditor >> buildWith: builder [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/22/2024 00:44'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:06'
 }
 GMTEEditor >> collectLayerData [
 
-	self layerData = OrderedCollection new.
+	self layerData: OrderedCollection new.
 	1 to: self layerCount do: [:i | self storeLayerN: i withVisibility: (self tileMap tileMatrixStack layerVisible: i)].
 	
 ]
