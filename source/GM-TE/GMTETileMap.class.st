@@ -23,7 +23,7 @@ Class {
 		'tileCornerOffsetBackground',
 		'mapPaddedHeight',
 		'tileMatrixStack',
-		'tileMatrixStackVisual',
+		'tileMatrixStackHighlighting',
 		'tileMatrixStackBackground',
 		'forceMapSizeRatio',
 		'backgroundTiles',
@@ -350,13 +350,13 @@ GMTETileMap >> generateBackgroundTiles [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:24'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> generateMatrixStacks [
 	
 	self tileMatrixStackBackground: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: 101).
 	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 100).
-	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 10). "TODO: Number ?"
+	self tileMatrixStackHighlighting: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 10). "TODO: Number ?"
 	"self generateBackgroundTiles."
 	self generateVisualTiles.
 	self toggleBackgroundLayer
@@ -405,13 +405,13 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:35'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> generateVisualTiles [
 	
-	self tileMatrixStackVisual doTilesXYLidx: [ :x :y :l | 
+	self tileMatrixStackHighlighting doTilesXYLidx: [ :x :y :l | 
 		"It is assumed that the visual stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual].
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackHighlighting tileType: GMTETileHighlighting].
 	
 
 ]
@@ -444,18 +444,18 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:11'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> hideVisualLayer [
 
-	self tileMatrixStackVisual visible: false.
+	self tileMatrixStackHighlighting visible: false.
 	self changed
 	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> initialize [
 	
@@ -468,7 +468,7 @@ GMTETileMap >> initialize [
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
-		 backgroundTiles: ((GMTETileVisual new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
+		 backgroundTiles: ((GMTETileHighlighting new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
 	
 ]
 
@@ -680,7 +680,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:01'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> rescaleMatrixStacks [
 
@@ -689,9 +689,9 @@ GMTETileMap >> rescaleMatrixStacks [
 		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
 		self tileMatrixStack doTiles: [ :tile |
 			self addMorph: tile].
-	(self tileMatrixStackVisual) ifNotNil: [
-		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
-		self tileMatrixStackVisual reset.
+	(self tileMatrixStackHighlighting) ifNotNil: [
+		self tileMatrixStackHighlighting rescaleToWidth: self mapTileWidth height: self mapTileHeight.
+		self tileMatrixStackHighlighting reset.
 		self generateVisualTiles]
 ]
 
@@ -758,11 +758,11 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:11'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> showVisualLayer [
 
-	self tileMatrixStackVisual visible: true.
+	self tileMatrixStackHighlighting visible: true.
 	self changed
 	"self rescaleMap."
 ]
@@ -837,7 +837,7 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 
@@ -847,7 +847,7 @@ GMTETileMap >> tileIdxFromPosition: aPoint [
 	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
 	idx := idx floor.
 	
-	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^nil].
+	((self tileMatrixStackHighlighting layer: 1) validIdx: idx) ifFalse: [^nil].
 	^idx.
 ]
 
@@ -889,20 +889,20 @@ GMTETileMap >> tileMatrixStackBackground: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:50'
 }
-GMTETileMap >> tileMatrixStackVisual [
+GMTETileMap >> tileMatrixStackHighlighting [
 
-	^ tileMatrixStackVisual
+	^ tileMatrixStackHighlighting
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:50'
 }
-GMTETileMap >> tileMatrixStackVisual: anObject [
+GMTETileMap >> tileMatrixStackHighlighting: anObject [
 
-	tileMatrixStackVisual := anObject.
+	tileMatrixStackHighlighting := anObject.
 ]
 
 {
@@ -970,7 +970,7 @@ GMTETileMap >> tileSizeWidth: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:00'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> tileVisualFromPosition: aPoint [
 
@@ -979,7 +979,7 @@ GMTETileMap >> tileVisualFromPosition: aPoint [
 	idx := self tileIdxFromPosition: aPoint.
 	idx ifNil: [^nil].
 	
-	^ self tileMatrixStackVisual layer: 1 at: idx y at: idx x.
+	^ self tileMatrixStackHighlighting layer: 1 at: idx y at: idx x.
 ]
 
 {
@@ -1049,11 +1049,11 @@ GMTETileMap >> toggleBackgroundLayer [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:14'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> toggleVisualLayer [
 
-	self tileMatrixStackVisual toggleVisibility.
+	self tileMatrixStackHighlighting toggleVisibility.
 	self changed
 ]
 
@@ -1155,7 +1155,7 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
 }
 GMTETileMap >> updateTiles [
 
@@ -1172,5 +1172,5 @@ GMTETileMap >> updateTiles [
 				self correctedTilePositionBackground: aPoint]].
 	
 	self updateTileMatrixStack: self tileMatrixStack.
-	self updateTileMatrixStack: self tileMatrixStackVisual.
+	self updateTileMatrixStack: self tileMatrixStackHighlighting.
 ]

@@ -1,5 +1,5 @@
 Class {
-	#name : #GMTETileVisual,
+	#name : #GMTETileHighlighting,
 	#superclass : #GMTETile,
 	#instVars : [
 		'decorationMorph'
@@ -11,7 +11,7 @@ Class {
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:36'
 }
-GMTETileVisual >> applyBorderHighlighting [
+GMTETileHighlighting >> applyBorderHighlighting [
 	
 	self 
 		borderColor: Color white;
@@ -22,7 +22,7 @@ GMTETileVisual >> applyBorderHighlighting [
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileVisual >> applyDecoMorphHighlighting: aForm [
+GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 	
 	| newDecoMorph |
 	
@@ -43,7 +43,7 @@ GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
 }
-GMTETileVisual >> decorationMorph [
+GMTETileHighlighting >> decorationMorph [
 
 	^ decorationMorph
 ]
@@ -52,7 +52,7 @@ GMTETileVisual >> decorationMorph [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
 }
-GMTETileVisual >> decorationMorph: anObject [
+GMTETileHighlighting >> decorationMorph: anObject [
 
 	decorationMorph := anObject.
 ]
@@ -61,7 +61,7 @@ GMTETileVisual >> decorationMorph: anObject [
 	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:14'
 }
-GMTETileVisual >> initialize [
+GMTETileHighlighting >> initialize [
 
 	super initialize.
 	self applyBorderHighlighting
@@ -71,7 +71,7 @@ GMTETileVisual >> initialize [
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileVisual >> removeBorderHighlighting [
+GMTETileHighlighting >> removeBorderHighlighting [
 	
 	self 
 		borderColor: Color transparent;
@@ -82,7 +82,7 @@ GMTETileVisual >> removeBorderHighlighting [
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileVisual >> removeDecoMorphHighlighting [
+GMTETileHighlighting >> removeDecoMorphHighlighting [
 	
 	self removeMorph: self decorationMorph
 ]
