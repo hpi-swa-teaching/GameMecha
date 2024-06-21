@@ -121,14 +121,14 @@ GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 6/15/2024 13:04'
+	#'squeak_changestamp' : 'jj 6/22/2024 00:55'
 }
 GMTEEditor class >> privateGetEditableTileMapFromFileBinary: aFileBinary [
 
     |aFileStream tileMap|
     aFileStream := (MultiByteBinaryOrTextStream with: aFileBinary) binary reset.
     tileMap := aFileStream fileInObjectAndCode.
-    (tileMap isKindOf: GMTEEditableTileMap) ifFalse: [^nil].
+    (tileMap isKindOf: GMTEEditorTileMap) ifFalse: [^nil].
     ^tileMap
 ]
 
