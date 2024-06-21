@@ -1218,7 +1218,7 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 19:52'
+	#'squeak_changestamp' : 'TW 6/21/2024 15:46'
 }
 GMTEEditor >> renameLayer [
 
@@ -1227,7 +1227,7 @@ GMTEEditor >> renameLayer [
 		ifTrue: [
 			selectedLayer := self getSelectedLayer.
 			newName := FillInTheBlankMorph 
-			request: 'New Name:' initialAnswer: (self getLayerList at: selectedLayer).
+			request: 'New Name:' initialAnswer: (self layerData at: selectedLayer) first.
 			(newName isNil or: newName isEmpty)
 				ifFalse: [self updateLayerNameOf: selectedLayer to: newName]]
 
