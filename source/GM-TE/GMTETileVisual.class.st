@@ -1,5 +1,5 @@
 Class {
-	#name : #GMTETileHighlighting,
+	#name : #GMTETileVisual,
 	#superclass : #GMTETile,
 	#instVars : [
 		'decorationMorph'
@@ -11,7 +11,7 @@ Class {
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:36'
 }
-GMTETileHighlighting >> applyBorderHighlighting [
+GMTETileVisual >> applyBorderHighlighting [
 	
 	self 
 		borderColor: Color white;
@@ -22,7 +22,7 @@ GMTETileHighlighting >> applyBorderHighlighting [
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
+GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	
 	| newDecoMorph |
 	
@@ -43,7 +43,7 @@ GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
 }
-GMTETileHighlighting >> decorationMorph [
+GMTETileVisual >> decorationMorph [
 
 	^ decorationMorph
 ]
@@ -52,7 +52,7 @@ GMTETileHighlighting >> decorationMorph [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
 }
-GMTETileHighlighting >> decorationMorph: anObject [
+GMTETileVisual >> decorationMorph: anObject [
 
 	decorationMorph := anObject.
 ]
@@ -61,7 +61,7 @@ GMTETileHighlighting >> decorationMorph: anObject [
 	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:14'
 }
-GMTETileHighlighting >> initialize [
+GMTETileVisual >> initialize [
 
 	super initialize.
 	self applyBorderHighlighting
@@ -71,7 +71,7 @@ GMTETileHighlighting >> initialize [
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileHighlighting >> removeBorderHighlighting [
+GMTETileVisual >> removeBorderHighlighting [
 	
 	self 
 		borderColor: Color transparent;
@@ -82,7 +82,7 @@ GMTETileHighlighting >> removeBorderHighlighting [
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileHighlighting >> removeDecoMorphHighlighting [
+GMTETileVisual >> removeDecoMorphHighlighting [
 	
 	self removeMorph: self decorationMorph
 ]

@@ -89,22 +89,20 @@ GMTETileMatrixStack >> blendLayers: aSet [
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:06'
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
 }
 GMTETileMatrixStack >> doLayers: aBlock [
 
-	self matrixLayers do: [ :layer | 
-		aBlock value: layer]
+	self matrixLayers do: [ :layer | aBlock value: layer]
 ]
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:06'
+	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
 }
 GMTETileMatrixStack >> doTiles: aBlock [
 
-	self doLayers: [ :layer | 
-		layer doTiles: aBlock]
+	self doLayers: [ :layer | layer doTiles: aBlock]
 ]
 
 {
@@ -205,7 +203,7 @@ GMTETileMatrixStack >> layerCount [
 ]
 
 {
-	#category : #checking,
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:13'
 }
 GMTETileMatrixStack >> layerVisible: anIdx [

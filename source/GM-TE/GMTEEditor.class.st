@@ -1218,18 +1218,16 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 13:35'
+	#'squeak_changestamp' : 'TW 6/21/2024 15:46'
 }
 GMTEEditor >> renameLayer [
 
-	| newName selectedLayer lengthWithoutIndicator |
-	
+	| newName selectedLayer |
 	self singleLayerSelected
 		ifTrue: [
 			selectedLayer := self getSelectedLayer.
-			lengthWithoutIndicator := ((self getLayerList at: selectedLayer) size ) - 4.
 			newName := FillInTheBlankMorph 
-			request: 'New Name:' initialAnswer: ((self getLayerList at: selectedLayer) copyFrom: 1 to: lengthWithoutIndicator).
+			request: 'New Name:' initialAnswer: (self layerData at: selectedLayer) first.
 			(newName isNil or: newName isEmpty)
 				ifFalse: [self updateLayerNameOf: selectedLayer to: newName]]
 
@@ -1548,11 +1546,11 @@ GMTEEditor >> toggleBackgroundTiles [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
+	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> toggleGrid [
 
-	self tileMap toggleHighlightingLayer
+	self tileMap toggleVisualLayer
 ]
 
 {
