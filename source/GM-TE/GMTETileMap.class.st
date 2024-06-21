@@ -124,11 +124,12 @@ GMTETileMap >> backgroundTiles: anObject [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:43'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:02'
 }
 GMTETileMap >> blendLayers: aSet [
 
-	self tileMatrixStack blendLayers: aSet
+	self tileMatrixStack blendLayers: aSet.
+	self changed
 ]
 
 {
@@ -243,7 +244,7 @@ GMTETileMap >> dimensionsSet [
 ]
 
 {
-	#category : #'import/export',
+	#category : #export,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/20/2024 20:54'
 }
 GMTETileMap >> exportAsImage [
@@ -641,20 +642,12 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
-}
-GMTETileMap >> mergeLayers: aSet [
-
-	^ true
-]
-
-{
-	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:42'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:02'
 }
 GMTETileMap >> removeLayers: aSet [
 
-	self tileMatrixStack removeLayersAt: aSet
+	self tileMatrixStack removeLayersAt: aSet.
+	self changed
 ]
 
 {
@@ -711,20 +704,22 @@ GMTETileMap >> rescaleMatrixStacks [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:42'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:02'
 }
 GMTETileMap >> resetAllLayers: aSet [
 
-	self tileMatrixStack reset
+	self tileMatrixStack reset.
+	self changed
 ]
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:03'
 }
 GMTETileMap >> resetLayers: aSet [
 
-	self tileMatrixStack resetLayers: aSet
+	self tileMatrixStack resetLayers: aSet.
+	self changed
 ]
 
 {
@@ -772,13 +767,12 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:03'
 }
 GMTETileMap >> showHighlightingLayer [
 
 	self tileMatrixStackHighlighting visible: true.
 	self changed
-	"self rescaleMap."
 ]
 
 {
@@ -1002,36 +996,39 @@ GMTETileMap >> tileWidth: anObject [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:03'
 }
 GMTETileMap >> toForeground [
 	"Squeak Bar is 77.
 	(layerScreen - n) is the nth layer.
 	Most regular Physics Objects are Layer 2."
 
-	self morphicLayerNumber: 76
+	self morphicLayerNumber: 76.
+	self changed
 ]
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:51'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:03'
 }
 GMTETileMap >> toFullScreen [
 
 
 	self extent: Display extent.
 	self position: 0@0.
+	self changed
 ]
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:52'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:03'
 }
 GMTETileMap >> toFullScreenMode [
 
 	self toForeground.
 	self toFullScreen.
-	self lock
+	self lock.
+	self changed
 ]
 
 {
