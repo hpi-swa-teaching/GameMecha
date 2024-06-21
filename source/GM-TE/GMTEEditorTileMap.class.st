@@ -87,25 +87,26 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:00'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 
 	| hoveredTile hoveredTileVisual activeLayer |
 
 	self model singleLayerSelected
-		ifTrue: [activeLayer := self model selectedLayers anyOne.
+		ifTrue: [
+			activeLayer := self model selectedLayers anyOne.
+
+			hoveredTile := self tileFromPosition: anEvent position layer: activeLayer.
+			hoveredTileVisual := self HighlightingTileFromPosition: anEvent position.
 	
-		hoveredTile := self tileFromPosition: anEvent position layer: activeLayer.
-		hoveredTileVisual := self tileVisualFromPosition: anEvent position.
+			self tileSelectionSet clearAllHighlightings.
 	
-		self tileSelectionSet clearAllHighlightings.
+			hoveredTileVisual 
+				ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
 	
-		hoveredTileVisual 
-			ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
-	
-		"TODO why another ifNil check here?"
-		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
+			"TODO why another ifNil check here?"
+			self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
 	
 	"This solves the bug but not the root of the issue. TODO further investigation."
 	"self updateTiles."

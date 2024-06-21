@@ -67,6 +67,20 @@ GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding siz
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:00'
+}
+GMTETileMap >> HighlightingTileFromPosition: aPoint [
+
+	| idx |
+	
+	idx := self tileIdxFromPosition: aPoint.
+	idx ifNil: [^nil].
+	
+	^ self tileMatrixStackHighlighting layer: 1 at: idx y at: idx x.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:07'
 }
 GMTETileMap >> autoGenerateBackground [
@@ -350,7 +364,20 @@ GMTETileMap >> generateBackgroundTiles [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:00'
+}
+GMTETileMap >> generateHighlightingTiles [
+	
+	self tileMatrixStackHighlighting doTilesXYLidx: [ :x :y :l | 
+		"It is assumed that the visual stack consists of only one layer"
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackHighlighting tileType: GMTETileHighlighting].
+	
+
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:00'
 }
 GMTETileMap >> generateMatrixStacks [
 	
@@ -358,7 +385,7 @@ GMTETileMap >> generateMatrixStacks [
 	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 100).
 	self tileMatrixStackHighlighting: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 10). "TODO: Number ?"
 	"self generateBackgroundTiles."
-	self generateVisualTiles.
+	self generateHighlightingTiles.
 	self toggleBackgroundLayer
 ]
 
@@ -401,19 +428,6 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 	
 		
 	
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
-}
-GMTETileMap >> generateVisualTiles [
-	
-	self tileMatrixStackHighlighting doTilesXYLidx: [ :x :y :l | 
-		"It is assumed that the visual stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackHighlighting tileType: GMTETileHighlighting].
-	
-
 ]
 
 {
@@ -680,7 +694,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:00'
 }
 GMTETileMap >> rescaleMatrixStacks [
 
@@ -692,7 +706,7 @@ GMTETileMap >> rescaleMatrixStacks [
 	(self tileMatrixStackHighlighting) ifNotNil: [
 		self tileMatrixStackHighlighting rescaleToWidth: self mapTileWidth height: self mapTileHeight.
 		self tileMatrixStackHighlighting reset.
-		self generateVisualTiles]
+		self generateHighlightingTiles]
 ]
 
 {
@@ -966,20 +980,6 @@ GMTETileMap >> tileSizeWidth [
 GMTETileMap >> tileSizeWidth: anObject [
 
 	tileSizeWidth := anObject.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
-}
-GMTETileMap >> tileVisualFromPosition: aPoint [
-
-	| idx |
-	
-	idx := self tileIdxFromPosition: aPoint.
-	idx ifNil: [^nil].
-	
-	^ self tileMatrixStackHighlighting layer: 1 at: idx y at: idx x.
 ]
 
 {
