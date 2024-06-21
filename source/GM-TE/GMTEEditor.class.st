@@ -1546,11 +1546,11 @@ GMTEEditor >> toggleBackgroundTiles [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
+	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
 }
 GMTEEditor >> toggleGrid [
 
-	self tileMap toggleHighlightingLayer
+	self tileMap toggleVisualLayer
 ]
 
 {

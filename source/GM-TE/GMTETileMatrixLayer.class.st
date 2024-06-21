@@ -20,7 +20,7 @@ GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 ]
 
 {
-	#category : #comparing,
+	#category : #copying,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:31'
 }
 GMTETileMatrixLayer >> aboveLayer: aLayer [
@@ -95,7 +95,7 @@ GMTETileMatrixLayer >> free [
 ]
 
 {
-	#category : #initialization,
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:25'
 }
 GMTETileMatrixLayer >> initialize [
@@ -125,13 +125,13 @@ GMTETileMatrixLayer >> layerIdx: anObject [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:23'
 }
 GMTETileMatrixLayer >> setNil [
 
 	1 to: self rowCount do: [:row |
    		1 to: self columnCount do: [:col |
-        		self at: row at: col put: nil]]
+        		self at: row at: col put: nil]].
 ]
 
 {
