@@ -109,6 +109,15 @@ GMTETileMap >> backgroundTiles: anObject [
 ]
 
 {
+	#category : #'dev-api',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:43'
+}
+GMTETileMap >> blendLayers: aSet [
+
+	self tileMatrixStack blendLayers: aSet
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
 }
@@ -626,6 +635,15 @@ GMTETileMap >> mergeLayers: aSet [
 ]
 
 {
+	#category : #'dev-api',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:42'
+}
+GMTETileMap >> removeLayers: aSet [
+
+	self tileMatrixStack removeLayersAt: aSet
+]
+
+{
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 21:37'
 }
@@ -675,6 +693,24 @@ GMTETileMap >> rescaleMatrixStacks [
 		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
 		self tileMatrixStackVisual reset.
 		self generateVisualTiles]
+]
+
+{
+	#category : #'dev-api',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:42'
+}
+GMTETileMap >> resetAllLayers: aSet [
+
+	self tileMatrixStack reset
+]
+
+{
+	#category : #'dev-api',
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:41'
+}
+GMTETileMap >> resetLayers: aSet [
+
+	self tileMatrixStack resetLayers: aSet
 ]
 
 {
