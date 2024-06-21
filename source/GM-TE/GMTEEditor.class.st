@@ -268,6 +268,17 @@ GMTEEditor >> buildWith: builder [
 ]
 
 {
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/22/2024 00:44'
+}
+GMTEEditor >> collectLayerData [
+
+	self layerData = OrderedCollection new.
+	1 to: self layerCount do: [:i | self storeLayerN: i withVisibility: (self tileMap tileMatrixStack layerVisible: i)].
+	
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
 }
@@ -831,7 +842,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 6/22/2024 00:18'
+	#'squeak_changestamp' : 'TW 6/22/2024 00:26'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -846,7 +857,8 @@ GMTEEditor >> importFromMorph [
 		changed: #getPaddingAsString;
 		changed: #getTileRatioAsString;
 		changed: #getGridWidthAsString;
-		changed: #getGridHeightAsString
+		changed: #getGridHeightAsString;
+		collectLayerData
 ]
 
 {
@@ -1460,11 +1472,20 @@ GMTEEditor >> singleLayerSelected [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/20/2024 17:51'
+	#'squeak_changestamp' : 'TW 6/22/2024 00:39'
 }
 GMTEEditor >> storeLayerN: aNumber [
 
-	self layerData add: {'Layer ', aNumber . true}.
+	self storeLayerN: aNumber withVisibility: true
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'TW 6/22/2024 00:39'
+}
+GMTEEditor >> storeLayerN: aNumber withVisibility: aBoolean [
+
+	self layerData add: {'Layer ', aNumber . aBoolean}.
 	self changed: #getLayerList.
 ]
 
