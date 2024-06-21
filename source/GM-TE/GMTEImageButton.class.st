@@ -57,7 +57,7 @@ GMTEImageButton >> arguments: aCollection [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:31'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
 }
 GMTEImageButton >> createStateImagesFrom: anImage [
 	
@@ -71,7 +71,7 @@ GMTEImageButton >> createStateImagesFrom: anImage [
 	self stateSprites at: 'unpressed' put: (self dyeSprite: anImage with: unpressedColor).
 	self stateSprites at: 'hovered' put: (self dyeSprite: anImage with: hoveredColor).
 	self stateSprites at: 'pressed' put: (self dyeSprite: anImage with: pressedColor).
-	self stateSprites at: 'disabled' put: (self dyeSprite: anImage with: disabledColor).
+	self stateSprites at: 'disabled' put: (self dyeSprite: anImage with: disabledColor)
 ]
 
 {
@@ -94,17 +94,14 @@ GMTEImageButton >> doButtonAction [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/21/2024 19:36'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
 }
 GMTEImageButton >> dyeSprite: anImage with: aColor [
 
-	|img|
-	
-	img := anImage copy.
-	img
+	^anImage copy
 		replaceColor: Color white withColor: Color transparent;
-		replaceColor: Color black withColor: aColor.
-	^ img
+		replaceColor: Color black withColor: aColor;
+		yourself
 ]
 
 {
@@ -136,12 +133,12 @@ GMTEImageButton >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Alex M 6/21/2024 19:03'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
 }
 GMTEImageButton >> initialize [
 	
 	super initialize.
-	self stateSprites: Dictionary new.
+	self stateSprites: Dictionary new
 ]
 
 {
@@ -218,7 +215,7 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:30'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
 }
 GMTEImageButton >> setImageMode: aString [
 	
@@ -232,7 +229,7 @@ GMTEImageButton >> setImageMode: aString [
 					ifTrue: [self fullResolutionSprite: (self stateSprites at: 'hovered')]
 					ifFalse: [^nil]]].
 			
-	self extent: self extent.
+	self extent: self extent
 ]
 
 {

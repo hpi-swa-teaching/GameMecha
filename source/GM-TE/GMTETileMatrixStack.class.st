@@ -240,11 +240,11 @@ GMTETileMatrixStack >> matrixLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:15'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixStack >> matrixLayers: anObject [
 
-	matrixLayers := anObject.
+	matrixLayers := anObject
 ]
 
 {
@@ -258,11 +258,11 @@ GMTETileMatrixStack >> morphicLayerStartingOffset [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin 5/28/2024 13:16'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
-	morphicLayerStartingOffset := anObject.
+	morphicLayerStartingOffset := anObject
 ]
 
 {
@@ -297,7 +297,7 @@ GMTETileMatrixStack >> reduceLayers: anOrderedCollection withBinaryBlock: aBlock
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Alex M 6/17/2024 23:32'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixStack >> removeLayerAt: idx [ 
 
@@ -305,7 +305,7 @@ GMTETileMatrixStack >> removeLayerAt: idx [
 	self assert: matrixLayers size > 1 description: 'Base layer cannot be removed!'.
 	
 	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: idx)) value.
-	removedLayer free.
+	removedLayer free
 ]
 
 {
@@ -321,7 +321,7 @@ GMTETileMatrixStack >> removeLayersAt: aSet [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 18:48'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 	"This will rescale layers be recreating them"
@@ -338,7 +338,7 @@ GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 		newLayers addLast: newLayer.
 		layer free].
 		
-	self matrixLayers: newLayers.
+	self matrixLayers: newLayers
 ]
 
 {
@@ -406,7 +406,7 @@ GMTETileMatrixStack >> sortLayerSet: aSet [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:33'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 
@@ -419,7 +419,7 @@ GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 	layer1 updateLayerIdx: layer2 layerIdx.
 	layer2 updateLayerIdx: tmpMorhpicLayer.
 
-	self matrixLayers swap: anIdx1 with: anIdx2.
+	self matrixLayers swap: anIdx1 with: anIdx2
 	
 ]
 
@@ -479,9 +479,9 @@ GMTETileMatrixStack >> width [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:05'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
 }
 GMTETileMatrixStack >> width: anObject [
 
-	width := anObject.
+	width := anObject
 ]
