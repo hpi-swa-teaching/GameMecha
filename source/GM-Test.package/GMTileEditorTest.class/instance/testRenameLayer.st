@@ -1,5 +1,5 @@
 as yet unclassified
 testRenameLayer
 
-	self editor layerList at: self editor selectedLayer put: 'testName'.
-	self assert: ((self editor layerList at: 1) literalEqual: 'testName')
+	self editor updateLayerNameOf: self editor getSelectedLayer to: 'testName'.
+	self assert: ((self editor getLayerList at: 1) literalEqual: 'testName (v)')
