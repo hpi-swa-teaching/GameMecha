@@ -1,5 +1,5 @@
 Class {
-	#name : #GMTEEditableTileMap,
+	#name : #GMTEEditorTileMap,
 	#superclass : #GMTETileMap,
 	#instVars : [
 		'tileSelectionSet',
@@ -12,7 +12,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JS 6/4/2024 16:56'
 }
-GMTEEditableTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio model: aModel [
+GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio model: aModel [
 	
 	^ self new
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
@@ -24,7 +24,7 @@ GMTEEditableTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPad
 	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:47'
 }
-GMTEEditableTileMap >> blendLayers: aSet [
+GMTEEditorTileMap >> blendLayers: aSet [
 
 	self tileMatrixStack blendLayers: aSet
 ]
@@ -33,7 +33,7 @@ GMTEEditableTileMap >> blendLayers: aSet [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
 }
-GMTEEditableTileMap >> handlesMouseDown: anEvent [
+GMTEEditorTileMap >> handlesMouseDown: anEvent [
 	"TODO: make this useful."
 	^ true.
 ]
@@ -42,7 +42,7 @@ GMTEEditableTileMap >> handlesMouseDown: anEvent [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'Alex M 5/22/2024 19:47'
 }
-GMTEEditableTileMap >> handlesMouseMove: anEvent [
+GMTEEditorTileMap >> handlesMouseMove: anEvent [
 	"TODO: make this useful."
 	^ true.
 ]
@@ -51,7 +51,7 @@ GMTEEditableTileMap >> handlesMouseMove: anEvent [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
 }
-GMTEEditableTileMap >> initialize [
+GMTEEditorTileMap >> initialize [
 
 	super initialize.
 	self tileSelectionSet: GMTETileSelectionSet new.
@@ -61,7 +61,7 @@ GMTEEditableTileMap >> initialize [
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 16:45'
 }
-GMTEEditableTileMap >> model [
+GMTEEditorTileMap >> model [
 
 	^model
 ]
@@ -70,7 +70,7 @@ GMTEEditableTileMap >> model [
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 16:40'
 }
-GMTEEditableTileMap >> model: anObject [
+GMTEEditorTileMap >> model: anObject [
 
 	model := anObject.
 ]
@@ -79,7 +79,7 @@ GMTEEditableTileMap >> model: anObject [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
 }
-GMTEEditableTileMap >> mouseDown: anEvent [
+GMTEEditorTileMap >> mouseDown: anEvent [
 	"TODO: make this useful."
 	
 	| clickedTile activeLayer|
@@ -98,7 +98,7 @@ GMTEEditableTileMap >> mouseDown: anEvent [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
 }
-GMTEEditableTileMap >> mouseMove: anEvent [
+GMTEEditorTileMap >> mouseMove: anEvent [
 
 	| hoveredTile hoveredTileVisual activeLayer |
 
@@ -129,7 +129,7 @@ GMTEEditableTileMap >> mouseMove: anEvent [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:57'
 }
-GMTEEditableTileMap >> removeLayers: aSet [
+GMTEEditorTileMap >> removeLayers: aSet [
 
 	self tileMatrixStack removeLayersAt: aSet
 ]
@@ -138,7 +138,7 @@ GMTEEditableTileMap >> removeLayers: aSet [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JS 6/15/2024 12:41'
 }
-GMTEEditableTileMap >> rescaleMap [
+GMTEEditorTileMap >> rescaleMap [
 
 	self tileSelectionSet clearAllHighlightings.
 	super rescaleMap
@@ -148,7 +148,7 @@ GMTEEditableTileMap >> rescaleMap [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:45'
 }
-GMTEEditableTileMap >> resetAllLayers: aSet [
+GMTEEditorTileMap >> resetAllLayers: aSet [
 
 	self tileMatrixStack reset
 ]
@@ -157,7 +157,7 @@ GMTEEditableTileMap >> resetAllLayers: aSet [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/20/2024 21:42'
 }
-GMTEEditableTileMap >> resetLayers: aSet [
+GMTEEditorTileMap >> resetLayers: aSet [
 
 	self tileMatrixStack resetLayers: aSet
 ]
@@ -166,7 +166,7 @@ GMTEEditableTileMap >> resetLayers: aSet [
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 15:49'
 }
-GMTEEditableTileMap >> tileSelectionSet [
+GMTEEditorTileMap >> tileSelectionSet [
 
 	^ tileSelectionSet
 ]
@@ -175,7 +175,7 @@ GMTEEditableTileMap >> tileSelectionSet [
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 5/22/2024 15:49'
 }
-GMTEEditableTileMap >> tileSelectionSet: anObject [
+GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 	tileSelectionSet := anObject.
 ]
@@ -184,7 +184,7 @@ GMTEEditableTileMap >> tileSelectionSet: anObject [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:40'
 }
-GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
+GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	| tileIdx hoveredTile |
 	
 	hoveredTile := aTile.
@@ -211,7 +211,7 @@ GMTEEditableTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:44'
 }
-GMTEEditableTileMap >> updateTileSprite: aTile [
+GMTEEditorTileMap >> updateTileSprite: aTile [
 
 	self model selectedTile
 		ifNotNil:

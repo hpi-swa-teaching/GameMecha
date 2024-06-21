@@ -831,7 +831,7 @@ GMTEEditor >> import [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'JS 6/19/2024 10:52'
+	#'squeak_changestamp' : 'TW 6/22/2024 00:18'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -841,8 +841,12 @@ GMTEEditor >> importFromMorph [
 
     	stream ifNil: [^self].
     	tileMap := GMTEEditor privateGetEditableTileMapFromFilePath: stream.
-    	self openTileMapInEditor: tileMap
-	
+    	self openTileMapInEditor: tileMap.
+	self
+		changed: #getPaddingAsString;
+		changed: #getTileRatioAsString;
+		changed: #getGridWidthAsString;
+		changed: #getGridHeightAsString
 ]
 
 {
