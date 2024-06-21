@@ -34,7 +34,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:57'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -46,7 +46,7 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	
 	newMap := (GMTETileMap newFrom: (aMap veryDeepCopy)) 
 		updateMap;
-		hideVisualLayer;
+		hideHighlightingLayer;
 		yourself.
 		
 	
@@ -444,9 +444,9 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
 }
-GMTETileMap >> hideVisualLayer [
+GMTETileMap >> hideHighlightingLayer [
 
 	self tileMatrixStackHighlighting visible: false.
 	self changed
@@ -758,9 +758,9 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
 }
-GMTETileMap >> showVisualLayer [
+GMTETileMap >> showHighlightingLayer [
 
 	self tileMatrixStackHighlighting visible: true.
 	self changed
@@ -1049,9 +1049,9 @@ GMTETileMap >> toggleBackgroundLayer [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:49'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 21:52'
 }
-GMTETileMap >> toggleVisualLayer [
+GMTETileMap >> toggleHighlightingLayer [
 
 	self tileMatrixStackHighlighting toggleVisibility.
 	self changed
