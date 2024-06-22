@@ -29,11 +29,11 @@ GMTETileSelectionSet >> clearAllHighlightings [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:31'
 }
 GMTETileSelectionSet >> highlightImage [
 
-	^highlightImage
+	^ highlightImage
 ]
 
 {

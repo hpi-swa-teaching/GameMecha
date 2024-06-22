@@ -6,9 +6,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/14/2024 01:19'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:57'
 }
 GMTETileTray >> initialize [
+
 	super initialize.
 	self
 		layoutInset: (10@10);

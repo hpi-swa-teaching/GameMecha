@@ -29,10 +29,11 @@ PluggableImageButtonSpec >> arguments: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 20:26'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 16:07'
 }
 PluggableImageButtonSpec >> buildWith: builder [
-	^builder buildPluggableImageButton: self
+
+	^ builder buildPluggableImageButton: self
 ]
 
 {

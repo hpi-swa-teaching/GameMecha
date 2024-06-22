@@ -9,13 +9,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:30'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:10'
 }
 GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
 
-	anImageMorph ifNil: [^self].
+	anImageMorph ifNil: [^ self].
 	
-	^(ImageMorph new) 
+	^ (ImageMorph new) 
 		image: ((FormCanvas on: self image)
 			image: (anImageMorph image)
 			at: 0@0
@@ -50,11 +50,11 @@ GMTEImageMorph >> free [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:30'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:10'
 }
 GMTEImageMorph >> fullResolutionSprite [
 
-	^fullResolutionSprite
+	^ fullResolutionSprite
 ]
 
 {

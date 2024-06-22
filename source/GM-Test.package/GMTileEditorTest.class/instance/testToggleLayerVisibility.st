@@ -1,5 +1,6 @@
 as yet unclassified
 testToggleLayerVisibility
+	"tests the visibility toggle for one selected layer"
 	
 	self editor toggleSelectedLayerVisibility.
 	self assert: (self editor tileMap tileMatrixStack layer: 1) visible = false.

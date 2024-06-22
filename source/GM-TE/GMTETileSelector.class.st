@@ -9,9 +9,10 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/24/2024 00:34'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:57'
 }
 GMTETileSelector >> extent: anExtent [
+
 	super extent: anExtent.
 	self
 		borderColor: Color orange;
@@ -20,27 +21,33 @@ GMTETileSelector >> extent: anExtent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/19/2024 23:15'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileSelector >> handlesMouseDown: evt [
-	"TODO: make this useful."
+	
 	evt redButtonPressed
-		ifTrue: [self model selectTile: self. ^ true]
-		ifFalse: [self model backgroundTile: self. ^ false]
+		ifTrue: [
+			self model selectTile: self.
+			^ true]
+		ifFalse: [
+			self model backgroundTile: self.
+			^ false]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 11:58'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:51'
 }
 GMTETileSelector >> model [
+
 	^ model
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 11:58'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:58'
 }
 GMTETileSelector >> model: anObject [
+
 	model := anObject
 ]

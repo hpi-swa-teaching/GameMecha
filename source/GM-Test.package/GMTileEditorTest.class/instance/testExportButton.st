@@ -1,5 +1,6 @@
 layerTests
 testExportButton
+	"tests the export function"
 	
 	self fileUUID: UUID new asString.
 	[self editor exportAsMorph] valueSupplyingAnswer: self fileUUID.

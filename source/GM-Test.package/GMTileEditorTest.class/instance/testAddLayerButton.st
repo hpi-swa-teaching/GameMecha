@@ -1,5 +1,6 @@
 layerTests
 testAddLayerButton
+	"tests the addLayer button function"
 	
 	self assert: editor getLayerList size = 1.
 	self assert: editor selectedLayer = 1.

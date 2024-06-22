@@ -1,7 +1,8 @@
 as yet unclassified
 clickButton: aButton
-	|evt|
+	"helper method that simulates the button press of aButton"
 	
+	|evt|
 	evt := GMClickEvent atPosition: aButton position.
 	
 	aButton

@@ -10,40 +10,40 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:11'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:27'
 }
 GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 
-	^(self rows: aHeight columns: aWidth)  
+	^ (self rows: aHeight columns: aWidth)  
 		layerIdx: anIdx; 
 		yourself
 ]
 
 {
 	#category : #copying,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:31'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
 }
 GMTETileMatrixLayer >> aboveLayer: aLayer [
 	
 	"As a layerIdx corresponds to the morphicLayerNumber smaller is 'better'"
-	^(self layerIdx < aLayer layerIdx)
+	^ (self layerIdx < aLayer layerIdx)
 ]
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
 }
 GMTETileMatrixLayer >> addTile: aTile at: x at: y [
 
 	aTile ifNotNil: [
 		aTile morphicLayerNumber: self layerIdx.
 		aTile visible: self visible].
-	^self at: x at: y put: aTile
+	^ self at: x at: y put: aTile
 ]
 
 {
 	#category : #copying,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/14/2024 19:01'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
 }
 GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 
@@ -56,34 +56,34 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
     		1 to: (aWidth min: self columnCount) do: [:col |
        		 newLayer at: row at: col put: (self at: row at: col) veryDeepCopy]].
 
-	^newLayer
+	^ newLayer
 	 
 ]
 
 {
 	#category : #comparing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:30'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
 }
 GMTETileMatrixLayer >> belowLayer: aLayer [
 
-	^(self aboveLayer: aLayer) not
+	^ (self aboveLayer: aLayer) not
 ]
 
 {
 	#category : #enumerating,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
 
 	"Instance variable must be used here"
-	(contents) ifNil: [^nil].
+	(contents) ifNil: [^ nil].
 	
 	self contents do: [:tile | tile ifNotNil: [aBlock value: tile]]
 ]
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
 }
 GMTETileMatrixLayer >> free [
 
@@ -105,11 +105,11 @@ GMTETileMatrixLayer >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:24'
 }
 GMTETileMatrixLayer >> layerIdx [
 
-	^layerIdx
+	^ layerIdx
 ]
 
 {
@@ -123,7 +123,7 @@ GMTETileMatrixLayer >> layerIdx: anObject [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
 }
 GMTETileMatrixLayer >> setNil [
 
@@ -133,7 +133,7 @@ GMTETileMatrixLayer >> setNil [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
 }
 GMTETileMatrixLayer >> updateLayerIdx: anIdx [
 
@@ -143,16 +143,16 @@ GMTETileMatrixLayer >> updateLayerIdx: anIdx [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:24'
 }
 GMTETileMatrixLayer >> visible [
 
-	^visible
+	^ visible
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
 }
 GMTETileMatrixLayer >> visible: aBool [
 

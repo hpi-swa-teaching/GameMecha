@@ -6,21 +6,21 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:21'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:11'
 }
 GMTETile class >> placeHolderColor [
 		
-	^Color transparent
+	^ Color transparent
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:31'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:11'
 }
 GMTETile class >> position: aPoint extent: anExtent [
 	"comment stating purpose of message"
 
-	^(self new)
+	^ (self new)
 		setPlaceholderWithExtent: anExtent color: self placeHolderColor;
 		position: aPoint
 ]
