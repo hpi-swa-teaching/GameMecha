@@ -20,7 +20,7 @@ GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 ]
 
 {
-	#category : #comparing,
+	#category : #copying,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:31'
 }
 GMTETileMatrixLayer >> aboveLayer: aLayer [
@@ -71,31 +71,29 @@ GMTETileMatrixLayer >> belowLayer: aLayer [
 
 {
 	#category : #enumerating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:29'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
 
 	"Instance variable must be used here"
 	(contents) ifNil: [^nil].
 	
-	self contents do: [ :tile | 
-		tile ifNotNil: [aBlock value: tile]]
+	self contents do: [:tile | tile ifNotNil: [aBlock value: tile]]
 ]
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:23'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
 }
 GMTETileMatrixLayer >> free [
 
-	self doTiles: [ :tile | 
-		tile free].
+	self doTiles: [:tile | tile free].
 	
 	self setNil
 ]
 
 {
-	#category : #initialization,
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:25'
 }
 GMTETileMatrixLayer >> initialize [
@@ -116,33 +114,31 @@ GMTETileMatrixLayer >> layerIdx [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:09'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
 GMTETileMatrixLayer >> layerIdx: anObject [
 
-	layerIdx := anObject.
+	layerIdx := anObject
 ]
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:05'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
 }
 GMTETileMatrixLayer >> setNil [
 
 	1 to: self rowCount do: [:row |
-   		1 to: self columnCount do: [:col |
-        		self at: row at: col put: nil]]
+   		1 to: self columnCount do: [:col | self at: row at: col put: nil]]
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:18'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixLayer >> updateLayerIdx: anIdx [
 
 	self layerIdx: anIdx.
-	self doTiles: [ :tile |
-		tile morphicLayerNumber: self layerIdx]
+	self doTiles: [:tile | tile morphicLayerNumber: self layerIdx]
 ]
 
 {
@@ -156,12 +152,11 @@ GMTETileMatrixLayer >> visible [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:18'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:26'
 }
 GMTETileMatrixLayer >> visible: aBool [
 
 	visible := aBool.	
 		
-	self doTiles: [ :tile | 
-			tile visible: aBool]
+	self doTiles: [:tile | tile visible: aBool]
 ]

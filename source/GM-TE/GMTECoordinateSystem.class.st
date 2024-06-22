@@ -73,11 +73,11 @@ GMTECoordinateSystem >> definitionArea [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:39'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:15'
 }
 GMTECoordinateSystem >> definitionArea: anObject [
 
-	definitionArea := anObject.
+	definitionArea := anObject
 ]
 
 {
@@ -91,11 +91,11 @@ GMTECoordinateSystem >> height [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:39'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:15'
 }
 GMTECoordinateSystem >> height: anObject [
 
-	height := anObject.
+	height := anObject
 ]
 
 {
@@ -109,11 +109,11 @@ GMTECoordinateSystem >> origin [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:39'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:15'
 }
 GMTECoordinateSystem >> origin: anObject [
 
-	origin := anObject.
+	origin := anObject
 ]
 
 {
@@ -127,11 +127,11 @@ GMTECoordinateSystem >> valueArea [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:39'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:15'
 }
 GMTECoordinateSystem >> valueArea: anObject [
 
-	valueArea := anObject.
+	valueArea := anObject
 ]
 
 {
@@ -158,9 +158,9 @@ GMTECoordinateSystem >> width [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:39'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:15'
 }
 GMTECoordinateSystem >> width: anObject [
 
-	width := anObject.
+	width := anObject
 ]

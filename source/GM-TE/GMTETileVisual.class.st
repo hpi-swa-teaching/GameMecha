@@ -1,5 +1,5 @@
 Class {
-	#name : #GMTETileHighlighting,
+	#name : #GMTETileVisual,
 	#superclass : #GMTETile,
 	#instVars : [
 		'decorationMorph'
@@ -9,33 +9,31 @@ Class {
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:36'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
-GMTETileHighlighting >> applyBorderHighlighting [
+GMTETileVisual >> applyBorderHighlighting [
 	
 	self 
 		borderColor: Color white;
-		borderWidth: 1.
+		borderWidth: 1
 ]
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
+GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	
 	| newDecoMorph |
 	
 	aForm 
 		ifNotNil: [
-			newDecoMorph := (ImageMorph new)
-				bounds: self bounds;
-				yourself.
+			newDecoMorph := ImageMorph new
+				bounds: self bounds.
 			newDecoMorph image: (aForm scaledToSize: self extent)]
 		ifNil: [
-			newDecoMorph := (Morph new)
-				bounds: self bounds;
-				yourself.
+			newDecoMorph := Morph new
+			bounds: self bounds.
 			newDecoMorph color: (Color black alpha: 0.2)].
 	self addMorph: newDecoMorph.
 	self decorationMorph: newDecoMorph
@@ -45,25 +43,25 @@ GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
 }
-GMTETileHighlighting >> decorationMorph [
+GMTETileVisual >> decorationMorph [
 
 	^ decorationMorph
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
-GMTETileHighlighting >> decorationMorph: anObject [
+GMTETileVisual >> decorationMorph: anObject [
 
-	decorationMorph := anObject.
+	decorationMorph := anObject
 ]
 
 {
 	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:14'
 }
-GMTETileHighlighting >> initialize [
+GMTETileVisual >> initialize [
 
 	super initialize.
 	self applyBorderHighlighting
@@ -71,20 +69,20 @@ GMTETileHighlighting >> initialize [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
-GMTETileHighlighting >> removeBorderHighlighting [
+GMTETileVisual >> removeBorderHighlighting [
 	
 	self 
 		borderColor: Color transparent;
-		borderWidth: 0.
+		borderWidth: 0
 ]
 
 {
 	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
 }
-GMTETileHighlighting >> removeDecoMorphHighlighting [
+GMTETileVisual >> removeDecoMorphHighlighting [
 	
 	self removeMorph: self decorationMorph
 ]

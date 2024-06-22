@@ -24,12 +24,12 @@ GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
 }
 GMTETileSelectionSet >> clearAllHighlightings [
 	
 	self do: [ :tile | self removeHighlightingVisuals: tile].
-	self removeAll.
+	self removeAll
 ]
 
 {
@@ -43,31 +43,31 @@ GMTETileSelectionSet >> highlightImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:59'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
 }
 GMTETileSelectionSet >> highlightImage: anObject [
 
-	highlightImage := anObject.
+	highlightImage := anObject
 ]
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:05'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
 }
 GMTETileSelectionSet >> highlightTile: aTile [
 	"comment stating purpose of message"
 
 	self add: aTile.
-	self applyHighlightingVisuals: aTile.
+	self applyHighlightingVisuals: aTile
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
 }
 GMTETileSelectionSet >> initialize: n [
 	
-	super initialize: n.
+	super initialize: n
 	
 	
 ]
@@ -90,11 +90,11 @@ GMTETileSelectionSet >> removeHighlightingVisuals: aTile [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 21:06'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
 }
 GMTETileSelectionSet >> unhighlightTile: aTile [
 	"comment stating purpose of message"
 
 	self remove: aTile.
-	self removeHighlightingVisuals: aTile.
+	self removeHighlightingVisuals: aTile
 ]
