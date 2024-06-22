@@ -19,12 +19,12 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:10'
 }
 GMTEImageButton >> actionSelector [
 	"The method called on the target"
 
-	^ actionSelector
+	^actionSelector
 ]
 
 {
@@ -38,12 +38,12 @@ GMTEImageButton >> actionSelector: aSymbolOrString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:10'
 }
 GMTEImageButton >> arguments [
 	"Arguments for the method that is called on the target"
 
-	^ arguments
+	^arguments
 ]
 
 {
@@ -76,7 +76,7 @@ GMTEImageButton >> createStateImagesFrom: anImage [
 
 {
 	#category : #button,
-	#'squeak_changestamp' : 'TW 6/21/2024 00:17'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:08'
 }
 GMTEImageButton >> doButtonAction [
 	"Perform the action of this button. The default behavior is to send the button's actionSelector to its target object with its arguments."
@@ -88,8 +88,7 @@ GMTEImageButton >> doButtonAction [
 	"If this button is not linked with any others, go back to the unpressedImage. If it is, set all linked buttons to their unpressed state, and keep this button pressed, to show the selection."
 	self linkedButtons
 		ifNil: [self setImageMode: #unpressed]
-		ifNotNil: [self linkedButtons do: [:aButton | aButton ~~ self 
-			ifTrue: [aButton setImageMode: #unpressed]]]
+		ifNotNil: [self linkedButtons do: [:aButton | (aButton ~~ self) ifTrue: [aButton setImageMode: #unpressed]]]
 ]
 
 {
@@ -106,29 +105,29 @@ GMTEImageButton >> dyeSprite: anImage with: aColor [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 2/6/2024 16:46'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> handlesMouseDown: anEvent [
 
-	^ true
+	^true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:37'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> handlesMouseMove: anEvent [
 
-	^ true
+	^true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:38'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> handlesMouseOver: anEvent [
 
-	^ true
+	^true
 ]
 
 {
@@ -143,12 +142,12 @@ GMTEImageButton >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> linkedButtons [
 	"All the buttons this button is linked with. Only one of a group of linked buttons is active at once"
 
-	^ linkedButtons
+	^linkedButtons
 ]
 
 {
@@ -162,13 +161,13 @@ GMTEImageButton >> linkedButtons: aCollection [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> mouseDown: anEvent [
 
 	super mouseDown: anEvent.
-	anEvent yellowButtonPressed 
-		ifTrue: [^ self].
+	anEvent yellowButtonPressed ifTrue: [^self].
+	
 	self updateVisualState: anEvent
 ]
 
@@ -234,28 +233,30 @@ GMTEImageButton >> setImageMode: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/21/2024 18:31'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> stateSprites [
-	^ stateSprites
+
+	^stateSprites
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/21/2024 18:31'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
 }
 GMTEImageButton >> stateSprites: anObject [
+
 	stateSprites := anObject
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 2/7/2024 15:20'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 15:06'
 }
 GMTEImageButton >> target [
 	"Object the actionSelector method is called on"
 
-	^ target
+	^target
 ]
 
 {
