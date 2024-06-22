@@ -9,14 +9,9 @@ Class {
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
 }
 GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
-	"comment stating purpose of message"
-
-	"aTile morphicLayerNumber: 99."
-	"aTile borderWidth: 2."
-	"aTile borderColor: Color red."
 	
 	aTile applyDecoMorphHighlighting: self highlightImage
 	
@@ -34,11 +29,11 @@ GMTETileSelectionSet >> clearAllHighlightings [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:59'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
 }
 GMTETileSelectionSet >> highlightImage [
 
-	^ highlightImage
+	^highlightImage
 ]
 
 {
@@ -52,13 +47,14 @@ GMTETileSelectionSet >> highlightImage: anObject [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
 }
 GMTETileSelectionSet >> highlightTile: aTile [
 	"comment stating purpose of message"
 
-	self add: aTile.
-	self applyHighlightingVisuals: aTile
+	self
+		add: aTile;
+		applyHighlightingVisuals: aTile
 ]
 
 {
@@ -74,27 +70,20 @@ GMTETileSelectionSet >> initialize: n [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:47'
 }
 GMTETileSelectionSet >> removeHighlightingVisuals: aTile [
-	"comment stating purpose of message"
-	
-
-	"TODO: Use constants here"
-	"aTile morphicLayerNumber: 100."
-	"aTile borderWidth: 2."
-	"aTile borderColor: Color white."
 	
 	aTile removeDecoMorphHighlighting
 ]
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:47'
 }
 GMTETileSelectionSet >> unhighlightTile: aTile [
-	"comment stating purpose of message"
 
-	self remove: aTile.
-	self removeHighlightingVisuals: aTile
+	self
+		remove: aTile;
+		removeHighlightingVisuals: aTile
 ]

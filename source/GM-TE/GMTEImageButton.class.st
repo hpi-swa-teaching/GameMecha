@@ -269,11 +269,11 @@ GMTEImageButton >> target: anObject [
 
 {
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:34'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 01:44'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
-	(self containsPoint: anEvent cursorPoint)
+	(self containsPoint: Sensor cursorPoint)
 		ifTrue: [ anEvent redButtonPressed
 			ifTrue: [self setImageMode: #pressed]
 			ifFalse:[self setImageMode: #hovered]]

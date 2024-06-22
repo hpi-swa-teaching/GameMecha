@@ -34,7 +34,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:57'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:38'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -44,23 +44,22 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	
 	aMap tileMatrixStackBackground reset. "This fixed the temporary issue of orphaned morphs after copy"
 	
-	newMap := (GMTETileMap newFrom: (aMap veryDeepCopy)) 
+	newMap := (GMTETileMap newFrom: (aMap veryDeepCopy))
 		updateMap;
 		hideVisualLayer;
 		yourself.
 		
-	
 	 aMap generateBackgroundTiles. "Part of the above fix"
 	^newMap 
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 6/4/2024 16:56'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:38'
 }
 GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
 	
-	^ self new
+	^(self new)
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
 		tileSizeRatio: aRatio
 ]

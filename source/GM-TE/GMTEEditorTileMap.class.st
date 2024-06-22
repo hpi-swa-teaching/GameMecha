@@ -10,11 +10,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 6/4/2024 16:56'
+	#'squeak_changestamp' : 'TW 6/22/2024 14:59'
 }
 GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio model: aModel [
 	
-	^ self new
+	^self new
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
 		tileSizeRatio: aRatio;
 		model: aModel.
@@ -31,20 +31,20 @@ GMTEEditorTileMap >> blendLayers: aSet [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 03:11'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:39'
 }
 GMTEEditorTileMap >> handlesMouseDown: anEvent [
 
-	^ true
+	^true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 03:11'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:39'
 }
 GMTEEditorTileMap >> handlesMouseMove: anEvent [
 
-	^ true
+	^true
 ]
 
 {
@@ -77,11 +77,11 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:23'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:39'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
 
-	| clickedTile activeLayer|
+	| clickedTile activeLayer |
 	
 	self model singleLayerSelected 
 		ifTrue: [
@@ -89,12 +89,12 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 			clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
 			self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent].
 	
-	^ true
+	^true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:40'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 
@@ -108,19 +108,12 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	
 		self tileSelectionSet clearAllHighlightings.
 	
-		hoveredTileVisual 
-			ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
+		hoveredTileVisual ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
 	
 		"TODO why another ifNil check here?"
 		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
 	
 	"This solves the bug but not the root of the issue. TODO further investigation."
-	"self updateTiles."
-	"hoveredTileVisual
-		extent: self tileSizeWidth@self tileSizeHeight;
-		borderColor: Color white;
-		color: Color veryLightGray;
-		borderWidth: 2"
 ]
 
 {
@@ -162,11 +155,11 @@ GMTEEditorTileMap >> resetLayers: aSet [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:49'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:40'
 }
 GMTEEditorTileMap >> tileSelectionSet [
 
-	^ tileSelectionSet
+	^tileSelectionSet
 ]
 
 {
@@ -180,9 +173,10 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/22/2024 14:47'
+	#'squeak_changestamp' : 'TW 6/22/2024 14:57'
 }
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
+	
 	| tileIdx hoveredTile |
 	
 	hoveredTile := aTile.
@@ -210,11 +204,9 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:44'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:41'
 }
 GMTEEditorTileMap >> updateTileSprite: aTile [
 
-	self model selectedTile
-		ifNotNil:
-			[aTile applyTileSprite: (self model selectedTile)]
+	self model selectedTile ifNotNil: [aTile applyTileSprite: self model selectedTile]
 ]

@@ -15,23 +15,23 @@ GMTETile class >> placeHolderColor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 23:32'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:31'
 }
 GMTETile class >> position: aPoint extent: anExtent [
 	"comment stating purpose of message"
 
-	^ self new
+	^(self new)
 		setPlaceholderWithExtent: anExtent color: self placeHolderColor;
 		position: aPoint
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:43'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:34'
 }
 GMTETile >> applyTileSprite: aTile [
 
-	self updateSprite: (aTile fullResolutionSprite)
+	self updateSprite: aTile fullResolutionSprite
 ]
 
 {

@@ -405,13 +405,13 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:14'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:20'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 		^aBuilder pluggableScrollPaneSpec new
-			frame: (LayoutFrame fractions: (1 @ 0 corner: 1 @ 0.25)
-			offsets: (-175@ 30 corner: 0@30));
+			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
+			offsets: (0@ 30 corner: 0@30));
 			padding: (Rectangle left: 3 right: 0 top: 0 bottom: 0);
 			hScrollBarPolicy: #never;
 			layout: #vertical;
@@ -432,7 +432,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/21/2024 01:18'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 02:12'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
@@ -440,8 +440,8 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 		name: 'layer viewer';
 		model: self;
 		frame: (LayoutFrame
-			fractions: (1@0.25 corner: 1@1)
-			offsets: (-175@30 corner: 0@0));
+			fractions: (0.8@0.25 corner: 1@1)
+			offsets: (0@30 corner: 0@0));
 		children: {
 			aBuilder pluggableButtonSpec new
 			name: 'addLayer';
@@ -451,7 +451,8 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0) offsets: (0 @ 0 corner: 0 @ 30)).
 			
 			aBuilder pluggablePanelSpec new
-			frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
+			frame: (LayoutFrame fractions: (1 @ 0 corner: 1 @ 1) offsets: (-30 @ 30 corner: 0 @ 0));
+			
 			children: {				
 				aBuilder pluggableImageButtonSpec new
 					model:self;
@@ -509,7 +510,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			getSelectionList: #layerAt:;
 			setSelectionList: #layerAt:put:;
 			autoDeselect: false;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.8 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: -30 @ 0))};
 		verticalResizing: #shrinkWrap;
 		
 		yourself
@@ -517,15 +518,15 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/14/2024 00:48'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"TODO: Maybe rename function to something more appropriate?"
 	^aBuilder pluggablePanelSpec new
 		name: 'main panel';
 		model:self;
-		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 1 @ 0.8)
-		offsets: (0@ 30 corner: -175@0));
+		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
+		offsets: (0@ 30 corner: 0@0));
 		"layout: #vertical;"
 		children: {
 		
@@ -581,12 +582,12 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/14/2024 00:49'
+	#'squeak_changestamp' : 'TW 6/9/2024 18:12'
 }
 GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 	^aBuilder pluggableScrollPaneSpec new
 		name: 'tray';
-		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  1 @ 1) offsets: (0 @ 0 corner: -175 @ 0));
+		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
 		minimumHeight:75;
 		yourself
 ]
