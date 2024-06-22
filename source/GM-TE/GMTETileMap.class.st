@@ -76,14 +76,11 @@ GMTETileMap >> autoGenerateBackground [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:08'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> autoGenerateBackground: aBool [
 
-	autoGenerateBackground := aBool.
-	
-	aBool
-		ifTrue: []
+	autoGenerateBackground := aBool
 ]
 
 {
@@ -97,14 +94,22 @@ GMTETileMap >> backgroundTiles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:21'
 }
 GMTETileMap >> backgroundTiles: anObject [
 
-	backgroundTiles := anObject.
-	
-	"TODO: keep this here?"
+	self basicBackgroundTiles: anObject.
 	self updateMap
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:21'
+}
+GMTETileMap >> basicBackgroundTiles: anObject [
+
+	backgroundTiles := anObject
 	
 ]
 
@@ -119,11 +124,11 @@ GMTETileMap >> borderSizeTotalHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:18'
 }
 GMTETileMap >> borderSizeTotalHeight: anObject [
 
-	borderSizeTotalHeight := anObject.
+	borderSizeTotalHeight := anObject
 ]
 
 {
@@ -137,11 +142,11 @@ GMTETileMap >> borderSizeTotalWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:18'
 }
 GMTETileMap >> borderSizeTotalWidth: anObject [
 
-	borderSizeTotalWidth := anObject.
+	borderSizeTotalWidth := anObject
 ]
 
 {
@@ -155,11 +160,11 @@ GMTETileMap >> borderTileHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:18'
 }
 GMTETileMap >> borderTileHeight: anObject [
 
-	borderTileHeight := anObject.
+	borderTileHeight := anObject
 ]
 
 {
@@ -173,11 +178,11 @@ GMTETileMap >> borderTileWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> borderTileWidth: anObject [
 
-	borderTileWidth := anObject.
+	borderTileWidth := anObject
 ]
 
 {
@@ -231,7 +236,7 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:26'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> extent: aPoint [
 
@@ -246,7 +251,7 @@ GMTETileMap >> extent: aPoint [
 	super extent: newExtent.
 	
 	(oldExtent = newExtent) ifTrue: [^nil].
-	self tileMatrixStack ifNotNil: [self rescaleMap].
+	self tileMatrixStack ifNotNil: [self rescaleMap]
 	
 	
 ]
@@ -274,11 +279,11 @@ GMTETileMap >> forceMapSizeRatio [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:22'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> forceMapSizeRatio: anObject [
 
-	forceMapSizeRatio := anObject.
+	forceMapSizeRatio := anObject
 ]
 
 {
@@ -292,11 +297,11 @@ GMTETileMap >> fullGridSizeHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> fullGridSizeHeight: anObject [
 
-	fullGridSizeHeight := anObject.
+	fullGridSizeHeight := anObject
 ]
 
 {
@@ -310,11 +315,11 @@ GMTETileMap >> fullGridSizeWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> fullGridSizeWidth: anObject [
 
-	fullGridSizeWidth := anObject.
+	fullGridSizeWidth := anObject
 ]
 
 {
@@ -396,13 +401,13 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:35'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
 }
 GMTETileMap >> generateVisualTiles [
 	
 	self tileMatrixStackVisual doTilesXYLidx: [ :x :y :l | 
 		"It is assumed that the visual stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual].
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual]
 	
 
 ]
@@ -464,22 +469,6 @@ GMTETileMap >> initialize [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'JS 6/4/2024 15:51'
-}
-GMTETileMap >> isTileMap [
-	^ isTileMap
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JS 6/4/2024 15:51'
-}
-GMTETileMap >> isTileMap: anObject [
-	isTileMap := anObject
-]
-
-{
 	#category : #'dev-api',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:53'
 }
@@ -501,11 +490,11 @@ GMTETileMap >> mapPaddedHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapPaddedHeight: anObject [
 
-	mapPaddedHeight := anObject.
+	mapPaddedHeight := anObject
 ]
 
 {
@@ -519,11 +508,11 @@ GMTETileMap >> mapPaddedWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapPaddedWidth: anObject [
 
-	mapPaddedWidth := anObject.
+	mapPaddedWidth := anObject
 ]
 
 {
@@ -537,11 +526,11 @@ GMTETileMap >> mapPadding [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapPadding: anObject [
 
-	mapPadding := anObject.
+	mapPadding := anObject
 ]
 
 {
@@ -555,11 +544,11 @@ GMTETileMap >> mapSizeHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapSizeHeight: anObject [
 
-	mapSizeHeight := anObject.
+	mapSizeHeight := anObject
 ]
 
 {
@@ -573,11 +562,11 @@ GMTETileMap >> mapSizeWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapSizeWidth: anObject [
 
-	mapSizeWidth := anObject.
+	mapSizeWidth := anObject
 ]
 
 {
@@ -591,11 +580,11 @@ GMTETileMap >> mapTileHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapTileHeight: anObject [
 
-	mapTileHeight := anObject.
+	mapTileHeight := anObject
 ]
 
 {
@@ -609,20 +598,11 @@ GMTETileMap >> mapTileWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:22'
 }
 GMTETileMap >> mapTileWidth: anObject [
 
-	mapTileWidth := anObject.
-]
-
-{
-	#category : #'dev-api',
-	#'squeak_changestamp' : 'TW 6/20/2024 17:17'
-}
-GMTETileMap >> mergeLayers: aSet [
-
-	^ true
+	mapTileWidth := anObject
 ]
 
 {
@@ -742,11 +722,11 @@ GMTETileMap >> tileCornerOffsetBackground [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 21:42'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileCornerOffsetBackground: anObject [
 
-	tileCornerOffsetBackground := anObject.
+	tileCornerOffsetBackground := anObject
 ]
 
 {
@@ -760,11 +740,11 @@ GMTETileMap >> tileCornerOffsetMap [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 21:40'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileCornerOffsetMap: anObject [
 
-	tileCornerOffsetMap := anObject.
+	tileCornerOffsetMap := anObject
 ]
 
 {
@@ -792,16 +772,16 @@ GMTETileMap >> tileHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileHeight: anObject [
 
-	tileHeight := anObject.
+	tileHeight := anObject
 ]
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:46'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 
@@ -812,7 +792,7 @@ GMTETileMap >> tileIdxFromPosition: aPoint [
 	idx := idx floor.
 	
 	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^nil].
-	^idx.
+	^idx
 ]
 
 {
@@ -826,11 +806,11 @@ GMTETileMap >> tileMatrixStack [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:03'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileMatrixStack: anObject [
 
-	tileMatrixStack := anObject.
+	tileMatrixStack := anObject
 ]
 
 {
@@ -844,11 +824,11 @@ GMTETileMap >> tileMatrixStackBackground [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 21:43'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileMatrixStackBackground: anObject [
 
-	tileMatrixStackBackground := anObject.
+	tileMatrixStackBackground := anObject
 ]
 
 {
@@ -862,11 +842,11 @@ GMTETileMap >> tileMatrixStackVisual [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:20'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileMatrixStackVisual: anObject [
 
-	tileMatrixStackVisual := anObject.
+	tileMatrixStackVisual := anObject
 ]
 
 {
@@ -889,11 +869,11 @@ GMTETileMap >> tileSizeHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:09'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileSizeHeight: anObject [
 
-	tileSizeHeight := anObject.
+	tileSizeHeight := anObject
 ]
 
 {
@@ -907,11 +887,11 @@ GMTETileMap >> tileSizeRatio [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 16:34'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
 GMTETileMap >> tileSizeRatio: anObject [
 
-	tileSizeRatio := anObject.
+	tileSizeRatio := anObject
 ]
 
 {
@@ -925,16 +905,16 @@ GMTETileMap >> tileSizeWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
 }
 GMTETileMap >> tileSizeWidth: anObject [
 
-	tileSizeWidth := anObject.
+	tileSizeWidth := anObject
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:00'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
 }
 GMTETileMap >> tileVisualFromPosition: aPoint [
 
@@ -943,7 +923,7 @@ GMTETileMap >> tileVisualFromPosition: aPoint [
 	idx := self tileIdxFromPosition: aPoint.
 	idx ifNil: [^nil].
 	
-	^ self tileMatrixStackVisual layer: 1 at: idx y at: idx x.
+	^ self tileMatrixStackVisual layer: 1 at: idx y at: idx x
 ]
 
 {
@@ -957,11 +937,11 @@ GMTETileMap >> tileWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
 }
 GMTETileMap >> tileWidth: anObject [
 
-	tileWidth := anObject.
+	tileWidth := anObject
 ]
 
 {
@@ -978,13 +958,13 @@ GMTETileMap >> toForeground [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:51'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
 }
 GMTETileMap >> toFullScreen [
 
 
 	self extent: Display extent.
-	self position: 0@0.
+	self position: 0@0
 ]
 
 {
@@ -1100,7 +1080,7 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 21:51'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
 }
 GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
@@ -1114,12 +1094,12 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 		tile ifNotNil: [
 			tile 
 			position: correctedTilePos;
-			extent: self tileSizeWidth@self tileSizeHeight]].
+			extent: self tileSizeWidth@self tileSizeHeight]]
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:18'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
 GMTETileMap >> updateTiles [
 
@@ -1136,5 +1116,5 @@ GMTETileMap >> updateTiles [
 				self correctedTilePositionBackground: aPoint]].
 	
 	self updateTileMatrixStack: self tileMatrixStack.
-	self updateTileMatrixStack: self tileMatrixStackVisual.
+	self updateTileMatrixStack: self tileMatrixStackVisual
 ]

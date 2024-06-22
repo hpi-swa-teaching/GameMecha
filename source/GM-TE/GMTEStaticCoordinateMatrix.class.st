@@ -31,11 +31,11 @@ GMTEStaticCoordinateMatrix >> coordinateSystem [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/19/2024 15:41'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:15'
 }
 GMTEStaticCoordinateMatrix >> coordinateSystem: anObject [
 
-	coordinateSystem := anObject.
+	coordinateSystem := anObject
 ]
 
 {
@@ -52,11 +52,11 @@ GMTEStaticCoordinateMatrix >> getAtCoordinate: aCoordinate [
 
 {
 	#category : #asserting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/21/2024 20:37'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTEStaticCoordinateMatrix >> validIdx: aPoint [
 
 	(aPoint y between: 1 and: nrows) ifFalse: [^false].
 	(aPoint x between: 1 and: ncols) ifFalse: [^false].
-	^true.
+	^true
 ]

@@ -6,4 +6,4 @@ clickButton: aButton
 	
 	aButton
 		mouseDown: evt;
-		mouseUp: evt.
+		mouseUp: evt

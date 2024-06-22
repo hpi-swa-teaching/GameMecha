@@ -31,30 +31,30 @@ GMTEEditorTileMap >> blendLayers: aSet [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 5/22/2024 18:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 03:11'
 }
 GMTEEditorTileMap >> handlesMouseDown: anEvent [
-	"TODO: make this useful."
-	^ true.
+
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 5/22/2024 19:47'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 03:11'
 }
 GMTEEditorTileMap >> handlesMouseMove: anEvent [
-	"TODO: make this useful."
-	^ true.
+
+	^ true
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 15:48'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
 GMTEEditorTileMap >> initialize [
 
 	super initialize.
-	self tileSelectionSet: GMTETileSelectionSet new.
+	self tileSelectionSet: GMTETileSelectionSet new
 ]
 
 {
@@ -68,28 +68,26 @@ GMTEEditorTileMap >> model [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 16:40'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
 GMTEEditorTileMap >> model: anObject [
 
-	model := anObject.
+	model := anObject
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 6/20/2024 16:35'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:23'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
-	"TODO: make this useful."
-	
+
 	| clickedTile activeLayer|
 	
 	self model singleLayerSelected 
-		ifTrue: [activeLayer := self model selectedLayers anyOne.
-	
-		clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
-	
-		self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent].
+		ifTrue: [
+			activeLayer := self model selectedLayers anyOne.
+			clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
+			self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent].
 	
 	^ true
 ]
@@ -173,16 +171,16 @@ GMTEEditorTileMap >> tileSelectionSet [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 15:49'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
 GMTEEditorTileMap >> tileSelectionSet: anObject [
 
-	tileSelectionSet := anObject.
+	tileSelectionSet := anObject
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:40'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:23'
 }
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	| tileIdx hoveredTile |
@@ -190,21 +188,24 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	hoveredTile := aTile.
 	
 	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
-	ifTrue: [ hoveredTile 
-		ifNil: [
-			tileIdx := self tileIdxFromPosition: anEvent position.
-			tileIdx ifNil: [^nil].
-			hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack tileType: GMTETile.]. 
-		self updateTileSprite: hoveredTile.
-		self model savedSinceModified: false].
+		ifTrue: [ 
+			"Add tile if nil at mouse position"
+			hoveredTile ifNil: [
+				tileIdx := self tileIdxFromPosition: anEvent position.
+				tileIdx ifNil: [^nil].
+				hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack tileType: GMTETile]. 
+			"Set tile to currently selected tile"
+			self updateTileSpriteFromModel: hoveredTile.
+			self model savedSinceModified: false].
 	
 	((anEvent yellowButtonPressed) and: [hoveredTile notNil]) 
-		ifTrue: [aLayer 
-			ifNotNil: [
+		ifTrue: [
+			"Remove tile if any present at mouse position"
+			aLayer ifNotNil: [
 				tileIdx := self tileIdxFromPosition: anEvent position.
 				self tileMatrixStack layer: aLayer at: tileIdx y at: tileIdx x put: nil.
 				hoveredTile abandon].
-			self model savedSinceModified: false.].
+			self model savedSinceModified: false]
 ]
 
 {

@@ -9,13 +9,13 @@ Class {
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:36'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTETileVisual >> applyBorderHighlighting [
 	
 	self 
 		borderColor: Color white;
-		borderWidth: 1.
+		borderWidth: 1
 ]
 
 {
@@ -50,11 +50,11 @@ GMTETileVisual >> decorationMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:26'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTETileVisual >> decorationMorph: anObject [
 
-	decorationMorph := anObject.
+	decorationMorph := anObject
 ]
 
 {
@@ -69,13 +69,13 @@ GMTETileVisual >> initialize [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTETileVisual >> removeBorderHighlighting [
 	
 	self 
 		borderColor: Color transparent;
-		borderWidth: 0.
+		borderWidth: 0
 ]
 
 {

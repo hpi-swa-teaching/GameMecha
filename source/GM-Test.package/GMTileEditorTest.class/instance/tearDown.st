@@ -10,4 +10,4 @@ tearDown
 		self editor: nil.
 	].
 
-	self assert: (self editor isNil).
+	self assert: (self editor isNil)

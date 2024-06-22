@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 16:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:53'
 }
 GMTETileContainer class >> withParent: aParent [
 	|container|
@@ -45,7 +45,7 @@ GMTETileContainer >> parent: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/14/2024 01:52'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
 }
 GMTETileContainer >> step [
 	| n gap minTileSize |
@@ -57,9 +57,7 @@ GMTETileContainer >> step [
 	minTileSize := 40. "Magic number currently."
 	n := self width / minTileSize.
 	gap := self width - (n floor * minTileSize) / n.
-	self submorphs do: [ :tile|
-		tile extent: (minTileSize + gap - 2)
-	]
+	self submorphs do: [ :tile| tile extent: (minTileSize + gap - 2)]
 ]
 
 {

@@ -29,7 +29,7 @@ GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 5/23/2024 09:51'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTEImageMorph >> extent: anExtent [
 	"override ImageMorph extent functionality. ALWAYS KEEPS RATIO"
@@ -37,7 +37,7 @@ GMTEImageMorph >> extent: anExtent [
 	"self image: (self image scaledToSize: anExtent)."
 
 	super extent: anExtent.
-	self image: (self fullResolutionSprite scaledToSize: anExtent).
+	self image: (self fullResolutionSprite scaledToSize: anExtent)
 ]
 
 {
@@ -62,16 +62,16 @@ GMTEImageMorph >> fullResolutionSprite [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 17:15'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTEImageMorph >> fullResolutionSprite: anObject [
 
-	fullResolutionSprite := anObject.
+	fullResolutionSprite := anObject
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 09:50'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTEImageMorph >> setPlaceholderWithColor: aColor [
 
@@ -79,12 +79,12 @@ GMTEImageMorph >> setPlaceholderWithColor: aColor [
 	placeholderForm := Form extent: self extent depth: 32.	
 	placeholderForm fillColor: aColor.
 	self fullResolutionSprite: placeholderForm.
-	self image: placeholderForm.
+	self image: placeholderForm
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 5/22/2024 17:16'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
 GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
 
@@ -92,7 +92,7 @@ GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
 	placeholderForm := Form extent: anExtent depth: 32.	
 	placeholderForm fillColor: aColor.
 	self fullResolutionSprite: placeholderForm.
-	self image: placeholderForm.
+	self image: placeholderForm
 ]
 
 {
