@@ -1627,7 +1627,7 @@ GMTEEditor >> updateLayerNameOf: anIndex to: aString [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:53'
+	#'squeak_changestamp' : 'TW 6/22/2024 22:35'
 }
 GMTEEditor >> withMorphOf: aSpec do: aBlock [
 	"TODO: comment"
@@ -1638,5 +1638,5 @@ GMTEEditor >> withMorphOf: aSpec do: aBlock [
 	
 	^ aSpec
 		name: id;
-		yourself.
+		yourself
 ]

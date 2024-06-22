@@ -10,14 +10,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/22/2024 14:59'
+	#'squeak_changestamp' : 'TW 6/22/2024 22:39'
 }
 GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio model: aModel [
 	
-	^self new
+	^(self new)
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
 		tileSizeRatio: aRatio;
-		model: aModel.
+		model: aModel
 ]
 
 {
@@ -173,7 +173,7 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/22/2024 14:57'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:40'
 }
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	

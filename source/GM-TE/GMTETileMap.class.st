@@ -745,7 +745,7 @@ GMTETileMap >> tileCornerOffsetMap: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:20'
+	#'squeak_changestamp' : 'TW 6/22/2024 22:38'
 }
 GMTETileMap >> tileFromPosition: aPoint layer: aLayer [
 
@@ -753,7 +753,7 @@ GMTETileMap >> tileFromPosition: aPoint layer: aLayer [
 	idx := self tileIdxFromPosition: aPoint.
 	idx ifNil: [^ nil].
 	
-	^ self tileMatrixStack layer: aLayer at: idx y at: idx x.
+	^ self tileMatrixStack layer: aLayer at: idx y at: idx x
 ]
 
 {
