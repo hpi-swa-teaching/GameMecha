@@ -20,7 +20,7 @@ GMTETileHighlighting >> applyBorderHighlighting [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:17'
 }
 GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 	
@@ -28,12 +28,14 @@ GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 	
 	aForm 
 		ifNotNil: [
-			newDecoMorph := ImageMorph new
-				bounds: self bounds.
+			newDecoMorph := (ImageMorph new)
+				bounds: self bounds;
+				yourself.
 			newDecoMorph image: (aForm scaledToSize: self extent)]
 		ifNil: [
-			newDecoMorph := Morph new
-			bounds: self bounds.
+			newDecoMorph := (Morph new)
+				bounds: self bounds;
+				yourself.
 			newDecoMorph color: (Color black alpha: 0.2)].
 	self addMorph: newDecoMorph.
 	self decorationMorph: newDecoMorph

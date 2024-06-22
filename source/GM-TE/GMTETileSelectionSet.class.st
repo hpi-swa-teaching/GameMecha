@@ -62,7 +62,7 @@ GMTETileSelectionSet >> highlightTile: aTile [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:14'
 }
 GMTETileSelectionSet >> initialize: n [

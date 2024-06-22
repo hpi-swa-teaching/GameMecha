@@ -111,14 +111,22 @@ GMTETileMap >> backgroundTiles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:21'
 }
 GMTETileMap >> backgroundTiles: anObject [
 
-	backgroundTiles := anObject.
-	
-	"TODO: keep this here?"
+	self basicBackgroundTiles: anObject.
 	self updateMap
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:21'
+}
+GMTETileMap >> basicBackgroundTiles: anObject [
+
+	backgroundTiles := anObject
 	
 ]
 
@@ -485,14 +493,6 @@ GMTETileMap >> initialize [
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
 		 backgroundTiles: ((GMTETileHighlighting new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
 	
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JS 6/4/2024 15:51'
-}
-GMTETileMap >> isTileMap [
-	^ isTileMap
 ]
 
 {

@@ -1557,14 +1557,13 @@ GMTEEditor >> toggleGrid [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/21/2024 01:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 23:39'
 }
 GMTEEditor >> toggleSelectedLayerVisibility [
 	
 	self selectedLayers do: [:i |
 		self tileMap tileMatrixStack toggleLayerVisibility: i.
-		self layerData at: i put: {(self layerData at: i) first . (self layerData at: i) second not}
-		].
+		self layerData at: i put: {(self layerData at: i) first . (self layerData at: i) second not}].
 	self changed: #getLayerList
 ]
 
