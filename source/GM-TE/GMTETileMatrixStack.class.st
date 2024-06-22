@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:27'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:43'
 }
 GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
 
@@ -23,11 +23,11 @@ GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 14:25'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:43'
 }
 GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight morphicLayerOffset: anOffset [
 
-	^GMTETileMatrixStack new
+	^(GMTETileMatrixStack new)
 		width: aWidth;
 		height: aHeight;
 		morphicLayerStartingOffset: anOffset;
@@ -119,11 +119,11 @@ GMTETileMatrixStack >> doTilesXYLidx: aBlock [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:16'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:43'
 }
 GMTETileMatrixStack >> height [
 
-	^ height
+	^height
 ]
 
 {
@@ -156,50 +156,51 @@ GMTETileMatrixStack >> hideLayers: aSet [
 
 {
 	#category : #initilization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:12'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> initialize [
 
 	super initialize.
-	self matrixLayers: LinkedList new.
-	self visible: true
+	self
+		matrixLayers: LinkedList new;
+		visible: true
 	"TODO: no base layer created"
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 18:28'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> layer: aLayerIdx [
 	
-	^ self matrixLayers at: aLayerIdx
+	^self matrixLayers at: aLayerIdx
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 11:15'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [ 
 
-	^ (self matrixLayers at: aLayerIdx) at: x at: y
+	^(self matrixLayers at: aLayerIdx) at: x at: y
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 17:38'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
 	
-	^ (self matrixLayers at: aLayerIdx) addTile: aTile at: x at: y
+	^(self matrixLayers at: aLayerIdx) addTile: aTile at: x at: y
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:23'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> layerCount [
 
-	^ self matrixLayers size
+	^self matrixLayers size
 ]
 
 {
@@ -231,11 +232,11 @@ GMTETileMatrixStack >> mapLayers: anOrderedCollection withUnaryBlock: aBlock [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 21:15'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> matrixLayers [
 
-	^ matrixLayers
+	^matrixLayers
 ]
 
 {
@@ -249,11 +250,11 @@ GMTETileMatrixStack >> matrixLayers: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin 5/28/2024 13:16'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> morphicLayerStartingOffset [
 
-	^ morphicLayerStartingOffset
+	^morphicLayerStartingOffset
 ]
 
 {
@@ -267,9 +268,10 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:22'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
 }
 GMTETileMatrixStack >> pushLayer [
+
 	self matrixLayers addLast: (GMTETileMatrixLayer 
 		width: self width 
 		height: self height 
@@ -437,11 +439,11 @@ GMTETileMatrixStack >> toggleLayerVisibility: anIdx [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:12'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
 }
 GMTETileMatrixStack >> toggleVisibility [
 
-	(self visible)
+	self visible
 		ifTrue: [self visible: false]
 		ifFalse: [self visible: true]
 	
@@ -449,11 +451,11 @@ GMTETileMatrixStack >> toggleVisibility [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:09'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
 }
 GMTETileMatrixStack >> visible [
 
-	^ visible
+	^visible
 ]
 
 {
@@ -470,11 +472,11 @@ GMTETileMatrixStack >> visible: aBool [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 22:05'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
 }
 GMTETileMatrixStack >> width [
 
-	^ width
+	^width
 ]
 
 {

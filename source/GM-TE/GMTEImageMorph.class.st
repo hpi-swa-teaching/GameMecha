@@ -9,13 +9,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/17/2024 18:45'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:30'
 }
 GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
-	anImageMorph
-		ifNil: [^ self].
 
-	^ (ImageMorph new) 
+	anImageMorph ifNil: [^self].
+	
+	^(ImageMorph new) 
 		image: ((FormCanvas on: self image)
 			image: (anImageMorph image)
 			at: 0@0
@@ -29,12 +29,10 @@ GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:28'
 }
 GMTEImageMorph >> extent: anExtent [
 	"override ImageMorph extent functionality. ALWAYS KEEPS RATIO"
-	
-	"self image: (self image scaledToSize: anExtent)."
 
 	super extent: anExtent.
 	self image: (self fullResolutionSprite scaledToSize: anExtent)
@@ -42,22 +40,21 @@ GMTEImageMorph >> extent: anExtent [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 22:01'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:29'
 }
 GMTEImageMorph >> free [
 
-	(self owner) ifNotNil: [
-		self owner removeMorph: self].
+	self owner ifNotNil: [self owner removeMorph: self].
 	self abandon
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 17:15'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:30'
 }
 GMTEImageMorph >> fullResolutionSprite [
 
-	^ fullResolutionSprite
+	^fullResolutionSprite
 ]
 
 {
