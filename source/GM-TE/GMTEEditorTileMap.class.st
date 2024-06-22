@@ -180,7 +180,7 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 22:23'
+	#'squeak_changestamp' : 'TW 6/22/2024 14:47'
 }
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	| tileIdx hoveredTile |
@@ -195,7 +195,7 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 				tileIdx ifNil: [^nil].
 				hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack tileType: GMTETile]. 
 			"Set tile to currently selected tile"
-			self updateTileSpriteFromModel: hoveredTile.
+			self updateTileSprite: hoveredTile.
 			self model savedSinceModified: false].
 	
 	((anEvent yellowButtonPressed) and: [hoveredTile notNil]) 
