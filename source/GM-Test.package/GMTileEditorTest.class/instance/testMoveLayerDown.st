@@ -1,6 +1,7 @@
 as yet unclassified
 testMoveLayerDown
-
+	"tests the moveLayerDown function"
+	
 	| tileMatrixStack layer1 layerId1 layerId2 |
 	tileMatrixStack:= self editor tileMap tileMatrixStack.
 	self editor addLayer.

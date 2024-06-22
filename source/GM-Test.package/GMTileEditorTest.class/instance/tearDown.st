@@ -1,6 +1,7 @@
 as yet unclassified
 tearDown
-
+	"deletes temporary test file and closes editor after tests are done"
+	
 	(self fileUUID) ifNotNil: [
 		FileDirectory default deleteFileNamed: self fileUUID.
 		self fileUUID: nil].

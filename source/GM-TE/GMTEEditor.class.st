@@ -81,10 +81,11 @@ GMTEEditor class >> register [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:31'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:35'
 }
 GMTEEditor >> addLayer [
-
+	"adds a new tileMap layer"
+	
 	| newLayerNumber |
 	newLayerNumber :=  self layerCount + 1.
 
@@ -96,19 +97,21 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:31'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:35'
 }
 GMTEEditor >> anyLayerSelected [
-
+	"returns whether any layer is selected"
+	
 	^ (self selectedLayers size > 0)
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:32'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:51'
 }
 GMTEEditor >> backgroundTile [
-
+	"the tile used to dynamically fill the background of the map, if the user wishes so"
+	
 	^ backgroundTile
 ]
 
@@ -126,9 +129,10 @@ GMTEEditor >> backgroundTile: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:32'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:36'
 }
 GMTEEditor >> blendSelectedLayers [
+	"fuses the selected layers into one layer"
 	
 	| bakedLayer |
 	(self selectedLayers size > 1)
@@ -144,9 +148,10 @@ GMTEEditor >> blendSelectedLayers [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:32'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:38'
 }
 GMTEEditor >> buildWith: builder [
+	"builds the editor with ToolBuilder"
 	"called it builder instead of aBuilder since every other implementation does that"
 	
 	| newMorph selectedTile panel | 
@@ -197,10 +202,11 @@ GMTEEditor >> buildWith: builder [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:32'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:45'
 }
 GMTEEditor >> collectLayerData [
-
+	"transfers layer data from an imported tileMap to update the layerViewer"
+	
 	self layerData: OrderedCollection new.
 	1 to: self layerCount do: [ :i | 
 		self storeLayerN: i withVisibility: (self tileMap tileMatrixStack layerVisible: i)]
@@ -209,10 +215,11 @@ GMTEEditor >> collectLayerData [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:33'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:39'
 }
 GMTEEditor >> commandBar [
-
+	"panel that contains menu button functions"
+	
 	^ commandBar
 ]
 
@@ -227,9 +234,10 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:34'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:40'
 }
 GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: aNumber [
+	"shows a preview window for an imported tileset"
 	
 	|img imgwrapper dialog|
 	imgwrapper := ScrollPane new.
@@ -266,10 +274,11 @@ GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: 
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:36'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:41'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel [
-
+	"a helper function to create attribute specs"
+	
 	^ self withMorphOf: ((aBuilder pluggablePanelSpec new)
 		frame: (LayoutFrame
 		fractions: (0 @ 0 corner: 1 @ 1));
@@ -293,10 +302,11 @@ GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString gette
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:35'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:42'
 }
 GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
-
+	"creates the spec for the command bar"
+	
 	^ aBuilder pluggablePanelSpec new
 		name: 'command bar';
 		model: self;
@@ -337,10 +347,11 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:38'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:42'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
-
+	"creates the spec for the inspector tab"
+	
 	^ aBuilder pluggableScrollPaneSpec new
 		frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
 		offsets: (0 @ 30 corner: 0 @ 30));
@@ -364,10 +375,11 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:39'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:44'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
-
+	"creates the spec for layer viewer"
+	
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'layer viewer';
 		model: self;
@@ -449,10 +461,12 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:44'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
+	"creates the spec for the tile viewer"
 	"TODO: Maybe rename function to something more appropriate?"
+	
 	^ aBuilder pluggablePanelSpec new
 		name: 'main panel';
 		model:self;
@@ -477,9 +491,10 @@ GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:44'
 }
 GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
+	"creates the spec for the tile store"
 
 	^ (aBuilder pluggableScrollPaneSpec new)
 		frame: (LayoutFrame fractions: (0 @ 0 corner: 0.2 @ 1)
@@ -497,10 +512,11 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:45'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
-
+	"creates the spec for the tool bar"
+	
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'toolbar';
 		model: self;
@@ -513,10 +529,11 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:45'
 }
 GMTEEditor >> createTraySpecWithBuilder: aBuilder [
-
+	"creates the spec for the tile tray"
+	
 	^ (aBuilder pluggableScrollPaneSpec new)
 		name: 'tray';
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
@@ -526,9 +543,10 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:46'
 }
 GMTEEditor >> deleteSelectedLayers [
+	"deletes all selected layers unless this would delete all layers"
 	
 	(self anyLayerSelected not or: (self selectedLayers size >= self getLayerList size)) ifTrue: [^ nil].
 	
@@ -540,10 +558,11 @@ GMTEEditor >> deleteSelectedLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:34'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:47'
 }
 GMTEEditor >> deselectAllLayers [
-
+	"empties the selected layers set"
+	
 	self
 		selectedLayers: Set new;
 		changed: #selectedLayers
@@ -552,9 +571,10 @@ GMTEEditor >> deselectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:34'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:47'
 }
 GMTEEditor >> deselectLayer: anIndex [
+	"deletes the layer with the provided index"
 	
 	(self selectedLayers size <= 1) ifTrue: [^ nil].
 	
@@ -569,10 +589,11 @@ GMTEEditor >> deselectLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:35'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:48'
 }
 GMTEEditor >> deselectTile [
-
+	"deselects the currently chosen tile"
+	
 	"TODO implement the lower part: resetting selected tile in tray view"
 	self selectTile: nil.
 	self tileMap tileSelectionSet highlightImage: nil
@@ -580,18 +601,20 @@ GMTEEditor >> deselectTile [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:48'
 }
 GMTEEditor >> exportAsImage [
+	"exports the current tile map as a png"
 	
 	self tileMap exportAsImage
 ]
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:49'
 }
 GMTEEditor >> exportAsMorph [
+	"saves the current tileMap as a morph file, which allows for reimporting"
 	
 	(self tileMap copy model: nil) saveOnFile. 
 	self savedSinceModified: true
@@ -599,10 +622,11 @@ GMTEEditor >> exportAsMorph [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/5/2024 02:02'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:49'
 }
 GMTEEditor >> exportMenu [
-
+	"creates the menu for the export options"
+	
 	| aMenuSpec builder|
 	builder := ToolBuilder default.
 	aMenuSpec := builder pluggableMenuSpec new.
@@ -623,10 +647,11 @@ GMTEEditor >> exportMenu [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:50'
 }
 GMTEEditor >> forgetLayers: aSet [
-
+	"TODO: comment"
+	
 	| toBeForgotten |
 	toBeForgotten := self selectedLayers asSortedCollection reversed.
 	toBeForgotten do: [:i | self layerData removeAt: i].
@@ -635,19 +660,21 @@ GMTEEditor >> forgetLayers: aSet [
 
 {
 	#category : #helper,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:51'
 }
 GMTEEditor >> getFileWithFileChooser [
-
+	"opens a file chooser which allows the user to select a morph file"
+	
 	^ UIManager default chooseFileMatchingSuffixes: {'morph'}
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:51'
 }
 GMTEEditor >> getGridHeight [
-
+	"returns the height (in tiles) of the tileMap"
+	
 	self tileMap 
 		ifNotNil: [^ self tileMap mapTileHeight]
 		ifNil: [^ nil]
@@ -655,19 +682,21 @@ GMTEEditor >> getGridHeight [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:52'
 }
 GMTEEditor >> getGridHeightAsString [
-
+	"returns the height (in tiles) of the tileMap as a string"
+	
 	^ self getGridHeight asString
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:52'
 }
 GMTEEditor >> getGridWidth [
-
+	"returns the width (in tiles) of the tileMap"
+	
 	self tileMap 
 		ifNotNil: [^ self tileMap mapTileWidth]
 		ifNil: [^ nil]
@@ -675,19 +704,21 @@ GMTEEditor >> getGridWidth [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:52'
 }
 GMTEEditor >> getGridWidthAsString [
-
+	"returns the width (in tiles) of the tileMap as a string"
+	
 	^ self getGridWidth asString
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:54'
 }
 GMTEEditor >> getLayerList [
-
+	"returns the layer list"
+	
 	^ self layerData collect: [ :layerData |
 			layerData second 
 				ifTrue: [layerData first, ' (v)']
@@ -696,10 +727,11 @@ GMTEEditor >> getLayerList [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:54'
 }
 GMTEEditor >> getPadding [
-
+	"returns the padding of the tileMap"
+	
 	self tileMap 
 		ifNotNil: [^ self tileMap mapPadding]
 		ifNil: [^ nil]
@@ -707,29 +739,32 @@ GMTEEditor >> getPadding [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:54'
 }
 GMTEEditor >> getPaddingAsString [
-
+	"returns the padding of the tileMap as a string"
+	
 	^ self getPadding asString
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:55'
 }
 GMTEEditor >> getSelectedLayer [
-
+	"returns the selected layer, if only one is selected"
+	
 	self assert: self singleLayerSelected.
 	^ self selectedLayers anyOne
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:56'
 }
 GMTEEditor >> getTileRatio [
-
+	"returns the tileSizeRatio of the tileMap"
+	
 	self tileMap 
 		ifNotNil: [^ self tileMap tileSizeRatio]
 		ifNil: [^ nil]
@@ -737,10 +772,11 @@ GMTEEditor >> getTileRatio [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:56'
 }
 GMTEEditor >> getTileRatioAsString [
-
+	"returns the tileSizeRatio of the tileMap as a string"
+	
 	^ self getTileRatio asString
 ]
 
@@ -767,9 +803,10 @@ GMTEEditor >> importFromMorph [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:57'
 }
 GMTEEditor >> importFromTileset [
+	"loads a tileset into the tile store"
 	"TODO make multiple sprite sets available?"
 	
 	| tiles tileHeight dimensions|
@@ -791,10 +828,11 @@ GMTEEditor >> importFromTileset [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:38'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:57'
 }
 GMTEEditor >> importMenu [
-
+	"creates the menu for the import options"
+	
 	| aMenuSpec builder|
 	builder := ToolBuilder default.
 	aMenuSpec := builder pluggableMenuSpec new.
@@ -815,10 +853,11 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:57'
 }
 GMTEEditor >> initialize [
-
+	"starts the tile editor"
+	
 	super initialize.
 	self
 		layerData: OrderedCollection new;
@@ -833,19 +872,21 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'Alex M 6/11/2024 14:33'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:58'
 }
 GMTEEditor >> initializeDefaultTileMapMatrix [
-
+	"initializes the tileMap with a standard 10 x 10 tileMap"
+	
 	self initializeTileMapMatrixWithHeight: 10 width: 10
 ]
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:37'
+	#'squeak_changestamp' : 'jj 6/22/2024 20:59'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
-
+	"initializes the tileMap with a tile map with a certain height and width"
+	
 	self tileMap: (GMTEEditorTileMap tileWidth: aWidth tileHeight: aHeight padding: 0.15 sizeRatio: 1 model: self).
 	self tileViewer addMorph: self tileMap.		
 	self tileMap 
@@ -862,10 +903,11 @@ GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:02'
 }
 GMTEEditor >> inspector [
-
+	"the inspector tab that allows to adjust the attributes of the tileMap"
+	
 	^ inspector
 ]
 
@@ -880,18 +922,20 @@ GMTEEditor >> inspector: anObject [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:04'
 }
 GMTEEditor >> layerAt: anIndex [
-
+	"TODO: comment"
+	
 	^ self selectedLayers includes: anIndex
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:04'
 }
 GMTEEditor >> layerAt: anIndex put: aBool [
+	"TODO: comment"
 	
 	| multiSelection |
 	multiSelection := Sensor shiftPressed.
@@ -905,19 +949,21 @@ GMTEEditor >> layerAt: anIndex put: aBool [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:04'
 }
 GMTEEditor >> layerCount [
-
+	"returns the amount of layers in the tileMap"
+	
 	^ self tileMap tileMatrixStack layerCount
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:06'
 }
 GMTEEditor >> layerData [
-
+	"TODO: comment, what is this"
+	
 	^ layerData
 	
 ]
@@ -933,10 +979,11 @@ GMTEEditor >> layerData: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:07'
 }
 GMTEEditor >> layerViewer [
-
+	"panel that allows for manipulation of the tileMap layers"
+	
 	^ layerViewer
 ]
 
@@ -951,9 +998,10 @@ GMTEEditor >> layerViewer: anObject [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:09'
 }
 GMTEEditor >> loadTileSetWithDimensions: aPoint [
+	"loads a tile set with given tile dimensions"
 	"The source argument is mostly for debugging. Make it nicer with objects"
 	"Do we really leaves this here or do we create an extra class for"
  
@@ -999,10 +1047,11 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:11'
 }
 GMTEEditor >> morphBuilders [
-
+	"collection that contains the morph builders"
+	
 	^ morphBuilders
 ]
 
@@ -1017,12 +1066,13 @@ GMTEEditor >> morphBuilders: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:12'
 }
 GMTEEditor >> moveLayerDown [
+	"moves the selected layer down by one"
 	
 	| selectedLayer |
-	self singleLayerSelected ifFalse: [^nil].
+	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
 	(selectedLayer == 1) ifFalse: [self swapLayer: selectedLayer with: selectedLayer - 1]
@@ -1030,12 +1080,13 @@ GMTEEditor >> moveLayerDown [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:13'
 }
 GMTEEditor >> moveLayerUp [
+	"moves the selected layer up by one"
 	
 	| selectedLayer |
-	self singleLayerSelected ifFalse: [^nil].
+	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
 	(selectedLayer == self layerCount) ifFalse: [self swapLayer: selectedLayer with: selectedLayer + 1]
@@ -1043,9 +1094,10 @@ GMTEEditor >> moveLayerUp [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:13'
 }
 GMTEEditor >> onClose [
+	"asks the user whether they want to save their progress"
 	
 	self savedSinceModified
 		ifFalse: [(PopUpMenu confirm: 'Save before closing?')
@@ -1054,10 +1106,11 @@ GMTEEditor >> onClose [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:14'
 }
 GMTEEditor >> open [
-  
+  	"builds the window"
+	
 	| newMorph |
 	newMorph := ToolBuilder default build: self.
       newMorph openInWorld.
@@ -1067,10 +1120,11 @@ GMTEEditor >> open [
 
 {
 	#category : #helper,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:20'
 }
 GMTEEditor >> openTileMapInEditor: aTileMap [
-
+	"loads a tileMap into the editor"
+	
     aTileMap tileSelectionSet highlightImage: nil.
     self tileMap: aTileMap.
     aTileMap model: self.
@@ -1095,10 +1149,11 @@ GMTEEditor >> openTileMapInWorld [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:26'
 }
 GMTEEditor >> parseGridSize: aText [
-
+	"converts an input grid size (height/width) if valid"
+	
 	| newSize |
 	newSize := self parseSize: aText.
 	(newSize notNil and: [newSize isInteger and: [0 < newSize and: [newSize < 200]]])
@@ -1108,10 +1163,11 @@ GMTEEditor >> parseGridSize: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:31'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:25'
 }
 GMTEEditor >> parsePaddingSize: aText [
-
+	"converts an input padding size if valid"
+	
 	| newSize |
 	newSize := self parseSize: aText.
 	(newSize notNil and: [0 <= newSize and: [newSize <= 0.9]])
@@ -1121,19 +1177,21 @@ GMTEEditor >> parsePaddingSize: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:46'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:26'
 }
 GMTEEditor >> parseSize: aText [
-
+	"converts a string into a number"
+	
 	[^ aText asNumber] on: NumberParserError do: [^ nil]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:46'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:27'
 }
 GMTEEditor >> ratio [
-
+	"the ratio of height to width of tiles"
+	
 	^ ratio
 ]
 
@@ -1148,10 +1206,11 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/21/2024 15:46'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:28'
 }
 GMTEEditor >> renameLayer [
-
+	"renames the selected layer with a user chosen name"
+	
 	| newName selectedLayer |
 	self singleLayerSelected
 		ifTrue: [
@@ -1166,40 +1225,44 @@ GMTEEditor >> renameLayer [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:30'
 }
 GMTEEditor >> resetAllLayers [
-	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	"resets all layers"
+	"TODO: maybe combine this with updateTile: inLayer: FromEvent: . Currently not working with layers."
 	
 	self tileMap resetAllLayers
 ]
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:30'
 }
 GMTEEditor >> resetLayers: aSet [
-	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	"resets the layers represented by aSet"
 	
+	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
 	self tileMap resetLayers: aSet
 ]
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:41'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:30'
 }
 GMTEEditor >> resetSelectedLayers [
-	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
+	"resets all selected layers"
 	
+	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
 	self resetLayers: self selectedLayers
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/28/2024 10:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:31'
 }
 GMTEEditor >> savedSinceModified [
-
+	"whether the tileMap has been modified since the last save"
+	
 	^ savedSinceModified
 ]
 
@@ -1214,19 +1277,21 @@ GMTEEditor >> savedSinceModified: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:58'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:33'
 }
 GMTEEditor >> selectAllLayers [
-
+	"selects all layers"
+	
 	1 to: self layerCount do: [:i | self selectLayer: i]
 	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/20/2024 20:44'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:33'
 }
 GMTEEditor >> selectLayer: anIndex [
+	"select the layer with anIndex"
 	
 	self selectedLayers add: anIndex.
 	self
@@ -1237,10 +1302,11 @@ GMTEEditor >> selectLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:30'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:35'
 }
 GMTEEditor >> selectOnlyLayer: anIndex [
-
+	"select only the layer with anIndex"
+	
 	self 
 		deselectAllLayers;
 		selectLayer: anIndex
@@ -1249,9 +1315,10 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:46'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:40'
 }
 GMTEEditor >> selectTile: anObject [
+	"selects a tile from the tile store"
 	
 	"TODO: might be problematic with tray. Maybe give tiles in the store IDs?"
 	(anObject = self selectedTile)
@@ -1267,10 +1334,11 @@ GMTEEditor >> selectTile: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 16:15'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:41'
 }
 GMTEEditor >> selectedLayers [
-
+	"set that contains the selected layers"
+	
 	^ selectedLayers
 ]
 
@@ -1285,10 +1353,11 @@ GMTEEditor >> selectedLayers: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 11:52'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:41'
 }
 GMTEEditor >> selectedTile [
-
+	"selected tile that is placed on the map"
+	
 	^ selectedTile
 ]
 
@@ -1303,10 +1372,11 @@ GMTEEditor >> selectedTile: anObject [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:47'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:41'
 }
 GMTEEditor >> setGridHeight: aText [
-
+	"adjusts the grid height"
+	
 	| newSize |
 	newSize := self parseGridSize: aText.
 	newSize
@@ -1319,9 +1389,10 @@ GMTEEditor >> setGridHeight: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:47'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:41'
 }
 GMTEEditor >> setGridWidth: aText [
+	"adjusts the grid width"
 	"TODO: Fix visual layer bug"
 	
 	| newSize |
@@ -1333,10 +1404,11 @@ GMTEEditor >> setGridWidth: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:47'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:42'
 }
 GMTEEditor >> setPadding: aText [
-
+	"adjusts the map padding"
+	
 	| newSize |
 	newSize := self parsePaddingSize: aText.
 	newSize ifNotNil: [self tileMap rescaleMapWidth: self getGridWidth height: self getGridHeight padding: newSize].
@@ -1346,10 +1418,11 @@ GMTEEditor >> setPadding: aText [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/20/2024 22:33'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:42'
 }
 GMTEEditor >> settingsMenu [
-
+	"opens the setting menu"
+	
 	| aMenuSpec builder|
 	builder := ToolBuilder default.
 	aMenuSpec := builder pluggableMenuSpec new.
@@ -1370,37 +1443,41 @@ GMTEEditor >> settingsMenu [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:00'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:43'
 }
 GMTEEditor >> singleLayerSelected [
-
+	"returns whether only one layer is selected"
+	
 	^ (self selectedLayers size == 1)
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/22/2024 00:39'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:46'
 }
 GMTEEditor >> storeLayerN: aNumber [
-
+	"TODO: comment"
+	
 	self storeLayerN: aNumber withVisibility: true
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/22/2024 01:30'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:46'
 }
 GMTEEditor >> storeLayerN: aNumber withVisibility: aBoolean [
-
+	"TODO: comment"
+	
 	self layerData add: {'Layer ', aNumber . aBoolean}.
 	self changed: #getLayerList
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:47'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:49'
 }
 GMTEEditor >> swapLayer: anIndex with: anotherIndex [
+	"swaps two layers"
 	
 	| selectionOfA |
 	self layerData swap: anIndex with: anotherIndex.
@@ -1415,10 +1492,11 @@ GMTEEditor >> swapLayer: anIndex with: anotherIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:49'
 }
 GMTEEditor >> tileMap [
-
+	"the tileMap that the editor works on"
+	
 	^ tileMap
 ]
 
@@ -1433,10 +1511,11 @@ GMTEEditor >> tileMap: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:49'
 }
 GMTEEditor >> tileStore [
-
+	"the panel that shows the imported tilesets"
+	
 	^ tileStore
 ]
 
@@ -1451,10 +1530,11 @@ GMTEEditor >> tileStore: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:50'
 }
 GMTEEditor >> tileViewer [
-
+	"the panel that contains the tileMap"
+	
 	^ tileViewer
 ]
 
@@ -1469,27 +1549,30 @@ GMTEEditor >> tileViewer: anObject [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:01'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:51'
 }
 GMTEEditor >> toggleBackgroundTiles [
-
+	"toggles the dynamic filling of the maps background with the background tile"
+	 
 	self tileMap toggleBackgroundLayer
 ]
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:51'
 }
 GMTEEditor >> toggleGrid [
-
+	"toggles the visibility of the map grid"
+	
 	self tileMap toggleVisualLayer
 ]
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/21/2024 23:39'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:52'
 }
 GMTEEditor >> toggleSelectedLayerVisibility [
+	"toggles the visibility of the selected layers"
 	
 	self selectedLayers do: [:i |
 		self tileMap tileMatrixStack toggleLayerVisibility: i.
@@ -1499,10 +1582,11 @@ GMTEEditor >> toggleSelectedLayerVisibility [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 00:59'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:52'
 }
 GMTEEditor >> trayViewer [
-
+	"the panel that contains the selected tile"
+	
 	^ trayViewer
 ]
 
@@ -1517,10 +1601,11 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:02'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:52'
 }
 GMTEEditor >> unselectTile [
-
+	"unselects the currently selected tile"
+	
 	self selectedTile: nil.
 	self tileMap tileSelectionSet highlightImage: nil.
 	self trayViewer morph submorphs first visible: false
@@ -1528,10 +1613,11 @@ GMTEEditor >> unselectTile [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:02'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:52'
 }
 GMTEEditor >> updateLayerNameOf: anIndex to: aString [
-
+	"updates the name of a layer"
+	
 	| visibility |
 	visibility := (self layerData at: anIndex) second.
 	
@@ -1541,10 +1627,11 @@ GMTEEditor >> updateLayerNameOf: anIndex to: aString [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:03'
+	#'squeak_changestamp' : 'jj 6/22/2024 21:53'
 }
 GMTEEditor >> withMorphOf: aSpec do: aBlock [
-
+	"TODO: comment"
+	
 	| id |
 	id := UUID new asString.
 	morphBuilders at: id put: aBlock.

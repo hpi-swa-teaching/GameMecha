@@ -1,6 +1,7 @@
 as yet unclassified
 testMultiToggleLayerVisibility
-
+	"tests the visibility toggle for multiple selected layers"
+	
 	self editor addLayer.
 	self editor selectLayer: 1.
 	self editor toggleSelectedLayerVisibility.

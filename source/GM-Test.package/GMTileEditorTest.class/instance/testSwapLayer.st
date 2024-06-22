@@ -1,6 +1,7 @@
 as yet unclassified
 testSwapLayer
-
+	"tests the swapping of two layers"
+	
 	| TileMatrixStack layer1 layerId1 layerId2 |
 	TileMatrixStack:= self editor tileMap tileMatrixStack.
 	self editor addLayer.
