@@ -1,4 +1,3 @@
 as yet unclassified
 setup
-
-	self editor: GMTEEditor new
+	self editor: GMTEEditor new.

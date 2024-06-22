@@ -13,11 +13,11 @@ Class {
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/10/2024 17:28'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 16:08'
 }
 PluggableStaticTextSpec >> buildWith: builder [
 
-	^builder buildPluggableStaticText: self
+	^ builder buildPluggableStaticText: self
 ]
 
 {
