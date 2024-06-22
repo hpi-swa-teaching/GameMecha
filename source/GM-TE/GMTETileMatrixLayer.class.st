@@ -105,11 +105,11 @@ GMTETileMatrixLayer >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/11/2024 19:09'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:42'
 }
 GMTETileMatrixLayer >> layerIdx [
 
-	^ layerIdx
+	^layerIdx
 ]
 
 {
@@ -143,11 +143,11 @@ GMTETileMatrixLayer >> updateLayerIdx: anIdx [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:17'
+	#'squeak_changestamp' : 'Alex M 6/22/2024 14:42'
 }
 GMTETileMatrixLayer >> visible [
 
-	^ visible
+	^visible
 ]
 
 {
