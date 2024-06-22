@@ -13,25 +13,25 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:04'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer class >> withParent: aParent [
 
-	^(GMTETileContainer new)
+	^ (GMTETileContainer new)
 		parent: aParent;
 		beTransparent;
 		layoutPolicy: TableLayout new;
 		listDirection: #leftToRight;
-		wrapDirection: #leftToRight.
+		wrapDirection: #leftToRight
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:06'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer >> parent [
 
-	^parent
+	^ parent
 ]
 
 {
@@ -45,14 +45,13 @@ GMTETileContainer >> parent: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:06'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer >> step [
 
 	| n gap minTileSize |
-		
 	(self parent isNil or: [self parent extent = self extent])
-		ifTrue: [^nil].
+		ifTrue: [^ nil].
 	
 	self extent: parent extent.
 	minTileSize := 40. "Magic number currently."
@@ -63,9 +62,9 @@ GMTETileContainer >> step [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:06'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer >> stepTime [
 
-	^1
+	^ 1
 ]

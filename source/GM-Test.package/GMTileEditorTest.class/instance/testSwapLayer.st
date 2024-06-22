@@ -2,7 +2,6 @@ as yet unclassified
 testSwapLayer
 
 	| TileMatrixStack layer1 layerId1 layerId2 |
-	
 	TileMatrixStack:= self editor tileMap tileMatrixStack.
 	self editor addLayer.
 	layer1 := TileMatrixStack matrixLayers at: 1.

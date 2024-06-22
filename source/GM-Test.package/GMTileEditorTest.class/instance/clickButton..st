@@ -1,7 +1,7 @@
 as yet unclassified
 clickButton: aButton
-	|evt|
 	
+	|evt|
 	evt := GMClickEvent atPosition: aButton position.
 	
 	aButton

@@ -19,12 +19,12 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:10'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> actionSelector [
 	"The method called on the target"
 
-	^actionSelector
+	^ actionSelector
 ]
 
 {
@@ -38,12 +38,12 @@ GMTEImageButton >> actionSelector: aSymbolOrString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:10'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> arguments [
 	"Arguments for the method that is called on the target"
 
-	^arguments
+	^ arguments
 ]
 
 {
@@ -57,12 +57,11 @@ GMTEImageButton >> arguments: aCollection [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> createStateImagesFrom: anImage [
 	
 	| unpressedColor hoveredColor pressedColor disabledColor |
-	
 	unpressedColor := UserInterfaceTheme current get: #titleTextColor for: MenuMorph.
 	hoveredColor := UserInterfaceTheme current get: #highlightTextColor for: SimpleHierarchicalListMorph.
 	pressedColor := UserInterfaceTheme current get: #errorColor for: TestRunner.
@@ -93,11 +92,11 @@ GMTEImageButton >> doButtonAction [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> dyeSprite: anImage with: aColor [
 
-	^anImage copy
+	^ anImage copy
 		replaceColor: Color white withColor: Color transparent;
 		replaceColor: Color black withColor: aColor;
 		yourself
@@ -105,29 +104,29 @@ GMTEImageButton >> dyeSprite: anImage with: aColor [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> handlesMouseDown: anEvent [
 
-	^true
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> handlesMouseMove: anEvent [
 
-	^true
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> handlesMouseOver: anEvent [
 
-	^true
+	^ true
 ]
 
 {
@@ -142,12 +141,12 @@ GMTEImageButton >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
 }
 GMTEImageButton >> linkedButtons [
 	"All the buttons this button is linked with. Only one of a group of linked buttons is active at once"
 
-	^linkedButtons
+	^ linkedButtons
 ]
 
 {
@@ -161,12 +160,12 @@ GMTEImageButton >> linkedButtons: aCollection [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
 }
 GMTEImageButton >> mouseDown: anEvent [
 
 	super mouseDown: anEvent.
-	anEvent yellowButtonPressed ifTrue: [^self].
+	anEvent yellowButtonPressed ifTrue: [^ self].
 	
 	self updateVisualState: anEvent
 ]
@@ -214,7 +213,7 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
 }
 GMTEImageButton >> setImageMode: aString [
 	
@@ -226,18 +225,18 @@ GMTEImageButton >> setImageMode: aString [
 			ifFalse: [
 				(aString == #hovered)
 					ifTrue: [self fullResolutionSprite: (self stateSprites at: 'hovered')]
-					ifFalse: [^nil]]].
+					ifFalse: [^ nil]]].
 			
 	self extent: self extent
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:07'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
 }
 GMTEImageButton >> stateSprites [
 
-	^stateSprites
+	^ stateSprites
 ]
 
 {
@@ -251,12 +250,12 @@ GMTEImageButton >> stateSprites: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:06'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
 }
 GMTEImageButton >> target [
 	"Object the actionSelector method is called on"
 
-	^target
+	^ target
 ]
 
 {

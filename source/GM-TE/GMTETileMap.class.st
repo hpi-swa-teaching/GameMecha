@@ -34,12 +34,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:38'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:21'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
 	| newMap |
-
 	aMap tileSelectionSet clearAllHighlightings.
 	
 	aMap tileMatrixStackBackground reset. "This fixed the temporary issue of orphaned morphs after copy"
@@ -50,16 +49,16 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 		yourself.
 		
 	 aMap generateBackgroundTiles. "Part of the above fix"
-	^newMap 
+	^ newMap 
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:38'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:12'
 }
 GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
 	
-	^(self new)
+	^ (self new)
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
 		tileSizeRatio: aRatio
 ]
@@ -216,11 +215,11 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 
 {
 	#category : #checking,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:35'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
 }
 GMTETileMap >> dimensionsSet [
 
-	^(self mapTileWidth notNil) and: [(self mapTileWidth notNil) and: [self mapPadding notNil]]
+	^ (self mapTileWidth notNil) and: [(self mapTileWidth notNil) and: [self mapPadding notNil]]
 ]
 
 {
@@ -235,12 +234,11 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:18'
 }
 GMTETileMap >> extent: aPoint [
 
 	| oldExtent newExtent |
-	
 	self forceMapSizeRatio
 		ifTrue: [newExtent := (aPoint x)@(aPoint x * (self mapTileHeight / self mapTileWidth))]
 		ifFalse: [newExtent := aPoint].
@@ -249,7 +247,7 @@ GMTETileMap >> extent: aPoint [
 
 	super extent: newExtent.
 	
-	(oldExtent = newExtent) ifTrue: [^nil].
+	(oldExtent = newExtent) ifTrue: [^ nil].
 	self tileMatrixStack ifNotNil: [self rescaleMap]
 	
 	
@@ -323,11 +321,11 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:30'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
 }
 GMTETileMap >> generateBackgroundTiles [
 	
-	self backgroundTiles ifNil: [^nil].
+	self backgroundTiles ifNil: [^ nil].
 	
 	self tileMatrixStackBackground doTilesXYLidx: [ :x :y :l | 
 		"It is assumed that the visual stack consists of only one layer"
@@ -359,11 +357,11 @@ GMTETileMap >> generateMatrixStacks [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:00'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
 
-	^self generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: [ :aPoint | 
+	^ self generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: [ :aPoint | 
 		self correctedTilePositionMap: aPoint]
 
 	
@@ -373,12 +371,11 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:59'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:18'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: aBlock [
 
 	| tilePos correctedTilePos newTile |
-	
 	tilePos := self tilePosFromVirtual: x@y.
 	correctedTilePos := aBlock value: tilePos.
 						
@@ -391,7 +388,7 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 	
 	self addMorph: newTile.
 	aStack layer: aLayer at: y at: x put: newTile.
-	^newTile
+	^ newTile
 
 	
 		
@@ -413,11 +410,11 @@ GMTETileMap >> generateVisualTiles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 17:40'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
 }
 GMTETileMap >> getTileFromLayer: aLayer x: x y: y [
 	
-	^self getTileFromLayer: aLayer x: x y: y stack: self tileMatrixStack
+	^ self getTileFromLayer: aLayer x: x y: y stack: self tileMatrixStack
 
 	
 		
@@ -426,11 +423,11 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/12/2024 17:38'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
 }
 GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 	
-	^aStack layer: aLayer at: y at: x
+	^ aStack layer: aLayer at: y at: x
 
 	
 		
@@ -748,14 +745,13 @@ GMTETileMap >> tileCornerOffsetMap: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 23:01'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:20'
 }
 GMTETileMap >> tileFromPosition: aPoint layer: aLayer [
 
 	| idx |
-	
 	idx := self tileIdxFromPosition: aPoint.
-	idx ifNil: [^nil].
+	idx ifNil: [^ nil].
 	
 	^ self tileMatrixStack layer: aLayer at: idx y at: idx x.
 ]
@@ -780,18 +776,17 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:20'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 
 	| uncorrectedPos idx |
-	
 	uncorrectedPos := self revertCorrectedTilePositionMap: aPoint.
 	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
 	idx := idx floor.
 	
-	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^nil].
-	^idx
+	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^ nil].
+	^ idx
 ]
 
 {
@@ -850,11 +845,11 @@ GMTETileMap >> tileMatrixStackVisual: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:42'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:17'
 }
 GMTETileMap >> tilePosFromVirtual: aPoint [
 
-	^ (aPoint x - 1 * self tileSizeWidth)@(aPoint y - 1 * self tileSizeHeight)
+	^ (aPoint x - 1 * self tileSizeWidth) @ (aPoint y - 1 * self tileSizeHeight)
 ]
 
 {
@@ -913,14 +908,13 @@ GMTETileMap >> tileSizeWidth: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:18'
 }
 GMTETileMap >> tileVisualFromPosition: aPoint [
 
 	| idx |
-	
 	idx := self tileIdxFromPosition: aPoint.
-	idx ifNil: [^nil].
+	idx ifNil: [^ nil].
 	
 	^ self tileMatrixStackVisual layer: 1 at: idx y at: idx x
 ]
@@ -957,13 +951,13 @@ GMTETileMap >> toForeground [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:20'
 }
 GMTETileMap >> toFullScreen [
 
 
 	self extent: Display extent.
-	self position: 0@0
+	self position: 0 @ 0
 ]
 
 {
@@ -1055,11 +1049,11 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:36'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:20'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
-	self dimensionsSet ifFalse: [^nil].
+	self dimensionsSet ifFalse: [^ nil].
 	
 	self updateDimensions.
 	self tileMatrixStack 
@@ -1079,12 +1073,11 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:24'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:21'
 }
 GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 	| tilePos correctedTilePos tile |
-	
 	aStack doTilesXYLidx: [ :x :y :l | 
 		tilePos := self tilePosFromVirtual: x@y.
 		correctedTilePos := aBlock value: tilePos.
@@ -1092,8 +1085,8 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 		
 		tile ifNotNil: [
 			tile 
-			position: correctedTilePos;
-			extent: self tileSizeWidth@self tileSizeHeight]]
+				position: correctedTilePos;
+				extent: self tileSizeWidth@self tileSizeHeight]]
 ]
 
 {

@@ -21,26 +21,26 @@ GMTETileSelector >> extent: anExtent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:58'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileSelector >> handlesMouseDown: evt [
 	
 	evt redButtonPressed
 		ifTrue: [
 			self model selectTile: self.
-			^true]
+			^ true]
 		ifFalse: [
 			self model backgroundTile: self.
-			^false]
+			^ false]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:58'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:51'
 }
 GMTETileSelector >> model [
 
-	^model
+	^ model
 ]
 
 {

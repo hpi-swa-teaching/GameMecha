@@ -20,12 +20,11 @@ GMTETileVisual >> applyBorderHighlighting [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/7/2024 21:25'
+	#'squeak_changestamp' : 'jj 6/22/2024 16:22'
 }
 GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	
 	| newDecoMorph |
-	
 	aForm 
 		ifNotNil: [
 			newDecoMorph := ImageMorph new
