@@ -10,11 +10,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/22/2024 22:39'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:36'
 }
 GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio model: aModel [
 	
-	^(self new)
+	^ (self new)
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
 		tileSizeRatio: aRatio;
 		model: aModel
@@ -31,20 +31,20 @@ GMTEEditorTileMap >> blendLayers: aSet [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:39'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
 GMTEEditorTileMap >> handlesMouseDown: anEvent [
 
-	^true
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:39'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
 GMTEEditorTileMap >> handlesMouseMove: anEvent [
 
-	^true
+	^ true
 ]
 
 {
@@ -59,11 +59,11 @@ GMTEEditorTileMap >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 5/22/2024 16:45'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
 GMTEEditorTileMap >> model [
 
-	^model
+	^ model
 ]
 
 {
@@ -77,29 +77,27 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:39'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:36'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
 
 	| clickedTile activeLayer |
-	
 	self model singleLayerSelected 
 		ifTrue: [
 			activeLayer := self model selectedLayers anyOne.
 			clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
 			self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent].
 	
-	^true
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:40'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 
 	| hoveredTile hoveredTileVisual activeLayer |
-
 	self model singleLayerSelected
 		ifTrue: [activeLayer := self model selectedLayers anyOne.
 	
@@ -155,11 +153,11 @@ GMTEEditorTileMap >> resetLayers: aSet [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:40'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
 GMTEEditorTileMap >> tileSelectionSet [
 
-	^tileSelectionSet
+	^ tileSelectionSet
 ]
 
 {
@@ -173,12 +171,11 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:40'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:36'
 }
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	
 	| tileIdx hoveredTile |
-	
 	hoveredTile := aTile.
 	
 	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
@@ -186,7 +183,7 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 			"Add tile if nil at mouse position"
 			hoveredTile ifNil: [
 				tileIdx := self tileIdxFromPosition: anEvent position.
-				tileIdx ifNil: [^nil].
+				tileIdx ifNil: [^ nil].
 				hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack tileType: GMTETile]. 
 			"Set tile to currently selected tile"
 			self updateTileSprite: hoveredTile.
