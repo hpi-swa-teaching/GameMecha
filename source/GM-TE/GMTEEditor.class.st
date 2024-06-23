@@ -22,37 +22,41 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:03'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
 }
 GMTEEditor class >> getTileMapFromFileBinary: aFileBinary [
-
-    ^ GMTETileMap newFrom: (GMTEEditor privateGetEditableTileMapFromFileBinary: aFileBinary)
+	"creates a tileMap from a file binary"
+	
+    ^ GMTETileMap newFrom: (GMTEEditor privateGetEditorTileMapFromFileBinary: aFileBinary)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:03'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
-
-    ^ GMTETileMap newFrom: (GMTEEditor privateGetEditableTileMapFromFilePath: aFilePath)
+	"loads a tileMap from a local file path"
+	
+    ^ GMTETileMap newFrom: (GMTEEditor privateGetEditorTileMapFromFilePath: aFilePath)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:03'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
-
+	"loads a tileMap from the git asset browser"
+	
     ^ GMTEEditor getTileMapFromFileBinary: ((GitAssetLoader for: aName) loadAsset: aPath)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:03'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
 }
-GMTEEditor class >> privateGetEditableTileMapFromFileBinary: aFileBinary [
-
+GMTEEditor class >> privateGetEditorTileMapFromFileBinary: aFileBinary [
+	"loads a EditorTileMap from a file binary"
+	
     |aFileStream tileMap|
     aFileStream := (MultiByteBinaryOrTextStream with: aFileBinary) binary reset.
     tileMap := aFileStream fileInObjectAndCode.
@@ -62,19 +66,21 @@ GMTEEditor class >> privateGetEditableTileMapFromFileBinary: aFileBinary [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 16:03'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:07'
 }
-GMTEEditor class >> privateGetEditableTileMapFromFilePath: aFilePath [
-
-    ^ GMTEEditor privateGetEditableTileMapFromFileBinary: (FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile
+GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
+	"loads a EditorTileMap from a local file path"
+	 
+    ^ GMTEEditor privateGetEditorTileMapFromFileBinary: (FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 15:10'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:06'
 }
 GMTEEditor class >> register [
-
+	"adds the tile editor to app menu"
+	
 	"Maybe call this on new?"
 	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {GMTEEditor. #new}}
 ]
@@ -611,10 +617,10 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:49'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:14'
 }
 GMTEEditor >> exportAsMorph [
-	"saves the current tileMap as a morph file, which allows for reimporting"
+	"saves the current tileMap as a .morph file, which allows for reimporting"
 	
 	(self tileMap copy model: nil) saveOnFile. 
 	self savedSinceModified: true
@@ -782,7 +788,7 @@ GMTEEditor >> getTileRatioAsString [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:43'
+	#'squeak_changestamp' : 'jj 6/23/2024 14:05'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -791,7 +797,7 @@ GMTEEditor >> importFromMorph [
 	stream := self getFileWithFileChooser.
 
     	stream ifNil: [^ self].
-    	tileMap := GMTEEditor privateGetEditableTileMapFromFilePath: stream.
+    	tileMap := GMTEEditor privateGetEditorTileMapFromFilePath: stream.
     	self openTileMapInEditor: tileMap.
 	self
 		changed: #getPaddingAsString;
