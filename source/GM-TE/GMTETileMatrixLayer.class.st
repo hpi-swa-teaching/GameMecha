@@ -32,14 +32,14 @@ GMTETileMatrixLayer >> aboveLayer: aLayer [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:38'
 }
-GMTETileMatrixLayer >> addTile: aTile at: x at: y [
+GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
 	aTile ifNotNil: [
 		aTile morphicLayerNumber: self layerIdx.
 		aTile visible: self visible].
-	^ self at: x at: y put: aTile
+	^ self at: y at: x put: aTile
 ]
 
 {
@@ -72,7 +72,7 @@ GMTETileMatrixLayer >> belowLayer: aLayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/23/2024 19:53'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:47'
 }
 GMTETileMatrixLayer >> displayName [
 
@@ -81,7 +81,7 @@ GMTETileMatrixLayer >> displayName [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/23/2024 19:53'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:54'
 }
 GMTETileMatrixLayer >> displayName: anObject [
 

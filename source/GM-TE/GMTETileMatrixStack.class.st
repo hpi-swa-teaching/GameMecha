@@ -57,8 +57,17 @@ GMTETileMatrixStack class >> morphicLayerOffsetDefault [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 20:23'
+}
+GMTETileMatrixStack >> basicVisible: aBool [
+
+	visible := aBool
+]
+
+{
 	#category : #updating,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 20:19'
 }
 GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 
@@ -75,14 +84,15 @@ GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 			topIdx := anIdx1.
 			bottomIdx := anIdx2].
 		
-	1 to: bottomLayer columnCount do: [ :x |
-		1 to: bottomLayer rowCount do: [ :y |
-			bottomCell := bottomLayer at: x at: y.
-			topCell := topLayer at: x at: y.
+	1 to: bottomLayer columnCount do: [:x |
+		1 to: bottomLayer rowCount do: [:y |
+			bottomCell := bottomLayer at: y at: x.
+			topCell := topLayer at: y at: x.
 			bottomCell 
 				ifNil: [
-					newCellEntry := topCell.
-					bottomLayer addTile: newCellEntry at: x at: y]
+					newCellEntry := topCell veryDeepCopy.
+					topCell ifNotNil: [topCell owner addMorph: newCellEntry].
+					bottomLayer addTile: newCellEntry at: y at: x]
 				ifNotNil: [
 					newCellEntry := bottomCell asBlendedWithImageMorph: topCell.
 					bottomCell updateSprite: newCellEntry image]]].
@@ -108,31 +118,31 @@ GMTETileMatrixStack >> blendLayers: aSet [
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:53'
 }
 GMTETileMatrixStack >> doLayers: aBlock [
 
-	self matrixLayers do: [ :layer | aBlock value: layer]
+	self matrixLayers do: [:layer | aBlock value: layer]
 ]
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 6/7/2024 21:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:53'
 }
 GMTETileMatrixStack >> doTiles: aBlock [
 
-	self doLayers: [ :layer | layer doTiles: aBlock]
+	self doLayers: [:layer | layer doTiles: aBlock]
 ]
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 15:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:53'
 }
 GMTETileMatrixStack >> doTilesXYLidx: aBlock [
 
-	1 to: self width do: [ :x | 
-		1 to: self height do: [ :y |
-			1 to: self layerCount do: [ :layerIdx | 
+	1 to: self width do: [:x | 
+		1 to: self height do: [:y |
+			1 to: self layerCount do: [:layerIdx | 
 				aBlock value: x value: y value: layerIdx]]]
 ]
 
@@ -197,20 +207,20 @@ GMTETileMatrixStack >> layer: aLayerIdx [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:58'
 }
-GMTETileMatrixStack >> layer: aLayerIdx at: x at: y [ 
+GMTETileMatrixStack >> layer: aLayerIdx at: y at: x [ 
 
-	^ (self matrixLayers at: aLayerIdx) at: x at: y
+	^ (self matrixLayers at: aLayerIdx) at: y at: x
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:58'
 }
-GMTETileMatrixStack >> layer: aLayerIdx at: x at: y put: aTile [
+GMTETileMatrixStack >> layer: aLayerIdx at: y at: x put: aTile [
 	
-	^ (self matrixLayers at: aLayerIdx) addTile: aTile at: x at: y
+	^ (self matrixLayers at: aLayerIdx) addTile: aTile at: y at: x
 ]
 
 {
@@ -232,7 +242,7 @@ GMTETileMatrixStack >> layerNameOf: anIdx [
 ]
 
 {
-	#category : #accessing,
+	#category : #checking,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
 }
 GMTETileMatrixStack >> layerVisible: anIdx [
@@ -242,14 +252,14 @@ GMTETileMatrixStack >> layerVisible: anIdx [
 
 {
 	#category : #'multiselect-helpers',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:54'
 }
 GMTETileMatrixStack >> mapLayers: anOrderedCollection withUnaryBlock: aBlock [
 
 	| tmpResult |
 	tmpResult := OrderedCollection new.
 	
-	anOrderedCollection do: [ :layerIdx | 
+	anOrderedCollection do: [:layerIdx | 
 		tmpResult add: (aBlock value: layerIdx)].
 	
 	^ tmpResult	
@@ -495,12 +505,12 @@ GMTETileMatrixStack >> visible [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 20:23'
 }
 GMTETileMatrixStack >> visible: aBool [
 
-	visible := aBool.
-	
+	self basicVisible: aBool.
+		
 	self doLayers: [ :aLayer | 
 		aLayer visible: aBool]
 ]
