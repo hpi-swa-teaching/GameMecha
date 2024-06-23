@@ -3,7 +3,8 @@ Class {
 	#superclass : #GMTEStaticCoordinateMatrix,
 	#instVars : [
 		'layerIdx',
-		'visible'
+		'visible',
+		'displayName'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -31,14 +32,14 @@ GMTETileMatrixLayer >> aboveLayer: aLayer [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 20:18'
 }
-GMTETileMatrixLayer >> addTile: aTile at: x at: y [
+GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
 	aTile ifNotNil: [
 		aTile morphicLayerNumber: self layerIdx.
 		aTile visible: self visible].
-	^ self at: x at: y put: aTile
+	^ self at: y at: x put: aTile.
 ]
 
 {
@@ -67,6 +68,24 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 GMTETileMatrixLayer >> belowLayer: aLayer [
 
 	^ (self aboveLayer: aLayer) not
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:47'
+}
+GMTETileMatrixLayer >> displayName [
+
+	^ displayName
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:54'
+}
+GMTETileMatrixLayer >> displayName: anObject [
+
+	displayName := anObject
 ]
 
 {
