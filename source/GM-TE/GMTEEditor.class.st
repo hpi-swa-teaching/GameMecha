@@ -61,13 +61,13 @@ GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'TW 6/23/2024 19:59'
+	#'squeak_changestamp' : 'TW 6/23/2024 21:37'
 }
 GMTEEditor class >> getVisibilityIndicator: aBoolean [
 
 	aBoolean
-		ifTrue: [^ '(h)']
-		ifFalse: [^ '(v)']
+		ifTrue: [^ ' (v)']
+		ifFalse: [^ ' (h)']
 ]
 
 {
@@ -147,7 +147,7 @@ GMTEEditor class >> tileMapMinPaddingSize [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/23/2024 18:04'
+	#'squeak_changestamp' : 'TW 6/23/2024 21:37'
 }
 GMTEEditor >> addLayer [
 	"adds a new tileMap layer"
@@ -157,9 +157,9 @@ GMTEEditor >> addLayer [
 	newLayerNumber :=  self layerCount + 1.
 
 	self tileMap tileMatrixStack pushLayer.
-	self
-		storeLayerN: newLayerNumber;
-		selectOnlyLayer: newLayerNumber
+	self 
+		selectOnlyLayer: newLayerNumber;
+		changed: #getLayerList
 ]
 
 {
@@ -196,7 +196,7 @@ GMTEEditor >> backgroundTile: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:36'
+	#'squeak_changestamp' : 'TW 6/23/2024 21:46'
 }
 GMTEEditor >> blendSelectedLayers [
 	"fuses the selected layers into one layer"
@@ -207,10 +207,10 @@ GMTEEditor >> blendSelectedLayers [
 			bakedLayer := self selectedLayers min.
 			self tileMap blendLayers: self selectedLayers.
 			self selectedLayers remove: bakedLayer.
-			self forgetLayers: self selectedLayers.
 			self
 				deselectAllLayers;
-				selectLayer: bakedLayer]
+				selectLayer: bakedLayer].
+	self changed: #getLayerList
 ]
 
 {
@@ -756,14 +756,14 @@ GMTEEditor >> getGridWidthAsString [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'TW 6/23/2024 20:13'
+	#'squeak_changestamp' : 'TW 6/23/2024 21:50'
 }
 GMTEEditor >> getLayerList [
 	"returns the layer list"
 	
 	self tileMap ifNil: [^ OrderedCollection new].
 	
-	^ self tileMap tileMatrixStack matrixLayers collect: [:aLayer | aLayer displayName, (GMTEEditor getVisibilityIndicator: aLayer visible)]
+	^ self tileMap tileMatrixStack collectLayers: [:aLayer | aLayer displayName, (GMTEEditor getVisibilityIndicator: aLayer visible)]
 ]
 
 {
@@ -1226,7 +1226,7 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/23/2024 20:07'
+	#'squeak_changestamp' : 'TW 6/23/2024 21:50'
 }
 GMTEEditor >> renameLayer [
 	"renames the selected layer with a user chosen name"
@@ -1236,9 +1236,9 @@ GMTEEditor >> renameLayer [
 		ifTrue: [
 			selectedLayer := self getSelectedLayer.
 			newName := FillInTheBlankMorph 
-			request: 'New Name:' initialAnswer: (self tileMap layerNameOf: selectedLayer).
+			request: 'New Name:' initialAnswer: (self tileMap tileMatrixStack layerNameOf: selectedLayer).
 			(newName isNil or: newName isEmpty)
-				ifFalse: [self tileMap setLayerNameOf: selectedLayer to: newName]].
+				ifFalse: [self tileMap tileMatrixStack setLayerNameOf: selectedLayer to: newName]].
 	self changed: #getLayerList
 
 	
