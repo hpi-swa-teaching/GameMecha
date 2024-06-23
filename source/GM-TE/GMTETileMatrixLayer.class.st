@@ -11,13 +11,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:11'
+	#'squeak_changestamp' : 'TW 6/23/2024 23:36'
 }
 GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 
 	^ (self rows: aHeight columns: aWidth)  
-		layerIdx: anIdx; 
-		displayName: 'Layer ', anIdx;
+		layerIdx: anIdx;
 		yourself
 ]
 
@@ -45,7 +44,7 @@ GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
 {
 	#category : #copying,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
+	#'squeak_changestamp' : 'TW 6/23/2024 23:37'
 }
 GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 
@@ -57,6 +56,10 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 	1 to: (aHeight min: self rowCount) do: [:row |
     		1 to: (aWidth min: self columnCount) do: [:col |
        		 newLayer at: row at: col put: (self at: row at: col) veryDeepCopy]].
+
+	newLayer
+		visible: self visible;
+		displayName: self displayName.
 
 	^ newLayer
 	 
