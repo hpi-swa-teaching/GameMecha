@@ -598,7 +598,7 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:46'
+	#'squeak_changestamp' : 'jj 6/23/2024 22:35'
 }
 GMTEEditor >> deleteSelectedLayers [
 	"deletes all selected layers unless this would delete all layers"
@@ -607,8 +607,8 @@ GMTEEditor >> deleteSelectedLayers [
 	
 	self tileMap removeLayers: self selectedLayers.
 	self 
-		forgetLayers: self selectedLayers;
-		deselectAllLayers
+		deselectAllLayers;
+		changed: #getLayerList
 ]
 
 {
