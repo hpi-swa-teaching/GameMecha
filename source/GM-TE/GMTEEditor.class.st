@@ -21,6 +21,16 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:15'
+}
+GMTEEditor class >> editorMinimumExtent [
+	"minimum extent of the tile editor"
+	
+	^ 550 @ 400
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
 }
@@ -86,13 +96,54 @@ GMTEEditor class >> register [
 ]
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
+}
+GMTEEditor class >> tileMapMaxGridSize [
+	"the maximum size of the tileMap per dimension"
+	
+	^ 200
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:35'
+}
+GMTEEditor class >> tileMapMaxPaddingSize [
+	"the maximum size of the tileMap padding"
+	
+	^ 0.9
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
+}
+GMTEEditor class >> tileMapMinGridSize [
+	"the minimum size of the tileMap per dimension"
+	
+	^ 0
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:34'
+}
+GMTEEditor class >> tileMapMinPaddingSize [
+	"the minimum size of the tileMap padding"
+	
+	^ 0
+]
+
+{
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:35'
+	#'squeak_changestamp' : 'jj 6/23/2024 18:04'
 }
 GMTEEditor >> addLayer [
 	"adds a new tileMap layer"
 	
 	| newLayerNumber |
+	(self layerCount >= GMTETileMap maxLayers) ifTrue: [^ nil].
 	newLayerNumber :=  self layerCount + 1.
 
 	self tileMap tileMatrixStack pushLayer.
@@ -154,7 +205,7 @@ GMTEEditor >> blendSelectedLayers [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:38'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:29'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -173,7 +224,7 @@ GMTEEditor >> buildWith: builder [
 			self createLayersSpecWithBuilder: builder.
 			self createInspectorSpecWithBuilder: builder};
 		closeAction: #onClose;
-		minimumExtent: 550@400).
+		minimumExtent: GMTEEditor editorMinimumExtent).
 			
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	"self commandBar vResizing: #rigid."
@@ -240,7 +291,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:40'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:37'
 }
 GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: aNumber [
 	"shows a preview window for an imported tileset"
@@ -262,7 +313,7 @@ GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: 
 			borderWidth:1;
 			yourself)].
 	
-	imgwrapper extent: (img width min: 1700) @ (img height min: 800).
+	imgwrapper extent: (img width min: 1700) @ (img height min: 800). "TODO: is this a magic number we want to get rid off?"
 	imgwrapper scroller addMorph: img.
 
 	dialog := DialogWindow new
@@ -878,7 +929,7 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:58'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:27'
 }
 GMTEEditor >> initializeDefaultTileMapMatrix [
 	"initializes the tileMap with a standard 10 x 10 tileMap"
@@ -1004,7 +1055,7 @@ GMTEEditor >> layerViewer: anObject [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:09'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:31'
 }
 GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	"loads a tile set with given tile dimensions"
@@ -1043,7 +1094,7 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 			"TODO: Maybe only send forms"
 			previews add: ((ImageMorph new) image: tile)]].
 	
-	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?"
+	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?" "TODO: lots of potential magic numbers all over this method"
 	previewTileSize := (form width max: 500) / (form width / tileWidth).
 	previewDimensions := (form extent / aPoint * previewTileSize) + (2 * ((form width / tileWidth) @ (form height / tileHeight))).
 	(self confirmPreviewOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^nil].
@@ -1155,28 +1206,28 @@ GMTEEditor >> openTileMapInWorld [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:26'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
 }
 GMTEEditor >> parseGridSize: aText [
 	"converts an input grid size (height/width) if valid"
 	
 	| newSize |
 	newSize := self parseSize: aText.
-	(newSize notNil and: [newSize isInteger and: [0 < newSize and: [newSize < 200]]])
+	(newSize notNil and: [newSize isInteger and: [GMTEEditor tileMapMinGridSize < newSize and: [newSize < GMTEEditor tileMapMaxGridSize]]])
 		ifTrue: [^ newSize]
 		ifFalse: [^ nil]
 ]
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:25'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:35'
 }
 GMTEEditor >> parsePaddingSize: aText [
 	"converts an input padding size if valid"
 	
 	| newSize |
 	newSize := self parseSize: aText.
-	(newSize notNil and: [0 <= newSize and: [newSize <= 0.9]])
+	(newSize notNil and: [GMTEEditor tileMapMinPaddingSize <= newSize and: [newSize <= GMTEEditor tileMapMaxPaddingSize]])
 		ifTrue: [^ newSize]
 		ifFalse: [^ nil]
 ]

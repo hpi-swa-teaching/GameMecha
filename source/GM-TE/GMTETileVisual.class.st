@@ -8,6 +8,16 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 16:33'
+}
+GMTETileVisual class >> decoMorphAlphaValue [
+	"the alpha value for the default decoMorph"
+	
+	^ 0.2
+]
+
+{
 	#category : #highlighting,
 	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
 }
@@ -20,7 +30,7 @@ GMTETileVisual >> applyBorderHighlighting [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:22'
+	#'squeak_changestamp' : 'jj 6/23/2024 16:32'
 }
 GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	
@@ -33,7 +43,7 @@ GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 		ifNil: [
 			newDecoMorph := Morph new
 			bounds: self bounds.
-			newDecoMorph color: (Color black alpha: 0.2)].
+			newDecoMorph color: (Color black alpha: GMTETileVisual decoMorphAlphaValue)].
 	self addMorph: newDecoMorph.
 	self decorationMorph: newDecoMorph
 ]
