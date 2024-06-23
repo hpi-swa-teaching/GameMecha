@@ -430,7 +430,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/23/2024 22:56'
+	#'squeak_changestamp' : 'jj 6/23/2024 23:48'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -439,66 +439,65 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 		name: 'layer viewer';
 		model: self;
 		frame: (LayoutFrame
-			fractions: (0.8 @ 0.25 corner: 1 @ 1)
-			offsets: (0 @ 30 corner: 0 @ 0));
+			fractions: (0.8 @ 0.25 corner: 1 @ 1));
 		children: {
-			(aBuilder pluggableButtonSpec new)
-			name: 'addLayer';
-			label: 'add Layer';
-			model: self;
-			action: #addLayer;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0) offsets: (0 @ 0 corner: 0 @ 30)).
-			
 			(aBuilder pluggablePanelSpec new)
 			frame: (LayoutFrame fractions: (0.85 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
 			
-			children: {				
+			children: {
+				(aBuilder pluggableImageButtonSpec new)
+					model:self;
+					action: #addLayer;
+					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.125));
+					project: 'GameMecha';
+					path: '/GMTEIcons/add.png'.
+			
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #moveLayerDown;
-					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.083));
+					frame: (LayoutFrame fractions: (0 @ 0.125 corner: 1 @ 0.25));
 					project: 'GameMecha';
 					path: '/GMTEIcons/up.png'.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #moveLayerUp;
-					frame: (LayoutFrame fractions: (0 @ 0.083 corner: 1 @ 0.166));
+					frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375));
 					project: 'GameMecha';
 					path: '/GMTEIcons/down.png'.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model: self;
 					action: #renameLayer;
-					frame: (LayoutFrame fractions: (0 @ 0.166 corner: 1 @ 0.333));
+					frame: (LayoutFrame fractions: (0 @ 0.375 corner: 1 @ 0.5));
 					project: 'GameMecha';
 					path: '/GMTEIcons/rename.png'.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action:#resetSelectedLayers;
-					frame: (LayoutFrame fractions: (0 @ 0.333 corner: 1 @ 0.5));
+					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625));
 					project: 'GameMecha';
 					path: '/GMTEIcons/broom.png'.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #blendSelectedLayers;
-					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.666));
+					frame: (LayoutFrame fractions: (0 @ 0.625 corner: 1 @ 0.75));
 					project: 'GameMecha';
 					path: '/GMTEIcons/merge.png'.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #deleteSelectedLayers;
-					frame: (LayoutFrame fractions: (0 @ 0.666 corner: 1 @ 0.833));
+					frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875));
 					project: 'GameMecha';
 					path: '/GMTEIcons/trash.png'.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #toggleSelectedLayerVisibility;
-					frame: (LayoutFrame fractions: (0 @ 0.833 corner: 1 @ 1));
+					frame: (LayoutFrame fractions: (0 @ 0.875 corner: 1 @ 1));
 					project: 'GameMecha';
 					path: '/GMTEIcons/eye.png'}.
 			
@@ -598,7 +597,7 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/23/2024 22:35'
+	#'squeak_changestamp' : 'TW 6/23/2024 22:51'
 }
 GMTEEditor >> deleteSelectedLayers [
 	"deletes all selected layers unless this would delete all layers"
@@ -608,7 +607,8 @@ GMTEEditor >> deleteSelectedLayers [
 	self tileMap removeLayers: self selectedLayers.
 	self 
 		deselectAllLayers;
-		changed: #getLayerList
+		changed: #getLayerList;
+		selectOnlyLayer: self layerCount
 ]
 
 {
