@@ -1627,14 +1627,14 @@ GMTEEditor >> updateLayerNameOf: anIndex to: aString [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/22/2024 22:35'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:45'
 }
 GMTEEditor >> withMorphOf: aSpec do: aBlock [
 	"TODO: comment"
 	
 	| id |
 	id := UUID new asString.
-	morphBuilders at: id put: aBlock.
+	self morphBuilders at: id put: aBlock.
 	
 	^ aSpec
 		name: id;

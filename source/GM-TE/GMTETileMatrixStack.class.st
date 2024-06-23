@@ -297,12 +297,12 @@ GMTETileMatrixStack >> reduceLayers: anOrderedCollection withBinaryBlock: aBlock
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:43'
 }
 GMTETileMatrixStack >> removeLayerAt: idx [ 
 
 	| removedLayer |.
-	self assert: matrixLayers size > 1 description: 'Base layer cannot be removed!'.
+	self assert: self matrixLayers size > 1 description: 'Base layer cannot be removed!'.
 	
 	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: idx)) value.
 	removedLayer free

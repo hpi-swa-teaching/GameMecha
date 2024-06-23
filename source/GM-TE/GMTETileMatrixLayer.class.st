@@ -71,7 +71,7 @@ GMTETileMatrixLayer >> belowLayer: aLayer [
 
 {
 	#category : #enumerating,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:56'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
 

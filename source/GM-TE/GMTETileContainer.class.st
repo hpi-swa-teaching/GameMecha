@@ -45,7 +45,7 @@ GMTETileContainer >> parent: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
+	#'squeak_changestamp' : 'jj 6/23/2024 13:44'
 }
 GMTETileContainer >> step [
 
@@ -53,7 +53,7 @@ GMTETileContainer >> step [
 	(self parent isNil or: [self parent extent = self extent])
 		ifTrue: [^ nil].
 	
-	self extent: parent extent.
+	self extent: self parent extent.
 	minTileSize := 40. "Magic number currently."
 	n := self width / minTileSize.
 	gap := self width - (n floor * minTileSize) / n.
