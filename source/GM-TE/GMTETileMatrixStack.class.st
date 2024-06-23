@@ -223,7 +223,16 @@ GMTETileMatrixStack >> layerCount [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/23/2024 20:01'
+}
+GMTETileMatrixStack >> layerNameOf: anIdx [
+
+	^ (self layer: anIdx) displayName
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
 }
 GMTETileMatrixStack >> layerVisible: anIdx [
@@ -388,6 +397,15 @@ GMTETileMatrixStack >> resetLayers: aSet [
 
 	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [ :layerIdx |
 		self resetLayer: layerIdx]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/23/2024 20:02'
+}
+GMTETileMatrixStack >> setLayerNameOf: anIdx to: aString [
+
+	^ (self layer: anIdx) displayName: aString
 ]
 
 {

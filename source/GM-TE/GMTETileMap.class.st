@@ -486,6 +486,15 @@ GMTETileMap >> initialize [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/23/2024 20:01'
+}
+GMTETileMap >> layerNameOf: anIndex [
+
+	^ self tileMatrixStack layerNameOf: anIndex
+]
+
+{
 	#category : #'dev-api',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:53'
 }
@@ -715,6 +724,15 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 		mapTileWidth: aWidth;
 		mapTileHeight: aHeigth;
 		mapPadding: aPadding
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/23/2024 20:03'
+}
+GMTETileMap >> setLayerNameOf: anIndex to: aString [
+
+	^ self tileMatrixStack setLayerNameOf: anIndex to: aString
 ]
 
 {

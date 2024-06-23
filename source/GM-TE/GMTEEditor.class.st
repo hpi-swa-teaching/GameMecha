@@ -13,7 +13,6 @@ Class {
 		'savedSinceModified',
 		'inspector',
 		'morphBuilders',
-		'layerData',
 		'backgroundTile',
 		'tileMap'
 	],
@@ -58,6 +57,17 @@ GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
 	"loads a tileMap from the git asset browser"
 	
     ^ GMTEEditor getTileMapFromFileBinary: ((GitAssetLoader for: aName) loadAsset: aPath)
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'TW 6/23/2024 19:59'
+}
+GMTEEditor class >> getVisibilityIndicator: aBoolean [
+
+	aBoolean
+		ifTrue: [^ '(h)']
+		ifFalse: [^ '(v)']
 ]
 
 {
@@ -255,19 +265,6 @@ GMTEEditor >> buildWith: builder [
 	self initializeDefaultTileMapMatrix.
 		
 	^ newMorph
-]
-
-{
-	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:45'
-}
-GMTEEditor >> collectLayerData [
-	"transfers layer data from an imported tileMap to update the layerViewer"
-	
-	self layerData: OrderedCollection new.
-	1 to: self layerCount do: [ :i | 
-		self storeLayerN: i withVisibility: (self tileMap tileMatrixStack layerVisible: i)]
-	
 ]
 
 {
@@ -704,19 +701,6 @@ GMTEEditor >> exportMenu [
 ]
 
 {
-	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:50'
-}
-GMTEEditor >> forgetLayers: aSet [
-	"TODO: comment"
-	
-	| toBeForgotten |
-	toBeForgotten := self selectedLayers asSortedCollection reversed.
-	toBeForgotten do: [:i | self layerData removeAt: i].
-	self changed: #getLayerList
-]
-
-{
 	#category : #helper,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:51'
 }
@@ -772,15 +756,14 @@ GMTEEditor >> getGridWidthAsString [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:54'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:13'
 }
 GMTEEditor >> getLayerList [
 	"returns the layer list"
 	
-	^ self layerData collect: [ :layerData |
-			layerData second 
-				ifTrue: [layerData first, ' (v)']
-				ifFalse: [layerData first, ' (h)']]
+	self tileMap ifNil: [^ OrderedCollection new].
+	
+	^ self tileMap tileMatrixStack matrixLayers collect: [:aLayer | aLayer displayName, (GMTEEditor getVisibilityIndicator: aLayer visible)]
 ]
 
 {
@@ -840,7 +823,7 @@ GMTEEditor >> getTileRatioAsString [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/23/2024 14:05'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:09'
 }
 GMTEEditor >> importFromMorph [
 	"import tilemap into editor from a .morph file"
@@ -856,7 +839,7 @@ GMTEEditor >> importFromMorph [
 		changed: #getTileRatioAsString;
 		changed: #getGridWidthAsString;
 		changed: #getGridHeightAsString;
-		collectLayerData
+		changed: #getLayerList
 ]
 
 {
@@ -911,21 +894,20 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialisation,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:57'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:14'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
 	
 	super initialize.
 	self
-		layerData: OrderedCollection new;
 		selectedLayers: Set new;
-		storeLayerN: 1;
 		selectLayer: 1;
 		morphBuilders: Dictionary new;
 		open;
 		ratio: 1;
-		savedSinceModified: true
+		savedSinceModified: true;
+		changed: #getLayerList
 ]
 
 {
@@ -1013,26 +995,6 @@ GMTEEditor >> layerCount [
 	"returns the amount of layers in the tileMap"
 	
 	^ self tileMap tileMatrixStack layerCount
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:06'
-}
-GMTEEditor >> layerData [
-	"TODO: comment, what is this"
-	
-	^ layerData
-	
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:31'
-}
-GMTEEditor >> layerData: anObject [
-
-	layerData := anObject
 ]
 
 {
@@ -1264,7 +1226,7 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:28'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:07'
 }
 GMTEEditor >> renameLayer [
 	"renames the selected layer with a user chosen name"
@@ -1274,9 +1236,10 @@ GMTEEditor >> renameLayer [
 		ifTrue: [
 			selectedLayer := self getSelectedLayer.
 			newName := FillInTheBlankMorph 
-			request: 'New Name:' initialAnswer: (self layerData at: selectedLayer) first.
+			request: 'New Name:' initialAnswer: (self tileMap layerNameOf: selectedLayer).
 			(newName isNil or: newName isEmpty)
-				ifFalse: [self updateLayerNameOf: selectedLayer to: newName]]
+				ifFalse: [self tileMap setLayerNameOf: selectedLayer to: newName]].
+	self changed: #getLayerList
 
 	
 ]
@@ -1521,24 +1484,12 @@ GMTEEditor >> storeLayerN: aNumber [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:46'
-}
-GMTEEditor >> storeLayerN: aNumber withVisibility: aBoolean [
-	"TODO: comment"
-	
-	self layerData add: {'Layer ', aNumber . aBoolean}.
-	self changed: #getLayerList
-]
-
-{
-	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:49'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:05'
 }
 GMTEEditor >> swapLayer: anIndex with: anotherIndex [
 	"swaps two layers"
 	
 	| selectionOfA |
-	self layerData swap: anIndex with: anotherIndex.
 	self tileMap tileMatrixStack swapLayer: anIndex with: anotherIndex.
 	selectionOfA := self layerAt: anIndex.
 	self 
@@ -1627,14 +1578,12 @@ GMTEEditor >> toggleGrid [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:52'
+	#'squeak_changestamp' : 'TW 6/23/2024 20:05'
 }
 GMTEEditor >> toggleSelectedLayerVisibility [
 	"toggles the visibility of the selected layers"
 	
-	self selectedLayers do: [:i |
-		self tileMap tileMatrixStack toggleLayerVisibility: i.
-		self layerData at: i put: {(self layerData at: i) first . (self layerData at: i) second not}].
+	self selectedLayers do: [:i |self tileMap tileMatrixStack toggleLayerVisibility: i].
 	self changed: #getLayerList
 ]
 
@@ -1667,20 +1616,6 @@ GMTEEditor >> unselectTile [
 	self selectedTile: nil.
 	self tileMap tileSelectionSet highlightImage: nil.
 	self trayViewer morph submorphs first visible: false
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:52'
-}
-GMTEEditor >> updateLayerNameOf: anIndex to: aString [
-	"updates the name of a layer"
-	
-	| visibility |
-	visibility := (self layerData at: anIndex) second.
-	
-	self layerData at: anIndex put: {aString. visibility}.
-	self changed: #getLayerList
 ]
 
 {

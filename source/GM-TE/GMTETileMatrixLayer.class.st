@@ -3,7 +3,8 @@ Class {
 	#superclass : #GMTEStaticCoordinateMatrix,
 	#instVars : [
 		'layerIdx',
-		'visible'
+		'visible',
+		'displayName'
 	],
 	#category : #'GM-TE-Core'
 }
@@ -70,6 +71,24 @@ GMTETileMatrixLayer >> belowLayer: aLayer [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/23/2024 19:53'
+}
+GMTETileMatrixLayer >> displayName [
+
+	^ displayName
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/23/2024 19:53'
+}
+GMTETileMatrixLayer >> displayName: anObject [
+
+	displayName := anObject
+]
+
+{
 	#category : #enumerating,
 	#'squeak_changestamp' : 'jj 6/23/2024 13:56'
 }
@@ -90,17 +109,6 @@ GMTETileMatrixLayer >> free [
 	self doTiles: [:tile | tile free].
 	
 	self setNil
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:25'
-}
-GMTETileMatrixLayer >> initialize [
-
-	super initialize.
-	
-	self visible: true
 ]
 
 {
