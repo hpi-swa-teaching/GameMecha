@@ -33,6 +33,27 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 16:59'
+}
+GMTETileMap class >> foregroundMorphicLayerNumber [
+	"TODO: comment"
+	
+	^ 76
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:50'
+}
+GMTETileMap class >> maxLayers [
+	"the maximum amount of tileMatrixStack layers"
+	
+	^ 80
+	
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:21'
 }
@@ -343,13 +364,13 @@ GMTETileMap >> generateBackgroundTiles [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:24'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:59'
 }
 GMTETileMap >> generateMatrixStacks [
 	
-	self tileMatrixStackBackground: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: 101).
-	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 100).
-	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: 10). "TODO: Number ?"
+	self tileMatrixStackBackground: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault + 1).
+	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault).
+	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance). "ensures that the visual layer is always is front of every other layer"
 	"self generateBackgroundTiles."
 	self generateVisualTiles.
 	self toggleBackgroundLayer
@@ -939,14 +960,14 @@ GMTETileMap >> tileWidth: anObject [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:49'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:00'
 }
 GMTETileMap >> toForeground [
 	"Squeak Bar is 77.
 	(layerScreen - n) is the nth layer.
 	Most regular Physics Objects are Layer 2."
 
-	self morphicLayerNumber: 76
+	self morphicLayerNumber: GMTETileMap foregroundMorphicLayerNumber
 ]
 
 {

@@ -8,6 +8,16 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:06'
+}
+GMTEImageMorph class >> placeholderDepth [
+	"TODO: comment"
+	
+	^ 32
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:10'
 }
@@ -68,12 +78,12 @@ GMTEImageMorph >> fullResolutionSprite: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:07'
 }
 GMTEImageMorph >> setPlaceholderWithColor: aColor [
 
 	| placeholderForm |
-	placeholderForm := Form extent: self extent depth: 32.	
+	placeholderForm := Form extent: self extent depth: GMTEImageMorph placeholderDepth.	
 	placeholderForm fillColor: aColor.
 	self fullResolutionSprite: placeholderForm.
 	self image: placeholderForm
@@ -81,12 +91,12 @@ GMTEImageMorph >> setPlaceholderWithColor: aColor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:07'
 }
 GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
 
 	| placeholderForm |
-	placeholderForm := Form extent: anExtent depth: 32.	
+	placeholderForm := Form extent: anExtent depth: GMTEImageMorph placeholderDepth.	
 	placeholderForm fillColor: aColor.
 	self fullResolutionSprite: placeholderForm.
 	self image: placeholderForm

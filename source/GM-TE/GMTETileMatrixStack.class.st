@@ -13,11 +13,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:27'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:02'
 }
 GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight [
 
-	^ self fromWidth: aWidth height: aHeight morphicLayerOffset: 100 "TODO: magic number"
+	^ self fromWidth: aWidth height: aHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault 
 		
 ]
 
@@ -34,6 +34,26 @@ GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight morphicLayerOffse
 		pushLayer;
 		yourself
 		
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 16:53'
+}
+GMTETileMatrixStack class >> morphicLayerDistance [
+	"TODO: comment"
+		
+	^ 2
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 16:55'
+}
+GMTETileMatrixStack class >> morphicLayerOffsetDefault [
+	"default offset for a tileMatrixStack"
+	
+	^ 100
 ]
 
 {
@@ -266,14 +286,14 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
+	#'squeak_changestamp' : 'jj 6/23/2024 18:02'
 }
 GMTETileMatrixStack >> pushLayer [
-
+	
 	self matrixLayers addLast: (GMTETileMatrixLayer 
 		width: self width 
 		height: self height 
-		layerIdx: (self morphicLayerStartingOffset - self layerCount - 2)) "TODO: outsource magic number"
+		layerIdx: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance)) 
 ]
 
 {

@@ -12,6 +12,16 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'jj 6/23/2024 17:13'
+}
+GMTETileContainer class >> minTileSize [
+	"TODO: comment"
+	
+	^ 40
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
@@ -45,7 +55,7 @@ GMTETileContainer >> parent: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/23/2024 13:44'
+	#'squeak_changestamp' : 'jj 6/23/2024 17:13'
 }
 GMTETileContainer >> step [
 
@@ -54,10 +64,10 @@ GMTETileContainer >> step [
 		ifTrue: [^ nil].
 	
 	self extent: self parent extent.
-	minTileSize := 40. "Magic number currently."
+	minTileSize := GMTETileContainer minTileSize. 
 	n := self width / minTileSize.
 	gap := self width - (n floor * minTileSize) / n.
-	self submorphs do: [ :tile| tile extent: (minTileSize + gap - 2)]
+	self submorphs do: [ :tile| tile extent: (minTileSize + gap - 2)] "TODO: magic number"
 ]
 
 {
