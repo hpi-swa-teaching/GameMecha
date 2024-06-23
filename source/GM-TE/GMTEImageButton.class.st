@@ -213,19 +213,21 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
+	#'squeak_changestamp' : 'TW 6/23/2024 18:47'
 }
 GMTEImageButton >> setImageMode: aString [
 	
 	(aString == #pressed)
-		ifTrue: [self fullResolutionSprite: (self stateSprites at: 'pressed')]
+		ifTrue: [
+			self fullResolutionSprite: (self stateSprites at: 'pressed')]
 		ifFalse: [
-		(aString == #unpressed)
-			ifTrue:  [self fullResolutionSprite: (self stateSprites at: 'unpressed')]
-			ifFalse: [
-				(aString == #hovered)
-					ifTrue: [self fullResolutionSprite: (self stateSprites at: 'hovered')]
-					ifFalse: [^ nil]]].
+			(aString == #unpressed)
+				ifTrue:  [
+					self fullResolutionSprite: (self stateSprites at: 'unpressed')]
+				ifFalse: [
+					(aString == #hovered)
+						ifTrue: [self fullResolutionSprite: (self stateSprites at: 'hovered')]
+						ifFalse: [^ nil]]].
 			
 	self extent: self extent
 ]

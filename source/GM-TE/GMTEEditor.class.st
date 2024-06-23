@@ -240,7 +240,7 @@ GMTEEditor >> commandBar: anObject [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:40'
+	#'squeak_changestamp' : 'TW 6/23/2024 18:43'
 }
 GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: aNumber [
 	"shows a preview window for an imported tileset"
@@ -258,7 +258,8 @@ GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: 
 	
 	(morphArray reversed) do: [ :morph| 
 		img 
-			addMorph: (ImageMorph new image: (morph image scaledToWidth: aNumber); 			borderColor: (Color red);
+			addMorph: (ImageMorph new image: (morph image scaledToWidth: aNumber); 			
+			borderColor: (Color red);
 			borderWidth:1;
 			yourself)].
 	
