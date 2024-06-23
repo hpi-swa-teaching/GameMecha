@@ -430,7 +430,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:44'
+	#'squeak_changestamp' : 'Alex M 6/23/2024 22:56'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -450,7 +450,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0) offsets: (0 @ 0 corner: 0 @ 30)).
 			
 			(aBuilder pluggablePanelSpec new)
-			frame: (LayoutFrame fractions: (1 @ 0 corner: 1 @ 1) offsets: (-30 @ 30 corner: 0 @ 0));
+			frame: (LayoutFrame fractions: (0.85 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
 			
 			children: {				
 				(aBuilder pluggableImageButtonSpec new)
@@ -509,7 +509,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			getSelectionList: #layerAt:;
 			setSelectionList: #layerAt:put:;
 			autoDeselect: false;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: -30 @ 0))};
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.85 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
 		verticalResizing: #shrinkWrap;
 		yourself
 ]
