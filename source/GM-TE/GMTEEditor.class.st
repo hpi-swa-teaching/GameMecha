@@ -146,7 +146,7 @@ GMTEEditor class >> tileMapMinPaddingSize [
 ]
 
 {
-	#category : #'menu button functions',
+	#category : #'layer button functions',
 	#'squeak_changestamp' : 'TW 6/23/2024 21:37'
 }
 GMTEEditor >> addLayer [
