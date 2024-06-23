@@ -118,6 +118,15 @@ GMTETileMatrixStack >> blendLayers: aSet [
 
 {
 	#category : #eumerating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:30'
+}
+GMTETileMatrixStack >> collectLayers: aBlock [
+
+	^ self matrixLayers collect: [:layer | aBlock value: layer]
+]
+
+{
+	#category : #eumerating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:53'
 }
 GMTETileMatrixStack >> doLayers: aBlock [
@@ -305,14 +314,16 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'jj 6/23/2024 18:02'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:26'
 }
 GMTETileMatrixStack >> pushLayer [
 	
 	self matrixLayers addLast: (GMTETileMatrixLayer 
 		width: self width 
 		height: self height 
-		layerIdx: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance)) 
+		layerIdx: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance)).
+		
+	self matrixLayers last displayName: 'Layer ', self layerCount 
 ]
 
 {
@@ -454,7 +465,7 @@ GMTETileMatrixStack >> sortLayerSet: aSet [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:22'
 }
 GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 
@@ -463,8 +474,8 @@ GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 	layer2 := self layer: anIdx2.
 	tmpMorhpicLayer := layer1 layerIdx.
 	
-	layer1 updateLayerIdx: layer2 layerIdx.
-	layer2 updateLayerIdx: tmpMorhpicLayer.
+	layer1 updateLayerTo: layer2 layerIdx.
+	layer2 updateLayerTo: tmpMorhpicLayer.
 
 	self matrixLayers swap: anIdx1 with: anIdx2
 	

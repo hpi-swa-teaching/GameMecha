@@ -11,12 +11,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:27'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:11'
 }
 GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 
 	^ (self rows: aHeight columns: aWidth)  
 		layerIdx: anIdx; 
+		displayName: 'Layer ', anIdx;
 		yourself
 ]
 
@@ -32,7 +33,7 @@ GMTETileMatrixLayer >> aboveLayer: aLayer [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'TW 6/23/2024 20:38'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:27'
 }
 GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
@@ -112,6 +113,18 @@ GMTETileMatrixLayer >> free [
 ]
 
 {
+	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:09'
+}
+GMTETileMatrixLayer >> initialize [
+
+	super initialize.
+	self visible: true
+	
+
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:24'
 }
@@ -141,9 +154,9 @@ GMTETileMatrixLayer >> setNil [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:22'
 }
-GMTETileMatrixLayer >> updateLayerIdx: anIdx [
+GMTETileMatrixLayer >> updateLayerTo: anIdx [
 
 	self layerIdx: anIdx.
 	self doTiles: [:tile | tile morphicLayerNumber: self layerIdx]
