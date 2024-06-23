@@ -174,7 +174,7 @@
 		#package : MCPackage {
 			#name : 'GM-TE'
 		},
-		#path : @57
+		#path : @4
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -228,6 +228,13 @@
 			'LICENSE'
 		],
 		#encoding : 'TXT'
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'add.png'
+		],
+		#encoding : @21
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
