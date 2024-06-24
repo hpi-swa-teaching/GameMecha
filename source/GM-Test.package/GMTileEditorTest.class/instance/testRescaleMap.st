@@ -1,4 +1,4 @@
-as yet unclassified
+editorTests
 testRescaleMap
 	"tests the rescaling of the maps dimensions"
 	

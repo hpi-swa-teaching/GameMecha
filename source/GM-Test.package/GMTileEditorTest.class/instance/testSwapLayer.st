@@ -1,4 +1,4 @@
-as yet unclassified
+layerTests
 testSwapLayer
 	"tests the swapping of two layers"
 	

@@ -1,4 +1,4 @@
-layerTests
+editorTests
 testImportButton
 	"tests the import function"
 	

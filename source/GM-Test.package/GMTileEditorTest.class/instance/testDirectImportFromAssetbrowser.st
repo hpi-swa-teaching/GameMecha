@@ -1,4 +1,4 @@
-layerTests
+editorTests
 testDirectImportFromAssetbrowser
 	"tests the creation of a tileMap from the git asset browser"
 	

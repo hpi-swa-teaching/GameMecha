@@ -1,4 +1,4 @@
-as yet unclassified
+helper
 setUp
 
 	self editor ifNil: [self editor: GMTEEditor new].

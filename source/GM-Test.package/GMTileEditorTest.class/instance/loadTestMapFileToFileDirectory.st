@@ -1,4 +1,4 @@
-as yet unclassified
+helper
 loadTestMapFileToFileDirectory
 	"copies the test map file from the asset browser to the default FileDirectory for import tests"
 	

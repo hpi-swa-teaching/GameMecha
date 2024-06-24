@@ -1,4 +1,4 @@
-as yet unclassified
+layerTests
 testMoveLayerDown
 	"tests the moveLayerDown function"
 	

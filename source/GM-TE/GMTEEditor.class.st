@@ -30,7 +30,7 @@ GMTEEditor class >> editorMinimumExtent [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
 }
 GMTEEditor class >> getTileMapFromFileBinary: aFileBinary [
@@ -40,7 +40,7 @@ GMTEEditor class >> getTileMapFromFileBinary: aFileBinary [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
@@ -50,7 +50,7 @@ GMTEEditor class >> getTileMapFromFilePath: aFilePath [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
@@ -71,7 +71,7 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
 }
 GMTEEditor class >> privateGetEditorTileMapFromFileBinary: aFileBinary [
@@ -85,7 +85,7 @@ GMTEEditor class >> privateGetEditorTileMapFromFileBinary: aFileBinary [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:07'
 }
 GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
@@ -95,7 +95,7 @@ GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #squeakutils,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:06'
 }
 GMTEEditor class >> register [

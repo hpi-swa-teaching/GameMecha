@@ -1,4 +1,4 @@
-layerTests
+editorTests
 testDirectImport
 	"tests the creation of a tileMap from a local file path"
 	
