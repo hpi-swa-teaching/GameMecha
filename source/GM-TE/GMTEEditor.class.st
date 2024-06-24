@@ -1336,15 +1336,15 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:33'
 }
 GMTEEditor >> selectTile: anObject [
 	"selects a tile from the tile store"
 	
 	"TODO: might be problematic with tray. Maybe give tiles in the store IDs?"
 	(anObject = self selectedTile)
-	ifTrue:[self unselectTile]
-	ifFalse:[
+	ifTrue: [self unselectTile]
+	ifFalse: [
 		self selectedTile: anObject.
 		self tileMap tileSelectionSet highlightImage: anObject fullResolutionSprite.
 		self trayViewer morph submorphs first
