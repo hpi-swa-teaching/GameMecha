@@ -19,7 +19,7 @@ GMTETileVisual class >> decoMorphAlphaValue [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:16'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:04'
 }
 GMTETileVisual >> applyBorderHighlighting [
 	
@@ -30,10 +30,11 @@ GMTETileVisual >> applyBorderHighlighting [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'jj 6/23/2024 16:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:04'
 }
 GMTETileVisual >> applyDecoMorphHighlighting: aForm [
-	
+	"Set a form as a temporary decoration inside the tile"	
+
 	| newDecoMorph |
 	aForm 
 		ifNotNil: [

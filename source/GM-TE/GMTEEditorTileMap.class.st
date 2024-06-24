@@ -22,15 +22,6 @@ GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPaddi
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:47'
-}
-GMTEEditorTileMap >> blendLayers: aSet [
-
-	self tileMatrixStack blendLayers: aSet
-]
-
-{
-	#category : #'event handling',
 	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
 GMTEEditorTileMap >> handlesMouseDown: anEvent [
@@ -77,9 +68,10 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'jj 6/23/2024 13:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:34'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
+	"Implements placement of tiles"
 
 	| clickedTile activeLayer |
 	self model singleLayerSelected 
@@ -93,9 +85,10 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:34'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
+	"Implements highlighting of tiles when hovering"
 
 	| hoveredTile hoveredTileVisual activeLayer |
 	self model singleLayerSelected
@@ -110,15 +103,14 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	
 		"TODO why another ifNil check here?"
 		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
-	
-	"This solves the bug but not the root of the issue. TODO further investigation."
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 6/15/2024 12:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:35'
 }
 GMTEEditorTileMap >> rescaleMap [
+	"Override super behavior such that highlightings are removed during rescale events"
 
 	self tileSelectionSet clearAllHighlightings.
 	super rescaleMap
@@ -144,9 +136,10 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'jj 6/23/2024 13:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:38'
 }
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
+	"Add currently selected tile (model) to editable matrix stack at mouse position"
 	
 	| tileIdx hoveredTile |
 	hoveredTile := aTile.
@@ -174,9 +167,10 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:38'
 }
 GMTEEditorTileMap >> updateTileSprite: aTile [
+	"Helper function to apply sprite from tile selection to aTile"
 
 	self model selectedTile ifNotNil: [aTile applyTileSprite: self model selectedTile]
 ]

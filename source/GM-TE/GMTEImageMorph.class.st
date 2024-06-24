@@ -19,9 +19,10 @@ GMTEImageMorph class >> placeholderDepth [
 
 {
 	#category : #copying,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:01'
 }
 GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
+	"Answer the sender with a new image morph that is a blend from self and anImageMorph"
 
 	anImageMorph ifNil: [^ self].
 	
@@ -50,9 +51,10 @@ GMTEImageMorph >> extent: anExtent [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:29'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:02'
 }
 GMTEImageMorph >> free [
+	"Fully delete morph"
 
 	self owner ifNotNil: [self owner removeMorph: self].
 	self abandon
@@ -78,9 +80,10 @@ GMTEImageMorph >> fullResolutionSprite: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:02'
 }
 GMTEImageMorph >> setPlaceholderWithColor: aColor [
+	"Set a placeholder form with aColor"
 
 	| placeholderForm |
 	placeholderForm := Form extent: self extent depth: GMTEImageMorph placeholderDepth.	
@@ -91,9 +94,10 @@ GMTEImageMorph >> setPlaceholderWithColor: aColor [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:03'
 }
 GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
+	"Set a placeholder form with anExtent and aColor"
 
 	| placeholderForm |
 	placeholderForm := Form extent: anExtent depth: GMTEImageMorph placeholderDepth.	
@@ -104,9 +108,10 @@ GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 5/22/2024 17:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:03'
 }
 GMTEImageMorph >> updateSprite: anImage [
+	"Update sprite by also carrying the fullResolutionSprite"
 
 	self fullResolutionSprite: anImage.
 	self extent: self extent

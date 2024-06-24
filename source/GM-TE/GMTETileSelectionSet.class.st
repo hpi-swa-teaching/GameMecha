@@ -9,9 +9,10 @@ Class {
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:51'
 }
 GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
+	"Apply everything that is considered as 'highlighting' to the tile selection"
 	
 	aTile applyDecoMorphHighlighting: self highlightImage
 	
@@ -19,9 +20,10 @@ GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:51'
 }
 GMTETileSelectionSet >> clearAllHighlightings [
+	"Clear tile selection and remove applied highlightings if any"
 	
 	self do: [ :tile | self removeHighlightingVisuals: tile].
 	self removeAll
@@ -47,10 +49,10 @@ GMTETileSelectionSet >> highlightImage: anObject [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:52'
 }
 GMTETileSelectionSet >> highlightTile: aTile [
-	"comment stating purpose of message"
+	"Add aTile to selection and apply highlights"
 
 	self
 		add: aTile;
@@ -70,18 +72,20 @@ GMTETileSelectionSet >> initialize: n [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:47'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:51'
 }
 GMTETileSelectionSet >> removeHighlightingVisuals: aTile [
+	"Remove everything that is considered as 'highlighting' to the tile selection"
 	
 	aTile removeDecoMorphHighlighting
 ]
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:47'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:52'
 }
 GMTETileSelectionSet >> unhighlightTile: aTile [
+	"Remove aTile to selection and remove highlights"
 
 	self
 		remove: aTile;

@@ -21,7 +21,7 @@ GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 ]
 
 {
-	#category : #copying,
+	#category : #comparing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
 }
 GMTETileMatrixLayer >> aboveLayer: aLayer [
@@ -44,9 +44,10 @@ GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
 {
 	#category : #copying,
-	#'squeak_changestamp' : 'TW 6/23/2024 23:37'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:39'
 }
 GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
+	"Return copy with size (aWidth, aHeight)"
 
 	| newLayer |
 	newLayer := self class width: aWidth height: aHeight layerIdx: self layerIdx.
@@ -67,9 +68,10 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 
 {
 	#category : #comparing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:23'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:39'
 }
 GMTETileMatrixLayer >> belowLayer: aLayer [
+	"Check if self is logically beneath aLayer"
 
 	^ (self aboveLayer: aLayer) not
 ]
@@ -94,9 +96,10 @@ GMTETileMatrixLayer >> displayName: anObject [
 
 {
 	#category : #enumerating,
-	#'squeak_changestamp' : 'jj 6/23/2024 13:56'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:39'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
+	"Convenience method to apply aBlock to every tile (if not nil)"
 
 	"Instance variable must be used here"
 	(contents) ifNil: [^ nil].
@@ -106,9 +109,10 @@ GMTETileMatrixLayer >> doTiles: aBlock [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:25'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:40'
 }
 GMTETileMatrixLayer >> free [
+	"Correctly free tiles from layer"
 
 	self doTiles: [:tile | tile free].
 	
@@ -157,9 +161,10 @@ GMTETileMatrixLayer >> setNil [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:40'
 }
 GMTETileMatrixLayer >> updateLayerTo: anIdx [
+	"Set a new layerIdx & update morphicLayerNumber accordingly"
 
 	self layerIdx: anIdx.
 	self doTiles: [:tile | tile morphicLayerNumber: self layerIdx]

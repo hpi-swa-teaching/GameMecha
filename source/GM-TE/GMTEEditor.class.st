@@ -196,16 +196,16 @@ GMTEEditor >> backgroundTile: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/23/2024 21:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:45'
 }
 GMTEEditor >> blendSelectedLayers [
-	"fuses the selected layers into one layer"
+	"Fuses the selected layers into one layer"
 	
 	| bakedLayer |
 	(self selectedLayers size > 1)
 		ifTrue: [
 			bakedLayer := self selectedLayers min.
-			self tileMap blendLayers: self selectedLayers.
+			self tileMap tileMatrixStack blendLayers: self selectedLayers.
 			self selectedLayers remove: bakedLayer.
 			self
 				deselectAllLayers;

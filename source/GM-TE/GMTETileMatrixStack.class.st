@@ -67,9 +67,10 @@ GMTETileMatrixStack >> basicVisible: aBool [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 20:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:50'
 }
 GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
+	"Blend two layers (arg ordered must not be considered)"
 
 	| topIdx bottomIdx bottomLayer topLayer bottomCell topCell newCellEntry |
 	((self layer: anIdx1) belowLayer: (self layer: anIdx2))
@@ -118,7 +119,7 @@ GMTETileMatrixStack >> blendLayers: aSet [
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:42'
 }
 GMTETileMatrixStack >> collectLayers: aBlock [
 
@@ -145,9 +146,10 @@ GMTETileMatrixStack >> doTiles: aBlock [
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:53'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:43'
 }
 GMTETileMatrixStack >> doTilesXYLidx: aBlock [
+	"For every tile in every layer run a aBlock with arguments [:x :y :layerIdx | ...]"
 
 	1 to: self width do: [:x | 
 		1 to: self height do: [:y |
@@ -261,10 +263,12 @@ GMTETileMatrixStack >> layerVisible: anIdx [
 
 {
 	#category : #'multiselect-helpers',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:48'
 }
 GMTETileMatrixStack >> mapLayers: anOrderedCollection withUnaryBlock: aBlock [
-
+	"Run an unary aBlock for every member of anOrderedCollection and return the result"
+	
+	"TODO: refactor with collect?"
 	| tmpResult |
 	tmpResult := OrderedCollection new.
 	
@@ -314,9 +318,10 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:26'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:41'
 }
 GMTETileMatrixStack >> pushLayer [
+	"Add a new layer to the layer stack"
 	
 	self matrixLayers addLast: (GMTETileMatrixLayer 
 		width: self width 
@@ -328,9 +333,10 @@ GMTETileMatrixStack >> pushLayer [
 
 {
 	#category : #'multiselect-helpers',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:49'
 }
 GMTETileMatrixStack >> reduceLayers: anOrderedCollection withBinaryBlock: aBlock [
+	"Run a binary aBlock over anOrderedCollection and reduce to a single return value"
 
 	| tmpResult |
 	self assert: (anOrderedCollection size > 1) description: 'Reduce expects at least 2 elements'.
@@ -393,9 +399,10 @@ GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/20/2024 20:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:49'
 }
 GMTETileMatrixStack >> reset [
+	"Remove all layers (except base layer) and free all tiles"
 
 	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
 	self resetLayer: 1
