@@ -1,7 +1,7 @@
 Class {
 	#name : #GMTETile,
 	#superclass : #GMTEImageMorph,
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {
@@ -26,7 +26,7 @@ GMTETile class >> position: aPoint extent: anExtent [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'Alex M 6/22/2024 14:34'
 }
 GMTETile >> applyTileSprite: aTile [
@@ -35,7 +35,7 @@ GMTETile >> applyTileSprite: aTile [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 09:50'
 }
 GMTETile >> setToPlaceholder [

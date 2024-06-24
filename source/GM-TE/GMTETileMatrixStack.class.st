@@ -8,7 +8,7 @@ Class {
 		'morphicLayerStartingOffset',
 		'visible'
 	],
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'decorationMorph'
 	],
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {

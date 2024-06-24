@@ -597,14 +597,14 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/23/2024 22:51'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 10:45'
 }
 GMTEEditor >> deleteSelectedLayers [
 	"deletes all selected layers unless this would delete all layers"
 	
 	(self anyLayerSelected not or: (self selectedLayers size >= self getLayerList size)) ifTrue: [^ nil].
 	
-	self tileMap removeLayers: self selectedLayers.
+	self tileMap tileMatrixStack removeLayersAt: self selectedLayers.
 	self 
 		deselectAllLayers;
 		changed: #getLayerList;
@@ -893,7 +893,7 @@ GMTEEditor >> importMenu [
 ]
 
 {
-	#category : #initialisation,
+	#category : #initialization,
 	#'squeak_changestamp' : 'TW 6/23/2024 20:14'
 }
 GMTEEditor >> initialize [
@@ -911,7 +911,7 @@ GMTEEditor >> initialize [
 ]
 
 {
-	#category : #initialisation,
+	#category : #initialization,
 	#'squeak_changestamp' : 'jj 6/23/2024 17:27'
 }
 GMTEEditor >> initializeDefaultTileMapMatrix [
@@ -921,7 +921,7 @@ GMTEEditor >> initializeDefaultTileMapMatrix [
 ]
 
 {
-	#category : #initialisation,
+	#category : #initialization,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:59'
 }
 GMTEEditor >> initializeTileMapMatrixWithHeight: aHeight width: aWidth [
@@ -1125,7 +1125,7 @@ GMTEEditor >> onClose [
 ]
 
 {
-	#category : #initialisation,
+	#category : #initialization,
 	#'squeak_changestamp' : 'jj 6/22/2024 21:14'
 }
 GMTEEditor >> open [
@@ -1257,13 +1257,13 @@ GMTEEditor >> resetAllLayers [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 10:43'
 }
 GMTEEditor >> resetLayers: aSet [
 	"resets the layers represented by aSet"
 	
 	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
-	self tileMap resetLayers: aSet
+	self tileMap tileMatrixStack resetLayers: aSet
 ]
 
 {
