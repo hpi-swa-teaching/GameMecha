@@ -19,11 +19,12 @@ GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:28'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:23'
 }
 GMTETileSelectionSet >> clearAllHighlightings [
 	
-	self do: [ :tile | self removeHighlightingVisuals: tile].
+	self do: [ :tile |
+		self removeHighlightingVisuals: tile].
 	self removeAll
 ]
 

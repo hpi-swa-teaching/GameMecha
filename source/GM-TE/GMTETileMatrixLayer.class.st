@@ -94,12 +94,12 @@ GMTETileMatrixLayer >> displayName: anObject [
 
 {
 	#category : #enumerating,
-	#'squeak_changestamp' : 'jj 6/23/2024 13:56'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:21'
 }
 GMTETileMatrixLayer >> doTiles: aBlock [
 
 	"Instance variable must be used here"
-	(contents) ifNil: [^ nil].
+	contents ifNil: [^ nil].
 	
 	self contents do: [:tile | tile ifNotNil: [aBlock value: tile]]
 ]

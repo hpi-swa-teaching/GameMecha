@@ -113,12 +113,13 @@ GMTETileMap >> backgroundTiles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:21'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:10'
 }
 GMTETileMap >> backgroundTiles: anObject [
 
-	self basicBackgroundTiles: anObject.
-	self updateMap
+	self 
+		basicBackgroundTiles: anObject;
+		updateMap
 	
 ]
 
@@ -276,14 +277,15 @@ GMTETileMap >> extent: aPoint [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'jj 6/24/2024 10:56'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:10'
 }
 GMTETileMap >> fitBackgroundToMap [
 	
-	self mapPadding: 0.0.
-	self forceMapSizeRatio: true.
-	self extent: (self mapSizeWidth) @ (self mapSizeHeight).
-	self changed
+	self 
+		mapPadding: 0.0;
+		forceMapSizeRatio: true;
+		extent: (self mapSizeWidth) @ (self mapSizeHeight);
+		changed
 ]
 
 {
@@ -457,12 +459,13 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:11'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:11'
 }
 GMTETileMap >> hideVisualLayer [
 
-	self tileMatrixStackVisual visible: false.
-	self changed
+	self 
+		tileMatrixStackVisual visible: false;
+		changed
 	
 ]
 
@@ -487,13 +490,14 @@ GMTETileMap >> initialize [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:53'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:12'
 }
 GMTETileMap >> mapGridOnly [
 	
-	self fitBackgroundToMap.
-	self color: Color transparent.
-	self changed
+	self 
+		fitBackgroundToMap;
+		color: Color transparent;
+		changed
 ]
 
 {
@@ -642,7 +646,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:59'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:05'
 }
 GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	"Rescale map & trigger update"
@@ -652,25 +656,25 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	sizeChanged := (aWidth ~= self mapTileWidth) or: [aHeigth ~= self mapTileHeight].
 
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
-	(sizeChanged) ifTrue: [
-		self rescaleMatrixStacks].
+	sizeChanged ifTrue: [self rescaleMatrixStacks].
 	self updateMap
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 19:01'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:13'
 }
 GMTETileMap >> rescaleMatrixStacks [
 
-	(self tileMatrixStack) ifNotNil: [
+	self tileMatrixStack ifNotNil: [
 		self tileMatrixStack rescaleToWidth: self mapTileWidth height: self mapTileHeight].
 		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
 		self tileMatrixStack doTiles: [ :tile |
 			self addMorph: tile].
-	(self tileMatrixStackVisual) ifNotNil: [
-		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
-		self tileMatrixStackVisual reset.
+	self tileMatrixStackVisual ifNotNil: [
+		self tileMatrixStackVisual 
+			rescaleToWidth: self mapTileWidth height: self mapTileHeight;
+			reset.
 		self generateVisualTiles]
 ]
 
@@ -797,13 +801,13 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:20'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:06'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 
 	| uncorrectedPos idx |
 	uncorrectedPos := self revertCorrectedTilePositionMap: aPoint.
-	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
+	idx := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
 	idx := idx floor.
 	
 	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^ nil].
@@ -1112,7 +1116,7 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:08'
 }
 GMTETileMap >> updateTiles [
 
@@ -1122,12 +1126,14 @@ GMTETileMap >> updateTiles [
 	
 	(self tileMatrixStackBackground visible) 
 		ifTrue: [
-			self tileMatrixStackBackground rescaleToWidth: self tileWidth height: self tileHeight.
-			self tileMatrixStackBackground reset.
+			self tileMatrixStackBackground 
+				rescaleToWidth: self tileWidth height: self tileHeight;
+				reset.
 			self generateBackgroundTiles.
 			self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [ :aPoint | 
 				self correctedTilePositionBackground: aPoint]].
 	
-	self updateTileMatrixStack: self tileMatrixStack.
-	self updateTileMatrixStack: self tileMatrixStackVisual
+	self 
+		updateTileMatrixStack: self tileMatrixStack;
+		updateTileMatrixStack: self tileMatrixStackVisual
 ]
