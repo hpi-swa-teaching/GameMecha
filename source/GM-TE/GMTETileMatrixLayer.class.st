@@ -2,7 +2,7 @@ Class {
 	#name : #GMTETileMatrixLayer,
 	#superclass : #GMTEStaticCoordinateMatrix,
 	#instVars : [
-		'layerIdx',
+		'layerIndex',
 		'visible',
 		'displayName'
 	],
@@ -13,10 +13,10 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/23/2024 23:36'
 }
-GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
+GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIndex: anIndex [
 
 	^ (self rows: aHeight columns: aWidth)  
-		layerIdx: anIdx;
+		layerIndex: anIndex;
 		yourself
 ]
 
@@ -26,8 +26,8 @@ GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIdx: anIdx [
 }
 GMTETileMatrixLayer >> aboveLayer: aLayer [
 	
-	"As a layerIdx corresponds to the morphicLayerNumber smaller is 'better'"
-	^ (self layerIdx < aLayer layerIdx)
+	"As a layerIndex corresponds to the morphicLayerNumber smaller is 'better'"
+	^ (self layerIndex < aLayer layerIndex)
 ]
 
 {
@@ -37,7 +37,7 @@ GMTETileMatrixLayer >> aboveLayer: aLayer [
 GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
 	aTile ifNotNil: [
-		aTile morphicLayerNumber: self layerIdx.
+		aTile morphicLayerNumber: self layerIndex.
 		aTile visible: self visible].
 	^ self at: y at: x put: aTile
 ]
@@ -50,7 +50,7 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 	"Return copy with size (aWidth, aHeight)"
 
 	| newLayer |
-	newLayer := self class width: aWidth height: aHeight layerIdx: self layerIdx.
+	newLayer := self class width: aWidth height: aHeight layerIndex: self layerIndex.
 	
 	"Copy over tiles & handle tile removal"
 	
@@ -135,18 +135,18 @@ GMTETileMatrixLayer >> initialize [
 	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:24'
 }
-GMTETileMatrixLayer >> layerIdx [
+GMTETileMatrixLayer >> layerIndex [
 
-	^ layerIdx
+	^ layerIndex
 ]
 
 {
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
-GMTETileMatrixLayer >> layerIdx: anObject [
+GMTETileMatrixLayer >> layerIndex: anObject [
 
-	layerIdx := anObject
+	layerIndex := anObject
 ]
 
 {
@@ -163,11 +163,11 @@ GMTETileMatrixLayer >> setNil [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:40'
 }
-GMTETileMatrixLayer >> updateLayerTo: anIdx [
-	"Set a new layerIdx & update morphicLayerNumber accordingly"
+GMTETileMatrixLayer >> updateLayerTo: anIndex [
+	"Set a new layerIndex & update morphicLayerNumber accordingly"
 
-	self layerIdx: anIdx.
-	self doTiles: [:tile | tile morphicLayerNumber: self layerIdx]
+	self layerIndex: anIndex.
+	self doTiles: [:tile | tile morphicLayerNumber: self layerIndex]
 ]
 
 {

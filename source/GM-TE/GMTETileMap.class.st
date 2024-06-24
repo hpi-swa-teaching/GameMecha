@@ -23,7 +23,7 @@ Class {
 		'tileCornerOffsetBackground',
 		'mapPaddedHeight',
 		'tileMatrixStack',
-		'tileMatrixStackVisual',
+		'tileMatrixStackHighlighting',
 		'tileMatrixStackBackground',
 		'forceMapSizeRatio',
 		'backgroundTiles',
@@ -66,7 +66,7 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	
 	newMap := (GMTETileMap newFrom: (aMap veryDeepCopy))
 		updateMap;
-		hideVisualLayer;
+		hideHighlightingLayer;
 		yourself.
 		
 	 aMap generateBackgroundTiles. "Part of the above fix"
@@ -264,7 +264,7 @@ GMTETileMap >> extent: aPoint [
 
 	| oldExtent newExtent |
 	self forceMapSizeRatio
-		ifTrue: [newExtent := (aPoint x)@(aPoint x * (self mapTileHeight / self mapTileWidth))]
+		ifTrue: [newExtent := (aPoint x) @ (aPoint x * (self mapTileHeight / self mapTileWidth))]
 		ifFalse: [newExtent := aPoint].
 		
 	oldExtent := self extent.
@@ -354,12 +354,12 @@ GMTETileMap >> generateBackgroundTiles [
 	
 	self backgroundTiles ifNil: [^ nil].
 	
-	self tileMatrixStackBackground doTilesXYLidx: [ :x :y :l | 
+	self tileMatrixStackBackground doTilesXYLindex: [:x :y :l | 
 		"It is assumed that the background stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [ :aPoint |
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [:aPoint |
 			self correctedTilePositionBackground: aPoint]].
 	
-	self tileMatrixStackBackground doTiles: [ :tile |
+	self tileMatrixStackBackground doTiles: [:tile |
 		tile applyTileSprite: self backgroundTiles]
 	
 	
@@ -374,9 +374,9 @@ GMTETileMap >> generateMatrixStacks [
 	
 	self tileMatrixStackBackground: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault + 1).
 	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault).
-	self tileMatrixStackVisual: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance). "ensures that the visual layer is always is front of every other layer"
+	self tileMatrixStackHighlighting: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance). "ensures that the visual layer is always is front of every other layer"
 	"self generateBackgroundTiles."
-	self generateVisualTiles.
+	self generateHighlightingTiles.
 	self toggleBackgroundLayer
 ]
 
@@ -387,7 +387,7 @@ GMTETileMap >> generateMatrixStacks [
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
 	"Covenience method to generate tiles on the editable matrix stack"
 
-	^ self generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: [ :aPoint | 
+	^ self generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: [:aPoint | 
 		self correctedTilePositionMap: aPoint]
 
 	
@@ -426,12 +426,12 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:27'
 }
-GMTETileMap >> generateVisualTiles [
+GMTETileMap >> generateHighlightingTiles [
 	"Fill the highlighting matrix stack with tiles automatically"
 	
-	self tileMatrixStackVisual doTilesXYLidx: [ :x :y :l | 
+	self tileMatrixStackHighlighting doTilesXYLindex: [:x :y :l | 
 		"It is assumed that the visual stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackVisual tileType: GMTETileVisual]
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackHighlighting tileType: GMTETileHighlighting]
 	
 
 ]
@@ -466,11 +466,11 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 	#category : #'dev-api',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
-GMTETileMap >> hideVisualLayer [
+GMTETileMap >> hideHighlightingLayer [
 	"Hide the grid"
 
 	self 
-		tileMatrixStackVisual visible: false;
+		tileMatrixStackHighlighting visible: false;
 		changed
 	
 ]
@@ -490,7 +490,7 @@ GMTETileMap >> initialize [
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
-		 backgroundTiles: ((GMTETileVisual new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
+		 backgroundTiles: ((GMTETileHighlighting new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
 	
 ]
 
@@ -679,13 +679,13 @@ GMTETileMap >> rescaleMatrixStacks [
 	self tileMatrixStack ifNotNil: [
 		self tileMatrixStack rescaleToWidth: self mapTileWidth height: self mapTileHeight].
 		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
-		self tileMatrixStack doTiles: [ :tile |
+		self tileMatrixStack doTiles: [:tile |
 			self addMorph: tile].
-	self tileMatrixStackVisual ifNotNil: [
-		self tileMatrixStackVisual 
+	self tileMatrixStackHighlighting ifNotNil: [
+		self tileMatrixStackHighlighting 
 			rescaleToWidth: self mapTileWidth height: self mapTileHeight;
 			reset.
-		self generateVisualTiles]
+		self generateHighlightingTiles]
 ]
 
 {
@@ -735,10 +735,10 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 	#category : #'dev-api',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:19'
 }
-GMTETileMap >> showVisualLayer [
+GMTETileMap >> showHighlightingLayer [
 	"Shows / hides the grid"
 
-	self tileMatrixStackVisual visible: true.
+	self tileMatrixStackHighlighting visible: true.
 	self changed
 	"self rescaleMap."
 ]
@@ -785,11 +785,11 @@ GMTETileMap >> tileCornerOffsetMap: anObject [
 }
 GMTETileMap >> tileFromPosition: aPoint layer: aLayer [
 
-	| idx |
-	idx := self tileIdxFromPosition: aPoint.
-	idx ifNil: [^ nil].
+	| index |
+	index := self tileIndexFromPosition: aPoint.
+	index ifNil: [^ nil].
 	
-	^ self tileMatrixStack layer: aLayer at: idx y at: idx x
+	^ self tileMatrixStack layer: aLayer at: index y at: index x
 ]
 
 {
@@ -814,16 +814,16 @@ GMTETileMap >> tileHeight: anObject [
 	#category : #conversion,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
-GMTETileMap >> tileIdxFromPosition: aPoint [
+GMTETileMap >> tileIndexFromPosition: aPoint [
 	"Answer the sender with a tile index (matrix[index x y][index x]) from a pixel position"
 
-	| uncorrectedPos idx |
+	| uncorrectedPos index |
 	uncorrectedPos := self revertCorrectedTilePositionMap: aPoint.
-	idx := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
-	idx := idx floor.
+	index := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
+	index := index floor.
 	
-	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^ nil].
-	^ idx
+	((self tileMatrixStackHighlighting layer: 1) validIndex: index) ifFalse: [^ nil].
+	^ index
 ]
 
 {
@@ -866,18 +866,18 @@ GMTETileMap >> tileMatrixStackBackground: anObject [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 5/27/2024 22:20'
 }
-GMTETileMap >> tileMatrixStackVisual [
+GMTETileMap >> tileMatrixStackHighlighting [
 
-	^ tileMatrixStackVisual
+	^ tileMatrixStackHighlighting
 ]
 
 {
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 6/22/2024 01:23'
 }
-GMTETileMap >> tileMatrixStackVisual: anObject [
+GMTETileMap >> tileMatrixStackHighlighting: anObject [
 
-	tileMatrixStackVisual := anObject
+	tileMatrixStackHighlighting := anObject
 ]
 
 {
@@ -948,14 +948,14 @@ GMTETileMap >> tileSizeWidth: anObject [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:08'
 }
-GMTETileMap >> tileVisualFromPosition: aPoint [
+GMTETileMap >> highlightingTileFromPosition: aPoint [
 	"Answer the sender with a highlighting tile at aPoint if present"
 
-	| idx |
-	idx := self tileIdxFromPosition: aPoint.
-	idx ifNil: [^ nil].
+	| index |
+	index := self tileIndexFromPosition: aPoint.
+	index ifNil: [^ nil].
 	
-	^ self tileMatrixStackVisual layer: 1 at: idx y at: idx x
+	^ self tileMatrixStackHighlighting layer: 1 at: index y at: index x
 ]
 
 {
@@ -1027,10 +1027,10 @@ GMTETileMap >> toggleBackgroundLayer [
 	#category : #'dev-api',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:21'
 }
-GMTETileMap >> toggleVisualLayer [
+GMTETileMap >> toggleHighlightingLayer [
 	"Toggles the visibility of the grid"
 
-	self tileMatrixStackVisual toggleVisibility.
+	self tileMatrixStackHighlighting toggleVisibility.
 	self changed
 ]
 
@@ -1082,9 +1082,9 @@ GMTETileMap >> updateDimensions [
 	
 	"Set tile corner offset to display grid (bigger than screen) centered"
 	self tileCornerOffsetMap: 
-		(self mapSizeWidth - self width // 2 negated)@(self mapSizeHeight - self height // 2 negated).
+		(self mapSizeWidth - self width // 2 negated) @ (self mapSizeHeight - self height // 2 negated).
 	self tileCornerOffsetBackground:
-		(self fullGridSizeWidth - self width // 2 negated)@(self fullGridSizeHeight - self height // 2 negated)
+		(self fullGridSizeWidth - self width // 2 negated) @ (self fullGridSizeHeight - self height // 2 negated)
 ]
 
 {
@@ -1109,7 +1109,7 @@ GMTETileMap >> updateMap [
 GMTETileMap >> updateTileMatrixStack: aStack [
 	"Convenience method for editable & highlighting matrix stack"
 
-	self updateTileMatrixStack: aStack posCorrectionBlock: [ :aPoint | 
+	self updateTileMatrixStack: aStack posCorrectionBlock: [:aPoint | 
 		self correctedTilePositionMap: aPoint]
 ]
 
@@ -1121,7 +1121,7 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 	"Update matrix stacks by applying new dimensions & positions"
 
 	| tilePos correctedTilePos tile |
-	aStack doTilesXYLidx: [ :x :y :l | 
+	aStack doTilesXYLindex: [:x :y :l | 
 		tilePos := self tilePosFromVirtual: x@y.
 		correctedTilePos := aBlock value: tilePos.
 		tile := aStack layer: l at: y at: x.
@@ -1149,10 +1149,10 @@ GMTETileMap >> updateTiles [
 				rescaleToWidth: self tileWidth height: self tileHeight;
 				reset.
 			self generateBackgroundTiles.
-			self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [ :aPoint | 
+			self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [:aPoint | 
 				self correctedTilePositionBackground: aPoint]].
 	
 	self 
 		updateTileMatrixStack: self tileMatrixStack;
-		updateTileMatrixStack: self tileMatrixStackVisual
+		updateTileMatrixStack: self tileMatrixStackHighlighting
 ]

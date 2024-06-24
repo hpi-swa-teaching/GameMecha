@@ -69,21 +69,21 @@ GMTETileMatrixStack >> basicVisible: aBool [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:50'
 }
-GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
+GMTETileMatrixStack >> blendLayer: anIndex1 with: anIndex2 [
 	"Blend two layers (arg ordered must not be considered)"
 
-	| topIdx bottomIdx bottomLayer topLayer bottomCell topCell newCellEntry |
-	((self layer: anIdx1) belowLayer: (self layer: anIdx2))
+	| topIndex bottomIndex bottomLayer topLayer bottomCell topCell newCellEntry |
+	((self layer: anIndex1) belowLayer: (self layer: anIndex2))
 		ifTrue: [
-			bottomLayer := self layer: anIdx1.
-			topLayer := self layer: anIdx2.
-			topIdx := anIdx2.
-			bottomIdx := anIdx1]
+			bottomLayer := self layer: anIndex1.
+			topLayer := self layer: anIndex2.
+			topIndex := anIndex2.
+			bottomIndex := anIndex1]
 		ifFalse: [
-			bottomLayer := self layer: anIdx2.
-			topLayer := self layer: anIdx1.
-			topIdx := anIdx1.
-			bottomIdx := anIdx2].
+			bottomLayer := self layer: anIndex2.
+			topLayer := self layer: anIndex1.
+			topIndex := anIndex1.
+			bottomIndex := anIndex2].
 		
 	1 to: bottomLayer columnCount do: [:x |
 		1 to: bottomLayer rowCount do: [:y |
@@ -98,8 +98,8 @@ GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 					newCellEntry := bottomCell asBlendedWithImageMorph: topCell.
 					bottomCell updateSprite: newCellEntry image]]].
 	
-	self removeLayerAt: topIdx.
-	^ bottomIdx
+	self removeLayerAt: topIndex.
+	^ bottomIndex
 	
 		
 	
@@ -113,8 +113,8 @@ GMTETileMatrixStack >> blendLayer: anIdx1 with: anIdx2 [
 }
 GMTETileMatrixStack >> blendLayers: aSet [
 
-	self reduceLayers: (self sortLayerSet: aSet) withBinaryBlock: [ :anIdx1 :anIdx2 | 
-		self blendLayer: anIdx1 with: anIdx2]
+	self reduceLayers: (self sortLayerSet: aSet) withBinaryBlock: [:anIndex1 :anIndex2 | 
+		self blendLayer: anIndex1 with: anIndex2]
 ]
 
 {
@@ -148,13 +148,13 @@ GMTETileMatrixStack >> doTiles: aBlock [
 	#category : #eumerating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:43'
 }
-GMTETileMatrixStack >> doTilesXYLidx: aBlock [
-	"For every tile in every layer run a aBlock with arguments [:x :y :layerIdx | ...]"
+GMTETileMatrixStack >> doTilesXYLindex: aBlock [
+	"For every tile in every layer run a aBlock with arguments [:x :y :layerIndex | ...]"
 
 	1 to: self width do: [:x | 
 		1 to: self height do: [:y |
-			1 to: self layerCount do: [:layerIdx | 
-				aBlock value: x value: y value: layerIdx]]]
+			1 to: self layerCount do: [:layerIndex | 
+				aBlock value: x value: y value: layerIndex]]]
 ]
 
 {
@@ -179,9 +179,9 @@ GMTETileMatrixStack >> height: anObject [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:09'
 }
-GMTETileMatrixStack >> hideLayer: anIdx [
+GMTETileMatrixStack >> hideLayer: anIndex [
 
-	(self layer: anIdx) visible: false
+	(self layer: anIndex) visible: false
 ]
 
 {
@@ -190,8 +190,8 @@ GMTETileMatrixStack >> hideLayer: anIdx [
 }
 GMTETileMatrixStack >> hideLayers: aSet [
 
-	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [ :layerIdx |
-		self hideLayer: layerIdx]
+	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [:layerIndex |
+		self hideLayer: layerIndex]
 ]
 
 {
@@ -211,27 +211,27 @@ GMTETileMatrixStack >> initialize [
 	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
 }
-GMTETileMatrixStack >> layer: aLayerIdx [
+GMTETileMatrixStack >> layer: aLayerIndex [
 	
-	^ self matrixLayers at: aLayerIdx
+	^ self matrixLayers at: aLayerIndex
 ]
 
 {
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:58'
 }
-GMTETileMatrixStack >> layer: aLayerIdx at: y at: x [ 
+GMTETileMatrixStack >> layer: aLayerIndex at: y at: x [ 
 
-	^ (self matrixLayers at: aLayerIdx) at: y at: x
+	^ (self matrixLayers at: aLayerIndex) at: y at: x
 ]
 
 {
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:58'
 }
-GMTETileMatrixStack >> layer: aLayerIdx at: y at: x put: aTile [
+GMTETileMatrixStack >> layer: aLayerIndex at: y at: x put: aTile [
 	
-	^ (self matrixLayers at: aLayerIdx) addTile: aTile at: y at: x
+	^ (self matrixLayers at: aLayerIndex) addTile: aTile at: y at: x
 ]
 
 {
@@ -247,18 +247,18 @@ GMTETileMatrixStack >> layerCount [
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 6/23/2024 20:01'
 }
-GMTETileMatrixStack >> layerNameOf: anIdx [
+GMTETileMatrixStack >> layerNameOf: anIndex [
 
-	^ (self layer: anIdx) displayName
+	^ (self layer: anIndex) displayName
 ]
 
 {
 	#category : #checking,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:29'
 }
-GMTETileMatrixStack >> layerVisible: anIdx [
+GMTETileMatrixStack >> layerVisible: anIndex [
 
-	^ (self layer: anIdx) visible
+	^ (self layer: anIndex) visible
 ]
 
 {
@@ -272,8 +272,8 @@ GMTETileMatrixStack >> mapLayers: anOrderedCollection withUnaryBlock: aBlock [
 	| tmpResult |
 	tmpResult := OrderedCollection new.
 	
-	anOrderedCollection do: [:layerIdx | 
-		tmpResult add: (aBlock value: layerIdx)].
+	anOrderedCollection do: [:layerIndex | 
+		tmpResult add: (aBlock value: layerIndex)].
 	
 	^ tmpResult	
 	
@@ -326,7 +326,7 @@ GMTETileMatrixStack >> pushLayer [
 	self matrixLayers addLast: (GMTETileMatrixLayer 
 		width: self width 
 		height: self height 
-		layerIdx: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance)).
+		layerIndex: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance)).
 		
 	self matrixLayers last displayName: 'Layer ', self layerCount 
 ]
@@ -343,8 +343,8 @@ GMTETileMatrixStack >> reduceLayers: anOrderedCollection withBinaryBlock: aBlock
 	
 	tmpResult := aBlock value: (anOrderedCollection at: 1) value: (anOrderedCollection at: 2).
 	
-	3 to: anOrderedCollection size do: [ :layerIdx |
-		tmpResult := aBlock value: tmpResult value: (anOrderedCollection at: layerIdx)].
+	3 to: anOrderedCollection size do: [:layerIndex |
+		tmpResult := aBlock value: tmpResult value: (anOrderedCollection at: layerIndex)].
 
 	^ tmpResult
 	
@@ -355,12 +355,12 @@ GMTETileMatrixStack >> reduceLayers: anOrderedCollection withBinaryBlock: aBlock
 	#category : #removing,
 	#'squeak_changestamp' : 'jj 6/23/2024 13:43'
 }
-GMTETileMatrixStack >> removeLayerAt: idx [ 
+GMTETileMatrixStack >> removeLayerAt: index [ 
 
 	| removedLayer |.
 	self assert: self matrixLayers size > 1 description: 'Base layer cannot be removed!'.
 	
-	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: idx)) value.
+	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: index)) value.
 	removedLayer free
 ]
 
@@ -370,8 +370,8 @@ GMTETileMatrixStack >> removeLayerAt: idx [
 }
 GMTETileMatrixStack >> removeLayersAt: aSet [
 
-	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [ :layerIdx |
-		self removeLayerAt: layerIdx]
+	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [:layerIndex |
+		self removeLayerAt: layerIndex]
 	
 ]
 
@@ -389,7 +389,7 @@ GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 	
 	newLayers := LinkedList new.
 
-	self doLayers: [ :layer | 
+	self doLayers: [:layer | 
 		newLayer := layer asRescaledToWidth: aWidth height: aHeight.
 		newLayers addLast: newLayer.
 		layer free].
@@ -404,7 +404,7 @@ GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 GMTETileMatrixStack >> reset [
 	"Remove all layers (except base layer) and free all tiles"
 
-	self layerCount to: 2 by: -1 do: [ :layer | self removeLayerAt: layer].
+	self layerCount to: 2 by: -1 do: [:layer | self removeLayerAt: layer].
 	self resetLayer: 1
 ]
 
@@ -412,9 +412,9 @@ GMTETileMatrixStack >> reset [
 	#category : #removing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/20/2024 20:23'
 }
-GMTETileMatrixStack >> resetLayer: anIdx [
+GMTETileMatrixStack >> resetLayer: anIndex [
 
-	(self layer: anIdx) free
+	(self layer: anIndex) free
 ]
 
 {
@@ -423,26 +423,26 @@ GMTETileMatrixStack >> resetLayer: anIdx [
 }
 GMTETileMatrixStack >> resetLayers: aSet [
 
-	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [ :layerIdx |
-		self resetLayer: layerIdx]
+	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [:layerIndex |
+		self resetLayer: layerIndex]
 ]
 
 {
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 6/23/2024 20:02'
 }
-GMTETileMatrixStack >> setLayerNameOf: anIdx to: aString [
+GMTETileMatrixStack >> setLayerNameOf: anIndex to: aString [
 
-	^ (self layer: anIdx) displayName: aString
+	^ (self layer: anIndex) displayName: aString
 ]
 
 {
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/18/2024 10:09'
 }
-GMTETileMatrixStack >> showLayer: anIdx [
+GMTETileMatrixStack >> showLayer: anIndex [
 
-	(self layer: anIdx) visible: true
+	(self layer: anIndex) visible: true
 ]
 
 {
@@ -451,8 +451,8 @@ GMTETileMatrixStack >> showLayer: anIdx [
 }
 GMTETileMatrixStack >> showLayers: aSet [
 
-	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [ :layerIdx |
-		self showLayer: layerIdx]
+	self mapLayers: (self sortLayerSet: aSet) withUnaryBlock: [:layerIndex |
+		self showLayer: layerIndex]
 ]
 
 {
@@ -460,13 +460,13 @@ GMTETileMatrixStack >> showLayers: aSet [
 	#'squeak_changestamp' : 'jj 6/22/2024 16:30'
 }
 GMTETileMatrixStack >> sortLayerSet: aSet [
-	"Defines order of how layerIdx sets are supposed to be sorted and updated to save on index updates"
+	"Defines order of how layerIndex sets are supposed to be sorted and updated to save on index updates"
 
 	| layerCollection |
 	
 	layerCollection := SortedCollection new.
-	aSet do: [ :layerIdx | 
-		layerCollection add: layerIdx].
+	aSet do: [:layerIndex | 
+		layerCollection add: layerIndex].
 	^ layerCollection reverse
 ]
 
@@ -474,17 +474,17 @@ GMTETileMatrixStack >> sortLayerSet: aSet [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:22'
 }
-GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
+GMTETileMatrixStack >> swapLayer: anIndex1 with: anIndex2 [
 
 	| tmpMorhpicLayer layer1 layer2 |
-	layer1 := self layer: anIdx1.
-	layer2 := self layer: anIdx2.
-	tmpMorhpicLayer := layer1 layerIdx.
+	layer1 := self layer: anIndex1.
+	layer2 := self layer: anIndex2.
+	tmpMorhpicLayer := layer1 layerIndex.
 	
-	layer1 updateLayerTo: layer2 layerIdx.
+	layer1 updateLayerTo: layer2 layerIndex.
 	layer2 updateLayerTo: tmpMorhpicLayer.
 
-	self matrixLayers swap: anIdx1 with: anIdx2
+	self matrixLayers swap: anIndex1 with: anIndex2
 	
 ]
 
@@ -492,11 +492,11 @@ GMTETileMatrixStack >> swapLayer: anIdx1 with: anIdx2 [
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:13'
 }
-GMTETileMatrixStack >> toggleLayerVisibility: anIdx [
+GMTETileMatrixStack >> toggleLayerVisibility: anIndex [
 
-	(self layerVisible: anIdx)
-		ifTrue: [self hideLayer: anIdx]
-		ifFalse: [self showLayer: anIdx]
+	(self layerVisible: anIndex)
+		ifTrue: [self hideLayer: anIndex]
+		ifFalse: [self showLayer: anIndex]
 	
 ]
 
@@ -529,7 +529,7 @@ GMTETileMatrixStack >> visible: aBool [
 
 	self basicVisible: aBool.
 		
-	self doLayers: [ :aLayer | 
+	self doLayers: [:aLayer | 
 		aLayer visible: aBool]
 ]
 

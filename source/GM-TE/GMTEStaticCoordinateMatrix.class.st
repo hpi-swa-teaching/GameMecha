@@ -54,7 +54,7 @@ GMTEStaticCoordinateMatrix >> getAtCoordinate: aCoordinate [
 	#category : #asserting,
 	#'squeak_changestamp' : 'jj 6/23/2024 13:47'
 }
-GMTEStaticCoordinateMatrix >> validIdx: aPoint [
+GMTEStaticCoordinateMatrix >> validIndex: aPoint [
 
 	(aPoint y between: 1 and: self rowCount) ifFalse: [^false].
 	(aPoint x between: 1 and: self columnCount) ifFalse: [^false].

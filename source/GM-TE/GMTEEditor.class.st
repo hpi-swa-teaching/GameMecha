@@ -304,7 +304,7 @@ GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: 
 	listDirection: #leftToRight;
 	wrapDirection: #leftToRight.
 	
-	(morphArray reversed) do: [ :morph| 
+	(morphArray reversed) do: [:morph| 
 		img 
 			addMorph: (ImageMorph new image: (morph image scaledToWidth: aNumber); 			
 			borderColor: (Color red);
@@ -1043,8 +1043,8 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	tileWidth := aPoint x.
 	tileHeight := aPoint y.
 	"TODO: refactor into non C-like code"
-	0 to: (form height - tileHeight) by: tileHeight do:[ :y |
-		0 to: (form width - tileWidth) by: tileWidth do: [ :x |
+	0 to: (form height - tileHeight) by: tileHeight do:[:y |
+		0 to: (form width - tileWidth) by: tileWidth do: [:x |
 			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
 			image := GMTETileSelector new
 				updateSprite: (tile scaledToWidth: 50);
@@ -1573,7 +1573,7 @@ GMTEEditor >> toggleBackgroundTiles [
 GMTEEditor >> toggleGrid [
 	"toggles the visibility of the map grid"
 	
-	self tileMap toggleVisualLayer
+	self tileMap toggleHighlightingLayer
 ]
 
 {

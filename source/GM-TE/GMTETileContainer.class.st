@@ -67,7 +67,7 @@ GMTETileContainer >> step [
 	minTileSize := GMTETileContainer minTileSize. 
 	n := self width / minTileSize.
 	gap := self width - (n floor * minTileSize) / n.
-	self submorphs do: [ :tile| tile extent: (minTileSize + gap - 2)] "TODO: magic number"
+	self submorphs do: [:tile| tile extent: (minTileSize + gap - 2)] "TODO: magic number"
 ]
 
 {

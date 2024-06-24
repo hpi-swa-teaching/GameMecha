@@ -24,7 +24,7 @@ GMTECoordinateSystem class >> width: aWidth height: aHeight [
 	^ newCoordinateSystem
 		width: aWidth;
 		height: aHeight;
-		origin: ((aWidth / 2) ceiling)@((aHeight / 2) ceiling);
+		origin: ((aWidth / 2) ceiling) @ ((aHeight / 2) ceiling);
 		definitionArea: (Interval 
 			from: newCoordinateSystem origin x negated + 1
 			 to: aWidth - newCoordinateSystem origin x);

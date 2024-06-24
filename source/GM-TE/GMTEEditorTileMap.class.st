@@ -90,16 +90,16 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
 
-	| hoveredTile hoveredTileVisual activeLayer |
+	| hoveredTile hoveredTileHighlighting activeLayer |
 	self model singleLayerSelected
 		ifTrue: [activeLayer := self model selectedLayers anyOne.
 	
 		hoveredTile := self tileFromPosition: anEvent position layer: activeLayer.
-		hoveredTileVisual := self tileVisualFromPosition: anEvent position.
+		hoveredTileHighlighting := self highlightingTileFromPosition: anEvent position.
 	
 		self tileSelectionSet clearAllHighlightings.
 	
-		hoveredTileVisual ifNotNil: [self tileSelectionSet highlightTile: hoveredTileVisual].
+		hoveredTileHighlighting ifNotNil: [self tileSelectionSet highlightTile: hoveredTileHighlighting].
 	
 		"TODO why another ifNil check here?"
 		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
@@ -141,16 +141,16 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 	"Add currently selected tile (model) to editable matrix stack at mouse position"
 	
-	| tileIdx hoveredTile |
+	| tileIndex hoveredTile |
 	hoveredTile := aTile.
 	
 	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
 		ifTrue: [ 
 			"Add tile if nil at mouse position"
 			hoveredTile ifNil: [
-				tileIdx := self tileIdxFromPosition: anEvent position.
-				tileIdx ifNil: [^ nil].
-				hoveredTile := self generateTileAtlayer: aLayer x: tileIdx x y: tileIdx y stack: self tileMatrixStack tileType: GMTETile]. 
+				tileIndex := self tileIndexFromPosition: anEvent position.
+				tileIndex ifNil: [^ nil].
+				hoveredTile := self generateTileAtlayer: aLayer x: tileIndex x y: tileIndex y stack: self tileMatrixStack tileType: GMTETile]. 
 			"Set tile to currently selected tile"
 			self updateTileSprite: hoveredTile.
 			self model savedSinceModified: false].
@@ -159,8 +159,8 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 		ifTrue: [
 			"Remove tile if any present at mouse position"
 			aLayer ifNotNil: [
-				tileIdx := self tileIdxFromPosition: anEvent position.
-				self tileMatrixStack layer: aLayer at: tileIdx y at: tileIdx x put: nil.
+				tileIndex := self tileIndexFromPosition: anEvent position.
+				self tileMatrixStack layer: aLayer at: tileIndex y at: tileIndex x put: nil.
 				hoveredTile abandon].
 			self model savedSinceModified: false]
 ]
