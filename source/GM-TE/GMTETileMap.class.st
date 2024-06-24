@@ -276,13 +276,13 @@ GMTETileMap >> extent: aPoint [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:25'
+	#'squeak_changestamp' : 'jj 6/24/2024 10:56'
 }
 GMTETileMap >> fitBackgroundToMap [
 	
 	self mapPadding: 0.0.
 	self forceMapSizeRatio: true.
-	self extent: (self mapSizeWidth)@(self mapSizeHeight).
+	self extent: (self mapSizeWidth) @ (self mapSizeHeight).
 	self changed
 ]
 
@@ -342,14 +342,14 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
+	#'squeak_changestamp' : 'jj 6/24/2024 10:58'
 }
 GMTETileMap >> generateBackgroundTiles [
 	
 	self backgroundTiles ifNil: [^ nil].
 	
 	self tileMatrixStackBackground doTilesXYLidx: [ :x :y :l | 
-		"It is assumed that the visual stack consists of only one layer"
+		"It is assumed that the background stack consists of only one layer"
 		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [ :aPoint |
 			self correctedTilePositionBackground: aPoint]].
 	
