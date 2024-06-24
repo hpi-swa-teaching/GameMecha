@@ -20,12 +20,13 @@ GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:51'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileSelectionSet >> clearAllHighlightings [
 	"Clear tile selection and remove applied highlightings if any"
 	
-	self do: [ :tile | self removeHighlightingVisuals: tile].
+	self do: [ :tile |
+		self removeHighlightingVisuals: tile].
 	self removeAll
 ]
 

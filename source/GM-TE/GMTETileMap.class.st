@@ -113,12 +113,13 @@ GMTETileMap >> backgroundTiles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/22/2024 01:21'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:10'
 }
 GMTETileMap >> backgroundTiles: anObject [
 
-	self basicBackgroundTiles: anObject.
-	self updateMap
+	self 
+		basicBackgroundTiles: anObject;
+		updateMap
 	
 ]
 
@@ -278,15 +279,16 @@ GMTETileMap >> extent: aPoint [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:18'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
-GMTETileMap >> fitBackgroundToMap [	
+GMTETileMap >> fitBackgroundToMap [
 	"Forces the tile map morph to fit the map grid"
-
-	self mapPadding: 0.0.
-	self forceMapSizeRatio: true.
-	self extent: (self mapSizeWidth) @ (self mapSizeHeight).
-	self changed
+	
+	self 
+		mapPadding: 0.0;
+		forceMapSizeRatio: true;
+		extent: (self mapSizeWidth) @ (self mapSizeHeight);
+		changed
 ]
 
 {
@@ -345,7 +347,7 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:23'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileMap >> generateBackgroundTiles [
 	"Fill the background matrix stack with tiles automatically"
@@ -353,7 +355,7 @@ GMTETileMap >> generateBackgroundTiles [
 	self backgroundTiles ifNil: [^ nil].
 	
 	self tileMatrixStackBackground doTilesXYLidx: [ :x :y :l | 
-		"It is assumed that the visual stack consists of only one layer"
+		"It is assumed that the background stack consists of only one layer"
 		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [ :aPoint |
 			self correctedTilePositionBackground: aPoint]].
 	
@@ -361,7 +363,6 @@ GMTETileMap >> generateBackgroundTiles [
 		tile applyTileSprite: self backgroundTiles]
 	
 	
-
 ]
 
 {
@@ -463,13 +464,14 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileMap >> hideVisualLayer [
 	"Hide the grid"
 
-	self tileMatrixStackVisual visible: false.
-	self changed
+	self 
+		tileMatrixStackVisual visible: false;
+		changed
 	
 ]
 
@@ -494,14 +496,15 @@ GMTETileMap >> initialize [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:56'
 }
 GMTETileMap >> mapGridOnly [
 	"Fit background to grid and make it transparent if background generation is disabled"
-
-	self fitBackgroundToMap.
-	self color: Color transparent.
-	self changed
+	
+	self 
+		fitBackgroundToMap;
+		color: Color transparent;
+		changed
 ]
 
 {
@@ -652,7 +655,7 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:59'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:05'
 }
 GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	"Rescale map & trigger update"
@@ -662,26 +665,26 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 	sizeChanged := (aWidth ~= self mapTileWidth) or: [aHeigth ~= self mapTileHeight].
 
 	self setDimensionsWidth: aWidth height: aHeigth padding: aPadding.
-	(sizeChanged) ifTrue: [
-		self rescaleMatrixStacks].
+	sizeChanged ifTrue: [self rescaleMatrixStacks].
 	self updateMap
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileMap >> rescaleMatrixStacks [
 	"Rescale matrix stacks to apply new dimensions"
 
-	(self tileMatrixStack) ifNotNil: [
+	self tileMatrixStack ifNotNil: [
 		self tileMatrixStack rescaleToWidth: self mapTileWidth height: self mapTileHeight].
 		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
 		self tileMatrixStack doTiles: [ :tile |
 			self addMorph: tile].
-	(self tileMatrixStackVisual) ifNotNil: [
-		self tileMatrixStackVisual rescaleToWidth: self mapTileWidth height: self mapTileHeight.
-		self tileMatrixStackVisual reset.
+	self tileMatrixStackVisual ifNotNil: [
+		self tileMatrixStackVisual 
+			rescaleToWidth: self mapTileWidth height: self mapTileHeight;
+			reset.
 		self generateVisualTiles]
 ]
 
@@ -809,14 +812,14 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:14'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileMap >> tileIdxFromPosition: aPoint [
 	"Answer the sender with a tile index (matrix[index x y][index x]) from a pixel position"
 
 	| uncorrectedPos idx |
 	uncorrectedPos := self revertCorrectedTilePositionMap: aPoint.
-	idx := (uncorrectedPos x / self tileSizeWidth + 1)@(uncorrectedPos y / self tileSizeHeight + 1).
+	idx := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
 	idx := idx floor.
 	
 	((self tileMatrixStackVisual layer: 1) validIdx: idx) ifFalse: [^ nil].
@@ -1131,7 +1134,7 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileMap >> updateTiles [
 	"Collectively update all matrix stacks and therefore all tiles contained within"
@@ -1142,12 +1145,14 @@ GMTETileMap >> updateTiles [
 	
 	(self tileMatrixStackBackground visible) 
 		ifTrue: [
-			self tileMatrixStackBackground rescaleToWidth: self tileWidth height: self tileHeight.
-			self tileMatrixStackBackground reset.
+			self tileMatrixStackBackground 
+				rescaleToWidth: self tileWidth height: self tileHeight;
+				reset.
 			self generateBackgroundTiles.
 			self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [ :aPoint | 
 				self correctedTilePositionBackground: aPoint]].
 	
-	self updateTileMatrixStack: self tileMatrixStack.
-	self updateTileMatrixStack: self tileMatrixStackVisual
+	self 
+		updateTileMatrixStack: self tileMatrixStack;
+		updateTileMatrixStack: self tileMatrixStackVisual
 ]

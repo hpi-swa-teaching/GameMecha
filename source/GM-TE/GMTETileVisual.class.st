@@ -30,7 +30,7 @@ GMTETileVisual >> applyBorderHighlighting [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:04'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	"Set a form as a temporary decoration inside the tile"	
@@ -38,15 +38,18 @@ GMTETileVisual >> applyDecoMorphHighlighting: aForm [
 	| newDecoMorph |
 	aForm 
 		ifNotNil: [
-			newDecoMorph := ImageMorph new
-				bounds: self bounds.
-			newDecoMorph image: (aForm scaledToSize: self extent)]
+			newDecoMorph := (ImageMorph new)
+				bounds: self bounds;
+				image: (aForm scaledToSize: self extent);
+				yourself]
 		ifNil: [
 			newDecoMorph := Morph new
-			bounds: self bounds.
-			newDecoMorph color: (Color black alpha: GMTETileVisual decoMorphAlphaValue)].
-	self addMorph: newDecoMorph.
-	self decorationMorph: newDecoMorph
+				bounds: self bounds;
+				color: (Color black alpha: GMTETileVisual decoMorphAlphaValue);
+				yourself].
+	self 
+		addMorph: newDecoMorph;
+		decorationMorph: newDecoMorph
 ]
 
 {

@@ -430,7 +430,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/23/2024 23:14'
+	#'squeak_changestamp' : 'jj 6/23/2024 23:48'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -442,7 +442,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			fractions: (0.8 @ 0.25 corner: 1 @ 1));
 		children: {
 			(aBuilder pluggablePanelSpec new)
-			frame: (LayoutFrame fractions: (1 @ 0 corner: 1 @ 1) offsets: (-30 @ 30 corner: 0 @ 0));
+			frame: (LayoutFrame fractions: (0.85 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: 0 @ 0));
 			
 			children: {
 				(aBuilder pluggableImageButtonSpec new)
@@ -508,7 +508,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 			getSelectionList: #layerAt:;
 			setSelectionList: #layerAt:put:;
 			autoDeselect: false;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 1) offsets: (0 @ 30 corner: -30 @ 0))};
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.85 @ 1) offsets: (0 @ 30 corner: 0 @ 0))};
 		verticalResizing: #shrinkWrap;
 		yourself
 ]
@@ -1336,15 +1336,15 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:40'
+	#'squeak_changestamp' : 'jj 6/24/2024 11:33'
 }
 GMTEEditor >> selectTile: anObject [
 	"selects a tile from the tile store"
 	
 	"TODO: might be problematic with tray. Maybe give tiles in the store IDs?"
 	(anObject = self selectedTile)
-	ifTrue:[self unselectTile]
-	ifFalse:[
+	ifTrue: [self unselectTile]
+	ifFalse: [
 		self selectedTile: anObject.
 		self tileMap tileSelectionSet highlightImage: anObject fullResolutionSprite.
 		self trayViewer morph submorphs first

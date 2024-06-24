@@ -108,11 +108,12 @@ GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:03'
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
 GMTEImageMorph >> updateSprite: anImage [
 	"Update sprite by also carrying the fullResolutionSprite"
 
-	self fullResolutionSprite: anImage.
-	self extent: self extent
+	self 
+		fullResolutionSprite: anImage;
+		extent: self extent
 ]
