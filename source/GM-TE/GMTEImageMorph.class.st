@@ -18,7 +18,7 @@ GMTEImageMorph class >> placeholderDepth [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #copying,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:10'
 }
 GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
@@ -77,7 +77,7 @@ GMTEImageMorph >> fullResolutionSprite: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'jj 6/23/2024 17:07'
 }
 GMTEImageMorph >> setPlaceholderWithColor: aColor [
@@ -90,7 +90,7 @@ GMTEImageMorph >> setPlaceholderWithColor: aColor [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'jj 6/23/2024 17:07'
 }
 GMTEImageMorph >> setPlaceholderWithExtent: anExtent color: aColor [

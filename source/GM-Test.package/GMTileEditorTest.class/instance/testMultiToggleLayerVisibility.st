@@ -1,4 +1,4 @@
-as yet unclassified
+layerTests
 testMultiToggleLayerVisibility
 	"tests the visibility toggle for multiple selected layers"
 	

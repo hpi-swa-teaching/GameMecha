@@ -1,4 +1,4 @@
-layerTests
+editorTests
 testExportButton
 	"tests the export function"
 	

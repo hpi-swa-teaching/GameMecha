@@ -6,7 +6,7 @@ Class {
 		'visible',
 		'displayName'
 	],
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {

@@ -1,4 +1,4 @@
-as yet unclassified
+layerTests
 testRenameLayer
 	"tests the renaming of layers"
 	

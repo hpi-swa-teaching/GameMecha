@@ -1,4 +1,4 @@
-layerTests
+editorTests
 testExport
 	"tests the export function" 
 	

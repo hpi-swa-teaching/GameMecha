@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'highlightImage'
 	],
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {

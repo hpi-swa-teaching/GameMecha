@@ -1,4 +1,4 @@
-as yet unclassified
+helper
 tearDown
 	"deletes temporary test file and closes editor after tests are done"
 	

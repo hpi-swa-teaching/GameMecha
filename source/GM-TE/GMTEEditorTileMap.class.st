@@ -5,7 +5,7 @@ Class {
 		'tileSelectionSet',
 		'model'
 	],
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {
@@ -48,7 +48,7 @@ GMTEEditorTileMap >> handlesMouseMove: anEvent [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'TW 6/22/2024 01:25'
 }
 GMTEEditorTileMap >> initialize [
@@ -115,40 +115,13 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:57'
-}
-GMTEEditorTileMap >> removeLayers: aSet [
-
-	self tileMatrixStack removeLayersAt: aSet
-]
-
-{
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'JS 6/15/2024 12:41'
 }
 GMTEEditorTileMap >> rescaleMap [
 
 	self tileSelectionSet clearAllHighlightings.
 	super rescaleMap
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:45'
-}
-GMTEEditorTileMap >> resetAllLayers: aSet [
-
-	self tileMatrixStack reset
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/20/2024 21:42'
-}
-GMTEEditorTileMap >> resetLayers: aSet [
-
-	self tileMatrixStack resetLayers: aSet
 ]
 
 {

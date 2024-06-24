@@ -29,7 +29,7 @@ Class {
 		'backgroundTiles',
 		'autoGenerateBackground'
 	],
-	#category : #'GM-TE-Core'
+	#category : #'GM-TE-TileMap'
 }
 
 {
