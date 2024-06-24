@@ -1,3 +1,5 @@
-as yet unclassified
-setup
-	self editor: GMTEEditor new.
+helper
+setUp
+
+	self editor ifNil: [self editor: GMTEEditor new].
+	self fileUUID: UUID new asString
