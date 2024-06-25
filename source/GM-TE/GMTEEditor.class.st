@@ -664,7 +664,7 @@ GMTEEditor >> deselectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/25/2024 16:02'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:50'
 }
 GMTEEditor >> deselectLayer: anIndex [
 	"deletes the layer with the provided index"
@@ -674,7 +674,7 @@ GMTEEditor >> deselectLayer: anIndex [
 	(self selectedLayers includes: anIndex)
 		ifTrue: [
 			self selectedLayers remove: anIndex.
-			self singleLayerSelected ifTrue: [self enableSingleLayerButtons].
+			self updateButtonEnabled.
 			self
 				changed: #selectedLayers;
 				changed: #layerAt:]
@@ -695,7 +695,7 @@ GMTEEditor >> deselectTile [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:51'
 }
 GMTEEditor >> disableSingleLayerButtons [
 
@@ -704,7 +704,7 @@ GMTEEditor >> disableSingleLayerButtons [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:51'
 }
 GMTEEditor >> enableSingleLayerButtons [
 
@@ -951,18 +951,20 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/25/2024 17:08'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:51'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
 	
 	super initialize.
 	self
-		selectedLayers: {1};
+		selectedLayers: Set new;
+		selectLayer: 1;
 		morphBuilders: Dictionary new;
 		open;
 		ratio: 1;
 		savedSinceModified: true;
+		updateButtonEnabled;
 		changed: #getLayerList
 ]
 
@@ -1375,15 +1377,13 @@ GMTEEditor >> selectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/25/2024 17:01'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:50'
 }
 GMTEEditor >> selectLayer: anIndex [
 	"select the layer with anIndex"
 	
 	self selectedLayers add: anIndex.
-	self singleLayerSelected 
-		ifTrue: [self enableSingleLayerButtons]
-		ifFalse: [self disableSingleLayerButtons].
+	self updateButtonEnabled.
 	self
 		changed: #selectedLayers;
 		changed: #layerAt:
@@ -1405,7 +1405,7 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/25/2024 18:26'
+	#'squeak_changestamp' : 'Alex M 6/25/2024 18:28'
 }
 GMTEEditor >> selectTile: anObject [
 	"selects a tile from the tile store"
@@ -1690,6 +1690,23 @@ GMTEEditor >> unselectTile [
 	self selectedTile: nil.
 	self tileMap tileSelectionSet highlightImage: nil.
 	self trayViewer morph submorphs first visible: false
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/25/2024 17:51'
+}
+GMTEEditor >> updateButtonEnabled [
+
+	self associatedMorph ifNil: [^ nil].
+
+	self singleLayerSelected
+		ifTrue: [self enableSingleLayerButtons]
+		ifFalse: [self disableSingleLayerButtons].
+		
+	(self layerAt: 1)
+		ifTrue: [(self associatedMorph submorphNamed: 'buttonDeleteLayers') enabled: false]
+		ifFalse: [(self associatedMorph submorphNamed: 'buttonDeleteLayers') enabled: true]
 ]
 
 {
