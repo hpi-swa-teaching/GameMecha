@@ -11,7 +11,8 @@ Class {
 		'actionSelector',
 		'arguments',
 		'linkedButtons',
-		'stateSprites'
+		'stateSprites',
+		'enabled'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
@@ -53,6 +54,15 @@ GMTEImageButton >> arguments [
 GMTEImageButton >> arguments: aCollection [
 
 	arguments := aCollection asArray copy
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/25/2024 15:28'
+}
+GMTEImageButton >> basicEnabled: anObject [
+
+	enabled := anObject
 ]
 
 {
@@ -103,6 +113,31 @@ GMTEImageButton >> dyeSprite: anImage with: aColor [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/25/2024 15:23'
+}
+GMTEImageButton >> enabled [
+
+	^ enabled
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/25/2024 15:33'
+}
+GMTEImageButton >> enabled: aBoolean [
+
+	aBoolean
+		ifTrue: [
+			self basicEnabled: true.
+			self setImageMode: 'unpressed']
+		ifFalse: [
+			self basicEnabled: false.
+			self setImageMode: 'disabled']
+			
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
@@ -131,7 +166,7 @@ GMTEImageButton >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:13'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:39'
 }
 GMTEImageButton >> initialize [
 	
@@ -160,9 +195,11 @@ GMTEImageButton >> linkedButtons: aCollection [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:42'
 }
 GMTEImageButton >> mouseDown: anEvent [
+
+	self enabled ifFalse: [^ nil].
 
 	super mouseDown: anEvent.
 	anEvent yellowButtonPressed ifTrue: [^ self].
@@ -172,27 +209,33 @@ GMTEImageButton >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:38'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:41'
 }
 GMTEImageButton >> mouseLeave: anEvent [
 
+	self enabled ifFalse: [^ nil].
+	
 	self updateVisualState: anEvent
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:34'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:41'
 }
 GMTEImageButton >> mouseMove: anEvent [
 
+	self enabled ifFalse: [^ nil].
+
 	self updateVisualState: anEvent
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/21/2024 20:41'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:42'
 }
 GMTEImageButton >> mouseUp: anEvent [
+
+	self enabled ifFalse: [^ nil].
 
 	(self containsPoint: anEvent cursorPoint)
 		ifTrue: [self doButtonAction]
@@ -213,22 +256,11 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/23/2024 18:47'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:39'
 }
 GMTEImageButton >> setImageMode: aString [
 	
-	(aString == #pressed)
-		ifTrue: [
-			self fullResolutionSprite: (self stateSprites at: 'pressed')]
-		ifFalse: [
-			(aString == #unpressed)
-				ifTrue:  [
-					self fullResolutionSprite: (self stateSprites at: 'unpressed')]
-				ifFalse: [
-					(aString == #hovered)
-						ifTrue: [self fullResolutionSprite: (self stateSprites at: 'hovered')]
-						ifFalse: [^ nil]]].
-			
+	self fullResolutionSprite: (self stateSprites at: aString).
 	self extent: self extent
 ]
 
@@ -271,13 +303,13 @@ GMTEImageButton >> target: anObject [
 
 {
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'Alex M 6/22/2024 01:44'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:41'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
 	(self containsPoint: Sensor cursorPoint)
 		ifTrue: [ anEvent redButtonPressed
-			ifTrue: [self setImageMode: #pressed]
-			ifFalse:[self setImageMode: #hovered]]
-		ifFalse: [self setImageMode: #unpressed]
+			ifTrue: [self setImageMode: 'pressed']
+			ifFalse:[self setImageMode: 'hovered']]
+		ifFalse: [self setImageMode: 'unpressed']
 ]

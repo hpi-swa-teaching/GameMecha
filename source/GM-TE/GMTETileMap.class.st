@@ -367,6 +367,20 @@ GMTETileMap >> generateBackgroundTiles [
 
 {
 	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:27'
+}
+GMTETileMap >> generateHighlightingTiles [
+	"Fill the highlighting matrix stack with tiles automatically"
+	
+	self tileMatrixStackHighlighting doTilesXYLindex: [:x :y :l | 
+		"It is assumed that the visual stack consists of only one layer"
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackHighlighting tileType: GMTETileHighlighting]
+	
+
+]
+
+{
+	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:22'
 }
 GMTETileMap >> generateMatrixStacks [
@@ -423,20 +437,6 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:27'
-}
-GMTETileMap >> generateHighlightingTiles [
-	"Fill the highlighting matrix stack with tiles automatically"
-	
-	self tileMatrixStackHighlighting doTilesXYLindex: [:x :y :l | 
-		"It is assumed that the visual stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackHighlighting tileType: GMTETileHighlighting]
-	
-
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:13'
 }
@@ -473,6 +473,20 @@ GMTETileMap >> hideHighlightingLayer [
 		tileMatrixStackHighlighting visible: false;
 		changed
 	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:08'
+}
+GMTETileMap >> highlightingTileFromPosition: aPoint [
+	"Answer the sender with a highlighting tile at aPoint if present"
+
+	| index |
+	index := self tileIndexFromPosition: aPoint.
+	index ifNil: [^ nil].
+	
+	^ self tileMatrixStackHighlighting layer: 1 at: index y at: index x
 ]
 
 {
@@ -942,20 +956,6 @@ GMTETileMap >> tileSizeWidth [
 GMTETileMap >> tileSizeWidth: anObject [
 
 	tileSizeWidth := anObject
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:08'
-}
-GMTETileMap >> highlightingTileFromPosition: aPoint [
-	"Answer the sender with a highlighting tile at aPoint if present"
-
-	| index |
-	index := self tileIndexFromPosition: aPoint.
-	index ifNil: [^ nil].
-	
-	^ self tileMatrixStackHighlighting layer: 1 at: index y at: index x
 ]
 
 {

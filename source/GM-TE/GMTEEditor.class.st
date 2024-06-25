@@ -14,7 +14,8 @@ Class {
 		'inspector',
 		'morphBuilders',
 		'backgroundTile',
-		'tileMap'
+		'tileMap',
+		'associatedMorph'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -107,6 +108,15 @@ GMTEEditor class >> register [
 
 {
 	#category : #constants,
+	#'squeak_changestamp' : 'TW 6/25/2024 15:53'
+}
+GMTEEditor class >> singleLayerActionNames [
+
+	^ {'buttonMoveLayerDown' . 'buttonMoveLayerUp' . 'buttonRenameLayer'}
+]
+
+{
+	#category : #constants,
 	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
 }
 GMTEEditor class >> tileMapMaxGridSize [
@@ -174,6 +184,24 @@ GMTEEditor >> anyLayerSelected [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/25/2024 15:55'
+}
+GMTEEditor >> associatedMorph [
+
+	^ associatedMorph
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 6/25/2024 15:55'
+}
+GMTEEditor >> associatedMorph: anObject [
+
+	associatedMorph := anObject.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 21:51'
 }
 GMTEEditor >> backgroundTile [
@@ -215,7 +243,7 @@ GMTEEditor >> blendSelectedLayers [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:29'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:56'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -262,7 +290,9 @@ GMTEEditor >> buildWith: builder [
 		borderWidth: 2;
 		borderColor: tileStore borderColor.
 	
-	self initializeDefaultTileMapMatrix.
+	self 
+		initializeDefaultTileMapMatrix;
+		associatedMorph: newMorph.
 		
 	^ newMorph
 ]
@@ -430,7 +460,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/23/2024 23:48'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:50'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -448,6 +478,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #addLayer;
+					name: 'buttonAddLayer';
 					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.125));
 					project: 'GameMecha';
 					path: '/GMTEIcons/add.png'.
@@ -455,6 +486,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #moveLayerDown;
+					name: 'buttonMoveLayerDown';
 					frame: (LayoutFrame fractions: (0 @ 0.125 corner: 1 @ 0.25));
 					project: 'GameMecha';
 					path: '/GMTEIcons/up.png'.
@@ -462,6 +494,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #moveLayerUp;
+					name: 'buttonMoveLayerUp';
 					frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375));
 					project: 'GameMecha';
 					path: '/GMTEIcons/down.png'.
@@ -469,6 +502,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model: self;
 					action: #renameLayer;
+					name: 'buttonRenameLayer';
 					frame: (LayoutFrame fractions: (0 @ 0.375 corner: 1 @ 0.5));
 					project: 'GameMecha';
 					path: '/GMTEIcons/rename.png'.
@@ -476,6 +510,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action:#resetSelectedLayers;
+					name: 'buttonResetLayers';
 					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625));
 					project: 'GameMecha';
 					path: '/GMTEIcons/broom.png'.
@@ -483,6 +518,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #blendSelectedLayers;
+					name: 'buttonBlendLayers';
 					frame: (LayoutFrame fractions: (0 @ 0.625 corner: 1 @ 0.75));
 					project: 'GameMecha';
 					path: '/GMTEIcons/merge.png'.
@@ -490,6 +526,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #deleteSelectedLayers;
+					name: 'buttonDeleteLayers';
 					frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875));
 					project: 'GameMecha';
 					path: '/GMTEIcons/trash.png'.
@@ -497,6 +534,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
 					action: #toggleSelectedLayerVisibility;
+					name: 'buttonToggleVisibilityLayers';
 					frame: (LayoutFrame fractions: (0 @ 0.875 corner: 1 @ 1));
 					project: 'GameMecha';
 					path: '/GMTEIcons/eye.png'}.
@@ -626,7 +664,7 @@ GMTEEditor >> deselectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:47'
+	#'squeak_changestamp' : 'TW 6/25/2024 16:02'
 }
 GMTEEditor >> deselectLayer: anIndex [
 	"deletes the layer with the provided index"
@@ -636,6 +674,7 @@ GMTEEditor >> deselectLayer: anIndex [
 	(self selectedLayers includes: anIndex)
 		ifTrue: [
 			self selectedLayers remove: anIndex.
+			self singleLayerSelected ifTrue: [self enableSingleLayerButtons].
 			self
 				changed: #selectedLayers;
 				changed: #layerAt:]
@@ -652,6 +691,24 @@ GMTEEditor >> deselectTile [
 	"TODO implement the lower part: resetting selected tile in tray view"
 	self selectTile: nil.
 	self tileMap tileSelectionSet highlightImage: nil
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/25/2024 15:57'
+}
+GMTEEditor >> disableSingleLayerButtons [
+
+	GMTEEditor singleLayerActionNames do: [:aString | (self associatedMorph submorphNamed: aString) enabled: false ]
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'TW 6/25/2024 15:57'
+}
+GMTEEditor >> enableSingleLayerButtons [
+
+	GMTEEditor singleLayerActionNames do: [:aString | (self associatedMorph submorphNamed: aString) enabled: true ]
 ]
 
 {
@@ -894,7 +951,7 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/23/2024 20:14'
+	#'squeak_changestamp' : 'TW 6/25/2024 15:45'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
@@ -1309,12 +1366,15 @@ GMTEEditor >> selectAllLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:33'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:01'
 }
 GMTEEditor >> selectLayer: anIndex [
 	"select the layer with anIndex"
 	
 	self selectedLayers add: anIndex.
+	self singleLayerSelected 
+		ifTrue: [self enableSingleLayerButtons]
+		ifFalse: [self disableSingleLayerButtons].
 	self
 		changed: #selectedLayers;
 		changed: #layerAt:
