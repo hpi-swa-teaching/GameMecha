@@ -695,18 +695,22 @@ GMTEEditor >> deselectTile [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:44'
 }
 GMTEEditor >> disableSingleLayerButtons [
+
+	self associatedMorph ifNil: [^ nil].
 
 	GMTEEditor singleLayerActionNames do: [:aString | (self associatedMorph submorphNamed: aString) enabled: false ]
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:57'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:43'
 }
 GMTEEditor >> enableSingleLayerButtons [
+
+	self associatedMorph ifNil: [^ nil].
 
 	GMTEEditor singleLayerActionNames do: [:aString | (self associatedMorph submorphNamed: aString) enabled: true ]
 ]
@@ -951,14 +955,15 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/25/2024 17:08'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:39'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
 	
 	super initialize.
 	self
-		selectedLayers: {1};
+		selectedLayers: Set new;
+		selectLayer: 1;
 		morphBuilders: Dictionary new;
 		open;
 		ratio: 1;
@@ -1395,7 +1400,7 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/24/2024 11:33'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:38'
 }
 GMTEEditor >> selectTile: anObject [
 	"selects a tile from the tile store"
