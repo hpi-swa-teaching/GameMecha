@@ -951,15 +951,14 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:45'
+	#'squeak_changestamp' : 'TW 6/25/2024 17:08'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
 	
 	super initialize.
 	self
-		selectedLayers: Set new;
-		selectLayer: 1;
+		selectedLayers: {1};
 		morphBuilders: Dictionary new;
 		open;
 		ratio: 1;
