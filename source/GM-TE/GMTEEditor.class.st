@@ -1334,6 +1334,16 @@ GMTEEditor >> resetSelectedLayers [
 ]
 
 {
+	#category : #TODO,
+	#'squeak_changestamp' : 'Alex M 6/25/2024 18:26'
+}
+GMTEEditor >> rotateSelectedTile [
+	
+	self selectedTile: (self selectedTile rotateBy: #right centerAt: (self selectedTile extent / 2)).
+	self tileMap tileSelectionSet highlightImage: self selectedTile
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 21:31'
 }
@@ -1395,7 +1405,7 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/24/2024 11:33'
+	#'squeak_changestamp' : 'Alex M 6/25/2024 18:26'
 }
 GMTEEditor >> selectTile: anObject [
 	"selects a tile from the tile store"
@@ -1404,8 +1414,8 @@ GMTEEditor >> selectTile: anObject [
 	(anObject = self selectedTile)
 	ifTrue: [self unselectTile]
 	ifFalse: [
-		self selectedTile: anObject.
-		self tileMap tileSelectionSet highlightImage: anObject fullResolutionSprite.
+		self selectedTile: anObject fullResolutionSprite.
+		self tileMap tileSelectionSet highlightImage: self selectedTile.
 		self trayViewer morph submorphs first
 			visible: true;
 			updateSprite: anObject fullResolutionSprite;
@@ -1498,7 +1508,7 @@ GMTEEditor >> setPadding: aText [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:42'
+	#'squeak_changestamp' : 'Alex M 6/25/2024 18:17'
 }
 GMTEEditor >> settingsMenu [
 	"opens the setting menu"
@@ -1516,6 +1526,11 @@ GMTEEditor >> settingsMenu [
 		add: 'Toggle Background'
 		target: self
 		selector: #toggleBackgroundTiles
+		argumentList: {};
+		
+		add: 'Rotate Tile'
+		target: self
+		selector: #rotateSelectedTile
 		argumentList: {}.
 		
 	builder open: aMenuSpec

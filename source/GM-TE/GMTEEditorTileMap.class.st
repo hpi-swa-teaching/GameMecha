@@ -167,10 +167,10 @@ GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:38'
+	#'squeak_changestamp' : 'Alex M 6/25/2024 18:08'
 }
 GMTEEditorTileMap >> updateTileSprite: aTile [
 	"Helper function to apply sprite from tile selection to aTile"
 
-	self model selectedTile ifNotNil: [aTile applyTileSprite: self model selectedTile]
+	self model selectedTile ifNotNil: [aTile updateSprite: self model selectedTile]
 ]
