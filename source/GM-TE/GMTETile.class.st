@@ -6,6 +6,17 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Alex M 7/1/2024 16:21'
+}
+GMTETile class >> fromSprite: aSprite [
+	
+	^ (self new)
+		updateSprite: aSprite;
+		yourself
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:11'
 }
 GMTETile class >> placeHolderColor [

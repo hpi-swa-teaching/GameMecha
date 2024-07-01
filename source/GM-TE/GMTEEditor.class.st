@@ -15,7 +15,9 @@ Class {
 		'morphBuilders',
 		'backgroundTile',
 		'tileMap',
-		'associatedMorph'
+		'associatedMorph',
+		'commands',
+		'currentCommand'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -153,6 +155,19 @@ GMTEEditor class >> tileMapMinPaddingSize [
 	"the minimum size of the tileMap padding"
 	
 	^ 0
+]
+
+{
+	#category : #'command processing',
+	#'squeak_changestamp' : 'Alex M 6/28/2024 19:52'
+}
+GMTEEditor >> addCommand: aCommand [
+	
+	"when a new change is made, all timestamps from the 'future' are deleted"
+	[self commands size > self currentCommand] whileTrue: [self commands removeLast].
+
+	self commands add: aCommand.
+	self currentCommand: self currentCommand + 1
 ]
 
 {
@@ -314,6 +329,22 @@ GMTEEditor >> commandBar [
 GMTEEditor >> commandBar: anObject [
 
 	commandBar := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/28/2024 19:48'
+}
+GMTEEditor >> commands [
+	^ commands
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/28/2024 19:48'
+}
+GMTEEditor >> commands: anObject [
+	commands := anObject
 ]
 
 {
@@ -604,7 +635,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:45'
+	#'squeak_changestamp' : 'Alex M 7/1/2024 15:48'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -613,7 +644,19 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 		name: 'toolbar';
 		model: self;
 		frame: (LayoutFrame fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
-		children: {};
+		children: {(aBuilder pluggableButtonSpec new)
+			name: 'undo';
+			label: 'undo';
+			model: self;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil);
+			action: #undo.
+			(aBuilder pluggableButtonSpec new)
+			name: 'redo';
+			label: 'redo';
+			model: self;
+			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
+			action: #redo.
+			};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -631,6 +674,22 @@ GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
 		minimumHeight:75;
 		yourself
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/28/2024 19:48'
+}
+GMTEEditor >> currentCommand [
+	^ currentCommand
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 6/28/2024 19:48'
+}
+GMTEEditor >> currentCommand: anObject [
+	currentCommand := anObject
 ]
 
 {
@@ -951,13 +1010,15 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/25/2024 17:51'
+	#'squeak_changestamp' : 'Alex M 7/1/2024 17:20'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
 	
 	super initialize.
 	self
+		commands: (LinkedList newFrom: {GMTEPlaceHolderCommand new});
+		currentCommand: 1;
 		selectedLayers: Set new;
 		selectLayer: 1;
 		morphBuilders: Dictionary new;
@@ -1172,14 +1233,15 @@ GMTEEditor >> moveLayerUp [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:13'
+	#'squeak_changestamp' : 'Alex M 6/28/2024 21:27'
 }
 GMTEEditor >> onClose [
 	"asks the user whether they want to save their progress"
 	
-	self savedSinceModified
+	"self savedSinceModified
 		ifFalse: [(PopUpMenu confirm: 'Save before closing?')
-			ifTrue: [self exportAsMorph]]
+			ifTrue: [self exportAsMorph]]"
+	"COMMENTED FOR EASIER DEBUGGING"
 ]
 
 {
@@ -1280,6 +1342,17 @@ GMTEEditor >> ratio [
 GMTEEditor >> ratio: anObject [
 
 	ratio := anObject
+]
+
+{
+	#category : #'command processing',
+	#'squeak_changestamp' : 'Alex M 7/1/2024 17:31'
+}
+GMTEEditor >> redo [
+	
+	(self currentCommand < self commands size) ifTrue: [self currentCommand: self currentCommand + 1.
+		(self commands at: self currentCommand) do.
+		self savedSinceModified: false]
 ]
 
 {
@@ -1678,6 +1751,17 @@ GMTEEditor >> trayViewer [
 GMTEEditor >> trayViewer: anObject [
 
 	trayViewer := anObject
+]
+
+{
+	#category : #'command processing',
+	#'squeak_changestamp' : 'Alex M 7/1/2024 17:31'
+}
+GMTEEditor >> undo [
+	
+	(self currentCommand > 1) ifTrue: [(self commands at: self currentCommand) undo.
+		self currentCommand: self currentCommand - 1.
+		self savedSinceModified: false]
 ]
 
 {
