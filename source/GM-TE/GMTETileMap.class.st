@@ -55,21 +55,29 @@ GMTETileMap class >> maxLayers [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:21'
+	#'squeak_changestamp' : 'JS 6/28/2024 15:19'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
-	| newMap |
+	| newMap oldMapCopy |
 	aMap tileSelectionSet clearAllHighlightings.
 	
 	aMap tileMatrixStackBackground reset. "This fixed the temporary issue of orphaned morphs after copy"
 	
-	newMap := (GMTETileMap newFrom: (aMap veryDeepCopy))
+	oldMapCopy := aMap veryDeepCopy.
+	
+	newMap := (GMTETileMap newFrom: oldMapCopy)
 		updateMap;
 		hideHighlightingLayer;
+		removeAllMorphs;
 		yourself.
-		
-	 aMap generateBackgroundTiles. "Part of the above fix"
+	
+	oldMapCopy 
+		submorphsDo: [:s | newMap addMorph: s];
+	 	abandon.
+	
+	aMap generateBackgroundTiles. "Part of the above fix"
+	newMap generateBackgroundTiles.
 	^ newMap 
 ]
 
