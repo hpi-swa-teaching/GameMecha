@@ -26,7 +26,8 @@ Class {
 		'tileMatrixStackHighlighting',
 		'tileMatrixStackBackground',
 		'forceMapSizeRatio',
-		'backgroundTiles'
+		'backgroundTiles',
+		'view'
 	],
 	#category : #'GM-TE-TileMap'
 }
@@ -244,7 +245,7 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:06'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:47'
 }
 GMTETileMap >> extent: aPoint [
 	"Override extent to properly scale tile map"
@@ -398,18 +399,19 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:26'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:41'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: aBlock [
 	"Add a tile of type aTileClass to aLayer at position (x, y) in aStack and calculate the correct position using aBlock"
 
-	| tilePos correctedTilePos newTile |
+	| tilePos correctedTilePos tileExtent newTile |
 	tilePos := self tilePosFromVirtual: x@y.
-	correctedTilePos := aBlock value: tilePos.
+	correctedTilePos := self viewCorrectedTilePosition: (aBlock value: tilePos).
+	tileExtent := self viewCorrectedTileExtent: self tileSizeWidth @ self tileSizeHeight.
 						
 	newTile := (aTileClass
 		position: correctedTilePos
-		extent: self tileSizeWidth@self tileSizeHeight) 
+		extent: tileExtent) 
 		lock;
 		beTransparent;
 		yourself.
@@ -478,7 +480,7 @@ GMTETileMap >> highlightingTileFromPosition: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:38'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:31'
 }
 GMTETileMap >> initialize [
 	
@@ -487,6 +489,7 @@ GMTETileMap >> initialize [
 		color: Color lightGray;
 		clipSubmorphs: true;
 		forceMapSizeRatio: false;
+		view: (GMTEView origin: 0 @ 0 extent: 1 @ 1); 
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
@@ -719,6 +722,26 @@ GMTETileMap >> revertCorrectedTilePositionMap: aPoint [
 ]
 
 {
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:49'
+}
+GMTETileMap >> revertViewCorrectedTilePosition: aPoint [
+	"comment stating purpose of message"
+
+	^ (aPoint - self topLeft) / self viewScaleFactor + self viewOriginInPxl
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:47'
+}
+GMTETileMap >> revertViewCorrectedTilePositionMap: aPoint [
+	"comment stating purpose of message"
+
+	^ self revertCorrectedTilePositionMap: (self revertViewCorrectedTilePosition: aPoint)
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:00'
 }
@@ -812,13 +835,14 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:47'
 }
 GMTETileMap >> tileIndexFromPosition: aPoint [
 	"Answer the sender with a tile index (matrix[index x y][index x]) from a pixel position"
 
 	| uncorrectedPos index |
-	uncorrectedPos := self revertCorrectedTilePositionMap: aPoint.
+	uncorrectedPos := self revertViewCorrectedTilePositionMap: aPoint.
+
 	index := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
 	index := index floor.
 	
@@ -1099,21 +1123,22 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:41'
 }
 GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 	"Update matrix stacks by applying new dimensions & positions"
 
-	| tilePos correctedTilePos tile |
+	| tilePos correctedTilePos tileExtent tile |
 	aStack doTilesXYLindex: [:x :y :l | 
-		tilePos := self tilePosFromVirtual: x@y.
-		correctedTilePos := aBlock value: tilePos.
 		tile := aStack layer: l at: y at: x.
 		
 		tile ifNotNil: [
+			tilePos := self tilePosFromVirtual: x@y.
+			correctedTilePos := self viewCorrectedTilePosition: (aBlock value: tilePos).
+			tileExtent := self viewCorrectedTileExtent: self tileSizeWidth @ self tileSizeHeight.
 			tile 
 				position: correctedTilePos;
-				extent: self tileSizeWidth@self tileSizeHeight]]
+				extent: tileExtent]]
 ]
 
 {
@@ -1148,6 +1173,66 @@ GMTETileMap >> updateTilesBackground [
 	self generateBackgroundTiles.
 	self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [:aPoint | 
 		self correctedTilePositionBackground: aPoint]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:31'
+}
+GMTETileMap >> view [
+
+	^ view
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:31'
+}
+GMTETileMap >> view: anObject [
+
+	view := anObject.
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
+}
+GMTETileMap >> viewCorrectedTileExtent: anExtent [
+	"comment stating purpose of message"
+
+	^self viewScaleFactor * anExtent
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
+}
+GMTETileMap >> viewCorrectedTilePosition: aPoint [
+	"comment stating purpose of message"
+
+	^ self viewScaleFactor * (aPoint - self viewOriginInPxl) + self topLeft
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
+}
+GMTETileMap >> viewOriginInPxl [
+
+	"Note: given that view has same ratio as tileMap"
+	
+	^ self extent * self view origin + self topLeft
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:47'
+}
+GMTETileMap >> viewScaleFactor [
+
+	"Note: given that view has same ratio as tileMap"
+	
+	^ 1 / (self view extent x)
 ]
 
 {
