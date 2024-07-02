@@ -11,11 +11,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 6/28/2024 21:20'
+	#'squeak_changestamp' : 'Alex M 7/1/2024 17:59'
 }
 GMTEEditTilesCommand class >> previousTiles: aDictionary1 currentTiles: aDictionary2 tilemap: aTileMap [
 
-	^ (GMTEEditTilesCommand new)
+	^ (self new)
 		tileMap: aTileMap;
 		previousSprites: aDictionary1;
 		currentSprites: aDictionary2;

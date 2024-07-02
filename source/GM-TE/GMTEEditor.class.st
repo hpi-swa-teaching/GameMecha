@@ -1376,6 +1376,26 @@ GMTEEditor >> renameLayer [
 ]
 
 {
+	#category : #tilemap,
+	#'squeak_changestamp' : 'Alex M 7/1/2024 21:04'
+}
+GMTEEditor >> rescaleGridHeight: aValue [
+	
+	self tileMap rescaleMapWidth: self getGridWidth height: aValue.
+	self changed: #getGridHeightAsString
+]
+
+{
+	#category : #tilemap,
+	#'squeak_changestamp' : 'Alex M 7/1/2024 21:04'
+}
+GMTEEditor >> rescaleGridWidth: aValue [
+	
+	self tileMap rescaleMapWidth: aValue height: self getGridHeight.
+	self changed: #getGridWidthAsString
+]
+
+{
 	#category : #'menu button functions',
 	#'squeak_changestamp' : 'jj 6/22/2024 21:30'
 }
@@ -1535,16 +1555,18 @@ GMTEEditor >> selectedTile: anObject [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:41'
+	#'squeak_changestamp' : 'Alex M 7/1/2024 21:06'
 }
 GMTEEditor >> setGridHeight: aText [
 	"adjusts the grid height"
 	
-	| newSize |
-	newSize := self parseGridSize: aText.
-	newSize
-		ifNotNil: [
-			self tileMap rescaleMapWidth: self getGridWidth height: newSize].
+	| oldHeight newHeight |
+	oldHeight := self getGridHeight.
+	newHeight := self parseGridSize: aText.
+	newHeight ifNotNil: [
+		self
+			rescaleGridHeight: newHeight;
+			addCommand: (GMTETilemapSizeCommand prevValue: oldHeight newValue: newHeight method: #rescaleGridHeight: editor: self)].
 	^ true
 		
 
@@ -1552,15 +1574,19 @@ GMTEEditor >> setGridHeight: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:41'
+	#'squeak_changestamp' : 'Alex M 7/1/2024 21:06'
 }
 GMTEEditor >> setGridWidth: aText [
 	"adjusts the grid width"
 	"TODO: Fix visual layer bug"
 	
-	| newSize |
-	newSize := self parseGridSize: aText.
-	newSize ifNotNil: [self tileMap rescaleMapWidth: newSize height: self getGridHeight].
+	| oldWidth newWidth |
+	oldWidth := self getGridWidth.
+	newWidth := self parseGridSize: aText.
+	oldWidth ifNotNil: [
+		self
+			rescaleGridWidth: newWidth;
+			addCommand: (GMTETilemapSizeCommand prevValue: oldWidth newValue: newWidth method: #rescaleGridWidth: editor: self)].
 	^ true
 
 ]
@@ -1755,7 +1781,7 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:31'
+	#'squeak_changestamp' : 'Alex M 7/1/2024 20:24'
 }
 GMTEEditor >> undo [
 	

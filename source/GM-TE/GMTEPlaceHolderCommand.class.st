@@ -5,14 +5,14 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #execution,
 	#'squeak_changestamp' : 'Alex M 7/1/2024 17:19'
 }
 GMTEPlaceHolderCommand >> do [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #execution,
 	#'squeak_changestamp' : 'Alex M 7/1/2024 17:20'
 }
 GMTEPlaceHolderCommand >> undo [
