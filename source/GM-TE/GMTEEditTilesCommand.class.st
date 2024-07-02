@@ -40,7 +40,7 @@ GMTEEditTilesCommand >> currentSprites: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:32'
+	#'squeak_changestamp' : 'TW 7/2/2024 17:54'
 }
 GMTEEditTilesCommand >> do [
 	| tile sprite layer x y |
@@ -53,10 +53,13 @@ GMTEEditTilesCommand >> do [
 		tile := self tileMap tileMatrixStack layer: layer at: y at: x.
 		sprite := self currentSprites at: coordinates.
 		tile
-			ifNil: [sprite ifNotNil: [tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile.
+			ifNil: [sprite 
+				ifNotNil: [
+					tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile. 
 					tile updateSprite: sprite]]
 			ifNotNil: [sprite
-				ifNil: [self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
+				ifNil: [
+					self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
 					tile abandon]
 				ifNotNil: [tile updateSprite: (self currentSprites at: coordinates)]]]
 ]
@@ -106,7 +109,7 @@ GMTEEditTilesCommand >> tileMap: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:32'
+	#'squeak_changestamp' : 'TW 7/2/2024 17:54'
 }
 GMTEEditTilesCommand >> undo [
 	| tile sprite layer x y |
@@ -119,10 +122,13 @@ GMTEEditTilesCommand >> undo [
 		tile := self tileMap tileMatrixStack layer: layer at: y at: x.
 		sprite := self previousSprites at: coordinates.
 		tile
-			ifNil: [sprite ifNotNil: [tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile.
+			ifNil: [sprite 
+				ifNotNil: [
+					tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile.
 					tile updateSprite: sprite]]
 			ifNotNil: [sprite
-				ifNil: [self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
+				ifNil: [
+					self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
 					tile abandon]
 				ifNotNil: [tile updateSprite: (self previousSprites at: coordinates)]]]
 ]
