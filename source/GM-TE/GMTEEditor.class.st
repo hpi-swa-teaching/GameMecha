@@ -74,6 +74,15 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 ]
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:46'
+}
+GMTEEditor class >> maxNumberOfCommands [
+	
+	^ 10
+]
+
+{
 	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
 }
@@ -159,13 +168,16 @@ GMTEEditor class >> tileMapMinPaddingSize [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 6/28/2024 19:52'
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:50'
 }
 GMTEEditor >> addCommand: aCommand [
 	
 	"when a new change is made, all timestamps from the 'future' are deleted"
 	[self commands size > self currentCommand] whileTrue: [self commands removeLast].
 
+	(self commands size > self class maxNumberOfCommands) ifTrue: [self commands removeFirst.
+		self currentCommand: self currentCommand - 1].
+	
 	self commands add: aCommand.
 	self currentCommand: self currentCommand + 1
 ]
