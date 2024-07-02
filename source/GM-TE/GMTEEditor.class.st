@@ -1356,6 +1356,17 @@ GMTEEditor >> redo [
 ]
 
 {
+	#category : #TODO,
+	#'squeak_changestamp' : 'Alex M 7/2/2024 16:35'
+}
+GMTEEditor >> redoAllCommandsUntil: aValue [
+	
+	"TODO: This is used for workarounds, better solutions required."
+	aValue to: 1 by: -1 do: [:i | (commands at: i) undo].
+	1 to: aValue do: [:i | (commands at: i) do]
+]
+
+{
 	#category : #'layer button functions',
 	#'squeak_changestamp' : 'TW 6/23/2024 21:50'
 }
@@ -1781,13 +1792,17 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 20:24'
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:32'
 }
 GMTEEditor >> undo [
-	
+	"A bit hacky, maybe fix later"
 	(self currentCommand > 1) ifTrue: [(self commands at: self currentCommand) undo.
 		self currentCommand: self currentCommand - 1.
-		self savedSinceModified: false]
+		((self commands at: self currentCommand + 1) class = GMTETilemapSizeCommand)
+			ifTrue: [self redoAllCommandsUntil: self currentCommand].
+		self savedSinceModified: false].
+	
+	
 ]
 
 {

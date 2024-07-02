@@ -8,7 +8,7 @@ Class {
 		'newSize',
 		'savedTiles'
 	],
-	#category : #'GM-TE-CommandProcessor'
+	#category : #'GM-TE-UI'
 }
 
 {
@@ -27,12 +27,11 @@ GMTETilemapSizeCommand class >> prevValue: aNumber1 newValue: aNumber2 method: a
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:52'
+	#'squeak_changestamp' : 'Alex M 7/2/2024 16:36'
 }
 GMTETilemapSizeCommand >> do [
 
-	self editor perform: self method with: self newSize.
-	self restoreTiles
+	self editor perform: self method with: self newSize
 ]
 
 {
@@ -101,14 +100,17 @@ GMTETilemapSizeCommand >> prevSize: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:23'
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:23'
 }
 GMTETilemapSizeCommand >> restoreTiles [
+	"TODO: Use function of tilemap"
+	
+	"self editor redoAllCommandsUntil: self editor currentCommand - 1."
 ]
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:52'
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:22'
 }
 GMTETilemapSizeCommand >> undo [
 

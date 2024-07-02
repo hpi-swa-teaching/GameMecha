@@ -6,7 +6,7 @@ Class {
 		'previousSprites',
 		'currentSprites'
 	],
-	#category : #'GM-TE-CommandProcessor'
+	#category : #'GM-TE-UI'
 }
 
 {

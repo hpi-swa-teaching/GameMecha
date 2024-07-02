@@ -1,7 +1,7 @@
 Class {
 	#name : #GMTECommand,
 	#superclass : #Object,
-	#category : #'GM-TE-CommandProcessor'
+	#category : #'GM-TE-UI'
 }
 
 {
