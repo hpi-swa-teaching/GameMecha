@@ -1,7 +1,7 @@
 Class {
 	#name : #GMTEPlaceHolderCommand,
 	#superclass : #GMTECommand,
-	#category : #'GM-TE-CommandProcessor'
+	#category : #'GM-TE-UI'
 }
 
 {

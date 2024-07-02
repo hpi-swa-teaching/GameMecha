@@ -74,6 +74,15 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 ]
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:46'
+}
+GMTEEditor class >> maxNumberOfCommands [
+	
+	^ 10
+]
+
+{
 	#category : #fileHandling,
 	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
 }
@@ -159,13 +168,16 @@ GMTEEditor class >> tileMapMinPaddingSize [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 6/28/2024 19:52'
+	#'squeak_changestamp' : 'Alex M 7/2/2024 17:50'
 }
 GMTEEditor >> addCommand: aCommand [
 	
 	"when a new change is made, all timestamps from the 'future' are deleted"
 	[self commands size > self currentCommand] whileTrue: [self commands removeLast].
 
+	(self commands size > self class maxNumberOfCommands) ifTrue: [self commands removeFirst.
+		self currentCommand: self currentCommand - 1].
+	
 	self commands add: aCommand.
 	self currentCommand: self currentCommand + 1
 ]
@@ -1358,6 +1370,17 @@ GMTEEditor >> redo [
 ]
 
 {
+	#category : #TODO,
+	#'squeak_changestamp' : 'Alex M 7/2/2024 16:35'
+}
+GMTEEditor >> redoAllCommandsUntil: aValue [
+	
+	"TODO: This is used for workarounds, better solutions required."
+	aValue to: 1 by: -1 do: [:i | (commands at: i) undo].
+	1 to: aValue do: [:i | (commands at: i) do]
+]
+
+{
 	#category : #'layer button functions',
 	#'squeak_changestamp' : 'TW 6/23/2024 21:50'
 }
@@ -1783,14 +1806,16 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'TW 7/2/2024 17:46'
+	#'squeak_changestamp' : 'TW 7/2/2024 18:32'
 }
 GMTEEditor >> undo [
-	
+
+	"A bit hacky, maybe fix later"
 	(self currentCommand > 1) 
-		ifTrue: [
-			(self commands at: self currentCommand) undo.
+		ifTrue: [(self commands at: self currentCommand) undo.
 			self currentCommand: self currentCommand - 1.
+			((self commands at: self currentCommand + 1) class = GMTETilemapSizeCommand)
+				ifTrue: [self redoAllCommandsUntil: self currentCommand].
 			self savedSinceModified: false]
 ]
 

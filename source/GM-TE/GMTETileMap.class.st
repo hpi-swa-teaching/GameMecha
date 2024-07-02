@@ -26,8 +26,7 @@ Class {
 		'tileMatrixStackHighlighting',
 		'tileMatrixStackBackground',
 		'forceMapSizeRatio',
-		'backgroundTiles',
-		'autoGenerateBackground'
+		'backgroundTiles'
 	],
 	#category : #'GM-TE-TileMap'
 }
@@ -55,14 +54,12 @@ GMTETileMap class >> maxLayers [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 6/28/2024 15:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:05'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
 	| newMap oldMapCopy |
 	aMap tileSelectionSet clearAllHighlightings.
-	
-	aMap tileMatrixStackBackground reset. "This fixed the temporary issue of orphaned morphs after copy"
 	
 	oldMapCopy := aMap veryDeepCopy.
 	
@@ -76,8 +73,8 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 		submorphsDo: [:s | newMap addMorph: s];
 	 	abandon.
 	
-	aMap generateBackgroundTiles. "Part of the above fix"
-	newMap generateBackgroundTiles.
+	"Initially draw background tiles"
+	newMap updateTilesBackground.
 	^ newMap 
 ]
 
@@ -90,24 +87,6 @@ GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding siz
 	^ (self new)
 		setDimensionsWidth: aWidth height: aHeight padding: aPadding;
 		tileSizeRatio: aRatio
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:07'
-}
-GMTETileMap >> autoGenerateBackground [
-
-	^ autoGenerateBackground
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:19'
-}
-GMTETileMap >> autoGenerateBackground: aBool [
-
-	autoGenerateBackground := aBool
 ]
 
 {
@@ -355,7 +334,7 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:46'
 }
 GMTETileMap >> generateBackgroundTiles [
 	"Fill the background matrix stack with tiles automatically"
@@ -499,7 +478,7 @@ GMTETileMap >> highlightingTileFromPosition: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:38'
 }
 GMTETileMap >> initialize [
 	
@@ -508,7 +487,6 @@ GMTETileMap >> initialize [
 		color: Color lightGray;
 		clipSubmorphs: true;
 		forceMapSizeRatio: false;
-		autoGenerateBackground: true;
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
@@ -1019,15 +997,13 @@ GMTETileMap >> toFullScreenMode [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:21'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:00'
 }
 GMTETileMap >> toggleBackgroundLayer [
 	"Toggles the dynamic filling of the maps background with the background tile"
 
 	self tileMatrixStackBackground toggleVisibility.
-	"This is necessary since background updates are not applied during invisibilty for performance reasons"
-	(self tileMatrixStackBackground visible) ifTrue: [
-		self updateTiles].
+	self updateTilesBackground.
 	self changed
 ]
 
@@ -1142,7 +1118,7 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:54'
 }
 GMTETileMap >> updateTiles [
 	"Collectively update all matrix stacks and therefore all tiles contained within"
@@ -1151,16 +1127,45 @@ GMTETileMap >> updateTiles [
 	"TODO: This should be refactored"
 	"TODO: Rescaling is not very performant"
 	
-	(self tileMatrixStackBackground visible) 
-		ifTrue: [
-			self tileMatrixStackBackground 
-				rescaleToWidth: self tileWidth height: self tileHeight;
-				reset.
-			self generateBackgroundTiles.
-			self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [:aPoint | 
-				self correctedTilePositionBackground: aPoint]].
-	
 	self 
+		updateTilesBackground;
 		updateTileMatrixStack: self tileMatrixStack;
 		updateTileMatrixStack: self tileMatrixStackHighlighting
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:58'
+}
+GMTETileMap >> updateTilesBackground [
+	"Background tiles are handled seperately, because they are only updated if they're visible for performance reasons"
+	
+	(self tileMatrixStackBackground visible not) ifTrue: [^ nil].
+
+	self tileMatrixStackBackground 
+		rescaleToWidth: self tileWidth height: self tileHeight;
+		reset. 
+	self generateBackgroundTiles.
+	self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [:aPoint | 
+		self correctedTilePositionBackground: aPoint]
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:37'
+}
+GMTETileMap >> vigenerateBackgroundTiles [
+	"Fill the background matrix stack with tiles automatically"
+	
+	self backgroundTiles ifNil: [^ nil].
+	
+	self tileMatrixStackBackground doTilesXYLindex: [:x :y :l | 
+		"It is assumed that the background stack consists of only one layer"
+		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [:aPoint |
+			self correctedTilePositionBackground: aPoint]].
+	
+	self tileMatrixStackBackground doTiles: [:tile |
+		tile applyTileSprite: self backgroundTiles]
+	
+	
 ]
