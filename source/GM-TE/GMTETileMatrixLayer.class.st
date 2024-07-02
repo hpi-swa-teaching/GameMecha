@@ -160,6 +160,28 @@ GMTETileMatrixLayer >> setNil [
 ]
 
 {
+	#category : #copying,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:28'
+}
+GMTETileMatrixLayer >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
+
+	| removedTiles tile |
+	removedTiles := Set new.
+	
+	(aWidth + 1) to: self columnCount do: [:col |
+			1 to: self rowCount do: [:row |
+				tile := self at: row at: col.
+				tile ifNotNil: [removedTiles add: tile]]].
+	
+	(aHeight + 1) to: self rowCount do: [:row |
+			1 to: self columnCount do: [:col |
+				tile := self at: row at: col.
+				tile ifNotNil: [removedTiles add: tile]]].
+	
+	^ removedTiles
+]
+
+{
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:40'
 }

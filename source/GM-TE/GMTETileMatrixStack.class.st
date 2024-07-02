@@ -490,6 +490,21 @@ GMTETileMatrixStack >> swapLayer: anIndex1 with: anIndex2 [
 
 {
 	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:33'
+}
+GMTETileMatrixStack >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
+
+	| removedTiles |
+	removedTiles := Set new.
+	
+	self doLayers: [:layer |
+		removedTiles := removedTiles union: (layer tileLossAfterRescaleToWidth: aWidth height: aHeight)].
+	
+	^ removedTiles
+]
+
+{
+	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 23:13'
 }
 GMTETileMatrixStack >> toggleLayerVisibility: anIndex [
