@@ -1346,13 +1346,15 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:31'
+	#'squeak_changestamp' : 'TW 7/2/2024 17:47'
 }
 GMTEEditor >> redo [
 	
-	(self currentCommand < self commands size) ifTrue: [self currentCommand: self currentCommand + 1.
-		(self commands at: self currentCommand) do.
-		self savedSinceModified: false]
+	(self currentCommand < self commands size) 
+		ifTrue: [
+			self currentCommand: self currentCommand + 1.
+			(self commands at: self currentCommand) do.
+			self savedSinceModified: false]
 ]
 
 {
@@ -1781,13 +1783,15 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 20:24'
+	#'squeak_changestamp' : 'TW 7/2/2024 17:46'
 }
 GMTEEditor >> undo [
 	
-	(self currentCommand > 1) ifTrue: [(self commands at: self currentCommand) undo.
-		self currentCommand: self currentCommand - 1.
-		self savedSinceModified: false]
+	(self currentCommand > 1) 
+		ifTrue: [
+			(self commands at: self currentCommand) undo.
+			self currentCommand: self currentCommand - 1.
+			self savedSinceModified: false]
 ]
 
 {
