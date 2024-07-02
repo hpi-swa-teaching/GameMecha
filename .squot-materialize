@@ -23,6 +23,13 @@
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'undo.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
 			'testingResources',
 			'squeak2.gif'
 		],
@@ -49,7 +56,7 @@
 			'GMTEIcons',
 			'trash.png'
 		],
-		#encoding : Class [ #PNGReadWriter ]
+		#encoding : @12
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -64,7 +71,7 @@
 			'GMTEIcons',
 			'up.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
@@ -77,7 +84,7 @@
 			'testingResources',
 			'squeak.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
@@ -92,7 +99,7 @@
 			'GMTEIcons',
 			'rename.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -105,7 +112,7 @@
 			'GMTEIcons',
 			'down.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -147,7 +154,7 @@
 			'GMTEIcons',
 			'merge.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotSoundMapper {
 		#path : FSAbsolutePath [
@@ -188,7 +195,7 @@
 			'GMTEIcons',
 			'broom.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -213,7 +220,7 @@
 			'GMTEIcons',
 			'eye.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
@@ -222,6 +229,13 @@
 		#path : FSAbsolutePath [
 			'source'
 		]
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'redo.png'
+		],
+		#encoding : @12
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -234,7 +248,7 @@
 			'GMTEIcons',
 			'add.png'
 		],
-		#encoding : @21
+		#encoding : @12
 	},
 	SquotTonelMapper {
 		#package : MCPackage {

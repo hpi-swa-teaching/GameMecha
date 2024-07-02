@@ -647,7 +647,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 15:48'
+	#'squeak_changestamp' : 'TW 7/2/2024 18:34'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -656,18 +656,24 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 		name: 'toolbar';
 		model: self;
 		frame: (LayoutFrame fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
-		children: {(aBuilder pluggableButtonSpec new)
-			name: 'undo';
-			label: 'undo';
-			model: self;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil);
-			action: #undo.
-			(aBuilder pluggableButtonSpec new)
-			name: 'redo';
-			label: 'redo';
-			model: self;
-			frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
-			action: #redo.
+		children: {		
+			(aBuilder pluggableImageButtonSpec new)
+				name: 'undo';
+				label: 'undo';
+				model: self;
+				frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil);
+				action: #undo;
+				project: 'GameMecha';
+				path: '/GMTEIcons/undo.png'.
+				
+			(aBuilder pluggableImageButtonSpec new)
+				name: 'redo';
+				label: 'redo';
+				model: self;
+				frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
+				action: #redo;
+				project: 'GameMecha';
+				path: '/GMTEIcons/redo.png'.
 			};
 			
 		verticalResizing: #shrinkWrap;
