@@ -1028,14 +1028,14 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:20'
+	#'squeak_changestamp' : 'Alex M 7/3/2024 23:57'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
 	
 	super initialize.
 	self
-		commands: (LinkedList newFrom: {GMTEPlaceHolderCommand new});
+		resetCommands;
 		currentCommand: 1;
 		selectedLayers: Set new;
 		selectLayer: 1;
@@ -1278,17 +1278,18 @@ GMTEEditor >> open [
 
 {
 	#category : #helper,
-	#'squeak_changestamp' : 'jj 6/22/2024 21:20'
+	#'squeak_changestamp' : 'Alex M 7/3/2024 23:57'
 }
 GMTEEditor >> openTileMapInEditor: aTileMap [
 	"loads a tileMap into the editor"
 	
-    aTileMap tileSelectionSet highlightImage: nil.
-    self tileMap: aTileMap.
-    aTileMap model: self.
-    self tileViewer
-        removeAllMorphs;
-        addMorph: aTileMap.
+	aTileMap tileSelectionSet highlightImage: nil.
+	self tileMap: aTileMap.
+	aTileMap model: self.
+	self tileViewer
+		removeAllMorphs;
+		addMorph: aTileMap.
+	self resetCommands.
 
     self changed: #getLayerList
 ]
@@ -1438,14 +1439,25 @@ GMTEEditor >> resetAllLayers [
 ]
 
 {
+	#category : #'command processing',
+	#'squeak_changestamp' : 'Alex M 7/3/2024 23:57'
+}
+GMTEEditor >> resetCommands [
+
+	self
+		commands: (LinkedList newFrom: {GMTEPlaceHolderCommand new});
+		currentCommand: 1
+]
+
+{
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 10:43'
+	#'squeak_changestamp' : 'Alex M 7/3/2024 23:49'
 }
 GMTEEditor >> resetLayers: aSet [
 	"resets the layers represented by aSet"
 	
 	"TODO: maybe combine this with updatTile: inLayer: FromEvent: . Currently not working with layers."
-	self tileMap tileMatrixStack resetLayers: aSet
+	self tileMap resetLayers: aSet
 ]
 
 {

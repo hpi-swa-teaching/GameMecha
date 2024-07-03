@@ -165,6 +165,23 @@ GMTEEditorTileMap >> rescaleMap [
 ]
 
 {
+	#category : #TODO,
+	#'squeak_changestamp' : 'Alex M 7/3/2024 23:50'
+}
+GMTEEditorTileMap >> resetLayers: aSet [
+	| layer |
+	
+	aSet do: [:layerIndex |
+		layer := self tileMatrixStack layer: layerIndex.
+		layer withIndicesDo: [:tile :y :x |
+			tile ifNotNil: [self previousTileStates at: {x. y. layerIndex} ifAbsentPut: tile fullResolutionSprite.
+				self currentTileChanges at: {x. y. layerIndex} put: nil]].
+		self tileMatrixStack resetLayer: layerIndex].
+	
+	self saveTileEditChanges
+]
+
+{
 	#category : #'command processing',
 	#'squeak_changestamp' : 'Alex M 6/28/2024 20:06'
 }
