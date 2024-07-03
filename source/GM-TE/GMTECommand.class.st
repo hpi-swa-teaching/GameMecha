@@ -1,6 +1,9 @@
 Class {
 	#name : #GMTECommand,
 	#superclass : #Object,
+	#classVars : [
+		'GMTEAddLayerCommand'
+	],
 	#category : #'GM-TE-UI'
 }
 

@@ -100,12 +100,12 @@ GMTETilemapSizeCommand >> prevSize: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/2/2024 17:23'
+	#'squeak_changestamp' : 'Alex M 7/4/2024 01:06'
 }
 GMTETilemapSizeCommand >> restoreTiles [
 	"TODO: Use function of tilemap"
 	
-	"self editor redoAllCommandsUntil: self editor currentCommand - 1."
+	"currently done by Editor, needs to be implemented correctly"
 ]
 
 {

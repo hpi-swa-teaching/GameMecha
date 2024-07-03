@@ -184,7 +184,7 @@ GMTEEditor >> addCommand: aCommand [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'TW 6/23/2024 21:37'
+	#'squeak_changestamp' : 'Alex M 7/4/2024 01:37'
 }
 GMTEEditor >> addLayer [
 	"adds a new tileMap layer"
@@ -192,6 +192,8 @@ GMTEEditor >> addLayer [
 	| newLayerNumber |
 	(self layerCount >= GMTETileMap maxLayers) ifTrue: [^ nil].
 	newLayerNumber :=  self layerCount + 1.
+
+	self addCommand: (GMTEAddLayerCommand withEditor: self).
 
 	self tileMap tileMatrixStack pushLayer.
 	self 
@@ -1223,7 +1225,7 @@ GMTEEditor >> morphBuilders: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:12'
+	#'squeak_changestamp' : 'Alex M 7/4/2024 01:21'
 }
 GMTEEditor >> moveLayerDown [
 	"moves the selected layer down by one"
@@ -1232,12 +1234,13 @@ GMTEEditor >> moveLayerDown [
 	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
+	self addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: -1 withEditor: self).
 	(selectedLayer == 1) ifFalse: [self swapLayer: selectedLayer with: selectedLayer - 1]
 ]
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 21:13'
+	#'squeak_changestamp' : 'Alex M 7/4/2024 01:26'
 }
 GMTEEditor >> moveLayerUp [
 	"moves the selected layer up by one"
@@ -1246,6 +1249,7 @@ GMTEEditor >> moveLayerUp [
 	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
+	self addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: 1 withEditor: self).
 	(selectedLayer == self layerCount) ifFalse: [self swapLayer: selectedLayer with: selectedLayer + 1]
 ]
 
