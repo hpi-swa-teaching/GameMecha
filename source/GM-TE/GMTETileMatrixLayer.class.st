@@ -32,14 +32,17 @@ GMTETileMatrixLayer >> aboveLayer: aLayer [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 21:27'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:50'
 }
 GMTETileMatrixLayer >> addTile: aTile at: y at: x [
 
-	aTile ifNotNil: [
+	(aTile isNil not and: [self inBounds: x@y]) ifTrue: [
 		aTile morphicLayerNumber: self layerIndex.
 		aTile visible: self visible].
 	^ self at: y at: x put: aTile
+	
+
+
 ]
 
 {
@@ -117,6 +120,17 @@ GMTETileMatrixLayer >> free [
 	self doTiles: [:tile | tile free].
 	
 	self setNil
+]
+
+{
+	#category : #comparing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:52'
+}
+GMTETileMatrixLayer >> inBounds: aPos [
+
+	(aPos x > self columnCount or: [aPos x < 1]) ifTrue: [^ false].
+	(aPos y > self rowCount or: [aPos y < 1]) ifTrue: [^ false].
+	^ true
 ]
 
 {

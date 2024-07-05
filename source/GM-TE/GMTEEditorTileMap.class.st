@@ -23,6 +23,30 @@ GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPaddi
 ]
 
 {
+	#category : #TODO,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:07'
+}
+GMTEEditorTileMap >> calculateTileCollectionFromPosition: aPos andLayer: aLayer [
+
+	| index rawCollection resultCollection |
+	self flag: 'remove method'.
+	index := self tileIndexFromPosition: aPos.
+	index ifNil: [^ nil].
+	rawCollection := OrderedCollection new.
+	resultCollection := OrderedCollection new.
+	self flag: 'Add different algos'.
+	rawCollection add: (self tileMatrixStack layer: aLayer at: index y at: index x).
+	self halt.
+
+	rawCollection add: (self tileMatrixStack layer: aLayer at: index y at: ((index x)+1)).
+	rawCollection do: [:t |
+		t ifNil: [resultCollection add: (self generateTileAtlayer: aLayer x: index x y: index y stack: self tileMatrixStack tileType: GMTETile)].
+		t ifNotNil: [resultCollection add: t]
+	].
+	^ resultCollection
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 6/28/2024 19:28'
 }
@@ -89,29 +113,29 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 15:40'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:39'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
 	"Implements placement of tiles"
 
-	| clickedTile activeLayer |
+	| selectedCoordinates activeLayer |
 	self model singleLayerSelected 
 		ifTrue: [
 			activeLayer := self model selectedLayers anyOne.
 			
-			clickedTile := self tileFromPosition: anEvent position layer: activeLayer.
-			self updateTile: clickedTile inLayer: activeLayer FromEvent: anEvent].
+			selectedCoordinates := self radiusBrushFromCenter: (self tileIndexFromPosition: anEvent position) withRadius: 1.
+			self updateTiles: selectedCoordinates inLayer: activeLayer FromEvent: anEvent].
 	
 	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 15:40'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 16:21'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
-
+"
 	| hoveredTile hoveredTileHighlighting activeLayer |
 	self model singleLayerSelected
 		ifTrue: [activeLayer := self model selectedLayers anyOne.
@@ -123,9 +147,9 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	
 		hoveredTileHighlighting ifNotNil: [self tileSelectionSet highlightTile: hoveredTileHighlighting].
 	
-		"TODO why another ifNil check here?"
+		TODO why another ifNil check here?
 		
-		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]
+		self updateTile: hoveredTile inLayer: activeLayer FromEvent: anEvent]"
 ]
 
 {
@@ -151,6 +175,20 @@ GMTEEditorTileMap >> previousTileStates [
 }
 GMTEEditorTileMap >> previousTileStates: anObject [
 	previousTileStates := anObject
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:19'
+}
+GMTEEditorTileMap >> radiusBrushFromCenter: aPos withRadius: aRadius [
+	
+	|collection|
+	self flag: 'temporary only'.
+	collection := OrderedCollection new.
+	collection add: aPos.
+	collection add: (aPos + (0@1)).
+	^ collection
 ]
 
 {
@@ -252,54 +290,34 @@ GMTEEditorTileMap >> tileSelectionSet: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 16:08'
-}
-GMTEEditorTileMap >> updateTile: aTile inLayer: aLayer FromEvent: anEvent [
-	"Add currently selected tile (model) to editable matrix stack at mouse position"
-	
-	| tileIndex hoveredTile |
-	hoveredTile := aTile.
-	
-	(self tileIndexFromPosition: anEvent position) ifNil: [^ nil].
-	
-	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
-		ifTrue: [
-			
-			self savePreviousImageFromPosition: anEvent position inLayer: aLayer.
-			
-			"Add tile if nil at mouse position"
-			hoveredTile ifNil: [
-				tileIndex := self tileIndexFromPosition: anEvent position.
-				tileIndex ifNil: [^ nil].
-				hoveredTile := self generateTileAtlayer: aLayer x: tileIndex x y: tileIndex y stack: self tileMatrixStack tileType: GMTETile].
-			
-			"Set tile to currently selected tile"
-			self updateTileSprite: hoveredTile.
-			
-			self saveNewImageFromPosition: anEvent position inLayer: aLayer.
-			self model savedSinceModified: false].
-	
-	((anEvent yellowButtonPressed) and: [hoveredTile notNil]) 
-		ifTrue: [
-			self savePreviousImageFromPosition: anEvent position inLayer: aLayer.
-			
-			"Remove tile if any present at mouse position"
-			aLayer ifNotNil: [
-				tileIndex := self tileIndexFromPosition: anEvent position.
-				self tileMatrixStack layer: aLayer at: tileIndex y at: tileIndex x put: nil.
-				hoveredTile abandon].
-			
-			self saveNewImageFromPosition: anEvent position inLayer: aLayer.
-			self model savedSinceModified: false].
-		
-]
-
-{
-	#category : #updating,
 	#'squeak_changestamp' : 'Alex M 6/25/2024 18:08'
 }
 GMTEEditorTileMap >> updateTileSprite: aTile [
 	"Helper function to apply sprite from tile selection to aTile"
 
 	self model selectedTile ifNotNil: [aTile updateSprite: self model selectedTile]
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:59'
+}
+GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEvent: anEvent [
+	"Add currently selected tile (model) to editable matrix stack at mouse position"
+	| tile |
+	
+	(self tileIndexFromPosition: anEvent position) ifNil: [^ nil].
+	
+	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
+		ifTrue: [
+			aCoordinateCollection do: [:c |
+				self savePreviousImageFromPosition: (self correctedTilePositionMap: c) inLayer: aLayer.
+				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+					tile
+						ifNil: [ tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: GMTETile].
+					self updateTileSprite: tile.
+					self saveNewImageFromPosition: tile position inLayer: aLayer]
+				].
+			self model savedSinceModified: false].
 ]

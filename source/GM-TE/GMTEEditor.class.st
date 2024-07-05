@@ -17,7 +17,8 @@ Class {
 		'tileMap',
 		'associatedMorph',
 		'commands',
-		'currentCommand'
+		'currentCommand',
+		'brushMode'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -268,6 +269,22 @@ GMTEEditor >> blendSelectedLayers [
 				deselectAllLayers;
 				selectLayer: bakedLayer].
 	self changed: #getLayerList
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 15:39'
+}
+GMTEEditor >> brushMode [
+	^ brushMode
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 15:39'
+}
+GMTEEditor >> brushMode: anObject [
+	brushMode := anObject
 ]
 
 {
