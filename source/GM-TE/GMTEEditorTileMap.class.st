@@ -246,7 +246,21 @@ GMTEEditorTileMap >> saveNewImageFromPosition: aPosition inLayer: aLayer [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 16:19'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:46'
+}
+GMTEEditorTileMap >> savePreviousImageFromMatrixCoordinate: aCoordinate inLayer: aLayer [
+	| tile |
+	
+	tile := self tileMatrixStack layer: aLayer at: aCoordinate y at: aCoordinate x.
+	
+	tile
+		ifNil: [self previousTileStates at: {aCoordinate x. aCoordinate y. aLayer} ifAbsentPut: nil]
+		ifNotNil: [self previousTileStates at: {aCoordinate x. aCoordinate y. aLayer} ifAbsentPut: tile fullResolutionSprite]
+]
+
+{
+	#category : #'command processing',
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:46'
 }
 GMTEEditorTileMap >> savePreviousImageFromPosition: aPosition inLayer: aLayer [
 	| coordinates tile |
@@ -261,13 +275,13 @@ GMTEEditorTileMap >> savePreviousImageFromPosition: aPosition inLayer: aLayer [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 6/28/2024 20:30'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:52'
 }
 GMTEEditorTileMap >> saveTileEditChanges [
-	
+
 	self 
 		model addCommand: (GMTEEditTilesCommand previousTiles: previousTileStates currentTiles: currentTileChanges tilemap: self).
-	self resetTileEditChanges
+	self resetTileEditChanges.
 ]
 
 {
@@ -300,7 +314,7 @@ GMTEEditorTileMap >> updateTileSprite: aTile [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 17:59'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:41'
 }
 GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEvent: anEvent [
 	"Add currently selected tile (model) to editable matrix stack at mouse position"
@@ -311,7 +325,7 @@ GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEven
 	(anEvent redButtonPressed and: [self model selectedTile notNil]) 
 		ifTrue: [
 			aCoordinateCollection do: [:c |
-				self savePreviousImageFromPosition: (self correctedTilePositionMap: c) inLayer: aLayer.
+				self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
 				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
 					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
 					tile
@@ -320,4 +334,20 @@ GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEven
 					self saveNewImageFromPosition: tile position inLayer: aLayer]
 				].
 			self model savedSinceModified: false].
+	(anEvent yellowButtonPressed) 
+		ifTrue: [
+			aCoordinateCollection do: [:c |
+				| tilePos |
+				self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
+				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+					tile
+						ifNotNil: [ 
+							tilePos := tile position.
+							tile abandon.
+							self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
+							self saveNewImageFromPosition: tilePos inLayer: aLayer].
+					]
+				].
+			self model savedSinceModified: false]
 ]

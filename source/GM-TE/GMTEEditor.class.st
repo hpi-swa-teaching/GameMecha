@@ -169,7 +169,7 @@ GMTEEditor class >> tileMapMinPaddingSize [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/2/2024 17:50'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:56'
 }
 GMTEEditor >> addCommand: aCommand [
 	
