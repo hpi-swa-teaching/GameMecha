@@ -20,15 +20,11 @@ GMTEAddLayerCommand class >> withEditor: anEditor [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:43'
+	#'squeak_changestamp' : 'Alex M 7/6/2024 23:13'
 }
 GMTEAddLayerCommand >> do [
-	"TODO: refactor this nicely by using inbuilt editor function while avoiding recursion"
-	
-	self editor tileMap tileMatrixStack pushLayer.
-	self editor
-		selectOnlyLayer: self editor layerCount;
-		changed: #getLayerList
+
+	self editor addTilemapLayer
 ]
 
 {
@@ -49,11 +45,9 @@ GMTEAddLayerCommand >> editor: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:40'
+	#'squeak_changestamp' : 'Alex M 7/7/2024 00:53'
 }
 GMTEAddLayerCommand >> undo [
 	
-	self editor
-		selectLayer: self editor layerCount;
-		deleteSelectedLayers
+	self editor deleteTilemapLayers: {self editor getLayerList size}
 ]

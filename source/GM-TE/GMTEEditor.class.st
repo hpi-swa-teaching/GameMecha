@@ -185,17 +185,26 @@ GMTEEditor >> addCommand: aCommand [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:37'
+	#'squeak_changestamp' : 'Alex M 7/7/2024 00:51'
 }
 GMTEEditor >> addLayer [
 	"adds a new tileMap layer"
-	
+	(self layerCount >= GMTETileMap maxLayers) ifTrue: [^ nil].
+	self
+		addCommand: (GMTEAddLayerCommand withEditor: self);
+		addTilemapLayer
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'Alex M 7/6/2024 23:12'
+}
+GMTEEditor >> addTilemapLayer [
+
 	| newLayerNumber |
 	(self layerCount >= GMTETileMap maxLayers) ifTrue: [^ nil].
 	newLayerNumber :=  self layerCount + 1.
-
-	self addCommand: (GMTEAddLayerCommand withEditor: self).
-
+	
 	self tileMap tileMatrixStack pushLayer.
 	self 
 		selectOnlyLayer: newLayerNumber;
@@ -731,14 +740,24 @@ GMTEEditor >> currentCommand: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 10:45'
+	#'squeak_changestamp' : 'Alex M 7/7/2024 00:53'
 }
 GMTEEditor >> deleteSelectedLayers [
 	"deletes all selected layers unless this would delete all layers"
-	
 	(self anyLayerSelected not or: (self selectedLayers size >= self getLayerList size)) ifTrue: [^ nil].
 	
-	self tileMap tileMatrixStack removeLayersAt: self selectedLayers.
+	self
+		addCommand: (GMTEDeleteLayerCommand fromLayers: self selectedLayers editor: self);
+		deleteTilemapLayers: self selectedLayers
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'Alex M 7/7/2024 00:51'
+}
+GMTEEditor >> deleteTilemapLayers: aLayerList [
+	
+	self tileMap tileMatrixStack removeLayersAt: aLayerList.
 	self 
 		deselectAllLayers;
 		changed: #getLayerList;
@@ -1848,15 +1867,15 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'TW 7/2/2024 18:32'
+	#'squeak_changestamp' : 'Alex M 7/6/2024 23:35'
 }
 GMTEEditor >> undo [
 
-	"A bit hacky, maybe fix later"
+	self flag: 'DO THIS USING TILEMAP FUNCTIONS'.
 	(self currentCommand > 1) 
 		ifTrue: [(self commands at: self currentCommand) undo.
 			self currentCommand: self currentCommand - 1.
-			((self commands at: self currentCommand + 1) class = GMTETilemapSizeCommand)
+			({GMTETilemapSizeCommand. GMTEDeleteLayerCommand} includes: (self commands at: self currentCommand + 1) class)
 				ifTrue: [self redoAllCommandsUntil: self currentCommand].
 			self savedSinceModified: false]
 ]
