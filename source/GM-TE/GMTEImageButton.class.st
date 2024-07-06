@@ -102,14 +102,15 @@ GMTEImageButton >> doButtonAction [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
+	#'squeak_changestamp' : 'Alex M 7/6/2024 23:07'
 }
 GMTEImageButton >> dyeSprite: anImage with: aColor [
 
 	^ anImage copy
 		replaceColor: Color white withColor: Color transparent;
-		replaceColor: Color black withColor: aColor;
-		yourself
+		"replaceColor: Color black withColor: aColor;
+		yourself"
+		dyed: aColor
 ]
 
 {
