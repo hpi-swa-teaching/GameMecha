@@ -40,26 +40,29 @@ GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 16:26'
+	#'squeak_changestamp' : 'JS 7/6/2024 16:46'
 }
 GMTEBrush >> fillBrush [
 
-    | collection startTile visited |
-    self startMatrixIndex ifNil: [^nil].
+	| collection startTile visited |
+	self startMatrixIndex ifNil: [^nil].
+	
 	visited := Matrix rows: (self layer rowCount) columns: self layer columnCount.
     	collection := OrderedCollection new.
-	startTile := layer at: self startMatrixIndex x at: self startMatrixIndex y.
+	startTile := layer at: self startMatrixIndex y at: self startMatrixIndex x.
+	
 	collection add: startMatrixIndex.
-	visited at: self startMatrixIndex x at: self startMatrixIndex y put: true.
+	visited at: self startMatrixIndex y at: self startMatrixIndex x put: true.
+	
 	self fillDfsWithVisited: visited andIndex: self startMatrixIndex andOriginTile: startTile andCollection: collection.
 
-    ^ collection
+	^ collection
 
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 16:24'
+	#'squeak_changestamp' : 'JS 7/6/2024 16:46'
 }
 GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile andCollection: aCollection [
 
@@ -69,16 +72,16 @@ GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile:
 	borderingOffsets do: [: offset|
 		| newIndex newTile |
 		newIndex := offset + anIndex.
-		((self layer inBounds: newIndex) and: [(aVisitedMatrix at: newIndex x at: newIndex y) isNil]) ifTrue:[
-			newTile := self layer at: newIndex x at: newIndex y.
+		((self layer inBounds: newIndex) and: [(aVisitedMatrix at: newIndex y at: newIndex x) isNil]) ifTrue:[
+			newTile := self layer at: newIndex y at: newIndex x.
 			anOriginTile
 				ifNil: [newTile ifNil: [aCollection add: newIndex.
-					aVisitedMatrix at: newIndex x at: newIndex y put: true.
+					aVisitedMatrix at: newIndex y at: newIndex x put: true.
 					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]
 				ifNotNil: [
 					(newTile isNil not and: [anOriginTile imageForm bits hash = newTile imageForm bits hash])
-						ifTrue: [aCollection add: newTile.
-							aVisitedMatrix at: newIndex x at: newIndex y put: true.
+						ifTrue: [aCollection add: newIndex.
+							aVisitedMatrix at: newIndex y at: newIndex x put: true.
 							self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]]]
 ]
 
