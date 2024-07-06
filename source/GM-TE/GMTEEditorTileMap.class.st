@@ -113,7 +113,7 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/6/2024 14:23'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 14:54'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
 	"Implements placement of tiles"
@@ -122,7 +122,7 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 	self model singleLayerSelected ifFalse: [^nil].
 	activeLayer := self model selectedLayers anyOne.
 	
-	selectedCoordinates := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position).
+	selectedCoordinates := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position) andLayer: (self tileMatrixStack layer: activeLayer).
 	self updateTiles: selectedCoordinates inLayer: activeLayer FromEvent: anEvent.
 	
 	^ true
@@ -130,7 +130,7 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/6/2024 14:31'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 15:22'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
@@ -139,7 +139,7 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	self model singleLayerSelected ifFalse: [^ nil].
 	
 	activeLayer := self model selectedLayers anyOne.
-	selectedCoordinates := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position).
+	selectedCoordinates := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position) andLayer: (self tileMatrixStack layer: activeLayer).
 	
 	self tileSelectionSet clearAllHighlightings.
 	
