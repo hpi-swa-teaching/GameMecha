@@ -466,16 +466,14 @@ GMTETileMap >> hideHighlightingLayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:08'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:11'
 }
-GMTETileMap >> highlightingTileFromPosition: aPoint [
+GMTETileMap >> highlightingTileFromIndex: anIndex [
 	"Answer the sender with a highlighting tile at aPoint if present"
 
-	| index |
-	index := self tileIndexFromPosition: aPoint.
-	index ifNil: [^ nil].
+	anIndex ifNil: [^ nil].
 	
-	^ self tileMatrixStackHighlighting layer: 1 at: index y at: index x
+	^ self tileMatrixStackHighlighting layer: 1 at: anIndex y at: anIndex x
 ]
 
 {

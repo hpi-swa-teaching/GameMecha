@@ -18,7 +18,7 @@ Class {
 		'associatedMorph',
 		'commands',
 		'currentCommand',
-		'brushMode'
+		'brush'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -273,18 +273,18 @@ GMTEEditor >> blendSelectedLayers [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 15:39'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:54'
 }
-GMTEEditor >> brushMode [
-	^ brushMode
+GMTEEditor >> brush [
+	^ brush
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/5/2024 15:39'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:54'
 }
-GMTEEditor >> brushMode: anObject [
-	brushMode := anObject
+GMTEEditor >> brush: anObject [
+	brush := anObject
 ]
 
 {
@@ -1047,7 +1047,7 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Alex M 7/3/2024 23:57'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 13:01'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
@@ -1063,7 +1063,10 @@ GMTEEditor >> initialize [
 		ratio: 1;
 		savedSinceModified: true;
 		updateButtonEnabled;
-		changed: #getLayerList
+		changed: #getLayerList;
+		brush: GMTEBrush new.
+	self brush radius: 1.
+	self brush selectRadiusBrush
 ]
 
 {
