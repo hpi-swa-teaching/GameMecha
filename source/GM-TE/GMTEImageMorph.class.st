@@ -40,7 +40,7 @@ GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:28'
+	#'squeak_changestamp' : 'Alex M 7/9/2024 15:20'
 }
 GMTEImageMorph >> extent: anExtent [
 	"override ImageMorph extent functionality. ALWAYS KEEPS RATIO"

@@ -399,7 +399,7 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:15'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: aBlock [
 	"Add a tile of type aTileClass to aLayer at position (x, y) in aStack and calculate the correct position using aBlock"
@@ -418,6 +418,7 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 	
 	self addMorph: newTile.
 	aStack layer: aLayer at: y at: x put: newTile.
+
 	^ newTile
 
 	
@@ -478,7 +479,7 @@ GMTETileMap >> highlightingTileFromIndex: anIndex [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:47'
 }
 GMTETileMap >> initialize [
 	
@@ -491,7 +492,7 @@ GMTETileMap >> initialize [
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
-		 backgroundTiles: ((GMTETileHighlighting new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
+		 backgroundTiles: GMTETile checkerBoardTile
 	
 ]
 
