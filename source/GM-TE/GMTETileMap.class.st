@@ -479,7 +479,7 @@ GMTETileMap >> highlightingTileFromIndex: anIndex [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:47'
 }
 GMTETileMap >> initialize [
 	
@@ -492,7 +492,7 @@ GMTETileMap >> initialize [
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
-		 backgroundTiles: ((GMTETileHighlighting new) setPlaceholderWithExtent: 1@1 color: Color brown; yourself)
+		 backgroundTiles: GMTETile checkerBoardTile
 	
 ]
 

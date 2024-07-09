@@ -76,11 +76,11 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'Alex M 7/2/2024 17:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:31'
 }
 GMTEEditor class >> maxNumberOfCommands [
 	
-	^ 10
+	^ 50
 ]
 
 {
