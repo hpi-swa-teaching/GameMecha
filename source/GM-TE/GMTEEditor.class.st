@@ -76,11 +76,29 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 
 {
 	#category : #constants,
+	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
+}
+GMTEEditor class >> maxBrushRadius [
+
+	^ 50
+]
+
+{
+	#category : #constants,
 	#'squeak_changestamp' : 'Alex M 7/2/2024 17:46'
 }
 GMTEEditor class >> maxNumberOfCommands [
 	
 	^ 10
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
+}
+GMTEEditor class >> minBrushRadius [
+
+	^ 0
 ]
 
 {
@@ -458,6 +476,34 @@ GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString gette
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'TW 7/9/2024 17:28'
+}
+GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel frame: aFrame [ 
+	"a helper function to create attribute specs"
+	
+	^ self withMorphOf: ((aBuilder pluggablePanelSpec new)
+		frame: aFrame;
+		layout: #proportional;
+		children: {
+			(aBuilder pluggableStaticTextSpec new)
+			model: aModel;
+			frame: (LayoutFrame fractions: (0 @ 0 corner: (2 / 3) @ 1));
+			text: aString.
+			
+			(aBuilder pluggableInputFieldSpec new)
+			model: aModel;
+			indicateUnacceptedChanges: false;
+			frame: (LayoutFrame fractions: (((2 / 3) + 0.1) @ 0 corner: 1 @ 1));
+			minimumExtent: 45@30;
+			getText: aSelector;
+			setText: anotherSelector
+		};
+		yourself) do: [:morph |
+			morph layoutPolicy: TableLayout new]
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:42'
 }
 GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
@@ -675,7 +721,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/2/2024 18:34'
+	#'squeak_changestamp' : 'TW 7/9/2024 12:41'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -687,22 +733,53 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 		children: {		
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'undo';
-				label: 'undo';
 				model: self;
-				frame: (LayoutFrame fractions: (0 @ 0 corner: 0.25 @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: (0 @ 0 corner: (1 / 6) @ 1) offsets: nil);
 				action: #undo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/undo.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'redo';
-				label: 'redo';
 				model: self;
-				frame: (LayoutFrame fractions: (0.25 @ 0 corner: 0.5 @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: ((1 / 6) @ 0 corner: (2 / 6) @ 1) offsets: nil);
 				action: #redo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/redo.png'.
+				
+			(aBuilder pluggableImageButtonSpec new)
+				name: 'radiusBrush';
+				model: self;
+				frame: (LayoutFrame fractions: ((2 / 6) @ 0 corner: (3 / 6) @ 1) offsets: nil);
+				action: #selectRadiusBrush;
+				project: 'GameMecha';
+				path: '/GMTEIcons/brush.png'.
+				
+			(aBuilder pluggableImageButtonSpec new)
+				name: 'fillBrush';
+				model: self;
+				frame: (LayoutFrame fractions: ((3 / 6) @ 0 corner: (4 / 6) @ 1) offsets: nil);
+				action: #selectFillBrush;
+				project: 'GameMecha';
+				path: '/GMTEIcons/fill.png'.
+				
+			(aBuilder pluggableImageButtonSpec new)
+				name: 'rectangleBrush';
+				model: self;
+				frame: (LayoutFrame fractions: ((4 / 6) @ 0 corner: (5 / 6) @ 1) offsets: nil);
+				action: #selectRectangleBrush;
+				project: 'GameMecha';
+				path: '/GMTEIcons/rectangle.png'.
+				
+			self createAttributeSpecWithBuilder: aBuilder 
+				descriptor: 'Radius:' 
+				getter: #getBrushRadiusAsString
+				setter: #setBrushRadiusFromText: 
+				model: self 
+				frame:(LayoutFrame fractions: ((4.5 / 6) @ 0 corner: 0.95 @ 1) offsets: (20 @ 0 corner: 0 @ 0)).
 			};
+			
+			
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -873,6 +950,26 @@ GMTEEditor >> exportMenu [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 17:14'
+}
+GMTEEditor >> getBrushRadius [
+
+	self brush ifNil: [^ nil].
+	
+	^ self brush radius
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 11:30'
+}
+GMTEEditor >> getBrushRadiusAsString [
+
+	^ self getBrushRadius asString
+]
+
+{
 	#category : #helper,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:51'
 }
@@ -883,7 +980,7 @@ GMTEEditor >> getFileWithFileChooser [
 ]
 
 {
-	#category : #tilemap,
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:51'
 }
 GMTEEditor >> getGridHeight [
@@ -895,7 +992,7 @@ GMTEEditor >> getGridHeight [
 ]
 
 {
-	#category : #tilemap,
+	#category : #inspector,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:52'
 }
 GMTEEditor >> getGridHeightAsString [
@@ -905,7 +1002,7 @@ GMTEEditor >> getGridHeightAsString [
 ]
 
 {
-	#category : #tilemap,
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:52'
 }
 GMTEEditor >> getGridWidth [
@@ -917,7 +1014,7 @@ GMTEEditor >> getGridWidth [
 ]
 
 {
-	#category : #tilemap,
+	#category : #inspector,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:52'
 }
 GMTEEditor >> getGridWidthAsString [
@@ -939,7 +1036,7 @@ GMTEEditor >> getLayerList [
 ]
 
 {
-	#category : #tilemap,
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:54'
 }
 GMTEEditor >> getPadding [
@@ -951,7 +1048,7 @@ GMTEEditor >> getPadding [
 ]
 
 {
-	#category : #tilemap,
+	#category : #inspector,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:54'
 }
 GMTEEditor >> getPaddingAsString [
@@ -972,7 +1069,7 @@ GMTEEditor >> getSelectedLayer [
 ]
 
 {
-	#category : #tilemap,
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:56'
 }
 GMTEEditor >> getTileRatio [
@@ -984,7 +1081,7 @@ GMTEEditor >> getTileRatio [
 ]
 
 {
-	#category : #tilemap,
+	#category : #inspector,
 	#'squeak_changestamp' : 'jj 6/22/2024 20:56'
 }
 GMTEEditor >> getTileRatioAsString [
@@ -1066,7 +1163,7 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 13:01'
+	#'squeak_changestamp' : 'TW 7/9/2024 12:32'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
@@ -1083,9 +1180,20 @@ GMTEEditor >> initialize [
 		savedSinceModified: true;
 		updateButtonEnabled;
 		changed: #getLayerList;
-		brush: GMTEBrush new.
-	self brush radius: 1.
-	self brush selectRadiusBrush
+		initializeBrush
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'TW 7/9/2024 17:24'
+}
+GMTEEditor >> initializeBrush [
+	"starts the tile editor"
+	
+	self 
+		brush: GMTEBrush new;
+		selectRadiusBrush;
+		setBrushRadius: 0
 ]
 
 {
@@ -1350,7 +1458,21 @@ GMTEEditor >> openTileMapInWorld [
 ]
 
 {
-	#category : #tilemap,
+	#category : #helper,
+	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
+}
+GMTEEditor >> parseBrushRadius: aText [
+	"returns a valid brush size if the text can be turned into one"
+	
+	| newSize |
+	newSize := self parseSize: aText.
+	(newSize notNil and: [GMTEEditor minBrushRadius <= newSize and: [newSize <= GMTEEditor maxBrushRadius]])
+		ifTrue: [^ newSize]
+		ifFalse: [^ nil]
+]
+
+{
+	#category : #helper,
 	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
 }
 GMTEEditor >> parseGridSize: aText [
@@ -1364,7 +1486,7 @@ GMTEEditor >> parseGridSize: aText [
 ]
 
 {
-	#category : #tilemap,
+	#category : #helper,
 	#'squeak_changestamp' : 'jj 6/23/2024 17:35'
 }
 GMTEEditor >> parsePaddingSize: aText [
@@ -1378,7 +1500,7 @@ GMTEEditor >> parsePaddingSize: aText [
 ]
 
 {
-	#category : #tilemap,
+	#category : #helper,
 	#'squeak_changestamp' : 'jj 6/22/2024 21:26'
 }
 GMTEEditor >> parseSize: aText [
@@ -1555,6 +1677,15 @@ GMTEEditor >> selectAllLayers [
 ]
 
 {
+	#category : #'menu button functions',
+	#'squeak_changestamp' : 'TW 7/9/2024 11:16'
+}
+GMTEEditor >> selectFillBrush [
+
+	self brush selectFillBrush
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'TW 6/25/2024 17:50'
 }
@@ -1580,6 +1711,24 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 		deselectAllLayers;
 		selectLayer: anIndex
 	
+]
+
+{
+	#category : #'menu button functions',
+	#'squeak_changestamp' : 'TW 7/9/2024 11:15'
+}
+GMTEEditor >> selectRadiusBrush [
+
+	self brush selectRadiusBrush
+]
+
+{
+	#category : #'menu button functions',
+	#'squeak_changestamp' : 'TW 7/9/2024 11:15'
+}
+GMTEEditor >> selectRectangleBrush [
+
+	self brush selectRectangleBrush
 ]
 
 {
@@ -1637,6 +1786,36 @@ GMTEEditor >> selectedTile [
 GMTEEditor >> selectedTile: anObject [
 
 	selectedTile := anObject
+]
+
+{
+	#category : #helper,
+	#'squeak_changestamp' : 'TW 7/9/2024 12:40'
+}
+GMTEEditor >> setBrushRadius: aNumber [
+	"adjusts the radius of the brush"
+	
+	self brush radius: aNumber.
+	self changed: #getBrushRadiusAsString.
+		
+
+]
+
+{
+	#category : #helper,
+	#'squeak_changestamp' : 'TW 7/9/2024 17:12'
+}
+GMTEEditor >> setBrushRadiusFromText: aText [
+	"adjusts the radius of the brush"
+	
+	| radius |
+	radius := self parseBrushRadius: aText.
+	radius ifNil: [^ nil].
+
+	self setBrushRadius: radius.
+	^ true
+		
+
 ]
 
 {
