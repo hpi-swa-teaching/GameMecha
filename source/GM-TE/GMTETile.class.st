@@ -6,19 +6,20 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:46'
+	#'squeak_changestamp' : 'Alex M 7/9/2024 15:03'
 }
 GMTETile class >> checkerBoardTile [
 	"Returns a tile with a checkboard pattern"
 	
 	| checkerboardPatternForm |
+	
 	checkerboardPatternForm := Form extent: 2 @ 2 depth: 32.
 	checkerboardPatternForm colorAt: 0@0 put: Color lightGray.
 	checkerboardPatternForm colorAt: 1@1 put: Color lightGray.
 	checkerboardPatternForm colorAt: 0@1 put: Color gray.
 	checkerboardPatternForm colorAt: 1@0 put: Color gray.
 	
-	^ self fromSprite: checkerboardPatternForm.
+	^ self fromSprite: checkerboardPatternForm
 ]
 
 {

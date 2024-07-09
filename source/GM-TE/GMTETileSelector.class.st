@@ -1,6 +1,6 @@
 Class {
 	#name : #GMTETileSelector,
-	#superclass : #GMTEImageMorph,
+	#superclass : #GMTETile,
 	#instVars : [
 		'model'
 	],
@@ -32,6 +32,34 @@ GMTETileSelector >> handlesMouseDown: evt [
 		ifFalse: [
 			self model backgroundTile: self.
 			^ false]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/9/2024 15:16'
+}
+GMTETileSelector >> image: anImage [
+
+	super image: ((FormCanvas on: (GMTETile checkerBoardTile image scaledToSize: anImage extent))
+				image: (anImage)
+				at: 0@0
+				sourceRect: (anImage boundingBox)
+				rule: Form blend)
+				form.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/9/2024 14:07'
+}
+GMTETileSelector >> initBackground [
+
+	self image: ((FormCanvas on: self image)
+		image: (self class checkerBoardTile)
+		at: 0@0
+		sourceRect: (self class checkerBoardTile boundingBox)
+		rule: Form blend)
+		form
 ]
 
 {
