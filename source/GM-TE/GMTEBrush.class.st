@@ -146,6 +146,61 @@ GMTEBrush >> layer: anObject [
 ]
 
 {
+	#category : #forms,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:53'
+}
+GMTEBrush >> lineBrush [
+    | radius collection start end deltaX deltaY stepX stepY error error2 x y offsets |
+
+	radius := self radius - 1.
+	self resetOutputSet.
+	self flag: 'todo: method extraction'.
+    "Helper method to generate radius offsets"
+    offsets := OrderedCollection new.
+    (0-radius to: radius) do: [:dx |
+        (0-radius to: radius) do: [:dy |
+            (dx * dx + dy * dy <= (radius * radius)) ifTrue: [
+                offsets add: dx @ dy.
+            ].
+        ].
+    ].
+
+    self resetOutputSet.
+    (self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
+
+    start := self firstMatrixIndex.
+    end := self currentMatrixIndex.
+    deltaX := (end x - start x) abs.
+    deltaY := (end y - start y) abs.
+    stepX := (start x < end x) ifTrue: [1] ifFalse: [-1].
+    stepY := (start y < end y) ifTrue: [1] ifFalse: [-1].
+    error := deltaX - deltaY.
+    x := start x.
+    y := start y.
+
+    collection := OrderedCollection new.
+
+    [
+        | point |
+        point := x @ y.
+        offsets do: [:offset | collection add: (point + offset)].
+        (x = end x and: [y = end y]) ifTrue: [
+		self outputSet: collection asSet.
+		^ self outputSet.].
+        error2 := 2 * error.
+        (error2 > (0 - deltaY)) ifTrue: [
+            error := error - deltaY.
+            x := x + stepX.
+        ].
+        (error2 < deltaX) ifTrue: [
+            error := error + deltaX.
+            y := y + stepY.
+        ].
+    ] repeat.
+
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:18'
 }
@@ -253,6 +308,15 @@ GMTEBrush >> resetOutputSet [
 GMTEBrush >> selectFillBrush [
 
 	self currentBrush: [self fillBrush]
+]
+
+{
+	#category : #select,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:27'
+}
+GMTEBrush >> selectLineBrush [
+
+	self currentBrush: [self lineBrush]
 ]
 
 {
