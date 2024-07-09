@@ -155,17 +155,17 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:58'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:13'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	
 	| indicesToAdd activeLayer |
-	(self previousTileStates size > 0) ifTrue: [self saveTileEditChanges].
 	self model brush firstMatrixIndex: nil.
 	indicesToAdd := self model brush outputSet.
 	activeLayer := self model selectedLayers anyOne.
 	self updateTiles: (indicesToAdd asCollection) inLayer: activeLayer FromEvent: anEvent.
 	self model brush resetOutputSet.
+	(self previousTileStates size > 0) ifTrue: [self saveTileEditChanges]
 ]
 
 {
