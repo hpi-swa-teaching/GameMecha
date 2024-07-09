@@ -113,16 +113,18 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 14:54'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 09:26'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
 	"Implements placement of tiles"
 
-	| selectedCoordinates activeLayer |
+	| selectedCoordinates activeLayer selectedIndex |
+	self flag: 'refactor; method extraction for "Add tiles to layer" to minimize redundancy with mouseMove?'.
 	self model singleLayerSelected ifFalse: [^nil].
 	activeLayer := self model selectedLayers anyOne.
-	
-	selectedCoordinates := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position) andLayer: (self tileMatrixStack layer: activeLayer).
+	selectedIndex := self tileIndexFromPosition: anEvent position.
+	self model brush firstMatrixIndex: selectedIndex.
+	selectedCoordinates := self model brush executeWithMatrixIndex: selectedIndex andLayer: (self tileMatrixStack layer: activeLayer).
 	self updateTiles: selectedCoordinates inLayer: activeLayer FromEvent: anEvent.
 	
 	^ true
@@ -155,11 +157,12 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Alex M 6/28/2024 19:57'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 09:04'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	
-	(self previousTileStates size > 0) ifTrue: [self saveTileEditChanges]
+	(self previousTileStates size > 0) ifTrue: [self saveTileEditChanges].
+	self model brush firstMatrixIndex: nil.
 ]
 
 {

@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'currentBrush',
 		'radius',
-		'firstMatrixIndex',
-		'startMatrixIndex',
-		'layer'
+		'layer',
+		'currentMatrixIndex',
+		'firstMatrixIndex'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -28,33 +28,49 @@ GMTEBrush >> currentBrush: anObject [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
+}
+GMTEBrush >> currentMatrixIndex [
+	^ currentMatrixIndex
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
+}
+GMTEBrush >> currentMatrixIndex: anObject [
+	currentMatrixIndex := anObject
+]
+
+{
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 14:55'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
 }
 GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 
-	self startMatrixIndex: anIndex.
+	self currentMatrixIndex: anIndex.
 	self layer: aLayer.
 	^ self currentBrush value.
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/6/2024 16:46'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
 }
 GMTEBrush >> fillBrush [
 
 	| collection startTile visited |
-	self startMatrixIndex ifNil: [^nil].
+	self currentMatrixIndex ifNil: [^nil].
 	
 	visited := Matrix rows: (self layer rowCount) columns: self layer columnCount.
     	collection := OrderedCollection new.
-	startTile := layer at: self startMatrixIndex y at: self startMatrixIndex x.
+	startTile := layer at: self currentMatrixIndex y at: self currentMatrixIndex x.
 	
-	collection add: startMatrixIndex.
-	visited at: self startMatrixIndex y at: self startMatrixIndex x put: true.
+	collection add: currentMatrixIndex.
+	visited at: self currentMatrixIndex y at: self currentMatrixIndex x put: true.
 	
-	self fillDfsWithVisited: visited andIndex: self startMatrixIndex andOriginTile: startTile andCollection: collection.
+	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile andCollection: collection.
 
 	^ collection
 
@@ -83,6 +99,22 @@ GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile:
 						ifTrue: [aCollection add: newIndex.
 							aVisitedMatrix at: newIndex y at: newIndex x put: true.
 							self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]]]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:49'
+}
+GMTEBrush >> firstMatrixIndex [
+	^ firstMatrixIndex
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:49'
+}
+GMTEBrush >> firstMatrixIndex: anObject [
+	firstMatrixIndex := anObject
 ]
 
 {
@@ -119,29 +151,57 @@ GMTEBrush >> radius: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:50'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 09:01'
 }
 GMTEBrush >> radiusBrush [
 
     | collection xMin xMax yMin yMax |
-    self startMatrixIndex ifNil: [^nil].
+    self currentMatrixIndex ifNil: [^nil].
 
     collection := OrderedCollection new.
 
-    xMin :=  self startMatrixIndex x - self radius.
-    xMax :=  self startMatrixIndex x + self radius.
-    yMin :=  self startMatrixIndex y - self radius.
-    yMax :=  self startMatrixIndex y + self radius.
+    xMin :=  self currentMatrixIndex x - self radius.
+    xMax :=  self currentMatrixIndex x + self radius.
+    yMin :=  self currentMatrixIndex y - self radius.
+    yMax :=  self currentMatrixIndex y + self radius.
 
     (xMin to: xMax) do: [:x |
         (yMin to: yMax) do: [:y |
-            (( self startMatrixIndex x - x) squared + ( self startMatrixIndex y - y) squared <= self radius squared) ifTrue: [
-                collection add: (x@y)
+            (( self currentMatrixIndex x - x) squared + ( self currentMatrixIndex y - y) squared <= self radius squared) ifTrue: [
+                collection add: x@y
             ].
         ].
     ].
 
     ^collection
+
+]
+
+{
+	#category : #forms,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 09:09'
+}
+GMTEBrush >> rectangleBrush [
+
+    | collection startRow endRow startCol endCol |
+    (self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
+    collection := OrderedCollection new.
+
+    "Determine the starting and ending rows and columns"
+
+    startRow := (self currentMatrixIndex x min: self firstMatrixIndex x).
+    endRow := (self currentMatrixIndex x max: self firstMatrixIndex x).
+    startCol := (self currentMatrixIndex y min: self firstMatrixIndex y).
+    endCol := (self currentMatrixIndex y max: self firstMatrixIndex y).
+
+    "Fill the collection with all indices within the rectangle"
+    startRow to: endRow do: [:row |
+        startCol to: endCol do: [:col |
+            collection add: (row@col)
+        ].
+    ].
+
+    ^ collection
 
 ]
 
@@ -164,17 +224,10 @@ GMTEBrush >> selectRadiusBrush [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
+	#category : #select,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:55'
 }
-GMTEBrush >> startMatrixIndex [
-	^ startMatrixIndex
-]
+GMTEBrush >> selectRectangleBrush [
 
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
-}
-GMTEBrush >> startMatrixIndex: anObject [
-	startMatrixIndex := anObject
+	self currentBrush: [self rectangleBrush]
 ]
