@@ -6,7 +6,8 @@ Class {
 		'radius',
 		'layer',
 		'currentMatrixIndex',
-		'firstMatrixIndex'
+		'firstMatrixIndex',
+		'outputSet'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -56,11 +57,12 @@ GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:04'
 }
 GMTEBrush >> fillBrush [
 
 	| collection startTile visited |
+	self resetOutputSet.
 	self currentMatrixIndex ifNil: [^nil].
 	
 	visited := Matrix rows: (self layer rowCount) columns: self layer columnCount.
@@ -71,9 +73,9 @@ GMTEBrush >> fillBrush [
 	visited at: self currentMatrixIndex y at: self currentMatrixIndex x put: true.
 	
 	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile andCollection: collection.
+	self outputSet: collection asSet.
 
-	^ collection
-
+    ^ self outputSet.
 ]
 
 {
@@ -118,6 +120,16 @@ GMTEBrush >> firstMatrixIndex: anObject [
 ]
 
 {
+	#category : #forms,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:33'
+}
+GMTEBrush >> initialize [
+
+	super initialize.
+	self resetOutputSet.
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 14:51'
 }
@@ -135,6 +147,22 @@ GMTEBrush >> layer: anObject [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:18'
+}
+GMTEBrush >> outputSet [
+	^ outputSet
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:18'
+}
+GMTEBrush >> outputSet: anObject [
+	outputSet := anObject
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
 }
 GMTEBrush >> radius [
@@ -143,7 +171,7 @@ GMTEBrush >> radius [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:08'
 }
 GMTEBrush >> radius: anObject [
 	radius := anObject
@@ -151,7 +179,7 @@ GMTEBrush >> radius: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 09:01'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:11'
 }
 GMTEBrush >> radiusBrush [
 
@@ -159,11 +187,11 @@ GMTEBrush >> radiusBrush [
     self currentMatrixIndex ifNil: [^nil].
 
     collection := OrderedCollection new.
-
-    xMin :=  self currentMatrixIndex x - self radius.
-    xMax :=  self currentMatrixIndex x + self radius.
-    yMin :=  self currentMatrixIndex y - self radius.
-    yMax :=  self currentMatrixIndex y + self radius.
+	self flag: 'radius offset is bad'.
+    xMin :=  self currentMatrixIndex x - (self radius - 1).
+    xMax :=  self currentMatrixIndex x + (self radius - 1).
+    yMin :=  self currentMatrixIndex y - (self radius - 1).
+    yMax :=  self currentMatrixIndex y + (self radius - 1).
 
     (xMin to: xMax) do: [:x |
         (yMin to: yMax) do: [:y |
@@ -173,17 +201,20 @@ GMTEBrush >> radiusBrush [
         ].
     ].
 
-    ^collection
+	collection do: [:i | self outputSet add: i].
+
+    ^ self outputSet.
 
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 09:09'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:04'
 }
 GMTEBrush >> rectangleBrush [
 
     | collection startRow endRow startCol endCol |
+	self resetOutputSet.
     (self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
     collection := OrderedCollection new.
 
@@ -200,9 +231,19 @@ GMTEBrush >> rectangleBrush [
             collection add: (row@col)
         ].
     ].
+	self outputSet: collection asSet.
 
-    ^ collection
+    ^ self outputSet.
 
+]
+
+{
+	#category : #select,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:26'
+}
+GMTEBrush >> resetOutputSet [
+
+	self outputSet: Set new.
 ]
 
 {
