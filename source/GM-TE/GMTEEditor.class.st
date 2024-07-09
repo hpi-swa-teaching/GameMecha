@@ -18,7 +18,8 @@ Class {
 		'associatedMorph',
 		'commands',
 		'currentCommand',
-		'brush'
+		'brush',
+		'brushButtons'
 	],
 	#category : #'GM-TE-UI'
 }
@@ -315,8 +316,26 @@ GMTEEditor >> brush: anObject [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:19'
+}
+GMTEEditor >> brushButtons [
+
+	^ brushButtons
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:19'
+}
+GMTEEditor >> brushButtons: anObject [
+
+	brushButtons := anObject.
+]
+
+{
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:56'
+	#'squeak_changestamp' : 'TW 7/9/2024 18:15'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -721,7 +740,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/9/2024 12:41'
+	#'squeak_changestamp' : 'TW 7/9/2024 18:26'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -753,6 +772,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				frame: (LayoutFrame fractions: ((2 / 6) @ 0 corner: (3 / 6) @ 1) offsets: nil);
 				action: #selectRadiusBrush;
 				project: 'GameMecha';
+				buttonGroup: self brushButtons;
 				path: '/GMTEIcons/brush.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
@@ -761,6 +781,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				frame: (LayoutFrame fractions: ((3 / 6) @ 0 corner: (4 / 6) @ 1) offsets: nil);
 				action: #selectFillBrush;
 				project: 'GameMecha';
+				buttonGroup: self brushButtons;
 				path: '/GMTEIcons/fill.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
@@ -769,6 +790,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				frame: (LayoutFrame fractions: ((4 / 6) @ 0 corner: (5 / 6) @ 1) offsets: nil);
 				action: #selectRectangleBrush;
 				project: 'GameMecha';
+				buttonGroup: self brushButtons;
 				path: '/GMTEIcons/rectangle.png'.
 				
 			self createAttributeSpecWithBuilder: aBuilder 
@@ -1163,7 +1185,7 @@ GMTEEditor >> importMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 7/9/2024 12:32'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:42'
 }
 GMTEEditor >> initialize [
 	"starts the tile editor"
@@ -1174,6 +1196,7 @@ GMTEEditor >> initialize [
 		currentCommand: 1;
 		selectedLayers: Set new;
 		selectLayer: 1;
+		brushButtons: GMTEButtonGroup new;
 		morphBuilders: Dictionary new;
 		open;
 		ratio: 1;
@@ -1185,7 +1208,7 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 7/9/2024 17:24'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:42'
 }
 GMTEEditor >> initializeBrush [
 	"starts the tile editor"
@@ -1193,7 +1216,18 @@ GMTEEditor >> initializeBrush [
 	self 
 		brush: GMTEBrush new;
 		selectRadiusBrush;
+		initializeBrushButton;
 		setBrushRadius: 0
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'TW 7/9/2024 19:42'
+}
+GMTEEditor >> initializeBrushButton [
+	"highlights the radius button at the start"
+	
+	(self associatedMorph deepSubpartNamed: 'radiusBrush') select
 ]
 
 {
@@ -1715,7 +1749,7 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 7/9/2024 11:15'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:18'
 }
 GMTEEditor >> selectRadiusBrush [
 

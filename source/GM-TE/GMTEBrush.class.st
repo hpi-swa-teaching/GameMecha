@@ -216,7 +216,7 @@ GMTEBrush >> selectFillBrush [
 
 {
 	#category : #select,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 13:16'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:18'
 }
 GMTEBrush >> selectRadiusBrush [
 

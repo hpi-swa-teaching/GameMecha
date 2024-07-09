@@ -10,9 +10,10 @@ Class {
 		'target',
 		'actionSelector',
 		'arguments',
-		'linkedButtons',
 		'stateSprites',
-		'enabled'
+		'enabled',
+		'selected',
+		'buttonGroup'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
@@ -58,11 +59,40 @@ GMTEImageButton >> arguments: aCollection [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:24'
+}
+GMTEImageButton >> basicButtonGroup: aCollection [
+
+	buttonGroup := aCollection
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'TW 6/25/2024 15:28'
 }
 GMTEImageButton >> basicEnabled: anObject [
 
 	enabled := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:20'
+}
+GMTEImageButton >> buttonGroup [
+	"All the buttons this button is linked with. Only one of a group of linked buttons is active at once"
+
+	^ buttonGroup
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:30'
+}
+GMTEImageButton >> buttonGroup: aCollection [
+
+	self basicButtonGroup: aCollection.
+	aCollection add: self
 ]
 
 {
@@ -85,7 +115,7 @@ GMTEImageButton >> createStateImagesFrom: anImage [
 
 {
 	#category : #button,
-	#'squeak_changestamp' : 'jj 6/23/2024 13:44'
+	#'squeak_changestamp' : 'TW 7/9/2024 18:22'
 }
 GMTEImageButton >> doButtonAction [
 	"Perform the action of this button. The default behavior is to send the button's actionSelector to its target object with its arguments."
@@ -95,9 +125,9 @@ GMTEImageButton >> doButtonAction [
 			ifNil: [self target perform: self actionSelector]
 			ifNotNil: [self target perform: self actionSelector withArguments: self arguments]].
 	"If this button is not linked with any others, go back to the unpressedImage. If it is, set all linked buttons to their unpressed state, and keep this button pressed, to show the selection."
-	self linkedButtons
+	self buttonGroup
 		ifNil: [self setImageMode: #unpressed]
-		ifNotNil: [self linkedButtons do: [:aButton | (aButton ~~ self) ifTrue: [aButton setImageMode: #unpressed]]]
+		ifNotNil: [self buttonGroup do: [:aButton | (aButton ~~ self) ifTrue: [aButton setImageMode: #unpressed]]]
 ]
 
 {
@@ -167,36 +197,19 @@ GMTEImageButton >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:39'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:01'
 }
 GMTEImageButton >> initialize [
 	
 	super initialize.
-	self stateSprites: Dictionary new
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
-}
-GMTEImageButton >> linkedButtons [
-	"All the buttons this button is linked with. Only one of a group of linked buttons is active at once"
-
-	^ linkedButtons
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'AlexM 2/8/2024 23:58'
-}
-GMTEImageButton >> linkedButtons: aCollection [
-
-	linkedButtons := aCollection
+	self
+		selected: false; 
+		stateSprites: Dictionary new
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:42'
+	#'squeak_changestamp' : 'TW 7/9/2024 18:52'
 }
 GMTEImageButton >> mouseDown: anEvent [
 
@@ -232,7 +245,7 @@ GMTEImageButton >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:42'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:14'
 }
 GMTEImageButton >> mouseUp: anEvent [
 
@@ -241,18 +254,37 @@ GMTEImageButton >> mouseUp: anEvent [
 	(self containsPoint: anEvent cursorPoint)
 		ifTrue: [self doButtonAction]
 		ifFalse: [self mouseLeave: anEvent].
+	self buttonGroup ifNotNil: [self buttonGroup singleSelect: self].
 	self updateVisualState: anEvent
 ]
 
 {
-	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 6/21/2024 00:12'
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 19:41'
 }
 GMTEImageButton >> select [
-	"Set button to his pressed state and executes button action"
 
-	self setImageMode: #pressed.
-	self doButtonAction
+		self buttonGroup ifNotNil: [self buttonGroup singleSelect: self].
+		self doButtonAction.
+		self setImageMode: 'pressed'
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 19:01'
+}
+GMTEImageButton >> selected [
+
+	^ selected
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 19:01'
+}
+GMTEImageButton >> selected: anObject [
+
+	selected := anObject.
 ]
 
 {
@@ -304,13 +336,24 @@ GMTEImageButton >> target: anObject [
 
 {
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 6/25/2024 15:41'
+	#'squeak_changestamp' : 'TW 7/9/2024 19:11'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
-	(self containsPoint: Sensor cursorPoint)
-		ifTrue: [ anEvent redButtonPressed
-			ifTrue: [self setImageMode: 'pressed']
-			ifFalse:[self setImageMode: 'hovered']]
-		ifFalse: [self setImageMode: 'unpressed']
+
+	self buttonGroup
+		ifNil: [
+			(self containsPoint: Sensor cursorPoint)
+				ifTrue: [anEvent redButtonPressed
+					ifTrue: [self setImageMode: 'pressed']
+					ifFalse:[self setImageMode: 'hovered']]
+				ifFalse: [self setImageMode: 'unpressed']]
+		ifNotNil: [
+			self selected
+				ifFalse: [
+					(self containsPoint: Sensor cursorPoint)
+						ifTrue: [anEvent redButtonPressed
+							ifTrue: [self setImageMode: 'pressed']
+							ifFalse:[self setImageMode: 'hovered']]
+						ifFalse: [self setImageMode: 'unpressed']]]
 ]

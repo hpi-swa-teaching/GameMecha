@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'path',
 		'arguments',
-		'project'
+		'project',
+		'buttonGroup'
 	],
 	#category : #'GM-ToolBuilder'
 }
@@ -34,6 +35,24 @@ PluggableImageButtonSpec >> arguments: anObject [
 PluggableImageButtonSpec >> buildWith: builder [
 
 	^ builder buildPluggableImageButton: self
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:23'
+}
+PluggableImageButtonSpec >> buttonGroup [
+
+	^ buttonGroup
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'TW 7/9/2024 18:23'
+}
+PluggableImageButtonSpec >> buttonGroup: anObject [
+
+	buttonGroup := anObject.
 ]
 
 {
