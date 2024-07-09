@@ -128,13 +128,13 @@ GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
 
 {
 	#category : #squeakutils,
-	#'squeak_changestamp' : 'jj 6/23/2024 14:06'
+	#'squeak_changestamp' : 'Alex M 7/9/2024 18:00'
 }
 GMTEEditor class >> register [
 	"adds the tile editor to app menu"
 	
 	"Maybe call this on new?"
-	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {GMTEEditor. #new}}
+	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {GMTEEditor. #startup}}
 ]
 
 {
@@ -144,6 +144,34 @@ GMTEEditor class >> register [
 GMTEEditor class >> singleLayerActionNames [
 
 	^ {'buttonMoveLayerDown' . 'buttonMoveLayerUp' . 'buttonRenameLayer'}
+]
+
+{
+	#category : #startup,
+	#'squeak_changestamp' : 'Alex M 7/9/2024 17:59'
+}
+GMTEEditor class >> startup [
+		
+		(DialogWindow new
+		title: 'Wizard';
+		message: 'Open Existing Project?';
+		createButton: 'Yes' translated value: true;
+		createCancelButton: 'No' translated  value: false;
+		selectedButtonIndex: 2; "NO"
+		registerKeyboardShortcuts;
+		getUserResponseAtHand)
+			ifTrue: [self new importFromMorph]
+			ifFalse: [self new]
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'Alex M 7/9/2024 17:33'
+}
+GMTEEditor class >> startupMinimumExtent [
+	"minimum extent of the startup wizard"
+	
+	^ 300@200
 ]
 
 {
@@ -270,14 +298,15 @@ GMTEEditor >> backgroundTile [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 21:40'
+	#'squeak_changestamp' : 'Alex M 7/9/2024 15:41'
 }
 GMTEEditor >> backgroundTile: anObject [
-
-	backgroundTile := anObject.
 	
+	(backgroundTile = anObject)
+		ifTrue: [backgroundTile := GMTETile checkerBoardTile]
+		ifFalse: [backgroundTile := anObject].
 	"TODO: keep this here? TileMap must know backgorund Tiles"
-	self tileMap backgroundTiles: anObject
+	self tileMap backgroundTiles: backgroundTile
 ]
 
 {
