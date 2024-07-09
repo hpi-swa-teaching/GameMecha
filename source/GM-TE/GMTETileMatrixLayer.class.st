@@ -71,11 +71,11 @@ GMTETileMatrixLayer >> asRescaledToWidth: aWidth height: aHeight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 16:14'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:14'
 }
 GMTETileMatrixLayer >> at: row at: column [
 	
-	(self inBounds: row@column) ifFalse: [^ nil].
+	(self inBounds: column@row) ifFalse: [^ nil].
 	^ super at: row at: column
 ]
 
