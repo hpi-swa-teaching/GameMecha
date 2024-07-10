@@ -234,7 +234,7 @@ GMTEBrush >> radius: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:11'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/10/2024 12:37'
 }
 GMTEBrush >> radiusBrush [
 
@@ -250,7 +250,7 @@ GMTEBrush >> radiusBrush [
 
     (xMin to: xMax) do: [:x |
         (yMin to: yMax) do: [:y |
-            (( self currentMatrixIndex x - x) squared + ( self currentMatrixIndex y - y) squared <= self radius squared) ifTrue: [
+            (( self currentMatrixIndex x - x) squared + ( self currentMatrixIndex y - y) squared <= (self radius - 1) squared) ifTrue: [
                 collection add: x@y
             ].
         ].

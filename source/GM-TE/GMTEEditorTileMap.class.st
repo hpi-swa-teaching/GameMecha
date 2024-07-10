@@ -113,7 +113,7 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:46'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/10/2024 13:07'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
 	"Implements placement of tiles"
@@ -125,14 +125,14 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 	selectedIndex := self tileIndexFromPosition: anEvent position.
 	self model brush firstMatrixIndex: selectedIndex.
 	selectedCoordinates := self model brush executeWithMatrixIndex: selectedIndex andLayer: (self tileMatrixStack layer: activeLayer).
-	"self updateTiles: selectedCoordinates inLayer: activeLayer FromEvent: anEvent."
+	anEvent yellowButtonPressed ifTrue: [self tileSelectionSet highlightImage: nil].
 	
 	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:02'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/10/2024 13:06'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
@@ -145,17 +145,16 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	(anEvent redButtonPressed or: [anEvent yellowButtonPressed]) ifFalse: [self model brush resetOutputSet].
 	self tileSelectionSet clearAllHighlightings.
 	
-	selectedCoordinates ifNil: [
-		^ nil].
+	selectedCoordinates ifNil: [^ nil].
 	
-	(selectedCoordinates select: [:c | (self tileMatrixStack layer: activeLayer) inBounds: c]) do: [:c|
-		hoveredTileHighlighting := self highlightingTileFromIndex: c.
+	(selectedCoordinates select: [:c | (self tileMatrixStack layer: activeLayer) inBounds: c]) do: [:t|
+		hoveredTileHighlighting := self highlightingTileFromIndex: t.
 		hoveredTileHighlighting ifNotNil: [self tileSelectionSet highlightTile: hoveredTileHighlighting]].
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:13'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/10/2024 13:11'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	
@@ -165,7 +164,8 @@ GMTEEditorTileMap >> mouseUp: anEvent [
 	activeLayer := self model selectedLayers anyOne.
 	self updateTiles: (indicesToAdd asCollection) inLayer: activeLayer FromEvent: anEvent.
 	self model brush resetOutputSet.
-	(self previousTileStates size > 0) ifTrue: [self saveTileEditChanges]
+	(self previousTileStates size > 0) ifTrue: [self saveTileEditChanges].
+	self tileSelectionSet highlightImage: (self model selectedTile).
 ]
 
 {
