@@ -81,15 +81,6 @@ GMTEEditorTileMap >> handlesMouseMove: anEvent [
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 13:12'
-}
-GMTEEditorTileMap >> handlesMouseOver: anEvent [
-
-	^ true
-]
-
-{
 	#category : #initialization,
 	#'squeak_changestamp' : 'Alex M 6/28/2024 20:24'
 }
@@ -137,15 +128,6 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 	anEvent yellowButtonPressed ifTrue: [self tileSelectionSet highlightImage: nil].
 	
 	^ true
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 13:14'
-}
-GMTEEditorTileMap >> mouseLeave: anEvent [
-
-	self tileSelectionSet clearAllHighlightings
 ]
 
 {
@@ -200,6 +182,17 @@ GMTEEditorTileMap >> previousTileStates [
 }
 GMTEEditorTileMap >> previousTileStates: anObject [
 	previousTileStates := anObject
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:35'
+}
+GMTEEditorTileMap >> rescaleMap [
+	"Override super behavior such that highlightings are removed during rescale events"
+
+	self tileSelectionSet clearAllHighlightings.
+	super rescaleMap
 ]
 
 {
