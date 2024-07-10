@@ -1,5 +1,5 @@
 Class {
-	#name : #GMTEDeleteLayerCommand,
+	#name : #GMTEDeleteLayersCommand,
 	#superclass : #GMTETilemapSizeCommand,
 	#instVars : [
 		'layers'
@@ -9,12 +9,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:20'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 04:21'
 }
-GMTEDeleteLayerCommand class >> fromLayers: aLayerList editor: anEditor [
+GMTEDeleteLayersCommand class >> fromLayers: aLayerList editor: anEditor [
 
 	^ (self new)
-		layers: aLayerList;
+		layers: ((SortedCollection sortBlock: [:a :b | a < b]) addAll: aLayerList; yourself);
 		editor: anEditor;
 		yourself
 ]
@@ -23,7 +23,7 @@ GMTEDeleteLayerCommand class >> fromLayers: aLayerList editor: anEditor [
 	#category : #execution,
 	#'squeak_changestamp' : 'Alex M 7/6/2024 23:18'
 }
-GMTEDeleteLayerCommand >> do [
+GMTEDeleteLayersCommand >> do [
 
 	self editor deleteTilemapLayers: self layers
 	
@@ -33,7 +33,7 @@ GMTEDeleteLayerCommand >> do [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 7/6/2024 23:19'
 }
-GMTEDeleteLayerCommand >> layers [
+GMTEDeleteLayersCommand >> layers [
 	^ layers
 ]
 
@@ -41,16 +41,15 @@ GMTEDeleteLayerCommand >> layers [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Alex M 7/6/2024 23:19'
 }
-GMTEDeleteLayerCommand >> layers: anObject [
+GMTEDeleteLayersCommand >> layers: anObject [
 	layers := anObject
 ]
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:31'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 04:05'
 }
-GMTEDeleteLayerCommand >> undo [
-	self flag: 'NEEDS TO BE EXPENDED TO MULTIPLE LAYERS'.
-	
-	self editor addTilemapLayer
+GMTEDeleteLayersCommand >> undo [
+
+	self editor addTilemapLayersAt: self layers
 ]

@@ -128,7 +128,7 @@ GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
 
 {
 	#category : #squeakutils,
-	#'squeak_changestamp' : 'Alex M 7/9/2024 18:00'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 03:13'
 }
 GMTEEditor class >> register [
 	"adds the tile editor to app menu"
@@ -232,7 +232,7 @@ GMTEEditor >> addCommand: aCommand [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 7/7/2024 00:51'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 04:07'
 }
 GMTEEditor >> addLayer [
 	"adds a new tileMap layer"
@@ -244,17 +244,26 @@ GMTEEditor >> addLayer [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:12'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 04:06'
 }
 GMTEEditor >> addTilemapLayer [
+
+	self addTilemapLayersAt: {self getLayerList size + 1}
+]
+
+{
+	#category : #'layer manipulation',
+	#'squeak_changestamp' : 'Alex M 7/10/2024 04:01'
+}
+GMTEEditor >> addTilemapLayersAt: aLayerList [
 
 	| newLayerNumber |
 	(self layerCount >= GMTETileMap maxLayers) ifTrue: [^ nil].
 	newLayerNumber :=  self layerCount + 1.
 	
-	self tileMap tileMatrixStack pushLayer.
+	self tileMap tileMatrixStack pushLayers: aLayerList.
 	self 
-		selectOnlyLayer: newLayerNumber;
+		selectOnlyLayer: aLayerList last;
 		changed: #getLayerList
 ]
 
@@ -881,14 +890,14 @@ GMTEEditor >> currentCommand: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 7/7/2024 00:53'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 03:49'
 }
 GMTEEditor >> deleteSelectedLayers [
 	"deletes all selected layers unless this would delete all layers"
 	(self anyLayerSelected not or: (self selectedLayers size >= self getLayerList size)) ifTrue: [^ nil].
 	
 	self
-		addCommand: (GMTEDeleteLayerCommand fromLayers: self selectedLayers editor: self);
+		addCommand: (GMTEDeleteLayersCommand fromLayers: self selectedLayers editor: self);
 		deleteTilemapLayers: self selectedLayers
 ]
 
@@ -2122,7 +2131,7 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:35'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 03:49'
 }
 GMTEEditor >> undo [
 
@@ -2130,7 +2139,7 @@ GMTEEditor >> undo [
 	(self currentCommand > 1) 
 		ifTrue: [(self commands at: self currentCommand) undo.
 			self currentCommand: self currentCommand - 1.
-			({GMTETilemapSizeCommand. GMTEDeleteLayerCommand} includes: (self commands at: self currentCommand + 1) class)
+			({GMTETilemapSizeCommand. GMTEDeleteLayersCommand} includes: (self commands at: self currentCommand + 1) class)
 				ifTrue: [self redoAllCommandsUntil: self currentCommand].
 			self savedSinceModified: false]
 ]

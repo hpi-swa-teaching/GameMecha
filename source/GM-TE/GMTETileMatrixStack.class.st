@@ -196,13 +196,13 @@ GMTETileMatrixStack >> hideLayers: aSet [
 
 {
 	#category : #initilization,
-	#'squeak_changestamp' : 'Alex M 6/22/2024 14:44'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 03:36'
 }
 GMTETileMatrixStack >> initialize [
 
 	super initialize.
 	self
-		matrixLayers: LinkedList new;
+		matrixLayers: OrderedCollection new;
 		visible: true
 	"TODO: no base layer created"
 ]
@@ -318,17 +318,32 @@ GMTETileMatrixStack >> morphicLayerStartingOffset: anObject [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:41'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 02:54'
 }
 GMTETileMatrixStack >> pushLayer [
-	"Add a new layer to the layer stack"
 	
-	self matrixLayers addLast: (GMTETileMatrixLayer 
-		width: self width 
-		height: self height 
-		layerIndex: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance)).
-		
-	self matrixLayers last displayName: 'Layer ', self layerCount 
+	self pushLayers: {self layerCount + 1}
+]
+
+{
+	#category : #adding,
+	#'squeak_changestamp' : 'Alex M 7/10/2024 03:37'
+}
+GMTETileMatrixStack >> pushLayers: indexList [
+
+	| newLayer |
+	self flag: 'This is used to undo delete layer. how to symantically set to previous layer names. does this belong here or into commands?'.
+	
+	indexList do: [:i |
+		newLayer := (GMTETileMatrixLayer 
+			width: self width 
+			height: self height 
+			layerIndex: (self morphicLayerStartingOffset - self layerCount - GMTETileMatrixStack morphicLayerDistance))
+			displayName: 'Layer ', i;
+			yourself.
+		(i = 1)
+			ifTrue: [self matrixLayers addFirst: newLayer]
+			ifFalse: [self matrixLayers add: newLayer afterIndex: i-1]]
 ]
 
 {
@@ -353,14 +368,14 @@ GMTETileMatrixStack >> reduceLayers: anOrderedCollection withBinaryBlock: aBlock
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'jj 6/23/2024 13:43'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 03:42'
 }
 GMTETileMatrixStack >> removeLayerAt: index [ 
 
 	| removedLayer |.
 	self assert: self matrixLayers size > 1 description: 'Base layer cannot be removed!'.
 	
-	removedLayer := (self matrixLayers removeLink: (self matrixLayers linkAt: index)) value.
+	removedLayer := (self matrixLayers removeAt: index) value.
 	removedLayer free
 ]
 
