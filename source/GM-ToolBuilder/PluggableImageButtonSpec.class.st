@@ -5,7 +5,8 @@ Class {
 		'path',
 		'arguments',
 		'project',
-		'buttonGroup'
+		'buttonGroup',
+		'description'
 	],
 	#category : #'GM-ToolBuilder'
 }
@@ -53,6 +54,22 @@ PluggableImageButtonSpec >> buttonGroup [
 PluggableImageButtonSpec >> buttonGroup: anObject [
 
 	buttonGroup := anObject.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/10/2024 02:02'
+}
+PluggableImageButtonSpec >> description [
+	^ description
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/10/2024 02:02'
+}
+PluggableImageButtonSpec >> description: anObject [
+	description := anObject
 ]
 
 {

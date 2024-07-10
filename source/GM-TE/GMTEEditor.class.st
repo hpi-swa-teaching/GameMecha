@@ -625,7 +625,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:50'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 02:14'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -644,6 +644,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action: #addLayer;
 					name: 'buttonAddLayer';
+					description: 'Add Layer';
 					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.125));
 					project: 'GameMecha';
 					path: '/GMTEIcons/add.png'.
@@ -652,6 +653,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action: #moveLayerDown;
 					name: 'buttonMoveLayerDown';
+					description: 'Move Layer Down';
 					frame: (LayoutFrame fractions: (0 @ 0.125 corner: 1 @ 0.25));
 					project: 'GameMecha';
 					path: '/GMTEIcons/up.png'.
@@ -660,6 +662,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action: #moveLayerUp;
 					name: 'buttonMoveLayerUp';
+					description: 'Move Layer Up';
 					frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375));
 					project: 'GameMecha';
 					path: '/GMTEIcons/down.png'.
@@ -668,6 +671,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model: self;
 					action: #renameLayer;
 					name: 'buttonRenameLayer';
+					description: 'Rename Layer';
 					frame: (LayoutFrame fractions: (0 @ 0.375 corner: 1 @ 0.5));
 					project: 'GameMecha';
 					path: '/GMTEIcons/rename.png'.
@@ -676,6 +680,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action:#resetSelectedLayers;
 					name: 'buttonResetLayers';
+					description: 'Clear Layer(s)';
 					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625));
 					project: 'GameMecha';
 					path: '/GMTEIcons/broom.png'.
@@ -684,6 +689,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action: #blendSelectedLayers;
 					name: 'buttonBlendLayers';
+					description: 'Blend Layers';
 					frame: (LayoutFrame fractions: (0 @ 0.625 corner: 1 @ 0.75));
 					project: 'GameMecha';
 					path: '/GMTEIcons/merge.png'.
@@ -692,6 +698,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action: #deleteSelectedLayers;
 					name: 'buttonDeleteLayers';
+					description: 'Delete Layer(s)';
 					frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875));
 					project: 'GameMecha';
 					path: '/GMTEIcons/trash.png'.
@@ -700,6 +707,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 					model:self;
 					action: #toggleSelectedLayerVisibility;
 					name: 'buttonToggleVisibilityLayers';
+					description: 'Show/Hide Layer(s)';
 					frame: (LayoutFrame fractions: (0 @ 0.875 corner: 1 @ 1));
 					project: 'GameMecha';
 					path: '/GMTEIcons/eye.png'}.
@@ -769,7 +777,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:26'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 02:12'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -781,6 +789,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 		children: {		
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'undo';
+				description: 'Undo';
 				model: self;
 				frame: (LayoutFrame fractions: (0 @ 0 corner: (1 / 6) @ 1) offsets: nil);
 				action: #undo;
@@ -789,6 +798,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'redo';
+				description: 'Redo';
 				model: self;
 				frame: (LayoutFrame fractions: ((1 / 6) @ 0 corner: (2 / 6) @ 1) offsets: nil);
 				action: #redo;
@@ -797,6 +807,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'radiusBrush';
+				description: 'Brush';
 				model: self;
 				frame: (LayoutFrame fractions: ((2 / 6) @ 0 corner: (3 / 6) @ 1) offsets: nil);
 				action: #selectRadiusBrush;
@@ -806,6 +817,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'fillBrush';
+				description: 'Fill Tool';
 				model: self;
 				frame: (LayoutFrame fractions: ((3 / 6) @ 0 corner: (4 / 6) @ 1) offsets: nil);
 				action: #selectFillBrush;
@@ -815,6 +827,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'rectangleBrush';
+				description: 'Rectangle Tool';
 				model: self;
 				frame: (LayoutFrame fractions: ((4 / 6) @ 0 corner: (5 / 6) @ 1) offsets: nil);
 				action: #selectRectangleBrush;

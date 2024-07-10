@@ -362,7 +362,7 @@ MorphicToolBuilder >> buildPluggableDropDownList: spec [
 
 {
 	#category : #'widgets required',
-	#'squeak_changestamp' : 'TW 7/9/2024 18:26'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 02:05'
 }
 MorphicToolBuilder >> buildPluggableImageButton: aSpec [
 	| widget project enabled |
@@ -373,6 +373,8 @@ MorphicToolBuilder >> buildPluggableImageButton: aSpec [
 		createStateImagesFrom: ((GitAssetLoader for: project) loadForm: aSpec path) copy.
 	
 	aSpec buttonGroup ifNotNil: [widget buttonGroup: aSpec buttonGroup].
+	
+	aSpec description ifNotNil: [widget setBalloonText: aSpec description].
 	
 	enabled := aSpec enabled.
 	enabled isSymbol ifFalse: [widget enabled:enabled].
