@@ -345,7 +345,7 @@ GMTEEditorTileMap >> updateTileSprite: aTile [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 7/11/2024 14:01'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 17:39'
 }
 GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEvent: anEvent [
 	"Add currently selected tile (model) to editable matrix stack at mouse position"
@@ -368,16 +368,16 @@ GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEven
 		ifTrue: [
 			aCoordinateCollection do: [:c |
 				| tilePos |
-				self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
 				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
 					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
 					tile
 						ifNotNil: [ 
+							self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
 							tilePos := tile position.
 							tile abandon.
 							self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
-							self saveNewImageFromPosition: tilePos inLayer: aLayer].
+							self saveNewImageFromPosition: tilePos inLayer: aLayer.
+							self model savedSinceModified: false].
 					]
-				].
-			self model savedSinceModified: false]
+				]]
 ]

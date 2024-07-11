@@ -637,7 +637,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:42'
+	#'squeak_changestamp' : 'tw 7/11/2024 17:48'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 	"creates the spec for the inspector tab"
@@ -652,8 +652,6 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 		children: {
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self.
 		
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Ratio:' getter: #getTileRatioAsString setter: #setTileRatio: model: self.
-		
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self.
 
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self
@@ -665,7 +663,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 02:14'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 18:04'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -673,6 +671,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'layer viewer';
 		model: self;
+		minimumExtent:150 @ 150;
 		frame: (LayoutFrame
 			fractions: (0.8 @ 0.25 corner: 1 @ 1));
 		children: {
@@ -766,7 +765,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/11/2024 16:46'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 18:04'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"creates the spec for the tile viewer"
@@ -789,7 +788,7 @@ GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 					fractions: (0 @ 0 corner: 1 @ 0.9))
 		 };
 		
-		minimumExtent:150@150;
+		minimumExtent:150 @ 150;
 		yourself
 ]
 
