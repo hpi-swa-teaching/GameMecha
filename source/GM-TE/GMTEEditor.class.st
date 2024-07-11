@@ -786,7 +786,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 02:12'
+	#'squeak_changestamp' : 'tw 7/11/2024 16:26'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -800,7 +800,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'undo';
 				description: 'Undo';
 				model: self;
-				frame: (LayoutFrame fractions: (0 @ 0 corner: (1 / 6) @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: (0 @ 0 corner: (1 / 7) @ 1) offsets: nil);
 				action: #undo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/undo.png'.
@@ -809,7 +809,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'redo';
 				description: 'Redo';
 				model: self;
-				frame: (LayoutFrame fractions: ((1 / 6) @ 0 corner: (2 / 6) @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: ((1 / 7) @ 0 corner: (2 / 7) @ 1) offsets: nil);
 				action: #redo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/redo.png'.
@@ -818,17 +818,27 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'radiusBrush';
 				description: 'Brush';
 				model: self;
-				frame: (LayoutFrame fractions: ((2 / 6) @ 0 corner: (3 / 6) @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: ((2 / 7) @ 0 corner: (3 / 7) @ 1) offsets: nil);
 				action: #selectRadiusBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
 				path: '/GMTEIcons/brush.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
+				name: 'lineBrush';
+				description: 'Line Tool';
+				model: self;
+				frame: (LayoutFrame fractions: ((3 / 7) @ 0 corner: (4 / 7) @ 1) offsets: nil);
+				action: #selectLineBrush;
+				project: 'GameMecha';
+				buttonGroup: self brushButtons;
+				path: '/GMTEIcons/line.png'.
+				
+			(aBuilder pluggableImageButtonSpec new)
 				name: 'fillBrush';
 				description: 'Fill Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((3 / 6) @ 0 corner: (4 / 6) @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: ((4 / 7) @ 0 corner: (5 / 7) @ 1) offsets: nil);
 				action: #selectFillBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -838,7 +848,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'rectangleBrush';
 				description: 'Rectangle Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((4 / 6) @ 0 corner: (5 / 6) @ 1) offsets: nil);
+				frame: (LayoutFrame fractions: ((5 / 7) @ 0 corner: (6 / 7) @ 1) offsets: nil);
 				action: #selectRectangleBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -849,7 +859,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				getter: #getBrushRadiusAsString
 				setter: #setBrushRadiusFromText: 
 				model: self 
-				frame:(LayoutFrame fractions: ((4.5 / 6) @ 0 corner: 0.95 @ 1) offsets: (20 @ 0 corner: 0 @ 0)).
+				frame:(LayoutFrame fractions: ((5.5 / 7) @ 0 corner: 0.95 @ 1) offsets: (20 @ 0 corner: 0 @ 0)).
 			};
 			
 			
@@ -1784,6 +1794,15 @@ GMTEEditor >> selectLayer: anIndex [
 		changed: #selectedLayers;
 		changed: #layerAt:
 	
+]
+
+{
+	#category : #'menu button functions',
+	#'squeak_changestamp' : 'tw 7/11/2024 16:23'
+}
+GMTEEditor >> selectLineBrush [
+
+	self brush selectLineBrush
 ]
 
 {
