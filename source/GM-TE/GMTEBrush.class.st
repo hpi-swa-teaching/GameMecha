@@ -46,18 +46,18 @@ GMTEBrush >> currentMatrixIndex: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
+	#'squeak_changestamp' : 'JS 7/11/2024 13:59'
 }
 GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 
 	self currentMatrixIndex: anIndex.
 	self layer: aLayer.
-	^ self currentBrush value.
+	^ self currentBrush value
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:04'
+	#'squeak_changestamp' : 'JS 7/11/2024 14:07'
 }
 GMTEBrush >> fillBrush [
 
@@ -67,27 +67,27 @@ GMTEBrush >> fillBrush [
 	
 	visited := Matrix rows: (self layer rowCount) columns: self layer columnCount.
     	collection := OrderedCollection new.
-	startTile := layer at: self currentMatrixIndex y at: self currentMatrixIndex x.
+	startTile := self layer at: self currentMatrixIndex y at: self currentMatrixIndex x.
 	
-	collection add: currentMatrixIndex.
+	collection add: self currentMatrixIndex.
 	visited at: self currentMatrixIndex y at: self currentMatrixIndex x put: true.
 	
 	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile andCollection: collection.
 	self outputSet: collection asSet.
 
-    ^ self outputSet.
+    ^ self outputSet
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/6/2024 16:46'
+	#'squeak_changestamp' : 'JS 7/11/2024 13:58'
 }
 GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile andCollection: aCollection [
 
 	| borderingOffsets |
 	self flag: 'REFACTOR!'.
 	borderingOffsets := {(-1)@0. 0@(-1). 1@0. 0@1}.
-	borderingOffsets do: [: offset|
+	borderingOffsets do: [:offset |
 		| newIndex newTile |
 		newIndex := offset + anIndex.
 		((self layer inBounds: newIndex) and: [(aVisitedMatrix at: newIndex y at: newIndex x) isNil]) ifTrue:[
@@ -97,10 +97,10 @@ GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile:
 					aVisitedMatrix at: newIndex y at: newIndex x put: true.
 					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]
 				ifNotNil: [
-					(newTile isNil not and: [anOriginTile imageForm bits hash = newTile imageForm bits hash])
-						ifTrue: [aCollection add: newIndex.
-							aVisitedMatrix at: newIndex y at: newIndex x put: true.
-							self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]]]
+					(newTile isNil not and: [anOriginTile imageForm bits hash = newTile imageForm bits hash]) ifTrue: [
+						aCollection add: newIndex.
+						aVisitedMatrix at: newIndex y at: newIndex x put: true.
+						self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]]]
 ]
 
 {
@@ -121,12 +121,21 @@ GMTEBrush >> firstMatrixIndex: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:33'
+	#'squeak_changestamp' : 'JS 7/11/2024 13:59'
 }
 GMTEBrush >> initialize [
 
 	super initialize.
-	self resetOutputSet.
+	self resetOutputSet
+]
+
+{
+	#category : #forms,
+	#'squeak_changestamp' : 'JS 7/11/2024 14:04'
+}
+GMTEBrush >> isPointInRadius: aPoint [
+	self flag: 'to long? - refactor with lineBrush in mind'.
+	^(( self currentMatrixIndex x - aPoint x) squared + ( self currentMatrixIndex y - aPoint y) squared <= (self radius - 1) squared)
 ]
 
 {
@@ -147,56 +156,50 @@ GMTEBrush >> layer: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:53'
+	#'squeak_changestamp' : 'JS 7/11/2024 14:09'
 }
 GMTEBrush >> lineBrush [
-    | radius collection start end deltaX deltaY stepX stepY error error2 x y offsets |
-
+    	| radius collection start end deltaX deltaY stepX stepY error error2 x y offsets |
+	self flag: 'refactor - do instead of collect or select'.
 	radius := self radius - 1.
 	self resetOutputSet.
 	self flag: 'todo: method extraction'.
-    "Helper method to generate radius offsets"
-    offsets := OrderedCollection new.
-    (0-radius to: radius) do: [:dx |
-        (0-radius to: radius) do: [:dy |
-            (dx * dx + dy * dy <= (radius * radius)) ifTrue: [
-                offsets add: dx @ dy.
-            ].
-        ].
-    ].
+    	"Helper method to generate radius offsets"
+    	offsets := OrderedCollection new.
+    	(0-radius to: radius) do: [:dx |
+        	(0-radius to: radius) do: [:dy |
+            	((dx * dx) + (dy * dy) <= (radius * radius)) ifTrue: [offsets add: dx @ dy]]].
 
-    self resetOutputSet.
-    (self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
+	self resetOutputSet.
+	(self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
 
-    start := self firstMatrixIndex.
-    end := self currentMatrixIndex.
-    deltaX := (end x - start x) abs.
-    deltaY := (end y - start y) abs.
-    stepX := (start x < end x) ifTrue: [1] ifFalse: [-1].
-    stepY := (start y < end y) ifTrue: [1] ifFalse: [-1].
-    error := deltaX - deltaY.
-    x := start x.
-    y := start y.
+	start := self firstMatrixIndex.
+   	end := self currentMatrixIndex.
+    	deltaX := (end x - start x) abs.
+    	deltaY := (end y - start y) abs.
+    	stepX := (start x < end x) ifTrue: [1] ifFalse: [-1].
+    	stepY := (start y < end y) ifTrue: [1] ifFalse: [-1].
+    	error := deltaX - deltaY.
+    	x := start x.
+    	y := start y.
 
-    collection := OrderedCollection new.
+    	collection := OrderedCollection new.
 
-    [
-        | point |
-        point := x @ y.
-        offsets do: [:offset | collection add: (point + offset)].
-        (x = end x and: [y = end y]) ifTrue: [
-		self outputSet: collection asSet.
-		^ self outputSet.].
-        error2 := 2 * error.
-        (error2 > (0 - deltaY)) ifTrue: [
-            error := error - deltaY.
-            x := x + stepX.
-        ].
-        (error2 < deltaX) ifTrue: [
-            error := error + deltaX.
-            y := y + stepY.
-        ].
-    ] repeat.
+    	[
+        	| point |
+        	point := x @ y.
+        	offsets do: [:offset | collection add: (point + offset)].
+        	(x = end x and: [y = end y]) ifTrue: [
+			self outputSet: collection asSet.
+			^ self outputSet].
+        	error2 := 2 * error.
+        	(error2 > (0 - deltaY)) ifTrue: [
+            	error := error - deltaY.
+            	x := x + stepX].
+        	(error2 < deltaX) ifTrue: [
+            	error := error + deltaX.
+            	y := y + stepY]
+    	] repeat
 
 ]
 
@@ -234,71 +237,68 @@ GMTEBrush >> radius: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/10/2024 12:37'
+	#'squeak_changestamp' : 'JS 7/11/2024 14:06'
 }
 GMTEBrush >> radiusBrush [
 
-    | collection xMin xMax yMin yMax |
-    self currentMatrixIndex ifNil: [^nil].
+    	| collection xMin xMax yMin yMax |
+    	self currentMatrixIndex ifNil: [^nil].
 
-    collection := OrderedCollection new.
+    	collection := OrderedCollection new.
 	self flag: 'radius offset is bad'.
-    xMin :=  self currentMatrixIndex x - (self radius - 1).
-    xMax :=  self currentMatrixIndex x + (self radius - 1).
-    yMin :=  self currentMatrixIndex y - (self radius - 1).
-    yMax :=  self currentMatrixIndex y + (self radius - 1).
+    	xMin :=  self currentMatrixIndex x - (self radius - 1).
+    	xMax :=  self currentMatrixIndex x + (self radius - 1).
+    	yMin :=  self currentMatrixIndex y - (self radius - 1).
+    	yMax :=  self currentMatrixIndex y + (self radius - 1).
 
-    (xMin to: xMax) do: [:x |
-        (yMin to: yMax) do: [:y |
-            (( self currentMatrixIndex x - x) squared + ( self currentMatrixIndex y - y) squared <= (self radius - 1) squared) ifTrue: [
-                collection add: x@y
-            ].
-        ].
-    ].
+	self flag: 'select instead of do?'.
+    	(xMin to: xMax) do: [:x |
+        	(yMin to: yMax) do: [:y | 
+			(self isPointInRadius: x @ y) ifTrue: [collection add: x @ y]]].
 
-	collection do: [:i | self outputSet add: i].
+	collection do: [:i | 
+		self outputSet add: i].
 
-    ^ self outputSet.
+    ^ self outputSet
 
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:04'
+	#'squeak_changestamp' : 'JS 7/11/2024 13:49'
 }
 GMTEBrush >> rectangleBrush [
 
-    | collection startRow endRow startCol endCol |
+    	| collection startRow endRow startCol endCol |
 	self resetOutputSet.
-    (self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
-    collection := OrderedCollection new.
+    	(self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
+    	collection := OrderedCollection new.
 
-    "Determine the starting and ending rows and columns"
+    	"Determine the starting and ending rows and columns"
+	self flag: 'method extraction'.	
+    	startRow := (self currentMatrixIndex x min: self firstMatrixIndex x).
+    	endRow := (self currentMatrixIndex x max: self firstMatrixIndex x).
+    	startCol := (self currentMatrixIndex y min: self firstMatrixIndex y).
+    	endCol := (self currentMatrixIndex y max: self firstMatrixIndex y).
 
-    startRow := (self currentMatrixIndex x min: self firstMatrixIndex x).
-    endRow := (self currentMatrixIndex x max: self firstMatrixIndex x).
-    startCol := (self currentMatrixIndex y min: self firstMatrixIndex y).
-    endCol := (self currentMatrixIndex y max: self firstMatrixIndex y).
-
-    "Fill the collection with all indices within the rectangle"
-    startRow to: endRow do: [:row |
-        startCol to: endCol do: [:col |
-            collection add: (row@col)
-        ].
-    ].
+    	"Fill the collection with all indices within the rectangle"
+    	startRow to: endRow do: [:row |
+        	startCol to: endCol do: [:col | 
+			collection add: (row @ col)]].
+	
 	self outputSet: collection asSet.
 
-    ^ self outputSet.
+    ^ self outputSet
 
 ]
 
 {
 	#category : #select,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:26'
+	#'squeak_changestamp' : 'JS 7/11/2024 13:43'
 }
 GMTEBrush >> resetOutputSet [
 
-	self outputSet: Set new.
+	self outputSet: Set new
 ]
 
 {
