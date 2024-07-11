@@ -76,6 +76,26 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/11/2024 17:03'
+}
+GMTEEditor class >> hLayoutFrame: intI ofN: intN vSymmetric: aFloat [
+
+	^ self hLayoutFrame: intI ofN: intN vUp: aFloat down: aFloat
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/11/2024 17:05'
+}
+GMTEEditor class >> hLayoutFrame: intI ofN: intN vUp: aFloat down: anotherFloat [
+
+	"useful for building buttons, maybe move this to instance? TODO FLAG"
+	
+	^ LayoutFrame fractions: ((intI - 1 / intN @ aFloat) corner: (intI / intN @ (1 - anotherFloat)))
+]
+
+{
 	#category : #constants,
 	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
 }
@@ -212,6 +232,15 @@ GMTEEditor class >> tileMapMinPaddingSize [
 	"the minimum size of the tileMap padding"
 	
 	^ 0
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'tw 7/11/2024 16:52'
+}
+GMTEEditor class >> toolBarVSpace [
+
+	^ 0.1
 ]
 
 {
@@ -737,7 +766,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:44'
+	#'squeak_changestamp' : 'tw 7/11/2024 16:46'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"creates the spec for the tile viewer"
@@ -757,8 +786,7 @@ GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 				layout: #horizontal;
 				model:self;
 				frame: (LayoutFrame
-					fractions: (0@0 corner: 1@1)
-					offsets: (0@30 corner: 0@ 0))
+					fractions: (0 @ 0 corner: 1 @ 0.9))
 		 };
 		
 		minimumExtent:150@150;
@@ -788,7 +816,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/11/2024 16:26'
+	#'squeak_changestamp' : 'tw 7/11/2024 17:05'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -796,13 +824,13 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'toolbar';
 		model: self;
-		frame: (LayoutFrame fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
+		frame: (LayoutFrame fractions: (0.05@0.9 corner: 0.95@1));
 		children: {		
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'undo';
 				description: 'Undo';
 				model: self;
-				frame: (LayoutFrame fractions: (0 @ 0 corner: (1 / 7) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 1 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #undo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/undo.png'.
@@ -811,7 +839,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'redo';
 				description: 'Redo';
 				model: self;
-				frame: (LayoutFrame fractions: ((1 / 7) @ 0 corner: (2 / 7) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 2 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #redo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/redo.png'.
@@ -820,7 +848,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'radiusBrush';
 				description: 'Brush';
 				model: self;
-				frame: (LayoutFrame fractions: ((2 / 7) @ 0 corner: (3 / 7) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 3 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectRadiusBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -830,7 +858,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'lineBrush';
 				description: 'Line Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((3 / 7) @ 0 corner: (4 / 7) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 4 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectLineBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -840,7 +868,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'fillBrush';
 				description: 'Fill Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((4 / 7) @ 0 corner: (5 / 7) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 5 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectFillBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -850,7 +878,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'rectangleBrush';
 				description: 'Rectangle Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((5 / 7) @ 0 corner: (6 / 7) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 6 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectRectangleBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -861,10 +889,8 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				getter: #getBrushRadiusAsString
 				setter: #setBrushRadiusFromText: 
 				model: self 
-				frame:(LayoutFrame fractions: ((5.5 / 7) @ 0 corner: 0.95 @ 1) offsets: (20 @ 0 corner: 0 @ 0)).
+				frame: ((GMTEEditor hLayoutFrame: 7 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace)).
 			};
-			
-			
 			
 		verticalResizing: #shrinkWrap;
 		yourself
