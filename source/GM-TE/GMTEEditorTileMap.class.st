@@ -153,7 +153,7 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/11/2024 14:11'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 16:20'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	
@@ -164,7 +164,9 @@ GMTEEditorTileMap >> mouseUp: anEvent [
 	self updateTiles: (indicesToAdd asCollection) inLayer: activeLayer FromEvent: anEvent.
 	self model brush resetOutputSet.
 	(self previousTileStates isEmpty) ifFalse: [self saveTileEditChanges].
+	self tileSelectionSet clearAllHighlightings.
 	self tileSelectionSet highlightImage: (self model selectedTile)
+
 ]
 
 {

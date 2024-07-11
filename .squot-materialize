@@ -133,6 +133,13 @@
 		],
 		#encoding : 'TXT'
 	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'line.png'
+		],
+		#encoding : @31
+	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'.gitignore'
@@ -159,13 +166,6 @@
 			'test.txt'
 		],
 		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'line.png'
-		],
-		#encoding : @31
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
@@ -258,17 +258,17 @@
 		],
 		#encoding : @31
 	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'LICENSE'
-		],
-		#encoding : 'TXT'
-	},
 	SquotBlobMapper {
 		#path : FSAbsolutePath [
 			'map.morph'
 		],
 		#encoding : 'bin'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'LICENSE'
+		],
+		#encoding : 'TXT'
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
