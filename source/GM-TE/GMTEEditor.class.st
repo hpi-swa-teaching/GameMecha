@@ -637,7 +637,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:42'
+	#'squeak_changestamp' : 'tw 7/11/2024 17:48'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 	"creates the spec for the inspector tab"
@@ -651,8 +651,6 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 		name: 'inspector';
 		children: {
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self.
-		
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Ratio:' getter: #getTileRatioAsString setter: #setTileRatio: model: self.
 		
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self.
 
