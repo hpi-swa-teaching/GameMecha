@@ -91,6 +91,24 @@ GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding siz
 ]
 
 {
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:20'
+}
+GMTETileMap >> absPointToViewCenter: aPoint [
+
+	^ (self absPointToViewFraction: aPoint) - (self view extent / 2) 
+]
+
+{
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:19'
+}
+GMTETileMap >> absPointToViewFraction: aPoint [
+
+	^aPoint / self extent
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/19/2024 22:28'
 }
@@ -191,6 +209,17 @@ GMTETileMap >> borderTileWidth [
 GMTETileMap >> borderTileWidth: anObject [
 
 	borderTileWidth := anObject
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 00:08'
+}
+GMTETileMap >> centerViewAt: aPoint [
+	"Note: center must induce legal view (non-overlapping)"
+
+	self view moveTo: (self inViewPointToViewCenter: aPoint).
+	self updateMap
 ]
 
 {
@@ -478,8 +507,35 @@ GMTETileMap >> highlightingTileFromIndex: anIndex [
 ]
 
 {
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:58'
+}
+GMTETileMap >> inViewPointToAbs: aPoint [
+
+	^ (self viewOriginInPxl - self topLeft) + (aPoint / self viewScaleFactor) 
+]
+
+{
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 00:01'
+}
+GMTETileMap >> inViewPointToViewCenter: aPoint [
+
+	^ (self inViewPointToViewFraction: aPoint) - (self view extent / 2)
+]
+
+{
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:30'
+}
+GMTETileMap >> inViewPointToViewFraction: aPoint [
+
+	^ self absPointToViewFraction: (self inViewPointToAbs: aPoint)
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:47'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:15'
 }
 GMTETileMap >> initialize [
 	
@@ -488,7 +544,7 @@ GMTETileMap >> initialize [
 		color: Color lightGray;
 		clipSubmorphs: true;
 		forceMapSizeRatio: false;
-		view: (GMTEView origin: 0 @ 0 extent: 1 @ 1); 
+		view: GMTEView new; 
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
@@ -691,6 +747,16 @@ GMTETileMap >> rescaleMatrixStacks [
 ]
 
 {
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:47'
+}
+GMTETileMap >> resetView [
+
+	self view reset.
+	self updateMap
+]
+
+{
 	#category : #conversion,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:11'
 }
@@ -721,7 +787,7 @@ GMTETileMap >> revertCorrectedTilePositionMap: aPoint [
 ]
 
 {
-	#category : #view,
+	#category : #'view-conversion',
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:49'
 }
 GMTETileMap >> revertViewCorrectedTilePosition: aPoint [
@@ -731,7 +797,7 @@ GMTETileMap >> revertViewCorrectedTilePosition: aPoint [
 ]
 
 {
-	#category : #view,
+	#category : #'view-conversion',
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:47'
 }
 GMTETileMap >> revertViewCorrectedTilePositionMap: aPoint [
@@ -1193,7 +1259,7 @@ GMTETileMap >> view: anObject [
 ]
 
 {
-	#category : #view,
+	#category : #'view-conversion',
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
 }
 GMTETileMap >> viewCorrectedTileExtent: anExtent [
@@ -1203,7 +1269,7 @@ GMTETileMap >> viewCorrectedTileExtent: anExtent [
 ]
 
 {
-	#category : #view,
+	#category : #'view-conversion',
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
 }
 GMTETileMap >> viewCorrectedTilePosition: aPoint [
@@ -1213,22 +1279,20 @@ GMTETileMap >> viewCorrectedTilePosition: aPoint [
 ]
 
 {
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 17:50'
 }
 GMTETileMap >> viewOriginInPxl [
-
 	"Note: given that view has same ratio as tileMap"
 	
 	^ self extent * self view origin + self topLeft
 ]
 
 {
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:47'
+	#category : #'view-conversion',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 17:50'
 }
 GMTETileMap >> viewScaleFactor [
-
 	"Note: given that view has same ratio as tileMap"
 	
 	^ 1 / (self view extent x)
@@ -1252,4 +1316,14 @@ GMTETileMap >> vigenerateBackgroundTiles [
 		tile applyTileSprite: self backgroundTiles]
 	
 	
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 00:33'
+}
+GMTETileMap >> zoomInAt: aPoint [
+
+	self view shrinkBy: 0.1.
+	self centerViewAt: aPoint
 ]
