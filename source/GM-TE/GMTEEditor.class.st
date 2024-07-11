@@ -373,7 +373,7 @@ GMTEEditor >> brushButtons: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'mcjj 7/11/2024 15:51'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 16:15'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -1519,15 +1519,14 @@ GMTEEditor >> moveLayerUp [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 21:27'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 00:34'
 }
 GMTEEditor >> onClose [
 	"asks the user whether they want to save their progress"
 	
-	"self savedSinceModified
+	self savedSinceModified
 		ifFalse: [(PopUpMenu confirm: 'Save before closing?')
-			ifTrue: [self exportAsMorph]]"
-	"COMMENTED FOR EASIER DEBUGGING"
+			ifTrue: [self exportAsMorph]]
 ]
 
 {
@@ -1647,13 +1646,15 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'TW 7/2/2024 17:47'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 14:17'
 }
 GMTEEditor >> redo [
 	
 	(self currentCommand < self commands size) 
 		ifTrue: [
-			self currentCommand: self currentCommand + 1.
+			self
+				savedSinceModified: false;
+				currentCommand: self currentCommand + 1.
 			(self commands at: self currentCommand) do.
 			self savedSinceModified: false]
 ]
@@ -2163,14 +2164,16 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/10/2024 03:49'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 14:17'
 }
 GMTEEditor >> undo [
 
 	self flag: 'DO THIS USING TILEMAP FUNCTIONS'.
 	(self currentCommand > 1) 
 		ifTrue: [(self commands at: self currentCommand) undo.
-			self currentCommand: self currentCommand - 1.
+			self
+				savedSinceModified: false;
+				currentCommand: self currentCommand - 1.
 			({GMTETilemapSizeCommand. GMTEDeleteLayersCommand} includes: (self commands at: self currentCommand + 1) class)
 				ifTrue: [self redoAllCommandsUntil: self currentCommand].
 			self savedSinceModified: false]

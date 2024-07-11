@@ -1,6 +1,6 @@
 Class {
 	#name : #GMTETilemapSizeCommand,
-	#superclass : #GMTECommand,
+	#superclass : #GMTEEditTilesCommand,
 	#instVars : [
 		'editor',
 		'method',

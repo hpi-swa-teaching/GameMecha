@@ -392,7 +392,7 @@ GMTETileMatrixStack >> removeLayersAt: aSet [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/10/2024 13:59'
+	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
 }
 GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 	"This will rescale layers be recreating them"
@@ -402,7 +402,7 @@ GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 		width: aWidth;
 		height: aHeight. 
 	
-	newLayers := OrderedCollection new.
+	newLayers := LinkedList new.
 
 	self doLayers: [:layer | 
 		newLayer := layer asRescaledToWidth: aWidth height: aHeight.
