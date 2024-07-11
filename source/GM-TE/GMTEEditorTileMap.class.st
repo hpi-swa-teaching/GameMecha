@@ -81,6 +81,15 @@ GMTEEditorTileMap >> handlesMouseMove: anEvent [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 17:14'
+}
+GMTEEditorTileMap >> handlesMouseOver: anEvent [
+
+	^ true
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'Alex M 6/28/2024 20:24'
 }
@@ -131,7 +140,18 @@ GMTEEditorTileMap >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/11/2024 14:01'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 17:18'
+}
+GMTEEditorTileMap >> mouseLeave: anEvent [
+
+	self tileSelectionSet clearAllHighlightings.
+	
+	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 17:01'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
@@ -146,9 +166,10 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	
 	selectedCoordinates ifNil: [^ nil].
 	
-	(selectedCoordinates select: [:c | (self tileMatrixStack layer: activeLayer) inBounds: c]) do: [:t|
-		hoveredTileHighlighting := self highlightingTileFromIndex: t.
-		hoveredTileHighlighting ifNotNil: [self tileSelectionSet highlightTile: hoveredTileHighlighting]]
+	(selectedCoordinates select: [:c | 
+		(self tileMatrixStack layer: activeLayer) inBounds: c]) do: [:t |
+			hoveredTileHighlighting := self highlightingTileFromIndex: t.
+			hoveredTileHighlighting ifNotNil: [self tileSelectionSet highlightTile: hoveredTileHighlighting]]
 ]
 
 {
@@ -324,7 +345,7 @@ GMTEEditorTileMap >> updateTileSprite: aTile [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 7/11/2024 14:01'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 17:39'
 }
 GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEvent: anEvent [
 	"Add currently selected tile (model) to editable matrix stack at mouse position"
@@ -347,16 +368,16 @@ GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEven
 		ifTrue: [
 			aCoordinateCollection do: [:c |
 				| tilePos |
-				self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
 				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
 					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
 					tile
 						ifNotNil: [ 
+							self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
 							tilePos := tile position.
 							tile abandon.
 							self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
-							self saveNewImageFromPosition: tilePos inLayer: aLayer].
+							self saveNewImageFromPosition: tilePos inLayer: aLayer.
+							self model savedSinceModified: false].
 					]
-				].
-			self model savedSinceModified: false]
+				]]
 ]

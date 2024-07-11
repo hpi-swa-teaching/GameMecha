@@ -1,7 +1,78 @@
 [
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'line.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.gitignore'
+		],
+		#encoding : 'TXT'
+	},
+	SquotBlobMapper {
+		#path : FSAbsolutePath [
+			'testMapFile.morph'
+		],
+		#encoding : 'bin'
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'up.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'fill.png'
+		],
+		#encoding : @4
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.github',
+			'workflows',
+			'main.yml'
+		],
+		#encoding : 'TXT'
+	},
 	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GM-UtilitiesTest'
+			#name : 'GM-TestFixtures'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'trash.png'
+		],
+		#encoding : @4
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GM-TilemapMakerCore'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
+	SquotSoundMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'squeak.aiff'
+		],
+		#encoding : 'AIFF'
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'BaselineOfGM'
 		},
 		#path : FSAbsolutePath [
 			'source'
@@ -9,7 +80,67 @@
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
+			#name : 'ToolBuilder-Kernel'
+		},
+		#path : @22
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'brush.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'rectangle.png'
+		],
+		#encoding : @4
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GM-Utilities'
+		},
+		#path : FSAbsolutePath [
+			'source'
+		]
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'test'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.squot'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
 			#name : 'GM-TilemapMakerGui'
+		},
+		#path : @22
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GM-Test'
+		},
+		#path : @22
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'merge.png'
+		],
+		#encoding : @4
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GM-Core'
 		},
 		#path : FSAbsolutePath [
 			'source'
@@ -18,33 +149,20 @@
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
-			'brush.png'
+			'eye.png'
 		],
-		#encoding : Class [ #PNGReadWriter ]
-	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GM-Test'
-		},
-		#path : @7
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
-			'undo.png'
+			'add.png'
 		],
-		#encoding : @10
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'testingResources',
-			'squeak2.gif'
-		],
-		#encoding : Class [ #GIFReadWriter ]
+		#encoding : @4
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GM-Utilities'
+			#name : 'GM-DemoGame'
 		},
 		#path : FSAbsolutePath [
 			'source'
@@ -58,117 +176,86 @@
 			'source'
 		]
 	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'trash.png'
-		],
-		#encoding : @10
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.github',
-			'workflows',
-			'main.yml'
-		],
-		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'up.png'
-		],
-		#encoding : @10
-	},
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'ToolBuilder-Kernel'
+			#name : 'ToolBuilder-Morphic'
 		},
-		#path : @7
+		#path : @22
 	},
-	SquotImageMapper {
+	SquotBlobMapper {
 		#path : FSAbsolutePath [
-			'testingResources',
-			'squeak.png'
+			'map.morph'
 		],
-		#encoding : @10
+		#encoding : 'bin'
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'BaselineOfGM'
+			#name : 'GM-UtilitiesTest'
 		},
 		#path : FSAbsolutePath [
 			'source'
 		]
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'rename.png'
-		],
-		#encoding : @10
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.gitignore'
-		],
-		#encoding : 'TXT'
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
 			'down.png'
 		],
-		#encoding : @10
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'broom.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'squeak.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'rename.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'redo.png'
+		],
+		#encoding : @4
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'.squot'
+			'testingResources',
+			'test.txt'
 		],
 		#encoding : 'TXT'
 	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GM-TestFixtures'
-		},
-		#path : FSAbsolutePath [
-			'source'
-		]
-	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GM-Core'
-		},
-		#path : FSAbsolutePath [
-			'source'
-		]
-	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
-			'fill.png'
+			'undo.png'
 		],
-		#encoding : @10
+		#encoding : @4
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'ToolBuilder-Morphic'
-		},
-		#path : @7
-	},
-	SquotSoundMapper {
+	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'testingResources',
-			'squeak.aiff'
+			'README.md'
 		],
-		#encoding : 'AIFF'
+		#encoding : 'TXT'
 	},
-	SquotImageMapper {
+	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'merge.png'
+			'LICENSE'
 		],
-		#encoding : @10
+		#encoding : 'TXT'
 	},
 	SquotSoundMapper {
 		#path : FSAbsolutePath [
@@ -177,64 +264,17 @@
 		],
 		#encoding : 'WAV'
 	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GM-DemoGame'
-		},
-		#path : FSAbsolutePath [
-			'source'
-		]
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'README.md'
-		],
-		#encoding : 'TXT'
-	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'GM-TE'
 		},
-		#path : @4
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'testingResources',
-			'test'
-		],
-		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'broom.png'
-		],
-		#encoding : @10
+		#path : @66
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'.smalltalk.ston'
 		],
 		#encoding : 'TXT'
-	},
-	SquotBlobMapper {
-		#path : FSAbsolutePath [
-			'map.morph'
-		],
-		#encoding : 'bin'
-	},
-	SquotBlobMapper {
-		#path : FSAbsolutePath [
-			'testMapFile.morph'
-		],
-		#encoding : 'bin'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'eye.png'
-		],
-		#encoding : @10
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
@@ -246,42 +286,9 @@
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'redo.png'
-		],
-		#encoding : @10
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'LICENSE'
-		],
-		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'rectangle.png'
-		],
-		#encoding : @10
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'add.png'
-		],
-		#encoding : @10
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GM-TilemapMakerCore'
-		},
-		#path : @7
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
 			'testingResources',
-			'test.txt'
+			'squeak2.gif'
 		],
-		#encoding : 'TXT'
+		#encoding : Class [ #GIFReadWriter ]
 	}
 ]
