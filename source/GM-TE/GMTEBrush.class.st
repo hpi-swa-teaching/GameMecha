@@ -13,6 +13,15 @@ Class {
 }
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:01'
+}
+GMTEBrush class >> borderingOffsets [
+
+	^ {(-1)@0. 0@(-1). 1@0. 0@1}
+]
+
+{
 	#category : #forms,
 	#'squeak_changestamp' : 'JS 7/11/2024 15:40'
 }
@@ -61,10 +70,11 @@ GMTEBrush >> currentMatrixIndex: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JS 7/11/2024 13:59'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:10'
 }
 GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 
+	anIndex ifNil: [^ nil].
 	self currentMatrixIndex: anIndex.
 	self layer: aLayer.
 	^ self currentBrush value
@@ -72,50 +82,45 @@ GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 14:07'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:10'
 }
 GMTEBrush >> fillBrush [
 
-	| collection startTile visited |
+	| startTile visited |
 	self resetOutputSet.
-	self currentMatrixIndex ifNil: [^nil].
 	
 	visited := Matrix rows: (self layer rowCount) columns: self layer columnCount.
-    	collection := OrderedCollection new.
 	startTile := self layer at: self currentMatrixIndex y at: self currentMatrixIndex x.
 	
-	collection add: self currentMatrixIndex.
+	self outputSet add: self currentMatrixIndex.
 	visited at: self currentMatrixIndex y at: self currentMatrixIndex x put: true.
 	
-	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile andCollection: collection.
-	self outputSet: collection asSet.
+	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile andSet: self outputSet.
 
     ^ self outputSet
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 13:58'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:05'
 }
-GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile andCollection: aCollection [
+GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile andSet: aSet [
 
-	| borderingOffsets |
 	self flag: 'REFACTOR!'.
-	borderingOffsets := {(-1)@0. 0@(-1). 1@0. 0@1}.
-	borderingOffsets do: [:offset |
+	GMTEBrush borderingOffsets do: [:offset |
 		| newIndex newTile |
 		newIndex := offset + anIndex.
 		((self layer inBounds: newIndex) and: [(aVisitedMatrix at: newIndex y at: newIndex x) isNil]) ifTrue:[
 			newTile := self layer at: newIndex y at: newIndex x.
 			anOriginTile
-				ifNil: [newTile ifNil: [aCollection add: newIndex.
+				ifNil: [newTile ifNil: [aSet add: newIndex.
 					aVisitedMatrix at: newIndex y at: newIndex x put: true.
-					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]
+					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andSet: aSet]]
 				ifNotNil: [
 					(newTile isNil not and: [anOriginTile imageForm bits hash = newTile imageForm bits hash]) ifTrue: [
-						aCollection add: newIndex.
+						aSet add: newIndex.
 						aVisitedMatrix at: newIndex y at: newIndex x put: true.
-						self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andCollection: aCollection]]]]
+						self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andSet: aSet]]]]
 ]
 
 {
@@ -162,18 +167,15 @@ GMTEBrush >> layer: anObject [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 16:16'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:11'
 }
 GMTEBrush >> lineBrush [
 
-    	| offsets |
 	self resetOutputSet.
-	(self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
-	
-    	offsets := self calculateOffsetsForRadius: self offsetCorrectedRadius.
-	
+	self firstMatrixIndex ifNil: [^nil].
+
 	(self rasterizeLineBetweenAStart: self firstMatrixIndex andAnEnd: self currentMatrixIndex) do: [:point |
-		offsets do: [:offset | 
+		(self calculateOffsetsForRadius: self offsetCorrectedRadius) do: [:offset | 
 			self outputSet add: (point + offset)]].
 
 	^(self outputSet)
@@ -208,32 +210,29 @@ GMTEBrush >> outputSet: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:11'
 }
 GMTEBrush >> radius [
+
 	^ radius
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:08'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:15'
 }
-GMTEBrush >> radius: anObject [
-	radius := anObject
+GMTEBrush >> radius: aNumber [
+
+	radius := aNumber
 ]
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 16:14'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:09'
 }
 GMTEBrush >> radiusBrush [
 
-    	| offsets |
-    	self currentMatrixIndex ifNil: [^nil].
-
-	offsets := self calculateOffsetsForRadius: self offsetCorrectedRadius.
-
-	offsets do: [:i | 
+	(self calculateOffsetsForRadius: self offsetCorrectedRadius) do: [:i | 
 		self outputSet add: (self currentMatrixIndex + i)].
 
     ^ self outputSet
@@ -280,12 +279,12 @@ GMTEBrush >> rasterizeLineBetweenAStart: aStartPoint andAnEnd: anEndPoint [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 16:29'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:09'
 }
 GMTEBrush >> rectangleBrush [
 
 	self resetOutputSet.
-    	(self currentMatrixIndex isNil or: [self firstMatrixIndex isNil]) ifTrue: [^nil].
+    	self firstMatrixIndex ifNil: [^ nil].
 
 	self flag: 'besser machen?'.
     	(self currentMatrixIndex x min: self firstMatrixIndex x) to: (self currentMatrixIndex x max: self firstMatrixIndex x) do: [:row |
