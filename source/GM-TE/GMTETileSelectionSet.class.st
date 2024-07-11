@@ -9,6 +9,17 @@ Class {
 
 {
 	#category : #highlighting,
+	#'squeak_changestamp' : 'mcjj 7/11/2024 17:11'
+}
+GMTETileSelectionSet >> applyAllHighlightings [
+	
+	self do: [:tile |
+		self applyHighlightingVisuals: tile]
+	
+]
+
+{
+	#category : #highlighting,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:51'
 }
 GMTETileSelectionSet >> applyHighlightingVisuals: aTile [
@@ -69,6 +80,17 @@ GMTETileSelectionSet >> initialize: n [
 	super initialize: n
 	
 	
+]
+
+{
+	#category : #highlighting,
+	#'squeak_changestamp' : 'mcjj 7/11/2024 17:52'
+}
+GMTETileSelectionSet >> removeAllHighlightings [
+	"Remove applied highlightings if any"
+	
+	self do: [:tile |
+		self removeHighlightingVisuals: tile]
 ]
 
 {

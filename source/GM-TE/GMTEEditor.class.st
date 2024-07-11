@@ -1756,12 +1756,14 @@ GMTEEditor >> resetSelectedLayers [
 
 {
 	#category : #TODO,
-	#'squeak_changestamp' : 'Alex M 6/25/2024 18:26'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 17:52'
 }
 GMTEEditor >> rotateSelectedTile [
 	
 	self selectedTile: (self selectedTile rotateBy: #right centerAt: (self selectedTile extent / 2)).
-	self tileMap tileSelectionSet highlightImage: self selectedTile
+	self tileMap tileSelectionSet removeAllHighlightings.
+	self tileMap tileSelectionSet highlightImage: self selectedTile.
+	self tileMap tileSelectionSet applyAllHighlightings
 ]
 
 {
