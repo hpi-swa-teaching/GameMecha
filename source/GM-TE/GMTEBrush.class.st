@@ -102,25 +102,24 @@ GMTEBrush >> fillBrush [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:05'
+	#'squeak_changestamp' : 'JS 7/11/2024 18:28'
 }
 GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile andSet: aSet [
-
 	self flag: 'REFACTOR!'.
+	
 	GMTEBrush borderingOffsets do: [:offset |
-		| newIndex newTile |
+		| newIndex newTile tilesNil tilesSame |
 		newIndex := offset + anIndex.
 		((self layer inBounds: newIndex) and: [(aVisitedMatrix at: newIndex y at: newIndex x) isNil]) ifTrue:[
 			newTile := self layer at: newIndex y at: newIndex x.
-			anOriginTile
-				ifNil: [newTile ifNil: [aSet add: newIndex.
+			
+			tilesNil := (anOriginTile isNil) and: [newTile isNil].
+			tilesSame := (anOriginTile isNil not and: [newTile isNil not]) and: [anOriginTile imageForm bits hash = newTile imageForm bits hash].
+			
+			(tilesNil or: tilesSame) ifTrue: [
+					aSet add: newIndex.
 					aVisitedMatrix at: newIndex y at: newIndex x put: true.
-					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andSet: aSet]]
-				ifNotNil: [
-					(newTile isNil not and: [anOriginTile imageForm bits hash = newTile imageForm bits hash]) ifTrue: [
-						aSet add: newIndex.
-						aVisitedMatrix at: newIndex y at: newIndex x put: true.
-						self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andSet: aSet]]]]
+					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andSet: aSet]]]
 ]
 
 {
@@ -241,12 +240,12 @@ GMTEBrush >> radiusBrush [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 16:16'
+	#'squeak_changestamp' : 'JS 7/11/2024 18:26'
 }
 GMTEBrush >> rasterizeLineBetweenAStart: aStartPoint andAnEnd: anEndPoint [
 	"implementation of Bresenhams Line Algorithm"
 	
-	| collection deltaX deltaY stepX stepY error error2 x y |
+	| linePointsCollection deltaX deltaY stepX stepY error error2 x y |
 	
 	self flag: 'todo: method extraction? - Ich glaube geht schlecht'.
 	
@@ -258,14 +257,14 @@ GMTEBrush >> rasterizeLineBetweenAStart: aStartPoint andAnEnd: anEndPoint [
     	x := aStartPoint x.
     	y := aStartPoint y.
 
-    	collection := OrderedCollection new.
+    	linePointsCollection := OrderedCollection new.
 
     	[
         	| point |
         	point := x @ y.
-		collection add: point.
+		linePointsCollection add: point.
         	(x = anEndPoint x and: [y = anEndPoint y]) ifTrue: [
-			^collection].
+			^linePointsCollection].
         	error2 := 2 * error.
         	(error2 > (0 - deltaY)) ifTrue: [
             	error := error - deltaY.
@@ -279,14 +278,13 @@ GMTEBrush >> rasterizeLineBetweenAStart: aStartPoint andAnEnd: anEndPoint [
 
 {
 	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:09'
+	#'squeak_changestamp' : 'JS 7/11/2024 17:34'
 }
 GMTEBrush >> rectangleBrush [
 
 	self resetOutputSet.
     	self firstMatrixIndex ifNil: [^ nil].
 
-	self flag: 'besser machen?'.
     	(self currentMatrixIndex x min: self firstMatrixIndex x) to: (self currentMatrixIndex x max: self firstMatrixIndex x) do: [:row |
         	(self currentMatrixIndex y min: self firstMatrixIndex y) to: (self currentMatrixIndex y max: self firstMatrixIndex y) do: [:col | 
 			self outputSet add: (row @ col)]].
