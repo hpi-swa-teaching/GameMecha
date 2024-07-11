@@ -373,7 +373,7 @@ GMTEEditor >> brushButtons: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'mcjj 7/10/2024 16:51'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 15:51'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -393,6 +393,8 @@ GMTEEditor >> buildWith: builder [
 			self createInspectorSpecWithBuilder: builder};
 		closeAction: #onClose;
 		minimumExtent: GMTEEditor editorMinimumExtent).
+	
+	newMorph addKeyboardCaptureFilter: self.
 	
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	"self commandBar vResizing: #rigid."
@@ -422,8 +424,7 @@ GMTEEditor >> buildWith: builder [
 	
 	self 
 		initializeDefaultTileMapMatrix;
-		associatedMorph: newMorph;
-		setupInputHandlingFor: newMorph.
+		associatedMorph: newMorph.
 		
 	^ newMorph
 ]
@@ -969,15 +970,6 @@ GMTEEditor >> disableSingleLayerButtons [
 ]
 
 {
-	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/10/2024 16:47'
-}
-GMTEEditor >> dropKeyboardFocus: anEvent [
-	
-	anEvent hand releaseKeyboardFocus: self associatedMorph
-]
-
-{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'TW 6/25/2024 17:51'
 }
@@ -1030,6 +1022,36 @@ GMTEEditor >> exportMenu [
 		argumentList: {}.
 		
 	builder open: aMenuSpec
+]
+
+{
+	#category : #'input handling',
+	#'squeak_changestamp' : 'mcjj 7/11/2024 15:57'
+}
+GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
+	| key |
+	
+	aKeyboardEvent isKeystroke
+		ifFalse: [^ aKeyboardEvent].
+	
+	key := aKeyboardEvent key.
+	
+	aKeyboardEvent commandKeyPressed ifTrue: [
+		aKeyboardEvent shiftPressed
+			ifTrue: [
+				key caseOf: {
+					[$Z] -> [self redo].
+				} otherwise: [^ aKeyboardEvent "no hit"].
+				^ aKeyboardEvent ignore "hit"]
+			ifFalse: [
+				key caseOf: {
+					[$Z] -> [self undo].
+					[$Y] -> [self redo].
+					[$R] -> [self rotateSelectedTile].
+				} otherwise: [^ aKeyboardEvent "no hit"].
+				^ aKeyboardEvent ignore "hit"]].
+	
+	^ aKeyboardEvent "no hit"
 ]
 
 {
@@ -1107,15 +1129,6 @@ GMTEEditor >> getGridWidthAsString [
 ]
 
 {
-	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/10/2024 16:46'
-}
-GMTEEditor >> getKeyboardFocus: anEvent [
-	
-	anEvent hand newKeyboardFocus: self associatedMorph
-]
-
-{
 	#category : #'layer manipulation',
 	#'squeak_changestamp' : 'TW 6/23/2024 21:50'
 }
@@ -1180,18 +1193,6 @@ GMTEEditor >> getTileRatioAsString [
 	"returns the tileSizeRatio of the tileMap as a string"
 	
 	^ self getTileRatio asString
-]
-
-{
-	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/10/2024 16:49'
-}
-GMTEEditor >> handleKeyStroke: anEvent [
-
-	| keyValue |
-	keyValue := anEvent key.
-	Transcript show: keyValue
-	"keyValue = $A"
 ]
 
 {
@@ -2014,20 +2015,6 @@ GMTEEditor >> settingsMenu [
 		argumentList: {}.
 		
 	builder open: aMenuSpec
-]
-
-{
-	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/10/2024 16:49'
-}
-GMTEEditor >> setupInputHandlingFor: aMorph [
-
-	aMorph 
-		on: #mouseMove send: #getKeyboardFocus: to: self;
-		on: #mouseLeave send: #dropKeyboardFocus: to: self;
-		on: #keyStroke send: #handleKeyStroke: to: self.
-		
-	aMorph eventHandler wantsEveryMouseMove: true
 ]
 
 {
