@@ -373,7 +373,7 @@ GMTEEditor >> brushButtons: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:15'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 16:15'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -393,7 +393,9 @@ GMTEEditor >> buildWith: builder [
 			self createInspectorSpecWithBuilder: builder};
 		closeAction: #onClose;
 		minimumExtent: GMTEEditor editorMinimumExtent).
-			
+	
+	newMorph addKeyboardCaptureFilter: self.
+	
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	"self commandBar vResizing: #rigid."
 	self tileStore: (newMorph submorphNamed: 'tile store').
@@ -1020,6 +1022,36 @@ GMTEEditor >> exportMenu [
 		argumentList: {}.
 		
 	builder open: aMenuSpec
+]
+
+{
+	#category : #'input handling',
+	#'squeak_changestamp' : 'mcjj 7/11/2024 15:57'
+}
+GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
+	| key |
+	
+	aKeyboardEvent isKeystroke
+		ifFalse: [^ aKeyboardEvent].
+	
+	key := aKeyboardEvent key.
+	
+	aKeyboardEvent commandKeyPressed ifTrue: [
+		aKeyboardEvent shiftPressed
+			ifTrue: [
+				key caseOf: {
+					[$Z] -> [self redo].
+				} otherwise: [^ aKeyboardEvent "no hit"].
+				^ aKeyboardEvent ignore "hit"]
+			ifFalse: [
+				key caseOf: {
+					[$Z] -> [self undo].
+					[$Y] -> [self redo].
+					[$R] -> [self rotateSelectedTile].
+				} otherwise: [^ aKeyboardEvent "no hit"].
+				^ aKeyboardEvent ignore "hit"]].
+	
+	^ aKeyboardEvent "no hit"
 ]
 
 {
