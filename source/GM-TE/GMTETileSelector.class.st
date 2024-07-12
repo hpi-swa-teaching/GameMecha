@@ -20,23 +20,17 @@ GMTETileSelector >> extent: anExtent [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
+	#category : #'input handling',
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:25'
 }
 GMTETileSelector >> handlesMouseDown: evt [
 	
-	evt redButtonPressed
-		ifTrue: [
-			self model selectTile: self.
-			^ true]
-		ifFalse: [
-			self model backgroundTile: self.
-			^ false]
+	^ true
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/9/2024 15:16'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:21'
 }
 GMTETileSelector >> image: anImage [
 
@@ -45,7 +39,7 @@ GMTETileSelector >> image: anImage [
 				at: 0@0
 				sourceRect: (anImage boundingBox)
 				rule: Form blend)
-				form.
+				form
 ]
 
 {
@@ -78,4 +72,15 @@ GMTETileSelector >> model [
 GMTETileSelector >> model: anObject [
 
 	model := anObject
+]
+
+{
+	#category : #'input handling',
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:26'
+}
+GMTETileSelector >> mouseDown: evt [
+
+	evt redButtonPressed
+		ifTrue: [self model selectTile: self]
+		ifFalse: [self model backgroundTile: self]
 ]
