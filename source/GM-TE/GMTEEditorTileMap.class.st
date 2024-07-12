@@ -24,6 +24,15 @@ GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPaddi
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'JS 7/12/2024 14:48'
+}
+GMTEEditorTileMap >> brush [
+
+	^ model brush
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:15'
 }
 GMTEEditorTileMap >> currentTileChanges [
@@ -86,6 +95,22 @@ GMTEEditorTileMap >> handlesMouseOver: anEvent [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'JS 7/12/2024 15:15'
+}
+GMTEEditorTileMap >> highlightTilesFromIndices: anIndexSet [
+	
+	| hoveredHighlightingTile |
+	self tileSelectionSet clearAllHighlightings.
+	anIndexSet ifNil: [^ nil].
+	
+	(anIndexSet select: [:c | 
+		(self tileMatrixStack layer: self model selectedLayers anyOne) inBounds: c]) do: [:t |
+			hoveredHighlightingTile := self highlightingTileFromIndex: t.
+			hoveredHighlightingTile ifNotNil: [self tileSelectionSet highlightTile: hoveredHighlightingTile]]
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'Alex M 6/28/2024 20:24'
 }
@@ -118,71 +143,64 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/11/2024 14:13'
+	#'squeak_changestamp' : 'JS 7/12/2024 15:19'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
-	"Implements placement of tiles"
 
 	| selectedIndex |
-	self flag: 'refactor; method extraction for "Add tiles to layer" to minimize redundancy with mouseMove?'.
-	self model singleLayerSelected ifFalse: [^nil].
-	selectedIndex := self tileIndexFromPosition: anEvent position.
-	self model brush firstMatrixIndex: selectedIndex.
-	self model brush executeWithMatrixIndex: selectedIndex andLayer: (self tileMatrixStack layer: self model selectedLayers anyOne).
-	anEvent yellowButtonPressed ifTrue: [self tileSelectionSet highlightImage: nil].
+	self model singleLayerSelected ifFalse: [^ nil].
 	
-	^ true
+	selectedIndex := self tileIndexFromPosition: anEvent position.
+	self brush firstMatrixIndex: selectedIndex.
+	
+	self brush executeWithMatrixIndex: selectedIndex andLayer: (self tileMatrixStack layer: self selectedLayers anyOne).
+	anEvent yellowButtonPressed ifTrue: [self tileSelectionSet highlightImage: nil]
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 17:18'
+	#'squeak_changestamp' : 'JS 7/12/2024 15:18'
 }
 GMTEEditorTileMap >> mouseLeave: anEvent [
 
-	self tileSelectionSet clearAllHighlightings.
-	
-	^ true
+	self tileSelectionSet clearAllHighlightings
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 17:01'
+	#'squeak_changestamp' : 'JS 7/12/2024 15:17'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
 
-	| hoveredTileHighlighting activeLayer selectedCoordinates |
+	| activeLayer selectedIndices |
 	self model singleLayerSelected ifFalse: [^ nil].
 	
-	activeLayer := self model selectedLayers anyOne.
-	selectedCoordinates := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position) andLayer: (self tileMatrixStack layer: activeLayer).
+	activeLayer := self tileMatrixStack layer: self model selectedLayers anyOne.
+	selectedIndices := self model brush executeWithMatrixIndex: (self tileIndexFromPosition: anEvent position) andLayer: activeLayer.
+	
 	(anEvent redButtonPressed or: [anEvent yellowButtonPressed]) ifFalse: [self model brush resetOutputSet].
-	self tileSelectionSet clearAllHighlightings.
 	
-	selectedCoordinates ifNil: [^ nil].
-	
-	(selectedCoordinates select: [:c | 
-		(self tileMatrixStack layer: activeLayer) inBounds: c]) do: [:t |
-			hoveredTileHighlighting := self highlightingTileFromIndex: t.
-			hoveredTileHighlighting ifNotNil: [self tileSelectionSet highlightTile: hoveredTileHighlighting]]
+	self highlightTilesFromIndices: selectedIndices
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'mcjj 7/11/2024 16:20'
+	#'squeak_changestamp' : 'JS 7/12/2024 15:23'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	
-	| indicesToAdd activeLayer |
-	self model brush firstMatrixIndex: nil.
-	indicesToAdd := self model brush outputSet.
-	activeLayer := self model selectedLayers anyOne.
-	self updateTiles: (indicesToAdd asCollection) inLayer: activeLayer FromEvent: anEvent.
+	| selectedIndices |
+	self brush firstMatrixIndex: nil.
+	
+	selectedIndices := self brush outputSet asCollection.
+	
+	self updateTiles: selectedIndices inLayer: self selectedLayers anyOne FromEvent: anEvent.
 	self model brush resetOutputSet.
+	
 	(self previousTileStates isEmpty) ifFalse: [self saveTileEditChanges].
-	self tileSelectionSet clearAllHighlightings.
-	self tileSelectionSet highlightImage: (self model selectedTile)
+	self tileSelectionSet clearAllHighlightings;
+							highlightImage: (self model selectedTile)
 
 ]
 
@@ -315,6 +333,15 @@ GMTEEditorTileMap >> saveTileEditChanges [
 	self 
 		model addCommand: (GMTEEditTilesCommand previousTiles: self previousTileStates currentTiles: self currentTileChanges tilemap: self).
 	self resetTileEditChanges.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JS 7/12/2024 14:49'
+}
+GMTEEditorTileMap >> selectedLayers [
+
+	^ model selectedLayers
 ]
 
 {
