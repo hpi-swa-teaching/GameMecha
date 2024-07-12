@@ -365,11 +365,11 @@ GMTEEditor >> associatedMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:55'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 19:38'
 }
 GMTEEditor >> associatedMorph: anObject [
 
-	associatedMorph := anObject.
+	associatedMorph := anObject
 ]
 
 {
@@ -441,11 +441,11 @@ GMTEEditor >> brushButtons [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:19'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 19:38'
 }
 GMTEEditor >> brushButtons: anObject [
 
-	brushButtons := anObject.
+	brushButtons := anObject
 ]
 
 {
@@ -1104,11 +1104,12 @@ GMTEEditor >> exportMenu [
 
 {
 	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/12/2024 18:49'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 19:34'
 }
 GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
-	| key |
+	"handles keyboard shortcuts"
 	
+	| key |
 	aKeyboardEvent isKeystroke
 		ifFalse: [^ aKeyboardEvent].
 	
