@@ -1,3 +1,6 @@
+"
+A GMTEBrush is responsible for returning a set of indices that are selected by the user and selecting the interchangeable algorithm for the execution.
+"
 Class {
 	#name : #GMTEBrush,
 	#superclass : #Object,
@@ -9,7 +12,8 @@ Class {
 		'firstMatrixIndex',
 		'outputSet'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:49'
 }
 
 {
@@ -22,54 +26,58 @@ GMTEBrush class >> borderingOffsets [
 ]
 
 {
-	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 15:40'
+	#category : #brushHelper,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:03'
 }
 GMTEBrush >> calculateOffsetsForRadius: aRadius [
     	
 	|offsets|
 	offsets := OrderedCollection new.
-    	(0-radius to: radius) do: [:dx |
-        	(0-radius to: radius) do: [:dy |
+    	(0-self radius to: self radius) do: [:dx |
+        	(0-self radius to: self radius) do: [:dy |
             	((dx squared + dy squared) <= aRadius squared) ifTrue: [offsets add: dx @ dy]]].
 
-	^offsets
+	^ offsets
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:40'
 }
 GMTEBrush >> currentBrush [
+
 	^ currentBrush
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 12:48'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:40'
 }
-GMTEBrush >> currentBrush: anObject [
-	currentBrush := anObject
+GMTEBrush >> currentBrush: aBrush [
+
+	currentBrush := aBrush
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:41'
 }
 GMTEBrush >> currentMatrixIndex [
+
 	^ currentMatrixIndex
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:47'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:41'
 }
-GMTEBrush >> currentMatrixIndex: anObject [
-	currentMatrixIndex := anObject
+GMTEBrush >> currentMatrixIndex: anIndex [
+
+	currentMatrixIndex := anIndex
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #execute,
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:10'
 }
 GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
@@ -81,8 +89,8 @@ GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
 ]
 
 {
-	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:10'
+	#category : #brushes,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:26'
 }
 GMTEBrush >> fillBrush [
 
@@ -95,51 +103,49 @@ GMTEBrush >> fillBrush [
 	self outputSet add: self currentMatrixIndex.
 	visited at: self currentMatrixIndex y at: self currentMatrixIndex x put: true.
 	
-	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile andSet: self outputSet.
+	self fillDfsWithVisited: visited andIndex: self currentMatrixIndex andOriginTile: startTile.
 
     ^ self outputSet
 ]
 
 {
-	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 18:28'
+	#category : #brushHelper,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:32'
 }
-GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile andSet: aSet [
-	self flag: 'REFACTOR!'.
-	
+GMTEBrush >> fillDfsWithVisited: aVisitedMatrix andIndex: anIndex andOriginTile: anOriginTile [
+
+	| newIndex newTile |
 	GMTEBrush borderingOffsets do: [:offset |
-		| newIndex newTile tilesNil tilesSame |
 		newIndex := offset + anIndex.
 		((self layer inBounds: newIndex) and: [(aVisitedMatrix at: newIndex y at: newIndex x) isNil]) ifTrue:[
 			newTile := self layer at: newIndex y at: newIndex x.
 			
-			tilesNil := (anOriginTile isNil) and: [newTile isNil].
-			tilesSame := (anOriginTile isNil not and: [newTile isNil not]) and: [anOriginTile imageForm bits hash = newTile imageForm bits hash].
-			
-			(tilesNil or: tilesSame) ifTrue: [
-					aSet add: newIndex.
+			(self tile: anOriginTile equalsTile: newTile) ifTrue: [
+					self outputSet add: newIndex.
 					aVisitedMatrix at: newIndex y at: newIndex x put: true.
-					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile andSet: aSet]]]
+					self fillDfsWithVisited: aVisitedMatrix andIndex: newIndex andOriginTile: anOriginTile]]]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:49'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:41'
 }
 GMTEBrush >> firstMatrixIndex [
+
 	^ firstMatrixIndex
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 08:49'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:42'
 }
-GMTEBrush >> firstMatrixIndex: anObject [
-	firstMatrixIndex := anObject
+GMTEBrush >> firstMatrixIndex: anIndex [
+
+	firstMatrixIndex := anIndex
 ]
 
 {
-	#category : #forms,
+	#category : #initialization,
 	#'squeak_changestamp' : 'JS 7/11/2024 13:59'
 }
 GMTEBrush >> initialize [
@@ -150,34 +156,36 @@ GMTEBrush >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 14:51'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:42'
 }
 GMTEBrush >> layer [
+
 	^ layer
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 14:51'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:42'
 }
-GMTEBrush >> layer: anObject [
-	layer := anObject
+GMTEBrush >> layer: aLayer [
+
+	layer := aLayer
 ]
 
 {
-	#category : #forms,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:11'
+	#category : #brushes,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:53'
 }
 GMTEBrush >> lineBrush [
 
 	self resetOutputSet.
-	self firstMatrixIndex ifNil: [^nil].
+	self firstMatrixIndex ifNil: [^ nil].
 
-	(self rasterizeLineBetweenAStart: self firstMatrixIndex andAnEnd: self currentMatrixIndex) do: [:point |
+	(self rasterizeLineBetweenStart: self firstMatrixIndex andEnd: self currentMatrixIndex) do: [:index |
 		(self calculateOffsetsForRadius: self offsetCorrectedRadius) do: [:offset | 
-			self outputSet add: (point + offset)]].
+			self outputSet add: (index + offset)]].
 
-	^(self outputSet)
+	^ self outputSet
 
 ]
 
@@ -193,18 +201,20 @@ GMTEBrush >> offsetCorrectedRadius [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:18'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:43'
 }
 GMTEBrush >> outputSet [
+
 	^ outputSet
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 21:18'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:43'
 }
-GMTEBrush >> outputSet: anObject [
-	outputSet := anObject
+GMTEBrush >> outputSet: aSet [
+
+	outputSet := aSet
 ]
 
 {
@@ -218,15 +228,15 @@ GMTEBrush >> radius [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:15'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:43'
 }
-GMTEBrush >> radius: aNumber [
+GMTEBrush >> radius: aRadius [
 
-	radius := aNumber
+	radius := aRadius
 ]
 
 {
-	#category : #forms,
+	#category : #brushes,
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:09'
 }
 GMTEBrush >> radiusBrush [
@@ -239,62 +249,64 @@ GMTEBrush >> radiusBrush [
 ]
 
 {
-	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 18:26'
+	#category : #brushHelper,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:52'
 }
-GMTEBrush >> rasterizeLineBetweenAStart: aStartPoint andAnEnd: anEndPoint [
+GMTEBrush >> rasterizeLineBetweenStart: aStartIndex andEnd: anEndIndex [
 	"implementation of Bresenhams Line Algorithm"
 	
-	| linePointsCollection deltaX deltaY stepX stepY error error2 x y |
+	| lineIndexCollection deltaX deltaY stepX stepY error error2 x y index |
 	
-	self flag: 'todo: method extraction? - Ich glaube geht schlecht'.
+	self flag: 'repeat formatting'.
 	
-    	deltaX := (anEndPoint x - aStartPoint x) abs.
-    	deltaY := (anEndPoint y - aStartPoint y) abs.
-    	stepX := (aStartPoint x < anEndPoint x) ifTrue: [1] ifFalse: [-1].
-    	stepY := (aStartPoint y < anEndPoint y) ifTrue: [1] ifFalse: [-1].
+    	deltaX := (anEndIndex x - aStartIndex x) abs.
+    	deltaY := (anEndIndex y - aStartIndex y) abs.
+    	stepX := (aStartIndex x < anEndIndex x) ifTrue: [1] ifFalse: [-1].
+    	stepY := (aStartIndex y < anEndIndex y) ifTrue: [1] ifFalse: [-1].
     	error := deltaX - deltaY.
-    	x := aStartPoint x.
-    	y := aStartPoint y.
+    	x := aStartIndex x.
+    	y := aStartIndex y.
 
-    	linePointsCollection := OrderedCollection new.
+    	lineIndexCollection := OrderedCollection new.
 
-    	[
-        	| point |
-        	point := x @ y.
-		linePointsCollection add: point.
-        	(x = anEndPoint x and: [y = anEndPoint y]) ifTrue: [
-			^linePointsCollection].
+    	[	index := x @ y.
+		lineIndexCollection add: index.
+        	(x = anEndIndex x and: [y = anEndIndex y]) ifTrue: [^ lineIndexCollection].
         	error2 := 2 * error.
         	(error2 > (0 - deltaY)) ifTrue: [
             	error := error - deltaY.
             	x := x + stepX].
         	(error2 < deltaX) ifTrue: [
             	error := error + deltaX.
-            	y := y + stepY]
-    	] repeat
+            	y := y + stepY]] repeat
 
 ]
 
 {
-	#category : #forms,
-	#'squeak_changestamp' : 'JS 7/11/2024 17:34'
+	#category : #brushes,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:57'
 }
 GMTEBrush >> rectangleBrush [
 
+	| endCol endRow startCol startRow |
 	self resetOutputSet.
     	self firstMatrixIndex ifNil: [^ nil].
 
-    	(self currentMatrixIndex x min: self firstMatrixIndex x) to: (self currentMatrixIndex x max: self firstMatrixIndex x) do: [:row |
-        	(self currentMatrixIndex y min: self firstMatrixIndex y) to: (self currentMatrixIndex y max: self firstMatrixIndex y) do: [:col | 
-			self outputSet add: (row @ col)]].
+	startRow := (self currentMatrixIndex x min: self firstMatrixIndex x).
+	endRow := (self currentMatrixIndex x max: self firstMatrixIndex x).
+	startCol := (self currentMatrixIndex y min: self firstMatrixIndex y).
+	endCol := (self currentMatrixIndex y max: self firstMatrixIndex y).
+
+	startRow to: endRow do: [:row |
+ 		startCol to: endCol do: [:col |
+			self outputSet add: (row@col)]].
 
     ^ self outputSet
 
 ]
 
 {
-	#category : #select,
+	#category : #brushHelper,
 	#'squeak_changestamp' : 'JS 7/11/2024 13:43'
 }
 GMTEBrush >> resetOutputSet [
@@ -336,4 +348,17 @@ GMTEBrush >> selectRadiusBrush [
 GMTEBrush >> selectRectangleBrush [
 
 	self currentBrush: [self rectangleBrush]
+]
+
+{
+	#category : #brushHelper,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:31'
+}
+GMTEBrush >> tile: aTile equalsTile: anotherTile [
+	
+	| tilesNil tilesSame |
+	tilesNil := (aTile isNil) and: [anotherTile isNil].
+	tilesSame := (aTile isNil not and: [anotherTile isNil not]) and: [aTile imageForm bits hash = anotherTile imageForm bits hash].
+	
+	^ (tilesNil or: [tilesSame])
 ]
