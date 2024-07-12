@@ -269,6 +269,23 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 ]
 
 {
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:32'
+}
+GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
+	"delete tiles from editable matrix stack at given indices"
+	
+	| tile |
+	anIndexSet do: [:c |
+		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+			tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+			tile	ifNotNil: [ 
+				tile abandon.
+				self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
+				self saveNewImageFromIndex: c inLayer: aLayer]]]
+]
+
+{
 	#category : #checking,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:08'
 }
@@ -790,6 +807,31 @@ GMTETileMap >> moveViewBy: aPoint [
 
 	self view moveBy: (self absPointToViewFraction: (aPoint / self viewScaleFactor)).
 	self updateMap
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 19:22'
+}
+GMTETileMap >> placeTiles: anIndexSet inLayer: aLayer ofClass: aTileClass withImage: anImage [
+
+	| tile |
+	self assert: (aTileClass inheritsFrom: GMTETile) description: 'Expected GMTETile or subclass'.
+
+	anIndexSet do: [:c |
+		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+				tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+				tile ifNil: [tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: aTileClass].
+				tile updateSprite: anImage]]
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:58'
+}
+GMTETileMap >> placeTiles: anIndexSet inLayer: aLayer withImage: anImage [
+
+	self placeTiles: anIndexSet inLayer: aLayer ofClass: GMTETile withImage: anImage
 ]
 
 {

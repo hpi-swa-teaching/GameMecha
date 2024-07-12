@@ -77,22 +77,23 @@ GMTEEditTilesCommand >> initialize [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 13:44'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:47'
 }
 GMTEEditTilesCommand >> placeTilesFromList: aList [
-	| tile sprite layer x y |
+	| tile sprite layer x y tileMap |
 	
+	tileMap := self tileMap.
 	aList keysDo: [ :coordinates |
 		x := coordinates at: 1.
 		y := coordinates at: 2.
 		layer := coordinates at: 3.
 		
-		tile := self tileMap tileMatrixStack layer: layer at: y at: x.
+		tile := tileMap tileMatrixStack layer: layer at: y at: x.
 		sprite := aList at: coordinates.
 		tile
 			ifNil: [sprite 
 				ifNotNil: [
-					tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile. 
+					tile := tileMap generateTileAtlayer: layer x: x y: y stack: tileMap tileMatrixStack tileType: GMTETile. 
 					tile updateSprite: sprite]]
 			ifNotNil: [sprite
 				ifNil: [

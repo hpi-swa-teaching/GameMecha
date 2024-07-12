@@ -55,7 +55,7 @@ GMTEEditorTileMap >> currentTileChanges: aTileDictionary [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 17:16'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:28'
 }
 GMTEEditorTileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 	"delete tiles from editable matrix stack at given indices"
@@ -223,13 +223,13 @@ GMTEEditorTileMap >> mouseUp: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 17:15'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:27'
 }
-GMTEEditorTileMap >> placeTiles: aCoordinateCollection inLayer: aLayer [
+GMTEEditorTileMap >> placeTiles: anIndexSet inLayer: aLayer [
 	"add currently selected tile (model) to editable matrix stack at given indices"
-	
+
 	| tile |
-	aCoordinateCollection do: [:c |
+	anIndexSet do: [:c |
 		self savePreviousImageFromIndex: c inLayer: aLayer.
 		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
 				tile := self tileMatrixStack layer: aLayer at: c y at: c x.
@@ -297,11 +297,13 @@ GMTEEditorTileMap >> resetTileEditChanges [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:34'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:44'
 }
 GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
-	
 	| tile | 
+	
+	anIndex ifNil: [^ nil].
+	
 	tile := self tileMatrixStack layer: aLayer at: anIndex y at: anIndex x.
 
 	tile

@@ -206,6 +206,29 @@ GMTETileMatrixLayer >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
 ]
 
 {
+	#category : #copying,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:02'
+}
+GMTETileMatrixLayer >> tileLossAfterRescaleToWidth: aWidth height: aHeight layerId: aLayerId [
+
+	| removedTiles tile layer |
+	removedTiles := Dictionary new.
+	layer := aLayerId.
+			
+	(aWidth + 1) to: self columnCount do: [:col |
+			1 to: self rowCount do: [:row |
+				tile := self at: row at: col.
+				tile ifNotNil: [removedTiles at: {col. row. layer} put: tile fullResolutionSprite]]].
+	
+	(aHeight + 1) to: self rowCount do: [:row |
+			1 to: self columnCount do: [:col |
+				tile := self at: row at: col.
+				tile ifNotNil: [removedTiles at: {col. row. layer} put: tile fullResolutionSprite]]].
+	
+	^ removedTiles
+]
+
+{
 	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:40'
 }

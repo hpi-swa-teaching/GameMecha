@@ -77,6 +77,15 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:33'
+}
+GMTEEditor class >> hLayoutFrame: intI ofN: intN [
+
+	^ self hLayoutFrame: intI ofN: intN vSymmetric: 0
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'tw 7/11/2024 17:03'
 }
 GMTEEditor class >> hLayoutFrame: intI ofN: intN vSymmetric: aFloat [
@@ -254,6 +263,35 @@ GMTEEditor class >> toolBarVSpace [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:33'
+}
+GMTEEditor class >> vLayoutFrame: intI ofN: intN [
+
+	^ self vLayoutFrame: intI ofN: intN hSymmetric: 0
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:26'
+}
+GMTEEditor class >> vLayoutFrame: intI ofN: intN hLeft: aFloat right: anotherFloat [
+
+	"useful for building buttons, maybe move this to instance? TODO FLAG"
+	
+	^ LayoutFrame fractions: ((aFloat @ (intI - 1 / intN)) corner: (1 - anotherFloat @ (intI / intN)))
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:26'
+}
+GMTEEditor class >> vLayoutFrame: intI ofN: intN hSymmetric: aFloat [
+
+	^ self vLayoutFrame: intI ofN: intN hLeft: aFloat right: aFloat
+]
+
+{
 	#category : #'command processing',
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:56'
 }
@@ -327,11 +365,11 @@ GMTEEditor >> associatedMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:55'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 19:38'
 }
 GMTEEditor >> associatedMorph: anObject [
 
-	associatedMorph := anObject.
+	associatedMorph := anObject
 ]
 
 {
@@ -403,11 +441,11 @@ GMTEEditor >> brushButtons [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:19'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 19:38'
 }
 GMTEEditor >> brushButtons: anObject [
 
-	brushButtons := anObject.
+	brushButtons := anObject
 ]
 
 {
@@ -566,30 +604,37 @@ GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString gette
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/9/2024 17:28'
+	#'squeak_changestamp' : 'tw 7/12/2024 18:57'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel frame: aFrame [ 
 	"a helper function to create attribute specs"
 	
-	^ self withMorphOf: ((aBuilder pluggablePanelSpec new)
+	| minTextWidth minInputWidth |
+	minTextWidth := (TextStyle defaultFont approxWidthOfText: aString asText).
+	minInputWidth := (TextStyle defaultFont approxWidthOfText: '1234' asText).
+	
+	^ (aBuilder pluggablePanelSpec new)
+		name: 'attributeContainer';
 		frame: aFrame;
 		layout: #proportional;
+		minimumWidth: minTextWidth + minInputWidth;
 		children: {
 			(aBuilder pluggableStaticTextSpec new)
 			model: aModel;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: (2 / 3) @ 1));
-			text: aString.
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 2 / 3 @ 1));
+			text: aString;
+			minimumWidth: minTextWidth.
+			
 			
 			(aBuilder pluggableInputFieldSpec new)
 			model: aModel;
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame fractions: (((2 / 3) + 0.1) @ 0 corner: 1 @ 1));
-			minimumExtent: 45@30;
+			frame: (LayoutFrame fractions: (2 / 3 @ 0 corner: 1 @ 1));
 			getText: aSelector;
-			setText: anotherSelector
+			setText: anotherSelector;
+			minimumWidth: minInputWidth
 		};
-		yourself) do: [:morph |
-			morph layoutPolicy: TableLayout new]
+		yourself
 ]
 
 {
@@ -639,27 +684,23 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/11/2024 17:48'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:01'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 	"creates the spec for the inspector tab"
 	
-	^ aBuilder pluggableScrollPaneSpec new
+	^ aBuilder pluggablePanelSpec new
 		frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
 		offsets: (0 @ 30 corner: 0 @ 30));
-		padding: (Rectangle left: 3 right: 0 top: 0 bottom: 0);
-		hScrollBarPolicy: #never;
-		layout: #vertical;
 		name: 'inspector';
 		children: {
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self.
+		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self frame: (GMTEEditor vLayoutFrame: 1 ofN: 3).
 		
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self.
-
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self
+		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self frame: (GMTEEditor vLayoutFrame: 2 ofN: 3).
+		
+		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self frame: (GMTEEditor vLayoutFrame: 3 ofN: 3)
 		};
-		verticalResizing: #shrinkWrap;
-		horizontalResizing: #shrinkWrap;
+		minimumWidth: (self getMaximalLengthOfStrings: (OrderedCollection newFrom: {'Padding:' . 'Grid Width:' . 'Grid Height:'}));
 		yourself
 ]
 
@@ -1066,11 +1107,12 @@ GMTEEditor >> exportMenu [
 
 {
 	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/12/2024 17:12'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 19:34'
 }
 GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
-	| key |
+	"handles keyboard shortcuts"
 	
+	| key |
 	aKeyboardEvent isKeystroke
 		ifFalse: [^ aKeyboardEvent].
 	
@@ -1083,7 +1125,6 @@ GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
 			[$o] -> [self importFromTileset].
 			[$g] -> [self toggleGrid].
 			[$h] -> [self toggleBackgroundTiles].
-			[$r] -> [self rotateSelectedTile].
 		
 			[$a] -> [self addLayer].
 			[$n] -> [self renameLayer].
@@ -1094,6 +1135,7 @@ GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
 			
 			[$z] -> [self undo].
 			[$y] -> [self redo].
+			[$r] -> [self rotateSelectedTile].
 			[$1] -> [self selectRadiusBrush].
 			[$2] -> [self selectLineBrush].
 			[$3] -> [self selectFillBrush].
@@ -1188,6 +1230,15 @@ GMTEEditor >> getLayerList [
 	self tileMap ifNil: [^ OrderedCollection new].
 	
 	^ self tileMap tileMatrixStack collectLayers: [:aLayer | aLayer displayName, (GMTEEditor getVisibilityIndicator: aLayer visible)]
+]
+
+{
+	#category : #helper,
+	#'squeak_changestamp' : 'tw 7/12/2024 19:01'
+}
+GMTEEditor >> getMaximalLengthOfStrings: anOrderedCollection [
+
+	^ (anOrderedCollection collect: [:aString | TextStyle defaultFont approxWidthOfText: aString asText]) max
 ]
 
 {
@@ -1749,6 +1800,16 @@ GMTEEditor >> renameLayer [
 
 {
 	#category : #tilemap,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:51'
+}
+GMTEEditor >> rescaleGridDimensions: aPoint [
+	
+	(self getGridWidth = aPoint x)	ifFalse: [self rescaleGridWidth: aPoint x].
+	(self getGridHeight = aPoint y) ifFalse: [self rescaleGridHeight: aPoint y].
+]
+
+{
+	#category : #tilemap,
 	#'squeak_changestamp' : 'Alex M 7/1/2024 21:04'
 }
 GMTEEditor >> rescaleGridHeight: aValue [
@@ -2019,18 +2080,18 @@ GMTEEditor >> setBrushRadiusFromText: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 21:06'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 20:03'
 }
 GMTEEditor >> setGridHeight: aText [
 	"adjusts the grid height"
 	
-	| oldHeight newHeight |
-	oldHeight := self getGridHeight.
+	| oldSize newHeight |
+	oldSize := self getGridWidth @ self getGridHeight.
 	newHeight := self parseGridSize: aText.
 	newHeight ifNotNil: [
 		self
-			rescaleGridHeight: newHeight;
-			addCommand: (GMTETilemapSizeCommand prevValue: oldHeight newValue: newHeight method: #rescaleGridHeight: editor: self)].
+			addCommand: (GMTETilemapSizeCommand prevSize: oldSize newSize: oldSize x @ newHeight editor: self);
+			rescaleGridHeight: newHeight].
 	^ true
 		
 
@@ -2038,19 +2099,18 @@ GMTEEditor >> setGridHeight: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 21:06'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 20:06'
 }
 GMTEEditor >> setGridWidth: aText [
 	"adjusts the grid width"
-	"TODO: Fix visual layer bug"
 	
-	| oldWidth newWidth |
-	oldWidth := self getGridWidth.
+	| oldSize newWidth |
+	oldSize := self getGridWidth @ self getGridHeight.
 	newWidth := self parseGridSize: aText.
-	oldWidth ifNotNil: [
+	newWidth ifNotNil: [
 		self
-			rescaleGridWidth: newWidth;
-			addCommand: (GMTETilemapSizeCommand prevValue: oldWidth newValue: newWidth method: #rescaleGridWidth: editor: self)].
+			addCommand: (GMTETilemapSizeCommand prevSize: oldSize newSize: newWidth @ oldSize y  editor: self);
+			rescaleGridWidth: newWidth].
 	^ true
 
 ]
@@ -2245,7 +2305,7 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/10/2024 14:17'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:52'
 }
 GMTEEditor >> undo [
 
@@ -2254,10 +2314,8 @@ GMTEEditor >> undo [
 		ifTrue: [(self commands at: self currentCommand) undo.
 			self
 				savedSinceModified: false;
-				currentCommand: self currentCommand - 1.
-			({GMTETilemapSizeCommand. GMTEDeleteLayersCommand} includes: (self commands at: self currentCommand + 1) class)
-				ifTrue: [self redoAllCommandsUntil: self currentCommand].
-			self savedSinceModified: false]
+				currentCommand: self currentCommand - 1;
+				savedSinceModified: false]
 ]
 
 {

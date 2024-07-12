@@ -1,6 +1,6 @@
 Class {
 	#name : #GMTEDeleteLayersCommand,
-	#superclass : #GMTEEditTilesCommand,
+	#superclass : #GMTETilemapSizeCommand,
 	#instVars : [
 		'layers'
 	],
@@ -9,13 +9,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 7/10/2024 04:21'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:57'
 }
 GMTEDeleteLayersCommand class >> fromLayers: aLayerList editor: anEditor [
 
 	^ (self new)
 		layers: ((SortedCollection sortBlock: [:a :b | a < b]) addAll: aLayerList; yourself);
 		editor: anEditor;
+		newSize: 0 @ 0;
+		saveTiles;
 		yourself
 ]
 
@@ -47,9 +49,10 @@ GMTEDeleteLayersCommand >> layers: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 04:05'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:55'
 }
 GMTEDeleteLayersCommand >> undo [
 
-	self editor addTilemapLayersAt: self layers
+	self editor addTilemapLayersAt: self layers.
+	self restoreTiles
 ]
