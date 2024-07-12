@@ -1329,14 +1329,13 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'tw 7/12/2024 17:15'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:27'
 }
 GMTEEditor >> initializeBrush [
 	"starts the tile editor"
 	
 	self 
 		brush: GMTEBrush new;
-		halt;
 		selectRadiusBrush;
 		setBrushRadius: 1
 ]
