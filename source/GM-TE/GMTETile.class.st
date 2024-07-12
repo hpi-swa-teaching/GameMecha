@@ -19,13 +19,12 @@ GMTETile class >> checkerBoardColors [
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:50'
 }
 GMTETile class >> checkerBoardTile [
 	"Returns a tile with a checkboard pattern"
 	
 	| checkerboardPatternForm |
-	self flag: 'Magic number 32?'.
 	
 	checkerboardPatternForm := Form extent: 2 @ 2 depth: 32.
 	self checkerBoardColors keysDo: [:offset | 
@@ -56,10 +55,9 @@ GMTETile class >> placeHolderColor [
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'jj 6/22/2024 16:11'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:51'
 }
 GMTETile class >> position: aPoint extent: anExtent [
-	"comment stating purpose of message"
 
 	^ (self new)
 		setPlaceholderWithExtent: anExtent color: self placeHolderColor;
