@@ -173,7 +173,7 @@ GMTEEditorTileMap >> mouseLeave: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:54'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 17:07'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"implements highlighting of tiles when hovering"
@@ -184,7 +184,7 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 	activeLayer := self tileMatrixStack layer: self model selectedLayers anyOne.
 	currentIndex := self tileIndexFromPosition: anEvent position.
 	
-	selectedIndices := self brush executeWithIndex: currentIndex index andLayer: activeLayer.
+	selectedIndices := self brush executeWithIndex: currentIndex andLayer: activeLayer.
 	
 	(anEvent redButtonPressed or: [anEvent yellowButtonPressed]) ifFalse: [self brush resetOutputSet].
 	
