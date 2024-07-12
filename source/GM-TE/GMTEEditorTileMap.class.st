@@ -63,6 +63,24 @@ GMTEEditorTileMap >> currentTileChanges: anObject [
 ]
 
 {
+	#category : #updating,
+	#'squeak_changestamp' : 'JS 7/12/2024 11:30'
+}
+GMTEEditorTileMap >> deleteTiles: aCoordinateCollection inLayer: aLayer [
+	"delete tiles from editable matrix stack at given indices"
+	
+	| tile |
+	aCoordinateCollection do: [:c |
+		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+			tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+			tile	ifNotNil: [ 
+				self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
+				tile abandon.
+				self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
+				self saveNewImageFromPosition: tile position inLayer: aLayer]]].
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'jj 6/23/2024 13:35'
 }
@@ -188,6 +206,24 @@ GMTEEditorTileMap >> mouseUp: anEvent [
 	self tileSelectionSet clearAllHighlightings.
 	self tileSelectionSet highlightImage: (self model selectedTile)
 
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'JS 7/12/2024 11:30'
+}
+GMTEEditorTileMap >> placeTiles: aCoordinateCollection inLayer: aLayer [
+	"Add currently selected tile (model) to editable matrix stack at given indices"
+	
+	| tile |
+	aCoordinateCollection do: [:c |
+		self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
+		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+				tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+				tile ifNil: [ tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: GMTETile].
+				self updateTileSprite: tile.
+				self saveNewImageFromPosition: tile position inLayer: aLayer]].
+	
 ]
 
 {
@@ -345,39 +381,14 @@ GMTEEditorTileMap >> updateTileSprite: aTile [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 7/11/2024 17:39'
+	#'squeak_changestamp' : 'JS 7/12/2024 11:31'
 }
 GMTEEditorTileMap >> updateTiles: aCoordinateCollection inLayer: aLayer FromEvent: anEvent [
-	"Add currently selected tile (model) to editable matrix stack at mouse position"
-	| tile |
-	self flag: 'refactor'.
+	
 	(self tileIndexFromPosition: anEvent position) ifNil: [^ nil].
-	(anEvent redButtonChanged and: [self model selectedTile notNil]) 
-		ifTrue: [
-			aCoordinateCollection do: [:c |
-				self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
-				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
-					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
-					tile
-						ifNil: [ tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: GMTETile].
-					self updateTileSprite: tile.
-					self saveNewImageFromPosition: tile position inLayer: aLayer]
-				].
-			self model savedSinceModified: false].
-	(anEvent yellowButtonChanged) 
-		ifTrue: [
-			aCoordinateCollection do: [:c |
-				| tilePos |
-				((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
-					tile := self tileMatrixStack layer: aLayer at: c y at: c x.
-					tile
-						ifNotNil: [ 
-							self savePreviousImageFromMatrixCoordinate: c inLayer: aLayer.
-							tilePos := tile position.
-							tile abandon.
-							self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
-							self saveNewImageFromPosition: tilePos inLayer: aLayer.
-							self model savedSinceModified: false].
-					]
-				]]
+	
+	(anEvent redButtonChanged and: [self model selectedTile notNil]) ifTrue: [self placeTiles: aCoordinateCollection inLayer: aLayer].	
+	(anEvent yellowButtonChanged) ifTrue: [self deleteTiles: aCoordinateCollection inLayer: aLayer].
+	
+	self model savedSinceModified: false
 ]
