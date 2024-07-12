@@ -1337,7 +1337,7 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'tw 7/12/2024 23:39'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:41'
 }
 GMTEEditor >> initializeBrush [
 	"Necessary so the button knows it is selected"
