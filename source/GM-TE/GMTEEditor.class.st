@@ -26,75 +26,77 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'tw 7/12/2024 20:36'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:41'
 }
 GMTEEditor class >> editorMinimumExtent [
-	"minimum extent of the tile editor"
+	"Minimum extent of the tile editor"
 	
 	^ RealEstateAgent scaleFactor * (700 @ 400)
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'tw 7/12/2024 20:12'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:41'
 }
 GMTEEditor class >> getInputFieldSize [
-
+	"Attribute input field width"
+	
 	^ (TextStyle defaultFont approxWidthOfText: '1.00' asText)
 ]
 
 {
 	#category : #fileHandling,
-	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:41'
 }
 GMTEEditor class >> getTileMapFromFileBinary: aFileBinary [
-	"creates a tileMap from a file binary"
+	"Creates a tileMap from a file binary"
 	
     ^ GMTETileMap newFrom: (GMTEEditor privateGetEditorTileMapFromFileBinary: aFileBinary)
 ]
 
 {
 	#category : #fileHandling,
-	#'squeak_changestamp' : 'jj 6/23/2024 14:08'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:43'
 }
 GMTEEditor class >> getTileMapFromFilePath: aFilePath [
-	"loads a tileMap from a local file path"
+	"Loads a tileMap from a local file path"
 	
     ^ GMTETileMap newFrom: (GMTEEditor privateGetEditorTileMapFromFilePath: aFilePath)
 ]
 
 {
 	#category : #fileHandling,
-	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:43'
 }
 GMTEEditor class >> getTileMapFromProjectName: aName withPath: aPath [
-	"loads a tileMap from the git asset browser"
+	"Loads a tileMap from the git asset browser"
 	
     ^ GMTEEditor getTileMapFromFileBinary: ((GitAssetLoader for: aName) loadAsset: aPath)
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'TW 6/23/2024 21:37'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:44'
 }
 GMTEEditor class >> getVisibilityIndicator: aBoolean [
-
+	
 	aBoolean
 		ifTrue: [^ ' (v)']
 		ifFalse: [^ ' (h)']
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'tw 7/12/2024 18:33'
+	#category : #utility,
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:47'
 }
 GMTEEditor class >> hLayoutFrame: intI ofN: intN [
-
+	"Calculates the frame of equal sized specs"
+	
 	^ self hLayoutFrame: intI ofN: intN vSymmetric: 0
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #utility,
 	#'squeak_changestamp' : 'tw 7/11/2024 17:03'
 }
 GMTEEditor class >> hLayoutFrame: intI ofN: intN vSymmetric: aFloat [
@@ -103,18 +105,17 @@ GMTEEditor class >> hLayoutFrame: intI ofN: intN vSymmetric: aFloat [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'tw 7/11/2024 17:05'
+	#category : #utility,
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:45'
 }
 GMTEEditor class >> hLayoutFrame: intI ofN: intN vUp: aFloat down: anotherFloat [
-
 	"useful for building buttons, maybe move this to instance? TODO FLAG"
 	
 	^ LayoutFrame fractions: ((intI - 1 / intN @ aFloat) corner: (intI / intN @ (1 - anotherFloat)))
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'tw 7/12/2024 16:21'
 }
 GMTEEditor class >> initialize [
@@ -125,37 +126,40 @@ GMTEEditor class >> initialize [
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:48'
 }
 GMTEEditor class >> maxBrushRadius [
-
-	^ 50
-]
-
-{
-	#category : #constants,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:31'
-}
-GMTEEditor class >> maxNumberOfCommands [
+	"Maximum allowed radius for brushes"
 	
 	^ 50
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:48'
+}
+GMTEEditor class >> maxNumberOfCommands [
+	"Maximum amount of stored commands"
+	
+	^ 50
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:49'
 }
 GMTEEditor class >> minBrushRadius [
-
+	"Minimum allowed radius for brushes"
+	
 	^ 0
 ]
 
 {
 	#category : #fileHandling,
-	#'squeak_changestamp' : 'jj 6/23/2024 14:09'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:53'
 }
 GMTEEditor class >> privateGetEditorTileMapFromFileBinary: aFileBinary [
-	"loads a EditorTileMap from a file binary"
+	"Loads a EditorTileMap from a file binary"
 	
     |aFileStream tileMap|
     aFileStream := (MultiByteBinaryOrTextStream with: aFileBinary) binary reset.
@@ -166,20 +170,20 @@ GMTEEditor class >> privateGetEditorTileMapFromFileBinary: aFileBinary [
 
 {
 	#category : #fileHandling,
-	#'squeak_changestamp' : 'jj 6/23/2024 14:07'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:53'
 }
 GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
-	"loads a EditorTileMap from a local file path"
+	"Loads a EditorTileMap from a local file path"
 	 
     ^ GMTEEditor privateGetEditorTileMapFromFileBinary: (FileStream readOnlyFileNamed: aFilePath) binary contentsOfEntireFile
 ]
 
 {
 	#category : #squeakutils,
-	#'squeak_changestamp' : 'tw 7/12/2024 16:20'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:53'
 }
 GMTEEditor class >> register [
-	"adds the tile editor to app menu"
+	"Adds the tile editor to app menu"
 	
 	"Maybe call this on new?"
 	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {self. #startup}}
@@ -187,18 +191,20 @@ GMTEEditor class >> register [
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'TW 6/25/2024 15:53'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:54'
 }
 GMTEEditor class >> singleLayerActionNames [
-
+	"Layer actions that only work for one selected layer"
+	
 	^ {'buttonMoveLayerDown' . 'buttonMoveLayerUp' . 'buttonRenameLayer'}
 ]
 
 {
 	#category : #startup,
-	#'squeak_changestamp' : 'Alex M 7/9/2024 17:59'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:57'
 }
 GMTEEditor class >> startup [
+		"Opens the editor with a startup wizard"
 		
 		(DialogWindow new
 		title: 'Wizard';
@@ -214,50 +220,50 @@ GMTEEditor class >> startup [
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'Alex M 7/9/2024 17:33'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:56'
 }
 GMTEEditor class >> startupMinimumExtent [
-	"minimum extent of the startup wizard"
+	"Minimum extent of the startup wizard"
 	
 	^ 300@200
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:57'
 }
 GMTEEditor class >> tileMapMaxGridSize [
-	"the maximum size of the tileMap per dimension"
+	"Maximum size of the tileMap per dimension"
 	
 	^ 200
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:35'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:57'
 }
 GMTEEditor class >> tileMapMaxPaddingSize [
-	"the maximum size of the tileMap padding"
+	"Maximum size of the tileMap padding"
 	
 	^ 0.9
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:33'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:57'
 }
 GMTEEditor class >> tileMapMinGridSize [
-	"the minimum size of the tileMap per dimension"
+	"Minimum size of the tileMap per dimension"
 	
 	^ 0
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:34'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:57'
 }
 GMTEEditor class >> tileMapMinPaddingSize [
-	"the minimum size of the tileMap padding"
+	"Minimum size of the tileMap padding"
 	
 	^ 0
 ]
@@ -272,27 +278,27 @@ GMTEEditor class >> toolBarVSpace [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'tw 7/12/2024 18:33'
+	#category : #utility,
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:58'
 }
 GMTEEditor class >> vLayoutFrame: intI ofN: intN [
-
+	"Calculates the frame of equal sized specs"
+	
 	^ self vLayoutFrame: intI ofN: intN hSymmetric: 0
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'tw 7/12/2024 18:26'
+	#category : #utility,
+	#'squeak_changestamp' : 'mcjj 7/12/2024 21:58'
 }
 GMTEEditor class >> vLayoutFrame: intI ofN: intN hLeft: aFloat right: anotherFloat [
-
 	"useful for building buttons, maybe move this to instance? TODO FLAG"
 	
 	^ LayoutFrame fractions: ((aFloat @ (intI - 1 / intN)) corner: (1 - anotherFloat @ (intI / intN)))
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #utility,
 	#'squeak_changestamp' : 'tw 7/12/2024 18:26'
 }
 GMTEEditor class >> vLayoutFrame: intI ofN: intN hSymmetric: aFloat [

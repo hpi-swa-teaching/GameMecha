@@ -1,10 +1,15 @@
+"
+A clickable Morph to select tiles from the tile store.
+
+"
 Class {
 	#name : #GMTETileSelector,
 	#superclass : #GMTETile,
 	#instVars : [
 		'model'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'mcjj 7/12/2024 22:09'
 }
 
 {
