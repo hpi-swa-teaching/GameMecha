@@ -15,7 +15,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/23/2024 13:36'
 }
 GMTEEditorTileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio model: aModel [
@@ -46,11 +46,11 @@ GMTEEditorTileMap >> currentTileChanges [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:18'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:19'
 }
-GMTEEditorTileMap >> currentTileChanges: aTileDictionary [
+GMTEEditorTileMap >> currentTileChanges: anObject [
 
-	currentTileChanges := aTileDictionary
+	currentTileChanges := anObject
 ]
 
 {
@@ -140,11 +140,11 @@ GMTEEditorTileMap >> model [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JS 7/12/2024 16:25'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:19'
 }
-GMTEEditorTileMap >> model: aModel [
+GMTEEditorTileMap >> model: anObject [
 
-	model := aModel
+	model := anObject
 ]
 
 {
@@ -198,12 +198,15 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:27'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	"apply brush operation on tilemap"
 	
 	| selectedIndices |
+	"Make sure view is not currently moved. Implies that shift must still be held down"
+	anEvent shiftPressed ifTrue: [^ nil].	
+
 	self brush firstMatrixIndex: nil.
 	
 	selectedIndices := self brush outputSet asCollection.
@@ -247,11 +250,11 @@ GMTEEditorTileMap >> previousTileStates [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:18'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:19'
 }
-GMTEEditorTileMap >> previousTileStates: aTileDictionary [
+GMTEEditorTileMap >> previousTileStates: anObject [
 
-	previousTileStates := aTileDictionary
+	previousTileStates := anObject
 ]
 
 {
@@ -355,11 +358,11 @@ GMTEEditorTileMap >> tileSelectionSet [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:16'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEEditorTileMap >> tileSelectionSet: aSet [
+GMTEEditorTileMap >> tileSelectionSet: anObject [
 
-	tileSelectionSet := aSet
+	tileSelectionSet := anObject
 ]
 
 {
@@ -376,4 +379,15 @@ GMTEEditorTileMap >> updateTiles: anIndexSet inLayer: aLayer FromEvent: anEvent 
 	
 	validLeftClick ifTrue: [self placeTiles: anIndexSet inLayer: aLayer].	
 	validRightClick ifTrue: [self deleteTiles: anIndexSet inLayer: aLayer].
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:13'
+}
+GMTEEditorTileMap >> zoomAt: aPoint by: aFloat [
+
+	super zoomAt: aPoint by: aFloat.
+	self flag: 'refactor?'.
+	self tileSelectionSet clearAllHighlightings
 ]

@@ -55,8 +55,8 @@ GMTETileMap class >> maxLayers [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:15'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:16'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -78,14 +78,13 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	"Initially draw background tiles"
 	newMap updateTilesBackground.
 	newMap resetView.
-	self flag: 'dragging does not work properly when openedInWorld'.
-	newMap hasStaticView: false.
+	newMap hasStaticView: true.
 	
 	^ newMap 
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:12'
 }
 GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
@@ -218,33 +217,6 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 15:59'
-}
-GMTETileMap >> canZoomIn [
-
-	^ false
-]
-
-{
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
-}
-GMTETileMap >> canZoomInBy: aFloat [
-
-	^ self view canChangeSizeBy: (aFloat negated)
-]
-
-{
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
-}
-GMTETileMap >> canZoomOutBy: aFloat [
-
-	^ self view canChangeSizeBy: aFloat
-]
-
-{
-	#category : #view,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 20:46'
 }
 GMTETileMap >> centerViewAt: aPoint [
@@ -298,7 +270,7 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
 }
 GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 	"delete tiles from editable matrix stack at given indices"
@@ -315,32 +287,33 @@ GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 
 {
 	#category : #checking,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:08'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:00'
 }
 GMTETileMap >> dimensionsSet [
 	"Check if attributes regarded as 'dimensions' are properly initialized"
 
+	self flag: 'nameing? e.G. areDimensionsSet or dimensionsSetProperly'.
 	^ (self mapTileWidth notNil) and: [(self mapTileWidth notNil) and: [self mapPadding notNil]]
 ]
 
 {
 	#category : #'import/export',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:21'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:09'
 }
 GMTETileMap >> exportAsImage [
-	"TODO:Add further options in the future like choosing file format?"
-	
+
 	self exportAsPNG
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 19:47'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:57'
 }
 GMTETileMap >> extent: aPoint [
 	"Override extent to properly scale tile map"
 
 	| oldExtent newExtent |
+	self flag: 'category'.
 	self forceMapSizeRatio
 		ifTrue: [newExtent := (aPoint x) @ (aPoint x * (self mapTileHeight / self mapTileWidth))]
 		ifFalse: [newExtent := aPoint].
@@ -425,7 +398,7 @@ GMTETileMap >> fullGridSizeWidth: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:46'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:36'
 }
 GMTETileMap >> generateBackgroundTiles [
 	"Fill the background matrix stack with tiles automatically"
@@ -438,7 +411,7 @@ GMTETileMap >> generateBackgroundTiles [
 			self correctedTilePositionBackground: aPoint]].
 	
 	self tileMatrixStackBackground doTiles: [:tile |
-		tile applyTileSprite: self backgroundTiles]
+		tile copySpriteFromTile: self backgroundTiles]
 	
 	
 ]
@@ -459,15 +432,25 @@ GMTETileMap >> generateHighlightingTiles [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:54'
 }
 GMTETileMap >> generateMatrixStacks [
 	"Generate the 3 matrix stacks (editable, highlighting, background)"
 	
-	self tileMatrixStackBackground: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault + 1).
-	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault).
-	self tileMatrixStackHighlighting: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance). "ensures that the visual layer is always is front of every other layer"
-	"self generateBackgroundTiles."
+	"Ensures that the background layer is always behind every other layer"
+	self tileMatrixStackBackground: (GMTETileMatrixStack 
+		fromWidth: self tileWidth 
+		height: self tileHeight 
+		morphicLayerOffset: (GMTETileMatrixStack morphicLayerOffsetDefault + 1)).
+	self tileMatrixStack: (GMTETileMatrixStack 
+		fromWidth: self mapTileWidth 
+		height: self mapTileHeight 
+		morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault).
+	"Ensures that the visual layer is always is front of every other layer"
+	self tileMatrixStackHighlighting: (GMTETileMatrixStack 
+		fromWidth: self mapTileWidth 
+		height: self mapTileHeight 
+		morphicLayerOffset: (GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance)). 
 	self generateHighlightingTiles.
 	self toggleBackgroundLayer
 ]
@@ -544,7 +527,16 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:16'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:18'
+}
+GMTETileMap >> handlesMouseDown: anEvent [
+
+	^ (self hasStaticView not) and: [anEvent shiftPressed]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:06'
 }
 GMTETileMap >> handlesMouseMove: anEvent [
 
@@ -632,7 +624,7 @@ GMTETileMap >> inViewPointToViewFraction: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:55'
 }
 GMTETileMap >> initialize [
 	
@@ -643,10 +635,7 @@ GMTETileMap >> initialize [
 		forceMapSizeRatio: false;
 		view: GMTEView new; 
 		hasStaticView: true;
-		
-		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
-		"TODO: default background tiles (must not exist but practical as a visual indicator)"
-		 backgroundTiles: GMTETile checkerBoardTile
+		backgroundTiles: GMTETile checkerBoardTile
 	
 ]
 
@@ -791,7 +780,7 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 19:12'
 }
 GMTETileMap >> mouseMove: anEvent [
 
@@ -804,16 +793,13 @@ GMTETileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:51'
 }
 GMTETileMap >> mouseWheel: anEvent [
-
-	self flag: 'does not work'.
-	"anEvent shiftPressed ifFalse: [^ nil]."
 	
 	self hasStaticView ifTrue: [^ nil].
-	anEvent isWheelDown ifTrue: [self zoomInAt: (anEvent position - self topLeft)].
-	anEvent isWheelUp ifTrue:  [self zoomOutAt: (anEvent position - self topLeft)]
+	anEvent isWheelDown ifTrue: [self zoomOutAt: (anEvent position - self topLeft)].
+	anEvent isWheelUp ifTrue:  [self zoomInAt: (anEvent position - self topLeft)]
 ]
 
 {
@@ -830,7 +816,7 @@ GMTETileMap >> moveViewBy: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 19:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
 }
 GMTETileMap >> placeTiles: anIndexSet inLayer: aLayer ofClass: aTileClass withImage: anImage [
 
@@ -891,14 +877,13 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:56'
 }
 GMTETileMap >> rescaleMatrixStacks [
 	"Rescale matrix stacks to apply new dimensions"
 
 	self tileMatrixStack ifNotNil: [
 		self tileMatrixStack rescaleToWidth: self mapTileWidth height: self mapTileHeight].
-		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
 		self tileMatrixStack doTiles: [:tile |
 			self addMorph: tile].
 	self tileMatrixStackHighlighting ifNotNil: [
@@ -920,31 +905,32 @@ GMTETileMap >> resetView [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:11'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:02'
 }
 GMTETileMap >> revertCorrectedTilePosition: aPoint startingOffset: anOffset [
 	"Revert a tile position correction"
-
+	self flag: 'comment useful?'.
 	^ aPoint - anOffset - self topLeft	
 ]
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:12'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:01'
 }
 GMTETileMap >> revertCorrectedTilePositionBackground: aPoint [
 	"Inversion of correction"
 
+	self flag: 'comment useful?'.
 	^ self revertCorrectedTilePosition: aPoint startingOffset: self tileMatrixStackBackground
 ]
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:12'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:02'
 }
 GMTETileMap >> revertCorrectedTilePositionMap: aPoint [
 	"Inversion of correction"
-
+	self flag: 'comment useful?'.
 	^ self revertCorrectedTilePosition: aPoint startingOffset: self tileCornerOffsetMap
 ]
 
@@ -970,11 +956,12 @@ GMTETileMap >> revertViewCorrectedTilePositionMap: aPoint [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/8/2024 21:00'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:58'
 }
 GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 	"Set dimensions (defines what is considered as part of 'dimensions')"
 
+	self flag: 'category?'.
 	self
 		mapTileWidth: aWidth;
 		mapTileHeight: aHeigth;
@@ -983,14 +970,14 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:19'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:09'
 }
 GMTETileMap >> showHighlightingLayer [
 	"Shows / hides the grid"
 
+	self flag: 'commented code'.
 	self tileMatrixStackHighlighting visible: true.
 	self changed
-	"self rescaleMap."
 ]
 
 {
@@ -1062,14 +1049,16 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:47'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:03'
 }
 GMTETileMap >> tileIndexFromPosition: aPoint [
 	"Answer the sender with a tile index (matrix[index x y][index x]) from a pixel position"
 
 	| uncorrectedPos index |
+	self flag: 'comment weird'.
 	uncorrectedPos := self revertViewCorrectedTilePositionMap: aPoint.
 
+	self flag: 'why in 2 lines?'.
 	index := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
 	index := index floor.
 	
@@ -1236,11 +1225,12 @@ GMTETileMap >> toFullScreen [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:21'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:04'
 }
 GMTETileMap >> toFullScreenMode [
 	"Scale to fullscreen & bring to foreground & make not draggable"
 	
+	self flag: 'casecade?'.
 	self toForeground.
 	self toFullScreen.
 	self lock
@@ -1248,11 +1238,12 @@ GMTETileMap >> toFullScreenMode [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:00'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:04'
 }
 GMTETileMap >> toggleBackgroundLayer [
 	"Toggles the dynamic filling of the maps background with the background tile"
 
+	self flag: 'casecade'.
 	self tileMatrixStackBackground toggleVisibility.
 	self updateTilesBackground.
 	self changed
@@ -1260,11 +1251,12 @@ GMTETileMap >> toggleBackgroundLayer [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:21'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:05'
 }
 GMTETileMap >> toggleHighlightingLayer [
 	"Toggles the visibility of the grid"
 
+	self flag: 'cascade'.
 	self tileMatrixStackHighlighting toggleVisibility.
 	self changed
 ]
@@ -1350,7 +1342,7 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
 }
 GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 	"Update matrix stacks by applying new dimensions & positions"
@@ -1370,14 +1362,11 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:57'
 }
 GMTETileMap >> updateTiles [
 	"Collectively update all matrix stacks and therefore all tiles contained within"
-
-	"Background also has to rescale"
-	"TODO: This should be refactored"
-	"TODO: Rescaling is not very performant"
+	"Note: Rescaling is not very performant"
 	
 	self 
 		updateTilesBackground;
@@ -1461,28 +1450,8 @@ GMTETileMap >> viewScaleFactor [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:37'
-}
-GMTETileMap >> vigenerateBackgroundTiles [
-	"Fill the background matrix stack with tiles automatically"
-	
-	self backgroundTiles ifNil: [^ nil].
-	
-	self tileMatrixStackBackground doTilesXYLindex: [:x :y :l | 
-		"It is assumed that the background stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [:aPoint |
-			self correctedTilePositionBackground: aPoint]].
-	
-	self tileMatrixStackBackground doTiles: [:tile |
-		tile applyTileSprite: self backgroundTiles]
-	
-	
-]
-
-{
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:12'
 }
 GMTETileMap >> zoomAt: aPoint by: aFloat [
 	""
@@ -1496,28 +1465,23 @@ GMTETileMap >> zoomAt: aPoint by: aFloat [
 	self view changeSizeBy: (aFloat negated).
 
 	newCenter := (oldScaleFactor / self viewScaleFactor) * oldMouseCenterOffset + aPointAbs.
-	self centerViewAtAbs: newCenter.
-
-	self flag: 'refactor. This seems to be necessary but highlights only exist for editable tile map'.
-	"self tileSelectionSet clearAllHighlightings"
+	self centerViewAtAbs: newCenter
 ]
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
 }
 GMTETileMap >> zoomInAt: aPoint [
 
-	(self canZoomInBy: 0.1) ifFalse: [^ nil].	
 	self zoomAt: aPoint by: 0.1
 ]
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
 }
 GMTETileMap >> zoomOutAt: aPoint [
 	
-	(self canZoomOutBy: 0.1) ifFalse: [^ nil].
 	self zoomAt: aPoint by: -0.1
 ]

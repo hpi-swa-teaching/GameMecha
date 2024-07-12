@@ -23,11 +23,11 @@ PluggableImageButtonSpec >> arguments [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:22'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableImageButtonSpec >> arguments: anObject [
 
-	arguments := anObject.
+	arguments := anObject
 ]
 
 {
@@ -50,11 +50,11 @@ PluggableImageButtonSpec >> buttonGroup [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:23'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableImageButtonSpec >> buttonGroup: anObject [
 
-	buttonGroup := anObject.
+	buttonGroup := anObject
 ]
 
 {
@@ -67,9 +67,10 @@ PluggableImageButtonSpec >> description [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 02:02'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableImageButtonSpec >> description: anObject [
+
 	description := anObject
 ]
 
@@ -84,11 +85,11 @@ PluggableImageButtonSpec >> groupName [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'tw 7/12/2024 17:04'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableImageButtonSpec >> groupName: anObject [
 
-	groupName := anObject.
+	groupName := anObject
 ]
 
 {
@@ -102,11 +103,11 @@ PluggableImageButtonSpec >> path [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/21/2024 01:16'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableImageButtonSpec >> path: anObject [
 
-	path := anObject.
+	path := anObject
 ]
 
 {
@@ -120,9 +121,9 @@ PluggableImageButtonSpec >> project [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/20/2024 23:31'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableImageButtonSpec >> project: anObject [
 
-	project := anObject.
+	project := anObject
 ]
