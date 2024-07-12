@@ -1057,12 +1057,16 @@ GMTEEditor >> enableSingleLayerButtons [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/22/2024 20:48'
+	#'squeak_changestamp' : 'JS 7/12/2024 22:47'
 }
 GMTEEditor >> exportAsImage [
 	"exports the current tile map as a png"
-	
-	self tileMap exportAsImage
+	|exportTilemap|
+	exportTilemap := self tileMap veryDeepCopy.
+	exportTilemap 
+		hideHighlightingLayer;
+		resetView;
+		exportAsImage.
 ]
 
 {
