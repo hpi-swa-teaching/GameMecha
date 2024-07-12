@@ -56,7 +56,7 @@ GMTETileMap class >> maxLayers [
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:16'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 23:10'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -76,9 +76,11 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	 	abandon.
 	
 	"Initially draw background tiles"
-	newMap updateTilesBackground.
-	newMap resetView.
-	newMap hasStaticView: true.
+	newMap 
+		updateTilesBackground;
+		resetView;
+		hasStaticView: true;
+		reorderSubmorphsInLayers.
 	
 	^ newMap 
 ]
