@@ -27,7 +27,8 @@ Class {
 		'tileMatrixStackBackground',
 		'forceMapSizeRatio',
 		'backgroundTiles',
-		'view'
+		'view',
+		'hasStaticView'
 	],
 	#category : #'GM-TE-TileMap'
 }
@@ -55,7 +56,7 @@ GMTETileMap class >> maxLayers [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:15'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -76,6 +77,10 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	
 	"Initially draw background tiles"
 	newMap updateTilesBackground.
+	newMap resetView.
+	self flag: 'dragging does not work properly when openedInWorld'.
+	newMap hasStaticView: false.
+	
 	^ newMap 
 ]
 
@@ -213,12 +218,51 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 00:08'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 15:59'
+}
+GMTETileMap >> canZoomIn [
+
+	^ false
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
+}
+GMTETileMap >> canZoomInBy: aFloat [
+
+	^ self view canChangeSizeBy: (aFloat negated)
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
+}
+GMTETileMap >> canZoomOutBy: aFloat [
+
+	^ self view canChangeSizeBy: aFloat
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 20:46'
 }
 GMTETileMap >> centerViewAt: aPoint [
+	"Note: aPoint is relative to current view"
 	"Note: center must induce legal view (non-overlapping)"
 
 	self view moveTo: (self inViewPointToViewCenter: aPoint).
+	self updateMap
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 22:31'
+}
+GMTETileMap >> centerViewAtAbs: aPoint [
+	"Note: center must induce legal view (non-overlapping)"
+
+	self view moveTo: (self absPointToViewCenter: aPoint).
 	self updateMap
 ]
 
@@ -482,6 +526,42 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:16'
+}
+GMTETileMap >> handlesMouseMove: anEvent [
+
+	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 21:12'
+}
+GMTETileMap >> handlesMouseWheel: anEvent [
+
+	^ true
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
+}
+GMTETileMap >> hasStaticView [
+
+	^ hasStaticView
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
+}
+GMTETileMap >> hasStaticView: anObject [
+
+	hasStaticView := anObject.
+]
+
+{
 	#category : #'dev-api',
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
 }
@@ -535,7 +615,7 @@ GMTETileMap >> inViewPointToViewFraction: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:15'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
 }
 GMTETileMap >> initialize [
 	
@@ -545,6 +625,7 @@ GMTETileMap >> initialize [
 		clipSubmorphs: true;
 		forceMapSizeRatio: false;
 		view: GMTEView new; 
+		hasStaticView: true;
 		
 		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
 		"TODO: default background tiles (must not exist but practical as a visual indicator)"
@@ -689,6 +770,45 @@ GMTETileMap >> mapTileWidth [
 GMTETileMap >> mapTileWidth: anObject [
 
 	mapTileWidth := anObject
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+}
+GMTETileMap >> mouseMove: anEvent [
+
+	self hasStaticView ifTrue: [^ nil].
+	anEvent shiftPressed ifFalse: [^ nil].
+	anEvent redButtonPressed ifFalse: [^ nil].
+	
+	self moveViewBy: (anEvent startPoint - anEvent position)
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+}
+GMTETileMap >> mouseWheel: anEvent [
+
+	self flag: 'does not work'.
+	"anEvent shiftPressed ifFalse: [^ nil]."
+	
+	self hasStaticView ifTrue: [^ nil].
+	anEvent isWheelDown ifTrue: [self zoomInAt: (anEvent position - self topLeft)].
+	anEvent isWheelUp ifTrue:  [self zoomOutAt: (anEvent position - self topLeft)]
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:50'
+}
+GMTETileMap >> moveViewBy: aPoint [
+	"Note: aPoint is relative to current view"
+	"Note: center must induce legal view (non-overlapping)"
+
+	self view moveBy: (self absPointToViewFraction: (aPoint / self viewScaleFactor)).
+	self updateMap
 ]
 
 {
@@ -1320,10 +1440,42 @@ GMTETileMap >> vigenerateBackgroundTiles [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 00:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:10'
+}
+GMTETileMap >> zoomAt: aPoint by: aFloat [
+	""
+
+	| newCenter oldMouseCenterOffset aPointAbs oldScaleFactor |
+		
+	oldScaleFactor := self viewScaleFactor.
+	aPointAbs := self inViewPointToAbs: aPoint.
+	oldMouseCenterOffset := (self inViewPointToAbs: (self extent / 2)) - aPointAbs.
+
+	self view changeSizeBy: (aFloat negated).
+
+	newCenter := (oldScaleFactor / self viewScaleFactor) * oldMouseCenterOffset + aPointAbs.
+	self centerViewAtAbs: newCenter.
+
+	self flag: 'refactor. This seems to be necessary but highlights only exist for editable tile map'.
+	"self tileSelectionSet clearAllHighlightings"
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
 }
 GMTETileMap >> zoomInAt: aPoint [
 
-	self view shrinkBy: 0.1.
-	self centerViewAt: aPoint
+	(self canZoomInBy: 0.1) ifFalse: [^ nil].	
+	self zoomAt: aPoint by: 0.1
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+}
+GMTETileMap >> zoomOutAt: aPoint [
+	
+	(self canZoomOutBy: 0.1) ifFalse: [^ nil].
+	self zoomAt: aPoint by: -0.1
 ]

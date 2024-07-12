@@ -117,7 +117,7 @@ GMTEEditorTileMap >> highlightTilesFromIndices: anIndexSet [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 20:24'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
 }
 GMTEEditorTileMap >> initialize [
 
@@ -125,7 +125,8 @@ GMTEEditorTileMap >> initialize [
 	self
 		tileSelectionSet: (GMTETileSelectionSet new);
 		previousTileStates: Dictionary new;
-		currentTileChanges: Dictionary new
+		currentTileChanges: Dictionary new;
+		hasStaticView: false
 ]
 
 {
@@ -174,12 +175,15 @@ GMTEEditorTileMap >> mouseLeave: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 17:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:20'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"implements highlighting of tiles when hovering"
 
 	| activeLayer selectedIndices currentIndex |
+	super mouseMove: anEvent.
+	anEvent shiftPressed ifTrue: [^ nil].	
+
 	self model singleLayerSelected ifFalse: [^ nil].
 	
 	activeLayer := self tileMatrixStack layer: self model selectedLayers anyOne.
