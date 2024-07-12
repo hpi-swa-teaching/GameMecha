@@ -252,14 +252,12 @@ GMTEBrush >> radiusBrush [
 
 {
 	#category : #brushHelper,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:52'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 23:40'
 }
 GMTEBrush >> rasterizeLineBetweenStart: aStartIndex andEnd: anEndIndex [
 	"implementation of Bresenhams Line Algorithm"
 	
 	| lineIndexCollection deltaX deltaY stepX stepY error error2 x y index |
-	
-	self flag: 'repeat formatting'.
 	
     	deltaX := (anEndIndex x - aStartIndex x) abs.
     	deltaY := (anEndIndex y - aStartIndex y) abs.
@@ -286,7 +284,7 @@ GMTEBrush >> rasterizeLineBetweenStart: aStartIndex andEnd: anEndIndex [
 
 {
 	#category : #brushes,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:57'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 23:40'
 }
 GMTEBrush >> rectangleBrush [
 
@@ -301,7 +299,7 @@ GMTEBrush >> rectangleBrush [
 
 	startRow to: endRow do: [:row |
  		startCol to: endCol do: [:col |
-			self outputSet add: (row@col)]].
+			self outputSet add: (row @ col)]].
 
     ^ self outputSet
 
