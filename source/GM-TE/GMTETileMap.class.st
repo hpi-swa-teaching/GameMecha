@@ -270,7 +270,7 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:32'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
 }
 GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 	"delete tiles from editable matrix stack at given indices"
@@ -297,11 +297,10 @@ GMTETileMap >> dimensionsSet [
 
 {
 	#category : #'import/export',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:21'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:52'
 }
 GMTETileMap >> exportAsImage [
-	"TODO:Add further options in the future like choosing file format?"
-	
+
 	self exportAsPNG
 ]
 
@@ -431,15 +430,25 @@ GMTETileMap >> generateHighlightingTiles [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:54'
 }
 GMTETileMap >> generateMatrixStacks [
 	"Generate the 3 matrix stacks (editable, highlighting, background)"
 	
-	self tileMatrixStackBackground: (GMTETileMatrixStack fromWidth: self tileWidth height: self tileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault + 1).
-	self tileMatrixStack: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault).
-	self tileMatrixStackHighlighting: (GMTETileMatrixStack fromWidth: self mapTileWidth height: self mapTileHeight morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance). "ensures that the visual layer is always is front of every other layer"
-	"self generateBackgroundTiles."
+	"Ensures that the background layer is always behind every other layer"
+	self tileMatrixStackBackground: (GMTETileMatrixStack 
+		fromWidth: self tileWidth 
+		height: self tileHeight 
+		morphicLayerOffset: (GMTETileMatrixStack morphicLayerOffsetDefault + 1)).
+	self tileMatrixStack: (GMTETileMatrixStack 
+		fromWidth: self mapTileWidth 
+		height: self mapTileHeight 
+		morphicLayerOffset: GMTETileMatrixStack morphicLayerOffsetDefault).
+	"Ensures that the visual layer is always is front of every other layer"
+	self tileMatrixStackHighlighting: (GMTETileMatrixStack 
+		fromWidth: self mapTileWidth 
+		height: self mapTileHeight 
+		morphicLayerOffset: (GMTETileMatrixStack morphicLayerOffsetDefault - GMTETileMap maxLayers - GMTETileMatrixStack morphicLayerDistance)). 
 	self generateHighlightingTiles.
 	self toggleBackgroundLayer
 ]
@@ -613,7 +622,7 @@ GMTETileMap >> inViewPointToViewFraction: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:55'
 }
 GMTETileMap >> initialize [
 	
@@ -624,10 +633,7 @@ GMTETileMap >> initialize [
 		forceMapSizeRatio: false;
 		view: GMTEView new; 
 		hasStaticView: true;
-		
-		"TODO: spike solution. Size 1@1 sets quadratic base image. Generic resizing not working yet"
-		"TODO: default background tiles (must not exist but practical as a visual indicator)"
-		 backgroundTiles: GMTETile checkerBoardTile
+		backgroundTiles: GMTETile checkerBoardTile
 	
 ]
 
@@ -785,12 +791,9 @@ GMTETileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:57'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:51'
 }
 GMTETileMap >> mouseWheel: anEvent [
-
-	self flag: 'does not work'.
-	"anEvent shiftPressed ifFalse: [^ nil]."
 	
 	self hasStaticView ifTrue: [^ nil].
 	anEvent isWheelDown ifTrue: [self zoomOutAt: (anEvent position - self topLeft)].
@@ -811,7 +814,7 @@ GMTETileMap >> moveViewBy: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 19:22'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
 }
 GMTETileMap >> placeTiles: anIndexSet inLayer: aLayer ofClass: aTileClass withImage: anImage [
 
@@ -872,14 +875,13 @@ GMTETileMap >> rescaleMapWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:56'
 }
 GMTETileMap >> rescaleMatrixStacks [
 	"Rescale matrix stacks to apply new dimensions"
 
 	self tileMatrixStack ifNotNil: [
 		self tileMatrixStack rescaleToWidth: self mapTileWidth height: self mapTileHeight].
-		"Rescaling returns a copy of the original tiles, which must be added as submorphs again. TODO: move responsibility to Stack?"
 		self tileMatrixStack doTiles: [:tile |
 			self addMorph: tile].
 	self tileMatrixStackHighlighting ifNotNil: [
@@ -964,14 +966,13 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:51'
 }
 GMTETileMap >> showHighlightingLayer [
 	"Shows / hides the grid"
 
 	self tileMatrixStackHighlighting visible: true.
 	self changed
-	"self rescaleMap."
 ]
 
 {
@@ -1331,7 +1332,7 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:41'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
 }
 GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 	"Update matrix stacks by applying new dimensions & positions"
@@ -1351,14 +1352,11 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:54'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:57'
 }
 GMTETileMap >> updateTiles [
 	"Collectively update all matrix stacks and therefore all tiles contained within"
-
-	"Background also has to rescale"
-	"TODO: This should be refactored"
-	"TODO: Rescaling is not very performant"
+	"Note: Rescaling is not very performant"
 	
 	self 
 		updateTilesBackground;
