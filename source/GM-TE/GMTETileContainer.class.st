@@ -1,5 +1,5 @@
 "
-It is not good code right now. Maybe find a nicer solution later
+Contains and manages layout for TileSelectors.
 "
 Class {
 	#name : #GMTETileContainer,
@@ -8,7 +8,7 @@ Class {
 		'parent'
 	],
 	#category : #'GM-TE-UI',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 16:50'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 22:18'
 }
 
 {
