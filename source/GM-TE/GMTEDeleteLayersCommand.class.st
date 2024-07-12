@@ -1,10 +1,14 @@
+"
+Command that deletes a set of layers
+"
 Class {
 	#name : #GMTEDeleteLayersCommand,
 	#superclass : #GMTETilemapSizeCommand,
 	#instVars : [
 		'layers'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:20'
 }
 
 {
@@ -33,17 +37,19 @@ GMTEDeleteLayersCommand >> do [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:19'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:45'
 }
 GMTEDeleteLayersCommand >> layers [
+
 	^ layers
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:19'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:45'
 }
 GMTEDeleteLayersCommand >> layers: anObject [
+
 	layers := anObject
 ]
 

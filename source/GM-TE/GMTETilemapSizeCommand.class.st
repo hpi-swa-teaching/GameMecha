@@ -1,3 +1,6 @@
+"
+Command that resizes the tilemap
+"
 Class {
 	#name : #GMTETilemapSizeCommand,
 	#superclass : #GMTEEditTilesCommand,
@@ -6,7 +9,8 @@ Class {
 		'newSize',
 		'savedTiles'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:23'
 }
 
 {
@@ -35,33 +39,37 @@ GMTETilemapSizeCommand >> do [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:16'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:52'
 }
 GMTETilemapSizeCommand >> newSize [
+
 	^ newSize
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:16'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:52'
 }
 GMTETilemapSizeCommand >> newSize: anObject [
+
 	newSize := anObject
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:16'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:52'
 }
 GMTETilemapSizeCommand >> prevSize [
+
 	^ prevSize
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:16'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:52'
 }
 GMTETilemapSizeCommand >> prevSize: anObject [
+
 	prevSize := anObject
 ]
 
@@ -76,28 +84,30 @@ GMTETilemapSizeCommand >> restoreTiles [
 
 {
 	#category : #restoring,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 20:12'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:54'
 }
 GMTETilemapSizeCommand >> saveTiles [
 
 	self
-		savedTiles: (self editor tileMap tileMatrixStack tileLossAfterRescaleToWidth: self newSize x height: self newSize y);
-		tileMap: self editor tileMap
+		tileMap: self editor tileMap;
+		savedTiles: (self tileMap tileMatrixStack tileLossAfterRescaleToWidth: self newSize x height: self newSize y)
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 18:31'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:52'
 }
 GMTETilemapSizeCommand >> savedTiles [
+
 	^ savedTiles
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 18:31'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:52'
 }
 GMTETilemapSizeCommand >> savedTiles: anObject [
+
 	savedTiles := anObject
 ]
 

@@ -143,12 +143,32 @@ GMTEEditor class >> maxNumberOfCommands [
 
 {
 	#category : #constants,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:40'
+}
+GMTEEditor class >> maximumPreviewTilesetWindowExtent [
+	"Maximum window size of the preview dialog when loading tileset"
+	
+	^ RealEstateAgent scaleFactor * (1200 @ 600)
+]
+
+{
+	#category : #constants,
 	#'squeak_changestamp' : 'mcjj 7/12/2024 21:49'
 }
 GMTEEditor class >> minBrushRadius [
 	"Minimum allowed radius for brushes"
 	
 	^ 0
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:36'
+}
+GMTEEditor class >> previewTileSize [
+	"Extent of TileSelector in the tile tray"
+	
+	^ RealEstateAgent scaleFactor * (70 @ 70)
 ]
 
 {
@@ -305,14 +325,14 @@ GMTEEditor class >> vLayoutFrame: intI ofN: intN hSymmetric: aFloat [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:38'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:29'
 }
 GMTEEditor >> addCommand: aCommand [
 	"Appends a new command to the list and overwrites all commands that were made in an undone future"
 	
 	[self commands size > self currentCommand] whileTrue: [self commands removeLast].
 
-	(self commands size > self class maxNumberOfCommands) ifTrue: [self commands removeFirst.
+	(self commands size > self class maxNumberOfCommands) ifTrue: [self commands removeAt: 2.
 		self currentCommand: self currentCommand - 1].
 	
 	self commands add: aCommand.
@@ -397,11 +417,10 @@ GMTEEditor >> backgroundTile [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'tw 7/12/2024 21:51'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:41'
 }
 GMTEEditor >> backgroundTile: anObject [
-	
-	self flag: 'cursed'.
+
 	(backgroundTile = anObject)
 		ifTrue: [backgroundTile := GMTETile checkerBoardTile]
 		ifFalse: [backgroundTile := anObject].
@@ -1484,7 +1503,7 @@ GMTEEditor >> mapViewer: anObject [
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'tw 7/12/2024 23:07'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:29'
 }
 GMTEEditor >> moveLayerDown [
 	"Moves the selected layer down by one"
@@ -1493,13 +1512,15 @@ GMTEEditor >> moveLayerDown [
 	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
-	self addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: -1 withEditor: self).
-	(selectedLayer == 1) ifFalse: [self swapLayer: selectedLayer with: selectedLayer - 1]
+	(selectedLayer == 1) ifFalse: [
+		self 
+			addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: -1 withEditor: self);
+			swapLayer: selectedLayer with: selectedLayer - 1]
 ]
 
 {
 	#category : #'layer manipulation',
-	#'squeak_changestamp' : 'tw 7/12/2024 23:07'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:29'
 }
 GMTEEditor >> moveLayerUp [
 	"Moves the selected layer up by one"
@@ -1508,8 +1529,10 @@ GMTEEditor >> moveLayerUp [
 	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
-	self addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: 1 withEditor: self).
-	(selectedLayer == self layerCount) ifFalse: [self swapLayer: selectedLayer with: selectedLayer + 1]
+	(selectedLayer == self layerCount) ifFalse: [
+		self
+			addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: 1 withEditor: self);
+			swapLayer: selectedLayer with: selectedLayer + 1]
 ]
 
 {
@@ -1706,12 +1729,12 @@ GMTEEditor >> rescaleGridWidth: aValue [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/3/2024 23:57'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:53'
 }
 GMTEEditor >> resetCommands [
 
 	self
-		commands: (LinkedList newFrom: {GMTEPlaceHolderCommand new});
+		commands: (OrderedCollection newFrom: {GMTEPlaceHolderCommand new});
 		currentCommand: 1
 ]
 
@@ -1859,7 +1882,7 @@ GMTEEditor >> selectRectangleBrush [
 
 {
 	#category : #painting,
-	#'squeak_changestamp' : 'tw 7/12/2024 23:19'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:36'
 }
 GMTEEditor >> selectTile: anObject [
 	"Selects a tile from the tile store"
@@ -1872,8 +1895,7 @@ GMTEEditor >> selectTile: anObject [
 		(self tileTray morph submorphNamed: 'selectedTile')
 			visible: true;
 			updateSprite: anObject fullResolutionSprite;
-			extent: 75@75;
-			flag: '@Alexs magic number']
+			extent: GMTEEditor previewTileSize]
 ]
 
 {
@@ -2022,15 +2044,14 @@ GMTEEditor >> settingsMenu [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:45'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:41'
 }
 GMTEEditor >> showConfirmationWindowOf: morphArray withDimensions: aPoint withTileSize: aNumber [
 	"Shows a preview window for an imported tileset"
 	
 
-	|img imgwrapper dialog|
-	imgwrapper := ScrollPane new.
-	self flag: 'alex schau nochmal drauf pls. magic nums etc'.
+	|img imgWrapper dialog dialogExtent|
+	imgWrapper := ScrollPane new.
 	img := Morph new
 		beTransparent;
 		extent: aPoint;
@@ -2046,18 +2067,19 @@ GMTEEditor >> showConfirmationWindowOf: morphArray withDimensions: aPoint withTi
 			borderWidth:1;
 			yourself)].
 	
-	imgwrapper extent: (img width min: 1700) @ (img height min: 800). "TODO: is this a magic number we want to get rid off?"
-	imgwrapper scroller addMorph: img.
+	dialogExtent := GMTEEditor maximumPreviewTilesetWindowExtent.
+	imgWrapper extent: (img width min: dialogExtent x) @ (img height min: dialogExtent y). "TODO: is this a magic number we want to get rid off?"
+	imgWrapper scroller addMorph: img.
 
 	dialog := DialogWindow new
 		title: 'Preview';
 		message: 'Import Tileset?';
-		addPaneMorph: imgwrapper;
+		addPaneMorph: imgWrapper;
 		createButton: 'Yes' translated value: true;
 		createCancelButton: 'No' translated  value: false;
 		selectedButtonIndex: 1; "YES"
 		registerKeyboardShortcuts.
-	dialog paneMorph extent: imgwrapper extent.
+	dialog paneMorph extent: imgWrapper extent.
 	
 	^ dialog getUserResponseAtHand
 ]

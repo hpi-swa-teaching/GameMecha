@@ -297,9 +297,10 @@ GMTEEditorTileMap >> resetTileEditChanges [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/12/2024 18:44'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:15'
 }
 GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
+	"Saves the updated state of a single tile after changes. Is overwritten everytime there is a new change."
 	| tile | 
 	
 	anIndex ifNil: [^ nil].
@@ -313,11 +314,13 @@ GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:40'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:15'
 }
 GMTEEditorTileMap >> savePreviousImageFromIndex: anIndex inLayer: aLayer [
-
+	"Saves the state of a single tile before changes. Doesn't overwrite until all changes have been"
+	"sent to the Tile Editor"
 	| tile | 	
+		
 	tile := self tileMatrixStack layer: aLayer at: anIndex y at: anIndex x.
 	
 	tile
@@ -327,11 +330,12 @@ GMTEEditorTileMap >> savePreviousImageFromIndex: anIndex inLayer: aLayer [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:43'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:14'
 }
 GMTEEditorTileMap >> saveTileEditChanges [
-	
+	"Sends all recorded changes to the TileEditor and resets the list of changes"
 	| command |
+	
 	command := GMTEEditTilesCommand previousTiles: self previousTileStates currentTiles: self currentTileChanges tilemap: self.
 	
 	self model addCommand: command.
@@ -345,6 +349,17 @@ GMTEEditorTileMap >> saveTileEditChanges [
 GMTEEditorTileMap >> selectedLayers [
 
 	^ self model selectedLayers
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:26'
+}
+GMTEEditorTileMap >> silentlyResetLayers: aSet [
+	"Resets a without recording changes for the Command processor"
+	
+	aSet do: [:layerIndex | self tileMatrixStack resetLayer: layerIndex].
+
 ]
 
 {
