@@ -1337,14 +1337,15 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'tw 7/12/2024 23:03'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:39'
 }
 GMTEEditor >> initializeBrush [
 	"Necessary so the button knows it is selected"
 	
 	self 
 		brush: GMTEBrush new;
-		selectRadiusBrush.
+		selectRadiusBrush;
+		changed: #getBrushRadiusAsString
 ]
 
 {
@@ -1915,14 +1916,14 @@ GMTEEditor >> selectedTile: anObject [
 
 {
 	#category : #'textual user input',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:54'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:38'
 }
 GMTEEditor >> setBrushRadius: userInput [
 	"Takes user input, tries to convert it, and if suitable applies it to brush radius"
 	
 	| newRadius |
 	newRadius := self parseBrushRadius: userInput.
-	newRadius ifNil: [^ nil].
+	newRadius ifNil: [^ true].
 	
 	self brush radius: newRadius.
 	self changed: #getBrushRadiusAsString.
@@ -1932,7 +1933,7 @@ GMTEEditor >> setBrushRadius: userInput [
 
 {
 	#category : #'textual user input',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:56'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:38'
 }
 GMTEEditor >> setGridHeight: aText [
 	"Takes user input, tries to convert it, and if suitable applies it to grid height"
@@ -1940,7 +1941,7 @@ GMTEEditor >> setGridHeight: aText [
 	| oldSize newHeight |
 	oldSize := self getGridWidth @ self getGridHeight.
 	newHeight := self parseGridSize: aText.
-	newHeight ifNil: [^ nil].
+	newHeight ifNil: [^ true].
 	
 	self
 		addCommand: (GMTETilemapSizeCommand prevSize: oldSize newSize: oldSize x @ newHeight editor: self);
@@ -1953,7 +1954,7 @@ GMTEEditor >> setGridHeight: aText [
 
 {
 	#category : #'textual user input',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:58'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:38'
 }
 GMTEEditor >> setGridWidth: aText [
 	"Takes user input, tries to convert it, and if suitable applies it to grid width"
@@ -1961,7 +1962,7 @@ GMTEEditor >> setGridWidth: aText [
 	| oldSize newWidth |
 	oldSize := self getGridWidth @ self getGridHeight.
 	newWidth := self parseGridSize: aText.
-	newWidth ifNil: [^ nil].
+	newWidth ifNil: [^ true].
 	
 	self
 		addCommand: (GMTETilemapSizeCommand prevSize: oldSize newSize: newWidth @ oldSize y  editor: self);
@@ -1973,14 +1974,14 @@ GMTEEditor >> setGridWidth: aText [
 
 {
 	#category : #'textual user input',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:59'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:38'
 }
 GMTEEditor >> setPadding: aText [
 	"Takes user input, tries to convert it, and if suitable applies it to padding"
 	
 	| newSize |
 	newSize := self parsePaddingSize: aText.
-	newSize ifNil: [^ nil].
+	newSize ifNil: [^ true].
 	
 	self tileMap rescaleMapWidth: self getGridWidth height: self getGridHeight padding: newSize.
 	self changed: #getPaddingAsString.
