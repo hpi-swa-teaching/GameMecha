@@ -4,7 +4,7 @@ Buttons can join a GMTEButtonGroup, which then ensures that only one of them is 
 Class {
 	#name : #GMTEButtonGroup,
 	#superclass : #Dictionary,
-	#category : #'GM-TE-Core',
+	#category : #'GM-TE-Editor',
 	#'squeak_changestamp' : 'mcjj 7/12/2024 23:26'
 }
 
