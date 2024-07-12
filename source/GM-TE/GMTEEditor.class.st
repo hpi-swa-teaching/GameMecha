@@ -1356,14 +1356,15 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'tw 7/12/2024 23:03'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 23:31'
 }
 GMTEEditor >> initializeBrush [
 	"Necessary so the button knows it is selected"
 	
 	self 
 		brush: GMTEBrush new;
-		selectRadiusBrush.
+		selectRadiusBrush;
+		changed: #getBrushRadiusAsString
 ]
 
 {
