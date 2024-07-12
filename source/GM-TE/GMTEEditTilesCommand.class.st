@@ -2,6 +2,7 @@ Class {
 	#name : #GMTEEditTilesCommand,
 	#superclass : #GMTECommand,
 	#instVars : [
+		'editor',
 		'tileMap',
 		'previousSprites',
 		'currentSprites'
@@ -45,6 +46,22 @@ GMTEEditTilesCommand >> currentSprites: anObject [
 GMTEEditTilesCommand >> do [
 	
 	self placeTilesFromList: self currentSprites
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 17:12'
+}
+GMTEEditTilesCommand >> editor [
+	^ editor
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 17:12'
+}
+GMTEEditTilesCommand >> editor: anObject [
+	editor := anObject
 ]
 
 {

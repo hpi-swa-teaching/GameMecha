@@ -1061,7 +1061,7 @@ GMTEEditor >> exportMenu [
 
 {
 	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/11/2024 15:57'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 00:19'
 }
 GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
 	| key |
@@ -1069,22 +1069,15 @@ GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
 	aKeyboardEvent isKeystroke
 		ifFalse: [^ aKeyboardEvent].
 	
-	key := aKeyboardEvent key.
-	
+	key := aKeyboardEvent keyCharacter.
+
 	aKeyboardEvent commandKeyPressed ifTrue: [
-		aKeyboardEvent shiftPressed
-			ifTrue: [
-				key caseOf: {
-					[$Z] -> [self redo].
-				} otherwise: [^ aKeyboardEvent "no hit"].
-				^ aKeyboardEvent ignore "hit"]
-			ifFalse: [
-				key caseOf: {
-					[$Z] -> [self undo].
-					[$Y] -> [self redo].
-					[$R] -> [self rotateSelectedTile].
-				} otherwise: [^ aKeyboardEvent "no hit"].
-				^ aKeyboardEvent ignore "hit"]].
+		key caseOf: {
+			[$z] -> [self undo].
+			[$y] -> [self redo].
+			[$r] -> [self rotateSelectedTile].
+		} otherwise: [^ aKeyboardEvent "no hit"].
+		^ aKeyboardEvent ignore "hit"].
 	
 	^ aKeyboardEvent "no hit"
 ]
@@ -1791,12 +1784,14 @@ GMTEEditor >> resetSelectedLayers [
 
 {
 	#category : #TODO,
-	#'squeak_changestamp' : 'Alex M 6/25/2024 18:26'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 17:52'
 }
 GMTEEditor >> rotateSelectedTile [
 	
 	self selectedTile: (self selectedTile rotateBy: #right centerAt: (self selectedTile extent / 2)).
-	self tileMap tileSelectionSet highlightImage: self selectedTile
+	self tileMap tileSelectionSet removeAllHighlightings.
+	self tileMap tileSelectionSet highlightImage: self selectedTile.
+	self tileMap tileSelectionSet applyAllHighlightings
 ]
 
 {
