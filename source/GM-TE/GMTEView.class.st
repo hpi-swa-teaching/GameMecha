@@ -6,15 +6,30 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:17'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:06'
 }
-GMTEView >> enlargeBy: aFloat [
+GMTEView >> canChangeSizeBy: aFloat [
+	
+	| newExtent |
+	newExtent := (self extent + (aFloat@aFloat)).
+
+	((newExtent x <= 0.1) or: [newExtent y <= 0.1]) ifTrue: [^ false].
+	((newExtent x > 1) or: [newExtent y > 1]) ifTrue: [^ false].
+	^ true
+
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:01'
+}
+GMTEView >> changeSizeBy: aFloat [
 
 	| newExtent |
 	newExtent := (self extent + (aFloat@aFloat)).
 
 	self flag: 'magic number'.
-	((newExtent x > 1) or: [newExtent y > 1]) ifTrue: [^ nil].
+	(self canChangeSizeBy: aFloat) ifFalse: [^ nil].
 	(self isOverlappingOrigin: self origin withExtent: newExtent) ifTrue: [^ nil].
 
 	self extent: newExtent
@@ -45,13 +60,32 @@ GMTEView >> initialize [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 22:43'
 }
 GMTEView >> isOverlappingOrigin: anOrigin withExtent: anExtent [
 
 	| corner |
 	corner := anOrigin + anExtent.
-	^ (corner x > 1) or: [corner y > 1]
+	
+	self flag: 'tmp for testing'.
+	^ false.
+	
+	"^ (((corner x > 1) or: [corner y > 1]) or: [anOrigin x < 0]) or: [anOrigin y < 0]"
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:41'
+}
+GMTEView >> moveBy: aPoint [
+	"Set origin but also respect view not overlapping reference view"
+
+	| newOrigin |
+	newOrigin := self origin + aPoint.
+
+	(self isOverlappingOrigin: newOrigin withExtent: self extent) ifTrue: [^ nil].
+	
+	self origin: newOrigin
 ]
 
 {
@@ -68,11 +102,11 @@ GMTEView >> moveTo: anOrigin [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 20:35'
 }
 GMTEView >> origin: aPoint [
 
-	self setOrigin: aPoint corner: (aPoint + self corner)
+	self setOrigin: aPoint corner: (aPoint + (self corner - self origin))
 ]
 
 {
@@ -83,21 +117,6 @@ GMTEView >> reset [
 
 	self setOrigin: 0 @ 0 corner: 1 @ 1.
 
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:16'
-}
-GMTEView >> shrinkBy: aFloat [
-
-	| newExtent |
-	newExtent := (self extent - (aFloat@aFloat)).
-
-	self flag: 'magic number'.
-	((newExtent x <= 0.1) or: [newExtent y <= 0.1]) ifTrue: [^ nil].
-
-	self extent: newExtent
 ]
 
 {
