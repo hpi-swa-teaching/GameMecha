@@ -412,13 +412,13 @@ GMTEEditor >> brushButtons: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'mcjj 7/11/2024 16:15'
+	#'squeak_changestamp' : 'JS 7/12/2024 18:20'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
 	"called it builder instead of aBuilder since every other implementation does that"
 	
-	| newMorph selectedTile panel | 
+	| newMorph panel | 
 	"TODO: Build process contains a lot of magic numbers regarding relative/absolute positioning"
 	newMorph := builder build: (builder pluggableWindowSpec new
 		model: self;
@@ -447,15 +447,7 @@ GMTEEditor >> buildWith: builder [
 	panel := GMTETileContainer withParent: self tileStore.
 	self tileStore morph: panel.
 
-	selectedTile := GMTETileSelector new 
-		visible: false;
-		model:self;
-		yourself.
-		
-	"TODO: Work in progress."
-	self trayViewer morph: GMTETileTray new.
-	self trayViewer morph
-		addMorph: selectedTile.
+	self placeSelectedTileIntoTileTray.
 		
 	self tileViewer 
 		borderWidth: 2;
@@ -1670,6 +1662,24 @@ GMTEEditor >> parseSize: aText [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'JS 7/12/2024 18:20'
+}
+GMTEEditor >> placeSelectedTileIntoTileTray [
+	
+	| selectedTile |
+	selectedTile := GMTETileSelector new 
+		visible: false;
+		name: 'selectedTile';
+		model: self;
+		yourself.
+		
+	self trayViewer morph 
+		color: Color transparent;
+		addMorph: selectedTile
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 21:27'
 }
@@ -1800,6 +1810,15 @@ GMTEEditor >> resetSelectedLayers [
 
 {
 	#category : #TODO,
+	#'squeak_changestamp' : 'tw 7/12/2024 17:46'
+}
+GMTEEditor >> resetView [
+
+	self tileMap resetView
+]
+
+{
+	#category : #TODO,
 	#'squeak_changestamp' : 'mcjj 7/11/2024 17:52'
 }
 GMTEEditor >> rotateSelectedTile [
@@ -1910,7 +1929,7 @@ GMTEEditor >> selectRectangleBrush [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/9/2024 15:25'
+	#'squeak_changestamp' : 'JS 7/12/2024 18:12'
 }
 GMTEEditor >> selectTile: anObject [
 	"selects a tile from the tile store"
@@ -1921,7 +1940,7 @@ GMTEEditor >> selectTile: anObject [
 	ifFalse: [
 		self selectedTile: anObject fullResolutionSprite.
 		self tileMap tileSelectionSet highlightImage: anObject fullResolutionSprite.
-		self trayViewer morph submorphs first
+		(self trayViewer morph submorphNamed: 'selectedTile')
 			visible: true;
 			updateSprite: anObject fullResolutionSprite;
 			extent: 75@75]
@@ -2049,7 +2068,7 @@ GMTEEditor >> setPadding: aText [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/25/2024 18:17'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:45'
 }
 GMTEEditor >> settingsMenu [
 	"opens the setting menu"
@@ -2069,9 +2088,9 @@ GMTEEditor >> settingsMenu [
 		selector: #toggleBackgroundTiles
 		argumentList: {};
 		
-		add: 'Rotate Tile'
+		add: 'Reset View'
 		target: self
-		selector: #rotateSelectedTile
+		selector: #resetView
 		argumentList: {}.
 		
 	builder open: aMenuSpec
