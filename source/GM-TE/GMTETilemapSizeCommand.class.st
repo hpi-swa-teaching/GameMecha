@@ -2,7 +2,6 @@ Class {
 	#name : #GMTETilemapSizeCommand,
 	#superclass : #GMTEEditTilesCommand,
 	#instVars : [
-		'method',
 		'prevSize',
 		'newSize',
 		'savedTiles'
@@ -12,41 +11,26 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:39'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 20:00'
 }
-GMTETilemapSizeCommand class >> prevValue: aNumber1 newValue: aNumber2 method: aSymbol editor: anEditor [
+GMTETilemapSizeCommand class >> prevSize: aPoint1 newSize: aPoint2 editor: anEditor [
 
 	^ (self new)
 		
-		prevSize: aNumber1;
-		newSize: aNumber2;
-		method: aSymbol;
-		editor: anEditor
+		prevSize: aPoint1;
+		newSize: aPoint2;
+		editor: anEditor;
+		saveTiles;
+		yourself
 ]
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/2/2024 16:36'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:41'
 }
 GMTETilemapSizeCommand >> do [
 
-	self editor perform: self method with: self newSize
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:48'
-}
-GMTETilemapSizeCommand >> method [
-	^ method
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:48'
-}
-GMTETilemapSizeCommand >> method: anObject [
-	method := anObject
+	self editor rescaleGridDimensions: self newSize
 ]
 
 {
@@ -82,21 +66,47 @@ GMTETilemapSizeCommand >> prevSize: anObject [
 ]
 
 {
-	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:06'
+	#category : #restoring,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:57'
 }
 GMTETilemapSizeCommand >> restoreTiles [
-	"TODO: Use function of tilemap"
 	
-	"currently done by Editor, needs to be implemented correctly"
+	self placeTilesFromList: self savedTiles
+]
+
+{
+	#category : #restoring,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 20:12'
+}
+GMTETilemapSizeCommand >> saveTiles [
+
+	self
+		savedTiles: (self editor tileMap tileMatrixStack tileLossAfterRescaleToWidth: self newSize x height: self newSize y);
+		tileMap: self editor tileMap
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:31'
+}
+GMTETilemapSizeCommand >> savedTiles [
+	^ savedTiles
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:31'
+}
+GMTETilemapSizeCommand >> savedTiles: anObject [
+	savedTiles := anObject
 ]
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/2/2024 17:22'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:41'
 }
 GMTETilemapSizeCommand >> undo [
 
-	self editor perform: self method with: self prevSize.
+	self editor rescaleGridDimensions: self prevSize.
 	self restoreTiles
 ]

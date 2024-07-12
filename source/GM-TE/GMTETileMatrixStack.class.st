@@ -137,6 +137,17 @@ GMTETileMatrixStack >> doLayers: aBlock [
 
 {
 	#category : #eumerating,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:15'
+}
+GMTETileMatrixStack >> doLayersWithIds: aBlock [
+	| layerNumber |
+	
+	layerNumber := self matrixLayers size.
+	(1 to: layerNumber) do: [:i | aBlock value: (self matrixLayers at: i) value: i]
+]
+
+{
+	#category : #eumerating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/23/2024 19:53'
 }
 GMTETileMatrixStack >> doTiles: aBlock [
@@ -392,7 +403,7 @@ GMTETileMatrixStack >> removeLayersAt: aSet [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'TW 6/22/2024 01:27'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:53'
 }
 GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 	"This will rescale layers be recreating them"
@@ -402,7 +413,7 @@ GMTETileMatrixStack >> rescaleToWidth: aWidth height: aHeight [
 		width: aWidth;
 		height: aHeight. 
 	
-	newLayers := LinkedList new.
+	newLayers := OrderedCollection new.
 
 	self doLayers: [:layer | 
 		newLayer := layer asRescaledToWidth: aWidth height: aHeight.
@@ -505,15 +516,15 @@ GMTETileMatrixStack >> swapLayer: anIndex1 with: anIndex2 [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 18:03'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:00'
 }
 GMTETileMatrixStack >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
 
 	| removedTiles |
-	removedTiles := Set new.
+	removedTiles := Dictionary new.
 	
-	self doLayers: [:layer |
-		removedTiles := removedTiles addAll: (layer tileLossAfterRescaleToWidth: aWidth height: aHeight)].
+	self doLayersWithIds: [:layer :id |
+		removedTiles addAll: (layer tileLossAfterRescaleToWidth: aWidth height: aHeight layerId: id)].
 	
 	^ removedTiles
 ]

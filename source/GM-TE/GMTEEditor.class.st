@@ -1736,6 +1736,16 @@ GMTEEditor >> renameLayer [
 
 {
 	#category : #tilemap,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:51'
+}
+GMTEEditor >> rescaleGridDimensions: aPoint [
+	
+	(self getGridWidth = aPoint x)	ifFalse: [self rescaleGridWidth: aPoint x].
+	(self getGridHeight = aPoint y) ifFalse: [self rescaleGridHeight: aPoint y].
+]
+
+{
+	#category : #tilemap,
 	#'squeak_changestamp' : 'Alex M 7/1/2024 21:04'
 }
 GMTEEditor >> rescaleGridHeight: aValue [
@@ -2006,18 +2016,18 @@ GMTEEditor >> setBrushRadiusFromText: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 21:06'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 20:03'
 }
 GMTEEditor >> setGridHeight: aText [
 	"adjusts the grid height"
 	
-	| oldHeight newHeight |
-	oldHeight := self getGridHeight.
+	| oldSize newHeight |
+	oldSize := self getGridWidth @ self getGridHeight.
 	newHeight := self parseGridSize: aText.
 	newHeight ifNotNil: [
 		self
-			rescaleGridHeight: newHeight;
-			addCommand: (GMTETilemapSizeCommand prevValue: oldHeight newValue: newHeight method: #rescaleGridHeight: editor: self)].
+			addCommand: (GMTETilemapSizeCommand prevSize: oldSize newSize: oldSize x @ newHeight editor: self);
+			rescaleGridHeight: newHeight].
 	^ true
 		
 
@@ -2025,19 +2035,18 @@ GMTEEditor >> setGridHeight: aText [
 
 {
 	#category : #tilemap,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 21:06'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 20:06'
 }
 GMTEEditor >> setGridWidth: aText [
 	"adjusts the grid width"
-	"TODO: Fix visual layer bug"
 	
-	| oldWidth newWidth |
-	oldWidth := self getGridWidth.
+	| oldSize newWidth |
+	oldSize := self getGridWidth @ self getGridHeight.
 	newWidth := self parseGridSize: aText.
-	oldWidth ifNotNil: [
+	newWidth ifNotNil: [
 		self
-			rescaleGridWidth: newWidth;
-			addCommand: (GMTETilemapSizeCommand prevValue: oldWidth newValue: newWidth method: #rescaleGridWidth: editor: self)].
+			addCommand: (GMTETilemapSizeCommand prevSize: oldSize newSize: newWidth @ oldSize y  editor: self);
+			rescaleGridWidth: newWidth].
 	^ true
 
 ]
@@ -2232,7 +2241,7 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/10/2024 14:17'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 19:52'
 }
 GMTEEditor >> undo [
 
@@ -2241,10 +2250,8 @@ GMTEEditor >> undo [
 		ifTrue: [(self commands at: self currentCommand) undo.
 			self
 				savedSinceModified: false;
-				currentCommand: self currentCommand - 1.
-			({GMTETilemapSizeCommand. GMTEDeleteLayersCommand} includes: (self commands at: self currentCommand + 1) class)
-				ifTrue: [self redoAllCommandsUntil: self currentCommand].
-			self savedSinceModified: false]
+				currentCommand: self currentCommand - 1;
+				savedSinceModified: false]
 ]
 
 {

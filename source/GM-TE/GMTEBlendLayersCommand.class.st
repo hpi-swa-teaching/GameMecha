@@ -1,5 +1,5 @@
 Class {
 	#name : #GMTEBlendLayersCommand,
-	#superclass : #GMTEEditTilesCommand,
+	#superclass : #GMTETilemapSizeCommand,
 	#category : #'GM-TE-UI'
 }

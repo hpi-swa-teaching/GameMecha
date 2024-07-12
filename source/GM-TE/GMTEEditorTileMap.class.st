@@ -294,11 +294,13 @@ GMTEEditorTileMap >> resetTileEditChanges [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:34'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:44'
 }
 GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
-	
 	| tile | 
+	
+	anIndex ifNil: [^ nil].
+	
 	tile := self tileMatrixStack layer: aLayer at: anIndex y at: anIndex x.
 
 	tile
