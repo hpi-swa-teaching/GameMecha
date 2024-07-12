@@ -10,7 +10,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'TW 6/23/2024 23:36'
 }
 GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIndex: anIndex [

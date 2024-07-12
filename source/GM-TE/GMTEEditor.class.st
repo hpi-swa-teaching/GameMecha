@@ -1027,12 +1027,15 @@ GMTEEditor >> exportAsImage [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'jj 6/23/2024 14:14'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 19:18'
 }
 GMTEEditor >> exportAsMorph [
 	"saves the current tileMap as a .morph file, which allows for reimporting"
 	
-	(self tileMap copy model: nil) saveOnFile. 
+	((self tileMap veryDeepCopy) 
+		model: nil;
+		resetView
+	) saveOnFile. 
 	self savedSinceModified: true
 ]
 

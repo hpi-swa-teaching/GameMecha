@@ -5,38 +5,66 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:06'
+	#category : #constants,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:22'
 }
-GMTEView >> canChangeSizeBy: aFloat [
+GMTEView class >> minExtentValue [
+	"Note: Heavily impacts performance, when used as Zoom Frame, since many big ImageMorph's seem to induce a major performance penality"
 	
-	| newExtent |
-	newExtent := (self extent + (aFloat@aFloat)).
-
-	((newExtent x <= 0.1) or: [newExtent y <= 0.1]) ifTrue: [^ false].
-	((newExtent x > 1) or: [newExtent y > 1]) ifTrue: [^ false].
-	^ true
-
+	^ 0.35
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:01'
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:05'
 }
 GMTEView >> changeSizeBy: aFloat [
 
-	| newExtent |
-	newExtent := (self extent + (aFloat@aFloat)).
+	| newExtent newOrigin |
 
-	self flag: 'magic number'.
-	(self canChangeSizeBy: aFloat) ifFalse: [^ nil].
-	(self isOverlappingOrigin: self origin withExtent: newExtent) ifTrue: [^ nil].
-
+	newExtent := self correctedExtent: (self extent + (aFloat@aFloat)).
+	newOrigin := self correctedOrigin: self origin withExtent: newExtent.
+	
+	self origin: newOrigin.
 	self extent: newExtent
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #conversion,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:14'
+}
+GMTEView >> correctedExtent: anExtent [
+	
+	| newX newY |
+	
+	newX := (anExtent x min: 1) max: GMTEView minExtentValue.
+	newY := (anExtent y min: 1) max: GMTEView minExtentValue.
+	
+	^ newX @ newY.
+]
+
+{
+	#category : #conversion,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:13'
+}
+GMTEView >> correctedOrigin: anOrigin withExtent: anExtent [
+
+	| newX newY |
+	"Assuming: (0, 0) <= anExtent <= (1, 1)"
+	newX := anOrigin x.
+	newY := anOrigin y.
+	
+	(newX < 0) ifTrue: [newX := 0].	
+	(newX + anExtent x > 1) ifTrue: [newX := 1 - anExtent x].
+
+	(newY < 0) ifTrue: [newY := 0].	
+	(newY + anExtent y > 1) ifTrue: [newY := 1 - anExtent y].
+	
+	^ newX @ newY
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:20'
 }
 GMTEView >> extent: anExtent [
@@ -59,49 +87,28 @@ GMTEView >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 22:43'
-}
-GMTEView >> isOverlappingOrigin: anOrigin withExtent: anExtent [
-
-	| corner |
-	corner := anOrigin + anExtent.
-	
-	self flag: 'tmp for testing'.
-	^ false.
-	
-	"^ (((corner x > 1) or: [corner y > 1]) or: [anOrigin x < 0]) or: [anOrigin y < 0]"
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:41'
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:10'
 }
 GMTEView >> moveBy: aPoint [
-	"Set origin but also respect view not overlapping reference view"
+	"Move origin but also respect view not overlapping reference view"
 
-	| newOrigin |
-	newOrigin := self origin + aPoint.
-
-	(self isOverlappingOrigin: newOrigin withExtent: self extent) ifTrue: [^ nil].
-	
-	self origin: newOrigin
+	self origin: (self correctedOrigin: (self origin + aPoint) withExtent: self extent)
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:20'
+	#category : #updating,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 19:44'
 }
 GMTEView >> moveTo: anOrigin [
 	"Set origin but also respect view not overlapping reference view"
 
-	(self isOverlappingOrigin: anOrigin withExtent: self extent) ifTrue: [^ nil].
-	
-	self origin: anOrigin
+	self origin: (self correctedOrigin: anOrigin withExtent: self extent)
+
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 20:35'
 }
 GMTEView >> origin: aPoint [
@@ -110,7 +117,7 @@ GMTEView >> origin: aPoint [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #updating,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:33'
 }
 GMTEView >> reset [
@@ -120,7 +127,7 @@ GMTEView >> reset [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:53'
 }
 GMTEView >> size: aFraction [

@@ -55,8 +55,8 @@ GMTETileMap class >> maxLayers [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:15'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:16'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -78,14 +78,13 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	"Initially draw background tiles"
 	newMap updateTilesBackground.
 	newMap resetView.
-	self flag: 'dragging does not work properly when openedInWorld'.
-	newMap hasStaticView: false.
+	newMap hasStaticView: true.
 	
 	^ newMap 
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:12'
 }
 GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
@@ -214,24 +213,6 @@ GMTETileMap >> borderTileWidth [
 GMTETileMap >> borderTileWidth: anObject [
 
 	borderTileWidth := anObject
-]
-
-{
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
-}
-GMTETileMap >> canZoomInBy: aFloat [
-
-	^ self view canChangeSizeBy: (aFloat negated)
-]
-
-{
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
-}
-GMTETileMap >> canZoomOutBy: aFloat [
-
-	^ self view canChangeSizeBy: aFloat
 ]
 
 {
@@ -518,6 +499,15 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 
 {
 	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:18'
+}
+GMTETileMap >> handlesMouseDown: anEvent [
+
+	^ (self hasStaticView not) and: [anEvent shiftPressed]
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:16'
 }
 GMTETileMap >> handlesMouseMove: anEvent [
@@ -765,7 +755,7 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 19:12'
 }
 GMTETileMap >> mouseMove: anEvent [
 
@@ -1430,20 +1420,18 @@ GMTETileMap >> zoomAt: aPoint by: aFloat [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
 }
 GMTETileMap >> zoomInAt: aPoint [
 
-	(self canZoomInBy: 0.1) ifFalse: [^ nil].	
 	self zoomAt: aPoint by: 0.1
 ]
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
 }
 GMTETileMap >> zoomOutAt: aPoint [
 	
-	(self canZoomOutBy: 0.1) ifFalse: [^ nil].
 	self zoomAt: aPoint by: -0.1
 ]
