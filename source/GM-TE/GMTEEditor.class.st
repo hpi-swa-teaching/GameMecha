@@ -76,6 +76,26 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/11/2024 17:03'
+}
+GMTEEditor class >> hLayoutFrame: intI ofN: intN vSymmetric: aFloat [
+
+	^ self hLayoutFrame: intI ofN: intN vUp: aFloat down: aFloat
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/11/2024 17:05'
+}
+GMTEEditor class >> hLayoutFrame: intI ofN: intN vUp: aFloat down: anotherFloat [
+
+	"useful for building buttons, maybe move this to instance? TODO FLAG"
+	
+	^ LayoutFrame fractions: ((intI - 1 / intN @ aFloat) corner: (intI / intN @ (1 - anotherFloat)))
+]
+
+{
 	#category : #constants,
 	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
 }
@@ -212,6 +232,15 @@ GMTEEditor class >> tileMapMinPaddingSize [
 	"the minimum size of the tileMap padding"
 	
 	^ 0
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'tw 7/11/2024 16:52'
+}
+GMTEEditor class >> toolBarVSpace [
+
+	^ 0.1
 ]
 
 {
@@ -373,7 +402,7 @@ GMTEEditor >> brushButtons: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:15'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 16:15'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -393,7 +422,9 @@ GMTEEditor >> buildWith: builder [
 			self createInspectorSpecWithBuilder: builder};
 		closeAction: #onClose;
 		minimumExtent: GMTEEditor editorMinimumExtent).
-			
+	
+	newMorph addKeyboardCaptureFilter: self.
+	
 	self commandBar: (newMorph submorphNamed: 'command bar').
 	"self commandBar vResizing: #rigid."
 	self tileStore: (newMorph submorphNamed: 'tile store').
@@ -606,7 +637,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:42'
+	#'squeak_changestamp' : 'tw 7/11/2024 17:48'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 	"creates the spec for the inspector tab"
@@ -621,8 +652,6 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 		children: {
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self.
 		
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Tile Ratio:' getter: #getTileRatioAsString setter: #setTileRatio: model: self.
-		
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self.
 
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self
@@ -634,7 +663,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 02:14'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 18:04'
 }
 GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	"creates the spec for layer viewer"
@@ -642,6 +671,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'layer viewer';
 		model: self;
+		minimumExtent:150 @ 150;
 		frame: (LayoutFrame
 			fractions: (0.8 @ 0.25 corner: 1 @ 1));
 		children: {
@@ -735,7 +765,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:44'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 18:04'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"creates the spec for the tile viewer"
@@ -755,11 +785,10 @@ GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 				layout: #horizontal;
 				model:self;
 				frame: (LayoutFrame
-					fractions: (0@0 corner: 1@1)
-					offsets: (0@30 corner: 0@ 0))
+					fractions: (0 @ 0 corner: 1 @ 0.9))
 		 };
 		
-		minimumExtent:150@150;
+		minimumExtent:150 @ 150;
 		yourself
 ]
 
@@ -786,7 +815,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 02:12'
+	#'squeak_changestamp' : 'tw 7/11/2024 17:05'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -794,13 +823,13 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'toolbar';
 		model: self;
-		frame: (LayoutFrame fractions: (0@0 corner: 1@0) offsets:(0@0 corner: 0@30));
+		frame: (LayoutFrame fractions: (0.05@0.9 corner: 0.95@1));
 		children: {		
 			(aBuilder pluggableImageButtonSpec new)
 				name: 'undo';
 				description: 'Undo';
 				model: self;
-				frame: (LayoutFrame fractions: (0 @ 0 corner: (1 / 6) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 1 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #undo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/undo.png'.
@@ -809,7 +838,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'redo';
 				description: 'Redo';
 				model: self;
-				frame: (LayoutFrame fractions: ((1 / 6) @ 0 corner: (2 / 6) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 2 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #redo;
 				project: 'GameMecha';
 				path: '/GMTEIcons/redo.png'.
@@ -818,17 +847,27 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'radiusBrush';
 				description: 'Brush';
 				model: self;
-				frame: (LayoutFrame fractions: ((2 / 6) @ 0 corner: (3 / 6) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 3 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectRadiusBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
 				path: '/GMTEIcons/brush.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
+				name: 'lineBrush';
+				description: 'Line Tool';
+				model: self;
+				frame: (GMTEEditor hLayoutFrame: 4 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
+				action: #selectLineBrush;
+				project: 'GameMecha';
+				buttonGroup: self brushButtons;
+				path: '/GMTEIcons/line.png'.
+				
+			(aBuilder pluggableImageButtonSpec new)
 				name: 'fillBrush';
 				description: 'Fill Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((3 / 6) @ 0 corner: (4 / 6) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 5 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectFillBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -838,7 +877,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				name: 'rectangleBrush';
 				description: 'Rectangle Tool';
 				model: self;
-				frame: (LayoutFrame fractions: ((4 / 6) @ 0 corner: (5 / 6) @ 1) offsets: nil);
+				frame: (GMTEEditor hLayoutFrame: 6 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
 				action: #selectRectangleBrush;
 				project: 'GameMecha';
 				buttonGroup: self brushButtons;
@@ -849,10 +888,8 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				getter: #getBrushRadiusAsString
 				setter: #setBrushRadiusFromText: 
 				model: self 
-				frame:(LayoutFrame fractions: ((4.5 / 6) @ 0 corner: 0.95 @ 1) offsets: (20 @ 0 corner: 0 @ 0)).
+				frame: ((GMTEEditor hLayoutFrame: 7 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace)).
 			};
-			
-			
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -1020,6 +1057,29 @@ GMTEEditor >> exportMenu [
 		argumentList: {}.
 		
 	builder open: aMenuSpec
+]
+
+{
+	#category : #'input handling',
+	#'squeak_changestamp' : 'mcjj 7/12/2024 00:19'
+}
+GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
+	| key |
+	
+	aKeyboardEvent isKeystroke
+		ifFalse: [^ aKeyboardEvent].
+	
+	key := aKeyboardEvent keyCharacter.
+
+	aKeyboardEvent commandKeyPressed ifTrue: [
+		key caseOf: {
+			[$z] -> [self undo].
+			[$y] -> [self redo].
+			[$r] -> [self rotateSelectedTile].
+		} otherwise: [^ aKeyboardEvent "no hit"].
+		^ aKeyboardEvent ignore "hit"].
+	
+	^ aKeyboardEvent "no hit"
 ]
 
 {
@@ -1487,15 +1547,14 @@ GMTEEditor >> moveLayerUp [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 21:27'
+	#'squeak_changestamp' : 'Alex M 7/11/2024 00:34'
 }
 GMTEEditor >> onClose [
 	"asks the user whether they want to save their progress"
 	
-	"self savedSinceModified
+	self savedSinceModified
 		ifFalse: [(PopUpMenu confirm: 'Save before closing?')
-			ifTrue: [self exportAsMorph]]"
-	"COMMENTED FOR EASIER DEBUGGING"
+			ifTrue: [self exportAsMorph]]
 ]
 
 {
@@ -1615,13 +1674,15 @@ GMTEEditor >> ratio: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'TW 7/2/2024 17:47'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 14:17'
 }
 GMTEEditor >> redo [
 	
 	(self currentCommand < self commands size) 
 		ifTrue: [
-			self currentCommand: self currentCommand + 1.
+			self
+				savedSinceModified: false;
+				currentCommand: self currentCommand + 1.
 			(self commands at: self currentCommand) do.
 			self savedSinceModified: false]
 ]
@@ -1723,12 +1784,14 @@ GMTEEditor >> resetSelectedLayers [
 
 {
 	#category : #TODO,
-	#'squeak_changestamp' : 'Alex M 6/25/2024 18:26'
+	#'squeak_changestamp' : 'mcjj 7/11/2024 17:52'
 }
 GMTEEditor >> rotateSelectedTile [
 	
 	self selectedTile: (self selectedTile rotateBy: #right centerAt: (self selectedTile extent / 2)).
-	self tileMap tileSelectionSet highlightImage: self selectedTile
+	self tileMap tileSelectionSet removeAllHighlightings.
+	self tileMap tileSelectionSet highlightImage: self selectedTile.
+	self tileMap tileSelectionSet applyAllHighlightings
 ]
 
 {
@@ -1783,6 +1846,15 @@ GMTEEditor >> selectLayer: anIndex [
 		changed: #selectedLayers;
 		changed: #layerAt:
 	
+]
+
+{
+	#category : #'menu button functions',
+	#'squeak_changestamp' : 'tw 7/11/2024 16:23'
+}
+GMTEEditor >> selectLineBrush [
+
+	self brush selectLineBrush
 ]
 
 {
@@ -2131,14 +2203,16 @@ GMTEEditor >> trayViewer: anObject [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/10/2024 03:49'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 14:17'
 }
 GMTEEditor >> undo [
 
 	self flag: 'DO THIS USING TILEMAP FUNCTIONS'.
 	(self currentCommand > 1) 
 		ifTrue: [(self commands at: self currentCommand) undo.
-			self currentCommand: self currentCommand - 1.
+			self
+				savedSinceModified: false;
+				currentCommand: self currentCommand - 1.
 			({GMTETilemapSizeCommand. GMTEDeleteLayersCommand} includes: (self commands at: self currentCommand + 1) class)
 				ifTrue: [self redoAllCommandsUntil: self currentCommand].
 			self savedSinceModified: false]

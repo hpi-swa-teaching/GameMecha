@@ -1,6 +1,6 @@
 Class {
 	#name : #GMTEDeleteLayersCommand,
-	#superclass : #GMTETilemapSizeCommand,
+	#superclass : #GMTEEditTilesCommand,
 	#instVars : [
 		'layers'
 	],

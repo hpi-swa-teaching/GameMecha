@@ -40,28 +40,11 @@ GMTEEditTilesCommand >> currentSprites: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'TW 7/2/2024 17:54'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 13:42'
 }
 GMTEEditTilesCommand >> do [
-	| tile sprite layer x y |
 	
-	self currentSprites keysDo: [ :coordinates |
-		x := coordinates at: 1.
-		y := coordinates at: 2.
-		layer := coordinates at: 3.
-		
-		tile := self tileMap tileMatrixStack layer: layer at: y at: x.
-		sprite := self currentSprites at: coordinates.
-		tile
-			ifNil: [sprite 
-				ifNotNil: [
-					tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile. 
-					tile updateSprite: sprite]]
-			ifNotNil: [sprite
-				ifNil: [
-					self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
-					tile abandon]
-				ifNotNil: [tile updateSprite: (self currentSprites at: coordinates)]]]
+	self placeTilesFromList: self currentSprites
 ]
 
 {
@@ -73,6 +56,32 @@ GMTEEditTilesCommand >> initialize [
 	self
 		previousSprites: Dictionary new;
 		currentSprites: Dictionary new
+]
+
+{
+	#category : #execution,
+	#'squeak_changestamp' : 'Alex M 7/10/2024 13:44'
+}
+GMTEEditTilesCommand >> placeTilesFromList: aList [
+	| tile sprite layer x y |
+	
+	aList keysDo: [ :coordinates |
+		x := coordinates at: 1.
+		y := coordinates at: 2.
+		layer := coordinates at: 3.
+		
+		tile := self tileMap tileMatrixStack layer: layer at: y at: x.
+		sprite := aList at: coordinates.
+		tile
+			ifNil: [sprite 
+				ifNotNil: [
+					tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile. 
+					tile updateSprite: sprite]]
+			ifNotNil: [sprite
+				ifNil: [
+					self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
+					tile abandon]
+				ifNotNil: [tile updateSprite: (aList at: coordinates)]]]
 ]
 
 {
@@ -109,26 +118,9 @@ GMTEEditTilesCommand >> tileMap: anObject [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'TW 7/2/2024 17:54'
+	#'squeak_changestamp' : 'Alex M 7/10/2024 13:43'
 }
 GMTEEditTilesCommand >> undo [
-	| tile sprite layer x y |
 	
-	self previousSprites keysDo: [ :coordinates |
-		x := coordinates at: 1.
-		y := coordinates at: 2.
-		layer := coordinates at: 3.
-		
-		tile := self tileMap tileMatrixStack layer: layer at: y at: x.
-		sprite := self previousSprites at: coordinates.
-		tile
-			ifNil: [sprite 
-				ifNotNil: [
-					tile := tileMap generateTileAtlayer: layer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile.
-					tile updateSprite: sprite]]
-			ifNotNil: [sprite
-				ifNil: [
-					self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
-					tile abandon]
-				ifNotNil: [tile updateSprite: (self previousSprites at: coordinates)]]]
+	self placeTilesFromList: self previousSprites
 ]
