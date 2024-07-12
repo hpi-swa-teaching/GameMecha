@@ -91,7 +91,7 @@ GMTEEditorTileMap >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 20:24'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:04'
 }
 GMTEEditorTileMap >> initialize [
 
@@ -99,7 +99,8 @@ GMTEEditorTileMap >> initialize [
 	self
 		tileSelectionSet: (GMTETileSelectionSet new);
 		previousTileStates: Dictionary new;
-		currentTileChanges: Dictionary new
+		currentTileChanges: Dictionary new;
+		hasStaticView: false
 ]
 
 {
@@ -151,12 +152,15 @@ GMTEEditorTileMap >> mouseLeave: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 17:01'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:52'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
 	"Implements highlighting of tiles when hovering"
 
 	| hoveredTileHighlighting activeLayer selectedCoordinates |
+	super mouseMove: anEvent.
+	anEvent shiftPressed ifTrue: [^ nil].	
+
 	self model singleLayerSelected ifFalse: [^ nil].
 	
 	activeLayer := self model selectedLayers anyOne.
