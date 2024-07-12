@@ -26,12 +26,21 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:15'
+	#'squeak_changestamp' : 'tw 7/12/2024 20:36'
 }
 GMTEEditor class >> editorMinimumExtent [
 	"minimum extent of the tile editor"
 	
-	^ 550 @ 400
+	^ RealEstateAgent scaleFactor * (700 @ 400)
+]
+
+{
+	#category : #constants,
+	#'squeak_changestamp' : 'tw 7/12/2024 20:12'
+}
+GMTEEditor class >> getInputFieldSize [
+
+	^ (TextStyle defaultFont approxWidthOfText: '1.00' asText)
 ]
 
 {
@@ -255,11 +264,11 @@ GMTEEditor class >> tileMapMinPaddingSize [
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'tw 7/11/2024 16:52'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:22'
 }
 GMTEEditor class >> toolBarVSpace [
 
-	^ 0.1
+	^ 0.15
 ]
 
 {
@@ -450,7 +459,7 @@ GMTEEditor >> brushButtons: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JS 7/12/2024 18:20'
+	#'squeak_changestamp' : 'tw 7/12/2024 20:35'
 }
 GMTEEditor >> buildWith: builder [
 	"builds the editor with ToolBuilder"
@@ -467,7 +476,8 @@ GMTEEditor >> buildWith: builder [
 			self createTilestoreSpecWithBuilder: builder.
 			self createTraySpecWithBuilder: builder.
 			self createLayersSpecWithBuilder: builder.
-			self createInspectorSpecWithBuilder: builder};
+			self createInspectorSpecWithBuilder: builder.
+			self createToolBarSpecWithBuilder: builder.};
 		closeAction: #onClose;
 		minimumExtent: GMTEEditor editorMinimumExtent).
 	
@@ -496,6 +506,16 @@ GMTEEditor >> buildWith: builder [
 		associatedMorph: newMorph.
 		
 	^ newMorph
+]
+
+{
+	#category : #helper,
+	#'squeak_changestamp' : 'tw 7/12/2024 20:14'
+}
+GMTEEditor >> calculateAttributeContainerWidth: aString [
+
+	"calculates the minimum width of an attribute container with aString as label"
+	^ (self getSizeOfString: aString) + GMTEEditor getInputFieldSize
 ]
 
 {
@@ -576,42 +596,14 @@ GMTEEditor >> confirmPreviewOf: morphArray withDimensions: aPoint withTileSize: 
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:41'
-}
-GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel [
-	"a helper function to create attribute specs"
-	
-	^ self withMorphOf: ((aBuilder pluggablePanelSpec new)
-		frame: (LayoutFrame
-		fractions: (0 @ 0 corner: 1 @ 1));
-		layout: #proportional;
-		children: {
-			(aBuilder pluggableStaticTextSpec new)
-			model: aModel;
-			frame: (LayoutFrame offsets: (0 @ 0 corner: 120 @ 30));
-			text: aString.
-			
-			(aBuilder pluggableInputFieldSpec new)
-			model: aModel;
-			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame offsets: (120 @ 0 corner: 180 @ 30));
-			getText: aSelector;
-			setText: anotherSelector
-		};
-		yourself) do: [:morph |
-			morph layoutPolicy: TableLayout new]
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'tw 7/12/2024 18:57'
+	#'squeak_changestamp' : 'tw 7/12/2024 20:11'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel frame: aFrame [ 
 	"a helper function to create attribute specs"
 	
 	| minTextWidth minInputWidth |
-	minTextWidth := (TextStyle defaultFont approxWidthOfText: aString asText).
-	minInputWidth := (TextStyle defaultFont approxWidthOfText: '1234' asText).
+	minTextWidth := self getSizeOfString: aString.
+	minInputWidth := GMTEEditor getInputFieldSize.
 	
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'attributeContainer';
@@ -684,7 +676,7 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/12/2024 19:01'
+	#'squeak_changestamp' : 'tw 7/12/2024 20:07'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 	"creates the spec for the inspector tab"
@@ -700,7 +692,7 @@ GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 		
 		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self frame: (GMTEEditor vLayoutFrame: 3 ofN: 3)
 		};
-		minimumWidth: (self getMaximalLengthOfStrings: (OrderedCollection newFrom: {'Padding:' . 'Grid Width:' . 'Grid Height:'}));
+		minimumWidth: (self getMaximalSizeOfStrings: (OrderedCollection newFrom: {'Padding:' . 'Grid Width:' . 'Grid Height:'}));
 		yourself
 ]
 
@@ -808,7 +800,7 @@ GMTEEditor >> createLayersSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 7/11/2024 18:04'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:19'
 }
 GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	"creates the spec for the tile viewer"
@@ -817,18 +809,15 @@ GMTEEditor >> createTileViewerSpecWithBuilder: aBuilder [
 	^ aBuilder pluggablePanelSpec new
 		name: 'main panel';
 		model:self;
-		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.8)
+		frame: (LayoutFrame fractions: (0.2 @ 0 corner: 0.8 @ 0.7)
 		offsets: (0@ 30 corner: 0@0));
-		children: {
-		
-			self createToolBarSpecWithBuilder: aBuilder.
-					
+		children: {					
 			(aBuilder pluggablePanelSpec new)
 				name: 'tile viewer';
 				layout: #horizontal;
 				model:self;
 				frame: (LayoutFrame
-					fractions: (0 @ 0 corner: 1 @ 0.9))
+					fractions: (0 @ 0 corner: 1 @ 1))
 		 };
 		
 		minimumExtent:150 @ 150;
@@ -858,81 +847,89 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/12/2024 17:08'
+	#'squeak_changestamp' : 'tw 7/12/2024 20:38'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
 	
+	| radiusLabel |
+	
+	radiusLabel := 'radius:'.
+	
 	^ (aBuilder pluggablePanelSpec new)
 		name: 'toolbar';
 		model: self;
-		frame: (LayoutFrame fractions: (0.05@0.9 corner: 0.95@1));
-		children: {		
-			(aBuilder pluggableImageButtonSpec new)
-				name: 'undo';
-				description: 'Undo';
-				model: self;
-				frame: (GMTEEditor hLayoutFrame: 1 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
-				action: #undo;
-				project: 'GameMecha';
-				path: '/GMTEIcons/undo.png'.
-				
-			(aBuilder pluggableImageButtonSpec new)
-				name: 'redo';
-				description: 'Redo';
-				model: self;
-				frame: (GMTEEditor hLayoutFrame: 2 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
-				action: #redo;
-				project: 'GameMecha';
-				path: '/GMTEIcons/redo.png'.
-				
-			(aBuilder pluggableImageButtonSpec new)
-				groupName: 'radiusBrush';
-				description: 'Brush';
-				model: self;
-				frame: (GMTEEditor hLayoutFrame: 3 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
-				action: #selectRadiusBrush;
-				project: 'GameMecha';
-				buttonGroup: self brushButtons;
-				path: '/GMTEIcons/brush.png'.
-				
-			(aBuilder pluggableImageButtonSpec new)
-				groupName: 'lineBrush';
-				description: 'Line Tool';
-				model: self;
-				frame: (GMTEEditor hLayoutFrame: 4 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
-				action: #selectLineBrush;
-				project: 'GameMecha';
-				buttonGroup: self brushButtons;
-				path: '/GMTEIcons/line.png'.
-				
-			(aBuilder pluggableImageButtonSpec new)
-				groupName: 'fillBrush';
-				description: 'Fill Tool';
-				model: self;
-				frame: (GMTEEditor hLayoutFrame: 5 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
-				action: #selectFillBrush;
-				project: 'GameMecha';
-				buttonGroup: self brushButtons;
-				path: '/GMTEIcons/fill.png'.
-				
-			(aBuilder pluggableImageButtonSpec new)
-				groupName: 'rectangleBrush';
-				description: 'Rectangle Tool';
-				model: self;
-				frame: (GMTEEditor hLayoutFrame: 6 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
-				action: #selectRectangleBrush;
-				project: 'GameMecha';
-				buttonGroup: self brushButtons;
-				path: '/GMTEIcons/rectangle.png'.
-				
+		frame: (LayoutFrame fractions: (0.2@0.7 corner: 0.8@0.8));
+		minimumHeight: (35 * RealEstateAgent scaleFactor); "slightly magic number, in testing this was pretty. no time to fix until deadline"
+		children: {
 			self createAttributeSpecWithBuilder: aBuilder 
-				descriptor: 'Radius:' 
+				descriptor: radiusLabel
 				getter: #getBrushRadiusAsString
 				setter: #setBrushRadiusFromText: 
 				model: self 
-				frame: ((GMTEEditor hLayoutFrame: 7 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace)).
-			};
+				frame: ((GMTEEditor hLayoutFrame: 1 ofN: 10 vSymmetric: GMTEEditor toolBarVSpace)).
+				
+			(aBuilder pluggablePanelSpec new)
+				model: self;
+				frame: (LayoutFrame fractions: (0.05 @ 0 corner: 1@ 1) offsets: ((self calculateAttributeContainerWidth: radiusLabel) @ 0 corner: 0 @ 0));
+				children:  {
+					(aBuilder pluggableImageButtonSpec new)
+						groupName: 'radiusBrush';
+						description: 'Brush';
+						model: self;
+						frame: (GMTEEditor hLayoutFrame: 1 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
+						action: #selectRadiusBrush;
+						project: 'GameMecha';
+						buttonGroup: self brushButtons;
+						path: '/GMTEIcons/brush.png'.
+					
+					(aBuilder pluggableImageButtonSpec new)
+						groupName: 'lineBrush';
+						description: 'Line Tool';
+						model: self;
+						frame: (GMTEEditor hLayoutFrame: 2 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
+						action: #selectLineBrush;
+						project: 'GameMecha';
+						buttonGroup: self brushButtons;
+						path: '/GMTEIcons/line.png'.
+						
+					(aBuilder pluggableImageButtonSpec new)
+						groupName: 'fillBrush';
+						description: 'Fill Tool';
+						model: self;
+						frame: (GMTEEditor hLayoutFrame: 3 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
+						action: #selectFillBrush;
+						project: 'GameMecha';
+						buttonGroup: self brushButtons;
+						path: '/GMTEIcons/fill.png'.
+						
+					(aBuilder pluggableImageButtonSpec new)
+						groupName: 'rectangleBrush';
+						description: 'Rectangle Tool';
+						model: self;
+						frame: (GMTEEditor hLayoutFrame: 4 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
+						action: #selectRectangleBrush;
+						project: 'GameMecha';
+						buttonGroup: self brushButtons;
+						path: '/GMTEIcons/rectangle.png'.
+						
+						(aBuilder pluggableImageButtonSpec new)
+						name: 'undo';
+						description: 'Undo';
+						model: self;
+						frame: (GMTEEditor hLayoutFrame: 5 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
+						action: #undo;
+						project: 'GameMecha';
+						path: '/GMTEIcons/undo.png'.
+						
+					(aBuilder pluggableImageButtonSpec new)
+						name: 'redo';
+						description: 'Redo';
+						model: self;
+						frame: (GMTEEditor hLayoutFrame: 6 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
+						action: #redo;
+						project: 'GameMecha';
+						path: '/GMTEIcons/redo.png'}};
 			
 		verticalResizing: #shrinkWrap;
 		yourself
@@ -940,14 +937,14 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'jj 6/22/2024 20:45'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:14'
 }
 GMTEEditor >> createTraySpecWithBuilder: aBuilder [
 	"creates the spec for the tile tray"
 	
 	^ (aBuilder pluggableScrollPaneSpec new)
 		name: 'tray';
-		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1) offsets: nil);
+		frame: (LayoutFrame fractions: (0.2 @ 0.8 corner:  0.8 @ 1));
 		minimumHeight:75;
 		yourself
 ]
@@ -1230,11 +1227,11 @@ GMTEEditor >> getLayerList [
 
 {
 	#category : #helper,
-	#'squeak_changestamp' : 'tw 7/12/2024 19:01'
+	#'squeak_changestamp' : 'tw 7/12/2024 20:07'
 }
-GMTEEditor >> getMaximalLengthOfStrings: anOrderedCollection [
+GMTEEditor >> getMaximalSizeOfStrings: anOrderedCollection [
 
-	^ (anOrderedCollection collect: [:aString | TextStyle defaultFont approxWidthOfText: aString asText]) max
+	^ (anOrderedCollection collect: [:aString | self getSizeOfString: aString]) max
 ]
 
 {
@@ -1268,6 +1265,15 @@ GMTEEditor >> getSelectedLayer [
 	
 	self assert: self singleLayerSelected.
 	^ self selectedLayers anyOne
+]
+
+{
+	#category : #helper,
+	#'squeak_changestamp' : 'tw 7/12/2024 20:12'
+}
+GMTEEditor >> getSizeOfString: aString [
+
+	^ TextStyle defaultFont approxWidthOfText: aString asText
 ]
 
 {
