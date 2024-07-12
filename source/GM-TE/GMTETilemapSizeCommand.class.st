@@ -2,7 +2,6 @@ Class {
 	#name : #GMTETilemapSizeCommand,
 	#superclass : #GMTEEditTilesCommand,
 	#instVars : [
-		'editor',
 		'method',
 		'prevSize',
 		'newSize',
@@ -32,22 +31,6 @@ GMTETilemapSizeCommand class >> prevValue: aNumber1 newValue: aNumber2 method: a
 GMTETilemapSizeCommand >> do [
 
 	self editor perform: self method with: self newSize
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:00'
-}
-GMTETilemapSizeCommand >> editor [
-	^ editor
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 18:00'
-}
-GMTETilemapSizeCommand >> editor: anObject [
-	editor := anObject
 ]
 
 {

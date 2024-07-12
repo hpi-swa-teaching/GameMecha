@@ -78,9 +78,9 @@ GMTEBrush >> currentMatrixIndex: anIndex [
 
 {
 	#category : #execute,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/11/2024 17:10'
+	#'squeak_changestamp' : 'JS 7/12/2024 16:50'
 }
-GMTEBrush >> executeWithMatrixIndex: anIndex andLayer: aLayer [
+GMTEBrush >> executeWithIndex: anIndex andLayer: aLayer [
 
 	anIndex ifNil: [^ nil].
 	self currentMatrixIndex: anIndex.
