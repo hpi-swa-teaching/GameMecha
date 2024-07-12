@@ -1,6 +1,6 @@
 Class {
 	#name : #GMTEButtonGroup,
-	#superclass : #Set,
+	#superclass : #Dictionary,
 	#category : #'GM-TE-Core'
 }
 
@@ -19,19 +19,37 @@ GMTEButtonGroup >> deselectAllExcept: aButton [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 7/9/2024 18:17'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:18'
 }
-GMTEButtonGroup >> register: aButton [
+GMTEButtonGroup >> deselectAllExceptNamed: aName [
 
-	self add: aButton
+	self deselectAllExcept: (self at: aName)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'TW 7/9/2024 19:04'
+	#'squeak_changestamp' : 'tw 7/12/2024 16:57'
+}
+GMTEButtonGroup >> register: aButton as: aString [
+
+	self at: aString put: aButton
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 17:18'
 }
 GMTEButtonGroup >> singleSelect: aButton [
 
-	aButton selected: true.
+	aButton select.
 	self deselectAllExcept: aButton
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 17:18'
+}
+GMTEButtonGroup >> singleSelectNamed: aName [
+
+	self singleSelect: (self at: aName)
 ]

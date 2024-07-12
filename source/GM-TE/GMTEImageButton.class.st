@@ -13,7 +13,8 @@ Class {
 		'stateSprites',
 		'enabled',
 		'selected',
-		'buttonGroup'
+		'buttonGroup',
+		'groupName'
 	],
 	#category : #'GM-TE-UI',
 	#'squeak_changestamp' : '<historical>'
@@ -87,12 +88,12 @@ GMTEImageButton >> buttonGroup [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:30'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:08'
 }
 GMTEImageButton >> buttonGroup: aCollection [
 
 	self basicButtonGroup: aCollection.
-	aCollection add: self
+	aCollection register: self as: self groupName
 ]
 
 {
@@ -166,6 +167,24 @@ GMTEImageButton >> enabled: aBoolean [
 			self basicEnabled: false.
 			self setImageMode: 'disabled']
 			
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'tw 7/12/2024 17:03'
+}
+GMTEImageButton >> groupName [
+
+	^ groupName
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'tw 7/12/2024 17:03'
+}
+GMTEImageButton >> groupName: anObject [
+
+	groupName := anObject.
 ]
 
 {
@@ -260,12 +279,21 @@ GMTEImageButton >> mouseUp: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 19:41'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:21'
+}
+GMTEImageButton >> onlySelect [
+
+		self buttonGroup ifNotNil: [self buttonGroup singleSelect: self].
+		
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'tw 7/12/2024 17:23'
 }
 GMTEImageButton >> select [
 
-		self buttonGroup ifNotNil: [self buttonGroup singleSelect: self].
-		self doButtonAction.
+		self selected: true.
 		self setImageMode: 'pressed'
 ]
 
