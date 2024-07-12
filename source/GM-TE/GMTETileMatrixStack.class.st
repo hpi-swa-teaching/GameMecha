@@ -505,7 +505,7 @@ GMTETileMatrixStack >> swapLayer: anIndex1 with: anIndex2 [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 18:33'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:03'
 }
 GMTETileMatrixStack >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
 
@@ -513,7 +513,7 @@ GMTETileMatrixStack >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
 	removedTiles := Set new.
 	
 	self doLayers: [:layer |
-		removedTiles := removedTiles union: (layer tileLossAfterRescaleToWidth: aWidth height: aHeight)].
+		removedTiles := removedTiles addAll: (layer tileLossAfterRescaleToWidth: aWidth height: aHeight)].
 	
 	^ removedTiles
 ]
