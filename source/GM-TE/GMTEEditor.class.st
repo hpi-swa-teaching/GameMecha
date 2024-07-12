@@ -1783,6 +1783,15 @@ GMTEEditor >> resetSelectedLayers [
 
 {
 	#category : #TODO,
+	#'squeak_changestamp' : 'tw 7/12/2024 17:46'
+}
+GMTEEditor >> resetView [
+
+	self tileMap resetView
+]
+
+{
+	#category : #TODO,
 	#'squeak_changestamp' : 'mcjj 7/11/2024 17:52'
 }
 GMTEEditor >> rotateSelectedTile [
@@ -2032,7 +2041,7 @@ GMTEEditor >> setPadding: aText [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Alex M 6/25/2024 18:17'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:45'
 }
 GMTEEditor >> settingsMenu [
 	"opens the setting menu"
@@ -2052,9 +2061,9 @@ GMTEEditor >> settingsMenu [
 		selector: #toggleBackgroundTiles
 		argumentList: {};
 		
-		add: 'Rotate Tile'
+		add: 'Reset View'
 		target: self
-		selector: #rotateSelectedTile
+		selector: #resetView
 		argumentList: {}.
 		
 	builder open: aMenuSpec
