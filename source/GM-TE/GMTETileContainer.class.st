@@ -13,16 +13,16 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:13'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:38'
 }
 GMTETileContainer class >> minTileSize [
-	"TODO: comment"
+	"Minimal size of tile"
 	
-	^ 40
+	^ 40 * RealEstateAgent scaleFactor
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer class >> withParent: aParent [
