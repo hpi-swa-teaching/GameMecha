@@ -1435,7 +1435,7 @@ GMTEEditor >> layerCount [
 
 {
 	#category : #'file loading',
-	#'squeak_changestamp' : 'tw 7/12/2024 22:42'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:53'
 }
 GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	"loads a tile set with given tile dimensions"
@@ -1459,25 +1459,24 @@ GMTEEditor >> loadTileSetWithDimensions: aPoint [
 	
 	tileWidth := aPoint x.
 	tileHeight := aPoint y.
-	"TODO: refactor into non C-like code"
-	0 to: (form height - tileHeight) by: tileHeight do:[:y |
+	
+	0 to: (form height - tileHeight) by: tileHeight do: [:y |
 		0 to: (form width - tileWidth) by: tileWidth do: [:x |
-			tile := form contentsOfArea: (Rectangle origin: x@y extent: tileWidth@tileHeight).
+			tile := form contentsOfArea: (Rectangle origin: x @ y extent: tileWidth @ tileHeight).
 			image := GMTETileSelector new
-				updateSprite: (tile scaledToWidth: 50);
+				updateSprite: tile;
 				borderColor: Color orange;
 				borderWidth: 1;
 				model: self.
 			(alreadyImported includes: image imageForm bits hash)
 				ifFalse: [alreadyImported add: image imageForm bits hash.
 					morphs add: image].
-			"TODO: Maybe only send forms"
 			previews add: ((ImageMorph new) image: tile)]].
 	
-	"TODO: This is maybe not the nicest way to write it. Maybe put more of it into confirmPreview?" "TODO: lots of potential magic numbers all over this method"
 	previewTileSize := (form width max: 500) / (form width / tileWidth).
 	previewDimensions := (form extent / aPoint * previewTileSize) + (2 * ((form width / tileWidth) @ (form height / tileHeight))).
-	(self showConfirmationWindowOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^nil].
+	
+	(self showConfirmationWindowOf: previews withDimensions: previewDimensions withTileSize: previewTileSize) ifFalse:[^ nil].
 
 	^ morphs
 ]
