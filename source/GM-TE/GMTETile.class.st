@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:54'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:09'
 }
 GMTETile class >> checkerBoardColors [
 
@@ -15,7 +15,7 @@ GMTETile class >> checkerBoardColors [
 		(1@1) -> Color lightGray.
 		(0@1) -> Color gray.
 		(1@0) -> Color gray
-	} asDirectory
+	} asDictionary
 ]
 
 {
