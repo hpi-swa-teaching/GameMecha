@@ -5,7 +5,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'Alex M 7/9/2024 15:03'
 }
 GMTETile class >> checkerBoardTile [
@@ -23,7 +23,7 @@ GMTETile class >> checkerBoardTile [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'Alex M 7/1/2024 16:21'
 }
 GMTETile class >> fromSprite: aSprite [
@@ -34,7 +34,7 @@ GMTETile class >> fromSprite: aSprite [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #constants,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:11'
 }
 GMTETile class >> placeHolderColor [
@@ -43,7 +43,7 @@ GMTETile class >> placeHolderColor [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:11'
 }
 GMTETile class >> position: aPoint extent: anExtent [

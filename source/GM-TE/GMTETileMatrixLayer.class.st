@@ -10,7 +10,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'TW 6/23/2024 23:36'
 }
 GMTETileMatrixLayer class >> width: aWidth height: aHeight layerIndex: anIndex [
@@ -201,6 +201,29 @@ GMTETileMatrixLayer >> tileLossAfterRescaleToWidth: aWidth height: aHeight [
 			1 to: self columnCount do: [:col |
 				tile := self at: row at: col.
 				tile ifNotNil: [removedTiles add: tile]]].
+	
+	^ removedTiles
+]
+
+{
+	#category : #copying,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 18:02'
+}
+GMTETileMatrixLayer >> tileLossAfterRescaleToWidth: aWidth height: aHeight layerId: aLayerId [
+
+	| removedTiles tile layer |
+	removedTiles := Dictionary new.
+	layer := aLayerId.
+			
+	(aWidth + 1) to: self columnCount do: [:col |
+			1 to: self rowCount do: [:row |
+				tile := self at: row at: col.
+				tile ifNotNil: [removedTiles at: {col. row. layer} put: tile fullResolutionSprite]]].
+	
+	(aHeight + 1) to: self rowCount do: [:row |
+			1 to: self columnCount do: [:col |
+				tile := self at: row at: col.
+				tile ifNotNil: [removedTiles at: {col. row. layer} put: tile fullResolutionSprite]]].
 	
 	^ removedTiles
 ]

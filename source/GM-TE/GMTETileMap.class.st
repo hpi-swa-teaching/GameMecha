@@ -55,8 +55,8 @@ GMTETileMap class >> maxLayers [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:15'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:16'
 }
 GMTETileMap class >> newFromEditableTileMap: aMap [
 
@@ -78,14 +78,13 @@ GMTETileMap class >> newFromEditableTileMap: aMap [
 	"Initially draw background tiles"
 	newMap updateTilesBackground.
 	newMap resetView.
-	self flag: 'dragging does not work properly when openedInWorld'.
-	newMap hasStaticView: false.
+	newMap hasStaticView: true.
 	
 	^ newMap 
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:12'
 }
 GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding sizeRatio: aRatio [
@@ -218,33 +217,6 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 15:59'
-}
-GMTETileMap >> canZoomIn [
-
-	^ false
-]
-
-{
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
-}
-GMTETileMap >> canZoomInBy: aFloat [
-
-	^ self view canChangeSizeBy: (aFloat negated)
-]
-
-{
-	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
-}
-GMTETileMap >> canZoomOutBy: aFloat [
-
-	^ self view canChangeSizeBy: aFloat
-]
-
-{
-	#category : #view,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 20:46'
 }
 GMTETileMap >> centerViewAt: aPoint [
@@ -294,6 +266,23 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 	"Transform map tile positions correctly"
 	
 	^ self correctedTilePosition: aPoint startingOffset: self tileCornerOffsetMap
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:32'
+}
+GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
+	"delete tiles from editable matrix stack at given indices"
+	
+	| tile |
+	anIndexSet do: [:c |
+		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+			tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+			tile	ifNotNil: [ 
+				tile abandon.
+				self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
+				self saveNewImageFromIndex: c inLayer: aLayer]]]
 ]
 
 {
@@ -523,6 +512,15 @@ GMTETileMap >> getTileFromLayer: aLayer x: x y: y stack: aStack [
 	
 		
 	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:18'
+}
+GMTETileMap >> handlesMouseDown: anEvent [
+
+	^ (self hasStaticView not) and: [anEvent shiftPressed]
 ]
 
 {
@@ -774,7 +772,7 @@ GMTETileMap >> mapTileWidth: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 19:12'
 }
 GMTETileMap >> mouseMove: anEvent [
 
@@ -787,7 +785,7 @@ GMTETileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:57'
 }
 GMTETileMap >> mouseWheel: anEvent [
 
@@ -795,8 +793,8 @@ GMTETileMap >> mouseWheel: anEvent [
 	"anEvent shiftPressed ifFalse: [^ nil]."
 	
 	self hasStaticView ifTrue: [^ nil].
-	anEvent isWheelDown ifTrue: [self zoomInAt: (anEvent position - self topLeft)].
-	anEvent isWheelUp ifTrue:  [self zoomOutAt: (anEvent position - self topLeft)]
+	anEvent isWheelDown ifTrue: [self zoomOutAt: (anEvent position - self topLeft)].
+	anEvent isWheelUp ifTrue:  [self zoomInAt: (anEvent position - self topLeft)]
 ]
 
 {
@@ -809,6 +807,31 @@ GMTETileMap >> moveViewBy: aPoint [
 
 	self view moveBy: (self absPointToViewFraction: (aPoint / self viewScaleFactor)).
 	self updateMap
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 19:22'
+}
+GMTETileMap >> placeTiles: anIndexSet inLayer: aLayer ofClass: aTileClass withImage: anImage [
+
+	| tile |
+	self assert: (aTileClass inheritsFrom: GMTETile) description: 'Expected GMTETile or subclass'.
+
+	anIndexSet do: [:c |
+		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
+				tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+				tile ifNil: [tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: aTileClass].
+				tile updateSprite: anImage]]
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:58'
+}
+GMTETileMap >> placeTiles: anIndexSet inLayer: aLayer withImage: anImage [
+
+	self placeTiles: anIndexSet inLayer: aLayer ofClass: GMTETile withImage: anImage
 ]
 
 {
@@ -1419,28 +1442,8 @@ GMTETileMap >> viewScaleFactor [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:37'
-}
-GMTETileMap >> vigenerateBackgroundTiles [
-	"Fill the background matrix stack with tiles automatically"
-	
-	self backgroundTiles ifNil: [^ nil].
-	
-	self tileMatrixStackBackground doTilesXYLindex: [:x :y :l | 
-		"It is assumed that the background stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [:aPoint |
-			self correctedTilePositionBackground: aPoint]].
-	
-	self tileMatrixStackBackground doTiles: [:tile |
-		tile applyTileSprite: self backgroundTiles]
-	
-	
-]
-
-{
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:12'
 }
 GMTETileMap >> zoomAt: aPoint by: aFloat [
 	""
@@ -1454,28 +1457,23 @@ GMTETileMap >> zoomAt: aPoint by: aFloat [
 	self view changeSizeBy: (aFloat negated).
 
 	newCenter := (oldScaleFactor / self viewScaleFactor) * oldMouseCenterOffset + aPointAbs.
-	self centerViewAtAbs: newCenter.
-
-	self flag: 'refactor. This seems to be necessary but highlights only exist for editable tile map'.
-	"self tileSelectionSet clearAllHighlightings"
+	self centerViewAtAbs: newCenter
 ]
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
 }
 GMTETileMap >> zoomInAt: aPoint [
 
-	(self canZoomInBy: 0.1) ifFalse: [^ nil].	
 	self zoomAt: aPoint by: 0.1
 ]
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
 }
 GMTETileMap >> zoomOutAt: aPoint [
 	
-	(self canZoomOutBy: 0.1) ifFalse: [^ nil].
 	self zoomAt: aPoint by: -0.1
 ]
