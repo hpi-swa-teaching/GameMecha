@@ -305,14 +305,14 @@ GMTEEditor class >> vLayoutFrame: intI ofN: intN hSymmetric: aFloat [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/6/2024 11:56'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:48'
 }
 GMTEEditor >> addCommand: aCommand [
 	
 	"when a new change is made, all timestamps from the 'future' are deleted"
 	[self commands size > self currentCommand] whileTrue: [self commands removeLast].
 
-	(self commands size > self class maxNumberOfCommands) ifTrue: [self commands removeFirst.
+	(self commands size > self class maxNumberOfCommands) ifTrue: [self commands removeAt: 2.
 		self currentCommand: self currentCommand - 1].
 	
 	self commands add: aCommand.
@@ -1523,7 +1523,7 @@ GMTEEditor >> mapViewer: anObject [
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:21'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:52'
 }
 GMTEEditor >> moveLayerDown [
 	"moves the selected layer down by one"
@@ -1532,13 +1532,15 @@ GMTEEditor >> moveLayerDown [
 	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
-	self addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: -1 withEditor: self).
-	(selectedLayer == 1) ifFalse: [self swapLayer: selectedLayer with: selectedLayer - 1]
+	(selectedLayer == 1) ifFalse: [
+		self 
+			addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: -1 withEditor: self);
+			swapLayer: selectedLayer with: selectedLayer - 1]
 ]
 
 {
 	#category : #'layer button functions',
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:26'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:52'
 }
 GMTEEditor >> moveLayerUp [
 	"moves the selected layer up by one"
@@ -1547,8 +1549,10 @@ GMTEEditor >> moveLayerUp [
 	self singleLayerSelected ifFalse: [^ nil].
 	
 	selectedLayer := self getSelectedLayer.
-	self addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: 1 withEditor: self).
-	(selectedLayer == self layerCount) ifFalse: [self swapLayer: selectedLayer with: selectedLayer + 1]
+	(selectedLayer == self layerCount) ifFalse: [
+		self
+			addCommand: (GMTEMoveLayerCommand fromLayerID: selectedLayer withDirection: 1 withEditor: self);
+			swapLayer: selectedLayer with: selectedLayer + 1]
 ]
 
 {
@@ -1755,12 +1759,12 @@ GMTEEditor >> resetAllLayers [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/3/2024 23:57'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:53'
 }
 GMTEEditor >> resetCommands [
 
 	self
-		commands: (LinkedList newFrom: {GMTEPlaceHolderCommand new});
+		commands: (OrderedCollection newFrom: {GMTEPlaceHolderCommand new});
 		currentCommand: 1
 ]
 

@@ -19,13 +19,13 @@ GMTEBlendLayersCommand >> do [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 21:28'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:07'
 }
 GMTEBlendLayersCommand >> undo [
 
 	self editor
-		addTilemapLayersAt: (self layers copyFrom: 2 to: self layers size);
-		resetLayers: {self layers first}.
+		addTilemapLayersAt: (self layers copyFrom: 2 to: self layers size).";
+		addTilemapLayersAt:{self layers first}."
 		
 	self restoreTiles
 	
