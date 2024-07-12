@@ -55,7 +55,7 @@ GMTEEditorTileMap >> currentTileChanges: aTileDictionary [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 7/12/2024 16:37'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 17:16'
 }
 GMTEEditorTileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 	"delete tiles from editable matrix stack at given indices"
@@ -68,7 +68,8 @@ GMTEEditorTileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 				self savePreviousImageFromIndex: c inLayer: aLayer.
 				tile abandon.
 				self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
-				self saveNewImageFromIndex: c inLayer: aLayer]]]
+				self saveNewImageFromIndex: c inLayer: aLayer.
+				self model savedSinceModified: false]]]
 ]
 
 {
@@ -215,7 +216,7 @@ GMTEEditorTileMap >> mouseUp: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 7/12/2024 16:46'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 17:15'
 }
 GMTEEditorTileMap >> placeTiles: aCoordinateCollection inLayer: aLayer [
 	"add currently selected tile (model) to editable matrix stack at given indices"
@@ -227,8 +228,8 @@ GMTEEditorTileMap >> placeTiles: aCoordinateCollection inLayer: aLayer [
 				tile := self tileMatrixStack layer: aLayer at: c y at: c x.
 				tile ifNil: [tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: GMTETile].
 				self model selectedTile ifNotNil: [tile updateSprite: self model selectedTile].
-				self saveNewImageFromIndex: c inLayer: aLayer]]
-	
+				self saveNewImageFromIndex: c inLayer: aLayer.
+				self model savedSinceModified: false]]
 ]
 
 {
@@ -357,7 +358,7 @@ GMTEEditorTileMap >> tileSelectionSet: aSet [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 7/12/2024 16:52'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 17:14'
 }
 GMTEEditorTileMap >> updateTiles: anIndexSet inLayer: aLayer FromEvent: anEvent [
 	
@@ -369,6 +370,4 @@ GMTEEditorTileMap >> updateTiles: anIndexSet inLayer: aLayer FromEvent: anEvent 
 	
 	validLeftClick ifTrue: [self placeTiles: anIndexSet inLayer: aLayer].	
 	validRightClick ifTrue: [self deleteTiles: anIndexSet inLayer: aLayer].
-	
-	self model savedSinceModified: false
 ]
