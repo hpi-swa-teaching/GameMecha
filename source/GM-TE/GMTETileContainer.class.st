@@ -1,5 +1,5 @@
 "
-It is not good code right now. Maybe find a nicer solution later
+Contains and manages layout for TileSelectors.
 "
 Class {
 	#name : #GMTETileContainer,
@@ -8,21 +8,21 @@ Class {
 		'parent'
 	],
 	#category : #'GM-TE-UI',
-	#'squeak_changestamp' : 'Alex M 5/21/2024 16:50'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 22:18'
 }
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:13'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:38'
 }
 GMTETileContainer class >> minTileSize [
-	"TODO: comment"
+	"Minimal size of tile"
 	
-	^ 40
+	^ 40 * RealEstateAgent scaleFactor
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer class >> withParent: aParent [
@@ -54,11 +54,12 @@ GMTETileContainer >> parent: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'jj 6/23/2024 17:13'
+	#category : #updating,
+	#'squeak_changestamp' : 'tw 7/12/2024 21:33'
 }
 GMTETileContainer >> step [
-
+	"Workaround since ScrollPane doesn't resize it's submorphs. This is to ensure our TileContainer rearranges itself"
+	
 	| n gap minTileSize |
 	(self parent isNil or: [self parent extent = self extent])
 		ifTrue: [^ nil].
@@ -67,11 +68,11 @@ GMTETileContainer >> step [
 	minTileSize := GMTETileContainer minTileSize. 
 	n := self width / minTileSize.
 	gap := self width - (n floor * minTileSize) / n.
-	self submorphs do: [:tile| tile extent: (minTileSize + gap - 2)] "TODO: magic number"
+	self submorphs do: [:tile| tile extent: (minTileSize + gap - 2)] "Edge has a width of 1"
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'jj 6/22/2024 16:50'
 }
 GMTETileContainer >> stepTime [
