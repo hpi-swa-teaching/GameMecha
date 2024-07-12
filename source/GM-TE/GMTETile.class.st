@@ -5,19 +5,32 @@ Class {
 }
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:09'
+}
+GMTETile class >> checkerBoardColors [
+
+	self flag: 'Dictionary formatting?'.
+	^ {(0@0) -> Color lightGray.
+		(1@1) -> Color lightGray.
+		(0@1) -> Color gray.
+		(1@0) -> Color gray
+	} asDictionary
+]
+
+{
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'Alex M 7/9/2024 15:03'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:54'
 }
 GMTETile class >> checkerBoardTile [
 	"Returns a tile with a checkboard pattern"
 	
 	| checkerboardPatternForm |
+	self flag: 'Magic number 32?'.
 	
 	checkerboardPatternForm := Form extent: 2 @ 2 depth: 32.
-	checkerboardPatternForm colorAt: 0@0 put: Color lightGray.
-	checkerboardPatternForm colorAt: 1@1 put: Color lightGray.
-	checkerboardPatternForm colorAt: 0@1 put: Color gray.
-	checkerboardPatternForm colorAt: 1@0 put: Color gray.
+	self checkerBoardColors keysDo: [:offset | 
+	checkerboardPatternForm colorAt: offset put: (self checkerBoardColors at: offset)].
 	
 	^ self fromSprite: checkerboardPatternForm
 ]
@@ -56,20 +69,19 @@ GMTETile class >> position: aPoint extent: anExtent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:03'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:36'
 }
-GMTETile >> applyTileSprite: aTile [
-	"Set new sprite to sprite of aTile"
+GMTETile >> copySpriteFromTile: aTile [
 
 	self updateSprite: aTile fullResolutionSprite
 ]
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:04'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:39'
 }
 GMTETile >> setToPlaceholder [
-	"Set form to a place holder color"
+	"Debugging Tool: Set form to a place holder color"
 
 	self setPlaceholderWithColor: GMTETile placeHolderColor
 ]

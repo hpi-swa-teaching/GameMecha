@@ -30,7 +30,7 @@ GMTETileHighlighting >> applyBorderHighlighting [
 
 {
 	#category : #highlighting,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:55'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:55'
 }
 GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 	"Set a form as a temporary decoration inside the tile"	
@@ -47,6 +47,7 @@ GMTETileHighlighting >> applyDecoMorphHighlighting: aForm [
 				bounds: self bounds;
 				color: (Color black alpha: GMTETileHighlighting decoMorphAlphaValue);
 				yourself].
+
 	self 
 		addMorph: newDecoMorph;
 		decorationMorph: newDecoMorph
