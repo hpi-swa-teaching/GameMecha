@@ -96,6 +96,16 @@ GMTEEditor class >> hLayoutFrame: intI ofN: intN vUp: aFloat down: anotherFloat 
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 16:21'
+}
+GMTEEditor class >> initialize [
+
+	super initialize.
+	self register
+]
+
+{
 	#category : #constants,
 	#'squeak_changestamp' : 'TW 7/9/2024 11:28'
 }
@@ -148,13 +158,13 @@ GMTEEditor class >> privateGetEditorTileMapFromFilePath: aFilePath [
 
 {
 	#category : #squeakutils,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 03:13'
+	#'squeak_changestamp' : 'tw 7/12/2024 16:20'
 }
 GMTEEditor class >> register [
 	"adds the tile editor to app menu"
 	
 	"Maybe call this on new?"
-	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {GMTEEditor. #startup}}
+	TheWorldMenu registerOpenCommand: {'TileMap Editor'. {self. #startup}}
 ]
 
 {
@@ -815,7 +825,7 @@ GMTEEditor >> createTilestoreSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/11/2024 17:05'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:08'
 }
 GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 	"creates the spec for the tool bar"
@@ -844,7 +854,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				path: '/GMTEIcons/redo.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
-				name: 'radiusBrush';
+				groupName: 'radiusBrush';
 				description: 'Brush';
 				model: self;
 				frame: (GMTEEditor hLayoutFrame: 3 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
@@ -854,7 +864,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				path: '/GMTEIcons/brush.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
-				name: 'lineBrush';
+				groupName: 'lineBrush';
 				description: 'Line Tool';
 				model: self;
 				frame: (GMTEEditor hLayoutFrame: 4 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
@@ -864,7 +874,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				path: '/GMTEIcons/line.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
-				name: 'fillBrush';
+				groupName: 'fillBrush';
 				description: 'Fill Tool';
 				model: self;
 				frame: (GMTEEditor hLayoutFrame: 5 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
@@ -874,7 +884,7 @@ GMTEEditor >> createToolBarSpecWithBuilder: aBuilder [
 				path: '/GMTEIcons/fill.png'.
 				
 			(aBuilder pluggableImageButtonSpec new)
-				name: 'rectangleBrush';
+				groupName: 'rectangleBrush';
 				description: 'Rectangle Tool';
 				model: self;
 				frame: (GMTEEditor hLayoutFrame: 6 ofN: 7 vSymmetric: GMTEEditor toolBarVSpace);
@@ -1319,26 +1329,16 @@ GMTEEditor >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/9/2024 22:40'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:15'
 }
 GMTEEditor >> initializeBrush [
 	"starts the tile editor"
 	
 	self 
 		brush: GMTEBrush new;
+		halt;
 		selectRadiusBrush;
-		initializeBrushButton;
 		setBrushRadius: 1
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'TW 7/9/2024 19:42'
-}
-GMTEEditor >> initializeBrushButton [
-	"highlights the radius button at the start"
-	
-	(self associatedMorph deepSubpartNamed: 'radiusBrush') select
 ]
 
 {
@@ -1826,10 +1826,11 @@ GMTEEditor >> selectAllLayers [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 7/9/2024 11:16'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:13'
 }
 GMTEEditor >> selectFillBrush [
 
+	self brushButtons singleSelectNamed: 'fillBrush'.
 	self brush selectFillBrush
 ]
 
@@ -1850,10 +1851,11 @@ GMTEEditor >> selectLayer: anIndex [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'tw 7/11/2024 16:23'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:13'
 }
 GMTEEditor >> selectLineBrush [
 
+	self brushButtons singleSelectNamed: 'lineBrush'.
 	self brush selectLineBrush
 ]
 
@@ -1872,19 +1874,21 @@ GMTEEditor >> selectOnlyLayer: anIndex [
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 7/9/2024 19:18'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:12'
 }
 GMTEEditor >> selectRadiusBrush [
 
+	self brushButtons singleSelectNamed: 'radiusBrush'.
 	self brush selectRadiusBrush
 ]
 
 {
 	#category : #'menu button functions',
-	#'squeak_changestamp' : 'TW 7/9/2024 11:15'
+	#'squeak_changestamp' : 'tw 7/12/2024 17:23'
 }
 GMTEEditor >> selectRectangleBrush [
 
+	self brushButtons singleSelectNamed: 'rectangleBrush'.
 	self brush selectRectangleBrush
 ]
 
