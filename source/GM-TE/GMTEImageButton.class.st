@@ -364,11 +364,16 @@ GMTEImageButton >> target: anObject [
 
 {
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'TW 7/9/2024 19:11'
+	#'squeak_changestamp' : 'tw 7/12/2024 18:39'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
 
+	self enabled 
+		ifFalse: [
+			self setImageMode: 'disabled'.
+			^ nil].
+		
 	self buttonGroup
 		ifNil: [
 			(self containsPoint: Sensor cursorPoint)
