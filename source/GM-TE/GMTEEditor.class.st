@@ -77,6 +77,15 @@ GMTEEditor class >> getVisibilityIndicator: aBoolean [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:33'
+}
+GMTEEditor class >> hLayoutFrame: intI ofN: intN [
+
+	^ self hLayoutFrame: intI ofN: intN vSymmetric: 0
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'tw 7/11/2024 17:03'
 }
 GMTEEditor class >> hLayoutFrame: intI ofN: intN vSymmetric: aFloat [
@@ -251,6 +260,35 @@ GMTEEditor class >> tileMapMinPaddingSize [
 GMTEEditor class >> toolBarVSpace [
 
 	^ 0.1
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:33'
+}
+GMTEEditor class >> vLayoutFrame: intI ofN: intN [
+
+	^ self vLayoutFrame: intI ofN: intN hSymmetric: 0
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:26'
+}
+GMTEEditor class >> vLayoutFrame: intI ofN: intN hLeft: aFloat right: anotherFloat [
+
+	"useful for building buttons, maybe move this to instance? TODO FLAG"
+	
+	^ LayoutFrame fractions: ((aFloat @ (intI - 1 / intN)) corner: (1 - anotherFloat @ (intI / intN)))
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'tw 7/12/2024 18:26'
+}
+GMTEEditor class >> vLayoutFrame: intI ofN: intN hSymmetric: aFloat [
+
+	^ self vLayoutFrame: intI ofN: intN hLeft: aFloat right: aFloat
 ]
 
 {
@@ -566,30 +604,37 @@ GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString gette
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'TW 7/9/2024 17:28'
+	#'squeak_changestamp' : 'tw 7/12/2024 18:57'
 }
 GMTEEditor >> createAttributeSpecWithBuilder: aBuilder descriptor: aString getter: aSelector setter: anotherSelector model: aModel frame: aFrame [ 
 	"a helper function to create attribute specs"
 	
-	^ self withMorphOf: ((aBuilder pluggablePanelSpec new)
+	| minTextWidth minInputWidth |
+	minTextWidth := (TextStyle defaultFont approxWidthOfText: aString asText).
+	minInputWidth := (TextStyle defaultFont approxWidthOfText: '1234' asText).
+	
+	^ (aBuilder pluggablePanelSpec new)
+		name: 'attributeContainer';
 		frame: aFrame;
 		layout: #proportional;
+		minimumWidth: minTextWidth + minInputWidth;
 		children: {
 			(aBuilder pluggableStaticTextSpec new)
 			model: aModel;
-			frame: (LayoutFrame fractions: (0 @ 0 corner: (2 / 3) @ 1));
-			text: aString.
+			frame: (LayoutFrame fractions: (0 @ 0 corner: 2 / 3 @ 1));
+			text: aString;
+			minimumWidth: minTextWidth.
+			
 			
 			(aBuilder pluggableInputFieldSpec new)
 			model: aModel;
 			indicateUnacceptedChanges: false;
-			frame: (LayoutFrame fractions: (((2 / 3) + 0.1) @ 0 corner: 1 @ 1));
-			minimumExtent: 45@30;
+			frame: (LayoutFrame fractions: (2 / 3 @ 0 corner: 1 @ 1));
 			getText: aSelector;
-			setText: anotherSelector
+			setText: anotherSelector;
+			minimumWidth: minInputWidth
 		};
-		yourself) do: [:morph |
-			morph layoutPolicy: TableLayout new]
+		yourself
 ]
 
 {
@@ -639,27 +684,23 @@ GMTEEditor >> createCommandBarSpecWithBuilder: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'tw 7/11/2024 17:48'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:01'
 }
 GMTEEditor >> createInspectorSpecWithBuilder: aBuilder [
 	"creates the spec for the inspector tab"
 	
-	^ aBuilder pluggableScrollPaneSpec new
+	^ aBuilder pluggablePanelSpec new
 		frame: (LayoutFrame fractions: (0.8 @ 0 corner: 1 @ 0.25)
 		offsets: (0 @ 30 corner: 0 @ 30));
-		padding: (Rectangle left: 3 right: 0 top: 0 bottom: 0);
-		hScrollBarPolicy: #never;
-		layout: #vertical;
 		name: 'inspector';
 		children: {
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self.
+		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Padding:' getter: #getPaddingAsString setter: #setPadding: model: self frame: (GMTEEditor vLayoutFrame: 1 ofN: 3).
 		
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self.
-
-		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self
+		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Width:' getter: #getGridWidthAsString setter: #setGridWidth: model: self frame: (GMTEEditor vLayoutFrame: 2 ofN: 3).
+		
+		self createAttributeSpecWithBuilder: aBuilder descriptor: 'Grid Height:' getter: #getGridHeightAsString setter: #setGridHeight: model: self frame: (GMTEEditor vLayoutFrame: 3 ofN: 3)
 		};
-		verticalResizing: #shrinkWrap;
-		horizontalResizing: #shrinkWrap;
+		minimumWidth: (self getMaximalLengthOfStrings: (OrderedCollection newFrom: {'Padding:' . 'Grid Width:' . 'Grid Height:'}));
 		yourself
 ]
 
@@ -1185,6 +1226,15 @@ GMTEEditor >> getLayerList [
 	self tileMap ifNil: [^ OrderedCollection new].
 	
 	^ self tileMap tileMatrixStack collectLayers: [:aLayer | aLayer displayName, (GMTEEditor getVisibilityIndicator: aLayer visible)]
+]
+
+{
+	#category : #helper,
+	#'squeak_changestamp' : 'tw 7/12/2024 19:01'
+}
+GMTEEditor >> getMaximalLengthOfStrings: anOrderedCollection [
+
+	^ (anOrderedCollection collect: [:aString | TextStyle defaultFont approxWidthOfText: aString asText]) max
 ]
 
 {
