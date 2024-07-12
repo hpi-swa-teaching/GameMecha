@@ -31,9 +31,9 @@ PluggableStaticTextSpec >> text [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 6/11/2024 15:52'
+	#'squeak_changestamp' : 'tw 7/12/2024 19:35'
 }
 PluggableStaticTextSpec >> text: anObject [
 
-	text := anObject.
+	text := anObject
 ]
