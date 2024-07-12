@@ -16,7 +16,7 @@ Class {
 		'buttonGroup',
 		'groupName'
 	],
-	#category : #'GM-TE-UI',
+	#category : #'GM-TE-Editor',
 	#'squeak_changestamp' : '<historical>'
 }
 

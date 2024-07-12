@@ -12,7 +12,7 @@ Class {
 		'firstMatrixIndex',
 		'outputSet'
 	],
-	#category : #'GM-TE-UI',
+	#category : #'GM-TE-Editor',
 	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:49'
 }
 

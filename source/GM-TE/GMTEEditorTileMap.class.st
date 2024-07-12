@@ -149,10 +149,10 @@ GMTEEditorTileMap >> model: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:39'
 }
 GMTEEditorTileMap >> mouseDown: anEvent [
-	"prepare the brush for next operation on self"
+	"Prepare the brush for next operation on self"
 
 	| selectedIndex |
 	self model singleLayerSelected ifFalse: [^ nil].
@@ -175,10 +175,10 @@ GMTEEditorTileMap >> mouseLeave: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:39'
 }
 GMTEEditorTileMap >> mouseMove: anEvent [
-	"implements highlighting of tiles when hovering"
+	"Implements highlighting of tiles when hovering"
 
 	| activeLayer selectedIndices currentIndex |
 	super mouseMove: anEvent.
@@ -198,10 +198,10 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:27'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:39'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
-	"apply brush operation on tilemap"
+	"Apply brush operation on tilemap"
 	
 	| selectedIndices |
 	"Make sure view is not currently moved. Implies that shift must still be held down"
@@ -297,11 +297,11 @@ GMTEEditorTileMap >> resetTileEditChanges [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 7/12/2024 18:44'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:38'
 }
 GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
-	| tile | 
 	
+	| tile | 
 	anIndex ifNil: [^ nil].
 	
 	tile := self tileMatrixStack layer: aLayer at: anIndex y at: anIndex x.
@@ -383,11 +383,10 @@ GMTEEditorTileMap >> updateTiles: anIndexSet inLayer: aLayer FromEvent: anEvent 
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:13'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTEEditorTileMap >> zoomAt: aPoint by: aFloat [
 
 	super zoomAt: aPoint by: aFloat.
-	self flag: 'refactor?'.
 	self tileSelectionSet clearAllHighlightings
 ]

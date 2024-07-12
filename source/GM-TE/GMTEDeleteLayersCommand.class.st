@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'layers'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

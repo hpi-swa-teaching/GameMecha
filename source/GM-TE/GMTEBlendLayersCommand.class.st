@@ -1,7 +1,7 @@
 Class {
 	#name : #GMTEBlendLayersCommand,
 	#superclass : #GMTEDeleteLayersCommand,
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

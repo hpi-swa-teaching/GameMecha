@@ -38,11 +38,11 @@ GMTETileMatrixStack class >> fromWidth: aWidth height: aHeight morphicLayerOffse
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 16:53'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:43'
 }
 GMTETileMatrixStack class >> morphicLayerDistance [
-	"TODO: comment"
-		
+	"Distance between two layers"
+
 	^ 2
 ]
 
@@ -137,11 +137,11 @@ GMTETileMatrixStack >> doLayers: aBlock [
 
 {
 	#category : #eumerating,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 18:15'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:33'
 }
 GMTETileMatrixStack >> doLayersWithIds: aBlock [
-	| layerNumber |
 	
+	| layerNumber |
 	layerNumber := self matrixLayers size.
 	(1 to: layerNumber) do: [:i | aBlock value: (self matrixLayers at: i) value: i]
 ]
@@ -207,7 +207,7 @@ GMTETileMatrixStack >> hideLayers: aSet [
 
 {
 	#category : #initilization,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 03:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:42'
 }
 GMTETileMatrixStack >> initialize [
 
@@ -215,7 +215,6 @@ GMTETileMatrixStack >> initialize [
 	self
 		matrixLayers: OrderedCollection new;
 		visible: true
-	"TODO: no base layer created"
 ]
 
 {
@@ -274,19 +273,12 @@ GMTETileMatrixStack >> layerVisible: anIndex [
 
 {
 	#category : #'multiselect-helpers',
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:48'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:42'
 }
 GMTETileMatrixStack >> mapLayers: anOrderedCollection withUnaryBlock: aBlock [
 	"Run an unary aBlock for every member of anOrderedCollection and return the result"
 	
-	"TODO: refactor with collect?"
-	| tmpResult |
-	tmpResult := OrderedCollection new.
-	
-	anOrderedCollection do: [:layerIndex | 
-		tmpResult add: (aBlock value: layerIndex)].
-	
-	^ tmpResult	
+	^ anOrderedCollection collect: [ :layerIndex | (aBlock value: layerIndex)]
 	
 	
 ]
@@ -338,13 +330,11 @@ GMTETileMatrixStack >> pushLayer [
 
 {
 	#category : #adding,
-	#'squeak_changestamp' : 'Alex M 7/10/2024 03:37'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:32'
 }
 GMTETileMatrixStack >> pushLayers: indexList [
 
 	| newLayer |
-	self flag: 'This is used to undo delete layer. how to symantically set to previous layer names. does this belong here or into commands?'.
-	
 	indexList do: [:i |
 		newLayer := (GMTETileMatrixLayer 
 			width: self width 

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'editor'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

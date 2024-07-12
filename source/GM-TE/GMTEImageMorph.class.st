@@ -40,10 +40,10 @@ GMTEImageMorph >> asBlendedWithImageMorph: anImageMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/9/2024 15:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:45'
 }
 GMTEImageMorph >> extent: anExtent [
-	"override ImageMorph extent functionality. ALWAYS KEEPS RATIO"
+	"Override ImageMorph extent functionality. ALWAYS KEEPS RATIO"
 
 	super extent: anExtent.
 	self image: (self fullResolutionSprite scaledToSize: anExtent)

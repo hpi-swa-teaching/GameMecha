@@ -7,7 +7,7 @@ Class {
 		'previousSprites',
 		'currentSprites'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

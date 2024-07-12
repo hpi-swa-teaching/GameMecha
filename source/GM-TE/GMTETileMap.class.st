@@ -35,20 +35,20 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 16:59'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:44'
 }
 GMTETileMap class >> foregroundMorphicLayerNumber [
-	"TODO: comment"
+	"MorphicLayerNumber defined as being in foreground (e.g. in front of toolbar)"
 	
 	^ 76
 ]
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 17:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:44'
 }
 GMTETileMap class >> maxLayers [
-	"the maximum amount of tileMatrixStack layers"
+	"The maximum amount of tileMatrixStack layers"
 	
 	^ 80
 	
@@ -97,21 +97,42 @@ GMTETileMap class >> tileWidth: aWidth tileHeight: aHeight padding: aPadding siz
 ]
 
 {
+	#category : #constants,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:38'
+}
+GMTETileMap class >> zoomStep [
+
+	^ 0.1
+]
+
+{
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:20'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:27'
 }
 GMTETileMap >> absPointToViewCenter: aPoint [
+	"Transform aPoint (without zoom) such that the transformation induces a view origin so that aPoint lies in the center"
 
 	^ (self absPointToViewFraction: aPoint) - (self view extent / 2) 
 ]
 
 {
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:19'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:28'
 }
 GMTETileMap >> absPointToViewFraction: aPoint [
+	"Transform aPoint (without zoom) such that it is mapped into the view value domain (e.g. 0-1)"
 
 	^aPoint / self extent
+]
+
+{
+	#category : #checking,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
+}
+GMTETileMap >> areDimensionsSet [
+	"Check if attributes regarded as 'dimensions' are properly initialized"
+
+	^ (self mapTileWidth notNil) and: [(self mapTileWidth notNil) and: [self mapPadding notNil]]
 ]
 
 {
@@ -219,9 +240,10 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 20:46'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:35'
 }
 GMTETileMap >> centerViewAt: aPoint [
+	"Center view at aPoint (in current view)"
 	"Note: aPoint is relative to current view"
 	"Note: center must induce legal view (non-overlapping)"
 
@@ -231,9 +253,10 @@ GMTETileMap >> centerViewAt: aPoint [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 22:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:35'
 }
 GMTETileMap >> centerViewAtAbs: aPoint [
+	"Center view at aPoint (without zoom)"
 	"Note: center must induce legal view (non-overlapping)"
 
 	self view moveTo: (self absPointToViewCenter: aPoint).
@@ -272,7 +295,7 @@ GMTETileMap >> correctedTilePositionMap: aPoint [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:35'
 }
 GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 	"delete tiles from editable matrix stack at given indices"
@@ -283,19 +306,7 @@ GMTETileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 			tile := self tileMatrixStack layer: aLayer at: c y at: c x.
 			tile	ifNotNil: [ 
 				tile abandon.
-				self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
-				self saveNewImageFromIndex: c inLayer: aLayer]]]
-]
-
-{
-	#category : #checking,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:00'
-}
-GMTETileMap >> dimensionsSet [
-	"Check if attributes regarded as 'dimensions' are properly initialized"
-
-	self flag: 'nameing? e.G. areDimensionsSet or dimensionsSetProperly'.
-	^ (self mapTileWidth notNil) and: [(self mapTileWidth notNil) and: [self mapPadding notNil]]
+				self tileMatrixStack layer: aLayer at: c y at: c x put: nil]]]
 ]
 
 {
@@ -309,13 +320,12 @@ GMTETileMap >> exportAsImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:57'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:30'
 }
 GMTETileMap >> extent: aPoint [
 	"Override extent to properly scale tile map"
 
 	| oldExtent newExtent |
-	self flag: 'category'.
 	self forceMapSizeRatio
 		ifTrue: [newExtent := (aPoint x) @ (aPoint x * (self mapTileHeight / self mapTileWidth))]
 		ifFalse: [newExtent := aPoint].
@@ -459,6 +469,20 @@ GMTETileMap >> generateMatrixStacks [
 
 {
 	#category : #initialization,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:30'
+}
+GMTETileMap >> generateTileAtPos: aPoint  withExtent: anExtent  withType: aTileClass [
+
+	^ (aTileClass
+		position: aPoint
+		extent: anExtent) 
+		lock;
+		beTransparent;
+		yourself.
+]
+
+{
+	#category : #initialization,
 	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:25'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass [
@@ -474,22 +498,17 @@ GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTi
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/9/2024 11:15'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:36'
 }
 GMTETileMap >> generateTileAtlayer: aLayer x: x y: y stack: aStack tileType: aTileClass posCorrectionBlock: aBlock [
 	"Add a tile of type aTileClass to aLayer at position (x, y) in aStack and calculate the correct position using aBlock"
 
 	| tilePos correctedTilePos tileExtent newTile |
-	tilePos := self tilePosFromVirtual: x@y.
+	tilePos := self tilePosFromVirtual: x @ y.
 	correctedTilePos := self viewCorrectedTilePosition: (aBlock value: tilePos).
 	tileExtent := self viewCorrectedTileExtent: self tileSizeWidth @ self tileSizeHeight.
 						
-	newTile := (aTileClass
-		position: correctedTilePos
-		extent: tileExtent) 
-		lock;
-		beTransparent;
-		yourself.
+	newTile := self generateTileAtPos: correctedTilePos withExtent: tileExtent withType: aTileClass.
 	
 	self addMorph: newTile.
 	aStack layer: aLayer at: y at: x put: newTile.
@@ -599,27 +618,30 @@ GMTETileMap >> highlightingTileFromIndex: anIndex [
 
 {
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:28'
 }
 GMTETileMap >> inViewPointToAbs: aPoint [
+	"Transform a view point such that it is mapped into the reference view (no zoom) value domain"
 
 	^ (self viewOriginInPxl - self topLeft) + (aPoint / self viewScaleFactor) 
 ]
 
 {
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/11/2024 00:01'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:28'
 }
 GMTETileMap >> inViewPointToViewCenter: aPoint [
+	"Transform a view point such that the transformation induces a view origin so that aPoint lies in the center"
 
 	^ (self inViewPointToViewFraction: aPoint) - (self view extent / 2)
 ]
 
 {
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 22:30'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:28'
 }
 GMTETileMap >> inViewPointToViewFraction: aPoint [
+	"Transform a view point such that it is mapped into the view value domain (e.g. 0-1)"
 
 	^ self absPointToViewFraction: (self inViewPointToAbs: aPoint)
 ]
@@ -806,9 +828,10 @@ GMTETileMap >> mouseWheel: anEvent [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:50'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:36'
 }
 GMTETileMap >> moveViewBy: aPoint [
+	"Move view by absoulte distance induced by aPoint"
 	"Note: aPoint is relative to current view"
 	"Note: center must induce legal view (non-overlapping)"
 
@@ -907,32 +930,28 @@ GMTETileMap >> resetView [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:02'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTETileMap >> revertCorrectedTilePosition: aPoint startingOffset: anOffset [
-	"Revert a tile position correction"
-	self flag: 'comment useful?'.
+
 	^ aPoint - anOffset - self topLeft	
 ]
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:01'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTETileMap >> revertCorrectedTilePositionBackground: aPoint [
-	"Inversion of correction"
 
-	self flag: 'comment useful?'.
 	^ self revertCorrectedTilePosition: aPoint startingOffset: self tileMatrixStackBackground
 ]
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:02'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTETileMap >> revertCorrectedTilePositionMap: aPoint [
-	"Inversion of correction"
-	self flag: 'comment useful?'.
+
 	^ self revertCorrectedTilePosition: aPoint startingOffset: self tileCornerOffsetMap
 ]
 
@@ -958,12 +977,11 @@ GMTETileMap >> revertViewCorrectedTilePositionMap: aPoint [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 20:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:30'
 }
 GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 	"Set dimensions (defines what is considered as part of 'dimensions')"
 
-	self flag: 'category?'.
 	self
 		mapTileWidth: aWidth;
 		mapTileHeight: aHeigth;
@@ -972,12 +990,11 @@ GMTETileMap >> setDimensionsWidth: aWidth height: aHeigth padding: aPadding [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:09'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTETileMap >> showHighlightingLayer [
 	"Shows / hides the grid"
 
-	self flag: 'commented code'.
 	self tileMatrixStackHighlighting visible: true.
 	self changed
 ]
@@ -1051,18 +1068,15 @@ GMTETileMap >> tileHeight: anObject [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:03'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTETileMap >> tileIndexFromPosition: aPoint [
 	"Answer the sender with a tile index (matrix[index x y][index x]) from a pixel position"
 
 	| uncorrectedPos index |
-	self flag: 'comment weird'.
 	uncorrectedPos := self revertViewCorrectedTilePositionMap: aPoint.
 
-	self flag: 'why in 2 lines?'.
-	index := (uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1).
-	index := index floor.
+	index := ((uncorrectedPos x / self tileSizeWidth + 1) @ (uncorrectedPos y / self tileSizeHeight + 1)) floor.
 	
 	((self tileMatrixStackHighlighting layer: 1) validIndex: index) ifFalse: [^ nil].
 	^ index
@@ -1227,38 +1241,37 @@ GMTETileMap >> toFullScreen [
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:04'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:32'
 }
 GMTETileMap >> toFullScreenMode [
 	"Scale to fullscreen & bring to foreground & make not draggable"
 	
-	self flag: 'casecade?'.
-	self toForeground.
-	self toFullScreen.
-	self lock
+	self 
+		toForeground;
+		toFullScreen;
+		lock
 ]
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:04'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:32'
 }
 GMTETileMap >> toggleBackgroundLayer [
 	"Toggles the dynamic filling of the maps background with the background tile"
 
-	self flag: 'casecade'.
 	self tileMatrixStackBackground toggleVisibility.
-	self updateTilesBackground.
-	self changed
+	self 
+		updateTilesBackground;
+		changed
 ]
 
 {
 	#category : #'dev-api',
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:32'
 }
 GMTETileMap >> toggleHighlightingLayer [
 	"Toggles the visibility of the grid"
 
-	self flag: 'cascade'.
 	self tileMatrixStackHighlighting toggleVisibility.
 	self changed
 ]
@@ -1318,12 +1331,12 @@ GMTETileMap >> updateDimensions [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
 }
 GMTETileMap >> updateMap [
 	"Update map by: fitting grid to current screen, generating tile matrix, adding sprites"
 	
-	self dimensionsSet ifFalse: [^ nil].
+	self areDimensionsSet ifFalse: [^ nil].
 	
 	self updateDimensions.
 	self tileMatrixStack 
@@ -1344,7 +1357,7 @@ GMTETileMap >> updateTileMatrixStack: aStack [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:34'
 }
 GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 	"Update matrix stacks by applying new dimensions & positions"
@@ -1354,7 +1367,7 @@ GMTETileMap >> updateTileMatrixStack: aStack posCorrectionBlock: aBlock [
 		tile := aStack layer: l at: y at: x.
 		
 		tile ifNotNil: [
-			tilePos := self tilePosFromVirtual: x@y.
+			tilePos := self tilePosFromVirtual: x @ y.
 			correctedTilePos := self viewCorrectedTilePosition: (aBlock value: tilePos).
 			tileExtent := self viewCorrectedTileExtent: self tileSizeWidth @ self tileSizeHeight.
 			tile 
@@ -1378,7 +1391,7 @@ GMTETileMap >> updateTiles [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:58'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:39'
 }
 GMTETileMap >> updateTilesBackground [
 	"Background tiles are handled seperately, because they are only updated if they're visible for performance reasons"
@@ -1388,8 +1401,9 @@ GMTETileMap >> updateTilesBackground [
 	self tileMatrixStackBackground 
 		rescaleToWidth: self tileWidth height: self tileHeight;
 		reset. 
-	self generateBackgroundTiles.
-	self updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [:aPoint | 
+	self 
+		generateBackgroundTiles;
+		updateTileMatrixStack: self tileMatrixStackBackground posCorrectionBlock: [:aPoint | 
 		self correctedTilePositionBackground: aPoint]
 ]
 
@@ -1413,20 +1427,20 @@ GMTETileMap >> view: anObject [
 
 {
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:28'
 }
 GMTETileMap >> viewCorrectedTileExtent: anExtent [
-	"comment stating purpose of message"
+	"Transform anExtent such that it accounts for zoom/view"
 
 	^self viewScaleFactor * anExtent
 ]
 
 {
 	#category : #'view-conversion',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 20:36'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:28'
 }
 GMTETileMap >> viewCorrectedTilePosition: aPoint [
-	"comment stating purpose of message"
+	"Transform aPoint such that it accounts for zoom/view"
 
 	^ self viewScaleFactor * (aPoint - self viewOriginInPxl) + self topLeft
 ]
@@ -1453,13 +1467,11 @@ GMTETileMap >> viewScaleFactor [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:12'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:36'
 }
 GMTETileMap >> zoomAt: aPoint by: aFloat [
-	""
-
+	
 	| newCenter oldMouseCenterOffset aPointAbs oldScaleFactor |
-		
 	oldScaleFactor := self viewScaleFactor.
 	aPointAbs := self inViewPointToAbs: aPoint.
 	oldMouseCenterOffset := (self inViewPointToAbs: (self extent / 2)) - aPointAbs.
@@ -1472,18 +1484,18 @@ GMTETileMap >> zoomAt: aPoint by: aFloat [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:37'
 }
 GMTETileMap >> zoomInAt: aPoint [
 
-	self zoomAt: aPoint by: 0.1
+	self zoomAt: aPoint by: GMTETileMap zoomStep
 ]
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:07'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:37'
 }
 GMTETileMap >> zoomOutAt: aPoint [
 	
-	self zoomAt: aPoint by: -0.1
+	self zoomAt: aPoint by: (GMTETileMap zoomStep negated)
 ]

@@ -6,7 +6,7 @@ Class {
 		'newSize',
 		'savedTiles'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

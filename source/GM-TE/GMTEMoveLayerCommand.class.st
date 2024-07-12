@@ -6,7 +6,7 @@ Class {
 		'moveDirection',
 		'editor'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

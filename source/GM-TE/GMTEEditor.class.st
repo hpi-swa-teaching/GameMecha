@@ -18,7 +18,7 @@ Class {
 		'mapViewer',
 		'tileTray'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

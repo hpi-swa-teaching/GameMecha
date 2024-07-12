@@ -16,12 +16,11 @@ GMTEView class >> minExtentValue [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:33'
 }
 GMTEView >> changeSizeBy: aFloat [
-
+	
 	| newExtent newOrigin |
-
 	newExtent := self correctedExtent: (self extent + (aFloat@aFloat)).
 	newOrigin := self correctedOrigin: self origin withExtent: newExtent.
 	
@@ -31,12 +30,11 @@ GMTEView >> changeSizeBy: aFloat [
 
 {
 	#category : #conversion,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 20:14'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:33'
 }
 GMTEView >> correctedExtent: anExtent [
 	
 	| newX newY |
-	
 	newX := (anExtent x min: 1) max: GMTEView minExtentValue.
 	newY := (anExtent y min: 1) max: GMTEView minExtentValue.
 	
@@ -74,10 +72,9 @@ GMTEView >> extent: anExtent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/10/2024 18:15'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:43'
 }
 GMTEView >> initialize [
-	
 	"Note: Viewport origin & extent interpreted as fraction of reference view (e.g. Morph)"
 
 	super initialize.

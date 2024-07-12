@@ -122,13 +122,12 @@ GMTETileMatrixLayer >> doTiles: aBlock [
 
 {
 	#category : #removing,
-	#'squeak_changestamp' : 'Ivo Zilkenat 6/24/2024 11:40'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:40'
 }
 GMTETileMatrixLayer >> free [
 	"Correctly free tiles from layer"
 
 	self doTiles: [:tile | tile free].
-	
 	self setNil
 ]
 

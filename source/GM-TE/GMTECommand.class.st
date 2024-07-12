@@ -4,7 +4,7 @@ Class {
 	#classVars : [
 		'GMTEAddLayerCommand'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-Editor'
 }
 
 {

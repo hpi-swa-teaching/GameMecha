@@ -9,10 +9,10 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'jj 6/23/2024 16:33'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:44'
 }
 GMTETileHighlighting class >> decoMorphAlphaValue [
-	"the alpha value for the default decoMorph"
+	"The alpha value for the default decoMorph"
 	
 	^ 0.2
 ]

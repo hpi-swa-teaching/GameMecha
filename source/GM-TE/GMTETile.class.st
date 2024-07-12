@@ -6,11 +6,10 @@ Class {
 
 {
 	#category : #constants,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 21:09'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:44'
 }
 GMTETile class >> checkerBoardColors [
 
-	self flag: 'Dictionary formatting?'.
 	^ {(0@0) -> Color lightGray.
 		(1@1) -> Color lightGray.
 		(0@1) -> Color gray.
