@@ -1,3 +1,6 @@
+"
+Command that records changes of tiles in the tilemap
+"
 Class {
 	#name : #GMTEEditTilesCommand,
 	#superclass : #GMTECommand,
@@ -7,7 +10,8 @@ Class {
 		'previousSprites',
 		'currentSprites'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:19'
 }
 
 {
@@ -25,17 +29,19 @@ GMTEEditTilesCommand class >> previousTiles: aDictionary1 currentTiles: aDiction
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:45'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:48'
 }
 GMTEEditTilesCommand >> currentSprites [
+
 	^ currentSprites
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:45'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:48'
 }
 GMTEEditTilesCommand >> currentSprites: anObject [
+
 	currentSprites := anObject
 ]
 
@@ -50,87 +56,94 @@ GMTEEditTilesCommand >> do [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 17:12'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:38'
 }
 GMTEEditTilesCommand >> editor [
+
 	^ editor
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 17:12'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:38'
 }
 GMTEEditTilesCommand >> editor: anObject [
+
 	editor := anObject
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:45'
+	#category : #execution,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:32'
 }
-GMTEEditTilesCommand >> initialize [
+GMTEEditTilesCommand >> placeSprite: aSprite at: x at: y in: aLayer [
 
-	self
-		previousSprites: Dictionary new;
-		currentSprites: Dictionary new
+	"Restores a single tile as it was before the command"
+	| tile |
+
+	tile := self tileMap tileMatrixStack layer: aLayer at: y at: x.
+	tile
+		ifNil: [aSprite 
+			ifNotNil: [
+				tile := self tileMap generateTileAtlayer: aLayer x: x y: y stack: self tileMap tileMatrixStack tileType: GMTETile. 
+				tile updateSprite: aSprite]]
+		ifNotNil: [aSprite
+			ifNil: [
+				self tileMap tileMatrixStack layer: aLayer at: y at: x put: nil.
+				tile abandon]
+			ifNotNil: [tile updateSprite: aSprite]]
 ]
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 19:47'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:31'
 }
 GMTEEditTilesCommand >> placeTilesFromList: aList [
-	| tile sprite layer x y tileMap |
+	"Restores all tiles as they were before the command"
+	| sprite layer x y |
 	
-	tileMap := self tileMap.
 	aList keysDo: [ :coordinates |
 		x := coordinates at: 1.
 		y := coordinates at: 2.
 		layer := coordinates at: 3.
 		
-		tile := tileMap tileMatrixStack layer: layer at: y at: x.
 		sprite := aList at: coordinates.
-		tile
-			ifNil: [sprite 
-				ifNotNil: [
-					tile := tileMap generateTileAtlayer: layer x: x y: y stack: tileMap tileMatrixStack tileType: GMTETile. 
-					tile updateSprite: sprite]]
-			ifNotNil: [sprite
-				ifNil: [
-					self tileMap tileMatrixStack layer: layer at: y at: x put: nil.
-					tile abandon]
-				ifNotNil: [tile updateSprite: (aList at: coordinates)]]]
+		self placeSprite: sprite at: x at: y in: layer]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:45'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:38'
 }
 GMTEEditTilesCommand >> previousSprites [
+
 	^ previousSprites
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:45'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:38'
 }
 GMTEEditTilesCommand >> previousSprites: anObject [
+
 	previousSprites := anObject
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:56'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:38'
 }
 GMTEEditTilesCommand >> tileMap [
+
 	^ tileMap
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 6/28/2024 02:56'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:38'
 }
 GMTEEditTilesCommand >> tileMap: anObject [
+
 	tileMap := anObject
 ]
 

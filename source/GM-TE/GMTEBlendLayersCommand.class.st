@@ -1,7 +1,11 @@
+"
+Command that blends a set of layers together into one
+"
 Class {
 	#name : #GMTEBlendLayersCommand,
 	#superclass : #GMTEDeleteLayersCommand,
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:20'
 }
 
 {

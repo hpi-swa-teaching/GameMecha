@@ -1,3 +1,6 @@
+"
+Command that moves a layer up or down in the hierarchy
+"
 Class {
 	#name : #GMTEMoveLayerCommand,
 	#superclass : #GMTECommand,
@@ -6,7 +9,8 @@ Class {
 		'moveDirection',
 		'editor'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:21'
 }
 
 {
