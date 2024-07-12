@@ -32,11 +32,11 @@ GMTEImageButton >> actionSelector [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jannis 2/8/2024 18:31'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:25'
 }
-GMTEImageButton >> actionSelector: aSymbolOrString [
+GMTEImageButton >> actionSelector: anObject [
 	
-	actionSelector := aSymbolOrString asSymbol
+	actionSelector := anObject asSymbol
 ]
 
 {
@@ -51,20 +51,20 @@ GMTEImageButton >> arguments [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Thomas Wolf 2/4/2024 23:10'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:25'
 }
-GMTEImageButton >> arguments: aCollection [
+GMTEImageButton >> arguments: anObject [
 
-	arguments := aCollection asArray copy
+	arguments := anObject asArray copy
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 18:24'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:10'
 }
-GMTEImageButton >> basicButtonGroup: aCollection [
+GMTEImageButton >> basicButtonGroup: anObject [
 
-	buttonGroup := aCollection
+	buttonGroup := anObject
 ]
 
 {
@@ -88,16 +88,16 @@ GMTEImageButton >> buttonGroup [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'tw 7/12/2024 17:08'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:11'
 }
-GMTEImageButton >> buttonGroup: aCollection [
+GMTEImageButton >> buttonGroup: anObject [
 
-	self basicButtonGroup: aCollection.
-	aCollection register: self as: self groupName
+	self basicButtonGroup: anObject.
+	anObject register: self as: self groupName
 ]
 
 {
-	#category : #accessing,
+	#category : #'visual properties',
 	#'squeak_changestamp' : 'jj 6/22/2024 16:48'
 }
 GMTEImageButton >> createStateImagesFrom: anImage [
@@ -115,7 +115,7 @@ GMTEImageButton >> createStateImagesFrom: anImage [
 ]
 
 {
-	#category : #button,
+	#category : #logic,
 	#'squeak_changestamp' : 'TW 7/9/2024 18:22'
 }
 GMTEImageButton >> doButtonAction [
@@ -132,15 +132,13 @@ GMTEImageButton >> doButtonAction [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/6/2024 23:07'
+	#category : #'visual properties',
+	#'squeak_changestamp' : 'tw 7/12/2024 21:14'
 }
 GMTEImageButton >> dyeSprite: anImage with: aColor [
 
 	^ anImage copy
 		replaceColor: Color white withColor: Color transparent;
-		"replaceColor: Color black withColor: aColor;
-		yourself"
 		dyed: aColor
 ]
 
@@ -171,10 +169,11 @@ GMTEImageButton >> enabled: aBoolean [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'tw 7/12/2024 17:03'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:27'
 }
 GMTEImageButton >> groupName [
-
+	"How this button is identified in its group"
+	
 	^ groupName
 ]
 
@@ -278,17 +277,7 @@ GMTEImageButton >> mouseUp: anEvent [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'tw 7/12/2024 17:21'
-}
-GMTEImageButton >> onlySelect [
-
-		self buttonGroup ifNotNil: [self buttonGroup singleSelect: self].
-		
-]
-
-{
-	#category : #accessing,
+	#category : #logic,
 	#'squeak_changestamp' : 'tw 7/12/2024 17:23'
 }
 GMTEImageButton >> select [
@@ -299,10 +288,11 @@ GMTEImageButton >> select [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'TW 7/9/2024 19:01'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:27'
 }
 GMTEImageButton >> selected [
-
+	"Is this button in a group currently selected"	
+		
 	^ selected
 ]
 
@@ -316,7 +306,7 @@ GMTEImageButton >> selected: anObject [
 ]
 
 {
-	#category : #accessing,
+	#category : #'visual properties',
 	#'squeak_changestamp' : 'TW 6/25/2024 15:39'
 }
 GMTEImageButton >> setImageMode: aString [
@@ -327,9 +317,10 @@ GMTEImageButton >> setImageMode: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'jj 6/22/2024 16:49'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:27'
 }
 GMTEImageButton >> stateSprites [
+	"The sprites for the various states the button can assume, preferably in different colours"
 
 	^ stateSprites
 ]
@@ -364,29 +355,46 @@ GMTEImageButton >> target: anObject [
 
 {
 	#category : #'visual properties',
-	#'squeak_changestamp' : 'tw 7/12/2024 18:39'
+	#'squeak_changestamp' : 'tw 7/12/2024 21:27'
 }
 GMTEImageButton >> updateVisualState: anEvent [
 
-
+	"Guard to check whether this button is allowed to react to mouse input"
 	self enabled 
 		ifFalse: [
 			self setImageMode: 'disabled'.
 			^ nil].
 		
 	self buttonGroup
-		ifNil: [
+		ifNil: [self updateVisualStateUngrouped: anEvent]
+		ifNotNil: [self updateVisualStateGrouped: anEvent]
+]
+
+{
+	#category : #'visual properties',
+	#'squeak_changestamp' : 'tw 7/12/2024 21:17'
+}
+GMTEImageButton >> updateVisualStateGrouped: anEvent [
+
+	self selected
+		ifFalse: [
 			(self containsPoint: Sensor cursorPoint)
 				ifTrue: [anEvent redButtonPressed
 					ifTrue: [self setImageMode: 'pressed']
 					ifFalse:[self setImageMode: 'hovered']]
 				ifFalse: [self setImageMode: 'unpressed']]
-		ifNotNil: [
-			self selected
-				ifFalse: [
-					(self containsPoint: Sensor cursorPoint)
-						ifTrue: [anEvent redButtonPressed
-							ifTrue: [self setImageMode: 'pressed']
-							ifFalse:[self setImageMode: 'hovered']]
-						ifFalse: [self setImageMode: 'unpressed']]]
+]
+
+{
+	#category : #'visual properties',
+	#'squeak_changestamp' : 'tw 7/12/2024 21:18'
+}
+GMTEImageButton >> updateVisualStateUngrouped: anEvent [
+
+	(self containsPoint: Sensor cursorPoint)
+		ifTrue: [anEvent redButtonPressed
+			ifTrue: [self setImageMode: 'pressed']
+			ifFalse:[self setImageMode: 'hovered']]
+		ifFalse: [self setImageMode: 'unpressed']
+		
 ]
