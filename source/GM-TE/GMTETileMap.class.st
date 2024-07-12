@@ -218,15 +218,6 @@ GMTETileMap >> borderTileWidth: anObject [
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 15:59'
-}
-GMTETileMap >> canZoomIn [
-
-	^ false
-]
-
-{
-	#category : #view,
 	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 16:04'
 }
 GMTETileMap >> canZoomInBy: aFloat [
@@ -787,7 +778,7 @@ GMTETileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:05'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:57'
 }
 GMTETileMap >> mouseWheel: anEvent [
 
@@ -795,8 +786,8 @@ GMTETileMap >> mouseWheel: anEvent [
 	"anEvent shiftPressed ifFalse: [^ nil]."
 	
 	self hasStaticView ifTrue: [^ nil].
-	anEvent isWheelDown ifTrue: [self zoomInAt: (anEvent position - self topLeft)].
-	anEvent isWheelUp ifTrue:  [self zoomOutAt: (anEvent position - self topLeft)]
+	anEvent isWheelDown ifTrue: [self zoomOutAt: (anEvent position - self topLeft)].
+	anEvent isWheelUp ifTrue:  [self zoomInAt: (anEvent position - self topLeft)]
 ]
 
 {
@@ -1419,28 +1410,8 @@ GMTETileMap >> viewScaleFactor [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/2/2024 17:37'
-}
-GMTETileMap >> vigenerateBackgroundTiles [
-	"Fill the background matrix stack with tiles automatically"
-	
-	self backgroundTiles ifNil: [^ nil].
-	
-	self tileMatrixStackBackground doTilesXYLindex: [:x :y :l | 
-		"It is assumed that the background stack consists of only one layer"
-		self generateTileAtlayer: l x: x y: y stack: self tileMatrixStackBackground tileType: GMTETile posCorrectionBlock: [:aPoint |
-			self correctedTilePositionBackground: aPoint]].
-	
-	self tileMatrixStackBackground doTiles: [:tile |
-		tile applyTileSprite: self backgroundTiles]
-	
-	
-]
-
-{
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 17:10'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:12'
 }
 GMTETileMap >> zoomAt: aPoint by: aFloat [
 	""
@@ -1454,10 +1425,7 @@ GMTETileMap >> zoomAt: aPoint by: aFloat [
 	self view changeSizeBy: (aFloat negated).
 
 	newCenter := (oldScaleFactor / self viewScaleFactor) * oldMouseCenterOffset + aPointAbs.
-	self centerViewAtAbs: newCenter.
-
-	self flag: 'refactor. This seems to be necessary but highlights only exist for editable tile map'.
-	"self tileSelectionSet clearAllHighlightings"
+	self centerViewAtAbs: newCenter
 ]
 
 {

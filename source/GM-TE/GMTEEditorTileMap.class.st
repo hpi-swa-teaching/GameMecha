@@ -198,12 +198,15 @@ GMTEEditorTileMap >> mouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:28'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:27'
 }
 GMTEEditorTileMap >> mouseUp: anEvent [
 	"apply brush operation on tilemap"
 	
 	| selectedIndices |
+	"Make sure view is not currently moved. Implies that shift must still be held down"
+	anEvent shiftPressed ifTrue: [^ nil].	
+
 	self brush firstMatrixIndex: nil.
 	
 	selectedIndices := self brush outputSet asCollection.
@@ -374,4 +377,15 @@ GMTEEditorTileMap >> updateTiles: anIndexSet inLayer: aLayer FromEvent: anEvent 
 	
 	validLeftClick ifTrue: [self placeTiles: anIndexSet inLayer: aLayer].	
 	validRightClick ifTrue: [self deleteTiles: anIndexSet inLayer: aLayer].
+]
+
+{
+	#category : #view,
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 18:13'
+}
+GMTEEditorTileMap >> zoomAt: aPoint by: aFloat [
+
+	super zoomAt: aPoint by: aFloat.
+	self flag: 'refactor?'.
+	self tileSelectionSet clearAllHighlightings
 ]
