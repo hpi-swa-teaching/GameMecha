@@ -1,10 +1,14 @@
+"
+Command that adds a new layer
+"
 Class {
 	#name : #GMTEAddLayerCommand,
 	#superclass : #GMTECommand,
 	#instVars : [
 		'editor'
 	],
-	#category : #'GM-TE-UI'
+	#category : #'GM-TE-UI',
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:19'
 }
 
 {
@@ -29,17 +33,19 @@ GMTEAddLayerCommand >> do [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:37'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:37'
 }
 GMTEAddLayerCommand >> editor [
+
 	^ editor
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Alex M 7/4/2024 01:37'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 21:37'
 }
 GMTEAddLayerCommand >> editor: anObject [
+
 	editor := anObject
 ]
 
