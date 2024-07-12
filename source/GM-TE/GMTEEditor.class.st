@@ -1071,7 +1071,7 @@ GMTEEditor >> exportMenu [
 
 {
 	#category : #'input handling',
-	#'squeak_changestamp' : 'mcjj 7/12/2024 00:19'
+	#'squeak_changestamp' : 'mcjj 7/12/2024 17:12'
 }
 GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
 	| key |
@@ -1083,9 +1083,26 @@ GMTEEditor >> filterEvent: aKeyboardEvent for: anObject [
 
 	aKeyboardEvent commandKeyPressed ifTrue: [
 		key caseOf: {
+			[$s] -> [self exportAsMorph].
+			[$i] -> [self importFromMorph].
+			[$o] -> [self importFromTileset].
+			[$g] -> [self toggleGrid].
+			[$h] -> [self toggleBackgroundTiles].
+			[$r] -> [self rotateSelectedTile].
+		
+			[$a] -> [self addLayer].
+			[$n] -> [self renameLayer].
+			[$c] -> [self resetSelectedLayers].
+			[$b] -> [self blendSelectedLayers].
+			[$x] -> [self deleteSelectedLayers].
+			[$v] -> [self toggleSelectedLayerVisibility].
+			
 			[$z] -> [self undo].
 			[$y] -> [self redo].
-			[$r] -> [self rotateSelectedTile].
+			[$1] -> [self selectRadiusBrush].
+			[$2] -> [self selectLineBrush].
+			[$3] -> [self selectFillBrush].
+			[$4] -> [self selectRectangleBrush].
 		} otherwise: [^ aKeyboardEvent "no hit"].
 		^ aKeyboardEvent ignore "hit"].
 	
