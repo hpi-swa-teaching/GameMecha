@@ -146,12 +146,14 @@ GMTEBrush >> firstMatrixIndex: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JS 7/11/2024 13:59'
+	#'squeak_changestamp' : 'tw 7/12/2024 23:02'
 }
 GMTEBrush >> initialize [
 
 	super initialize.
-	self resetOutputSet
+	self 
+		resetOutputSet;
+		radius: 1
 ]
 
 {
