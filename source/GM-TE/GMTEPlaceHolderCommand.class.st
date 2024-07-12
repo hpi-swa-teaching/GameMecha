@@ -1,19 +1,22 @@
+"
+Command that is put at the start of the LinkedList containing all commands for convenience
+"
 Class {
 	#name : #GMTEPlaceHolderCommand,
 	#superclass : #GMTECommand,
-	#category : #'GM-TE-Editor'
+	#category : 'GM-TE-Editor'
 }
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:19'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:24'
 }
 GMTEPlaceHolderCommand >> do [
 ]
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/1/2024 17:20'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 22:24'
 }
 GMTEPlaceHolderCommand >> undo [
 ]

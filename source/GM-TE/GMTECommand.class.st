@@ -1,10 +1,13 @@
+"
+Subclasses implement a do: and undo: method to undo operations in the Tile Editor
+"
 Class {
 	#name : #GMTECommand,
 	#superclass : #Object,
 	#classVars : [
 		'GMTEAddLayerCommand'
 	],
-	#category : #'GM-TE-Editor'
+	#category : 'GM-TE-Editor'
 }
 
 {

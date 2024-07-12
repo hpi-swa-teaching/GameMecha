@@ -55,20 +55,20 @@ GMTEEditorTileMap >> currentTileChanges: anObject [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:28'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 23:35'
 }
 GMTEEditorTileMap >> deleteTiles: anIndexSet inLayer: aLayer [
 	"delete tiles from editable matrix stack at given indices"
 	
 	| tile |
-	anIndexSet do: [:c |
-		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
-			tile := self tileMatrixStack layer: aLayer at: c y at: c x.
+	anIndexSet do: [:index |
+		((self tileMatrixStack layer: aLayer) inBounds: index) ifTrue: [
+			tile := self tileMatrixStack layer: aLayer at: index y at: index x.
 			tile	ifNotNil: [ 
-				self savePreviousImageFromIndex: c inLayer: aLayer.
+				self savePreviousImageFromIndex: index inLayer: aLayer.
 				tile abandon.
-				self tileMatrixStack layer: aLayer at: c y at: c x put: nil.
-				self saveNewImageFromIndex: c inLayer: aLayer.
+				self tileMatrixStack layer: aLayer at: index y at: index x put: nil.
+				self saveNewImageFromIndex: index inLayer: aLayer.
 				self model savedSinceModified: false]]]
 ]
 
@@ -101,7 +101,7 @@ GMTEEditorTileMap >> handlesMouseOver: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'JS 7/12/2024 15:15'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 23:35'
 }
 GMTEEditorTileMap >> highlightTilesFromIndices: anIndexSet [
 	
@@ -109,9 +109,9 @@ GMTEEditorTileMap >> highlightTilesFromIndices: anIndexSet [
 	self tileSelectionSet clearAllHighlightings.
 	anIndexSet ifNil: [^ nil].
 	
-	(anIndexSet select: [:c | 
-		(self tileMatrixStack layer: self model selectedLayers anyOne) inBounds: c]) do: [:t |
-			hoveredHighlightingTile := self highlightingTileFromIndex: t.
+	(anIndexSet select: [:index | 
+		(self tileMatrixStack layer: self model selectedLayers anyOne) inBounds: index]) do: [:tile |
+			hoveredHighlightingTile := self highlightingTileFromIndex: tile.
 			hoveredHighlightingTile ifNotNil: [self tileSelectionSet highlightTile: hoveredHighlightingTile]]
 ]
 
@@ -223,19 +223,19 @@ GMTEEditorTileMap >> mouseUp: anEvent [
 
 {
 	#category : #updating,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 18:27'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 23:37'
 }
 GMTEEditorTileMap >> placeTiles: anIndexSet inLayer: aLayer [
 	"add currently selected tile (model) to editable matrix stack at given indices"
 
 	| tile |
-	anIndexSet do: [:c |
-		self savePreviousImageFromIndex: c inLayer: aLayer.
-		((self tileMatrixStack layer: aLayer) inBounds: c) ifTrue: [
-				tile := self tileMatrixStack layer: aLayer at: c y at: c x.
-				tile ifNil: [tile := self generateTileAtlayer: aLayer x: c x y: c y stack: tileMatrixStack tileType: GMTETile].
+	anIndexSet do: [:index |
+		self savePreviousImageFromIndex: index inLayer: aLayer.
+		((self tileMatrixStack layer: aLayer) inBounds: index) ifTrue: [
+				tile := self tileMatrixStack layer: aLayer at: index y at: index x.
+				tile ifNil: [tile := self generateTileAtlayer: aLayer x: index x y: index y stack: tileMatrixStack tileType: GMTETile].
 				self model selectedTile ifNotNil: [tile updateSprite: self model selectedTile].
-				self saveNewImageFromIndex: c inLayer: aLayer.
+				self saveNewImageFromIndex: index inLayer: aLayer.
 				self model savedSinceModified: false]]
 ]
 
@@ -287,21 +287,23 @@ GMTEEditorTileMap >> resetLayers: aSet [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Alex M 6/28/2024 20:06'
+	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 23:37'
 }
 GMTEEditorTileMap >> resetTileEditChanges [
 
-	self previousTileStates: Dictionary new.
-	self currentTileChanges: Dictionary new
+	self previousTileStates: Dictionary new;
+		currentTileChanges: Dictionary new
 ]
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:38'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:48'
 }
 GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
+	"Saves the updated state of a single tile after changes. Is overwritten everytime there is a new change."
 	
 	| tile | 
+
 	anIndex ifNil: [^ nil].
 	
 	tile := self tileMatrixStack layer: aLayer at: anIndex y at: anIndex x.
@@ -313,11 +315,13 @@ GMTEEditorTileMap >> saveNewImageFromIndex: anIndex inLayer: aLayer [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:40'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:15'
 }
 GMTEEditorTileMap >> savePreviousImageFromIndex: anIndex inLayer: aLayer [
-
+	"Saves the state of a single tile before changes. Doesn't overwrite until all changes have been"
+	"sent to the Tile Editor"
 	| tile | 	
+		
 	tile := self tileMatrixStack layer: aLayer at: anIndex y at: anIndex x.
 	
 	tile
@@ -327,11 +331,12 @@ GMTEEditorTileMap >> savePreviousImageFromIndex: anIndex inLayer: aLayer [
 
 {
 	#category : #'command processing',
-	#'squeak_changestamp' : 'JS 7/12/2024 16:43'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:14'
 }
 GMTEEditorTileMap >> saveTileEditChanges [
-	
+	"Sends all recorded changes to the TileEditor and resets the list of changes"
 	| command |
+	
 	command := GMTEEditTilesCommand previousTiles: self previousTileStates currentTiles: self currentTileChanges tilemap: self.
 	
 	self model addCommand: command.
@@ -345,6 +350,17 @@ GMTEEditorTileMap >> saveTileEditChanges [
 GMTEEditorTileMap >> selectedLayers [
 
 	^ self model selectedLayers
+]
+
+{
+	#category : #updating,
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:26'
+}
+GMTEEditorTileMap >> silentlyResetLayers: aSet [
+	"Resets a without recording changes for the Command processor"
+	
+	aSet do: [:layerIndex | self tileMatrixStack resetLayer: layerIndex].
+
 ]
 
 {
@@ -383,7 +399,7 @@ GMTEEditorTileMap >> updateTiles: anIndexSet inLayer: aLayer FromEvent: anEvent 
 
 {
 	#category : #view,
-	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:31'
+	#'squeak_changestamp' : 'Ivo Zilkenat 7/12/2024 23:47'
 }
 GMTEEditorTileMap >> zoomAt: aPoint by: aFloat [
 

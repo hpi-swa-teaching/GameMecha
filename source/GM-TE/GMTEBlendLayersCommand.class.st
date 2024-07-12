@@ -1,7 +1,10 @@
+"
+Command that blends a set of layers together into one
+"
 Class {
 	#name : #GMTEBlendLayersCommand,
 	#superclass : #GMTEDeleteLayersCommand,
-	#category : #'GM-TE-Editor'
+	#category : 'GM-TE-Editor'
 }
 
 {
@@ -15,13 +18,12 @@ GMTEBlendLayersCommand >> do [
 
 {
 	#category : #execution,
-	#'squeak_changestamp' : 'Alex M 7/12/2024 21:28'
+	#'squeak_changestamp' : 'Alex M 7/12/2024 23:27'
 }
 GMTEBlendLayersCommand >> undo [
 
-	self editor
-		addTilemapLayersAt: (self layers copyFrom: 2 to: self layers size);
-		resetLayers: {self layers first}.
+	self editor addTilemapLayersAt: (self layers copyFrom: 2 to: self layers size).
+	self tileMap silentlyResetLayers: (Set with: layers first).
 		
 	self restoreTiles
 	
