@@ -46,11 +46,11 @@ GMTEEditorTileMap >> currentTileChanges [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:18'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:19'
 }
-GMTEEditorTileMap >> currentTileChanges: aTileDictionary [
+GMTEEditorTileMap >> currentTileChanges: anObject [
 
-	currentTileChanges := aTileDictionary
+	currentTileChanges := anObject
 ]
 
 {
@@ -140,11 +140,11 @@ GMTEEditorTileMap >> model [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JS 7/12/2024 16:25'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:19'
 }
-GMTEEditorTileMap >> model: aModel [
+GMTEEditorTileMap >> model: anObject [
 
-	model := aModel
+	model := anObject
 ]
 
 {
@@ -250,11 +250,11 @@ GMTEEditorTileMap >> previousTileStates [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:18'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:19'
 }
-GMTEEditorTileMap >> previousTileStates: aTileDictionary [
+GMTEEditorTileMap >> previousTileStates: anObject [
 
-	previousTileStates := aTileDictionary
+	previousTileStates := anObject
 ]
 
 {
@@ -358,11 +358,11 @@ GMTEEditorTileMap >> tileSelectionSet [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 14:16'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEEditorTileMap >> tileSelectionSet: aSet [
+GMTEEditorTileMap >> tileSelectionSet: anObject [
 
-	tileSelectionSet := aSet
+	tileSelectionSet := anObject
 ]
 
 {

@@ -51,11 +51,11 @@ GMTEBrush >> currentBrush [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:40'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEBrush >> currentBrush: aBrush [
+GMTEBrush >> currentBrush: anObject [
 
-	currentBrush := aBrush
+	currentBrush := anObject
 ]
 
 {
@@ -69,11 +69,11 @@ GMTEBrush >> currentMatrixIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:41'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEBrush >> currentMatrixIndex: anIndex [
+GMTEBrush >> currentMatrixIndex: anObject [
 
-	currentMatrixIndex := anIndex
+	currentMatrixIndex := anObject
 ]
 
 {
@@ -137,11 +137,11 @@ GMTEBrush >> firstMatrixIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:42'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEBrush >> firstMatrixIndex: anIndex [
+GMTEBrush >> firstMatrixIndex: anObject [
 
-	firstMatrixIndex := anIndex
+	firstMatrixIndex := anObject
 ]
 
 {
@@ -165,11 +165,11 @@ GMTEBrush >> layer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:42'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEBrush >> layer: aLayer [
+GMTEBrush >> layer: anObject [
 
-	layer := aLayer
+	layer := anObject
 ]
 
 {
@@ -210,11 +210,11 @@ GMTEBrush >> outputSet [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:43'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEBrush >> outputSet: aSet [
+GMTEBrush >> outputSet: anObject [
 
-	outputSet := aSet
+	outputSet := anObject
 ]
 
 {
@@ -228,11 +228,11 @@ GMTEBrush >> radius [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Valentin Teutschbein 7/12/2024 13:43'
+	#'squeak_changestamp' : 'JS 7/12/2024 21:20'
 }
-GMTEBrush >> radius: aRadius [
+GMTEBrush >> radius: anObject [
 
-	radius := aRadius
+	radius := anObject
 ]
 
 {
