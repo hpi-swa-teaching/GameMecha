@@ -13,20 +13,6 @@
 		],
 		#encoding : @4
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-DemoGame'
-		},
-		#path : FSAbsolutePath [
-			'src'
-		]
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'BaselineOfGameMecha'
-		},
-		#path : @9
-	},
 	SquotBlobMapper {
 		#path : FSAbsolutePath [
 			'testMapFile.morph'
@@ -65,7 +51,9 @@
 		#package : MCPackage {
 			#name : 'GameMecha-ResourceLoading'
 		},
-		#path : @9
+		#path : FSAbsolutePath [
+			'src'
+		]
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -73,18 +61,18 @@
 		],
 		#encoding : 'TXT'
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-Examples'
+		},
+		#path : @19
+	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
 			'rename.png'
 		],
 		#encoding : @4
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-Examples'
-		},
-		#path : @9
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -96,7 +84,7 @@
 		#package : MCPackage {
 			#name : 'GameMecha-Collisions'
 		},
-		#path : @9
+		#path : @19
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -129,13 +117,13 @@
 		#package : MCPackage {
 			#name : 'GameMecha-KeyHandling'
 		},
-		#path : @9
+		#path : @19
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'GameMecha-TileEditor'
 		},
-		#path : @9
+		#path : @19
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -213,6 +201,12 @@
 		],
 		#encoding : @4
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-Test'
+		},
+		#path : @19
+	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'.squot'
@@ -228,9 +222,9 @@
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'GameMecha-Test'
+			#name : 'BaselineOfGameMecha'
 		},
-		#path : @9
+		#path : @19
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -238,5 +232,11 @@
 			'merge.png'
 		],
 		#encoding : @4
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-DemoGame'
+		},
+		#path : @19
 	}
 ]
