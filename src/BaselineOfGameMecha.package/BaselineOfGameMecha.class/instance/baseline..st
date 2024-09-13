@@ -5,6 +5,8 @@ baseline: spec
 		for: #'common'
 			do: [
 				
+				spec preLoadDoIt: #preLoad:package:.
+				
 				self squotMapper: spec.
 				
 				spec
