@@ -5,6 +5,6 @@ createKeyboardEventOfType: aType withValue: aKeyValue
 		buttons: 0
 		position: nil
 		keyValue: aKeyValue
-		hand: nil
+		hand: GMMockHand new
 		stamp: Time millisecondClockValue;
 		yourself
