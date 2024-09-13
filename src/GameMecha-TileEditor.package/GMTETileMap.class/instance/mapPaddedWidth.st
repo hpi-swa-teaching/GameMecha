@@ -1,0 +1,4 @@
+accessing
+mapPaddedWidth
+
+	^ mapPaddedWidth

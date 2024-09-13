@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 15:15",
+	"instvars" : [
+		 ],
+	"name" : "GMResourceLoaderTest",
+	"pools" : [
+		 ],
+	"super" : "GMResourceLoadingTest",
+	"type" : "normal" }

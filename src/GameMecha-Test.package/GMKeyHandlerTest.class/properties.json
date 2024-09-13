@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/25/2018 17:25",
+	"instvars" : [
+		"keyMorph",
+		"currentTestValue" ],
+	"name" : "GMKeyHandlerTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

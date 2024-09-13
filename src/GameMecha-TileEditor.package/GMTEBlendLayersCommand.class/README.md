@@ -1,0 +1,1 @@
+Command that blends a set of layers together into one

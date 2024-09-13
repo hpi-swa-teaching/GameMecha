@@ -1,0 +1,1 @@
+PluggableStaticText is supposed to enable simple text that seamlessly fits into the window

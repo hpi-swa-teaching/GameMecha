@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"position" ],
+	"name" : "GMClickEvent",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

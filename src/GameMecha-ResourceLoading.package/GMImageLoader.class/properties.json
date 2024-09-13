@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-ResourceLoading",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 15:44",
+	"instvars" : [
+		 ],
+	"name" : "GMImageLoader",
+	"pools" : [
+		 ],
+	"super" : "GMResourceLoader",
+	"type" : "normal" }

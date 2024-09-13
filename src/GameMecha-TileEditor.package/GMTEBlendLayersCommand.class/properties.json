@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMTEBlendLayersCommand",
+	"pools" : [
+		 ],
+	"super" : "GMTEDeleteLayersCommand",
+	"type" : "normal" }

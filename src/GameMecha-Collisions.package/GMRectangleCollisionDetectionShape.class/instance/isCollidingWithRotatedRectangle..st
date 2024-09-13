@@ -1,0 +1,3 @@
+collision
+isCollidingWithRotatedRectangle: aMorph
+	^ aMorph gmCollisionDetectionShape isCollidingWithRectangle: self owner

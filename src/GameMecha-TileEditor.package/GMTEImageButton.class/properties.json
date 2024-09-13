@@ -1,0 +1,21 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"target",
+		"actionSelector",
+		"arguments",
+		"stateSprites",
+		"enabled",
+		"selected",
+		"buttonGroup",
+		"groupName" ],
+	"name" : "GMTEImageButton",
+	"pools" : [
+		 ],
+	"super" : "GMTEImageMorph",
+	"type" : "normal" }

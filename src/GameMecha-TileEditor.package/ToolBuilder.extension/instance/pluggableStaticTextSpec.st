@@ -1,0 +1,4 @@
+*GameMecha-TileEditor
+pluggableStaticTextSpec
+
+	^ PluggableStaticTextSpec

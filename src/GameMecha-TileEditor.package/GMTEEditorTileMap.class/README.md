@@ -1,0 +1,1 @@
+A GMTEEditorTileMap is a Tilemap that can only be found in the editor or as an exported .morph file. It provides the additional methods for i/o compared to the regular tilemap.

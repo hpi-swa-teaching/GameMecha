@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "brh 7/25/2018 19:31",
+	"instvars" : [
+		"collisionHandler",
+		"players",
+		"imageLoader",
+		"soundLoader" ],
+	"name" : "GMDemoGame",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

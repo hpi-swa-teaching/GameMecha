@@ -1,0 +1,16 @@
+{
+	"class" : {
+		"previousTiles:currentTiles:tilemap:" : "Alex M 7/1/2024 17:59" },
+	"instance" : {
+		"currentSprites" : "Alex M 7/12/2024 21:48",
+		"currentSprites:" : "Alex M 7/12/2024 21:48",
+		"do" : "Alex M 7/10/2024 13:42",
+		"editor" : "Alex M 7/12/2024 21:38",
+		"editor:" : "Alex M 7/12/2024 21:38",
+		"placeSprite:at:at:in:" : "Alex M 7/12/2024 22:32",
+		"placeTilesFromList:" : "Alex M 7/12/2024 22:31",
+		"previousSprites" : "Alex M 7/12/2024 21:38",
+		"previousSprites:" : "Alex M 7/12/2024 21:38",
+		"tileMap" : "Alex M 7/12/2024 21:38",
+		"tileMap:" : "Alex M 7/12/2024 21:38",
+		"undo" : "Alex M 7/10/2024 13:43" } }

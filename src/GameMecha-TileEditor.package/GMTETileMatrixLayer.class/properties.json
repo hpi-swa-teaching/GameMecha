@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"layerIndex",
+		"visible",
+		"displayName" ],
+	"name" : "GMTETileMatrixLayer",
+	"pools" : [
+		 ],
+	"super" : "GMTEStaticCoordinateMatrix",
+	"type" : "normal" }

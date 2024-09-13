@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"fullResolutionSprite" ],
+	"name" : "GMTEImageMorph",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }

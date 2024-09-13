@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"layerID",
+		"moveDirection",
+		"editor" ],
+	"name" : "GMTEMoveLayerCommand",
+	"pools" : [
+		 ],
+	"super" : "GMTECommand",
+	"type" : "normal" }

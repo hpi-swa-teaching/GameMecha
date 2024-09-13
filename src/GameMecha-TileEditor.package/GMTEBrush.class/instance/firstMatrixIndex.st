@@ -1,0 +1,4 @@
+accessing
+firstMatrixIndex
+
+	^ firstMatrixIndex

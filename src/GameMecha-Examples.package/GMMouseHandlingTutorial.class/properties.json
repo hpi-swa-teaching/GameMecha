@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Examples",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/25/2018 17:22",
+	"instvars" : [
+		 ],
+	"name" : "GMMouseHandlingTutorial",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

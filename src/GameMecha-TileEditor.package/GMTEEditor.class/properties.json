@@ -1,0 +1,28 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"tileStore",
+		"selectedLayers",
+		"selectedTile",
+		"ratio",
+		"savedSinceModified",
+		"inspector",
+		"backgroundTile",
+		"tileMap",
+		"associatedMorph",
+		"commands",
+		"currentCommand",
+		"brush",
+		"brushButtons",
+		"mapViewer",
+		"tileTray" ],
+	"name" : "GMTEEditor",
+	"pools" : [
+		 ],
+	"super" : "Model",
+	"type" : "normal" }

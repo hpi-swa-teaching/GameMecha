@@ -1,0 +1,11 @@
+{
+	"class" : {
+		"decoMorphAlphaValue" : "Ivo Zilkenat 7/12/2024 23:44" },
+	"instance" : {
+		"applyBorderHighlighting" : "Ivo Zilkenat 6/24/2024 11:04",
+		"applyDecoMorphHighlighting:" : "Valentin Teutschbein 7/12/2024 20:55",
+		"decorationMorph" : "Ivo Zilkenat 6/7/2024 21:26",
+		"decorationMorph:" : "TW 6/22/2024 01:16",
+		"initialize" : "Ivo Zilkenat 6/18/2024 10:14",
+		"removeBorderHighlighting" : "TW 6/22/2024 01:16",
+		"removeDecoMorphHighlighting" : "Ivo Zilkenat 6/7/2024 21:25" } }

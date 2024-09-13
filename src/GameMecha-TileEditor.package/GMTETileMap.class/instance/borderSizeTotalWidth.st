@@ -1,0 +1,4 @@
+accessing
+borderSizeTotalWidth
+
+	^ borderSizeTotalWidth

@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"editor" ],
+	"name" : "GMTEAddLayerCommand",
+	"pools" : [
+		 ],
+	"super" : "GMTECommand",
+	"type" : "normal" }

@@ -1,0 +1,4 @@
+accessing
+currentBrush
+
+	^ currentBrush

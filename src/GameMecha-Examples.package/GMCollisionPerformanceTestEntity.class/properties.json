@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Examples",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/25/2018 17:19",
+	"instvars" : [
+		"velocity",
+		"parent" ],
+	"name" : "GMCollisionPerformanceTestEntity",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

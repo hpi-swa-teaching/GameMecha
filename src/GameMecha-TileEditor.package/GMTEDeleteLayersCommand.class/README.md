@@ -1,0 +1,1 @@
+Command that deletes a set of layers

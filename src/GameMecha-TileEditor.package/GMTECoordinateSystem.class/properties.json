@@ -1,0 +1,18 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"width",
+		"height",
+		"origin",
+		"definitionArea",
+		"valueArea" ],
+	"name" : "GMTECoordinateSystem",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

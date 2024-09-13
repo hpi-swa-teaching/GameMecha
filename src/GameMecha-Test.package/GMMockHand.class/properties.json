@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMMockHand",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

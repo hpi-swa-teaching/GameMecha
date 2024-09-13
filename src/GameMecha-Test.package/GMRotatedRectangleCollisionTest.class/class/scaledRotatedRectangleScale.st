@@ -1,0 +1,3 @@
+constants
+scaledRotatedRectangleScale
+	^ 2

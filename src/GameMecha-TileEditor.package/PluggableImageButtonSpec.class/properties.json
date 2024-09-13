@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"path",
+		"arguments",
+		"project",
+		"buttonGroup",
+		"description",
+		"groupName" ],
+	"name" : "PluggableImageButtonSpec",
+	"pools" : [
+		 ],
+	"super" : "PluggableButtonSpec",
+	"type" : "normal" }

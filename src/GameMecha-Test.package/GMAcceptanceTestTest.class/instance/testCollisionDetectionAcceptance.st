@@ -1,0 +1,3 @@
+test cases
+testCollisionDetectionAcceptance
+	GMCollisionDetectionAcceptance new abandon.

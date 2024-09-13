@@ -1,0 +1,4 @@
+constants
+placeHolderColor
+		
+	^ Color transparent

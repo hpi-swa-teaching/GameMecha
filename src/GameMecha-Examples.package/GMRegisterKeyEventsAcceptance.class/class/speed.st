@@ -1,0 +1,3 @@
+constants
+speed
+	^ 10

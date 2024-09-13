@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 16:59",
+	"instvars" : [
+		"game",
+		"isAlive" ],
+	"name" : "GMDemoGameEntity",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }

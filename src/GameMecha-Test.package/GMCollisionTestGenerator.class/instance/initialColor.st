@@ -1,0 +1,5 @@
+initialization
+initialColor
+
+	^  Color gray
+		

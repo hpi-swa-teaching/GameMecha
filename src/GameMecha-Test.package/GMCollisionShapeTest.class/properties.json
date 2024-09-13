@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 15:07",
+	"instvars" : [
+		 ],
+	"name" : "GMCollisionShapeTest",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionTest",
+	"type" : "normal" }

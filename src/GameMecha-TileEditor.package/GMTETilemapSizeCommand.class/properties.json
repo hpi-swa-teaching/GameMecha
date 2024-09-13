@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"prevSize",
+		"newSize",
+		"savedTiles" ],
+	"name" : "GMTETilemapSizeCommand",
+	"pools" : [
+		 ],
+	"super" : "GMTEEditTilesCommand",
+	"type" : "normal" }

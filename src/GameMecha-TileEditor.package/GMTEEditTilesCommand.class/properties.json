@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"editor",
+		"tileMap",
+		"previousSprites",
+		"currentSprites" ],
+	"name" : "GMTEEditTilesCommand",
+	"pools" : [
+		 ],
+	"super" : "GMTECommand",
+	"type" : "normal" }

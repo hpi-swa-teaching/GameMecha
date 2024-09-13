@@ -13,6 +13,20 @@
 		],
 		#encoding : @4
 	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'BaselineOfGameMecha'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-DemoGame'
+		},
+		#path : @9
+	},
 	SquotBlobMapper {
 		#path : FSAbsolutePath [
 			'testMapFile.morph'
@@ -25,6 +39,12 @@
 			'undo.png'
 		],
 		#encoding : @4
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-Collisions'
+		},
+		#path : @9
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -40,6 +60,12 @@
 		],
 		#encoding : @4
 	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-KeyHandling'
+		},
+		#path : @9
+	},
 	SquotSoundMapper {
 		#path : FSAbsolutePath [
 			'testingResources',
@@ -47,25 +73,11 @@
 		],
 		#encoding : 'WAV'
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-ResourceLoading'
-		},
-		#path : FSAbsolutePath [
-			'src'
-		]
-	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'.smalltalk.ston'
 		],
 		#encoding : 'TXT'
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-Examples'
-		},
-		#path : @19
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -79,12 +91,6 @@
 			'README.md'
 		],
 		#encoding : 'TXT'
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-Collisions'
-		},
-		#path : @19
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -113,17 +119,17 @@
 		],
 		#encoding : @4
 	},
-	SquotTonelMapper {
+	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GameMecha-KeyHandling'
+			#name : 'GameMecha-Test'
 		},
-		#path : @19
+		#path : @9
 	},
-	SquotTonelMapper {
+	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GameMecha-TileEditor'
+			#name : 'GameMecha-Examples'
 		},
-		#path : @19
+		#path : @9
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -142,14 +148,14 @@
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
-			'up.png'
+			'redo.png'
 		],
 		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
-			'redo.png'
+			'up.png'
 		],
 		#encoding : @4
 	},
@@ -188,6 +194,12 @@
 		],
 		#encoding : @4
 	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-ResourceLoading'
+		},
+		#path : @9
+	},
 	SquotBlobMapper {
 		#path : FSAbsolutePath [
 			'map.morph'
@@ -200,12 +212,6 @@
 			'fill.png'
 		],
 		#encoding : @4
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-Test'
-		},
-		#path : @19
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -220,12 +226,6 @@
 		],
 		#encoding : @4
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'BaselineOfGameMecha'
-		},
-		#path : @19
-	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
@@ -233,10 +233,10 @@
 		],
 		#encoding : @4
 	},
-	SquotTonelMapper {
+	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'GameMecha-DemoGame'
+			#name : 'GameMecha-TileEditor'
 		},
-		#path : @19
+		#path : @9
 	}
 ]

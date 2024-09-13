@@ -1,0 +1,4 @@
+accessing
+tileHeight
+
+	^ tileHeight

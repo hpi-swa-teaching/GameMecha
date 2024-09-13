@@ -1,0 +1,23 @@
+{
+	"class" : {
+		"width:height:layerIndex:" : "TW 6/23/2024 23:36" },
+	"instance" : {
+		"aboveLayer:" : "jj 6/22/2024 16:23",
+		"addTile:at:at:" : "Valentin Teutschbein 7/5/2024 17:50",
+		"asRescaledToWidth:height:" : "Ivo Zilkenat 6/24/2024 11:39",
+		"at:at:" : "Ivo Zilkenat 7/9/2024 11:14",
+		"belowLayer:" : "Ivo Zilkenat 6/24/2024 11:39",
+		"displayName" : "Ivo Zilkenat 6/23/2024 19:47",
+		"displayName:" : "Ivo Zilkenat 6/23/2024 19:54",
+		"doTiles:" : "Ivo Zilkenat 6/24/2024 11:55",
+		"free" : "Ivo Zilkenat 7/12/2024 23:40",
+		"inBounds:" : "Valentin Teutschbein 7/5/2024 17:52",
+		"initialize" : "Ivo Zilkenat 6/23/2024 21:09",
+		"layerIndex" : "jj 6/22/2024 16:24",
+		"layerIndex:" : "TW 6/22/2024 01:25",
+		"setNil" : "jj 6/22/2024 16:25",
+		"tileLossAfterRescaleToWidth:height:" : "Ivo Zilkenat 7/2/2024 18:28",
+		"tileLossAfterRescaleToWidth:height:layerId:" : "Alex M 7/12/2024 18:02",
+		"updateLayerTo:" : "Ivo Zilkenat 6/24/2024 11:40",
+		"visible" : "jj 6/22/2024 16:24",
+		"visible:" : "jj 6/22/2024 16:25" } }

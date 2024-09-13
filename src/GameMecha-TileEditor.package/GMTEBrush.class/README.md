@@ -1,0 +1,1 @@
+A GMTEBrush is responsible for returning a set of indices that are selected by the user and selecting the interchangeable algorithm for the execution.

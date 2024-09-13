@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "JS 7/12/2024 17:04",
+	"instvars" : [
+		"tileSelectionSet",
+		"model",
+		"previousTileStates",
+		"currentTileChanges" ],
+	"name" : "GMTEEditorTileMap",
+	"pools" : [
+		 ],
+	"super" : "GMTETileMap",
+	"type" : "normal" }

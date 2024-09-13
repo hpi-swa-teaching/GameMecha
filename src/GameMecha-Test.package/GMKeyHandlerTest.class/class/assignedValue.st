@@ -1,0 +1,3 @@
+constants
+assignedValue
+	^ 1

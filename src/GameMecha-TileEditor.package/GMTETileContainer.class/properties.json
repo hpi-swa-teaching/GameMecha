@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mcjj 7/12/2024 22:18",
+	"instvars" : [
+		"parent" ],
+	"name" : "GMTETileContainer",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

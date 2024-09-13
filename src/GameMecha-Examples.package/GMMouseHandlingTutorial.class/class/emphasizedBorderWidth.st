@@ -1,0 +1,3 @@
+constants
+emphasizedBorderWidth
+	^ 10

@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "Alex M 6/4/2024 14:07",
+	"instvars" : [
+		"editor",
+		"fileUUID" ],
+	"name" : "GMTileEditorTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

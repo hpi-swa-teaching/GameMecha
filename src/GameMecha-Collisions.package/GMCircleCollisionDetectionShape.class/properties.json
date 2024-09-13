@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Collisions",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "brh 6/26/2018 21:30",
+	"instvars" : [
+		 ],
+	"name" : "GMCircleCollisionDetectionShape",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionDetectionShape",
+	"type" : "normal" }

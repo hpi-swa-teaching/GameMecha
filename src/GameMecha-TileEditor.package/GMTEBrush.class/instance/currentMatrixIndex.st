@@ -1,0 +1,4 @@
+accessing
+currentMatrixIndex
+
+	^ currentMatrixIndex

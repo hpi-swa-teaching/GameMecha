@@ -1,0 +1,1 @@
+This test tests collision between two axis aligned rectangles.

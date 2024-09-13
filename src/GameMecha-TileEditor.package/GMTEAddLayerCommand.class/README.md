@@ -1,0 +1,1 @@
+Command that adds a new layer

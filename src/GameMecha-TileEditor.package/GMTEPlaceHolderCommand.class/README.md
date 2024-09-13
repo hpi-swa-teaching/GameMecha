@@ -1,0 +1,1 @@
+Command that is put at the start of the LinkedList containing all commands for convenience

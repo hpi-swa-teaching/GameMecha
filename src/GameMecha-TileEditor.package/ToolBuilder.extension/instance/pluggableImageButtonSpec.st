@@ -1,0 +1,4 @@
+*GameMecha-TileEditor
+pluggableImageButtonSpec
+
+	^ PluggableImageButtonSpec

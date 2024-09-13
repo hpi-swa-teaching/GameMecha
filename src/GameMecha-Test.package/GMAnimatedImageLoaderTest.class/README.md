@@ -1,0 +1,1 @@
+This test includes tests for the GMAnimatedImageLoader.

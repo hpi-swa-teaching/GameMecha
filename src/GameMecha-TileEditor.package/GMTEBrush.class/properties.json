@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-TileEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "Valentin Teutschbein 7/12/2024 13:49",
+	"instvars" : [
+		"currentBrush",
+		"radius",
+		"layer",
+		"currentMatrixIndex",
+		"firstMatrixIndex",
+		"outputSet" ],
+	"name" : "GMTEBrush",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

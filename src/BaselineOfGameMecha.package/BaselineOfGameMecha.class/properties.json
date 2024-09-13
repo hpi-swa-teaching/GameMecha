@@ -1,0 +1,14 @@
+{
+	"category" : "BaselineOfGameMecha",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BaselineOfGameMecha",
+	"pools" : [
+		 ],
+	"super" : "BaselineOf",
+	"type" : "normal" }

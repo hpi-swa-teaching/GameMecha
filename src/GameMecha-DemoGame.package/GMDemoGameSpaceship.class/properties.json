@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-DemoGame",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NK 7/24/2018 17:01",
+	"instvars" : [
+		"transformationMorph",
+		"cooldownCounter",
+		"controls" ],
+	"name" : "GMDemoGameSpaceship",
+	"pools" : [
+		 ],
+	"super" : "GMDemoGameMovingEntity",
+	"type" : "normal" }

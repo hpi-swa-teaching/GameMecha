@@ -1,0 +1,1 @@
+Buttons can join a GMTEButtonGroup, which then ensures that only one of them is active at a time.

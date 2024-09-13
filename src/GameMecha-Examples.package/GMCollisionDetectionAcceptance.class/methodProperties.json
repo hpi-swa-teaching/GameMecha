@@ -1,0 +1,20 @@
+{
+	"class" : {
+		"collisionMorphExtent" : "brh 6/5/2018 20:41",
+		"collisionMorphSpeed" : "NK 7/23/2018 17:21",
+		"worldExtent" : "brh 6/5/2018 20:46" },
+	"instance" : {
+		"clipPosition" : "NK 7/23/2018 17:24",
+		"collisionHandler" : "AZ 5/21/2018 16:42",
+		"collisionHandler:" : "AZ 5/21/2018 16:42",
+		"collisionMorphCircle" : "AZ 7/16/2018 13:49",
+		"collisionMorphCircle:" : "AZ 7/16/2018 13:47",
+		"collisionMorphRectangle" : "AZ 7/16/2018 13:49",
+		"collisionMorphRectangle:" : "TP 7/10/2018 19:06",
+		"collisionMorphs" : "AZ 7/16/2018 13:53",
+		"collisionMorphs:" : "AZ 5/21/2018 16:42",
+		"createCollisionMorphFlexShellOfRotatedRectangle" : "AZ 7/16/2018 13:50",
+		"initialize" : "TP 7/10/2018 21:08",
+		"moveCollisionMorphCircle" : "brh 7/24/2018 20:49",
+		"step" : "NK 7/23/2018 17:20",
+		"stepTime" : "brh 6/5/2018 20:42" } }

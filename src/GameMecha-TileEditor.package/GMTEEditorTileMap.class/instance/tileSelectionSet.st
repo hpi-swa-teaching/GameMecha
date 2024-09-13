@@ -1,0 +1,4 @@
+accessing
+tileSelectionSet
+
+	^ tileSelectionSet
