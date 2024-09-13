@@ -7,3 +7,21 @@ Extension { #name : #ToolBuilder }
 ToolBuilder >> buildPluggableStaticText: aSpec [
 	^self subclassResponsibility
 ]
+
+{
+	#category : #'*GM-ToolBuilder',
+	#'squeak_changestamp' : 'ek 9/13/2024 14:44'
+}
+ToolBuilder >> pluggableImageButtonSpec [
+
+	^ PluggableImageButtonSpec
+]
+
+{
+	#category : #'*GM-ToolBuilder',
+	#'squeak_changestamp' : 'ek 9/13/2024 14:45'
+}
+ToolBuilder >> pluggableStaticTextSpec [
+
+	^ PluggableStaticTextSpec
+]
