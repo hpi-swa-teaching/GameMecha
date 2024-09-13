@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #baseline,
-	#'squeak_changestamp' : 'ek 9/13/2024 15:32'
+	#'squeak_changestamp' : 'ek 9/13/2024 16:07'
 }
 BaselineOfGameMecha >> baseline: spec [
 	<baseline>
@@ -23,7 +23,7 @@ BaselineOfGameMecha >> baseline: spec [
 					package: 'GameMecha-Test' with: [spec requires: #('core')];
 					yourself.
 				spec
-					group: 'core' with: #('GameMecha-ResourceLoading' 'GameMecha-Collisions' 'GameMecha-KeyHandling' 'GameMechaTileEditor');
+					group: 'core' with: #('GameMecha-ResourceLoading' 'GameMecha-Collisions' 'GameMecha-KeyHandling' 'GameMecha-TileEditor');
 					group: 'examples' with: #('GameMecha-Examples' 'GameMecha-DemoGame');
 					group: 'test' with: #('GM-Test');
 					yourself]
