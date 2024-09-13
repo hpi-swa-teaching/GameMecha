@@ -1,13 +1,13 @@
 {
-	"category" : "GameMecha-Collisions",
+	"category" : "GameMecha-Collision",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NK 7/24/2018 15:26",
+	"commentStamp" : "brh 6/26/2018 21:30",
 	"instvars" : [
 		 ],
-	"name" : "GMRotatedRectangleCollisionDetectionShape",
+	"name" : "GMRectangleCollisionDetectionShape",
 	"pools" : [
 		 ],
 	"super" : "GMCollisionDetectionShape",

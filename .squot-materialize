@@ -15,17 +15,11 @@
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
-			#name : 'BaselineOfGameMecha'
+			#name : 'GameMecha-DemoGame'
 		},
 		#path : FSAbsolutePath [
 			'src'
 		]
-	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-DemoGame'
-		},
-		#path : @9
 	},
 	SquotBlobMapper {
 		#path : FSAbsolutePath [
@@ -39,12 +33,6 @@
 			'undo.png'
 		],
 		#encoding : @4
-	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-Collisions'
-		},
-		#path : @9
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -73,18 +61,18 @@
 		],
 		#encoding : 'WAV'
 	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.smalltalk.ston'
-		],
-		#encoding : 'TXT'
-	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
 			'rename.png'
 		],
 		#encoding : @4
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.smalltalk.ston'
+		],
+		#encoding : 'TXT'
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -145,6 +133,12 @@
 		],
 		#encoding : Class [ #GIFReadWriter ]
 	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-Collision'
+		},
+		#path : @9
+	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
@@ -165,6 +159,12 @@
 			'test.txt'
 		],
 		#encoding : 'TXT'
+	},
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'GameMecha-ResourceLoading'
+		},
+		#path : @9
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
@@ -194,12 +194,6 @@
 		],
 		#encoding : @4
 	},
-	SquotCypressMapper {
-		#package : MCPackage {
-			#name : 'GameMecha-ResourceLoading'
-		},
-		#path : @9
-	},
 	SquotBlobMapper {
 		#path : FSAbsolutePath [
 			'map.morph'
@@ -226,17 +220,23 @@
 		],
 		#encoding : @4
 	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'GMTEIcons',
-			'merge.png'
-		],
-		#encoding : @4
+	SquotCypressMapper {
+		#package : MCPackage {
+			#name : 'BaselineOfGameMecha'
+		},
+		#path : @9
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
 			#name : 'GameMecha-TileEditor'
 		},
 		#path : @9
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'GMTEIcons',
+			'merge.png'
+		],
+		#encoding : @4
 	}
 ]

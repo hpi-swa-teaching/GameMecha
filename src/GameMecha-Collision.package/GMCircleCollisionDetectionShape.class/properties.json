@@ -1,5 +1,5 @@
 {
-	"category" : "GameMecha-Collisions",
+	"category" : "GameMecha-Collision",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
@@ -7,7 +7,7 @@
 	"commentStamp" : "brh 6/26/2018 21:30",
 	"instvars" : [
 		 ],
-	"name" : "GMRectangleCollisionDetectionShape",
+	"name" : "GMCircleCollisionDetectionShape",
 	"pools" : [
 		 ],
 	"super" : "GMCollisionDetectionShape",
