@@ -13,6 +13,6 @@ SmalltalkCISpec {
 		#categories : [ 'GameMecha-Test' ],
 		#failOnZeroTests : true,
 		#hidePassingTests : true,
-		#defaultTimeout : 30,
+		#defaultTimeout : 30
 	}
 }
