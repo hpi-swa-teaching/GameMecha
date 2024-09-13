@@ -10,7 +10,7 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-      #packages : [ 'GameMecha-ResourceLoading' 'GameMecha-Collisions' 'GameMecha-KeyHandling' 'GameMecha-TileEditor' ]
+      #packages : [ 'GameMecha-ResourceLoading', 'GameMecha-Collisions', 'GameMecha-KeyHandling', 'GameMecha-TileEditor' ]
     }
   }
 }
