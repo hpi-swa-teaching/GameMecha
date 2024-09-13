@@ -1,6 +1,5 @@
 as yet unclassified
 preLoad: unused1 package: unused2
 
-	MCConfiguration ensureOpenTranscript: false.
-	[MCMcmUpdater default doUpdate: false]
-		ensure: [MCConfiguration ensureOpenTranscript: true].
+	[MCMcmUpdater default doUpdate: false.]
+		on: MCEmptyVersion do: [:warning | warning resume].
