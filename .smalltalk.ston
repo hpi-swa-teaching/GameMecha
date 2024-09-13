@@ -7,7 +7,7 @@ SmalltalkCISpec {
 			#useLatestMetacello : false,
 			#load : [ 'test' ],
 			#platforms : [ #squeak ],
-      #useLatestMetacello : true
+			#useLatestMetacello : true
 		}
 	],
 	#testing : {
