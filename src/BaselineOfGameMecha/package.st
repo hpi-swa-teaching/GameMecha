@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #BaselineOfGameMecha
+	#name : #BaselineOfGameMecha,
+	#'squeak_changestamp' : true
 }

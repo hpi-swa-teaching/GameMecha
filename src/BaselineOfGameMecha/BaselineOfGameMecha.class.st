@@ -1,5 +1,5 @@
 Class {
-	#name : #BaselineOfGM,
+	#name : #BaselineOfGameMecha,
 	#superclass : #BaselineOf,
 	#category : #BaselineOfGameMecha
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #baseline,
 	#'squeak_changestamp' : 'ek 9/13/2024 15:11'
 }
-BaselineOfGM >> baseline: spec [
+BaselineOfGameMecha >> baseline: spec [
 	<baseline>
 	spec
 		for: #'common'
