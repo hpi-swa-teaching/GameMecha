@@ -14,7 +14,7 @@ baseline: spec
 					package: 'GameMecha-TileEditor' with: [spec requires: #('Squot')];
 					package: 'GameMecha-Examples' with: [spec requires: #('core')];
 					package: 'GameMecha-DemoGame' with: [spec requires: #('core')];
-					package: 'GameMecha-Test' with: [spec requires: #('core')].
+					package: 'GameMecha-Test' with: [spec requires: #('core' 'GameMecha-Examples')].
 				spec
 					group: 'core' with: #('GameMecha-ResourceLoading' 'GameMecha-Collision' 'GameMecha-KeyHandling' 'GameMecha-TileEditor');
 					group: 'examples' with: #('GameMecha-Examples' 'GameMecha-DemoGame');
