@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #baseline,
-	#'squeak_changestamp' : 'ek 9/13/2024 15:11'
+	#'squeak_changestamp' : 'ek 9/13/2024 15:32'
 }
 BaselineOfGameMecha >> baseline: spec [
 	<baseline>
@@ -24,6 +24,7 @@ BaselineOfGameMecha >> baseline: spec [
 					yourself.
 				spec
 					group: 'core' with: #('GameMecha-ResourceLoading' 'GameMecha-Collisions' 'GameMecha-KeyHandling' 'GameMechaTileEditor');
+					group: 'examples' with: #('GameMecha-Examples' 'GameMecha-DemoGame');
 					group: 'test' with: #('GM-Test');
 					yourself]
 ]
