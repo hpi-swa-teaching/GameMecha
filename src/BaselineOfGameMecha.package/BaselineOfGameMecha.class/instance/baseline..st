@@ -15,4 +15,4 @@ baseline: spec
 				spec
 					group: 'core' with: #('GameMecha-ResourceLoading' 'GameMecha-Collisions' 'GameMecha-KeyHandling' 'GameMecha-TileEditor');
 					group: 'examples' with: #('GameMecha-Examples' 'GameMecha-DemoGame');
-					group: 'test' with: #('GM-Test')]
+					group: 'test' with: #('GameMecha-Test')]
