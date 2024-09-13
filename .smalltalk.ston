@@ -1,16 +1,19 @@
 SmalltalkCISpec {
-  #loading : [
-    SCIMetacelloLoadSpec {
-      #baseline : 'GameMecha',
-      #directory : 'src',
-      #platforms : [ #squeak ],
-      #load : [ 'test' ],
+	#loading : [
+		SCIMetacelloLoadSpec {
+			#baseline : 'GameMecha',
+			#directory : 'src',
+			#onWarningLog : true,
+			#useLatestMetacello : false,
+			#load : [ 'test' ],
+			#platforms : [ #squeak ],
       #useLatestMetacello : true
-    }
-  ],
-  #testing : {
-    #coverage : {
-      #packages : [ 'GameMecha-ResourceLoading', 'GameMecha-Collisions', 'GameMecha-KeyHandling', 'GameMecha-TileEditor' ]
-    }
-  }
+		}
+	],
+	#testing : {
+		#categories : [ 'GameMecha-Test' ],
+		#failOnZeroTests : true,
+		#hidePassingTests : true,
+		#defaultTimeout : 30,
+	}
 }
