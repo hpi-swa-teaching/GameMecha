@@ -1,3 +1,0 @@
-utility
-clearResourcesOnDisk
-	self clearResourcesOnDisk: self testResourceFolder.

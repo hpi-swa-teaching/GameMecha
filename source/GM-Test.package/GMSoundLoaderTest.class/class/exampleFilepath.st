@@ -1,3 +1,0 @@
-constants
-exampleFilepath
-	^ GMTestResourceFixtures testSoundPathWAV

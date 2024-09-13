@@ -1,1 +1,0 @@
-This test tests collision between two rotated rectangles, a rotated rectangle and a circle, as well as between a rotated rectangle and an axis aligned rectangle.

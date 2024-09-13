@@ -1,1 +1,0 @@
-A GMImageLoader can handle images. It returns Forms and supports all typical file extensions.

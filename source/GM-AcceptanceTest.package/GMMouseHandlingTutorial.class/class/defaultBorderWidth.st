@@ -1,3 +1,0 @@
-constants
-defaultBorderWidth
-	^ 0

@@ -1,3 +1,0 @@
-constants
-exampleResource 
-	^ GMTestResourceFixtures squeakSampledSound

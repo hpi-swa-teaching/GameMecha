@@ -1,3 +1,0 @@
-collision
-isCollidingWithRotatedRectangle: aTransformationMorph
-	^ self isCollidingWithRectangle: aTransformationMorph

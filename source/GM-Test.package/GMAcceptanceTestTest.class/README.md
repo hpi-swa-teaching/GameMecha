@@ -1,1 +1,0 @@
-This test runs all acceptance tests automatically without opening morphs or playing sounds.

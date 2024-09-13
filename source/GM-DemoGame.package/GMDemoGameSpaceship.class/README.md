@@ -1,2 +1,0 @@
-A GMDemoGameSpaceship is the playable spaceship of the demo game.
-It is different from the other game entities as it is using the rotatedRectangleCollision and thus has to be a submorph of a TransformationMorph, which, in turn, demands special treatment. For instance: to get the position of an instance of spaceship you cannot simply ask it directly but instead you have to ask for the position of its owner.

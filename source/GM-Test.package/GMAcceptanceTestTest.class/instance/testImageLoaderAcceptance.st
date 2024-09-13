@@ -1,3 +1,0 @@
-test cases
-testImageLoaderAcceptance
-	GMImageLoaderAcceptance new abandon.

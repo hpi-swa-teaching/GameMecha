@@ -1,3 +1,0 @@
-accessing
-registrationTestSetCurrentValue
-	self currentTestValue: self class assignedValue.

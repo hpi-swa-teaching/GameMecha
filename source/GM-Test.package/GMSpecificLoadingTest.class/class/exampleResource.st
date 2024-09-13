@@ -1,3 +1,0 @@
-constants
-exampleResource
-	self subclassResponsibility.

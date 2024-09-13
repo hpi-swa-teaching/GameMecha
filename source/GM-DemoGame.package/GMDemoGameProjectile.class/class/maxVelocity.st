@@ -1,3 +1,0 @@
-constants
-maxVelocity
-	^ 20

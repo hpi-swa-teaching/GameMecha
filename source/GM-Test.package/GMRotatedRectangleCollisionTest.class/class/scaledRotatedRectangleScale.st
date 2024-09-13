@@ -1,3 +1,0 @@
-constants
-scaledRotatedRectangleScale
-	^ 2

@@ -1,1 +1,0 @@
-A GMDemoGameMovingEntity provides more refined behavior for moving entities.

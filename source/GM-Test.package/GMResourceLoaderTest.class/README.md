@@ -1,1 +1,0 @@
-This test includes basic tests for the GMResourceLoader.

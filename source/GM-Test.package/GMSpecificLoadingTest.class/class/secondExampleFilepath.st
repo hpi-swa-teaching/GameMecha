@@ -1,3 +1,0 @@
-constants
-secondExampleFilepath 
-	self subclassResponsibility.

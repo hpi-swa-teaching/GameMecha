@@ -1,3 +1,0 @@
-collision
-isCollidingWithRotatedRectangle: aMorph
-	^ aMorph gmCollisionDetectionShape isCollidingWithCircle: self owner

@@ -1,1 +1,0 @@
-This test includes tests for the GMImageLoader.

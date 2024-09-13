@@ -1,3 +1,0 @@
-test cases
-testMouseHandlingTutorial
-	GMMouseHandlingTutorial new abandon.

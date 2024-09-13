@@ -1,3 +1,0 @@
-test cases
-testKeyHandlerAcceptance
-	GMKeyHandlerAcceptance new abandon.

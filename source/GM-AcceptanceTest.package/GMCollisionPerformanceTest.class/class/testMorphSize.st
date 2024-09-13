@@ -1,3 +1,0 @@
-constants
-testMorphSize
-	^ 30

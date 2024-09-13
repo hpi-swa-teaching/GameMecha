@@ -1,3 +1,0 @@
-constants
-keysPerRow
-	^ 9

@@ -1,3 +1,0 @@
-accessing
-stringMorph
-	^ stringMorph

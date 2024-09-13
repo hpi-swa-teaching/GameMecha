@@ -1,1 +1,0 @@
-This abstract test defines template tests for the specific resource loading functionality and provides helper functions.

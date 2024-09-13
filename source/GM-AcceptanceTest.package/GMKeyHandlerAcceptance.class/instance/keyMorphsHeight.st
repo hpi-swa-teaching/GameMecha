@@ -1,3 +1,0 @@
-layout
-keyMorphsHeight
-	^ GMKeyHandlerAcceptanceKeyMorph defaultExtent y

@@ -1,3 +1,0 @@
-running
-setUp
-	GMTestResourceFixtures clearResourcesOnDisk.

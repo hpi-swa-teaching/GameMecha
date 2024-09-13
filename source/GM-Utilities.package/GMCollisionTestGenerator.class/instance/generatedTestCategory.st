@@ -1,3 +1,0 @@
-storing
-generatedTestCategory
-	^ 'test cases'

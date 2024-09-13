@@ -1,3 +1,0 @@
-test cases
-testSoundLoaderAcceptance
-	GMSoundLoaderAcceptance new.

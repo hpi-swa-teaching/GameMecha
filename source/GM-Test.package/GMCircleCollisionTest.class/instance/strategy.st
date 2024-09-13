@@ -1,3 +1,0 @@
-accessing
-strategy
-	^ GMCircleCollisionDetectionShape new
