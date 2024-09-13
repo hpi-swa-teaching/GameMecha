@@ -1,7 +1,7 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'GM',
+      #baseline : 'GameMecha',
       #directory : 'source',
       #platforms : [ #squeak ],
       #load : [ 'test' ],
@@ -10,7 +10,7 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-      #packages : [ 'GM-Core' ]
+      #packages : [ 'GameMecha-ResourceLoading' 'GameMecha-Collisions' 'GameMecha-KeyHandling' 'GameMecha-TileEditor' ]
     }
   }
 }
