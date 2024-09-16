@@ -1,8 +1,9 @@
 constants
 checkerBoardColors
 
-	^ {(0@0) -> Color lightGray.
-		(1@1) -> Color lightGray.
-		(0@1) -> Color gray.
-		(1@0) -> Color gray
-	} asDictionary
+	^ Dictionary new
+	at: 0@0 put: Color lightGray;
+	at: 1@1 put: Color lightGray;
+	at: 0@1 put: Color gray;
+	at: 1@0 put: Color gray;
+	yourself
