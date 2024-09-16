@@ -20,7 +20,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Add Layer';
 					frame: (LayoutFrame fractions: (0 @ 0 corner: 1 @ 0.125));
 					project: 'GameMecha';
-					path: '/GMTEIcons/add.png'.
+					iconName: #add.
 			
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
@@ -29,7 +29,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Move Layer Down';
 					frame: (LayoutFrame fractions: (0 @ 0.125 corner: 1 @ 0.25));
 					project: 'GameMecha';
-					path: '/GMTEIcons/up.png'.
+					iconName: #up.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
@@ -38,7 +38,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Move Layer Up';
 					frame: (LayoutFrame fractions: (0 @ 0.25 corner: 1 @ 0.375));
 					project: 'GameMecha';
-					path: '/GMTEIcons/down.png'.
+					iconName: #down.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model: self;
@@ -47,7 +47,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Rename Layer';
 					frame: (LayoutFrame fractions: (0 @ 0.375 corner: 1 @ 0.5));
 					project: 'GameMecha';
-					path: '/GMTEIcons/rename.png'.
+					iconName: #rename.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
@@ -56,7 +56,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Clear Layer(s)';
 					frame: (LayoutFrame fractions: (0 @ 0.5 corner: 1 @ 0.625));
 					project: 'GameMecha';
-					path: '/GMTEIcons/broom.png'.
+					iconName: #broom.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
@@ -65,7 +65,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Blend Layers';
 					frame: (LayoutFrame fractions: (0 @ 0.625 corner: 1 @ 0.75));
 					project: 'GameMecha';
-					path: '/GMTEIcons/merge.png'.
+					iconName: #merge.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
@@ -74,7 +74,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Delete Layer(s)';
 					frame: (LayoutFrame fractions: (0 @ 0.75 corner: 1 @ 0.875));
 					project: 'GameMecha';
-					path: '/GMTEIcons/trash.png'.
+					iconName: #trash.
 				
 				(aBuilder pluggableImageButtonSpec new)
 					model:self;
@@ -83,7 +83,7 @@ createLayersSpecWithBuilder: aBuilder
 					description: 'Show/Hide Layer(s)';
 					frame: (LayoutFrame fractions: (0 @ 0.875 corner: 1 @ 1));
 					project: 'GameMecha';
-					path: '/GMTEIcons/eye.png'}.
+					iconName: #eye}.
 			
 			(aBuilder pluggableMultiSelectionListSpec new)
 			name: 'layers';

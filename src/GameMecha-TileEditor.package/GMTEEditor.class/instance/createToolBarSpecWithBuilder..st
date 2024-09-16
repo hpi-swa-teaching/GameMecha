@@ -31,7 +31,7 @@ createToolBarSpecWithBuilder: aBuilder
 						action: #selectRadiusBrush;
 						project: 'GameMecha';
 						buttonGroup: self brushButtons;
-						path: '/GMTEIcons/brush.png'.
+						iconName: #brush.
 					
 					(aBuilder pluggableImageButtonSpec new)
 						groupName: 'lineBrush';
@@ -41,7 +41,7 @@ createToolBarSpecWithBuilder: aBuilder
 						action: #selectLineBrush;
 						project: 'GameMecha';
 						buttonGroup: self brushButtons;
-						path: '/GMTEIcons/line.png'.
+						iconName: #line.
 						
 					(aBuilder pluggableImageButtonSpec new)
 						groupName: 'fillBrush';
@@ -51,7 +51,7 @@ createToolBarSpecWithBuilder: aBuilder
 						action: #selectFillBrush;
 						project: 'GameMecha';
 						buttonGroup: self brushButtons;
-						path: '/GMTEIcons/fill.png'.
+						iconName: #fill.
 						
 					(aBuilder pluggableImageButtonSpec new)
 						groupName: 'rectangleBrush';
@@ -61,7 +61,7 @@ createToolBarSpecWithBuilder: aBuilder
 						action: #selectRectangleBrush;
 						project: 'GameMecha';
 						buttonGroup: self brushButtons;
-						path: '/GMTEIcons/rectangle.png'.
+						iconName: #rectangle.
 						
 						(aBuilder pluggableImageButtonSpec new)
 						name: 'undo';
@@ -70,7 +70,7 @@ createToolBarSpecWithBuilder: aBuilder
 						frame: (GMTEEditor hLayoutFrame: 5 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
 						action: #undo;
 						project: 'GameMecha';
-						path: '/GMTEIcons/undo.png'.
+						iconName: #undo.
 						
 					(aBuilder pluggableImageButtonSpec new)
 						name: 'redo';
@@ -79,7 +79,7 @@ createToolBarSpecWithBuilder: aBuilder
 						frame: (GMTEEditor hLayoutFrame: 6 ofN: 6 vSymmetric: GMTEEditor toolBarVSpace);
 						action: #redo;
 						project: 'GameMecha';
-						path: '/GMTEIcons/redo.png'}};
+						iconName: #redo}};
 			
 		verticalResizing: #shrinkWrap;
 		yourself

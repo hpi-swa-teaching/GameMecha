@@ -6,12 +6,12 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"path",
 		"arguments",
 		"project",
 		"buttonGroup",
 		"description",
-		"groupName" ],
+		"groupName",
+		"iconName" ],
 	"name" : "PluggableImageButtonSpec",
 	"pools" : [
 		 ],

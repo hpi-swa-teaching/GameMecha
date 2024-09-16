@@ -7,7 +7,7 @@ buildPluggableImageButton: aSpec
 		target: aSpec model;
 		groupName: aSpec groupName;
 		actionSelector: aSpec action;
-		createStateImagesFrom: ((GitAssetLoader for: project) loadForm: aSpec path) copy.
+		createStateImagesFrom: aSpec iconName.
 	
 	aSpec buttonGroup ifNotNil: [widget buttonGroup: aSpec buttonGroup].
 	

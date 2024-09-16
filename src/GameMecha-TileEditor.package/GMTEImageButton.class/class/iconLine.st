@@ -1,0 +1,7 @@
+icons
+iconLine
+	"This is an auto-generated method"
+	^ (Form fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: 'iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAn0lEQVR4XuXasQ3AIAxEUcai
+S8HsHoASMQoFsSUXUdJHOv5JV1E9YVdQRNO83bu85q2KiMs7vPtRU0TMF2Lnzcgjdo6ZPGLk
+zkgjZp7zEXwEH8FH8BF8BB/BR/ARfAQfwUfwEXwEH8FH8BF8BB/BR/ARfAQfwUfwEXwEH8FH
+8BF8xF+Jx/ahjoj0ExCRdQIiYuX7t0MOEamJWTlmTRFxA0sDV4TiKfijAAAAAElFTkSuQmCC' readStream))
