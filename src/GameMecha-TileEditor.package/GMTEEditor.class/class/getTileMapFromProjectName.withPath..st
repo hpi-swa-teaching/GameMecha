@@ -1,5 +1,7 @@
 fileHandling
 getTileMapFromProjectName: aName withPath: aPath
 	"Loads a tileMap from the git asset browser"
-	
-    ^ GMTEEditor getTileMapFromFileBinary: ((GitAssetLoader for: aName) loadAsset: aPath)
+	Smalltalk at: #GitAssetLoader
+		ifAbsent: [self error: 'Squot Mapper GitAssetLoader not available'.
+			^ self].
+	^ GMTEEditor getTileMapFromFileBinary: (((Smalltalk at: #GitAssetLoader) for: aName) loadAsset: aPath)

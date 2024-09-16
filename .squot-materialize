@@ -21,12 +21,6 @@
 			'src'
 		]
 	},
-	SquotBlobMapper {
-		#path : FSAbsolutePath [
-			'testMapFile.morph'
-		],
-		#encoding : 'bin'
-	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
@@ -113,6 +107,13 @@
 		},
 		#path : @9
 	},
+	SquotBlobMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'map.morph'
+		],
+		#encoding : 'bin'
+	},
 	SquotCypressMapper {
 		#package : MCPackage {
 			#name : 'GameMecha-Examples'
@@ -194,12 +195,6 @@
 		],
 		#encoding : @4
 	},
-	SquotBlobMapper {
-		#path : FSAbsolutePath [
-			'map.morph'
-		],
-		#encoding : 'bin'
-	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'GMTEIcons',
@@ -225,6 +220,13 @@
 			#name : 'BaselineOfGameMecha'
 		},
 		#path : @9
+	},
+	SquotBlobMapper {
+		#path : FSAbsolutePath [
+			'testingResources',
+			'testMapFile.morph'
+		],
+		#encoding : 'bin'
 	},
 	SquotCypressMapper {
 		#package : MCPackage {
