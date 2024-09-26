@@ -2,7 +2,7 @@
 We are creating a game library.
 
 ## How to install
-1. Get [Squeak 6.1 or later](http://www.squeak.org)
+1. Get [Squeak 6.0 or later](http://www.squeak.org)
 2. Load [Metacello](https://github.com/metacello/metacello)
 3. Finally, load the library with the following command:
 
