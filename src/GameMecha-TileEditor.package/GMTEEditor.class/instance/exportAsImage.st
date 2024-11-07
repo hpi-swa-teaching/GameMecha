@@ -1,9 +1,9 @@
-menu buttons
+accessing
 exportAsImage
 	"Exports the current tile map as a png"
-	
-	exportTilemap := self tileMap veryDeepCopy.
-	exportTilemap 
+
+	self tileMap 
 		hideHighlightingLayer;
 		resetView;
-		exportAsImage
+		exportAsImage;
+		showHighlightingLayer

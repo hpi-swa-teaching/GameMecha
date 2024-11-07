@@ -1,4 +1,4 @@
-startup
+utility
 startup
 		"Opens the editor with a startup wizard"
 		

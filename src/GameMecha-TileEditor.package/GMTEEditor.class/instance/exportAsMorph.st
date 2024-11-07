@@ -1,9 +1,12 @@
-menu buttons
+accessing
 exportAsMorph
-	"Saves the current tileMap as a .morph file, which allows for reimporting"
+	"Saves the current tileMap as a .morph file (as EditorTileMap), which allows for reimporting"
+	| currentModel |
 	
-	((self tileMap veryDeepCopy) 
+	currentModel := self tileMap model.
+	self tileMap
 		model: nil;
-		resetView
-	) saveOnFile. 
+		resetView;
+		saveOnFile;
+		model: currentModel.
 	self savedSinceModified: true

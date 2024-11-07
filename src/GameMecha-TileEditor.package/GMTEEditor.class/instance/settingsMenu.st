@@ -20,6 +20,11 @@ settingsMenu
 		add: 'Reset View'
 		target: self
 		selector: #resetView
+		argumentList: {};
+		
+		add: 'Please Help'
+		target: self class
+		selector: #displayHelp
 		argumentList: {}.
 		
 	builder open: aMenuSpec

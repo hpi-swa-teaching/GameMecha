@@ -7,7 +7,7 @@ exportMenu
 	aMenuSpec := builder pluggableMenuSpec new.
 
 	aMenuSpec
-		add: 'Tilemap'
+		add: 'Tilemap File'
 		target: self
 		selector: #exportAsMorph
 		argumentList: {};
