@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-CollisionShapeEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"actionBlock" ],
+	"name" : "CSEditorSearchField",
+	"pools" : [
+		 ],
+	"super" : "TextMorph",
+	"type" : "normal" }
