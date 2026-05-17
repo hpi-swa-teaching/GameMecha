@@ -1,0 +1,22 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"initialize" : "vincent 5/17/2026 19:05",
+		"initializeCanvas" : "vincent 5/17/2026 19:04",
+		"initializeMorphHitboxList" : "vincent 5/17/2026 19:04",
+		"initializeSidePanel" : "vincent 5/17/2026 19:04",
+		"initializeToolbar" : "vincent 5/17/2026 19:14",
+		"initializeUI" : "vincent 5/17/2026 19:03",
+		"initializeWorkspace" : "vincent 5/17/2026 19:03",
+		"labelMorph:" : "vincent 5/17/2026 19:03",
+		"posInput" : "vincent 5/17/2026 19:03",
+		"sampleHitboxes" : "vincent 5/17/2026 19:03",
+		"selectButton" : "vincent 5/17/2026 19:13",
+		"separatorMorph" : "vincent 5/17/2026 19:03",
+		"sizeInput" : "vincent 5/17/2026 19:03",
+		"toolButtonLabeled:" : "vincent 5/17/2026 19:07",
+		"xPosInput" : "vincent 5/17/2026 19:01",
+		"xSizeInput" : "vincent 5/17/2026 19:01",
+		"yPosInput" : "vincent 5/17/2026 19:01",
+		"ySizeInput" : "vincent 5/17/2026 19:01" } }
