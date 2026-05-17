@@ -7,7 +7,7 @@
 		"initializeCanvas" : "vincent 5/21/2026 16:20",
 		"initializeMorphHitboxList" : "vincent 5/22/2026 10:51",
 		"initializeSidePanel" : "vincent 5/22/2026 10:50",
-		"initializeToolbar" : "Robert 5/28/2026 15:30",
+		"initializeToolbar" : "m 5/30/2026 16:12",
 		"initializeUI" : "vincent 5/21/2026 16:21",
 		"initializeWorkspace" : "vincent 5/22/2026 10:49",
 		"labelMorph:" : "vincent 5/22/2026 10:49",
@@ -24,4 +24,8 @@
 		"textFieldColor" : "vincent 5/21/2026 16:21",
 		"textfieldFixedSize" : "Robert 5/28/2026 15:32",
 		"toolButtonLabeled:" : "vincent 5/22/2026 10:46",
-		"toolbarBackgroundColor" : "vincent 5/21/2026 16:22" } }
+		"toolbarBackgroundColor" : "vincent 5/21/2026 16:22",
+		"xPosInput" : "vincent 5/17/2026 19:01",
+		"xSizeInput" : "vincent 5/17/2026 19:01",
+		"yPosInput" : "vincent 5/17/2026 19:01",
+		"ySizeInput" : "vincent 5/17/2026 19:01" } }

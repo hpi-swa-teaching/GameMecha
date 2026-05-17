@@ -1,4 +1,8 @@
+<<<<<<< current (click to choose)
 initialize
+=======
+as yet unclassified
+>>>>>>> incoming (click to choose)
 initializeToolbar
 	"Single horizontal row — sprite picker, frame picker, tool buttons."
 
@@ -34,5 +38,7 @@ initializeToolbar
 		addTransparentSpacerOfSize: 40 px;
 		addMorphBack: rectBtn;
 		addMorphBack: circleBtn.
+		
+		#('select' 'rect' 'circle' 'poly' 'overlay') do: [:name | bar addMorphBack: (self toolButtonLabeled: name)].
 	
 	^ bar
