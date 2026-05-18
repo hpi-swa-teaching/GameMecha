@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"canvasMorph",
+		"selectedMorphRow",
+		"widthField",
+		"heightField",
+		"xField",
+		"yField" ],
+	"name" : "GMHitboxEditor",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

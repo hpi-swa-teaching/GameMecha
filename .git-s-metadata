@@ -63,13 +63,14 @@ GSMetadata {
 			},
 			#path : @14
 		},
-		GSImageMapper {
+		GSCypressMapper {
 			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-HitboxEditor'
+			},
 			#path : FSAbsolutePath [
-				'GMTEIcons',
-				'broom.png'
-			],
-			#encoding : @5
+				'src'
+			]
 		},
 		GSPlaintextMapper {
 			#version : 1,
@@ -77,6 +78,14 @@ GSMetadata {
 				'.squot'
 			],
 			#encoding : 'TXT'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'broom.png'
+			],
+			#encoding : @5
 		},
 		GSPlaintextMapper {
 			#version : 1,
@@ -132,13 +141,14 @@ GSMetadata {
 			],
 			#encoding : 'TXT'
 		},
-		GSImageMapper {
+		GSCypressMapper {
 			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-CollisionShapeEditor'
+			},
 			#path : FSAbsolutePath [
-				'GMTEIcons',
-				'down.png'
-			],
-			#encoding : @5
+				'src'
+			]
 		},
 		GSPlaintextMapper {
 			#version : 1,
@@ -163,14 +173,13 @@ GSMetadata {
 			],
 			#encoding : @5
 		},
-		GSCypressMapper {
+		GSImageMapper {
 			#version : 1,
-			#package : MCPackage {
-				#name : 'GameMecha-CollisionShapeEditor'
-			},
 			#path : FSAbsolutePath [
-				'src'
-			]
+				'GMTEIcons',
+				'down.png'
+			],
+			#encoding : @5
 		},
 		GSImageMapper {
 			#version : 1,

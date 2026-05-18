@@ -1,0 +1,20 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"window",
+		"searchField",
+		"classList",
+		"allClasses",
+		"filteredClasses",
+		"searchString",
+		"selectedIndex" ],
+	"name" : "GMEditorClassSearchTool",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
