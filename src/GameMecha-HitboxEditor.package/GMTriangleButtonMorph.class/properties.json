@@ -1,5 +1,5 @@
 {
-	"category" : "GameMecha-CollisionShapeEditor",
+	"category" : "GameMecha-HitboxEditor",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "CSEditor",
+	"name" : "GMTriangleButtonMorph",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "GMShapeButtonMorph",
 	"type" : "normal" }
