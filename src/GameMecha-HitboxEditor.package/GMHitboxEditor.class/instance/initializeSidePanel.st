@@ -9,7 +9,7 @@ initializeSidePanel
 		width: 250 px;
 		vResizing: #rigid;
 		height: 900 px;
-		color: Color black;
+		color: self sidebarBackgroundColor;
 		borderColor: Color darkGray;
 		borderWidth: 1;
 		addMorphBack: (self labelMorph: ' HitboxList');

@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"tileSize",
+		"backgroundColor",
+		"gridColor",
+		"bgColor" ],
+	"name" : "GMEditorCanvasMorph",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

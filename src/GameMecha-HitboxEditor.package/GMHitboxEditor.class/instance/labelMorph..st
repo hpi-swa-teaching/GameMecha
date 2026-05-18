@@ -5,5 +5,5 @@ labelMorph: text
 	s := StringMorph new.
 	s
 		contents: text;
-		color: Color gray.
+		color: self textColor.
 	^ s

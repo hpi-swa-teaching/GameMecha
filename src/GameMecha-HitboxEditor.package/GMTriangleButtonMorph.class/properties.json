@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMTriangleButtonMorph",
+	"pools" : [
+		 ],
+	"super" : "GMShapeButtonMorph",
+	"type" : "normal" }
