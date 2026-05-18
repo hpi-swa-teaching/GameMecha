@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Collision",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "Lasse 5/17/2026 16:58",
+	"instvars" : [
+		"width",
+		"height" ],
+	"name" : "GMPrimitiveRectangleCollider",
+	"pools" : [
+		 ],
+	"super" : "GMPrimitiveCollider",
+	"type" : "normal" }

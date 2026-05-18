@@ -1,0 +1,20 @@
+{
+	"category" : "GameMecha-Collision",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "Lasse 5/17/2026 16:54",
+	"instvars" : [
+		"name",
+		"enabled",
+		"symbol",
+		"position",
+		"rotation",
+		"scaleFactor",
+		"parent" ],
+	"name" : "GMCollider",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
