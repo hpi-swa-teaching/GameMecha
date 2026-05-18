@@ -1,20 +1,8 @@
-<<<<<<< current (click to choose)
-initialize
-=======
 as yet unclassified
->>>>>>> incoming (click to choose)
 initializeToolbar
 	"Single horizontal row — sprite picker, frame picker, tool buttons."
 
-	| bar rectBtn circleBtn |
-	rectBtn := GMRectangleButtonMorph new
-		action: #D;
-		yourself.
-	
-	circleBtn := GMCircleButtonMorph new
-		action: #D;
-		yourself.
-	
+	| bar |
 	bar := AlignmentMorph newRow.
 	bar
 		hResizing: #rigid;
@@ -23,7 +11,7 @@ initializeToolbar
 		height: 75 px;
 		cellPositioning: #center;
 		wrapCentering: #center;
-		color: self toolbarBackgroundColor;
+		color: Color black;
 		borderColor: Color darkGray;
 		borderWidth: 1;
 		layoutInset: 5;
@@ -35,10 +23,6 @@ initializeToolbar
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: (self labelMorph: 'frame:     ');
 		addMorphBack: (self toolButtonLabeled: 'frame_00');
-		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: rectBtn;
-		addMorphBack: circleBtn.
-		
-		#('select' 'rect' 'circle' 'poly' 'overlay') do: [:name | bar addMorphBack: (self toolButtonLabeled: name)].
-	
+		addTransparentSpacerOfSize: 40 px.
+	#('select' 'rect' 'circle' 'poly' 'overlay') do: [:name | bar addMorphBack: (self toolButtonLabeled: name)].
 	^ bar
