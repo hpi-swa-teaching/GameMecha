@@ -1,6 +1,5 @@
 collision
 isCollidingWithRectanglePrimitive: aRectangleCollider
 
-	^ self children
-		detect: [:collider | collider isCollidingWithRectanglePrimitive: aRectangleCollider]
-		ifNone: [^ false]
+	(aRectangleCollider maskIncludes: self layers) ifFalse: [^ false].
+	^ self children anySatisfy: [:collider | collider isCollidingWithCirclePrimitive: aRectangleCollider]

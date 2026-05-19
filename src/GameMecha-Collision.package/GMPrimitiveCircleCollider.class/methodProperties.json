@@ -2,8 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"isCollidingWith:" : "Lasse 5/18/2026 15:31",
-		"isCollidingWithCirclePrimitive:" : "Lasse 5/17/2026 15:27",
-		"isCollidingWithRectanglePrimitive:" : "Lasse 5/17/2026 15:27",
+		"dispatchPrimitiveCollision:" : "Lasse 5/19/2026 15:37",
+		"isCollidingWithCirclePrimitive:" : "Lasse 5/19/2026 17:03",
+		"isCollidingWithRectanglePrimitive:" : "Lasse 5/19/2026 17:02",
 		"radius" : "Lasse 5/17/2026 16:45",
 		"radius:" : "Lasse 5/17/2026 16:44" } }

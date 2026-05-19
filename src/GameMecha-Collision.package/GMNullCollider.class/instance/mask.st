@@ -1,0 +1,4 @@
+accessing
+mask
+
+	^ #(1)
