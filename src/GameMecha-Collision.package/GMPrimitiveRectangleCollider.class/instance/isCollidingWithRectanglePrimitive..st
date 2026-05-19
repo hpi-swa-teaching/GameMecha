@@ -1,0 +1,4 @@
+collision
+isCollidingWithRectanglePrimitive: aRectangleCollider
+
+	^ self notYetImplemented

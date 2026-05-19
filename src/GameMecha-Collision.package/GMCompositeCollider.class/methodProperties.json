@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addChild:" : "Lasse 5/17/2026 17:07",
+		"children" : "Lasse 5/17/2026 15:54",
+		"children:" : "Lasse 5/17/2026 15:54",
+		"initialize" : "Lasse 5/17/2026 17:07",
+		"isCollidingWith:" : "Lasse 5/18/2026 15:30",
+		"isCollidingWithCirclePrimitive:" : "Lasse 5/17/2026 15:54",
+		"isCollidingWithRectanglePrimitive:" : "Lasse 5/17/2026 15:54",
+		"removeChild:" : "Lasse 5/17/2026 17:08" } }
