@@ -2,10 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
+		"dispatchPrimitiveCollision:" : "Lasse 5/19/2026 15:37",
 		"height" : "Lasse 5/17/2026 16:43",
 		"height:" : "Lasse 5/17/2026 16:43",
-		"isCollidingWith:" : "Lasse 5/18/2026 15:30",
-		"isCollidingWithCirclePrimitive:" : "Lasse 5/17/2026 15:28",
-		"isCollidingWithRectanglePrimitive:" : "Lasse 5/17/2026 15:28",
+		"isCollidingWithCirclePrimitive:" : "Lasse 5/19/2026 17:02",
+		"isCollidingWithRectanglePrimitive:" : "Lasse 5/19/2026 17:02",
 		"width" : "Lasse 5/17/2026 16:43",
 		"width:" : "Lasse 5/17/2026 16:42" } }

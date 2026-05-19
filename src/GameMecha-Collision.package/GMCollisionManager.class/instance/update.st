@@ -1,0 +1,4 @@
+collision
+update
+
+	self checkCollisions

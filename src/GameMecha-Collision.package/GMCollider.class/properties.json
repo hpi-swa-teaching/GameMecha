@@ -12,7 +12,10 @@
 		"position",
 		"rotation",
 		"scaleFactor",
-		"parent" ],
+		"parent",
+		"mask",
+		"layers",
+		"title" ],
 	"name" : "GMCollider",
 	"pools" : [
 		 ],
