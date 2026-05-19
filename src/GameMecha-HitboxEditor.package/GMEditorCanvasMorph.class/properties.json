@@ -9,7 +9,8 @@
 		"tileSize",
 		"backgroundColor",
 		"gridColor",
-		"bgColor" ],
+		"bgColor",
+		"labelColor" ],
 	"name" : "GMEditorCanvasMorph",
 	"pools" : [
 		 ],

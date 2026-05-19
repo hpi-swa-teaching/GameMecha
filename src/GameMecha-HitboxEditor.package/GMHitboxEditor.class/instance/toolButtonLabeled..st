@@ -5,7 +5,7 @@ toolButtonLabeled: name
 	btn := SimpleButtonMorph new.
 	btn
 		label: name;
-		color: Color gray;
-		borderColor: Color lightBlue;
+		color: self buttonColor;
+		borderColor: Color transparent;
 		borderWidth: 1.
 	^ btn

@@ -5,8 +5,8 @@ selectButton
 	btn := SimpleButtonMorph new.
 	btn
 		label: 'Select';
-		color: Color gray;
-		borderColor: Color lightBlue;
+		color: self buttonColor;
+		borderColor: Color transparent;
 		target: GMEditorClassSearchTool new;
 		actionSelector: #open;
 		borderWidth: 1.

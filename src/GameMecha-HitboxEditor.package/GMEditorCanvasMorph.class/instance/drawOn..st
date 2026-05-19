@@ -1,4 +1,4 @@
-as yet unclassified
+drawing
 drawOn: aCanvas
 
 	| w h x y |
@@ -6,7 +6,7 @@ drawOn: aCanvas
 	h := self height.
 	
 	"Hintergrund"
-	aCanvas fillRectangle: self bounds color: bgColor.
+	aCanvas fillRectangle: self bounds color: self backgroundColor.
 	
 	"Vertikale Linien - immer ab 0"
 	x := 0.

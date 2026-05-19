@@ -15,7 +15,6 @@ open
 			ifFalse: [(allClasses select: [:c | c name asString asLowercase includesSubstring: query]) collect: [:c | c name]].
 		self changed: #currentList].
 	
-	"Korrekte PluggableListMorph-Initialisierung"
 	classList := PluggableListMorph
 		on: self
 		list: #currentList

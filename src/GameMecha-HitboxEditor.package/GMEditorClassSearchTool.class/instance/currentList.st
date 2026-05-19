@@ -1,3 +1,4 @@
 as yet unclassified
 currentList
-    ^ filteredClasses ifNil: [#()]
+
+	^ filteredClasses ifNil: [#()]
