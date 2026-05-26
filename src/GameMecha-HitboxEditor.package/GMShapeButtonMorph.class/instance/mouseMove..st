@@ -3,4 +3,6 @@ mouseMove: evt
 
 	isPressed ifFalse: [^ self].
 	"Morph direkt an die Hand hängen"
-	self parachuteMorph: evt
+	
+	"gechanged von Gabel"
+	"self parachuteMorph: evt"

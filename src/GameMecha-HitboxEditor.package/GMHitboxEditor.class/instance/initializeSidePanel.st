@@ -16,7 +16,7 @@ initializeSidePanel
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);
-		addMorphBack: self initializeMorphHitboxList;
+		addMorphBack: (self sidebarColliderList);
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);

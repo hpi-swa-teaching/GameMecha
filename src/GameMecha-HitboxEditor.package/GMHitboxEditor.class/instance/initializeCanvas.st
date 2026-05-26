@@ -1,6 +1,7 @@
 as yet unclassified
 initializeCanvas
 
-	canvasMorph := GMEditorCanvasMorph new.
-	canvasMorph gridColor: self secondaryColor.
-	^ canvasMorph
+	self canvasMorph: GMEditorCanvasMorph new.
+	(self canvasMorph) gridColor: self secondaryColor.
+	
+	^ self canvasMorph

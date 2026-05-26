@@ -10,7 +10,9 @@
 		"backgroundColor",
 		"gridColor",
 		"bgColor",
-		"labelColor" ],
+		"labelColor",
+		"dragOffset",
+		"activeMorph" ],
 	"name" : "GMEditorCanvasMorph",
 	"pools" : [
 		 ],
