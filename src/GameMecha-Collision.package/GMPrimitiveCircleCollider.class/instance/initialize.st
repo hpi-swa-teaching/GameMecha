@@ -1,4 +1,5 @@
 initialize-release
 initialize
+
 	super initialize.
-	self children: OrderedCollection new
+	self radius: 0.

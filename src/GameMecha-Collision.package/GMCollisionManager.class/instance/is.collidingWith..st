@@ -1,4 +1,5 @@
 collision
 is: aMorph collidingWith: anotherMorph
-
-	^ (self shouldCheckCollisionBetween: aMorph and: anotherMorph) and: [aMorph collider isCollidingWith: anotherMorph collider]
+	
+	self checkForColliderOf: aMorph and: anotherMorph.
+	^ (aMorph ~~ anotherMorph) and: [aMorph collider isCollidingWith: anotherMorph collider]

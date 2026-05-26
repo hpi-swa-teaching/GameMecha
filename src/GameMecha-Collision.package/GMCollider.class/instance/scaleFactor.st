@@ -1,4 +1,4 @@
 accessing
 scaleFactor
 
-	^ scaleFactor + self parent scaleFactor
+	^ scaleFactor * self parent scaleFactor
