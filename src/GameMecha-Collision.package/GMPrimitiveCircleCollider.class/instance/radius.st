@@ -1,4 +1,4 @@
 accessing
 radius
 
-	^ radius * self parent scaleFactor
+	^ radius * self scaleFactor

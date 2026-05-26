@@ -1,4 +1,4 @@
 accessing
 height
 
-	^ height * self parent scaleFactor
+	^ height * self scaleFactor

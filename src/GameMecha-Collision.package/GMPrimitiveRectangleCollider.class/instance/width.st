@@ -1,4 +1,4 @@
 accessing
 width
 
-	^ width * self parent scaleFactor
+	^ width * self scaleFactor
