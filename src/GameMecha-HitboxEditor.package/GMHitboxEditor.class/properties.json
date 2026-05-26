@@ -11,7 +11,9 @@
 		"widthField",
 		"heightField",
 		"xField",
-		"yField" ],
+		"yField",
+		"classTextInputField",
+		"sidebarColliderList" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],

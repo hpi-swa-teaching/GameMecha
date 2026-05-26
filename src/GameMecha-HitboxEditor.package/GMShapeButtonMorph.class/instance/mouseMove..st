@@ -1,6 +1,8 @@
-event handling
+as yet unclassified
 mouseMove: evt
 
 	isPressed ifFalse: [^ self].
-	"Keep morph tied to Cursor"
-	self parachuteMorph: evt
+	"Morph direkt an die Hand hängen"
+	
+	"gechanged von Gabel"
+	"self parachuteMorph: evt"
