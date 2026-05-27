@@ -9,12 +9,12 @@ isCollidingWithCirclePrimitiveRotated: aCircleCollider
 	axes do: [:axis | (self isSeparatedFromCircle: aCircleCollider onAxis: axis) ifTrue: [^ false]].
 	
 	closestCorner := self corners inject: self corners first into: [:nearest :corner | | d1 d2 |
-		d1 := aCircleCollider position - nearest.
-		d2 := aCircleCollider position - corner.
+		d1 := aCircleCollider center - nearest.
+		d2 := aCircleCollider center - corner.
 		d1 x * d1 x + (d1 y * d1 y) < (d2 x * d2 x + (d2 y * d2 y)) ifTrue: [nearest] ifFalse: [corner]].
 	
-	dx := aCircleCollider position x - closestCorner x.
-	dy := aCircleCollider position y - closestCorner y.
+	dx := aCircleCollider center x - closestCorner x.
+	dy := aCircleCollider center y - closestCorner y.
 	len := (dx * dx + (dy * dy)) sqrt.
 	len = 0.0 ifTrue: [^ true].
 	

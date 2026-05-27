@@ -2,9 +2,11 @@
 	"class" : {
 		"newFromAsset:" : "Lasse 5/17/2026 17:47" },
 	"instance" : {
+		"center" : "mabe 5/27/2026 16:53",
+		"center:" : "mabe 5/27/2026 16:54",
 		"enabled" : "Lasse 5/17/2026 16:00",
 		"enabled:" : "Lasse 5/17/2026 16:00",
-		"initialize" : "mabe 5/20/2026 15:29",
+		"initialize" : "mabe 5/27/2026 16:56",
 		"isCollidingWith:" : "Lasse 5/17/2026 15:48",
 		"isCollidingWithCirclePrimitive:" : "Lasse 5/17/2026 15:48",
 		"isCollidingWithRectanglePrimitive:" : "Lasse 5/17/2026 15:49",
@@ -17,8 +19,6 @@
 		"name:" : "Lasse 5/17/2026 14:47",
 		"parent" : "Lasse 5/17/2026 16:24",
 		"parent:" : "Lasse 5/17/2026 16:19",
-		"position" : "mabe 5/20/2026 15:14",
-		"position:" : "Lasse 5/17/2026 16:15",
 		"rotation" : "Lasse 5/17/2026 16:25",
 		"rotation:" : "Lasse 5/17/2026 16:16",
 		"scaleFactor" : "mabe 5/20/2026 15:29",

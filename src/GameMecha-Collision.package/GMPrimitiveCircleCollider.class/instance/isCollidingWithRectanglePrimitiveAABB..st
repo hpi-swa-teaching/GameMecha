@@ -5,9 +5,9 @@ isCollidingWithRectanglePrimitiveAABB: aRectangleCollider
 	rHalfW := aRectangleCollider width / 2.0.
 	rHalfH := aRectangleCollider height / 2.0.
 	
-	closestX := (self position x max: aRectangleCollider position x - rHalfW) min: aRectangleCollider position x + rHalfW.
-	closestY := (self position y max: aRectangleCollider position y - rHalfH) min: aRectangleCollider position y + rHalfH.
+	closestX := (self center x max: aRectangleCollider center x - rHalfW) min: aRectangleCollider center x + rHalfW.
+	closestY := (self center y max: aRectangleCollider center y - rHalfH) min: aRectangleCollider center y + rHalfH.
 	
-	dx := self position x - closestX.
-	dy := self position y - closestY.
+	dx := self center x - closestX.
+	dy := self center y - closestY.
 	^ dx * dx + (dy * dy) <= (self radius * self radius)
