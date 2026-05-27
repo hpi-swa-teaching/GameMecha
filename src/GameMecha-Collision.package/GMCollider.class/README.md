@@ -4,7 +4,7 @@ Instance Variables
 	enabled:		<Boolean>
 	name:			<String>
 	parent:			<GMCollider>
-	position:		<Point>
+	center:			<Point>
 	rotation:		<Number>
 	scaleFactor:	<Number>
 	symbol:		<Symbol>

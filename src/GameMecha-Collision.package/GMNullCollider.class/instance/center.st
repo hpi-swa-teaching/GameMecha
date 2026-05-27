@@ -1,4 +1,4 @@
 accessing
-position
+center
 
 	^ 0 @ 0

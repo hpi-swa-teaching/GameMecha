@@ -10,6 +10,6 @@ isSeparatedFromCircle: aCircleCollider onAxis: axis
         aMin := aMin min: proj.
         aMax := aMax max: proj].
 
-    centerProj := (axis x * aCircleCollider position x) + (axis y * aCircleCollider position y).
+    centerProj := (axis x * aCircleCollider center x) + (axis y * aCircleCollider center y).
 
     ^ (aMax < (centerProj - aCircleCollider radius)) or: [(centerProj + aCircleCollider radius) < aMin]

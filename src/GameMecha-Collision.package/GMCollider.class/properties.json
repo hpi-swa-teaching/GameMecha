@@ -4,18 +4,18 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "Lasse 5/17/2026 16:54",
+	"commentStamp" : "mabe 5/27/2026 17:11",
 	"instvars" : [
 		"name",
 		"enabled",
 		"symbol",
-		"position",
+		"parent",
 		"rotation",
 		"scaleFactor",
-		"parent",
 		"mask",
 		"layers",
-		"title" ],
+		"title",
+		"center" ],
 	"name" : "GMCollider",
 	"pools" : [
 		 ],
