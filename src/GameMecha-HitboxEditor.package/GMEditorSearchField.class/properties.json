@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"actionBlock" ],
+	"name" : "GMEditorSearchField",
+	"pools" : [
+		 ],
+	"super" : "TextMorph",
+	"type" : "normal" }

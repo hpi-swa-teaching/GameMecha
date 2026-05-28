@@ -1,0 +1,4 @@
+accessing
+currentList
+
+	^ filteredClasses ifNil: [#()]
