@@ -1,0 +1,27 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"buttonColor" : "vincent 5/21/2026 16:20",
+		"initialize" : "vincent 5/21/2026 16:20",
+		"initializeCanvas" : "vincent 5/21/2026 16:20",
+		"initializeMorphHitboxList" : "vincent 5/22/2026 10:51",
+		"initializeSidePanel" : "vincent 5/22/2026 10:50",
+		"initializeToolbar" : "Robert 5/28/2026 15:30",
+		"initializeUI" : "vincent 5/21/2026 16:21",
+		"initializeWorkspace" : "vincent 5/22/2026 10:49",
+		"labelMorph:" : "vincent 5/22/2026 10:49",
+		"posInput" : "vincent 5/22/2026 10:48",
+		"primaryColor" : "vincent 5/21/2026 16:21",
+		"rotationInput" : "vincent 5/22/2026 10:48",
+		"sampleHitboxes" : "vincent 5/21/2026 16:21",
+		"secondaryColor" : "vincent 5/21/2026 16:21",
+		"selectButton" : "vincent 5/22/2026 10:48",
+		"separatorMorph" : "vincent 5/21/2026 16:21",
+		"sidebarBackgroundColor" : "vincent 5/21/2026 16:21",
+		"sizeInput" : "vincent 5/22/2026 10:47",
+		"textColor" : "vincent 5/21/2026 16:21",
+		"textFieldColor" : "vincent 5/21/2026 16:21",
+		"textfieldFixedSize" : "Robert 5/28/2026 15:32",
+		"toolButtonLabeled:" : "vincent 5/22/2026 10:46",
+		"toolbarBackgroundColor" : "vincent 5/21/2026 16:22" } }

@@ -1,0 +1,302 @@
+GSMetadata {
+	#version : 1,
+	#mappers : OrderedCollection [
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'brush.png'
+			],
+			#encoding : Class [ #PNGReadWriter ]
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'rectangle.png'
+			],
+			#encoding : @5
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-DemoGame'
+			},
+			#path : FSAbsolutePath [
+				'src'
+			]
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'undo.png'
+			],
+			#encoding : @5
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'test'
+			],
+			#encoding : 'TXT'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'down.png'
+			],
+			#encoding : @5
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-KeyHandling'
+			},
+			#path : @10
+		},
+		GSSoundMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'squeak.wav'
+			],
+			#encoding : 'WAV'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'rename.png'
+			],
+			#encoding : @5
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'.smalltalk.ston'
+			],
+			#encoding : 'TXT'
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'README.md'
+			],
+			#encoding : 'TXT'
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'LICENSE'
+			],
+			#encoding : 'TXT'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'trash.png'
+			],
+			#encoding : @5
+		},
+		GSSoundMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'squeak.aiff'
+			],
+			#encoding : 'AIFF'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'eye.png'
+			],
+			#encoding : @5
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-Test'
+			},
+			#path : @10
+		},
+		GSBlobMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'map.morph'
+			],
+			#encoding : 'bin'
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-Examples'
+			},
+			#path : @10
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'line.png'
+			],
+			#encoding : @5
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'squeak2.gif'
+			],
+			#encoding : Class [ #GIFReadWriter ]
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-Collision'
+			},
+			#path : @10
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'redo.png'
+			],
+			#encoding : @5
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'up.png'
+			],
+			#encoding : @5
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'test.txt'
+			],
+			#encoding : 'TXT'
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-ResourceLoading'
+			},
+			#path : @10
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'squeak.png'
+			],
+			#encoding : @5
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'.github',
+				'workflows',
+				'main.yml'
+			],
+			#encoding : 'TXT'
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'.gitignore'
+			],
+			#encoding : 'TXT'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'add.png'
+			],
+			#encoding : @5
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'fill.png'
+			],
+			#encoding : @5
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'.squot'
+			],
+			#encoding : 'TXT'
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'broom.png'
+			],
+			#encoding : @5
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'BaselineOfGameMecha'
+			},
+			#path : @10
+		},
+		GSBlobMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'testingResources',
+				'testMapFile.morph'
+			],
+			#encoding : 'bin'
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-TileEditor'
+			},
+			#path : @10
+		},
+		GSImageMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'GMTEIcons',
+				'merge.png'
+			],
+			#encoding : @5
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-HitboxEditor'
+			},
+			#path : FSAbsolutePath [
+				'src'
+			]
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-CollisionShapeEditor'
+			},
+			#path : FSAbsolutePath [
+				'src'
+			]
+		}
+	],
+	#name : 'GameMecha'
+}

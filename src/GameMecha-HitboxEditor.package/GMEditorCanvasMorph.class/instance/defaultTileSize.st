@@ -1,0 +1,4 @@
+accessing
+defaultTileSize
+
+	^ 100

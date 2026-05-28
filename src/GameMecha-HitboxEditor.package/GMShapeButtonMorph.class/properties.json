@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"isHovered",
+		"isPressed",
+		"shapeColor",
+		"hoverColor",
+		"pressColor",
+		"action" ],
+	"name" : "GMShapeButtonMorph",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }
