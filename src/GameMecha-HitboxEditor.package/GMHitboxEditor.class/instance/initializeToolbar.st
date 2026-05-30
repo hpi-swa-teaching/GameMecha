@@ -1,4 +1,4 @@
-as yet unclassified
+initialize
 initializeToolbar
 	"Single horizontal row — sprite picker, frame picker, tool buttons."
 
@@ -21,7 +21,7 @@ initializeToolbar
 			|circle|
 			circle := EllipseMorph new. 
 			circle 
-				extent: 200 @ 100;
+				extent: 200 @ 200;
 				color: (Color yellow alpha: 0.5).
 				
 				self canvasMorph drawMorphOnCanvas: circle.
