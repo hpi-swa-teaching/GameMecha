@@ -1,4 +1,4 @@
-as yet unclassified
+event handling
 actionBlock: aBlock
 
 	actionBlock := aBlock

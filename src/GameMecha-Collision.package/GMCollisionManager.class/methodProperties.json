@@ -1,0 +1,20 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addMorph:" : "Lasse 5/19/2026 16:00",
+		"addMorphs:" : "Lasse 5/19/2026 16:00",
+		"checkCollisions" : "Lasse 5/19/2026 15:57",
+		"checkForColliderOf:and:" : "mabe 5/21/2026 15:35",
+		"includes:" : "Lasse 5/19/2026 15:59",
+		"initialize" : "Lasse 5/19/2026 14:43",
+		"initializeMorphs" : "Lasse 5/19/2026 15:08",
+		"is:collidingWith:" : "mabe 5/21/2026 15:36",
+		"isCollider:collidingWith:" : "mabe 5/21/2026 15:37",
+		"morphs" : "Lasse 5/19/2026 15:02",
+		"morphs:" : "Lasse 5/19/2026 15:08",
+		"morphsCollidingWith:" : "Lasse 5/19/2026 15:58",
+		"notifyCollision:with:" : "Lasse 5/19/2026 15:47",
+		"removeAllMorphs" : "Lasse 5/19/2026 15:58",
+		"removeMorph:" : "Lasse 5/19/2026 16:01",
+		"update" : "Lasse 5/19/2026 14:17" } }

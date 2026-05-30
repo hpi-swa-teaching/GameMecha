@@ -1,0 +1,1 @@
+A GMNullCollider is the Null Object for non existent GMColliders.

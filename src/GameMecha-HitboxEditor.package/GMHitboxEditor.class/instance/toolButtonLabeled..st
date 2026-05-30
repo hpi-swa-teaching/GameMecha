@@ -1,11 +1,9 @@
-as yet unclassified
+ui-components
 toolButtonLabeled: name
 
-	| btn |
-	btn := SimpleButtonMorph new.
-	btn
+	^ SimpleButtonMorph new
 		label: name;
 		color: self buttonColor;
 		borderColor: Color transparent;
-		borderWidth: 1.
-	^ btn
+		borderWidth: 1;
+		yourself

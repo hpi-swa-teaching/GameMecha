@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-Collision",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "Lasse 5/17/2026 16:56",
+	"instvars" : [
+		 ],
+	"name" : "GMNullCollider",
+	"pools" : [
+		 ],
+	"super" : "GMCollider",
+	"type" : "normal" }

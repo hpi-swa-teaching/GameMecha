@@ -1,0 +1,23 @@
+{
+	"category" : "GameMecha-Collision",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 5/27/2026 17:11",
+	"instvars" : [
+		"name",
+		"enabled",
+		"symbol",
+		"parent",
+		"rotation",
+		"scaleFactor",
+		"mask",
+		"layers",
+		"title",
+		"center" ],
+	"name" : "GMCollider",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

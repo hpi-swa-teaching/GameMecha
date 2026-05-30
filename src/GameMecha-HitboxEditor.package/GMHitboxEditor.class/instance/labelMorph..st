@@ -1,9 +1,6 @@
-as yet unclassified
+ui-components
 labelMorph: text
 
-	| s |
-	s := StringMorph new.
-	s
+	^ StringMorph new
 		contents: text;
-		color: self textColor.
-	^ s
+		color: self textColor

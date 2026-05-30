@@ -1,9 +1,7 @@
-as yet unclassified
+ui-components
 selectButton
 
-	| btn |
-	btn := SimpleButtonMorph new.
-	btn
+	^ SimpleButtonMorph new
 		label: 'Select';
 		color: self buttonColor;
 		borderColor: Color transparent;
@@ -26,5 +24,4 @@ selectButton
 			self updateSidebarColliderList
 			];
 		actionSelector: #value;
-		borderWidth: 1.
-	^ btn
+		borderWidth: 1

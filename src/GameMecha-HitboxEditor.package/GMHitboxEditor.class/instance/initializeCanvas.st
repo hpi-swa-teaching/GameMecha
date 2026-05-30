@@ -1,4 +1,4 @@
-as yet unclassified
+initialize
 initializeCanvas
 
 	self canvasMorph: GMEditorCanvasMorph new.

@@ -1,14 +1,10 @@
-as yet unclassified
+initialize
 initializeWorkspace
 
-	| row |
-	row := AlignmentMorph newRow.
-	row
+	^ AlignmentMorph newRow
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
 		color: Color transparent;
 		borderWidth: 0;
 		addMorphBack: self initializeCanvas;
-		addMorphBack: self initializeSidePanel.
-	"row separation: 0."
-	^ row
+		addMorphBack: self initializeSidePanel

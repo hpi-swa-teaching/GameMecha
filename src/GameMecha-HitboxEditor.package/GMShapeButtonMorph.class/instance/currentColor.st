@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 currentColor
 
 	isPressed ifTrue: [^ pressColor].

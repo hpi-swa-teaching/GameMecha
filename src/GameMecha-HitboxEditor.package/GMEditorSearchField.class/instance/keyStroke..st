@@ -1,4 +1,4 @@
-as yet unclassified
+event handling
 keyStroke: anEvent
 
 	super keyStroke: anEvent.

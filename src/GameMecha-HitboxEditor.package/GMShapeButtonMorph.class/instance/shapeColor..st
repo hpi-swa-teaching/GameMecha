@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 shapeColor: aColor
 
 	shapeColor := aColor

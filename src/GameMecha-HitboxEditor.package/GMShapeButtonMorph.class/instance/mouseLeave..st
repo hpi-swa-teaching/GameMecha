@@ -1,4 +1,4 @@
-as yet unclassified
+event handling
 mouseLeave: evt
 
 	isHovered := false.

@@ -1,8 +1,7 @@
-as yet unclassified
+accessing
 parachuteMorph: evt
 
 	| copy |
-	"Kopie erstellen die gedraggt wird"
 	copy := self class new.
 	copy action: action.
 	copy extent: self extent.

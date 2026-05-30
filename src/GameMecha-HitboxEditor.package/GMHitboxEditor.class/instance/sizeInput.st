@@ -1,16 +1,11 @@
-as yet unclassified
+initialize
 sizeInput
 
-	| inputText |
-	inputText := AlignmentMorph newRow.
-	inputText
+	^ AlignmentMorph newRow
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
-		addMorphBack: (self labelMorph: 'x:');
-		addMorphBack: self xSizeInput;
-		addMorphBack: (self labelMorph: 'y:');
-		addMorphBack: self ySizeInput;
-		color: self textFieldColor.
-	" acceptSelector: #myFunction:;
-	 acceptTarget: self;"
-	^ inputText
+		addMorphBack: (self labelMorph: 'x: ');
+		addMorphBack: self textfieldFixedSize;
+		addMorphBack: (self labelMorph: '     y: ');
+		addMorphBack: self textfieldFixedSize;
+		color: self sidebarBackgroundColor

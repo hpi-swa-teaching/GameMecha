@@ -1,0 +1,4 @@
+accessing
+scaleFactor
+
+	^ 1

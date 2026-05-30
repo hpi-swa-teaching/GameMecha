@@ -1,16 +1,11 @@
-as yet unclassified
+initialize
 posInput
 
-	| dings |
-	dings := AlignmentMorph newRow.
-	dings
-		hResizing: #shrinkWrap;
+	^ AlignmentMorph newRow
 		vResizing: #shrinkWrap;
-		addMorphBack: (self labelMorph: 'x:');
-		addMorphBack: self xPosInput;
-		addMorphBack: (self labelMorph: 'y:');
-		addMorphBack: self yPosInput;
-		color: self textFieldColor.
-	" acceptSelector: #myFunction:;
-	 acceptTarget: self;"
-	^ dings
+		hResizing: #shrinkWrap;
+		addMorphBack: (self labelMorph: 'x: ');
+		addMorphBack: self textfieldFixedSize;
+		addMorphBack: (self labelMorph: '     y: ');
+		addMorphBack: self textfieldFixedSize;
+		color: self sidebarBackgroundColor

@@ -1,4 +1,4 @@
-as yet unclassified
+event handling
 mouseUp: evt
 
 	isPressed ifTrue: [action ifNotNil: [action value]].
