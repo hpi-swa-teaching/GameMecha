@@ -7,6 +7,6 @@ classTextInputField
 	    	contents: 'Type your Classname here :)';
 	    	backgroundColor: Color white;
 		wrapFlag: true;
-	    	extent: 150@20. ]
+	    	extent: (150px@20px). ]
 
 	

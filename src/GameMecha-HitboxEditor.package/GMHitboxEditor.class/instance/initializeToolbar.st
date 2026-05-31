@@ -2,13 +2,13 @@ initialize
 initializeToolbar
 	"Single horizontal row — sprite picker, frame picker, tool buttons."
 
-	| bar rectBtn circleBtn triBtn |
+	| bar rectBtn circleBtn |
 	rectBtn := GMRectangleButtonMorph new
 		action: [
 			|rectangle|
 			rectangle := Morph new. 
 			rectangle 
-				extent: 250 @ 150;
+				extent: (250px @ 150px);
 				color: (Color red alpha: 0.5).
 				
 				self canvasMorph drawMorphOnCanvas: rectangle.
@@ -21,7 +21,7 @@ initializeToolbar
 			|circle|
 			circle := EllipseMorph new. 
 			circle 
-				extent: 200 @ 200;
+				extent: (200px @ 200px);
 				color: (Color yellow alpha: 0.5).
 				
 				self canvasMorph drawMorphOnCanvas: circle.
@@ -29,26 +29,6 @@ initializeToolbar
 			];
 		yourself.
 	
-	triBtn := GMTriangleButtonMorph new
-		action: [
-			|triangle vertices|
-			
-			vertices := { 
-			    50 @ 0.    "Top middle"
-			    0 @ 100.   "Bottom left"
-			    100 @ 100  "Bottom right"
-			}.
-
-			triangle := PolygonMorph new. 
-			triangle 
-				setVertices: vertices;
-				color: (Color blue alpha: 0.5).
-				
-				self canvasMorph drawMorphOnCanvas: triangle.
-				self updateSidebarColliderList
-			];
-		yourself.
-		
 	bar := AlignmentMorph newRow.
 	bar
 		hResizing: #rigid;
@@ -75,6 +55,5 @@ initializeToolbar
 	
 	bar addMorphBack:  rectBtn.
 	bar addMorphBack: circleBtn.
-	bar addMorphBack: triBtn.
-	"#('select' 'rect' 'circle' 'poly' 'overlay') do: [:name | bar addMorphBack: (self toolButtonLabeled: name)]."
+	
 	^ bar

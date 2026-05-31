@@ -1,9 +1,9 @@
 sidebar
 updateSidebarColliderList
-    "Leert nur den Listen-Bereich und baut ihn neu nummeriert auf. Die restliche Sidebar bleibt unverändert!"
-    |nameBag|
+    "Updates the sidebar and enumerates the entries."
+    |labelBag|
 
-	nameBag := Bag new. 
+	labelBag := Bag new. 
     	self sidebarColliderList removeAllMorphs.
     
     	self canvasMorph submorphs do: [ :aCollider |
@@ -12,12 +12,12 @@ updateSidebarColliderList
  	entry := String new. 
 	
 	label := aCollider class name.
-       entry :=  label asString.
-	occurence := 1 +  (nameBag occurrencesOf: entry).
+      entry :=  label asString.
+
+	occurence := 1 +  (labelBag occurrencesOf: entry).
 	entry := (occurence asString) , '. ', entry.	
 	
-	nameBag add: label.
+	labelBag add: label.
 
-        "Füge ihn in unseren gezielten Container ein"
         self sidebarColliderList addMorphBack: (TextMorph new contents: entry).
     ].
