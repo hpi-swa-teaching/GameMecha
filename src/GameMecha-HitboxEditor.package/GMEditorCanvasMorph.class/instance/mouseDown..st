@@ -8,7 +8,7 @@ mouseDown: anEvent
         
    	activeMorph ifNotNil: [
       
-	"Differnce between where we clicked and where the pos of the moprh ist. We need that later, when the morph is moved"
+	"Difference between where we clicked and where the pos of the moprh is. We need that later, when the morph is moved"
 	dragOffset := anEvent position - activeMorph position.
         
         self addMorphFront: activeMorph.
