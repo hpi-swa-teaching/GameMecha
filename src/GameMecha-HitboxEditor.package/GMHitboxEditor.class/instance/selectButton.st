@@ -16,12 +16,11 @@ selectButton
 		    (targetClass notNil and: [targetClass includesBehavior: Morph]) 
 		        ifTrue: [
 		            newMorph := targetClass new.
-		           	(self canvasMorph) drawMorphOnCanvas: newMorph.
+		           	self addMorphToCanvas: newMorph.
 		        ] 
 		        ifFalse: [
-		            UIManager default inform: 'YOU ARE INVALID!!! Either the class does not exist or it does not have the behaviour of Morph. So why are YOU waisitng my time. You useless squeaker!!!'.
+		            UIManager default inform: 'Uupsss. Something went wrong. Either the class does not exist or it does not inherit from moprh.'.
 		        ].
-			self updateSidebarColliderList
 			];
 		actionSelector: #value;
 		borderWidth: 1

@@ -13,7 +13,8 @@
 		"xField",
 		"yField",
 		"classTextInputField",
-		"sidebarColliderList" ],
+		"sidebarColliderList",
+		"propertyPanel" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],

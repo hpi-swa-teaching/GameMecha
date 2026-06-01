@@ -1,5 +1,5 @@
-as yet unclassified
-xSizeInput
+accessing
+xPosInput
 
 	| textField |
 	textField := TextMorph new.
@@ -10,5 +10,5 @@ xSizeInput
 		borderColor: Color transparent;
 		color: self textColor;
 		backgroundColor: self textFieldColor.
-		
+	
 	^ textField

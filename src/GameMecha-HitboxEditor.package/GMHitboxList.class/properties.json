@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"symbolBag",
+		"entryBag" ],
+	"name" : "GMHitboxList",
+	"pools" : [
+		 ],
+	"super" : "AlignmentMorph",
+	"type" : "normal" }

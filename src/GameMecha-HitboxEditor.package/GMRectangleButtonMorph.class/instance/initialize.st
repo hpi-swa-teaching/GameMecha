@@ -1,0 +1,6 @@
+drawing
+initialize
+
+	super initialize.
+	
+	

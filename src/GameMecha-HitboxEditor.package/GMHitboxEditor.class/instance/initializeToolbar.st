@@ -11,8 +11,7 @@ initializeToolbar
 				extent: (250px @ 150px);
 				color: (Color red alpha: 0.5).
 				
-				self canvasMorph drawMorphOnCanvas: rectangle.
-				self updateSidebarColliderList
+				self addMorphToCanvas: rectangle
 			];
 		yourself.
 	
@@ -24,8 +23,7 @@ initializeToolbar
 				extent: (200px @ 200px);
 				color: (Color yellow alpha: 0.5).
 				
-				self canvasMorph drawMorphOnCanvas: circle.
-				self updateSidebarColliderList
+				self addMorphToCanvas: circle
 			];
 		yourself.
 	

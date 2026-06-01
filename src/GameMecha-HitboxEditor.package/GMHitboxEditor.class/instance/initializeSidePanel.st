@@ -14,12 +14,13 @@ initializeSidePanel
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);
-		addMorphBack: (self sidebarColliderList);
+		addMorphBack: self sidebarColliderList;
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);
-		addMorphBack: (self labelMorph: ' Center Position');
+		addMorphBack: self propertyPanel.
+		"addMorphBack: (self labelMorph: ' Center Position');
 		addMorphBack: self posInput;
 		addMorphBack: (self labelMorph: ' Morph Size ');
 		addMorphBack: self sizeInput;
-		addMorphBack: self rotationInput
+		addMorphBack: self rotationInput"  "Argument expected ->"
