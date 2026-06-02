@@ -1,6 +1,7 @@
 {
 	"class" : {
-		 },
+		"newFromAsset:" : "Lasse 6/2/2026 15:03",
+		"newFromAsset:withOwner:" : "Lasse 6/2/2026 15:02" },
 	"instance" : {
 		"dispatchPrimitiveCollision:" : "Lasse 5/19/2026 15:37",
 		"isCollidingWith:" : "Lasse 5/19/2026 16:59" } }
