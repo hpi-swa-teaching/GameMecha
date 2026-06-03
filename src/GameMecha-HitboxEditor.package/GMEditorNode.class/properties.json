@@ -1,0 +1,18 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"parent",
+		"children",
+		"symbol",
+		"morph",
+		"collliderType" ],
+	"name" : "GMEditorNode",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

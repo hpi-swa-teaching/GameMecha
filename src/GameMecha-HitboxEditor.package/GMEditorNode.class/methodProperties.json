@@ -1,0 +1,20 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addChildren:" : "m 6/3/2026 14:15",
+		"child:" : "m 6/3/2026 14:25",
+		"children" : "m 6/3/2026 14:06",
+		"children:" : "m 6/3/2026 14:07",
+		"colliderType" : "m 6/3/2026 14:10",
+		"colliderType:" : "m 6/3/2026 14:09",
+		"exportCollider" : "m 6/3/2026 14:10",
+		"initialize" : "m 6/3/2026 14:12",
+		"morph" : "m 6/3/2026 14:07",
+		"morph:" : "m 6/3/2026 14:07",
+		"parent" : "m 6/3/2026 14:07",
+		"parent:" : "m 6/3/2026 14:07",
+		"removeChildren" : "m 6/3/2026 14:15",
+		"removeChildren:" : "m 6/3/2026 14:16",
+		"symbol" : "m 6/3/2026 14:19",
+		"symbol:" : "m 6/3/2026 14:22" } }
