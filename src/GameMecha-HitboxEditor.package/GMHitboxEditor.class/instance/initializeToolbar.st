@@ -11,7 +11,11 @@ initializeToolbar
 				color: (Color red alpha: 0.5).
 			
 			self canvasMorph drawMorphOnCanvas: rectangle.
-			self addCollider: rectangle withSymbol: #peter atNode: self colliderTree. self updateSidebarColliderList];
+			self
+				addCollider: rectangle
+				atNode: self colliderTree
+				colliderType: GMPrimitiveRectangleCollider.
+			self updateSidebarColliderList];
 		yourself.
 	
 	circleBtn := GMCircleButtonMorph new
@@ -22,6 +26,10 @@ initializeToolbar
 				color: (Color yellow alpha: 0.5).
 			
 			self canvasMorph drawMorphOnCanvas: circle.
+			self
+				addCollider: circle
+				atNode: self colliderTree
+				colliderType: GMPrimitiveCircleCollider.
 			self updateSidebarColliderList];
 		yourself.
 	

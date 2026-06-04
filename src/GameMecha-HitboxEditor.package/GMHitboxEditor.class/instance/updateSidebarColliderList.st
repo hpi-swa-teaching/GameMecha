@@ -6,15 +6,16 @@ updateSidebarColliderList
 	labelBag := Bag new.
 	self sidebarColliderList removeAllMorphs.
 	
-	self colliderTree children do: [:aCollider | | entry occurence label |
+	"TODO add child of a child logic as soon as groups are implemented"
+	self colliderTree children do: [:child | | entry label |
 		entry := String new.
 		
-		label := aCollider symbol.
+		label := child symbol.
 		entry := label asString.
 		
-		occurence := 1 + (labelBag occurrencesOf: entry).
-		entry := occurence asString, '. ', entry.
+		entry := child colliderType asString, '. ', entry.
 		
 		labelBag add: label.
 		
+		self sidebarColliderDictionary at: entry put: child.
 		self sidebarColliderList addMorphBack: (TextMorph new contents: entry)]

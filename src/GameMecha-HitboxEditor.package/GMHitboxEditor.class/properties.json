@@ -14,7 +14,9 @@
 		"yField",
 		"classTextInputField",
 		"sidebarColliderList",
-		"colliderTree" ],
+		"colliderTree",
+		"sidebarColliderDictionary",
+		"symbolCounter" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],
