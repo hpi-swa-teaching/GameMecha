@@ -1,0 +1,14 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"collider" : "mabe 5/28/2026 16:03",
+		"collider:" : "mabe 5/28/2026 16:03",
+		"game" : "mabe 5/28/2026 16:03",
+		"game:" : "mabe 5/28/2026 16:03",
+		"initialize" : "mabe 6/4/2026 16:02",
+		"layers" : "mabe 6/4/2026 16:01",
+		"layers:" : "mabe 5/28/2026 16:04",
+		"mask" : "mabe 6/4/2026 16:01",
+		"mask:" : "mabe 5/28/2026 16:04",
+		"onCollision:" : "mabe 5/28/2026 16:04" } }

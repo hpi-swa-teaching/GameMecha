@@ -1,0 +1,25 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"ammo" : "mabe 6/1/2026 14:07",
+		"ammo:" : "mabe 6/1/2026 14:07",
+		"controls" : "mabe 5/28/2026 16:04",
+		"controls:" : "mabe 5/28/2026 16:04",
+		"direction" : "mabe 6/1/2026 13:23",
+		"direction:" : "mabe 6/1/2026 13:24",
+		"gmIsKeyPressed:" : "mabe 5/27/2026 15:38",
+		"handleInput" : "mabe 6/1/2026 14:04",
+		"initialize" : "mabe 6/5/2026 15:38",
+		"move" : "mabe 6/1/2026 14:03",
+		"onCollision:" : "mabe 6/3/2026 16:41",
+		"shoot" : "mabe 6/4/2026 16:06",
+		"shootInterval" : "mabe 6/1/2026 13:58",
+		"shootInterval:" : "mabe 6/1/2026 13:58",
+		"shootTimer" : "mabe 6/1/2026 13:56",
+		"shootTimer:" : "mabe 6/1/2026 13:55",
+		"speed" : "mabe 5/28/2026 16:05",
+		"speed:" : "mabe 6/2/2026 15:02",
+		"step" : "mabe 6/5/2026 15:31",
+		"stepTime" : "mabe 5/30/2026 20:23",
+		"tryShoot" : "mabe 6/3/2026 16:44" } }

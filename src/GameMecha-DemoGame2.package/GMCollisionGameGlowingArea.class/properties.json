@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-DemoGame2",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 6/2/2026 15:01",
+	"instvars" : [
+		 ],
+	"name" : "GMCollisionGameGlowingArea",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionGameMorph",
+	"type" : "normal" }

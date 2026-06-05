@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-DemoGame2",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 6/2/2026 14:56",
+	"instvars" : [
+		"isRotated" ],
+	"name" : "GMRotatableMorph",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

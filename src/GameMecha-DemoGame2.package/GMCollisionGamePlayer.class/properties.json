@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-DemoGame2",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 6/3/2026 16:34",
+	"instvars" : [
+		"speed",
+		"controls",
+		"direction",
+		"shootTimer",
+		"shootInterval",
+		"ammo" ],
+	"name" : "GMCollisionGamePlayer",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionGameMorph",
+	"type" : "normal" }

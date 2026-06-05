@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-DemoGame2",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 6/2/2026 14:58",
+	"instvars" : [
+		"layers",
+		"mask",
+		"collider",
+		"game" ],
+	"name" : "GMCollisionGameMorph",
+	"pools" : [
+		 ],
+	"super" : "GMRotatableMorph",
+	"type" : "normal" }

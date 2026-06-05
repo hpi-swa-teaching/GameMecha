@@ -1,0 +1,4 @@
+A GMRotatableMorph is a morph that redirects center, position and rotation calls to its flex shell, if it has been rotated. This is neccessary since morphs handle being rotated rather unintuitively. Note that aGMRotatableMorph should not have it's rotation set before it's been added to its destinated owner.
+
+
+Detailed explanation: When a morph is rotated, addFlexShell is called, which creates a TransformationMorph, that replaces the morph in it's owners submorphs, while making the morph a submorph of the TransformationMorph. Usually, seting the position/center of the morph afterwards will be relative to the position/center of the TransformationMorph, while setting it's roation afterwards will make it rotate relative to that center. 

@@ -1,0 +1,4 @@
+accessing
+shootTimer
+
+	^ shootTimer
