@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-DemoGame2",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 6/2/2026 13:38",
+	"instvars" : [
+		"collisionManager",
+		"deleteQueue",
+		"spawnTimer",
+		"spawnInterval" ],
+	"name" : "GMCollisionGame",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

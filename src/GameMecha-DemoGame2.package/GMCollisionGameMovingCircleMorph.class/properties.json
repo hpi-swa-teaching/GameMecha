@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-DemoGame2",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mabe 6/2/2026 14:05",
+	"instvars" : [
+		"speed",
+		"direction" ],
+	"name" : "GMCollisionGameMovingCircleMorph",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionGameCircleMorph",
+	"type" : "normal" }

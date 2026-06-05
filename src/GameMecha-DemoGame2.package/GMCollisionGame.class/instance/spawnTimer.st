@@ -1,0 +1,4 @@
+accessing
+spawnTimer
+
+	^ spawnTimer

@@ -1,0 +1,4 @@
+accessing
+isRotated 
+
+	^ isRotated

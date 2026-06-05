@@ -1,0 +1,1 @@
+A GMCollisionGameEnemy detects collision with projectiles by having it's mask set to 5 and implementing onCollision: . It also it on layer 4 for so that player morphs and projectiles will be notified upon collision
