@@ -16,7 +16,8 @@
 		"sidebarColliderList",
 		"colliderTree",
 		"sidebarColliderDictionary",
-		"symbolCounter" ],
+		"symbolCounter",
+		"selectedMorph" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],

@@ -19,8 +19,10 @@ initializeToolbar
 		yourself.
 	
 	circleBtn := GMCircleButtonMorph new
-		action: [ | circle |
-			circle := EllipseMorph new.
+		action: [ "| circle |"
+			
+			UIManager default inform: (GMColliderExporter new initializeWithRoot: self colliderTree andTargetMorph: self selectedMorph) export toPrettyString.
+			"circle := EllipseMorph new.
 			circle
 				extent: 200 px @ 200 px;
 				color: (Color yellow alpha: 0.5).
@@ -30,7 +32,7 @@ initializeToolbar
 				addCollider: circle
 				atNode: self colliderTree
 				colliderType: GMPrimitiveCircleCollider.
-			self updateSidebarColliderList];
+			self updateSidebarColliderList"];
 		yourself.
 	
 	bar := AlignmentMorph newRow.
