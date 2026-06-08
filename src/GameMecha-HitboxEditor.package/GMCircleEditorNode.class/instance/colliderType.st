@@ -1,3 +1,4 @@
 as yet unclassified
 colliderType
-	^GMPrimitiveCircleCollider
+
+	^ GMPrimitiveCircleCollider

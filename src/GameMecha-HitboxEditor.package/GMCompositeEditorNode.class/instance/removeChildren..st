@@ -1,4 +1,4 @@
 as yet unclassified
 removeChildren: GMEditorNode
 
- self children remove: GMEditorNode
+	self children remove: GMEditorNode

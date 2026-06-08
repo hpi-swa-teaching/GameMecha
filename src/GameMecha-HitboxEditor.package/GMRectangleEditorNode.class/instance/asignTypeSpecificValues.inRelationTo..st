@@ -1,6 +1,6 @@
 as yet unclassified
 asignTypeSpecificValues: aCollider inRelationTo: aMorph
 
-	aCollider 
+	aCollider
 		width: (self calcWidth: aMorph);
-		height: (self calcHeights: aMorph).
+		height: (self calcHeights: aMorph)
