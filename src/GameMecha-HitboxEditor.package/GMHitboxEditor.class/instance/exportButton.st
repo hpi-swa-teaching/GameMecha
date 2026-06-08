@@ -7,7 +7,7 @@ exportButton
 		borderColor: Color transparent;
 		target: [ 
 			self colliderTree morph: selectedMorph.
-			UIManager default inform: (GMColliderExporter new initializeWithRoot: self colliderTree andTargetMorph: self selectedMorph) export toPrettyString.
+			UIManager default inform: (self colliderTree exportColliderInRelationTo: self selectedMorph) toPrettyString.
 			];
 		actionSelector: #value;
 		borderWidth: 1
