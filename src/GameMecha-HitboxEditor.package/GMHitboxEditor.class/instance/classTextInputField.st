@@ -1,12 +1,10 @@
 textInput
 classTextInputField
 
-	^classTextInputField ifNil: [ 
+	^ classTextInputField ifNil: [
 		classTextInputField := TextMorph new.
-		self classTextInputField 
-	    	contents: 'Type your Classname here :)';
-	    	backgroundColor: Color white;
-		wrapFlag: true;
-	    	extent: (150px@20px). ]
-
-	
+		self classTextInputField
+			contents: 'Type your Classname here :)';
+			backgroundColor: Color white;
+			wrapFlag: true;
+			extent: 150 px @ 20 px]

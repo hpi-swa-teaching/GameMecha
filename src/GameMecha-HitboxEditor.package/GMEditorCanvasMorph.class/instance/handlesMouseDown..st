@@ -1,4 +1,4 @@
 mousebehaviour
 handlesMouseDown: anEvent
 
-	^true
+	^ true
