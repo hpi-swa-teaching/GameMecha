@@ -14,15 +14,14 @@ initializeToolbar
 			self
 				addCollider: rectangle
 				atNode: self colliderTree
-				colliderType: GMPrimitiveRectangleCollider.
+				nodeType: GMRectangleEditorNode.
 			self updateSidebarColliderList];
 		yourself.
 	
 	circleBtn := GMCircleButtonMorph new
-		action: [ "| circle |"
+		action: [ | circle |
 			
-			UIManager default inform: (GMColliderExporter new initializeWithRoot: self colliderTree andTargetMorph: self selectedMorph) export toPrettyString.
-			"circle := EllipseMorph new.
+			circle := EllipseMorph new.
 			circle
 				extent: 200 px @ 200 px;
 				color: (Color yellow alpha: 0.5).
@@ -31,8 +30,8 @@ initializeToolbar
 			self
 				addCollider: circle
 				atNode: self colliderTree
-				colliderType: GMPrimitiveCircleCollider.
-			self updateSidebarColliderList"];
+				nodeType: GMCircleEditorNode.
+			self updateSidebarColliderList];
 		yourself.
 	
 	bar := AlignmentMorph newRow.
@@ -56,7 +55,9 @@ initializeToolbar
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: (self labelMorph: 'frame:     ');
 		addMorphBack: (self toolButtonLabeled: 'frame_00');
-		addTransparentSpacerOfSize: 40 px.
+		addTransparentSpacerOfSize: 40 px;
+		addMorphBack: self exportButton;
+		addTransparentSpacerOfSize: 20 px.
 	
 	bar addMorphBack: rectBtn.
 	bar addMorphBack: circleBtn.

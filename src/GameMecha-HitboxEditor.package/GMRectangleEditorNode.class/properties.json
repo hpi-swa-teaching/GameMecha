@@ -6,12 +6,10 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"parent",
-		"symbol",
-		"morph",
-		"collliderType" ],
-	"name" : "GMEditorNode",
+		"width",
+		"height" ],
+	"name" : "GMRectangleEditorNode",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "GMEditorNode",
 	"type" : "normal" }
