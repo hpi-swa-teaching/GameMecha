@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"editor",
+		"xPosInputField",
+		"yPosInputField",
+		"xSizeInputField",
+		"ySizeInputField",
+		"rotationInputField" ],
+	"name" : "GMPropertyPanel",
+	"pools" : [
+		 ],
+	"super" : "AlignmentMorph",
+	"type" : "normal" }

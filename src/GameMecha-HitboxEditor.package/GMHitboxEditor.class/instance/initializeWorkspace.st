@@ -1,10 +1,14 @@
 initialize
 initializeWorkspace
 
-	^ AlignmentMorph newRow
-		hResizing: #spaceFill;
-		vResizing: #spaceFill;
-		color: Color transparent;
-		borderWidth: 0;
-		addMorphBack: self initializeCanvas;
-		addMorphBack: self initializeSidePanel
+	self initializeCanvas.
+	self initializeSidebar.
+	self workspace: (
+		AlignmentMorph newRow
+			hResizing: #spaceFill;
+			vResizing: #spaceFill;
+			color: Color transparent;
+			borderWidth: 0;
+			addMorphBack: self canvasMorph;
+			addMorphBack: self sidebar
+			)

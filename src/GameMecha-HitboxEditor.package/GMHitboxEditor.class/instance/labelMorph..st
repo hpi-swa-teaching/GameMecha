@@ -1,6 +1,6 @@
 ui-components
-labelMorph: text
+labelMorph: aText
 
 	^ StringMorph new
-		contents: text;
+		contents: aText;
 		color: self textColor

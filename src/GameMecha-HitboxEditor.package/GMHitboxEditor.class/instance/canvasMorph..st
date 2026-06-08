@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 canvasMorph: aCanvasMorph
 
 	canvasMorph := aCanvasMorph
