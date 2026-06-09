@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Collision",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"other",
+		"own" ],
+	"name" : "GMMorphCollisionEvent",
+	"pools" : [
+		 ],
+	"super" : "GMCollisionEvent",
+	"type" : "normal" }

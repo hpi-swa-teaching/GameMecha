@@ -1,0 +1,4 @@
+collision
+checkCollisionWithRectanglePrimitiveAABB: aRectangleCollider
+
+	^ self subclassResponsibility

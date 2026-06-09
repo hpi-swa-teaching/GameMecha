@@ -1,4 +1,4 @@
 utility
 localAxisX
 
-    ^self rotation cos @ self rotation sin
+	^ self rotation cos @ self rotation sin

@@ -2,4 +2,4 @@ initialize-release
 initialize
 
 	super initialize.
-	self radius: 0.
+	self radius: 0
