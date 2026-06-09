@@ -1,0 +1,12 @@
+{
+	"class" : {
+		"newBetween:and:withReason:" : "Lasse 6/6/2026 18:20" },
+	"instance" : {
+		"collectColliderSymbolsFor:into:" : "Lasse 6/6/2026 18:13",
+		"hasCollided" : "Lasse 6/6/2026 14:26",
+		"other" : "Lasse 6/6/2026 18:18",
+		"other:" : "Lasse 6/6/2026 18:17",
+		"otherColliderSymbols" : "Lasse 6/6/2026 17:27",
+		"own" : "Lasse 6/6/2026 18:17",
+		"own:" : "Lasse 6/6/2026 18:17",
+		"ownColliderSymbols" : "Lasse 6/6/2026 17:27" } }

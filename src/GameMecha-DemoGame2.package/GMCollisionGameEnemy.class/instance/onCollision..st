@@ -1,5 +1,5 @@
 collision
-onCollision: aCollisionEvent 
+onCollision: aCollisionEvent
+	"Note: This should be refactored into a double dispatch pattern."
 
-	"aCollisionEvent right now only returns the morph that was collided with"
-	(aCollisionEvent layers includes: 5) ifTrue: [self game deleteQueue add: self]
+	(aCollisionEvent reason other layers includes: 5) ifTrue: [self game deleteQueue add: self]

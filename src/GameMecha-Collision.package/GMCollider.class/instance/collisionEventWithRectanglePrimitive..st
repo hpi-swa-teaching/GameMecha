@@ -1,0 +1,4 @@
+collision
+collisionEventWithRectanglePrimitive: aRectangleCollider
+
+	^ self subclassResponsibility

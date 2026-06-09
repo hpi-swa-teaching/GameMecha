@@ -3,5 +3,15 @@
 		"newFromAsset:" : "Lasse 6/2/2026 15:03",
 		"newFromAsset:withOwner:" : "Lasse 6/2/2026 15:02" },
 	"instance" : {
+		"checkCollisionWithCirclePrimitiveAABB:" : "Lasse 6/6/2026 15:52",
+		"checkCollisionWithCirclePrimitiveRotated:" : "Lasse 6/6/2026 15:53",
+		"checkCollisionWithRectanglePrimitiveAABB:" : "Lasse 6/6/2026 15:52",
+		"checkCollisionWithRectanglePrimitiveRotated:" : "Lasse 6/6/2026 15:51",
+		"collisionEventWith:" : "Lasse 6/6/2026 16:37",
+		"collisionEventWithCirclePrimitive:" : "Lasse 6/6/2026 17:49",
+		"collisionEventWithRectanglePrimitive:" : "Lasse 6/6/2026 17:49",
 		"dispatchPrimitiveCollision:" : "Lasse 5/19/2026 15:37",
-		"isCollidingWith:" : "Lasse 5/19/2026 16:59" } }
+		"isCollidingWithRectanglePrimitive:" : "Lasse 6/6/2026 18:19",
+		"rotation" : "Lasse 6/6/2026 16:32",
+		"rotation:" : "Lasse 6/6/2026 16:32",
+		"rotationCalculationThreshold" : "Lasse 6/6/2026 16:01" } }
