@@ -2,7 +2,7 @@ collision
 collisionEventWithCirclePrimitive: aCircleCollider
 
 	| useAABB collision |
-	(aCircleCollider maskIncludes: self layers) ifFalse: [^ GMNullCollisionEvent new].
+	((aCircleCollider maskIncludes: self layers) and: [self enabled = true]) ifFalse: [^ GMNullCollisionEvent new].
 	
 	useAABB := aCircleCollider rotation abs <= self rotationCalculationThreshold and: [self rotation abs <= self rotationCalculationThreshold].
 	

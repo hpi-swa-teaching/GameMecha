@@ -2,6 +2,8 @@ initialize-release
 initialize
 
 	super initialize.
-	self center: 0 @ 0.
-	self rotation: 0.
-	self scaleFactor: 1
+	self 
+		center: 0 @ 0;
+		rotation: 0;
+		enabled: true;
+		scaleFactor: 1
