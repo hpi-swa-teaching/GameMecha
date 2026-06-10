@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"width",
+		"height" ],
+	"name" : "GMRectangleEditorNode",
+	"pools" : [
+		 ],
+	"super" : "GMEditorNode",
+	"type" : "normal" }

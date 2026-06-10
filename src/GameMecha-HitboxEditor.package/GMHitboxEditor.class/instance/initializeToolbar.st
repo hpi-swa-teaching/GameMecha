@@ -10,7 +10,9 @@ initializeToolbar
 				extent: 250 px @ 150 px;
 				color: (Color red alpha: 0.5).
 			
-			self addMorphToCanvas: rectangle];
+			self canvasMorph drawMorphOnCanvas: rectangle.
+			self addCollider: rectangle atNode: self colliderTree nodeType: GMRectangleEditorNode.
+			self updateSidebarColliderList];
 		yourself.
 	
 	circleBtn := GMCircleButtonMorph new
@@ -20,7 +22,9 @@ initializeToolbar
 				extent: 200 px @ 200 px;
 				color: (Color yellow alpha: 0.5).
 			
-			self addMorphToCanvas: circle];
+			self canvasMorph drawMorphOnCanvas: circle.
+			self addCollider: circle atNode: self colliderTree nodeType: GMCircleEditorNode.
+			self updateSidebarColliderList];
 		yourself.
 	
 	bar := AlignmentMorph newRow.
@@ -44,7 +48,9 @@ initializeToolbar
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: (self labelMorph: 'frame:     ');
 		addMorphBack: (self toolButtonLabeled: 'frame_00');
-		addTransparentSpacerOfSize: 40 px.
+		addTransparentSpacerOfSize: 40 px;
+		addMorphBack: self exportButton;
+		addTransparentSpacerOfSize: 20 px.
 	
 	bar addMorphBack: rectBtn.
 	bar addMorphBack: circleBtn.

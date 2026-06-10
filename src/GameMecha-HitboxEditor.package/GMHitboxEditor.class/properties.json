@@ -17,6 +17,10 @@
 		"yField",
 		"classTextInputField",
 		"sidebarColliderList",
+		"colliderTree",
+		"sidebarColliderDictionary",
+		"symbolCounter",
+		"selectedMorph",
 		"propertyPanel" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
