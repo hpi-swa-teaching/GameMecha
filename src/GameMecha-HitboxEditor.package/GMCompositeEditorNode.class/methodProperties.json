@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addChildren:" : "m 6/9/2026 16:55",
+		"assignColliderValues:inRelationTo:" : "m 6/9/2026 18:04",
+		"child:" : "m 6/9/2026 16:55",
+		"children" : "m 6/8/2026 13:45",
+		"children:" : "m 6/8/2026 13:45",
+		"colliderType" : "m 6/8/2026 15:13",
+		"initialize" : "m 6/8/2026 15:31",
+		"removeChildren:" : "m 6/9/2026 16:56" } }

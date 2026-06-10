@@ -1,0 +1,2 @@
+export
+assignColliderValues: aCollider inRelationTo: aMorph

@@ -6,6 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
+		"workspace",
+		"sidebar",
+		"toolbar",
 		"canvasMorph",
 		"selectedMorphRow",
 		"widthField",
@@ -13,7 +16,12 @@
 		"xField",
 		"yField",
 		"classTextInputField",
-		"sidebarColliderList" ],
+		"sidebarColliderList",
+		"colliderTree",
+		"sidebarColliderDictionary",
+		"symbolCounter",
+		"selectedMorph",
+		"propertyPanel" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],

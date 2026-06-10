@@ -4,29 +4,27 @@ initializeToolbar
 
 	| bar rectBtn circleBtn |
 	rectBtn := GMRectangleButtonMorph new
-		action: [
-			|rectangle|
-			rectangle := Morph new. 
-			rectangle 
-				extent: (250px @ 150px);
+		action: [ | rectangle |
+			rectangle := Morph new.
+			rectangle
+				extent: 250 px @ 150 px;
 				color: (Color red alpha: 0.5).
-				
-				self canvasMorph drawMorphOnCanvas: rectangle.
-				self updateSidebarColliderList
-			];
+			
+			self canvasMorph drawMorphOnCanvas: rectangle.
+			self addCollider: rectangle atNode: self colliderTree nodeType: GMRectangleEditorNode.
+			self updateSidebarColliderList];
 		yourself.
 	
 	circleBtn := GMCircleButtonMorph new
-		action: [
-			|circle|
-			circle := EllipseMorph new. 
-			circle 
-				extent: (200px @ 200px);
+		action: [ | circle |
+			circle := EllipseMorph new.
+			circle
+				extent: 200 px @ 200 px;
 				color: (Color yellow alpha: 0.5).
-				
-				self canvasMorph drawMorphOnCanvas: circle.
-				self updateSidebarColliderList
-			];
+			
+			self canvasMorph drawMorphOnCanvas: circle.
+			self addCollider: circle atNode: self colliderTree nodeType: GMCircleEditorNode.
+			self updateSidebarColliderList];
 		yourself.
 	
 	bar := AlignmentMorph newRow.
@@ -43,17 +41,18 @@ initializeToolbar
 		layoutInset: 5;
 		addTransparentSpacerOfSize: 40 px;
 		addMorphBack: (self labelMorph: 'Class: ');
-		addMorphBack: self classTextInputField ;
+		addMorphBack: self classTextInputField;
 		addMorphBack: self selectButton;
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: self separatorMorph;
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: (self labelMorph: 'frame:     ');
 		addMorphBack: (self toolButtonLabeled: 'frame_00');
-		addTransparentSpacerOfSize: 40 px.
-		
+		addTransparentSpacerOfSize: 40 px;
+		addMorphBack: self exportButton;
+		addTransparentSpacerOfSize: 20 px.
 	
-	bar addMorphBack:  rectBtn.
+	bar addMorphBack: rectBtn.
 	bar addMorphBack: circleBtn.
 	
-	^ bar
+	self toolbar: bar

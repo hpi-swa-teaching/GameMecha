@@ -1,23 +1,21 @@
 sidebar
 updateSidebarColliderList
-    "Updates the sidebar and enumerates the entries."
-    |labelBag|
+	"Updates the sidebar and enumerates the entries."
 
-	labelBag := Bag new. 
-    	self sidebarColliderList removeAllMorphs.
-    
-    	self canvasMorph submorphs do: [ :aCollider |
-        | entry occurence label|
-
- 	entry := String new. 
+	| labelBag |
+	labelBag := Bag new.
+	self sidebarColliderList removeAllMorphs.
 	
-	label := aCollider class name.
-      entry :=  label asString.
-
-	occurence := 1 +  (labelBag occurrencesOf: entry).
-	entry := (occurence asString) , '. ', entry.	
-	
-	labelBag add: label.
-
-        self sidebarColliderList addMorphBack: (TextMorph new contents: entry).
-    ].
+	"TODO add child of a child logic as soon as groups are implemented"
+	self colliderTree children do: [:child | | entry label |
+		entry := String new.
+		
+		label := child symbol.
+		entry := label asString.
+		
+		entry := child colliderType asString, '. ', entry.
+		
+		labelBag add: label.
+		
+		self sidebarColliderDictionary at: entry put: child.
+		self sidebarColliderList addMorphBack: (TextMorph new contents: entry)]

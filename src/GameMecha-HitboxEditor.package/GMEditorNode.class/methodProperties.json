@@ -1,0 +1,18 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"assignColliderValues:inRelationTo:" : "m 6/9/2026 18:03",
+		"assignDefaultColliderValues:inRelationTo:" : "m 6/9/2026 17:06",
+		"calculateCenter:" : "m 6/9/2026 18:03",
+		"calculateRotation:" : "m 6/9/2026 18:03",
+		"changeParentNode:" : "m 6/9/2026 18:03",
+		"colliderType" : "m 6/8/2026 14:01",
+		"exportColliderInRelationTo:" : "m 6/9/2026 17:05",
+		"morph" : "m 6/10/2026 17:04",
+		"morph:" : "m 6/8/2026 17:13",
+		"parent" : "m 6/3/2026 14:07",
+		"parent:" : "m 6/3/2026 14:07",
+		"scaleFactor:" : "m 6/9/2026 15:57",
+		"symbol" : "m 6/8/2026 17:13",
+		"symbol:" : "m 6/3/2026 14:22" } }

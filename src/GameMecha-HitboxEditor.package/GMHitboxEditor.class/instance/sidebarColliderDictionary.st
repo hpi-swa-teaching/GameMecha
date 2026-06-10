@@ -1,0 +1,4 @@
+sidebar
+sidebarColliderDictionary
+
+	^ sidebarColliderDictionary

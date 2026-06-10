@@ -1,9 +1,10 @@
-initialize
+ui-elements
 rotationInput
 
 	^ AlignmentMorph newRow
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		addMorphBack: (self labelMorph: '             rotation: ');
-		addMorphBack: self textfieldFixedSize;
-		color: self sidebarBackgroundColor
+		addMorphBack: self rotationInputField;
+		color: self sidebarBackgroundColor;
+		yourself

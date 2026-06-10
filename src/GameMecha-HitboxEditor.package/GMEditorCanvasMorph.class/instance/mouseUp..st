@@ -1,4 +1,4 @@
 mousebehaviour
 mouseUp: anEvent
 
-    activeMorph := nil.
+	activeMorph := nil

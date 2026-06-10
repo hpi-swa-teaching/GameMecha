@@ -1,11 +1,12 @@
-initialize
+ui-elements
 sizeInput
 
 	^ AlignmentMorph newRow
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		addMorphBack: (self labelMorph: 'x: ');
-		addMorphBack: self textfieldFixedSize;
+		addMorphBack: self xSizeInputField;
 		addMorphBack: (self labelMorph: '     y: ');
-		addMorphBack: self textfieldFixedSize;
-		color: self sidebarBackgroundColor
+		addMorphBack: self ySizeInputField;
+		color: self sidebarBackgroundColor;
+		yourself
