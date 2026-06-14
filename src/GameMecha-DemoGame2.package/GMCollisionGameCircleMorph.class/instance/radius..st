@@ -1,4 +1,4 @@
 accessing
-radius: aNumber 
+radius: aNumber
 
-	self extent: aNumber*2 @ (aNumber*2)
+	self extent: aNumber * 2 @ (aNumber * 2)
