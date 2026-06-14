@@ -4,10 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "mabe 5/27/2026 17:11",
+	"commentStamp" : "mabe 6/12/2026 14:54",
 	"instvars" : [
 		"name",
 		"enabled",
+		"inheritRotation",
 		"symbol",
 		"parent",
 		"rotation",
