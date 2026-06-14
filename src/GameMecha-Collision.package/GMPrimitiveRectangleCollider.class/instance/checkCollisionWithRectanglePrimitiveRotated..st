@@ -2,7 +2,6 @@ collision
 checkCollisionWithRectanglePrimitiveRotated: aRectangleCollider
 
 	| axes |
-	(aRectangleCollider maskIncludes: self layers) ifFalse: [^ false].
 	
 	axes := Array new: 4.
 	axes at: 1 put: self localAxisX.
