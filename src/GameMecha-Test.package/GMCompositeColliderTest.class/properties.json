@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"compositeMorph",
+		"targetMorph" ],
+	"name" : "GMCompositeColliderTest",
+	"pools" : [
+		 ],
+	"super" : "GMColliderTest",
+	"type" : "normal" }

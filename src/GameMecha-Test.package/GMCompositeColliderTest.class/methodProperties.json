@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"buildCompositeCollider" : "mabe 6/7/2026 12:22",
+		"compositeMorph" : "mabe 6/7/2026 12:23",
+		"setUp" : "mabe 6/14/2026 11:23",
+		"targetMorph" : "mabe 6/14/2026 11:23",
+		"testAddAndRemoveChild" : "mabe 6/14/2026 11:22",
+		"testCompositeCollidesViaCircleChild" : "mabe 6/14/2026 11:22",
+		"testCompositeCollidesViaRectangleChild" : "mabe 6/14/2026 11:23",
+		"testCompositeNoCollisionBetweenChildren" : "mabe 6/14/2026 11:24" } }

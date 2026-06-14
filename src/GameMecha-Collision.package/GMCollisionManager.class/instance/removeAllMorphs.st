@@ -1,4 +1,4 @@
 accessing
 removeAllMorphs
 
-	self collisionMorphs: OrderedCollection new
+	self morphs: OrderedCollection new

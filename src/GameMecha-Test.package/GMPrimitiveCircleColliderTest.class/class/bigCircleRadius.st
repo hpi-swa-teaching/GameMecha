@@ -1,0 +1,4 @@
+constants
+bigCircleRadius
+
+	^ 50

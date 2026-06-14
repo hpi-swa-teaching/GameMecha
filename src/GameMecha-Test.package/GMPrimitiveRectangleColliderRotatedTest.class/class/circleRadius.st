@@ -1,0 +1,4 @@
+constants
+circleRadius
+
+	^ 25

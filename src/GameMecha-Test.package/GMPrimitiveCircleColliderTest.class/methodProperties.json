@@ -1,0 +1,20 @@
+{
+	"class" : {
+		"bigCircleDiameter" : "mabe 6/7/2026 12:03",
+		"bigCircleRadius" : "mabe 6/7/2026 12:03",
+		"circleEdgeNoCollisionOffset" : "mabe 6/8/2026 14:16",
+		"circleEdgeOffset" : "mabe 6/8/2026 14:16",
+		"rectangleExtent" : "mabe 6/7/2026 12:04",
+		"smallCircleDiameter" : "mabe 6/7/2026 12:03",
+		"smallCircleRadius" : "mabe 6/7/2026 12:03" },
+	"instance" : {
+		"bigCircleMorph" : "mabe 6/14/2026 11:25",
+		"rectangleMorph" : "mabe 6/14/2026 11:25",
+		"setUp" : "mabe 6/14/2026 11:24",
+		"smallCircleMorph" : "mabe 6/14/2026 11:24",
+		"testCircleCircleCollision" : "mabe 6/14/2026 11:24",
+		"testCircleCircleNoCollision" : "mabe 6/14/2026 11:25",
+		"testCircleRectangleCollision" : "mabe 6/14/2026 11:25",
+		"testCircleRectangleEdgeCollision" : "mabe 6/14/2026 11:26",
+		"testCircleRectangleEdgeNoCollision" : "mabe 6/14/2026 11:26",
+		"testCircleRectangleNoCollision" : "mabe 6/14/2026 11:26" } }
