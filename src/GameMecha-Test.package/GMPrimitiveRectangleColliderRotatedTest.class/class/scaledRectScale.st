@@ -1,0 +1,5 @@
+constants
+scaledRectScale
+
+	^ 2
+

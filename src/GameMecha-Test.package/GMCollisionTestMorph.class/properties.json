@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"collider",
+		"rotation" ],
+	"name" : "GMCollisionTestMorph",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

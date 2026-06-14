@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"morphA",
+		"morphB",
+		"morphC" ],
+	"name" : "GMColliderLayerMaskTest",
+	"pools" : [
+		 ],
+	"super" : "GMColliderTest",
+	"type" : "normal" }

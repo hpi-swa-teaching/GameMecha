@@ -4,7 +4,7 @@ collisionEventWithRectanglePrimitive: aRectangleCollider
 	| useAABB collision |
 	(aRectangleCollider maskIncludes: self layers) ifFalse: [^ GMNullCollisionEvent new].
 	
-	useAABB := aRectangleCollider rotation abs <= self rotationCalculationThreshold.
+	useAABB := aRectangleCollider rotation abs <= self rotationCalculationThreshold and: [self rotation abs <= self rotationCalculationThreshold].
 	
 	collision := useAABB
 		ifTrue: [self checkCollisionWithRectanglePrimitiveAABB: aRectangleCollider]

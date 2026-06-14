@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"smallCircleMorph",
+		"bigCircleMorph",
+		"rectangleMorph" ],
+	"name" : "GMPrimitiveCircleColliderTest",
+	"pools" : [
+		 ],
+	"super" : "GMColliderTest",
+	"type" : "normal" }

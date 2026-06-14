@@ -1,0 +1,10 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"buildRectColliderOnLayer:withMask:" : "mabe 6/7/2026 12:25",
+		"morphOnLayer:withMask:" : "mabe 6/14/2026 11:26",
+		"setUp" : "mabe 6/14/2026 11:09",
+		"testMatchingLayerMaskCollidesWhenOverlapping" : "mabe 6/7/2026 13:18",
+		"testNonMatchingLayerMaskNoCollisionWhenOverlapping" : "mabe 6/7/2026 13:18",
+		"testNonOverlappingNoCollision" : "mabe 6/7/2026 13:19" } }

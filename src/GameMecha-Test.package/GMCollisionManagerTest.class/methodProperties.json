@@ -1,0 +1,14 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"collisionManager" : "js 6/2/2026 14:17",
+		"collisionManager:" : "js 6/2/2026 14:17",
+		"collisionMorph" : "mabe 6/7/2026 13:11",
+		"collisionMorph:" : "js 6/2/2026 14:19",
+		"tearDown" : "mabe 6/7/2026 11:58",
+		"testAddAndRemove" : "js 6/2/2026 14:20",
+		"testAddCollisionMorphs" : "mabe 6/14/2026 11:33",
+		"testAssigningCollider" : "mabe 6/7/2026 13:10",
+		"testRemoveAll" : "mabe 6/7/2026 13:20",
+		"testRemoveMorphNotIncluded" : "js 6/2/2026 14:20" } }

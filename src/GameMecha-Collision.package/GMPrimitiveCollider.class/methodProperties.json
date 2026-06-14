@@ -8,10 +8,7 @@
 		"checkCollisionWithRectanglePrimitiveAABB:" : "Lasse 6/6/2026 15:52",
 		"checkCollisionWithRectanglePrimitiveRotated:" : "Lasse 6/6/2026 15:51",
 		"collisionEventWith:" : "Lasse 6/6/2026 16:37",
-		"collisionEventWithCirclePrimitive:" : "Lasse 6/6/2026 17:49",
-		"collisionEventWithRectanglePrimitive:" : "Lasse 6/6/2026 17:49",
+		"collisionEventWithCirclePrimitive:" : "mabe 6/14/2026 12:30",
+		"collisionEventWithRectanglePrimitive:" : "mabe 6/14/2026 12:30",
 		"dispatchPrimitiveCollision:" : "Lasse 5/19/2026 15:37",
-		"isCollidingWithRectanglePrimitive:" : "Lasse 6/6/2026 18:19",
-		"rotation" : "Lasse 6/6/2026 16:32",
-		"rotation:" : "Lasse 6/6/2026 16:32",
 		"rotationCalculationThreshold" : "Lasse 6/6/2026 16:01" } }

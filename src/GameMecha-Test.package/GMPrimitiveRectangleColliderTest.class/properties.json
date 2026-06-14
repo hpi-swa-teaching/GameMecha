@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-Test",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"smallRectangleMorph",
+		"bigRectangleMorph" ],
+	"name" : "GMPrimitiveRectangleColliderTest",
+	"pools" : [
+		 ],
+	"super" : "GMColliderTest",
+	"type" : "normal" }
