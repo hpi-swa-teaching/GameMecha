@@ -9,5 +9,11 @@
 		"collisionEventWith:" : "mabe 6/10/2026 17:22",
 		"collisionEventWithCirclePrimitive:" : "mabe 6/10/2026 17:23",
 		"collisionEventWithRectanglePrimitive:" : "mabe 6/10/2026 17:23",
-		"initialize" : "Lasse 6/6/2026 16:36",
-		"removeChild:" : "Lasse 5/17/2026 17:08" } }
+		"editorNodeType" : "m 6/12/2026 15:02",
+		"initialize" : "mabe 5/20/2026 15:12",
+		"isCollidingWith:" : "Lasse 5/19/2026 17:01",
+		"isCollidingWithCirclePrimitive:" : "Lasse 5/19/2026 16:27",
+		"isCollidingWithRectanglePrimitive:" : "mabe 5/20/2026 15:25",
+		"removeChild:" : "Lasse 5/17/2026 17:08",
+		"representationMorphType" : "m 6/11/2026 18:25",
+		"spawnRepresentativeMorphInRelationTo:" : "m 6/11/2026 19:11" } }

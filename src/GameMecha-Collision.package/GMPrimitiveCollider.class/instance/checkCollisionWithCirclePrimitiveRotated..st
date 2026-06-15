@@ -1,4 +1,0 @@
-collision
-checkCollisionWithCirclePrimitiveRotated: aCircleCollider
-
-	^ self subclassResponsibility

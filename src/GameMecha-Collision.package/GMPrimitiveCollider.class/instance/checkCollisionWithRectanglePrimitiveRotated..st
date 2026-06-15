@@ -1,4 +1,0 @@
-collision
-checkCollisionWithRectanglePrimitiveRotated: aRectangleCollider
-
-	^ self subclassResponsibility

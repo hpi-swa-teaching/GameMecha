@@ -1,0 +1,41 @@
+GMCompositeCollider {
+	#enabled : true,
+	#inheritRotation : true,
+	#symbol : #0,
+	#rotation : 0.0,
+	#scaleFactor : 1.0,
+	#center : Point [ 0, 0 ],
+	#children : OrderedCollection [
+		GMPrimitiveRectangleCollider {
+			#enabled : true,
+			#inheritRotation : true,
+			#symbol : #1,
+			#parent : @1,
+			#rotation : 0.0,
+			#scaleFactor : 10.0,
+			#center : Point [ 0, 0 ],
+			#width : 50.0,
+			#height : 30.0
+		},
+		GMPrimitiveCircleCollider {
+			#enabled : true,
+			#inheritRotation : true,
+			#symbol : #2,
+			#parent : @1,
+			#rotation : 0.0,
+			#scaleFactor : 10.0,
+			#center : Point [ 0, 0 ],
+			#radius : 20.0
+		},
+		GMPrimitiveCircleCollider {
+			#enabled : true,
+			#inheritRotation : true,
+			#symbol : #3,
+			#parent : @1,
+			#rotation : 0.0,
+			#scaleFactor : 10.0,
+			#center : Point [ 501, 283 ],
+			#radius : 20.0
+		}
+	]
+}

@@ -1,4 +1,4 @@
 accessing
 colliderType
 
-	self subclassResponsibility
+	^ self subclassResponsibility

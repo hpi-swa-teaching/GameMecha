@@ -1,0 +1,4 @@
+accessing
+representationMorphType
+
+	self subclassResponsibility

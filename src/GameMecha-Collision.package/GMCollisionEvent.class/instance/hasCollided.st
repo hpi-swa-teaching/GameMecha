@@ -1,4 +1,0 @@
-accessing
-hasCollided
-
-	^ self subclassResponsibility

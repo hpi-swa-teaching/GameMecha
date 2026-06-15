@@ -1,4 +1,4 @@
 collision
 dispatchPrimitiveCollision: aCollider
 
-	^ aCollider collisionEventWithRectanglePrimitive: self
+	^ aCollider isCollidingWithRectanglePrimitive: self

@@ -2,11 +2,14 @@
 	"class" : {
 		 },
 	"instance" : {
-		"checkCollisionWithCirclePrimitiveAABB:" : "Lasse 6/7/2026 13:27",
-		"checkCollisionWithCirclePrimitiveRotated:" : "Lasse 6/6/2026 15:56",
-		"checkCollisionWithRectanglePrimitiveAABB:" : "Lasse 6/7/2026 13:28",
-		"checkCollisionWithRectanglePrimitiveRotated:" : "Lasse 6/7/2026 13:28",
-		"dispatchPrimitiveCollision:" : "Lasse 6/6/2026 16:25",
-		"initialize" : "Lasse 6/6/2026 16:38",
+		"assignMorphValues:" : "m 6/11/2026 19:12",
+		"dispatchPrimitiveCollision:" : "Lasse 5/19/2026 15:37",
+		"editorNodeType" : "m 6/12/2026 15:02",
+		"initialize" : "mabe 5/21/2026 15:33",
+		"isCollidingWithCirclePrimitive:" : "mabe 5/27/2026 16:58",
+		"isCollidingWithRectanglePrimitive:" : "mabe 5/21/2026 15:47",
+		"isCollidingWithRectanglePrimitiveAABB:" : "mabe 5/27/2026 17:13",
+		"isCollidingWithRectanglePrimitiveRotated:" : "mabe 5/27/2026 17:05",
 		"radius" : "mabe 5/20/2026 15:34",
-		"radius:" : "Lasse 5/17/2026 16:44" } }
+		"radius:" : "Lasse 5/17/2026 16:44",
+		"representationMorphType" : "m 6/11/2026 18:26" } }

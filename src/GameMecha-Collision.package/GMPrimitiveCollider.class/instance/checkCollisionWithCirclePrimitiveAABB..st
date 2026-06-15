@@ -1,4 +1,0 @@
-collision
-checkCollisionWithCirclePrimitiveAABB: aCircleCollider
-
-	^ self subclassResponsibility

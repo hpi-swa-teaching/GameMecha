@@ -1,0 +1,4 @@
+visualization
+assignMorphValues: aMorph
+
+	self subclassResponsibility

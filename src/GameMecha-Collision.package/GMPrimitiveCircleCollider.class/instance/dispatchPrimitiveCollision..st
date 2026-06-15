@@ -1,4 +1,4 @@
 collision
 dispatchPrimitiveCollision: aCollider
 
-	^ aCollider collisionEventWithCirclePrimitive: self
+	^ aCollider isCollidingWithCirclePrimitive: self

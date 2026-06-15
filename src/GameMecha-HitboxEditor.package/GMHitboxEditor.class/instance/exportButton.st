@@ -7,6 +7,7 @@ exportButton
 		borderColor: Color transparent;
 		target: [
 			self colliderTree morph: selectedMorph.
-			UIManager default inform: (self colliderTree exportColliderInRelationTo: self selectedMorph) toPrettyString];
+			self uploadIntoAssetLoaderIntoProject: self gitAssetProjectName.
+			UIManager default inform: 'Succecfully exported collider into the GitAssetLoader. Do not forget to commit and push '.];
 		actionSelector: #value;
 		borderWidth: 1

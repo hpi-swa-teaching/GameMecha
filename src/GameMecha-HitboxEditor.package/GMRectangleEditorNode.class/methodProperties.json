@@ -3,6 +3,9 @@
 		 },
 	"instance" : {
 		"assignColliderValues:inRelationTo:" : "m 6/9/2026 18:04",
-		"calculateHeights:" : "m 6/9/2026 17:06",
-		"calculateWidth:" : "m 6/9/2026 17:07",
-		"colliderType" : "m 6/8/2026 17:13" } }
+		"calculateHeights:" : "m 6/15/2026 18:30",
+		"calculateImportHeights:From:" : "m 6/15/2026 15:32",
+		"calculateImportWidth:From:" : "m 6/15/2026 15:33",
+		"calculateWidth:" : "m 6/15/2026 15:31",
+		"colliderType" : "m 6/8/2026 17:13",
+		"importColliderValuesFrom:inRelationTo:" : "m 6/15/2026 15:22" } }
