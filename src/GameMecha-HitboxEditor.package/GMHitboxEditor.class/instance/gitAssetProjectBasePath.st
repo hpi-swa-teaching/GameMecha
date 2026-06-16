@@ -1,0 +1,4 @@
+accessing
+gitAssetProjectBasePath
+
+	^ 'assets/collider'
