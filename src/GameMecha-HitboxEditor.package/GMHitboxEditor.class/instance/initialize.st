@@ -8,4 +8,5 @@ initialize
 		initializeUI;
 		colliderTree: (GMCompositeEditorNode new symbol: #'0');
 		sidebarColliderDictionary: Dictionary new;
-		symbolCounter: 0
+		symbolCounter: 0;
+		openInWindow
