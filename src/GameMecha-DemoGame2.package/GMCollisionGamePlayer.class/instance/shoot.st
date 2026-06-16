@@ -7,6 +7,7 @@ shoot
 		direction: self direction;
 		layers: (Array new: 2);
 		mask: (Array new: 2).
+	projectile collider symbol: self projectileSymbol.
 	projectile layers
 		atWrap: 1 put: 5; "notify enemies on collision"
 		atWrap: 2 put: (self layers at: 2) + 4."notify the other player on collision"
