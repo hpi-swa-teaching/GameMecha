@@ -1,4 +1,4 @@
 accessing
 parent
 
-	^parent
+	^ parent

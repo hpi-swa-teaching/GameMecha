@@ -2,7 +2,6 @@ collision
 checkCollisionWithCirclePrimitiveRotated: aCircleCollider
 
 	| axes closestCorner dx dy len |
-	(aCircleCollider maskIncludes: self layers) ifFalse: [^ false].
 	
 	axes := Array with: self localAxisX with: self localAxisY.
 	axes do: [:axis | (self isSeparatedFromCircle: aCircleCollider onAxis: axis) ifTrue: [^ false]].

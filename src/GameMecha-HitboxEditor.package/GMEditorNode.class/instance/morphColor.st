@@ -1,0 +1,4 @@
+accessing
+morphColor
+
+	^ Color red

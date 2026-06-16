@@ -1,7 +1,7 @@
 collision
 collisionEventWithRectanglePrimitive: aRectangleCollider
 
-	(aRectangleCollider maskIncludes: self layers) ifFalse: [^ GMNullCollisionEvent new].
+	((aRectangleCollider maskIncludes: self layers) and: [self enabled = true]) ifFalse: [^ GMNullCollisionEvent new].
 	
 	self children do: [:collider | | event |
 		event := collider collisionEventWithRectanglePrimitive: aRectangleCollider.

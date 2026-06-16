@@ -1,7 +1,7 @@
 collision
 collisionEventWithCirclePrimitive: aCircleCollider
 
-	(aCircleCollider maskIncludes: self layers) ifFalse: [^ GMNullCollisionEvent new].
+	((aCircleCollider maskIncludes: self layers) and: [self enabled = true]) ifFalse: [^ GMNullCollisionEvent new].
 	
 	self children do: [:collider | | event |
 		event := collider collisionEventWithCirclePrimitive: aCircleCollider.

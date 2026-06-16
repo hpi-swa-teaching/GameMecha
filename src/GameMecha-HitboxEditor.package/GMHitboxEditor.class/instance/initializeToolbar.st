@@ -50,6 +50,8 @@ initializeToolbar
 		addMorphBack: (self toolButtonLabeled: 'frame_00');
 		addTransparentSpacerOfSize: 40 px;
 		addMorphBack: self exportButton;
+		addTransparentSpacerOfSize: 20 px;
+		addMorphBack: self importButton;
 		addTransparentSpacerOfSize: 20 px.
 	
 	bar addMorphBack: rectBtn.
