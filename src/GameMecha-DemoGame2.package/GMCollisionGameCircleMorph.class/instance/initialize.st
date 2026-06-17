@@ -5,4 +5,5 @@ initialize
 	self
 		mask: #();
 		layers: #();
-		collider: (GMCompositeCollider new parent: self)
+		initializeProperties;
+		initializeCollider

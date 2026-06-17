@@ -1,4 +1,4 @@
 accessing
 removeAllMorphs
 
-	self morphs: OrderedCollection new
+	self morphs: Set new

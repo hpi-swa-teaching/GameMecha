@@ -11,7 +11,9 @@
 		"direction",
 		"shootTimer",
 		"shootInterval",
-		"ammo" ],
+		"ammo",
+		"projectileSymbol",
+		"otherPlayerProjectileSymbol" ],
 	"name" : "GMCollisionGamePlayer",
 	"pools" : [
 		 ],

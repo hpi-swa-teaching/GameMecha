@@ -1,5 +1,4 @@
 initialization
-initialize
+initializeProperties
 
-	super initialize.
 	self direction: 0 @ 0
