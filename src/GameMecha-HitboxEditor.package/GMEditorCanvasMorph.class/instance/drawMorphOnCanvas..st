@@ -1,5 +1,5 @@
 drawing
 drawMorphOnCanvas: aMorph
-	
-	aMorph position: self center - aMorph center. 
-	self addMorph: aMorph
+
+	self viewport addMorph:  aMorph.
+	aMorph center: 0@0

@@ -5,7 +5,7 @@ initializeTreeView
 	self propertyPanel: (GMPropertyPanel new editor: self).
 	model := MorphTreeModel new.
 	model
-		canvasMorph: self canvasMorph;
+		canvasMorph: self canvasMorph viewport;
 		editor: self.
 	self treeView: ToolBuilder default pluggableTreeSpec new yourself.
 	self treeView: (ToolBuilder default buildPluggableTree: (ToolBuilder default pluggableTreeSpec new

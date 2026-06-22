@@ -1,4 +1,4 @@
 accessing
 tileSize
 
-	^ tileSize
+	^ tileSize * self scaleFactor
