@@ -1,0 +1,4 @@
+accessing
+defaultScaleFactor
+
+	^ 1

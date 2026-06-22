@@ -6,13 +6,15 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
+		"scaleFactor",
 		"tileSize",
 		"backgroundColor",
 		"gridColor",
 		"bgColor",
 		"labelColor",
 		"dragOffset",
-		"activeMorph" ],
+		"activeMorph",
+		"viewport" ],
 	"name" : "GMEditorCanvasMorph",
 	"pools" : [
 		 ],

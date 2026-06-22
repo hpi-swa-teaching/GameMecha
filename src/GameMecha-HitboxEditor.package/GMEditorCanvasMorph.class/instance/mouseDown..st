@@ -2,10 +2,17 @@ mousebehaviour
 mouseDown: anEvent
 	"this implements, that morphs on the canvas can be moved with a click. Otherwise they would have to implement that themself"
 
-	activeMorph := self submorphs detect: [:each | each containsPoint: anEvent position] ifNone: [nil].
+	| surfacePoint localMousePosition |
+	surfacePoint := self viewport globalPointToLocal: anEvent position.
 	
-	activeMorph ifNotNil: [
-		"Difference between where we clicked and where the pos of the morph is. We need that later, when the morph is moved"
-		dragOffset := anEvent position - activeMorph position.
-		
-		self addMorphFront: activeMorph]
+	"this converts from the global coordinate system to the local"
+	localMousePosition := self viewport transform invertPoint: surfacePoint.
+	
+	self activeMorph: (self viewport submorphs detect: 
+		[:each | each containsPoint: localMousePosition] 
+		ifNone: [nil]
+		).
+	
+	self activeMorph ifNotNil: [
+		self dragOffset: localMousePosition - self activeMorph position.
+		self viewport addMorphFront: self activeMorph]
