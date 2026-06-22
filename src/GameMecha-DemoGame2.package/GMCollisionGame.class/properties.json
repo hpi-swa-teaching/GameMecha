@@ -9,7 +9,8 @@
 		"collisionManager",
 		"deleteQueue",
 		"spawnTimer",
-		"spawnInterval" ],
+		"spawnInterval",
+		"rotatedDeleteQueue" ],
 	"name" : "GMCollisionGame",
 	"pools" : [
 		 ],

@@ -3,7 +3,7 @@ onCollision: aCollisionEvent
 	"Note: This should be refactored into a double dispatch pattern."
 	
 	"hit by an enemy"
-	(aCollisionEvent reason otherColliderSymbols includes: #enemy) ifTrue: [self game deleteQueue add: self].
+	(aCollisionEvent reason otherColliderSymbols includes: #enemy) ifTrue: [self addToDeleteQueue].
 	
 	"hit by the other players projectile"
 	(aCollisionEvent reason otherColliderSymbols includes: self otherPlayerProjectileSymbol) ifTrue: [self ammo: self ammo - 1].

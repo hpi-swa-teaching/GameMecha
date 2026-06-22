@@ -9,6 +9,7 @@ initialize
 		color: Color veryLightGray;
 		collisionManager: GMCollisionManager new;
 		deleteQueue: Set new;
+		rotatedDeleteQueue: Set new;
 		gmRegisterToKeyHandler;
 		initializeObjects;
 		initializePlayers;
