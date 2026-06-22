@@ -8,7 +8,7 @@
 	"instvars" : [
 		"collisionHandler",
 		"collisionMorph" ],
-	"name" : "GMCollisionHandlerTest",
+	"name" : "GMCollisionHandlerBackwardsCompatibilityTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",
