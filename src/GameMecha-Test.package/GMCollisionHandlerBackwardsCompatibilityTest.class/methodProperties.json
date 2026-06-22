@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"collisionHandler" : "Lasse 6/21/2026 18:37",
+		"collisionHandler:" : "Lasse 6/21/2026 18:37",
+		"collisionMorph" : "Lasse 6/21/2026 18:37",
+		"collisionMorph:" : "Lasse 6/21/2026 18:37",
+		"testAddAndRemove" : "Lasse 6/21/2026 18:44",
+		"testAssigningCollisionDetectionStrategy" : "Lasse 6/21/2026 18:37",
+		"testRemoveAll" : "Lasse 6/21/2026 18:37",
+		"testRemoveMorphNotIncluded" : "Lasse 6/21/2026 18:36" } }
