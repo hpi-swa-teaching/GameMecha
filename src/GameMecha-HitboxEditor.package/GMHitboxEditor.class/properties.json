@@ -22,7 +22,8 @@
 		"symbolCounter",
 		"selectedMorph",
 		"propertyPanel",
-		"scaleTextInputField" ],
+		"scaleTextInputField",
+		"activeMorph" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],

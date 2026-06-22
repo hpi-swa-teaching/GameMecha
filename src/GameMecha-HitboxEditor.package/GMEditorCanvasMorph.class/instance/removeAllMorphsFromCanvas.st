@@ -1,0 +1,4 @@
+drawing
+removeAllMorphsFromCanvas
+
+	self viewport removeAllMorphs
