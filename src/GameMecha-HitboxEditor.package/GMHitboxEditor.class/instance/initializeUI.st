@@ -3,8 +3,8 @@ initializeUI
 
 	| outer |
 	outer := AlignmentMorph newColumn.
-	self initializeToolbar.
 	self initializeWorkspace.
+	self initializeToolbar.
 	outer
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;

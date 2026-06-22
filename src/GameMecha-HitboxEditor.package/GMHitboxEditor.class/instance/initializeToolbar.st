@@ -52,6 +52,10 @@ initializeToolbar
 		addMorphBack: self exportButton;
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: self importButton;
+		addTransparentSpacerOfSize: 20 px;
+		addMorphBack: self setScaleButton;
+		addTransparentSpacerOfSize: 20 px;
+		addMorphBack: self scaleTextInputField;
 		addTransparentSpacerOfSize: 20 px.
 	
 	bar addMorphBack: rectBtn.

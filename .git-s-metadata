@@ -309,16 +309,16 @@ GSMetadata {
 		GSPlaintextMapper {
 			#version : 1,
 			#path : FSAbsolutePath [
-				'assets',
-				'collider',
-				'CircleMorph.ston'
+				'DemoGameColliderAsset.GMC'
 			],
 			#encoding : 'TXT'
 		},
 		GSPlaintextMapper {
 			#version : 1,
 			#path : FSAbsolutePath [
-				'DemoGameColliderAsset.GMC'
+				'assets',
+				'collider',
+				'CircleMorph.ston'
 			],
 			#encoding : 'TXT'
 		}
