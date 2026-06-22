@@ -13,7 +13,9 @@
 		"shootInterval",
 		"ammo",
 		"projectileSymbol",
-		"otherPlayerProjectileSymbol" ],
+		"otherPlayerProjectileSymbol",
+		"projectileMask",
+		"projectileLayers" ],
 	"name" : "GMCollisionGamePlayer",
 	"pools" : [
 		 ],

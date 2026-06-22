@@ -10,6 +10,8 @@ initializePlayers
 		mask: self player1Mask;
 		controls: self player1Controls;
 		projectileSymbol: self player1ProjectileSymbol;
+		projectileLayers: self player1ProjectileLayers;
+		projectileMask: self player1ProjectileMask;
 		otherPlayerProjectileSymbol: self player2ProjectileSymbol.
 	self addMorph: player1.
 	
@@ -19,6 +21,8 @@ initializePlayers
 		layers: self player2Layers;
 		mask: self player2Mask;
 		controls: self player2Controls;
+		projectileLayers: self player2ProjectileLayers;
+		projectileMask:self player2ProjectileMask;
 		projectileSymbol: self player2ProjectileSymbol;
 		otherPlayerProjectileSymbol: self player1ProjectileSymbol.
 	self addMorph: player2

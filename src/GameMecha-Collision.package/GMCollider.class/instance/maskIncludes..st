@@ -1,4 +1,4 @@
 accessing
-maskIncludes: aLayersCollection
+maskIncludes: aLayersBitmask
 
-	^ self mask anySatisfy: [:maskEntry | aLayersCollection includes: maskEntry]
+	^ self mask anyMask: aLayersBitmask

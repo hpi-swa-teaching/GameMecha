@@ -1,4 +1,7 @@
 accessing
-mask: aNumberArray
+mask: aNumberCollection
 
-	mask := aNumberArray
+	| bitmask |
+	bitmask := 0.
+	aNumberCollection do: [:aNumber | bitmask := bitmask bitAt: aNumber put: 1].
+	mask := bitmask

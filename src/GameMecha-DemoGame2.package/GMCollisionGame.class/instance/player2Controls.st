@@ -1,4 +1,4 @@
-accessing
+player attributes
 player2Controls
 
 	^ OrderedDictionary newFrom: {
