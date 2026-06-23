@@ -6,7 +6,10 @@ clearButton
 		color: self buttonColor;
 		borderColor: Color transparent;
 		target: [
-			self canvasMorph removeAllMorphsFromCanvas.
-			self updateSidebarColliderList];
+			(UIManager default confirm: 'You are about to your Canvas! Are you sure you want to do that?')
+				ifTrue: [
+					self canvasMorph removeAllMorphsFromCanvas.
+					self updateSidebarColliderList];
+				ifFalse: [nil]];
 		actionSelector: #value;
 		borderWidth: 1

@@ -15,7 +15,7 @@ selectButton
 				ifTrue: [
 					newMorph := targetClass new.
 					self activeMorph: newMorph.
-					self canvasMorph drawMorphOnCanvas: self activeMorph]
+					self canvasMorph drawActiveMorphOnCanvas: self activeMorph]
 				ifFalse: [UIManager default inform: 'Something went wrong. Either the class does not exist or it does not inherit from morph.'].
 			self updateSidebarColliderList];
 		actionSelector: #value;
