@@ -1,4 +1,4 @@
 calculations
 calculateImportWidth: aMorph From: aGMCollider
 
-	^ aGMCollider width 
+	^ aGMCollider width / 2

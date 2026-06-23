@@ -1,10 +1,9 @@
 initialize
 initializeSidebar
 	"Vertical column: section header, morph-type list, divider, size controls."
+
 	| bar |
-	self sidebarColliderList: GMHitboxList new.
-	self propertyPanel: (GMPropertyPanel new editor: self).
-	
+	self initializeTreeView.
 	bar := AlignmentMorph newColumn
 		hResizing: #rigid;
 		width: 250 px;
@@ -17,7 +16,7 @@ initializeSidebar
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);
-		addMorphBack: self sidebarColliderList;
+		addMorphBack: self treeView;
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);

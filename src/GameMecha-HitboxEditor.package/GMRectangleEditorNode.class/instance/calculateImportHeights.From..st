@@ -1,4 +1,4 @@
 calculations
 calculateImportHeights: aMorph From: aGMCollider
 
-	^ aGMCollider height 
+	^ aGMCollider height / 2
