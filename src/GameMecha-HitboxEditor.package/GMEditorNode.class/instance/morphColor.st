@@ -1,4 +1,4 @@
 accessing
 morphColor
 
-	^ Color red
+	^ Color red alpha: 0.5

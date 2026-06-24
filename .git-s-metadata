@@ -312,15 +312,6 @@ GSMetadata {
 				'DemoGameColliderAsset.GMC'
 			],
 			#encoding : 'TXT'
-		},
-		GSPlaintextMapper {
-			#version : 1,
-			#path : FSAbsolutePath [
-				'assets',
-				'collider',
-				'CircleMorph.ston'
-			],
-			#encoding : 'TXT'
 		}
 	],
 	#name : 'GameMecha'
