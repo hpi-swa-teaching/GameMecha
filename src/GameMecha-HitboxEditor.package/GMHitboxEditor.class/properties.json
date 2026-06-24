@@ -16,7 +16,6 @@
 		"xField",
 		"yField",
 		"classTextInputField",
-		"sidebarColliderList",
 		"colliderTree",
 		"sidebarColliderDictionary",
 		"symbolCounter",
@@ -24,6 +23,9 @@
 		"propertyPanel",
 		"scaleTextInputField",
 		"activeMorph" ],
+		"treeView",
+		"gitAssetProjectBasePath",
+		"gitAssetProjectName" ],
 	"name" : "GMHitboxEditor",
 	"pools" : [
 		 ],

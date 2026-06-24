@@ -5,6 +5,7 @@ collisionEventWithRectanglePrimitive: aRectangleCollider
 	
 	self children do: [:collider | | event |
 		event := collider collisionEventWithRectanglePrimitive: aRectangleCollider.
-		event hasCollided ifTrue: [^ GMColliderCollisionEvent newBetween: self and: aRectangleCollider withReason: event]].
+		"Note that this needs to be switched in comparison to the double dispatch layer."
+		event hasCollided ifTrue: [^ GMColliderCollisionEvent newBetween: aRectangleCollider and: self withReason: event]].
 	
 	^ GMNullCollisionEvent new

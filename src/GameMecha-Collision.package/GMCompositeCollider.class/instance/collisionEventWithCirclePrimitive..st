@@ -5,6 +5,7 @@ collisionEventWithCirclePrimitive: aCircleCollider
 	
 	self children do: [:collider | | event |
 		event := collider collisionEventWithCirclePrimitive: aCircleCollider.
-		event hasCollided ifTrue: [^ GMColliderCollisionEvent newBetween: self and: aCircleCollider withReason: event]].
+		"Note that this needs to be switched in comparison to the double dispatch layer."
+		event hasCollided ifTrue: [^ GMColliderCollisionEvent newBetween: aCircleCollider and: self withReason: event]].
 	
 	^ GMNullCollisionEvent new
