@@ -21,6 +21,8 @@
 		"symbolCounter",
 		"selectedMorph",
 		"propertyPanel",
+		"scaleTextInputField",
+		"activeMorph" ],
 		"treeView",
 		"gitAssetProjectBasePath",
 		"gitAssetProjectName" ],

@@ -2,7 +2,15 @@ initialize
 initializeSidebar
 	"Vertical column: section header, morph-type list, divider, size controls."
 
-	| bar |
+	| bar buttonRow |
+	buttonRow := AlignmentMorph newRow
+		vResizing: #shrinkWrap;
+		hResizing: #shrinkWrap;
+		cellInset: 10;
+		color: Color transparent;
+		addMorphBack: self removeButton;
+		addMorphBack: self clearButton.
+	
 	self initializeTreeView.
 	bar := AlignmentMorph newColumn
 		hResizing: #rigid;
@@ -20,5 +28,6 @@ initializeSidebar
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: Color darkGray);
+			addMorphBack: buttonRow;
 		addMorphBack: self propertyPanel.
 	self sidebar: bar
