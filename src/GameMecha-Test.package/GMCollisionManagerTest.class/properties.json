@@ -7,7 +7,9 @@
 	"commentStamp" : "js 6/2/2026 14:25",
 	"instvars" : [
 		"collisionManager",
-		"collisionMorph" ],
+		"collisionMorph",
+		"morphA",
+		"morphB" ],
 	"name" : "GMCollisionManagerTest",
 	"pools" : [
 		 ],
