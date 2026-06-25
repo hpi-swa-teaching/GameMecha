@@ -2,9 +2,20 @@
 	"class" : {
 		 },
 	"instance" : {
+		"buildCompositeColliderOnLayer:withMask:" : "js 6/25/2026 16:17",
 		"buildRectColliderOnLayer:withMask:" : "mabe 6/7/2026 12:25",
 		"morphOnLayer:withMask:" : "mabe 6/14/2026 11:26",
+		"morphWithCompositeOnLayer:withMask:" : "js 6/25/2026 16:17",
 		"setUp" : "mabe 6/14/2026 11:09",
+		"testCompositeChildrenInheritLayersFromComposite" : "js 6/25/2026 16:18",
+		"testCompositeCollidesViaSecondChildOnly" : "js 6/25/2026 16:18",
+		"testCompositeMatchingLayerMaskCollidesWhenOverlapping" : "js 6/25/2026 16:17",
+		"testCompositeNoCollisionWhenTargetOutOfRange" : "js 6/25/2026 16:18",
+		"testCompositeNonMatchingLayerMaskNoCollisionWhenOverlapping" : "js 6/25/2026 16:18",
+		"testCompositeWithMultipleLayersCollidesWhenOneMaskMatches" : "js 6/25/2026 16:19",
 		"testMatchingLayerMaskCollidesWhenOverlapping" : "mabe 6/7/2026 13:18",
+		"testMultipleLayersCollidesWhenOneMaskMatches" : "js 6/25/2026 16:19",
+		"testMultipleLayersNoCollisionWhenNoMaskMatches" : "js 6/25/2026 16:19",
+		"testMultipleMasksCollidesWhenOneLayerMatches" : "js 6/25/2026 16:19",
 		"testNonMatchingLayerMaskNoCollisionWhenOverlapping" : "mabe 6/7/2026 13:18",
 		"testNonOverlappingNoCollision" : "mabe 6/7/2026 13:19" } }
