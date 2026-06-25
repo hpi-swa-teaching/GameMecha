@@ -1,5 +1,5 @@
 mousebehaviour
 mouseUp: anEvent
 
-	activeMorph := nil.
-	dragOffset := nil
+	self clickedMorph: nil.
+	self dragOffset: nil

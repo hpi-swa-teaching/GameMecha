@@ -1,5 +1,5 @@
 drawing
-drawActiveMorphOnCanvas: aMorph
+drawSelectedMorphOnCanvas: aMorph
 
 	aMorph
 		center: 0 @ 0;

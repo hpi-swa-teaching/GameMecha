@@ -15,6 +15,6 @@ initializeTreeView
 		label: #morphTreeLabel:;
 		getChildren: #morphTreeChildren:;
 		hasChildren: #morphTreeHasChildren:;
-		getSelected: #selectedMorph;
-		setSelected: #selectedMorph:;
+		getSelected: #activeMorph;
+		setSelected: #activeMorph:;
 		yourself))

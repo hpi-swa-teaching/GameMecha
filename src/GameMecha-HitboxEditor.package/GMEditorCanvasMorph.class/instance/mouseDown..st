@@ -8,10 +8,10 @@ mouseDown: anEvent
 	"this converts from the global coordinate system to the local"
 	localMousePosition := self viewport transform invertPoint: surfacePoint.
 	
-	self activeMorph: (self viewport submorphs
+	self clickedMorph: (self viewport submorphs
 		detect: [:each | (each containsPoint: localMousePosition) and: [each isLocked not]]
 		ifNone: [nil]).
 	
-	self activeMorph ifNotNil: [
-		self dragOffset: localMousePosition - self activeMorph position.
-		self viewport addMorphFront: self activeMorph].
+	self clickedMorph ifNotNil: [
+		self dragOffset: localMousePosition - self clickedMorph position.
+		self viewport addMorphFront: self clickedMorph].

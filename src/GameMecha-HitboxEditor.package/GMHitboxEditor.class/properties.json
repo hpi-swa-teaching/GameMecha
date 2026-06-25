@@ -22,7 +22,7 @@
 		"selectedMorph",
 		"propertyPanel",
 		"scaleTextInputField",
-		"activeMorph" ,
+		"activeMorph",
 		"treeView",
 		"gitAssetProjectBasePath",
 		"gitAssetProjectName" ],

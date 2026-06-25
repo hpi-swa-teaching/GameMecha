@@ -2,8 +2,8 @@ mousebehaviour
 mouseMove: anEvent
 
 	| surfacePoint localMousePosition |
-	activeMorph ifNotNil: [
+	self clickedMorph ifNotNil: [
 		surfacePoint := self viewport globalPointToLocal: anEvent position.
 		localMousePosition := self viewport transform invertPoint: surfacePoint.
 		
-		activeMorph position: localMousePosition - dragOffset]
+		self clickedMorph position: localMousePosition - self dragOffset]
