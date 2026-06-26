@@ -1,1 +1,1 @@
-A GMCollisionGameEnemy detects collision with projectiles by having it's mask set to 5 and implementing onCollision: . It also it on layer 4 for so that player morphs and projectiles will be notified upon collision
+A GMCollisionGameEnemy detects collision with players by having it's mask set to 4 and implementing onCollision: and will then notify the player of said collision. It also it on layer 5 so that projectiles will be notified upon collision and in turn notify the enemy.

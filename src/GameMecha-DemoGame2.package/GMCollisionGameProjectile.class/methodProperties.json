@@ -4,4 +4,6 @@
 	"instance" : {
 		"initializeCollider" : "mabe 6/16/2026 16:09",
 		"initializeProperties" : "mabe 6/12/2026 14:04",
-		"onCollision:" : "mabe 6/22/2026 15:59" } }
+		"onCollision:" : "mabe 6/25/2026 12:09",
+		"onCollisionWithEnemy:" : "mabe 6/25/2026 12:06",
+		"onCollisionWithPlayer:" : "mabe 6/25/2026 12:06" } }

@@ -2,6 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"initializeCollider" : "mabe 6/16/2026 16:15",
+		"initializeCollider" : "mabe 6/25/2026 12:20",
 		"initializeProperties" : "mabe 6/12/2026 14:04",
-		"onCollision:" : "mabe 6/16/2026 16:40" } }
+		"onCollision:" : "mabe 6/25/2026 12:05",
+		"onCollisionWithProjectile:" : "mabe 6/25/2026 12:00" } }

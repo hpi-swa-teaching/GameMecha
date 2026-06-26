@@ -1,4 +1,4 @@
 player attributes
 player1ProjectileLayers
 
-	^ #(5  6)
+	^ #(3  4)

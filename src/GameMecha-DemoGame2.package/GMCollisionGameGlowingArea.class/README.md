@@ -1,1 +1,1 @@
-A GMCollisionGameGlowingArea is GMCollisionGameMorph that has it's mask set to 1, so that it is notified when players are colliding with it. It also has it's layers set to 8, so that the player morphs are notified upon collision.
+A GMCollisionGameGlowingArea is GMCollisionGameMorph that has it's mask set to 8, so that it is notified when players are colliding with it, to then notify them of their collision. It also has it's layers set to 1, so that the player morphs are notified upon collision and can notify them of their specific collision.
