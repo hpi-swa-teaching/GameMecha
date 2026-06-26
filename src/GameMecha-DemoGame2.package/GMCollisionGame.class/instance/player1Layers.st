@@ -1,4 +1,4 @@
-stepping and presenter
+player attributes
 player1Layers 
 
-	^ #(1 2)
+	^ #(4 7 8)

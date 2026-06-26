@@ -7,8 +7,8 @@ initializeCollider
 			parent: self;
 			symbol: #area;
 			yourself);
-		mask: #(1);
-		layers: #(8).
+		mask: #(8);
+		layers: #(1).
 	self collider addChild: (GMPrimitiveRectangleCollider new
 		width: self width;
 		height: self height;

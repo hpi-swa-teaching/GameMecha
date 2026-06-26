@@ -5,3 +5,5 @@ Furthermore, the demo game is responsible for listening to keyboard inputs. Othe
 Some methods are exessively commented because the game's purpose is to explain implementation examples of the GM Collider library, normally you wouldn't do this.
 
 To play use W,A,S,D and the arrow keys. Player 1 shoots with c and Player 2 with m (only while moving).
+
+DISCLAIMER: We use the double dispatch pattern for collision handling in the game, basically inverting the mask/layer logic. Be aware of that when trying to understand why mask/layers look the way they do.

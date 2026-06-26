@@ -1,5 +1,5 @@
 collision
 onCollision: aCollisionEvent
 
-	self game deleteQueue add: self 
+	aCollisionEvent other onCollisionWithProjectile: aCollisionEvent
 	
