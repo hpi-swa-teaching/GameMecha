@@ -1,4 +1,4 @@
-running
+test cases
 testMultipleMasksCollidesWhenOneLayerMatches
 
 	| morphMultiMask target |

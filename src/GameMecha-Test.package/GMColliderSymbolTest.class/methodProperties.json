@@ -1,0 +1,14 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"collisionEventOf:with:" : "js 6/25/2026 16:37",
+		"morphWithColliderSymbol:" : "js 6/25/2026 16:36",
+		"morphWithComposite" : "js 6/25/2026 16:37",
+		"morphWithoutSymbol" : "js 6/25/2026 16:36",
+		"testHasCollidedWithSymbolFalseForMissedChildSymbol" : "js 6/25/2026 16:38",
+		"testHasCollidedWithSymbolFalseForUnknownSymbol" : "js 6/25/2026 16:38",
+		"testHasCollidedWithSymbolFalseWhenNoSymbolSet" : "js 6/25/2026 16:38",
+		"testHasCollidedWithSymbolTrueForCompositeSymbol" : "js 6/25/2026 16:38",
+		"testHasCollidedWithSymbolTrueForHitChildSymbol" : "js 6/25/2026 16:38",
+		"testHasCollidedWithSymbolTrueForPrimitiveColliderSymbol" : "js 6/25/2026 16:37" } }

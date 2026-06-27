@@ -1,4 +1,4 @@
-running
+accessing
 buildRectColliderOnLayer: aLayerCollection withMask: aMaskCollection
 
 	^ GMPrimitiveRectangleCollider new

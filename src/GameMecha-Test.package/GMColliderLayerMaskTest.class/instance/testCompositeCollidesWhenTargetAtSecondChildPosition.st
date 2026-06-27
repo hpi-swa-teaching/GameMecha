@@ -1,5 +1,5 @@
-running
-testCompositeCollidesViaSecondChildOnly
+test cases
+testCompositeCollidesWhenTargetAtSecondChildPosition
 
 	| composite target |
 	composite := self morphWithCompositeOnLayer: #(1) withMask: #(1).

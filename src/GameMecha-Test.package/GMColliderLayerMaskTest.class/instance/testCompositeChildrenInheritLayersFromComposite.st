@@ -1,4 +1,4 @@
-running
+test cases
 testCompositeChildrenInheritLayersFromComposite
 
 	| composite target |

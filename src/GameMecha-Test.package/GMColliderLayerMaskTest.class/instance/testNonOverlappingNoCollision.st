@@ -1,5 +1,5 @@
 test cases
 testNonOverlappingNoCollision
-	
-	morphB position: morphA position + (200 @ 200).
-	self assertCollisionInManager: morphA with: morphB equals: false
+
+	self morphB position: self morphA position + (200 @ 200).
+	self assertCollisionInManager: self morphA with: self morphB equals: false

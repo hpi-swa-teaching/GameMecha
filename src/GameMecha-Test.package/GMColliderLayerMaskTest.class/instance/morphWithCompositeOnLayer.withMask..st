@@ -1,4 +1,4 @@
-running
+accessing
 morphWithCompositeOnLayer: aLayerCollection withMask: aMaskCollection
 
 	^ GMCollisionTestMorph new

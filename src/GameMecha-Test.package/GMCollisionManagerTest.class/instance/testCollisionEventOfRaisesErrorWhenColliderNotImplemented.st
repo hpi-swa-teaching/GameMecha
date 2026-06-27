@@ -1,4 +1,4 @@
 test cases
 testCollisionEventOfRaisesErrorWhenColliderNotImplemented
 
-	self should: [self collisionManager collisionEventOf: morphA with: Morph new] raise: Error
+	self should: [self collisionManager collisionEventOf: self morphA with: Morph new] raise: Error
