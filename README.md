@@ -336,13 +336,36 @@ GMColliderEditor new
 ```
 
 The editor consists of three areas:
-- **Toolbar (top):** Input field for a morph class name with a "Select" button to display an instance of that class as a visual reference on the canvas; buttons for adding a rectangle or circle; and an "export" button.
-- **Canvas (center):** Grid area containing the reference graphic and all added collider shapes. Shapes can be moved freely with the mouse.
-- **Sidebar (right):** List of all added collider shapes and a property panel containing position, size, and rotation of the currently selected shape.
+**Toolbar (top):**
+  - **Select** opens a dialog for selecting a morph class.
+    - The name of the selected class is displayed to the left of the button.
+    - An instance of the selected class is placed on the canvas as a visual reference.
+  - **Import** and **Export** import and export colliders from and to the GitAssetBrowser.
+  - **Scale** specifies the desired canvas scale.
+    - The new scale is applied when **Set Scale** is pressed.
+    - Useful when working with very small sprites.
+  - **Rectangle** and **Circle** add the corresponding collider to the canvas.
 
-Typical workflow:
-1. Enter the name of the morph class whose collider should be modeled into the class field and click "Select". An instance of that class is placed on the canvas as a reference.
-2. Add as many rectangles and circles as needed using the corresponding buttons. Position and scale them over the reference graphic so they cover the actual collision area.
-3. Store the collider as an asset in your project and load it at runtime using `GMCollider newFromAsset: aColliderAsset withOwner: aMorph`.
+**Canvas (center):**
+  - Displays a grid containing the reference morph and all added colliders, scaled according to the current canvas scale.
+  - A collider can be selected by clicking it. The selected collider:
+    - can be moved freely by dragging it with the mouse.
+    - is highlighted in the **Collider List** in the sidebar.
+    - can be resized using the handles at its four corners.
+    - can be moved, resized, and rotated using the input fields in the sidebar.
+
+**Sidebar (right):**
+  - The **Collider List** displays all colliders on the canvas.
+    - Clicking a collider selects it.
+    - The selected collider is highlighted.
+  - **Remove** removes the selected collider.
+  - **Clear** removes all colliders from the canvas.
+  - The input fields allow the selected collider to be moved, resized, and rotated precisely.
+
+**Typical workflow:**
+1. Click **Select** and choose the desired morph class. An instance of the selected class is placed on the canvas as a visual reference.
+2. Add the required rectangle and circle colliders using the corresponding buttons.
+3. Position, resize, and rotate the colliders until they accurately cover the collision area of the reference morph.
+4. Export the collider as an asset and load it at runtime as described in [[#Loading a Collider from an Asset]].
 
 > **Current limitation:** Nested groups (`GMCompositeCollider`s) are not yet implemented in the editor. They are technically supported by the collision system itself, but the editor does not yet provide support for creating them. Layers, masks and collider symbols are also not yet supported for the editor.
