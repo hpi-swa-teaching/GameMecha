@@ -6,11 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"collider",
-		"rotation",
-		"onCollisionCallCount" ],
-	"name" : "GMCollisionTestMorph",
+		 ],
+	"name" : "GMColliderSymbolTest",
 	"pools" : [
 		 ],
-	"super" : "Morph",
+	"super" : "GMColliderTest",
 	"type" : "normal" }

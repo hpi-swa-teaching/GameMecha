@@ -1,5 +1,4 @@
 test cases
 testMatchingLayerMaskCollidesWhenOverlapping
-	
-	morphB position: morphA position.
-	self assertCollisionInManager: morphA with: morphB equals: true
+
+	self assertCollisionInManager: self morphA with: self morphB equals: true
