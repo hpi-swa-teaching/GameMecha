@@ -1,0 +1,19 @@
+{
+	"category" : "GameMecha-HitboxEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"content",
+		"resizeHandles",
+		"dragOffset",
+		"isRotated",
+		"editor",
+		"dragStartBounds" ],
+	"name" : "GMResizeContainer",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

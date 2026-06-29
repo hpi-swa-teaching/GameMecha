@@ -5,7 +5,7 @@ initializeTreeView
 	self propertyPanel: (GMPropertyPanel new editor: self).
 	model := MorphTreeModel new.
 	model
-		canvasMorph: self canvasMorph viewport;
+		canvasMorph: self canvasMorph;
 		editor: self.
 	self treeView: ToolBuilder default pluggableTreeSpec new yourself.
 	self treeView: (ToolBuilder default buildPluggableTree: (ToolBuilder default pluggableTreeSpec new
@@ -15,6 +15,6 @@ initializeTreeView
 		label: #morphTreeLabel:;
 		getChildren: #morphTreeChildren:;
 		hasChildren: #morphTreeHasChildren:;
-		getSelected: #selectedMorph;
-		setSelected: #selectedMorph:;
+		getSelected: #getHitboxSelected;
+		setSelected: #setHitboxSelected:;
 		yourself))

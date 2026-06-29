@@ -1,10 +1,10 @@
 initialize
 open
 
-	window := SystemWindow new setLabel: 'Klassensuche'.
+	window := SystemWindow new setLabel: 'class search'.
 	allClasses := Smalltalk allClasses asSortedCollection: [:a :b | a name < b name].
 	
-	window := SystemWindow new setLabel: 'Klassensuche'.
+	window := SystemWindow new setLabel: 'class search'.
 	
 	classList := PluggableListMorph
 		on: self
