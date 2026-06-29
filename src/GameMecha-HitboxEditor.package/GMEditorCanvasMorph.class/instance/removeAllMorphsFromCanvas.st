@@ -1,4 +1,5 @@
 drawing
 removeAllMorphsFromCanvas
 
-	self viewport removeAllMorphs
+	self viewport removeAllMorphs.
+	self activeHitbox: nil.

@@ -14,7 +14,8 @@
 		"labelColor",
 		"dragOffset",
 		"activeMorph",
-		"viewport" ],
+		"viewport",
+		"editor" ],
 	"name" : "GMEditorCanvasMorph",
 	"pools" : [
 		 ],

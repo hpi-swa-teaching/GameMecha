@@ -1,6 +1,6 @@
 GSMetadata {
 	#version : 1,
-	#mappers : [
+	#mappers : OrderedCollection [
 		GSSoundMapper {
 			#version : 1,
 			#path : FSAbsolutePath [

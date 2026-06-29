@@ -12,7 +12,9 @@
 		"allClasses",
 		"filteredClasses",
 		"searchString",
-		"selectedIndex" ],
+		"selectedIndex",
+		"target",
+		"actionSelector" ],
 	"name" : "GMEditorClassSearchTool",
 	"pools" : [
 		 ],

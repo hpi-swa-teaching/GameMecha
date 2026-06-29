@@ -1,0 +1,4 @@
+accessing
+hasHandles
+
+	^ resizeHandles notEmpty
