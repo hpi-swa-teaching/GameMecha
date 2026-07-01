@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "mabe 6/30/2026 14:02",
 	"instvars" : [
 		"morphs" ],
 	"name" : "GMCollisionManager",
