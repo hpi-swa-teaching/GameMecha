@@ -1,4 +1,0 @@
-accessing
-borderColor
-
-	^ Color gray

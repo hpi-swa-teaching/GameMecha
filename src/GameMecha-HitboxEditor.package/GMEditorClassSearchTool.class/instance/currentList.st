@@ -1,4 +1,0 @@
-accessing
-currentList
-
-	^ filteredClasses ifNil: [#()]

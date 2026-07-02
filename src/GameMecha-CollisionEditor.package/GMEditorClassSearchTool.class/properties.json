@@ -1,0 +1,21 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"window",
+		"searchField",
+		"allClasses",
+		"filteredClasses",
+		"searchString",
+		"selectedIndex",
+		"target",
+		"actionSelector" ],
+	"name" : "GMEditorClassSearchTool",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

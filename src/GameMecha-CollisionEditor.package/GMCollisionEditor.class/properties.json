@@ -1,0 +1,28 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"toolbar",
+		"canvasMorph",
+		"selectedMorphRow",
+		"colliderTree",
+		"sidebarColliderDictionary",
+		"symbolCounter",
+		"sidebarColliderList",
+		"selectedMorph",
+		"propertyPanel",
+		"scaleTextInputField",
+		"activeMorph",
+		"treeView",
+		"gitAssetProjectBasePath",
+		"gitAssetProjectName",
+		"classNameLabel" ],
+	"name" : "GMCollisionEditor",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

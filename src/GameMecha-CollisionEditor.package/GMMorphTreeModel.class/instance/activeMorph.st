@@ -1,0 +1,4 @@
+accessing
+activeMorph
+
+	^ self activeMorph

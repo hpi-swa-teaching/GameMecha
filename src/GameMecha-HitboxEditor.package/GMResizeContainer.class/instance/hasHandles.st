@@ -1,4 +1,0 @@
-accessing
-hasHandles
-
-	^ resizeHandles notEmpty

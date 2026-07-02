@@ -1,0 +1,23 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"scaleFactor",
+		"tileSize",
+		"backgroundColor",
+		"gridColor",
+		"bgColor",
+		"labelColor",
+		"dragOffset",
+		"activeMorph",
+		"viewport",
+		"editor" ],
+	"name" : "GMEditorCanvasMorph",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

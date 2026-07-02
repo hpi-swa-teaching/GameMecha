@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMNilEditorNode",
+	"pools" : [
+		 ],
+	"super" : "GMEditorNode",
+	"type" : "normal" }

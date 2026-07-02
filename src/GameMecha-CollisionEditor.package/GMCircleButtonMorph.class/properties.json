@@ -1,0 +1,14 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GMCircleButtonMorph",
+	"pools" : [
+		 ],
+	"super" : "GMShapeButtonMorph",
+	"type" : "normal" }

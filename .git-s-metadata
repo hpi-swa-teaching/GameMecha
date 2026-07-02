@@ -312,6 +312,15 @@ GSMetadata {
 				'.squot'
 			],
 			#encoding : 'TXT'
+		},
+		GSCypressMapper {
+			#version : 1,
+			#package : MCPackage {
+				#name : 'GameMecha-CollisionEditor'
+			},
+			#path : FSAbsolutePath [
+				'src'
+			]
 		}
 	],
 	#name : 'GameMecha'
