@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"isHovered",
+		"isPressed",
+		"action" ],
+	"name" : "GMShapeButtonMorph",
+	"pools" : [
+		 ],
+	"super" : "Morph",
+	"type" : "normal" }

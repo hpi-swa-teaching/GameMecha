@@ -1,0 +1,15 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"width",
+		"height" ],
+	"name" : "GMRectangleEditorNode",
+	"pools" : [
+		 ],
+	"super" : "GMEditorNode",
+	"type" : "normal" }

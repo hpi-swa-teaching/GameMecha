@@ -1,0 +1,4 @@
+accessing
+searchString
+
+	^ searchString

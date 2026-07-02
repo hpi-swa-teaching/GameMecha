@@ -1,0 +1,17 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"parent",
+		"symbol",
+		"morph",
+		"collliderType" ],
+	"name" : "GMEditorNode",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

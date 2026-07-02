@@ -1,4 +1,0 @@
-accessing
-shapeColor
-
-	^ shapeColor

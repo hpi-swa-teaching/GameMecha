@@ -1,4 +1,0 @@
-handels
-handleColor
-
-	^ Color gray

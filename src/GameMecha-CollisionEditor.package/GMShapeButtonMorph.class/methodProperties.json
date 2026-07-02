@@ -1,0 +1,21 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"action" : "vincent 6/29/2026 20:34",
+		"action:" : "vincent 6/29/2026 20:34",
+		"buttonBorderColor" : "vincent 6/29/2026 20:16",
+		"buttonColor" : "vincent 6/29/2026 19:55",
+		"currentColor" : "vincent 6/29/2026 20:07",
+		"handlesMouseDown:" : "Robert 5/18/2026 22:09",
+		"handlesMouseOver:" : "Robert 5/18/2026 22:09",
+		"initialize" : "vincent 6/29/2026 20:16",
+		"isHovered" : "vincent 6/29/2026 18:54",
+		"isHovered:" : "vincent 6/29/2026 18:54",
+		"isPressed" : "vincent 6/29/2026 18:53",
+		"isPressed:" : "vincent 6/29/2026 18:53",
+		"mouseDown:" : "vincent 6/29/2026 19:57",
+		"mouseEnter:" : "vincent 6/29/2026 19:57",
+		"mouseLeave:" : "vincent 6/29/2026 18:56",
+		"mouseUp:" : "vincent 6/29/2026 21:55",
+		"parachuteMorph:" : "vincent 6/29/2026 20:15" } }

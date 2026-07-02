@@ -1,0 +1,16 @@
+{
+	"category" : "GameMecha-CollisionEditor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"canvasMorph",
+		"editor",
+		"activeMorph" ],
+	"name" : "GMMorphTreeModel",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
