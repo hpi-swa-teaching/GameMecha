@@ -1,4 +1,4 @@
 collision
 onCollision: aCollisionEvent
 
-	onCollisionCallCount := self onCollisionCallCount + 1
+	self onCollisionCallCount: self onCollisionCallCount + 1

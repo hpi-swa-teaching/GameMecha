@@ -16,4 +16,4 @@ shoot
 		shootTimer: 0;
 		ammo: self ammo - 1.
 	
-	game addMorph: projectile
+	self game addMorph: projectile

@@ -1,0 +1,1 @@
+GMColliderLayerMaskTest tests the layer and mask filtering of GMCollider. This includes verifying that collisions only occur when the layers of one collider match the mask of the other, both for primitive and composite colliders, and for single and multiple layers.

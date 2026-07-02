@@ -1,0 +1,1 @@
+GMColliderSymbolTest tests the symbol-based collision querying of GMCollisionEvent. This includes verifying that hasCollidedWithSymbol: correctly identifies which named colliders in the own collider tree were involved in a collision.

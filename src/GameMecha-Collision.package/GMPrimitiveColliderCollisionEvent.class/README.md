@@ -1,1 +1,1 @@
-A GMPrimitiveColliderCollisionEvent is a collision event that took place between primitive colliders. It contains the trigger colliders for the collision in own and other, wich is why reason always returns nil.
+A GMPrimitiveColliderCollisionEvent represents a collision between two primitive colliders. It is the leaf node of the collision event tree and has no further reason, as primitive colliders cannot be decomposed further.

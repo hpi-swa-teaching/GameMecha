@@ -1,0 +1,1 @@
+GMCompositeColliderTest tests the collision detection of GMCompositeCollider. This includes verifying that a composite collider correctly detects collisions via each of its children, and that children can be added and removed.

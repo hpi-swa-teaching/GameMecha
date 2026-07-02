@@ -1,0 +1,1 @@
+GMColliderTest is the abstract base class for all collider tests. It provides a shared GMCollisionManager and helper methods for asserting and denying collisions between morphs.

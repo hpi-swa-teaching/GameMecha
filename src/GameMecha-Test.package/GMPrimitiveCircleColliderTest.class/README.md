@@ -1,0 +1,1 @@
+GMPrimitiveCircleColliderTest tests the collision detection of GMPrimitiveCircleCollider. This includes circle-circle, circle-rectangle, and edge case collisions and non-collisions.

@@ -1,0 +1,1 @@
+GMPrimitiveRectangleColliderRotatedTest tests the collision detection of rotated and scaled GMPrimitiveRectangleColliders. This includes rotated rectangle collisions against circles, axis-aligned rectangles, and other rotated rectangles.

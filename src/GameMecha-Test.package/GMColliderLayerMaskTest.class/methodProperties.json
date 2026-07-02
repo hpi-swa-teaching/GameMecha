@@ -13,7 +13,7 @@
 		"morphOnLayer:withMask:" : "mabe 6/14/2026 11:26",
 		"morphWithCompositeOnLayer:withMask:" : "js 6/25/2026 16:17",
 		"setUp" : "js 6/27/2026 19:34",
-		"tearDown" : "js 6/27/2026 19:38",
+		"tearDown" : "js 7/1/2026 21:14",
 		"testCompositeChildrenInheritLayersFromComposite" : "js 6/25/2026 16:18",
 		"testCompositeCollidesWhenTargetAtSecondChildPosition" : "js 6/27/2026 19:43",
 		"testCompositeMatchingLayerMaskCollidesWhenOverlapping" : "js 6/25/2026 16:17",
