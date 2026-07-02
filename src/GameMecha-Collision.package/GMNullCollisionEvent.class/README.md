@@ -1,3 +1,1 @@
-A GMNullCollisionEvent is a Null Object that represents a collision that did not happen.
-
-Instance Variables
+A GMNullCollisionEvent represents the absence of a collision. It is returned by GMCollisionManager when no collision was detected between two morphs.

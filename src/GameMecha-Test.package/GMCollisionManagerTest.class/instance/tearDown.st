@@ -2,5 +2,5 @@ running
 tearDown
 
 	self collisionManager removeAllMorphs.
-	morphA := nil.
-	morphB := nil
+	self morphA: nil.
+	self morphB: nil

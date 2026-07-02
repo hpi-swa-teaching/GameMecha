@@ -1,4 +1,4 @@
-event handling
+accessing
 actionBlock: aBlock
 
 	actionBlock := aBlock

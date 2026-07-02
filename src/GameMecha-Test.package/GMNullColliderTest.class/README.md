@@ -1,0 +1,1 @@
+GMNullColliderTest tests the GMNullCollider, which is the default collider used when no collider has been assigned to a morph. This includes verifying its default values and that it correctly acts as a null object.

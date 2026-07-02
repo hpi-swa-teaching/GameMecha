@@ -1,5 +1,5 @@
 submorphs - add/remove
 release
 
-	isRotated ifTrue: [self owner release].
+	self isRotated ifTrue: [self owner release].
 	super release

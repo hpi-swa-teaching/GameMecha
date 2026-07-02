@@ -1,0 +1,1 @@
+GMPrimitiveRectangleColliderTest tests the collision detection of GMPrimitiveRectangleCollider. This includes rectangle-rectangle collision and non-collision cases.
