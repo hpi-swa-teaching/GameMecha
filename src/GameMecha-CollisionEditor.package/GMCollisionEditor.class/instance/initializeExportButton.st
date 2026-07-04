@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeExportButton
 
 	^ self initializeThemeButton: 'Export' Target: [

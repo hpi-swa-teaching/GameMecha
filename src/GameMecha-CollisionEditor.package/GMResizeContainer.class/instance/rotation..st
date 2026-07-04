@@ -1,7 +1,7 @@
 accessing
 rotation: aNumber
 
-	self isRotated ifFalse: [
+	(self isRotated not and: [aNumber abs >= 1.0e-10]) ifTrue: [
 		self
 			addFlexShell;
 			isRotated: true].

@@ -1,4 +1,4 @@
 calculations
 calculateCenter: aMorph
 
-	^ aMorph center - self morph center 
+	^ aMorph center + self morph owner center

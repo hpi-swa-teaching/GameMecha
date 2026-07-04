@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeLabelMorph: aText
 
 	^ StringMorph new

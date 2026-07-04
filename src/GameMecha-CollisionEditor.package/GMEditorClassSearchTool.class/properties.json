@@ -7,7 +7,6 @@
 	"commentStamp" : "",
 	"instvars" : [
 		"window",
-		"searchField",
 		"allClasses",
 		"filteredClasses",
 		"searchString",

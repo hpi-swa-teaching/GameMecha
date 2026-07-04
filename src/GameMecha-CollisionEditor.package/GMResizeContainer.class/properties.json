@@ -11,7 +11,8 @@
 		"dragOffset",
 		"isRotated",
 		"editor",
-		"dragStartBounds" ],
+		"dragStartBounds",
+		"editorNode" ],
 	"name" : "GMResizeContainer",
 	"pools" : [
 		 ],

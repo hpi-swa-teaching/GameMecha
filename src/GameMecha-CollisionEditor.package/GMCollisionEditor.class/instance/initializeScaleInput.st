@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeScaleInput
 
 	^ self scaleTextInputField ifNil: [

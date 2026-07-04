@@ -1,4 +1,4 @@
 accessing
-colliderType
+children
 
 	^ self subclassResponsibility

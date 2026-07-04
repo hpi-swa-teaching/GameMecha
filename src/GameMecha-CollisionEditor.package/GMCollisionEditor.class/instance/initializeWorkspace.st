@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeWorkspace
 
 	^ AlignmentMorph newRow

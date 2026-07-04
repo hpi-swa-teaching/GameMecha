@@ -1,4 +1,4 @@
-drawing
+accessing
 extent: aPoint
 
 	super extent: aPoint.

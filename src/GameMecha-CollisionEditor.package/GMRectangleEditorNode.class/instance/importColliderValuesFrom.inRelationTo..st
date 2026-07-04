@@ -2,5 +2,5 @@ import
 importColliderValuesFrom: aGMCollider inRelationTo: aMorph
 
 	self morph
-		height: (self calculateImportHeights: aGMCollider) px;
-		width: (self calculateImportWidth: aGMCollider) px
+		height: (self calculateImportHeights: aGMCollider);
+		width: (self calculateImportWidth: aGMCollider)

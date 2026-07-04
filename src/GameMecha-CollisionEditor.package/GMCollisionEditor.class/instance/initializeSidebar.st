@@ -1,6 +1,5 @@
-initialize
+initialize-release
 initializeSidebar
-	"Vertical column: section header, morph-type list, divider, size controls."
 
 	| buttonRow |
 	self propertyPanel: (GMPropertyPanel new editor: self).

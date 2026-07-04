@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeRectButton
 
 	| rectBtn |
@@ -6,6 +6,6 @@ initializeRectButton
 		rectangle := Morph new extent: 250 px @ 150 px.
 		self selectedMorph ifNil: [UIManager default inform: 'You need to select a Morph first!'] ifNotNil: [
 			self canvasMorph addHitboxToCanvas: rectangle.
-			self addCollider: rectangle atNode: self colliderTree nodeType: GMRectangleEditorNode.
+			self addRectangleCollider: rectangle atNode: self colliderTree.
 			self updateSidebarColliderList]].
 	^ rectBtn

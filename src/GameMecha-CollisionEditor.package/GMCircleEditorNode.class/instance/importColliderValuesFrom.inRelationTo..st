@@ -3,5 +3,4 @@ importColliderValuesFrom: aGMCollider inRelationTo: aMorph
 
 	| diameter |
 	diameter := (self calculateImportRadius: aGMCollider) * 2.
-	self morph
-		extent: diameter px @ diameter px.
+	self morph extent: diameter @ diameter

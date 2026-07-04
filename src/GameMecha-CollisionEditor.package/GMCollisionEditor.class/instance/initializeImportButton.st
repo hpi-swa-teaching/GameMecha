@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeImportButton
 
 	^ self initializeThemeButton: 'Import' Target: [

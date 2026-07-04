@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeThemeButton: aLabel Target: aTarget
 
 	^ PluggableButtonMorph new

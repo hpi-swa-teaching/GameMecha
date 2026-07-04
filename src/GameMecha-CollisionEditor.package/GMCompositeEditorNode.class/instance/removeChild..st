@@ -1,4 +1,4 @@
 inheritance
-removeChildren: aGMEditorNode
+removeChild: aGMEditorNode
 
 	self children remove: aGMEditorNode

@@ -2,8 +2,6 @@ export
 assignDefaultColliderValues: aGMCollider inRelationTo: aMorph
 
 	aGMCollider
-		parent: self parent;
+		parent: (self parent ifNotNil: [self parent collider]);
 		center: (self calculateCenter: aMorph);
-		scaleFactor: (self scaleFactor: aMorph);
-		symbol: self symbol;
-		rotation: (self calculateRotation: aMorph)
+		scaleFactor: 1

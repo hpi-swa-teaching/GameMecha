@@ -1,4 +1,4 @@
 calculations
-calculateImportWidth:  aGMCollider
+calculateImportWidth: aGMCollider
 
-	^ aGMCollider width / 2
+	^ aGMCollider width

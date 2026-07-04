@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeUI
 
 	self addMorph: (AlignmentMorph newColumn

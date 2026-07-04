@@ -1,4 +1,4 @@
-initialization
+initialize-release
 initializePanel
 
 	self

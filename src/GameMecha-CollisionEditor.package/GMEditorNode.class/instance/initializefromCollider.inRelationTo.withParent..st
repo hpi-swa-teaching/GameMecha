@@ -2,11 +2,11 @@ import
 initializefromCollider: aGMCollider inRelationTo: aMorph withParent: aGMEditorNode
 
 	self morph: self morphType new.
-	self symbol: aGMCollider symbol.
+	self collider: aGMCollider.
 	
 	self importColliderValuesFrom: aGMCollider inRelationTo: aMorph.
 	self morph
 		center: (self calculateImportCenter: aMorph From: aGMCollider);
 		color: self morphColor.
 	self parent: aGMEditorNode.
-	aMorph owner addMorph: self morph
+	self editor addImportedToCanvas: self morph withRotation: (self calculateImportRotation: aGMCollider)

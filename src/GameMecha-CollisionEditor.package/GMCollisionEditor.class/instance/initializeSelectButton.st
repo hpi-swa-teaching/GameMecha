@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeSelectButton
 
 	^ self initializeThemeButton: 'Open' Target: [

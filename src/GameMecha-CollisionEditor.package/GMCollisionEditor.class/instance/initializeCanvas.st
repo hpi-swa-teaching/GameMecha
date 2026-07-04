@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeCanvas
 
 	self canvasMorph: (GMEditorCanvasMorph new

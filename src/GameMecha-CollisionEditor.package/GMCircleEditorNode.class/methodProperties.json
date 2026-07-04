@@ -2,10 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"assignColliderValues:inRelationTo:" : "m 6/9/2026 18:04",
-		"calculateImportRadius:" : "m 6/24/2026 13:48",
-		"calculateRadius:" : "m 6/15/2026 14:46",
-		"colliderType" : "m 6/10/2026 16:57",
-		"importColliderValuesFrom:inRelationTo:" : "m 6/24/2026 13:48",
+		"assignColliderValues:inRelationTo:" : "mabe 7/4/2026 13:23",
+		"calculateImportRadius:" : "mabe 7/4/2026 19:06",
+		"calculateRadius:" : "mabe 7/4/2026 19:02",
+		"children" : "mabe 7/4/2026 15:41",
+		"importColliderValuesFrom:inRelationTo:" : "mabe 7/4/2026 15:01",
 		"morphColor" : "m 6/16/2026 00:23",
 		"morphType" : "m 6/15/2026 13:37" } }

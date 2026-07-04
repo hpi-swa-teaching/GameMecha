@@ -9,7 +9,8 @@
 		"parent",
 		"symbol",
 		"morph",
-		"collliderType" ],
+		"editor",
+		"collider" ],
 	"name" : "GMEditorNode",
 	"pools" : [
 		 ],

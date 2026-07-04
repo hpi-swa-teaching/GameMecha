@@ -1,4 +1,4 @@
-initialize
+initialize-release
 initializeScaleButton
 
 	^ self initializeThemeButton: 'Zoom' Target: [ | scaleInput |
