@@ -1,9 +1,7 @@
 export
 exportColliderInRelationTo: aMorph
 
-	| collider |
-	collider := self colliderType new.
-	self assignDefaultColliderValues: collider inRelationTo: aMorph.
-	self assignColliderValues: collider inRelationTo: aMorph.
+	self assignDefaultColliderValues: self collider inRelationTo: aMorph.
+	self assignColliderValues: self collider inRelationTo: aMorph.
 	
-	^ collider
+	^ self collider

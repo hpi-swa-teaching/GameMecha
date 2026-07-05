@@ -1,4 +1,4 @@
-initialization
+initialize-release
 setContent: aMorph
 
 	self

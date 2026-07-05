@@ -2,9 +2,9 @@ ui-elements
 sizeInput
 
 	^ AlignmentMorph newRow
-		addMorphBack: (self initializeLabelMorph: 'x: ');
+		addMorphBack: (self buildLabelMorph: 'x: ');
 		addMorphBack: self xSizeInputField;
-		addMorphBack: (self initializeLabelMorph: '     y: ');
+		addMorphBack: (self buildLabelMorph: '     y: ');
 		addMorphBack: self ySizeInputField;
 		color: self backgroundColor;
 		yourself

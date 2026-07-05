@@ -1,4 +1,4 @@
-initialization
+initialize-release
 initializeInputFields
 
 	self xPosInputField: self createInputField.

@@ -1,7 +1,7 @@
 import-export
 importAssetFomAssetLoader
 
-	| loader collider asset |
+	| loader collider colliderNode asset |
 	self validateGitAssetLoaderValues.
 	loader := GitAssetLoader for: self gitAssetProjectName basePath: self gitAssetProjectBasePath.
 	asset := loader loadAsset: (UIManager default request: 'Please enter the fileName pls'), '.ston'.
@@ -9,5 +9,6 @@ importAssetFomAssetLoader
 		UIManager inform: 'The entered file does not exists'.
 		^ self].
 	collider := GMCollider newFromAsset: asset.
-	self colliderTree initializefromCollider: collider inRelationTo: self selectedMorph withParent: nil.
+	colliderNode := collider editorNodeType new editor: self.
+	self colliderTree addChild: (colliderNode createMorphFromCollider: collider inRelationTo: self selectedMorph withParent: nil).
 	self updateSidebarColliderList

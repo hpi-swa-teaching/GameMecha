@@ -2,9 +2,9 @@ ui-elements
 posInput
 
 	^ AlignmentMorph newRow
-		addMorphBack: (self initializeLabelMorph: 'x: ');
+		addMorphBack: (self buildLabelMorph: 'x: ');
 		addMorphBack: self xPosInputField;
-		addMorphBack: (self initializeLabelMorph: '     y: ');
+		addMorphBack: (self buildLabelMorph: '     y: ');
 		addMorphBack: self yPosInputField;
 		color: self backgroundColor;
 		yourself

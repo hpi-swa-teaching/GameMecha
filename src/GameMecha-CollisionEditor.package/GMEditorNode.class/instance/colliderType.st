@@ -1,4 +1,0 @@
-accessing
-colliderType
-
-	^ self subclassResponsibility

@@ -2,13 +2,13 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addChildren:" : "m 6/9/2026 16:55",
-		"assignColliderValues:inRelationTo:" : "m 6/9/2026 18:04",
-		"child:" : "m 6/9/2026 16:55",
+		"addChild:" : "mabe 7/5/2026 11:31",
+		"assignColliderValues:inRelationTo:" : "mabe 7/4/2026 18:35",
+		"assignDefaultColliderValues:inRelationTo:" : "mabe 7/4/2026 18:28",
 		"children" : "m 6/8/2026 13:45",
 		"children:" : "m 6/8/2026 13:45",
-		"colliderType" : "m 6/8/2026 15:13",
-		"importColliderValuesFrom:inRelationTo:" : "m 6/16/2026 13:34",
+		"createMorphFromCollider:inRelationTo:withParent:" : "mabe 7/5/2026 11:27",
+		"importColliderValuesFrom:inRelationTo:" : "mabe 7/5/2026 11:31",
 		"initialize" : "m 6/8/2026 15:31",
 		"morphColor" : "m 6/16/2026 00:24",
-		"removeChildren:" : "m 6/9/2026 16:56" } }
+		"removeChild:" : "mabe 7/4/2026 17:37" } }
