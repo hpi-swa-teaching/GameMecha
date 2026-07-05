@@ -2,10 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		"assignColliderValues:inRelationTo:" : "mabe 7/4/2026 13:23",
-		"calculateImportRadius:" : "mabe 7/4/2026 19:06",
-		"calculateRadius:" : "mabe 7/4/2026 19:02",
+		"assignColliderValues:inRelationTo:" : "mabe 7/5/2026 11:09",
 		"children" : "mabe 7/4/2026 15:41",
-		"importColliderValuesFrom:inRelationTo:" : "mabe 7/4/2026 15:01",
+		"exportRadius" : "mabe 7/5/2026 11:07",
+		"importColliderValuesFrom:inRelationTo:" : "mabe 7/5/2026 11:06",
 		"morphColor" : "m 6/16/2026 00:23",
 		"morphType" : "m 6/15/2026 13:37" } }

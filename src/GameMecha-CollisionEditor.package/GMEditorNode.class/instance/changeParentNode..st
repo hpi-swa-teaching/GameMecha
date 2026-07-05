@@ -3,4 +3,4 @@ changeParentNode: aGMEditorNode
 
 	self parent removeChild: self.
 	self parent: aGMEditorNode.
-	aGMEditorNode addChildren: self
+	aGMEditorNode addChild: self

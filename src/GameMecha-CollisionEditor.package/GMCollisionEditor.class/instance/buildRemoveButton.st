@@ -1,7 +1,7 @@
-initialize-release
-initializeRemoveButton
+creation
+buildRemoveButton
 
-	^ self initializeThemeButton: 'Remove' Target: [
+	^ self buildThemeButton: 'Remove' Target: [
 		self canvasMorph activeMorph isNil
 			ifTrue: [UIManager default inform: 'You need to select a Morph from the list first!.']
 			ifFalse: [

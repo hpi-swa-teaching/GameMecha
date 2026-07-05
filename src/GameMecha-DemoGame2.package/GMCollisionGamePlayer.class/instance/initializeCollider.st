@@ -4,5 +4,5 @@ initializeCollider
 
 	| colliderAsset assetLoader |
 	assetLoader := GitAssetLoader for: 'GameMecha'.
-	colliderAsset := assetLoader loadAsset: '/DemoGameColliderAsset.GMC'.
+	colliderAsset := assetLoader loadAsset: 'assets/collider/DemoGameColliderAsset.GMC'.
 	self collider: (GMCollider newFromAsset: colliderAsset withOwner: self)

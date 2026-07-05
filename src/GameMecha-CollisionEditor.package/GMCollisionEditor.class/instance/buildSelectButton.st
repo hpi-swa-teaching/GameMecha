@@ -1,7 +1,7 @@
-initialize-release
-initializeSelectButton
+creation
+buildSelectButton
 
-	^ self initializeThemeButton: 'Open' Target: [
+	^ self buildThemeButton: 'Open' Target: [
 		GMEditorClassSearchTool new
 			target: self;
 			actionSelector: #classSelected:;

@@ -1,5 +1,5 @@
-initialize-release
-initializeLabelMorph: aText
+ui-elements
+buildLabelMorph: aText
 
 	^ StringMorph new
 		contents: aText;

@@ -1,5 +1,5 @@
 import
-initializefromCollider: aGMCollider inRelationTo: aMorph withParent: aGMEditorNode
+createMorphFromCollider: aGMCollider inRelationTo: aMorph withParent: aGMEditorNode
 
 	self morph: self morphType new.
 	self collider: aGMCollider.
@@ -9,4 +9,4 @@ initializefromCollider: aGMCollider inRelationTo: aMorph withParent: aGMEditorNo
 		center: (self calculateImportCenter: aMorph From: aGMCollider);
 		color: self morphColor.
 	self parent: aGMEditorNode.
-	self editor addImportedToCanvas: self morph withRotation: (self calculateImportRotation: aGMCollider)
+	self editor addImportedMorphToCanvas: self morph withRotation: aGMCollider rotation

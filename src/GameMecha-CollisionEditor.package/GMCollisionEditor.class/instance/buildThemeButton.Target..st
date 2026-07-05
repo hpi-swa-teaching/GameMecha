@@ -1,5 +1,5 @@
-initialize-release
-initializeThemeButton: aLabel Target: aTarget
+creation
+buildThemeButton: aLabel Target: aTarget
 
 	^ PluggableButtonMorph new
 		label: aLabel;

@@ -1,5 +1,5 @@
 drawing
-addImportedToCanvas: aMorph withRotation: aNumber
+addImportedMorphToCanvas: aMorph withRotation: aNumber
 
 	| container |
 	container := GMResizeContainer new

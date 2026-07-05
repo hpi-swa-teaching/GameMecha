@@ -218,13 +218,6 @@ GSMetadata {
 			],
 			#encoding : 'TXT'
 		},
-		GSPlaintextMapper {
-			#version : 1,
-			#path : FSAbsolutePath [
-				'DemoGameColliderAsset.GMC'
-			],
-			#encoding : 'TXT'
-		},
 		GSImageMapper {
 			#version : 1,
 			#path : FSAbsolutePath [
@@ -321,6 +314,30 @@ GSMetadata {
 			#path : FSAbsolutePath [
 				'src'
 			]
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'assets',
+				'collider',
+				'DemoGameColliderAsset.GMC'
+			],
+			#encoding : 'TXT'
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'.ston'
+			],
+			#encoding : 'TXT'
+		},
+		GSPlaintextMapper {
+			#version : 1,
+			#path : FSAbsolutePath [
+				'docs',
+				'TileEditor.md'
+			],
+			#encoding : 'TXT'
 		}
 	],
 	#name : 'GameMecha'

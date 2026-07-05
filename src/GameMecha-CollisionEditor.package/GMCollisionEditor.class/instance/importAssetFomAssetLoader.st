@@ -10,5 +10,5 @@ importAssetFomAssetLoader
 		^ self].
 	collider := GMCollider newFromAsset: asset.
 	colliderNode := collider editorNodeType new editor: self.
-	self colliderTree addChildren: (colliderNode initializefromCollider: collider inRelationTo: self selectedMorph withParent: nil).
+	self colliderTree addChild: (colliderNode createMorphFromCollider: collider inRelationTo: self selectedMorph withParent: nil).
 	self updateSidebarColliderList

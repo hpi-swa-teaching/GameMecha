@@ -1,5 +1,5 @@
-initialize-release
-initializeRectButton
+creation
+buildRectButton
 
 	| rectBtn |
 	rectBtn := GMRectangleButtonMorph new action: [ | rectangle |

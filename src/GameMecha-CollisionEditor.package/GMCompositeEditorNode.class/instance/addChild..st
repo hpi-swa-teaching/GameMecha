@@ -1,4 +1,4 @@
 inheritance
-addChildren: aGMEditorNode
+addChild: aGMEditorNode
 
 	self children add: aGMEditorNode

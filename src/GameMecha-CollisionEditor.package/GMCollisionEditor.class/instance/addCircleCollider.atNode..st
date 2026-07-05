@@ -7,5 +7,5 @@ addCircleCollider: aMorph atNode: aGMEditorNode
 		parent: aGMEditorNode;
 		collider: GMPrimitiveCircleCollider new;
 		yourself.
-	aGMEditorNode addChildren: colliderNode.
+	aGMEditorNode addChild: colliderNode.
 	aMorph owner editorNode: colliderNode

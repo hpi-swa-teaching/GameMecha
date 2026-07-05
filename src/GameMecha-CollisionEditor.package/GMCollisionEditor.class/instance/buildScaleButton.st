@@ -1,8 +1,8 @@
-initialize-release
-initializeScaleButton
+creation
+buildScaleButton
 
-	^ self initializeThemeButton: 'Zoom' Target: [ | scaleInput |
-		scaleInput := self initializeScaleInput contents asString.
+	^ self buildThemeButton: 'Zoom' Target: [ | scaleInput |
+		scaleInput := self scaleTextInputField contents asString.
 		scaleInput := [scaleInput asNumber] on: Error do: [nil].
 		(scaleInput notNil and: [scaleInput >= 0.1])
 			ifTrue: [self canvasMorph scaleFactor: scaleInput]

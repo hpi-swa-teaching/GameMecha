@@ -2,10 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"assignColliderValues:inRelationTo:" : "mabe 7/4/2026 13:28",
-		"calculateHeights:" : "mabe 7/4/2026 12:43",
-		"calculateImportHeights:" : "mabe 7/4/2026 19:06",
-		"calculateImportWidth:" : "mabe 7/4/2026 19:06",
-		"calculateWidth:" : "mabe 7/4/2026 12:43",
+		"assignColliderValues:inRelationTo:" : "mabe 7/5/2026 11:26",
 		"children" : "mabe 7/4/2026 15:41",
-		"importColliderValuesFrom:inRelationTo:" : "mabe 7/4/2026 13:40" } }
+		"exportHeight" : "mabe 7/5/2026 11:25",
+		"exportWidth" : "mabe 7/5/2026 11:26",
+		"importColliderValuesFrom:inRelationTo:" : "mabe 7/5/2026 11:23" } }

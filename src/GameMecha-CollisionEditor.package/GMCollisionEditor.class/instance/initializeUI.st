@@ -6,5 +6,5 @@ initializeUI
 		vResizing: #spaceFill;
 		color: Color transparent;
 		borderWidth: 2;
-		addMorphBack: self initializeToolbar;
-		addMorphBack: self initializeWorkspace)
+		addMorphBack: self buildToolbar;
+		addMorphBack: self buildWorkspace)

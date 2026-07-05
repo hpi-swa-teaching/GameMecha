@@ -2,5 +2,5 @@ import
 importColliderValuesFrom: aGMCollider inRelationTo: aMorph
 
 	| diameter |
-	diameter := (self calculateImportRadius: aGMCollider) * 2.
+	diameter := aGMCollider radius * 2.
 	self morph extent: diameter @ diameter

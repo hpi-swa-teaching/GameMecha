@@ -2,9 +2,9 @@ initialize-release
 initializePanel
 
 	self
-		addMorphBack: (self initializeLabelMorph: ' Center Position');
+		addMorphBack: (self buildLabelMorph: ' Center Position');
 		addMorphBack: self posInput;
-		addMorphBack: (self initializeLabelMorph: ' Morph Size ');
+		addMorphBack: (self buildLabelMorph: ' Morph Size ');
 		addMorphBack: self sizeInput;
-		addMorphBack: (self initializeLabelMorph: ' Rotation ');
+		addMorphBack: (self buildLabelMorph: ' Rotation ');
 		addMorphBack: self rotationInput

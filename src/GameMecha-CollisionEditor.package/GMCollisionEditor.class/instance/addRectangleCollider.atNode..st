@@ -7,5 +7,5 @@ addRectangleCollider: aMorph atNode: aGMEditorNode
 		parent: aGMEditorNode;
 		collider: GMPrimitiveRectangleCollider new;
 		yourself.
-	aGMEditorNode addChildren: colliderNode.
+	aGMEditorNode addChild: colliderNode.
 	aMorph owner editorNode: colliderNode

@@ -1,5 +1,5 @@
-initialize-release
-initializeToolbar
+creation
+buildToolbar
 
 	| bar |
 	bar := AlignmentMorph newRow.
@@ -15,28 +15,28 @@ initializeToolbar
 		borderWidth: 2px;
 		layoutInset: 5;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: (self initializeLabelMorph: 'Class: ');
+		addMorphBack: (self buildLabelMorph: 'Class: ');
 		addMorphBack: self classNameLabel;
 		addTransparentSpacerOfSize: 20 px;
-		addMorphBack: self initializeSelectButton;
+		addMorphBack: self buildSelectButton;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: self InitializeSeparatorMorph;
+		addMorphBack: self buildSeparatorMorph;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: self initializeImportButton;
+		addMorphBack: self buildImportButton;
 		addTransparentSpacerOfSize: 20 px;
-		addMorphBack: self initializeExportButton;
+		addMorphBack: self buildExportButton;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: self InitializeSeparatorMorph;
+		addMorphBack: self buildSeparatorMorph;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: (self initializeLabelMorph: 'Scale: ');
+		addMorphBack: (self buildLabelMorph: 'Scale: ');
 		addTransparentSpacerOfSize: 20 px;
-		addMorphBack: self initializeScaleInput;
+		addMorphBack: self buildScaleInputField;
 		addTransparentSpacerOfSize: 20 px;
-		addMorphBack: self initializeScaleButton;
+		addMorphBack: self buildScaleButton;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: self InitializeSeparatorMorph;
+		addMorphBack: self buildSeparatorMorph;
 		addTransparentSpacerOfSize: 40 px;
-		addMorphBack: self initializeRectButton;
+		addMorphBack: self buildRectButton;
 		addTransparentSpacerOfSize: 20 px;
-		addMorphBack: self initializeCircleButton.
+		addMorphBack: self buildCircleButton.
 	^ bar

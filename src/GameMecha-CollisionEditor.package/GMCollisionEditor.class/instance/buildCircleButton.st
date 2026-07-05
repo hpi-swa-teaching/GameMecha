@@ -1,5 +1,5 @@
-initialize-release
-initializeCircleButton
+creation
+buildCircleButton
 
 	^ GMCircleButtonMorph new action: [ | circle |
 		circle := EllipseMorph new extent: 200 px @ 200 px.

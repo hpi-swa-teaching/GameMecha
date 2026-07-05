@@ -2,6 +2,6 @@ export
 assignColliderValues: aCollider inRelationTo: aMorph
 
 	aCollider
-		width: (self calculateWidth: aMorph);
-		height: (self calculateHeights: aMorph);
-		rotation: (self calculateRotation: aCollider)
+		width: self exportWidth;
+		height: self exportHeight;
+		rotation: self exportRotation

@@ -1,7 +1,7 @@
-initialize-release
-initializeExportButton
+creation
+buildExportButton
 
-	^ self initializeThemeButton: 'Export' Target: [
+	^ self buildThemeButton: 'Export' Target: [
 		self colliderTree morph: self selectedMorph.
 		(self colliderTree children isEmpty or: self selectedMorph == nil)
 			ifTrue: [UIManager default inform: 'The Collider is Empty or you have not selected a Morph']

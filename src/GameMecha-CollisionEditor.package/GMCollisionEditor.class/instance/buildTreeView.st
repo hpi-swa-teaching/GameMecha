@@ -1,5 +1,5 @@
-initialize-release
-initializeTreeView
+creation
+buildTreeView
 
 	| model |
 	model := GMMorphTreeModel new

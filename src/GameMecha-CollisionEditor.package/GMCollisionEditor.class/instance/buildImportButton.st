@@ -1,7 +1,7 @@
-initialize-release
-initializeImportButton
+creation
+buildImportButton
 
-	^ self initializeThemeButton: 'Import' Target: [
+	^ self buildThemeButton: 'Import' Target: [
 		self selectedMorph
 			ifNil: [UIManager default inform: 'You have to select a Morph first']
 			ifNotNil: [self importAssetFomAssetLoader]]

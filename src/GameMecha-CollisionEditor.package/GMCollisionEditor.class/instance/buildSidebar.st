@@ -1,5 +1,5 @@
-initialize-release
-initializeSidebar
+creation
+buildSidebar
 
 	| buttonRow |
 	self propertyPanel: (GMPropertyPanel new editor: self).
@@ -8,8 +8,8 @@ initializeSidebar
 		hResizing: #shrinkWrap;
 		cellInset: 10;
 		color: Color transparent;
-		addMorphBack: self initializeRemoveButton;
-		addMorphBack: self initializeClearButton.
+		addMorphBack: self buildRemoveButton;
+		addMorphBack: self buildClearButton.
 	
 	^ AlignmentMorph newColumn
 		hResizing: #rigid;
@@ -19,11 +19,11 @@ initializeSidebar
 		color: self backgroundColor;
 		borderColor: Color transparent;
 		borderWidth: 2 px;
-		addMorphBack: (self initializeLabelMorph: ' ColliderList ');
+		addMorphBack: (self buildLabelMorph: ' ColliderList ');
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: self textColor);
-		addMorphBack: self initializeTreeView;
+		addMorphBack: self buildTreeView;
 		addMorphBack: (Morph new
 			extent: 190 px @ 1 px;
 			color: self textColor);

@@ -1,5 +1,5 @@
-ui-elements
-initializeLabelMorph: aText
+creation
+buildLabelMorph: aText
 
 	^ StringMorph new
 		contents: aText;

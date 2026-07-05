@@ -1,5 +1,5 @@
-initialize-release
-initializeCanvas
+creation
+buildCanvas
 
 	self canvasMorph: (GMEditorCanvasMorph new
 		gridColor: self buttonTextColor;
