@@ -340,7 +340,16 @@ The editor consists of three areas:
   - **Select** opens a dialog for selecting a morph class.
     - The name of the selected class is displayed to the left of the button.
     - An instance of the selected class is placed on the canvas as a visual reference.
-  - **Import** and **Export** import and export colliders from and to the GitAssetBrowser.
+      
+ - **Import** and **Export** allow you to import and export colliders from and to the GitAssetBrowser.
+   - Already implemented layers and masks will be lost because they are not supported yet.
+   - On export the top collider is always a GMCompositeCollider
+   - The project name and file path are stored until the editor is closed.
+   - The project name is the name of your GitHub project. In this case it would be: `GameMecha`.
+   - The file path may contain subdirectories, for example: `assets/collider`
+   - The file name should not include a file extension; `.ston` is added automatically.
+   - The corresponding morph has to be selected before importing the collider
+
   - **Scale** specifies the desired canvas scale.
     - The new scale is applied when **Set Scale** is pressed.
     - Useful when working with very small sprites.
@@ -367,5 +376,8 @@ The editor consists of three areas:
 2. Add the required rectangle and circle colliders using the corresponding buttons.
 3. Position, resize, and rotate the colliders until they accurately cover the collision area of the reference morph.
 4. Export the collider as an asset and load it at runtime as described in [[#Loading a Collider from an Asset]].
+
+> [!WARNING]
+> Don't forget to commit and push your changes afterward so the collider becomes available to your collaborators.
 
 > **Current limitation:** Nested groups (`GMCompositeCollider`s) are not yet implemented in the editor. They are technically supported by the collision system itself, but the editor does not yet provide support for creating them. Layers, masks and collider symbols are also not yet supported for the editor.
