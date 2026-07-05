@@ -327,13 +327,6 @@ GSMetadata {
 		GSPlaintextMapper {
 			#version : 1,
 			#path : FSAbsolutePath [
-				'.ston'
-			],
-			#encoding : 'TXT'
-		},
-		GSPlaintextMapper {
-			#version : 1,
-			#path : FSAbsolutePath [
 				'docs',
 				'TileEditor.md'
 			],

@@ -1,7 +1,6 @@
 initialize-release
 initializeColliderTree
 
-	self colliderTree: (GMCompositeEditorNode new
-		collider: GMCompositeCollider new;
+	self colliderTree: (GMRootEditorNode new
 		editor: self;
 		yourself)
