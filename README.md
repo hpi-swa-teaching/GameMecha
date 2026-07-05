@@ -342,13 +342,15 @@ The editor consists of three areas:
     - An instance of the selected class is placed on the canvas as a visual reference.
       
  - **Import** and **Export** allow you to import and export colliders from and to the GitAssetBrowser.
-   - Already implemented layers and masks will be lost because they are not supported yet.
-   - On export the top collider is always a GMCompositeCollider
    - The project name and file path are stored until the editor is closed.
    - The project name is the name of your GitHub project. In this case it would be: `GameMecha`.
    - The file path may contain subdirectories, for example: `assets/collider`
    - The file name should not include a file extension; `.ston` is added automatically.
-   - The corresponding morph has to be selected before importing the collider
+   - The corresponding morph has to be selected before importing the collider.
+   - On export if multiple colliders were created the top collider will be a composite collider with the cumulative mask/layers of its children's mask/layers.
+   - Be cautious when importing a collider that consists of more then one composite collider. Even tho they have no visual representation yet, they still exist, will be exported again and can only be removed by using the clear-Button.
+   - Scale factor, center and rotation inheritance will be used to calculate the representing morphs on import, but on export scale factor is always set to one, while center and rotation will always be directly set in the primitive colliders.
+   - Other collider variables that can not currently be changed in the editor (mask, layers, symbol etc.) will be same when exporting, if they were set on import.
 
   - **Scale** specifies the desired canvas scale.
     - The new scale is applied when **Set Scale** is pressed.

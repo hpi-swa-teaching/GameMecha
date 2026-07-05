@@ -6,12 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"parent",
-		"morph",
-		"editor",
-		"collider" ],
-	"name" : "GMEditorNode",
+		 ],
+	"name" : "GMRootEditorNode",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "GMCompositeEditorNode",
 	"type" : "normal" }

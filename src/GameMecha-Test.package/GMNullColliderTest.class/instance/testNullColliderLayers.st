@@ -1,4 +1,4 @@
 test cases
 testNullColliderLayers
 
-	self assert: GMNullCollider new layers equals: #()
+	self assert: GMNullCollider new layers equals: 0
