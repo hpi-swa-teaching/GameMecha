@@ -40,7 +40,7 @@ A collider is a spatial object used for collision detection. Colliders may eithe
 
 #### Collider Hierarchy
 The collider hierarchy looks as follows:
-- `GMCollider` (abstract): common properties such as position, rotation, scale, layer/mask
+- `GMCollider` (abstract): common properties such as center, rotation, scale, layer/mask
     - `GMCompositeCollider`: container that groups any number of child colliders
     - `GMPrimitiveCollider` (abstract): standard collider that implements the geometrical collision logic
         - `GMPrimitiveRectangleCollider`: rectangle shaped collider
@@ -58,7 +58,7 @@ All colliders share the following common fields.
 | `enabled`  | Boolean               | NO       | A boolean, describing whether a collider participates in collision. It is enabled by default.                                                                                          |
 | `title`    | String                | NO       | A string, describing the collider.                                                                                                                                                     |
 | `symbol`   | Symbol                | NO       | A symbol to identify the collider in programmatic contexts.                                                                                                                            |
-| `position` | Point                 | NO       | A point, encoding the position of the collider relative to its parent.                                                                                                                 |
+| `center` | Point                 | NO       | A point, encoding the center position of the collider relative to its parent.                                                                                                                 |
 | `rotation` | Number                | NO       | A number, encoding the colliders rotation in degrees relative to its parent.                                                                                                           |
 | `scale`    | Point                 | NO       | A point, encoding the scale of the collider relative to its parent.                                                                                                                    |
 | `layers`   | Collection of Numbers | NO       | A collection with all layers the collider should be on. It is inherited by its parents and defaults to `#(1)`. Parents also need to include the layer a child wants to be included in. |
@@ -124,7 +124,7 @@ GMCompositeCollider {
       },
       GMPrimitiveCircleCollider {
          #radius : 8,
-         #position : Point {
+         #center : Point {
             #x : 20,
             #y : 5
          }
@@ -139,14 +139,14 @@ Collider transforms are always local to their parent collider. Child colliders i
 #### Example
 ```gmc
 GMCompositeCollider {
-   #position : Point {
+   #center : Point {
       #x : 100,
       #y : 50
    },
    #children : [
       GMPrimitiveCircleCollider {
          #radius : 8,
-         #position : Point {
+         #center : Point {
             #x : 10,
             #y : 0
          }
@@ -155,7 +155,7 @@ GMCompositeCollider {
 }
 ```
 
-The effective world position (which in itself is relative to the morph owning the collider) of the circle collider becomes:
+The effective world center position (which in itself is relative to the morph owning the collider) of the circle collider becomes:
 
 ```smalltalk
 (110, 50)
