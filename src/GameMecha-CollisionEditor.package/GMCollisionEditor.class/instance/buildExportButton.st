@@ -8,5 +8,4 @@ buildExportButton
 			ifFalse: [ | assetName |
 				self validateGitAssetLoaderValues.
 				assetName := UIManager default request: 'Please enter the prefered AssetName'.
-				self uploadIntoAssetLoaderIntoProject: self gitAssetProjectName Asset: assetName.
-				self validateUpload: assetName]]
+				self uploadIntoAssetLoaderIntoProject: self gitAssetProjectName Asset: assetName]]
