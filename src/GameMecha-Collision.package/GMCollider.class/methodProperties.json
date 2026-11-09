@@ -1,8 +1,10 @@
 {
 	"class" : {
-		"newFromAsset:" : "Lasse 5/17/2026 17:47",
-		"newFromAsset:withOwner:" : "Lasse 6/2/2026 14:39" },
+		"newFromAsset:" : "mabe 7/17/2026 15:15",
+		"newFromAsset:withOwner:" : "mabe 7/17/2026 15:09" },
 	"instance" : {
+		"calculatePropertiesAfterDeserialization" : "mabe 7/17/2026 15:05",
+		"calculatePropertiesForSerialization" : "mabe 7/17/2026 15:47",
 		"center" : "mabe 5/27/2026 16:53",
 		"center:" : "mabe 5/27/2026 16:54",
 		"collisionEventWith:" : "Lasse 6/6/2026 16:21",
@@ -23,6 +25,8 @@
 		"maskIncludes:" : "mabe 6/18/2026 15:55",
 		"parent" : "Lasse 5/17/2026 16:24",
 		"parent:" : "Lasse 5/17/2026 16:19",
+		"recoverPropertiesAfterSerialization" : "mabe 7/17/2026 15:46",
+		"relativeCenter" : "mabe 7/17/2026 14:33",
 		"rotation" : "mabe 6/12/2026 14:58",
 		"rotation:" : "Lasse 5/17/2026 16:16",
 		"scaleFactor" : "mabe 5/20/2026 15:29",
@@ -31,5 +35,5 @@
 		"symbol:" : "Lasse 5/17/2026 16:05",
 		"title" : "Lasse 5/19/2026 16:39",
 		"title:" : "Lasse 5/19/2026 16:39",
-		"toPrettyString" : "Lasse 5/17/2026 17:49",
-		"toString" : "Lasse 5/17/2026 17:49" } }
+		"toPrettyString" : "mabe 7/17/2026 15:51",
+		"toString" : "mabe 7/17/2026 15:51" } }

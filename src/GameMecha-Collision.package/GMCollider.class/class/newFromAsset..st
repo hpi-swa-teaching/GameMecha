@@ -7,4 +7,7 @@ newFromAsset: aGameMechaColliderAsset
 	return this instance in `gmCollider`.
 	"
 
-	^ STON fromString: aGameMechaColliderAsset asString
+	| collider |
+	collider := STON fromString: aGameMechaColliderAsset asString.
+	collider calculatePropertiesAfterDeserialization.
+	^ collider

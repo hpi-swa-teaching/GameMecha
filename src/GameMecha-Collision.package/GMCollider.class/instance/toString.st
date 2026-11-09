@@ -1,4 +1,4 @@
 serialization
 toString
 
-	^ STON toString: self
+	^ self subclassResponsibility

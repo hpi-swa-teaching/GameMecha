@@ -2,6 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
+		"calculatePropertiesAfterDeserialization" : "mabe 7/17/2026 15:06",
+		"calculatePropertiesForSerialization" : "mabe 7/17/2026 15:48",
 		"checkCollisionWithCirclePrimitiveAABB:" : "Lasse 6/7/2026 13:27",
 		"checkCollisionWithCirclePrimitiveRotated:" : "Lasse 6/6/2026 15:56",
 		"checkCollisionWithRectanglePrimitiveAABB:" : "Lasse 6/7/2026 13:28",
@@ -10,4 +12,7 @@
 		"editorNodeType" : "mabe 7/4/2026 11:27",
 		"initialize" : "Lasse 6/6/2026 16:38",
 		"radius" : "mabe 5/20/2026 15:34",
-		"radius:" : "Lasse 5/17/2026 16:44" } }
+		"radius:" : "Lasse 5/17/2026 16:44",
+		"recoverPropertiesAfterSerialization" : "mabe 7/17/2026 15:46",
+		"toPrettyString" : "mabe 7/17/2026 15:50",
+		"toString" : "mabe 7/17/2026 15:51" } }

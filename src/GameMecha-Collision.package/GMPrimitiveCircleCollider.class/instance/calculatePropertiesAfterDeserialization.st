@@ -1,0 +1,5 @@
+deserialization
+calculatePropertiesAfterDeserialization
+
+	super calculatePropertiesAfterDeserialization.
+	self radius: self radius * Display relativeUiScaleFactor

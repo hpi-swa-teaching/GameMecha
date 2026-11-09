@@ -1,6 +1,6 @@
 canvas
 removeMorphFromCanvas: aMorph
 
-	self canvasMorph removeMorphFromCanvas: aMorph.
-	self selectedMorph: nil.
-	self classNameLabel content: ''.
+	self removeEditorNode: aMorph editorNode.
+	aMorph removeHitbox.
+	self updateSidebarColliderList
