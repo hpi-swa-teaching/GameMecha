@@ -25,6 +25,8 @@ buildToolbar
 		addMorphBack: self buildImportButton;
 		addTransparentSpacerOfSize: 20 px;
 		addMorphBack: self buildExportButton;
+		addTransparentSpacerOfSize: 20 px;
+		addMorphBack: self buildRefreshGitAssetLoaderValuesButton;
 		addTransparentSpacerOfSize: 40 px;
 		addMorphBack: self buildSeparatorMorph;
 		addTransparentSpacerOfSize: 40 px;

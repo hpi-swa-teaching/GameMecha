@@ -1,4 +1,4 @@
 serialization
 toPrettyString
 
-	^ STON toStringPretty: self
+	^ self subclassResponsibility

@@ -2,6 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
+		"calculatePropertiesAfterDeserialization" : "mabe 7/17/2026 15:08",
+		"calculatePropertiesForSerialization" : "mabe 7/17/2026 15:49",
 		"checkCollisionWithCirclePrimitiveAABB:" : "Lasse 6/6/2026 14:41",
 		"checkCollisionWithCirclePrimitiveRotated:" : "mabe 6/10/2026 17:15",
 		"checkCollisionWithRectanglePrimitiveAABB:" : "Lasse 6/6/2026 14:41",
@@ -16,5 +18,8 @@
 		"isSeparatedFromRectangle:onAxis:" : "Lasse 6/6/2026 16:39",
 		"localAxisX" : "Lasse 6/6/2026 16:39",
 		"localAxisY" : "Lasse 6/6/2026 16:39",
+		"recoverPropertiesAfterSerialization" : "mabe 7/17/2026 15:49",
+		"toPrettyString" : "mabe 7/17/2026 15:50",
+		"toString" : "mabe 7/17/2026 15:50",
 		"width" : "mabe 5/20/2026 15:34",
 		"width:" : "Lasse 5/17/2026 16:42" } }

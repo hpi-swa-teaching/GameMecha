@@ -7,4 +7,7 @@ newFromAsset: aGameMechaColliderAsset withOwner: aMorph
 	return this instance in `gmCollider`.
 	"
 
-	^ (STON fromString: aGameMechaColliderAsset asString) parent: aMorph
+	| collider |
+	collider := (STON fromString: aGameMechaColliderAsset asString) parent: aMorph.
+	collider calculatePropertiesAfterDeserialization.
+	^ collider
