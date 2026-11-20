@@ -1,6 +1,10 @@
 initialize-release
 initializeUI
 
+	self
+		changeTableLayout;
+		clipSubmorphs: true.
+	
 	self addMorph: (AlignmentMorph newColumn
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
