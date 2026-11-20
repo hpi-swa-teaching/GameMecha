@@ -14,7 +14,8 @@ buildSidebar
 	^ AlignmentMorph newColumn
 		hResizing: #rigid;
 		width: 250 px;
-		vResizing: #rigid;
+		minWidth:250 px;
+		vResizing: #spaceFill;
 		height: 900 px;
 		color: self backgroundColor;
 		borderColor: Color transparent;

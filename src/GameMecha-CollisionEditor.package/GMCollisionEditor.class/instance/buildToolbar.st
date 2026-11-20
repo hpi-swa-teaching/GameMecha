@@ -4,9 +4,9 @@ buildToolbar
 	| bar |
 	bar := AlignmentMorph newRow.
 	bar
-		hResizing: #rigid;
-		width: 1200 px;
-		vResizing: #rigid;
+		hResizing: #spaceFill;
+		vResizing: #shrinkWrap;
+		wrapDirection: #topToBottom;
 		height: 75 px;
 		cellPositioning: #center;
 		wrapCentering: #center;
