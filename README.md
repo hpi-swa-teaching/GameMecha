@@ -29,7 +29,7 @@ You can find the examples in the ```GameMecha-Examples``` class category.
 This package contains the current collision system of GameMecha. It consists of three parts that work together:
 - **Colliders** (`GMCollider` and its subclasses): belong to a morph and are used to check whether the morph collides with another collider
 - **CollisionManager** (`GMCollisionManager`): manages a set of morphs, checks for collisions on every update, and notifies the affected morphs
-- **ColliderEditor** (`GMColliderEditor`): graphical tool that allows collider shapes to be placed visually on a reference morph instead of converting coordinates manually
+- **CollsionEditor** (`GMCollisionEditor`): graphical tool that allows collider shapes to be placed visually on a reference morph instead of converting coordinates manually
 
 > **Note:** `GMCollisionHandler` is the old, deprecated collision system and is intentionally not described here. It is only included as a class to support old games that rely on the `GMCollisionHandler` symbol in the global context. For new morphs, only `GMCollider`s  should be used in combination with the `GMCollisionManager`.
 
@@ -325,14 +325,14 @@ collider
 	]
 ```
 
-The asset required by `newFromAsset:` can most easily be created using the [[#Collider Editor]].
+The asset required by `newFromAsset:` can most easily be created using the [[#Collision Editor]].
 
-### Collider Editor
-A single rectangle or circle is often not sufficient to accurately represent the shape of a sprite. `GMColliderEditor` allows any number of rectangles and circles to be placed visually on top of a reference graphic. Exporting then automatically generates a collider asset.
+### Collision Editor
+A single rectangle or circle is often not sufficient to accurately represent the shape of a sprite. `GMCollisionEditor` allows any number of rectangles and circles to be placed visually on top of a reference graphic. Exporting then automatically generates a collider asset.
 
 The editor can be opened with:
 ```smalltalk
-GMColliderEditor new
+GMCollisionEditor new
 ```
 
 The editor consists of three areas:

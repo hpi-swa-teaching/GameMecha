@@ -7,6 +7,8 @@ initialize
 		color: self browserColor;
 		initializeUI;
 		initializeColliderTree;
+		minWidth: 600 px;
+		minHeight: 400 px;
 		openInWindow.
 	UIManager default inform: 'IMPORTANT NOTE: This editor assumes that the targeted morph is scaled to the global scale factor. To do this, you must append px to its extent values.
 
